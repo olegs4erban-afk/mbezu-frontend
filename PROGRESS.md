@@ -5,8 +5,8 @@
 > **Прод НЕ трогаем:** ни Tilda-записи, ни публикации, ни правок T123. Всё локально.
 
 ## Текущий статус
-- **Активная фаза:** Phase 2 (порт исходников в модули) — следующая.
-- **Последняя завершённая:** Phase 1.
+- **Активная фаза:** Phase 3 (сборка и чанки) — следующая.
+- **Последняя завершённая:** Phase 2.
 - Репозиторий: `C:\MBezu\mbezu-frontend` (branch `main`). GitHub remote: пока нет.
 
 ## Ключевые факты окружения
@@ -37,3 +37,12 @@
   - Каталоги `src/{common,pages,ar,entries}` (пока `.gitkeep`).
   - Решение: сборка как Vite-MPA (HTML на маршрут) — даёт per-page чанки + превью маршрутов + `manifest.json` для Phase 5. Реальные прод-страницы (тонкие Tilda-контейнеры) — Phase 6.
   - **Дальше:** Phase 2 — портировать 14 JSX → TS/TSX, разнести по модулям, заменить window-глобалы на ES-импорты.
+- `[done] Phase 2 — Портирование исходников в модули` — 2026-06-03 23:40 +0300
+  - Транскомпиляция через `../port.py` (вне репо): тела компонентов скопированы **дословно**, переписаны только импорты/экспорты.
+  - `src/common/`: `data.ts` (img→`worksImage`, `imageOf` учитывает `TILDA_IMAGES`), `atoms.tsx` (без PaintingPlate), `chrome.tsx`, `styles.css` (12.5 КБ, извлечён из Mbez.html `<style>` — `:root` переменные сохранены).
+  - Рукописные модули: `tilda-images.ts`, `adapter.tsx` (PaintingPlate), `ar/ar.tsx` (model-viewer импортируется динамически при `ready`), `app.tsx` (Shell + `go()` URL-навигация + `renderPage`), `cart.ts` (localStorage + `useCart`), `seo.ts` (JSON-LD генераторы), `analytics.ts` (Метрика/GA4/VK — плейсхолдеры, no-op пока ID не настоящие).
+  - `src/pages/` 8 страниц (default-export), `src/entries/` 8 точек входа (.ts, JSX-free: компонент + props-factory).
+  - Все `Object.assign(window,…)` убраны (проверено grep'ом). Глобалы → ES-импорты.
+  - Фото: 63 файла (21 работа × 3 размера) → `public/assets/works/`. `public/assets/ar/README.txt`.
+  - ~4900 строк TS/TSX. Babel-standalone убран (компиляция на билде).
+  - **Дальше:** Phase 3 — `npm install` (ретраи) + `npm run build` до зелёного, проверить чанки.
