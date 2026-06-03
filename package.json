@@ -6,9 +6,10 @@
   "description": "Production frontend for mbezu.ru (Mila Bezú) — Vite + React, per-page chunks, prerender, SEO.",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node --import tsx scripts/postbuild.ts",
+    "build": "vite build && node --import tsx scripts/prerender.tsx",
     "build:only": "vite build",
-    "prerender": "node --import tsx scripts/prerender.ts",
+    "prerender": "node --import tsx scripts/prerender.tsx",
+    "smoke": "node --import tsx scripts/smoke.tsx",
     "preview": "vite preview --port 4173",
     "typecheck": "tsc --noEmit"
   },

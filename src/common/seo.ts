@@ -2,7 +2,7 @@
 // seo.ts — per-page <title>/meta + JSON-LD генераторы.
 // Полный набор схем (Organization, Product, BreadcrumbList) — Phase 4.
 // ─────────────────────────────────────────────────────────────
-import { ABOUT, artworkById, seriesById, formatPrice, imageOf } from './data';
+import { ABOUT, ARTWORKS, artworkById, seriesById, featuredArtworks, formatPrice, imageOf } from './data';
 
 export const SITE_ORIGIN = 'https://mbezu.ru';
 
@@ -113,6 +113,86 @@ export function breadcrumbLd(items: { name: string; url: string }[]) {
   };
 }
 
+// ── Central per-route SEO resolver (shared by entries + prerender) ──
+export interface RouteSeo extends PageSeo { jsonLd: unknown[] }
+
+export function seoFor(name: string, params: { id?: string; series?: string; section?: string } = {}): RouteSeo {
+  const abs = (p: string) => (p && p.startsWith('/') ? SITE_ORIGIN + p : p);
+  const heroImg = imageOf(featuredArtworks()[0] || ARTWORKS[0], 'full');
+
+  switch (name) {
+    case 'home':
+      return {
+        title: 'Mila Bezú — интерьерная живопись маслом · Москва',
+        description: 'Картины маслом современной российской художницы Mila Bezú. Серии «Улицы мира», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.',
+        canonical: SITE_ORIGIN + '/',
+        ogImage: abs(heroImg || ''),
+        jsonLd: [organizationLd(), personLd()],
+      };
+    case 'about':
+      return {
+        title: 'О художнице — Mila Bezú · 15 лет масляной живописи',
+        description: ABOUT.short[0],
+        canonical: SITE_ORIGIN + '/about',
+        ogImage: abs(heroImg || ''),
+        jsonLd: [personLd(), breadcrumbLd([{ name: 'M.Bez', url: '/' }, { name: 'Художница', url: '/about' }])],
+      };
+    case 'catalog': {
+      const series = params.series ? seriesById(params.series) : null;
+      return {
+        title: series ? `${series.title} — каталог · Mila Bezú` : 'Каталог работ — Mila Bezú',
+        description: series ? series.description : 'Каталог живописи маслом Mila Bezú: 22 работы в четырёх сериях. Пейзажи, море, ботаника, города. Купить картину или заказать.',
+        canonical: SITE_ORIGIN + '/catalog' + (params.series ? `?series=${params.series}` : ''),
+        jsonLd: [breadcrumbLd([{ name: 'M.Bez', url: '/' }, { name: 'Каталог', url: '/catalog' }])],
+      };
+    }
+    case 'painting': {
+      const art = artworkById((params.id || '').toUpperCase());
+      if (!art) {
+        return { title: 'Работа — Mila Bezú', canonical: SITE_ORIGIN + '/painting', jsonLd: [] };
+      }
+      const series = seriesById(art.series);
+      const pld = productLd(art.id);
+      return {
+        title: `${art.title}${art.subtitle ? ' · ' + art.subtitle : ''} — ${series?.title || ''} · Mila Bezú`,
+        description: `${art.description} ${art.w}×${art.h} см, ${art.medium.toLowerCase()}. ${formatPrice(art.price)}.`,
+        canonical: `${SITE_ORIGIN}/painting/${art.id.toLowerCase()}`,
+        ogImage: abs(imageOf(art, 'full') || ''),
+        ogType: 'product',
+        jsonLd: [
+          pld,
+          breadcrumbLd([
+            { name: 'M.Bez', url: '/' },
+            { name: 'Каталог', url: '/catalog' },
+            { name: series?.title || '', url: `/catalog?series=${art.series}` },
+            { name: art.title, url: `/painting/${art.id.toLowerCase()}` },
+          ]),
+        ].filter(Boolean),
+      };
+    }
+    case 'commission':
+      return {
+        title: 'Картина на заказ — Mila Bezú',
+        description: 'Закажите картину маслом под ваше пространство. Бриф из 6 шагов: размер, сюжет, палитра, сроки. Студия в Москве, доставка по РФ.',
+        canonical: SITE_ORIGIN + '/commission',
+        jsonLd: [breadcrumbLd([{ name: 'M.Bez', url: '/' }, { name: 'На заказ', url: '/commission' }])],
+      };
+    case 'cart':
+      return { title: 'Корзина — Mila Bezú', description: 'Корзина и оформление заказа.', canonical: SITE_ORIGIN + '/cart', noindex: true, jsonLd: [] };
+    case 'tracking':
+      return { title: 'Статус заказа — Mila Bezú', description: 'Отслеживание статуса вашего заказа.', canonical: SITE_ORIGIN + '/tracking', noindex: true, jsonLd: [] };
+    case 'legal':
+      return {
+        title: 'Документы и реквизиты — Mila Bezú',
+        description: `Оферта, политика обработки персональных данных, доставка, возврат и реквизиты. ${ABOUT.legal.name_short}, ИНН ${ABOUT.legal.inn}.`,
+        canonical: SITE_ORIGIN + '/legal' + (params.section ? `?section=${params.section}` : ''),
+        jsonLd: [breadcrumbLd([{ name: 'M.Bez', url: '/' }, { name: 'Документы', url: '/legal' }])],
+      };
+    default:
+      return { title: 'Mila Bezú', canonical: SITE_ORIGIN + '/', jsonLd: [] };
+  }
+}
+
 export function productLd(id: string) {
   const art = artworkById(id);
   if (!art) return null;
@@ -139,6 +219,5 @@ export function productLd(id: string) {
       url: `${SITE_ORIGIN}/painting/${art.id.toLowerCase()}`,
       itemCondition: 'https://schema.org/NewCondition',
     },
-    _priceLabel: formatPrice(art.price),
   };
 }

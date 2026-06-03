@@ -5,8 +5,8 @@
 > **Прод НЕ трогаем:** ни Tilda-записи, ни публикации, ни правок T123. Всё локально.
 
 ## Текущий статус
-- **Активная фаза:** Phase 4 (пререндер, SEO, аналитика) — следующая.
-- **Последняя завершённая:** Phase 3 (сборка зелёная).
+- **Активная фаза:** Phase 5 (painting-контейнеры) — следующая.
+- **Последняя завершённая:** Phase 4.
 - Репозиторий: `C:\MBezu\mbezu-frontend` (branch `main`). GitHub remote: пока нет.
 
 ## Ключевые факты окружения
@@ -55,3 +55,13 @@
   - Рендер-гейт: `scripts/smoke.tsx` (SSR `renderToStaticMarkup` всех 8 страниц + 3 вариаций) — **все рендерятся без ошибок**. Playwright не установлен → SSR-смоук вместо headless-браузера.
   - `package-lock.json` закоммичен. `dist/` и `node_modules/` в .gitignore.
   - **Дальше:** Phase 4 — пререндер критичных страниц в dist, `seo.ts` JSON-LD + per-page meta, `analytics.ts` (плейсхолдеры), `sitemap.xml` + `robots.txt` на билде.
+- `[done] Phase 4 — Пререндер, SEO, аналитика` — 2026-06-04 00:14 +0300
+  - `scripts/prerender.tsx` (запускается из `npm run build` после vite): SSR-рендер каждого маршрута → инжект в `<div id="root">` + SEO в `<head>`. **30 HTML**: home/about/catalog/commission/tracking/legal (контент+SEO), cart (head-only, noindex), painting шаблон + **22 per-artwork** страницы (clean URL `/painting/<id>`).
+  - `seo.ts`: `seoFor(route)` — единый резолвер title/description/canonical/OG + JSON-LD. Генераторы: Organization, Person, Product (на каждую работу, цена/наличие/размеры), BreadcrumbList. `applySeo`/`injectJsonLd` для клиента.
+  - JSON-LD скрипты в пререндере получают `id="ld-<route>-<i>"` — совпадает с клиентским `injectJsonLd`, поэтому при загрузке заменяются (без дублей).
+  - Точки входа вызывают `applySeo(seoFor(...))` — корректный SEO для динамики (`/painting?id=`, `?series=`, `?section=`).
+  - `analytics.ts`: Я.Метрика + GA4 + VK + UTM-capture. **ID — плейсхолдеры**, трекеры не грузятся пока ID не настоящие → `TODO-incomplete.md` §1.
+  - `dist/sitemap.xml` (27 URL: 5 статик + 22 painting) + `public/robots.txt` (ссылка на sitemap).
+  - Гидрация: клиент использует `createRoot` (не hydrate) — пререндер = SEO/first-paint, затем React перерисовывает. Без mismatch-warnings.
+  - Smoke (SSR) после изменений — зелёный. Создан `TODO-incomplete.md` (analytics ID, MN-03 без фото, ST-08/TD-01/TD-02 провизорные, AR-ассеты, деплой).
+  - **Дальше:** Phase 5 — painting-контейнеры (тонкие Tilda-сниппеты) для работ с фото+ценой+размером → `painting-containers.md`; исключения в `TODO-incomplete.md`.
