@@ -106,7 +106,7 @@ function HeroEditorial({ go }) {
             }}>M.B</div>
             <figure style={{ margin: 0, position: 'relative', zIndex: 1, cursor: 'pointer' }}
                     className="drift" onClick={() => go('painting', { id: hero.id })}>
-              <PaintingPlate art={hero} fit="bare" style={{
+              <PaintingPlate art={hero} fit="bare" priority sizes="(max-width: 900px) 92vw, 46vw" style={{
                 aspectRatio: '4 / 5', borderRadius: 'var(--r-md)',
                 boxShadow: 'var(--shadow-lg)',
               }} showMeta={false} />

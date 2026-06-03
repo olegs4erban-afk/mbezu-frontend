@@ -115,6 +115,7 @@ function TopBar({ route, go, cartCount }) {
               )}
             </a>
             <button className="show-mobile" onClick={() => setMobileOpen(!mobileOpen)}
+                    aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'} aria-expanded={mobileOpen}
                     style={{
                       background: 'transparent', border: '1px solid var(--rule)',
                       borderRadius: 'var(--r-pill)', padding: '10px 16px',
@@ -227,7 +228,7 @@ function Footer({ go }) {
           </div>
 
           <div>
-            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .5)', marginBottom: 20 }}>Магазин</div>
+            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Магазин</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[['catalog', 'Каталог'], ['commission', 'На заказ'], ['cart', 'Корзина'], ['tracking', 'Отследить заказ']].map(([id, label]) => (
                 <li key={id}>
@@ -240,11 +241,11 @@ function Footer({ go }) {
           </div>
 
           <div>
-            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .5)', marginBottom: 20 }}>Студия</div>
+            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Студия</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <li><a href="#" onClick={(e) => { e.preventDefault(); go('about'); }} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>О художнице</a></li>
-              <li><span style={{ color: 'rgba(245,239,226,.5)', fontSize: 14 }}>Школа · скоро</span></li>
+              <li><span style={{ color: 'rgba(245,239,226,.72)', fontSize: 14 }}>Школа · скоро</span></li>
               <li><a href="#" onClick={(e) => { e.preventDefault(); go('legal', { section: 'delivery' }); }} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>Доставка и оплата</a></li>
               <li><a href="#" onClick={(e) => { e.preventDefault(); go('legal', { section: 'returns' }); }} className="uh"
@@ -253,7 +254,7 @@ function Footer({ go }) {
           </div>
 
           <div>
-            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .5)', marginBottom: 20 }}>Документы</div>
+            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Документы</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
                 ['offer', 'Оферта'],
@@ -271,13 +272,13 @@ function Footer({ go }) {
           </div>
 
           <div>
-            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .5)', marginBottom: 20 }}>Связь</div>
+            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Связь</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, fontSize: 14 }}>
               <li><a href={`mailto:${ABOUT.contacts.email}`} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none' }}>{ABOUT.contacts.email}</a></li>
               <li><a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none' }}>{ABOUT.contacts.phone}</a></li>
-              <li style={{ color: 'rgba(245,239,226,.5)' }}>Москва · по записи</li>
+              <li style={{ color: 'rgba(245,239,226,.72)' }}>Москва · по записи</li>
             </ul>
           </div>
         </div>
@@ -288,7 +289,7 @@ function Footer({ go }) {
           {/* Реквизиты ИП — обязательно по законодательству РФ */}
           <div className="mono" style={{
             fontSize: 11, lineHeight: 1.7, letterSpacing: '.04em',
-            color: 'rgba(245, 239, 226, .55)',
+            color: 'rgba(245, 239, 226, .72)',
             display: 'flex', gap: 20, flexWrap: 'wrap',
           }}>
             <span>{ABOUT.legal.name_short}</span>
@@ -305,10 +306,10 @@ function Footer({ go }) {
             alignItems: 'center', flexWrap: 'wrap', gap: 16,
             paddingTop: 24, borderTop: '1px solid rgba(245, 239, 226, .12)',
           }}>
-            <span className="mono" style={{ fontSize: 10.5, letterSpacing: '.22em', color: 'rgba(245,239,226,.5)' }}>
+            <span className="mono" style={{ fontSize: 10.5, letterSpacing: '.22em', color: 'rgba(245,239,226,.72)' }}>
               © M.BEZ STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ
             </span>
-            <span className="mono" style={{ fontSize: 10.5, letterSpacing: '.22em', color: 'rgba(245,239,226,.5)' }}>
+            <span className="mono" style={{ fontSize: 10.5, letterSpacing: '.22em', color: 'rgba(245,239,226,.72)' }}>
               ХУДОЖНИК · MILA BEZÚ · MOSCOU
             </span>
           </div>

@@ -47,7 +47,7 @@ function PaintingPage({ go, id, addToCart }) {
                                style={{ borderRadius: '50%', boxShadow: 'var(--shadow-lg)' }} showMeta={false} />
               </div>
             ) : (
-              <PaintingPlate art={art} size="full" fit="bare" style={{
+              <PaintingPlate art={art} size="full" priority sizes="(max-width: 900px) 92vw, 56vw" fit="bare" style={{
                 aspectRatio: `${art.w} / ${art.h}`,
                 borderRadius: 'var(--r-md)',
                 boxShadow: 'var(--shadow-lg)',

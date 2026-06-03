@@ -101,7 +101,7 @@ const md = [
   (results.every((r) => !r.errors.length && !r.failedRes.length) ? '- (нет)' : ''),
   '',
 ].join('\n');
-writeFileSync('AUDIT.md', md);
+writeFileSync('audit/last-runtime.md', md); // raw current-state; AUDIT.md is curated before/after
 
 const anyErr = results.some((r) => r.errors.length || r.root.children === 0 || r.status >= 400);
 console.log(anyErr ? 'RUNTIME AUDIT: issues found (see AUDIT.md)' : 'RUNTIME AUDIT: all routes clean');

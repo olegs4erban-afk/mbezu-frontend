@@ -1,30 +1,30 @@
 [
   {
     "name": "home",
-    "perf": 82,
-    "a11y": 93,
+    "perf": 91,
+    "a11y": 95,
     "bp": 100,
     "seo": 100
   },
   {
     "name": "about",
     "perf": 95,
-    "a11y": 92,
+    "a11y": 95,
     "bp": 100,
     "seo": 100
   },
   {
     "name": "catalog",
-    "perf": 94,
-    "a11y": 84,
+    "perf": 92,
+    "a11y": 95,
     "bp": 96,
     "seo": 100
   },
   {
     "name": "painting",
-    "perf": 95,
-    "a11y": 94,
-    "bp": 96,
+    "perf": 94,
+    "a11y": 96,
+    "bp": 100,
     "seo": 100
   }
 ]

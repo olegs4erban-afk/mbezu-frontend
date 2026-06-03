@@ -4,8 +4,8 @@
     "path": "/",
     "status": 200,
     "root": {
-      "children": 4,
-      "textLen": 4604
+      "children": 5,
+      "textLen": 4618
     },
     "errors": [],
     "warnings": [],
@@ -17,8 +17,8 @@
     "path": "/about.html",
     "status": 200,
     "root": {
-      "children": 4,
-      "textLen": 3846
+      "children": 5,
+      "textLen": 3860
     },
     "errors": [],
     "warnings": [],
@@ -30,8 +30,8 @@
     "path": "/catalog.html",
     "status": 200,
     "root": {
-      "children": 4,
-      "textLen": 2465
+      "children": 5,
+      "textLen": 2497
     },
     "errors": [],
     "warnings": [],
@@ -43,16 +43,12 @@
     "path": "/painting.html?id=MN-01",
     "status": 200,
     "root": {
-      "children": 4,
-      "textLen": 1992
+      "children": 5,
+      "textLen": 2006
     },
-    "errors": [
-      "Failed to load resource: the server responded with a status of 400 ()"
-    ],
+    "errors": [],
     "warnings": [],
-    "failedRes": [
-      "400 https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=&margin=0&color=2a2520&bgcolor=f5efe2"
-    ],
+    "failedRes": [],
     "modelViewerLoaded": false
   },
   {
@@ -60,16 +56,12 @@
     "path": "/painting/mn-01.html",
     "status": 200,
     "root": {
-      "children": 4,
-      "textLen": 1992
+      "children": 5,
+      "textLen": 2006
     },
-    "errors": [
-      "Failed to load resource: the server responded with a status of 400 ()"
-    ],
+    "errors": [],
     "warnings": [],
-    "failedRes": [
-      "400 https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=&margin=0&color=2a2520&bgcolor=f5efe2"
-    ],
+    "failedRes": [],
     "modelViewerLoaded": false
   },
   {
@@ -77,8 +69,8 @@
     "path": "/commission.html",
     "status": 200,
     "root": {
-      "children": 4,
-      "textLen": 1468
+      "children": 5,
+      "textLen": 1482
     },
     "errors": [],
     "warnings": [],
@@ -90,8 +82,8 @@
     "path": "/cart.html",
     "status": 200,
     "root": {
-      "children": 4,
-      "textLen": 934
+      "children": 5,
+      "textLen": 948
     },
     "errors": [],
     "warnings": [],
@@ -103,8 +95,8 @@
     "path": "/tracking.html",
     "status": 200,
     "root": {
-      "children": 4,
-      "textLen": 1757
+      "children": 5,
+      "textLen": 1771
     },
     "errors": [],
     "warnings": [],
@@ -116,8 +108,8 @@
     "path": "/legal.html",
     "status": 200,
     "root": {
-      "children": 4,
-      "textLen": 6223
+      "children": 5,
+      "textLen": 6237
     },
     "errors": [],
     "warnings": [],

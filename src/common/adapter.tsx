@@ -15,9 +15,11 @@ interface PaintingPlateProps {
   showMeta?: boolean;
   style?: React.CSSProperties;
   onClick?: () => void;
+  priority?: boolean; // LCP image → eager + high fetchpriority
+  sizes?: string;     // responsive sizes hint
 }
 
-export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true, style, onClick }: PaintingPlateProps) {
+export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true, style, onClick, priority = false, sizes }: PaintingPlateProps) {
   if (!art) return null;
   const isRound = art.shape === 'round';
   const src = imageOf ? imageOf(art, size) : null;
@@ -36,10 +38,17 @@ export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true
 
   // Если есть реальное фото — рендерим <img>
   if (src) {
+    const srcSet = art.image
+      ? `${art.image.thumb} 320w, ${art.image.large} 768w, ${art.image.full} 1600w`
+      : undefined;
     return (
       <div style={baseStyle} onClick={onClick}>
-        <img src={src} alt={art.title}
-             loading="lazy" decoding="async"
+        <img src={src} srcSet={srcSet}
+             sizes={sizes || '(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw'}
+             alt={art.title}
+             loading={priority ? 'eager' : 'lazy'}
+             fetchPriority={priority ? 'high' : undefined}
+             decoding="async"
              style={{
                width: '100%', height: '100%',
                objectFit: 'cover', display: 'block',

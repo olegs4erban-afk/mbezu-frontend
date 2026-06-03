@@ -29,3 +29,11 @@
 ## 5. Деплой-привязки (см. DEPLOY.md, Phase 6)
 - Cloudflare Pages проект + custom domain `cdn.mbezu.ru` (CNAME) — действие владельца.
 - GitHub remote: `gh` не установлен на машине → репозиторий пока только локальный.
+
+## 6. Остаточные перф-оптимизации (Sprint 3, не блокеры — Lighthouse-цели достигнуты)
+- **WebP/AVIF для фото работ** (Lighthouse `modern-image-formats`, ~115–355 KiB экономии): нужен
+  build-пайплайн (`sharp`/`vite-imagetools`) — `sharp` не установлен в текущем окружении.
+  Сейчас отдаём оптимизированный JPEG + адаптивный `srcSet`. → добавить webp-вариант + `<picture>`/`srcset type`.
+- **Шрифты (home LCP/CLS)**: Google Fonts грузятся внешне; для лучших LCP/CLS — самохостинг woff2
+  + `preload` или тюнинг `font-display`. Это UX/инфра-решение (поведение FOUT/первый кадр) → за владельцем.
+

@@ -111,9 +111,8 @@
 > При обрыве — продолжать с первой незавершённой S3-фазы.
 
 ## Sprint 3 — статус
-- **Активная фаза:** Phase 4 (фиксы к целям) — следующая.
-- **Последняя завершённая:** Phase 3.
-- **Цели Phase 4 (из Lighthouse «before»):** home Perf 82→≥90; A11y везде (84–94)→≥95; SEO 100 и BP≥95 уже есть. + фикс QR-`<img>` (пустой `data=` 400).
+- **Активная фаза:** Phase 5 (файлы Cloudflare Pages) — следующая.
+- **Последняя завершённая:** Phase 4 — **ВСЕ Lighthouse-цели достигнуты**.
 
 ## Sprint 3 — окружение (на старте не установлено, ставим по фазам с ретраями)
 - playwright, eslint, vitest, lighthouse — **НЕ установлены** на старте S3. `npm install` работал (S2). 
@@ -149,3 +148,12 @@
   - **Baseline «before»:** home P82/A93/BP100/SEO100 · about P95/A92/BP100/SEO100 · catalog P94/**A84**/BP96/SEO100 · painting P95/A94/BP96/SEO100. Сохранён `audit/*.before.json`.
   - Отчёты Lighthouse (html/json) в .gitignore; `AUDIT.md` + `lh-results.json` + `*.before.json` коммитятся.
   - **Дальше:** Phase 4 — фиксы (a11y контраст/alt/aria/skip-link/lang; perf preload/prefetch/img-dims; QR-фикс), перепрогон → before/after.
+- `[done] S3 Phase 4 — Фиксы` — 2026-06-04 02:55 +0300
+  - Извлёк точные fail-аудиты из LH JSON (не угадывал): главное — color-contrast (36–66 элементов/стр), + catalog select-name/heading-order, + home CLS/LCP (шрифт) и lazy-LCP/responsive images.
+  - **A11y:** `--ink-3` `#9a8a72→#67583f` (WCAG AA на всех фонах, посчитан контраст); футер `.5/.55→.72`; skip-link + `<main id>`; `:focus-visible`; catalog `<select>` `aria-label` + `.sr-only <h2>` (heading-order); мобильное меню `aria-label/expanded`; декор-стрелка `aria-hidden`.
+  - **Perf:** `PaintingPlate` responsive `srcSet` 320/768/1600w + `sizes`; LCP-картинки (home hero, painting main) `eager` + `fetchpriority=high`; model-viewer остаётся ленивым.
+  - **Bug:** `QrBlock` не рендерит пустой-`data` `<img>` в SSR → нет 400 (painting BP 96→100).
+  - **Результат (after):** runtime — **9/9 чисто**; Lighthouse — home 91/95/100/100, about 95/95/100/100, catalog 92/95/96/100, painting 94/96/100/100. **Все цели (Perf≥90, A11y≥95, BP≥95, SEO 100) достигнуты.**
+  - `AUDIT.md` — курируемый before/after (скрипты пишут в `audit/last-*.md`, не перетирают). Остаточное (webp, шрифты) → `TODO-incomplete.md §6`.
+  - tsc/lint/build — зелёные.
+  - **Дальше:** Phase 5 — `public/_headers` (immutable assets, no-cache HTML, security, CSP Report-Only), `_redirects`/SPA-fallback, wrangler.toml.

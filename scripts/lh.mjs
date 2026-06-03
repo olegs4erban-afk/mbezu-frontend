@@ -2,7 +2,7 @@
 // the preview server. Reports → audit/lighthouse/. Scores appended to AUDIT.md.
 import lighthouse from 'lighthouse';
 import * as chromeLauncher from 'chrome-launcher';
-import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 
 const BASE = process.env.BASE || 'http://127.0.0.1:4173';
 const TARGETS = [
@@ -66,10 +66,8 @@ const section = [
   '',
 ].join('\n');
 
-let md = existsSync('AUDIT.md') ? readFileSync('AUDIT.md', 'utf-8') : '# AUDIT — mbezu-frontend (Sprint 3)\n';
-md = md.split('## Phase 3')[0].trimEnd() + '\n\n' + section;
-writeFileSync('AUDIT.md', md);
-console.log('Lighthouse done → AUDIT.md');
+writeFileSync('audit/last-lh.md', section); // raw current-state; AUDIT.md is curated before/after
+console.log('Lighthouse done → audit/last-lh.md');
 
 // Chrome temp cleanup can EPERM on Windows (file lock) — never let it crash the run.
 try { await chrome.kill(); } catch (e) { console.log('chrome.kill cleanup ignored:', e.code || e.message); }

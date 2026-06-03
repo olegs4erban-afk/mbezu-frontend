@@ -83,12 +83,12 @@ function CatalogPage({ go, density, initialSeries }) {
             gridColumn: '9 / 13', display: 'flex', gap: 10, justifyContent: 'flex-end',
             flexWrap: 'wrap',
           }} className="resp-flex-col">
-            <select value={series} onChange={(e) => setSeries(e.target.value)} className="field"
+            <select value={series} onChange={(e) => setSeries(e.target.value)} className="field" aria-label="Фильтр по серии"
                     style={{ width: 'auto', padding: '12px 18px', fontSize: 13 }}>
               <option value="all">Все серии</option>
               {SERIES.map((s) => <option key={s.id} value={s.id}>{s.title}</option>)}
             </select>
-            <select value={sort} onChange={(e) => setSort(e.target.value)} className="field"
+            <select value={sort} onChange={(e) => setSort(e.target.value)} className="field" aria-label="Сортировка"
                     style={{ width: 'auto', padding: '12px 18px', fontSize: 13 }}>
               <option value="default">Сначала новые</option>
               <option value="price-asc">Цена ↑</option>
@@ -117,6 +117,7 @@ function CatalogPage({ go, density, initialSeries }) {
           </div>
         </div>
 
+        <h2 className="sr-only">Работы в каталоге</h2>
         {/* Results */}
         {items.length === 0 ? (
           <div style={{

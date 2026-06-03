@@ -12,7 +12,9 @@ yarn-error.log*
 .env.*
 !.env.example
 
-# audit artifacts: keep AUDIT.md + JSON data, ignore heavy regenerable screenshots
+# audit artifacts: keep AUDIT.md + JSON data, ignore heavy/regenerable outputs
 audit/screens/
 audit/lighthouse/*.html
 audit/lighthouse/*.report.json
+audit/last-runtime.md
+audit/last-lh.md

@@ -208,7 +208,7 @@ function ArtRow({ art, onOpen, index, total }: { art: any; onOpen?: (id: string)
           width: 32, height: 32, borderRadius: 'var(--r-pill)',
           border: '1px solid var(--rule)',
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-        }}>→</span>
+        }} aria-hidden="true">→</span>
       </div>
     </article>
   );

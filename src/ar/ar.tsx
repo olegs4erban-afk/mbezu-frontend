@@ -166,8 +166,13 @@ export function QrBlock({ art }: any) {
         background: 'var(--bg-card)', borderRadius: 'var(--r-md)',
         padding: 8, border: '1px solid var(--rule-soft)',
       }}>
-        <img src={qrUrl(url, 256)} alt="QR-код для открытия в AR"
-             style={{ width: '100%', height: '100%', display: 'block' }} />
+        {url ? (
+          <img src={qrUrl(url, 256)} alt="QR-код для открытия страницы в AR на телефоне"
+               style={{ width: '100%', height: '100%', display: 'block' }} />
+        ) : (
+          // SSR/prerender: no window → no url → skip QR <img> (avoids empty-data 400; client renders it)
+          <div aria-hidden="true" style={{ width: '100%', height: '100%' }} />
+        )}
       </div>
       <div>
         <Eyebrow accent>На десктопе</Eyebrow>

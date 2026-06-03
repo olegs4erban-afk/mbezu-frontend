@@ -63,8 +63,9 @@ export function pathId(): string | undefined {
 function Shell({ pageName, cartCount, children }: { pageName: string; cartCount: number; children?: React.ReactNode }) {
   return (
     <>
+      <a href="#main" className="skip-link">К содержимому</a>
       <TopBar route={pageName} go={go} cartCount={cartCount} />
-      <main>{children}</main>
+      <main id="main">{children}</main>
       <Footer go={go} />
     </>
   );
