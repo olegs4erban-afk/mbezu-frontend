@@ -5,8 +5,8 @@
 > **Прод НЕ трогаем:** ни Tilda-записи, ни публикации, ни правок T123. Всё локально.
 
 ## Текущий статус
-- **Активная фаза:** Phase 5 (painting-контейнеры) — следующая.
-- **Последняя завершённая:** Phase 4.
+- **Активная фаза:** Phase 6 (подготовка деплоя + финал) — следующая.
+- **Последняя завершённая:** Phase 5.
 - Репозиторий: `C:\MBezu\mbezu-frontend` (branch `main`). GitHub remote: пока нет.
 
 ## Ключевые факты окружения
@@ -65,3 +65,10 @@
   - Гидрация: клиент использует `createRoot` (не hydrate) — пререндер = SEO/first-paint, затем React перерисовывает. Без mismatch-warnings.
   - Smoke (SSR) после изменений — зелёный. Создан `TODO-incomplete.md` (analytics ID, MN-03 без фото, ST-08/TD-01/TD-02 провизорные, AR-ассеты, деплой).
   - **Дальше:** Phase 5 — painting-контейнеры (тонкие Tilda-сниппеты) для работ с фото+ценой+размером → `painting-containers.md`; исключения в `TODO-incomplete.md`.
+- `[done] Phase 5 — Контейнеры painting (модель L3, БЕЗ деплоя)` — 2026-06-04 00:25 +0300
+  - `scripts/gen-containers.tsx` (`npm run containers`) читает РЕАЛЬНЫЕ хеши чанков из `dist/painting.html` и пишет `painting-containers.md`.
+  - **18 готовых контейнеров** (работы с фото + ценой + размером). Контейнер тонкий: `<div id=root>` + `window.__MB_ART_ID` + загрузка `style`/`common`/`ar`/`painting` чанков с `https://cdn.mbezu.ru`. Плюс per-page SEO (title/description/OG/canonical).
+  - Вход `painting` теперь читает `window.__MB_ART_ID` (приоритетнее URL) — один контейнер работает на любой painting-странице Tilda.
+  - **Отложены 4** (в `TODO-incomplete.md`): MN-03 (нет фото); ST-08, TD-01, TD-02 (цена/размер провизорные).
+  - 🚫 В Tilda НИЧЕГО не вставлено — только сгенерирован markdown (как требует sprint).
+  - **Дальше:** Phase 6 — `DEPLOY.md` (Cloudflare Pages + реальные ID + переподключение Tilda с владельцем); GitHub push если есть `gh` (нет → локально).

@@ -10,6 +10,7 @@
     "build:only": "vite build",
     "prerender": "node --import tsx scripts/prerender.tsx",
     "smoke": "node --import tsx scripts/smoke.tsx",
+    "containers": "node --import tsx scripts/gen-containers.tsx",
     "preview": "vite preview --port 4173",
     "typecheck": "tsc --noEmit"
   },
