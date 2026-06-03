@@ -1,20 +1,19 @@
 # painting-containers.md — тонкие Tilda-контейнеры (Уровень 3)
 
 > ⚠️ Материал для шага с владельцем. **Ничего из этого в Tilda НЕ вставлено.**
-> Хеши чанков соответствуют ТЕКУЩЕЙ сборке. После пересборки — перегенерировать: `npm run containers`.
+> Хеши чанков = ТЕКУЩАЯ сборка. После пересборки перегенерировать: `npm run containers`.
 
-## Как использовать (на каждую painting-страницу Tilda)
-1. Создать страницу в Tilda с человекочитаемым alias (например `/painting/mn-01`).
-2. Блок T123 (Custom HTML) → вставить сниппет ниже (он сам подтягивает `common` + `painting` чанки с CDN).
-3. В настройках страницы Tilda (SEO) — вписать Title / Description / OG-image из блока «SEO».
-4. Убрать из HEAD страницы Babel-standalone, если он там был.
-5. Опубликовать, проверить в incognito.
+## На каждую painting-страницу Tilda
+1. Создать страницу с alias вида `/painting/mn-01`.
+2. Блок T123 (Custom HTML) → вставить сниппет работы (он сам тянет `common`+`painting` с CDN).
+3. SEO-настройки страницы Tilda → Title/Description/OG-image из блока ниже.
+4. Убрать Babel-standalone из HEAD (если был). Опубликовать, проверить в incognito.
 
-Идентификатор работы передаётся через `window.__MB_ART_ID` (вход `painting` читает его в первую очередь).
+Работа выбирается через `window.__MB_ART_ID` (вход `painting` читает его первым).
 
-### Базовый шаблон контейнера (общий, `<ID>` заменить)
+### Базовый шаблон (общий, `<ID>` заменить)
 ```html
-<!-- M.Bez · painting container · <ID> -->
+<!-- M.Bez · painting · <ID> -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="<ID>";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -33,7 +32,7 @@
 - **OG image:** https://mbezu.ru/assets/works/mn-01.jpg
 - **Canonical:** https://mbezu.ru/painting/mn-01
 ```html
-<!-- M.Bez · painting container · MN-01 -->
+<!-- M.Bez · painting · MN-01 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-01";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -50,7 +49,7 @@
 - **OG image:** https://mbezu.ru/assets/works/mn-02.jpg
 - **Canonical:** https://mbezu.ru/painting/mn-02
 ```html
-<!-- M.Bez · painting container · MN-02 -->
+<!-- M.Bez · painting · MN-02 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-02";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -67,7 +66,7 @@
 - **OG image:** https://mbezu.ru/assets/works/mn-04.jpg
 - **Canonical:** https://mbezu.ru/painting/mn-04
 ```html
-<!-- M.Bez · painting container · MN-04 -->
+<!-- M.Bez · painting · MN-04 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-04";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -84,7 +83,7 @@
 - **OG image:** https://mbezu.ru/assets/works/mn-05.jpg
 - **Canonical:** https://mbezu.ru/painting/mn-05
 ```html
-<!-- M.Bez · painting container · MN-05 -->
+<!-- M.Bez · painting · MN-05 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-05";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -101,7 +100,7 @@
 - **OG image:** https://mbezu.ru/assets/works/mn-06.jpg
 - **Canonical:** https://mbezu.ru/painting/mn-06
 ```html
-<!-- M.Bez · painting container · MN-06 -->
+<!-- M.Bez · painting · MN-06 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-06";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -118,7 +117,7 @@
 - **OG image:** https://mbezu.ru/assets/works/st-01.jpg
 - **Canonical:** https://mbezu.ru/painting/st-01
 ```html
-<!-- M.Bez · painting container · ST-01 -->
+<!-- M.Bez · painting · ST-01 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-01";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -135,7 +134,7 @@
 - **OG image:** https://mbezu.ru/assets/works/st-02.jpg
 - **Canonical:** https://mbezu.ru/painting/st-02
 ```html
-<!-- M.Bez · painting container · ST-02 -->
+<!-- M.Bez · painting · ST-02 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-02";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -152,7 +151,7 @@
 - **OG image:** https://mbezu.ru/assets/works/st-03.jpg
 - **Canonical:** https://mbezu.ru/painting/st-03
 ```html
-<!-- M.Bez · painting container · ST-03 -->
+<!-- M.Bez · painting · ST-03 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-03";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -169,7 +168,7 @@
 - **OG image:** https://mbezu.ru/assets/works/st-04.jpg
 - **Canonical:** https://mbezu.ru/painting/st-04
 ```html
-<!-- M.Bez · painting container · ST-04 -->
+<!-- M.Bez · painting · ST-04 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-04";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -186,7 +185,7 @@
 - **OG image:** https://mbezu.ru/assets/works/st-05.jpg
 - **Canonical:** https://mbezu.ru/painting/st-05
 ```html
-<!-- M.Bez · painting container · ST-05 -->
+<!-- M.Bez · painting · ST-05 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-05";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -203,7 +202,7 @@
 - **OG image:** https://mbezu.ru/assets/works/st-06.jpg
 - **Canonical:** https://mbezu.ru/painting/st-06
 ```html
-<!-- M.Bez · painting container · ST-06 -->
+<!-- M.Bez · painting · ST-06 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-06";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -220,7 +219,7 @@
 - **OG image:** https://mbezu.ru/assets/works/st-07.jpg
 - **Canonical:** https://mbezu.ru/painting/st-07
 ```html
-<!-- M.Bez · painting container · ST-07 -->
+<!-- M.Bez · painting · ST-07 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-07";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -237,7 +236,7 @@
 - **OG image:** https://mbezu.ru/assets/works/ts-01.jpg
 - **Canonical:** https://mbezu.ru/painting/ts-01
 ```html
-<!-- M.Bez · painting container · TS-01 -->
+<!-- M.Bez · painting · TS-01 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-01";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -254,7 +253,7 @@
 - **OG image:** https://mbezu.ru/assets/works/ts-02.jpg
 - **Canonical:** https://mbezu.ru/painting/ts-02
 ```html
-<!-- M.Bez · painting container · TS-02 -->
+<!-- M.Bez · painting · TS-02 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-02";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -271,7 +270,7 @@
 - **OG image:** https://mbezu.ru/assets/works/ts-03.jpg
 - **Canonical:** https://mbezu.ru/painting/ts-03
 ```html
-<!-- M.Bez · painting container · TS-03 -->
+<!-- M.Bez · painting · TS-03 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-03";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -288,7 +287,7 @@
 - **OG image:** https://mbezu.ru/assets/works/ts-04.jpg
 - **Canonical:** https://mbezu.ru/painting/ts-04
 ```html
-<!-- M.Bez · painting container · TS-04 -->
+<!-- M.Bez · painting · TS-04 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-04";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -305,7 +304,7 @@
 - **OG image:** https://mbezu.ru/assets/works/ts-05.jpg
 - **Canonical:** https://mbezu.ru/painting/ts-05
 ```html
-<!-- M.Bez · painting container · TS-05 -->
+<!-- M.Bez · painting · TS-05 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-05";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">
@@ -322,7 +321,7 @@
 - **OG image:** https://mbezu.ru/assets/works/ts-06.jpg
 - **Canonical:** https://mbezu.ru/painting/ts-06
 ```html
-<!-- M.Bez · painting container · TS-06 -->
+<!-- M.Bez · painting · TS-06 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-06";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-Dh4G8_EM.css">

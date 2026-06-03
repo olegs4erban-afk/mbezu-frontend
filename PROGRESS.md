@@ -5,9 +5,8 @@
 > **Прод НЕ трогаем:** ни Tilda-записи, ни публикации, ни правок T123. Всё локально.
 
 ## Текущий статус
-- **Активная фаза:** Phase 6 (подготовка деплоя + финал) — следующая.
-- **Последняя завершённая:** Phase 5.
-- Репозиторий: `C:\MBezu\mbezu-frontend` (branch `main`). GitHub remote: пока нет.
+- **ВСЕ 6 ФАЗ ЗАВЕРШЕНЫ.** Сборка зелёная. Прод Tilda не тронут.
+- Репозиторий: `C:\MBezu\mbezu-frontend` (branch `main`). GitHub remote: нет (`gh` не установлен) → только локальные коммиты по фазам.
 
 ## Ключевые факты окружения
 - node v24.14.1 · npm 11.11.0 · git 2.53.0 · **gh НЕ установлен** (Phase 6 push будет локальным).
@@ -72,3 +71,34 @@
   - **Отложены 4** (в `TODO-incomplete.md`): MN-03 (нет фото); ST-08, TD-01, TD-02 (цена/размер провизорные).
   - 🚫 В Tilda НИЧЕГО не вставлено — только сгенерирован markdown (как требует sprint).
   - **Дальше:** Phase 6 — `DEPLOY.md` (Cloudflare Pages + реальные ID + переподключение Tilda с владельцем); GitHub push если есть `gh` (нет → локально).
+- `[done] Phase 6 — Подготовка деплоя (без живых изменений)` — 2026-06-04 00:34 +0300
+  - `DEPLOY.md`: пошаговый раннбук — (1) Cloudflare Pages (build `npm run build`, output `dist/`, custom domain `cdn.mbezu.ru` + CNAME); (2) вписать реальные ID аналитики; (3) переподключение Tilda постранично (T123 → тонкий контейнер, убрать Babel, publish, incognito); (4) GitHub; (5) откат; (6) чек-лист.
+  - `page-containers.md`: тонкие контейнеры для 7 стандартных страниц (генерятся `npm run containers`).
+  - GitHub: `gh` не установлен, remote нет → репозиторий локальный (история по фазам цела). Команды для push — в `DEPLOY.md` §4.
+  - Финальная проверка: чистая пересборка `dist` с нуля — **EXIT 0, без ошибок/предупреждений**; SSR-smoke зелёный; 30 HTML + sitemap (27 URL).
+
+## Финал — итог
+**Собрано:** production-фронтенд `mbezu-frontend` (Vite + React + TS, esbuild). 14 исходных JSX → ES-модули (`src/common`, `src/pages`, `src/ar`, `src/entries`). Babel-standalone убран.
+
+**Что зелёное:**
+- `npm install` → `npm run build` → **EXIT 0, без предупреждений**.
+- Чанки: `common` 182 КБ (react + общий код), per-page 6–35 КБ, `ar` 5 КБ, `model-viewer`+three.js 930 КБ **ленивый** (не preload-ится ни на одной странице).
+- Code splitting: чанк на страницу + ленивый AR — как требует Уровень 3.
+- Пререндер (SSG): 30 HTML (7 статик + painting-шаблон + 22 per-artwork), контент + SEO в `<head>`.
+- SEO: JSON-LD (Organization/Person/Product/BreadcrumbList), per-page title/meta/OG/canonical, `sitemap.xml` (27 URL), `robots.txt`.
+- Аналитика: Я.Метрика + GA4 + VK + UTM-capture (no-op до реальных ID).
+- Рендер-гейт: SSR-smoke всех 8 страниц + вариаций — без ошибок.
+- `painting-containers.md` (18 работ) + `page-containers.md` (7 страниц) + `DEPLOY.md`.
+
+**Что в `TODO-incomplete.md` (нужны данные/решения владельца):**
+1. Реальные ID аналитики (плейсхолдеры).
+2. MN-03 — нет фото.
+3. ST-08, TD-01, TD-02 — провизорные цена/размер (не публиковать).
+4. AR-ассеты `.glb/.usdz` отсутствуют.
+5. Cloudflare/домен/GitHub-remote — действия владельца.
+
+**Прод НЕ тронут:** ни Tilda-записи, ни публикации, ни правок T123. Переподключение Tilda — отдельный постраничный шаг с владельцем (`DEPLOY.md` §3). **Остановка.**
+
+## Команды
+- `npm install` · `npm run build` (vite + prerender) · `npm run preview`
+- `npm run smoke` (SSR рендер-тест) · `npm run containers` (перегенерация контейнеров) · `npm run typecheck`
