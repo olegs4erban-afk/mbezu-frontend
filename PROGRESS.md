@@ -111,8 +111,9 @@
 > При обрыве — продолжать с первой незавершённой S3-фазы.
 
 ## Sprint 3 — статус
-- **Активная фаза:** Phase 2 (runtime-аудит) — следующая.
-- **Последняя завершённая:** Phase 1.
+- **Активная фаза:** Phase 3 (Lighthouse) — следующая.
+- **Последняя завершённая:** Phase 2.
+- **Открытый findings для Phase 4:** QR-`<img>` в пререндере painting рендерится с пустым `data=` (SSR без `window`) → 400 на api.qrserver.com до клиентского ре-рендера. Фикс: в `QrBlock` рендерить `<img>` только при непустом url.
 
 ## Sprint 3 — окружение (на старте не установлено, ставим по фазам с ретраями)
 - playwright, eslint, vitest, lighthouse — **НЕ установлены** на старте S3. `npm install` работал (S2). 
@@ -133,3 +134,11 @@
   - Lint починен начисто: убран unused `import React` в `data.ts`; `arReady`-переменная в `ar.tsx` (чистый dep effect); вендорные сниппеты Метрики/gtag помечены `eslint-disable prefer-rest-params` (verbatim). **`npm run lint` EXIT 0**.
   - `npm run build` остался зелёным.
   - **Дальше:** Phase 2 — поднять preview, Playwright (не стоит → ставлю) headless по маршрутам, скриншоты + консоль → `AUDIT.md`.
+- `[done] S3 Phase 2 — Runtime-аудит` — 2026-06-04 02:05 +0300
+  - Установлены `playwright` 1.60 + chromium (`npx playwright install chromium`).
+  - `scripts/audit.mjs` (`npm run audit`): headless Chromium по 9 маршрутам, скриншоты `audit/screens/`, консоль/pageerror/failed-resources, проверка `#root` смонтирован, флаг загрузки model-viewer.
+  - ⚠️ Окружение: vite preview биндился на IPv6 `[::1]`, а sandbox запрещает Chromium доступ к localhost (`ERR_NETWORK_ACCESS_DENIED`). Решение: preview `--host 127.0.0.1` + аудит-команда с `dangerouslyDisableSandbox` (чисто локальный loopback к своему билду). Ожидание сервера — в скрипте через `fetch` (не shell-sleep).
+  - Результат: **7/9 маршрутов чисто** (HTTP 200, `#root` смонтирован+непустой, 0 console-errors). **model-viewer НЕ грузится ни на одной странице** (ленивость подтверждена в рантайме).
+  - **2 находки** (painting, painting-clean): пререндеренный QR-`<img>` с пустым `data=` → 400 на api.qrserver.com. Страница рендерится корректно; 400 от статического img до клиентского ре-рендера. → фикс в Phase 4.
+  - `AUDIT.md` (таблица + детали) и `audit/runtime-results.json` закоммичены; PNG-скриншоты в .gitignore (регенерируются `npm run audit`).
+  - **Дальше:** Phase 3 — Lighthouse (home/about/catalog/painting) → `audit/lighthouse/`, баллы в `AUDIT.md`.

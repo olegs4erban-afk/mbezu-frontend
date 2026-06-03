@@ -11,6 +11,7 @@
     "prerender": "node --import tsx scripts/prerender.tsx",
     "smoke": "node --import tsx scripts/smoke.tsx",
     "containers": "node --import tsx scripts/gen-containers.tsx",
+    "audit": "node scripts/audit.mjs",
     "preview": "vite preview --port 4173",
     "typecheck": "tsc --noEmit",
     "lint": "eslint ."
@@ -29,6 +30,7 @@
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^17.6.0",
+    "playwright": "^1.60.0",
     "tsx": "^4.16.2",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.60.1",
