@@ -70,6 +70,20 @@
   ```
 - Cloudflare Pages подключается к этому репозиторию (§1.3).
 
+## 4a. Заголовки / кэш / CSP (`public/_headers`, `public/_redirects`, `wrangler.toml`)
+Файлы лежат в `public/` и копируются в `dist/` на билде — Cloudflare Pages читает их из корня вывода.
+- **Кэш:** `/assets/*` (хешированные бандлы) — `immutable, 1 год`; `/assets/works/*` (стабильные имена фото) — 7 дней + SWR; HTML — `max-age=0, must-revalidate`.
+- **Security:** `X-Content-Type-Options`, `Referrer-Policy`, `Strict-Transport-Security`, `X-Frame-Options`.
+- **CSP — сейчас `Content-Security-Policy-Report-Only` (НЕ enforcing):** ничего не блокирует, только репортит нарушения в консоль.
+  Разрешённые источники (заранее): `cdn.mbezu.ru` · Я.Метрика `mc.yandex.ru` · GA `googletagmanager.com`/`google-analytics.com` ·
+  VK `vk.com`/`*.vk.com` · model-viewer `unpkg.com` · Tilda Store/checkout `*.tildacdn.com`/`*.tilda.cc` ·
+  Cloudinary `res.cloudinary.com` · QR `api.qrserver.com` · Google Fonts `fonts.googleapis.com`/`fonts.gstatic.com`.
+  - **➡️ После проверки в проде** (открыть сайт, проверить, что в консоли нет нужных CSP-violation’ов от
+    легитимных скриптов/картинок) — переименовать заголовок `Content-Security-Policy-Report-Only` → `Content-Security-Policy`
+    в `public/_headers`, дополнив список доменов тем, что всплывёт в репортах. Тогда CSP станет enforcing.
+- **Redirects:** SPA catch-all НЕ используется (это пререндеренный MPA; каждый маршрут и `/painting/<id>` — свой статический HTML,
+  Pages сам резолвит clean-URL). Только канонизация `/index.html`,`/home` → `/`.
+
 ## 5. Откат
 - Cloudflare Pages хранит прошлые деплои → **Rollback** в один клик.
 - Tilda: вернуть прежний `code` блока T123 (Tilda хранит историю изменений страницы).

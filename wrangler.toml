@@ -1,0 +1,6 @@
+# Optional — for `wrangler pages deploy` / local emulation.
+# The Pages project can also be configured entirely in the Cloudflare dashboard
+# (build command `npm run build`, output dir `dist`) — see DEPLOY.md §1.
+name = "mbezu-frontend"
+compatibility_date = "2024-09-01"
+pages_build_output_dir = "dist"

@@ -1,0 +1,30 @@
+# Cloudflare Pages — response headers for mbezu-frontend (cdn.mbezu.ru)
+# Copied verbatim to dist/_headers on build.
+
+# Hashed, content-addressed bundles — immutable, cache 1 year
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Work photos have STABLE names (mn-01.jpg…) → shorter cache so replacements show up
+/assets/works/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
+# HTML — always revalidate (content changes on redeploy)
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Security headers + Report-Only CSP for every response.
+# CSP is Content-Security-Policy-Report-Only (NON-enforcing) — only logs violations,
+# breaks nothing. Switch to enforcing `Content-Security-Policy` after verifying in prod
+# (see DEPLOY.md §CSP). Allowed origins below cover:
+#   self CDN cdn.mbezu.ru · Я.Метрика mc.yandex.ru · GA googletagmanager/google-analytics
+#   VK vk.com/*.vk.com · model-viewer unpkg.com · Tilda *.tildacdn.com/*.tilda.cc (Store checkout)
+#   Cloudinary res.cloudinary.com · QR api.qrserver.com · Google Fonts fonts.googleapis/gstatic
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Frame-Options: SAMEORIGIN
+  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://cdn.mbezu.ru https://mc.yandex.ru https://www.googletagmanager.com https://www.google-analytics.com https://vk.com https://*.vk.com https://unpkg.com https://*.tildacdn.com https://*.tilda.cc; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://cdn.mbezu.ru https://api.qrserver.com https://*.tildacdn.com https://static.tildacdn.com https://res.cloudinary.com https://mc.yandex.ru https://www.google-analytics.com; connect-src 'self' https://cdn.mbezu.ru https://mc.yandex.ru https://www.google-analytics.com https://*.vk.com https://*.tilda.cc https://*.tildacdn.com https://res.cloudinary.com; media-src 'self' https://*.tildacdn.com; frame-src 'self' https://vk.com

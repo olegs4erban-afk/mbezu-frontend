@@ -111,8 +111,8 @@
 > При обрыве — продолжать с первой незавершённой S3-фазы.
 
 ## Sprint 3 — статус
-- **Активная фаза:** Phase 5 (файлы Cloudflare Pages) — следующая.
-- **Последняя завершённая:** Phase 4 — **ВСЕ Lighthouse-цели достигнуты**.
+- **Активная фаза:** Phase 6 (CI/CD) — следующая.
+- **Последняя завершённая:** Phase 5.
 
 ## Sprint 3 — окружение (на старте не установлено, ставим по фазам с ретраями)
 - playwright, eslint, vitest, lighthouse — **НЕ установлены** на старте S3. `npm install` работал (S2). 
@@ -157,3 +157,10 @@
   - `AUDIT.md` — курируемый before/after (скрипты пишут в `audit/last-*.md`, не перетирают). Остаточное (webp, шрифты) → `TODO-incomplete.md §6`.
   - tsc/lint/build — зелёные.
   - **Дальше:** Phase 5 — `public/_headers` (immutable assets, no-cache HTML, security, CSP Report-Only), `_redirects`/SPA-fallback, wrangler.toml.
+- `[done] S3 Phase 5 — Файлы Cloudflare Pages` — 2026-06-04 03:05 +0300
+  - `public/_headers` → `dist/_headers`: `/assets/*` immutable 1y · `/assets/works/*` 7d+SWR · HTML `max-age=0,must-revalidate` · security (nosniff/Referrer-Policy/HSTS/X-Frame) · **CSP `Content-Security-Policy-Report-Only`** (НЕ enforcing) с разрешёнными доменами (CDN, Метрика/GA/VK, unpkg, Tilda Store, Cloudinary, QR, Google Fonts).
+  - `public/_redirects`: канонизация `/index.html`,`/home`→`/`; **без SPA catch-all** (пререндеренный MPA — Pages сам резолвит clean-URL; catch-all затмил бы per-page SEO).
+  - `wrangler.toml` (`pages_build_output_dir = dist`) + заметка.
+  - DEPLOY.md §4a: кэш/security/CSP + инструкция «переключить CSP на enforcing после проверки в проде».
+  - Build кладёт `_headers`/`_redirects` в `dist/` ✓. lint/build зелёные.
+  - **Дальше:** Phase 6 — `.github/workflows/deploy.yml` (install+cache → build → LH-бюджет → Cloudflare Pages deploy; секреты-плейсхолдеры, инертно без них).

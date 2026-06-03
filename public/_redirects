@@ -1,0 +1,11 @@
+# Cloudflare Pages — redirects for mbezu-frontend.
+# This is a PRERENDERED multi-page build (each route + every /painting/<id> has its
+# own static HTML). We rely on Pages' automatic clean-URL resolution (/about → about.html,
+# /painting/mn-01 → painting/mn-01.html) — NO SPA catch-all (it would shadow prerendered
+# per-page SEO and the multipage model). Only canonicalization redirects below.
+
+# Canonicalize home
+/index.html   /   301
+/home         /   301
+
+# Unknown paths fall through to Cloudflare's default 404 (prerendered routes are authoritative).
