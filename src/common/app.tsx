@@ -60,7 +60,7 @@ export function pathId(): string | undefined {
 }
 
 // ── Shell ────────────────────────────────────────────────────
-function Shell({ pageName, cartCount, children }: { pageName: string; cartCount: number; children: React.ReactNode }) {
+function Shell({ pageName, cartCount, children }: { pageName: string; cartCount: number; children?: React.ReactNode }) {
   return (
     <>
       <TopBar route={pageName} go={go} cartCount={cartCount} />

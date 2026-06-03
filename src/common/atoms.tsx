@@ -1,6 +1,7 @@
 import React from 'react';
 import { PaintingPlate } from './adapter';
 import { formatPrice, seriesById } from './data';
+import type { ImgSize } from './tilda-images';
 
 // ─────────────────────────────────────────────────────────────
 // atoms.jsx — общие компоненты сайта M.Bez.
@@ -8,7 +9,7 @@ import { formatPrice, seriesById } from './data';
 // ─────────────────────────────────────────────────────────────
 
 // ── Eyebrow (mono-надбровь над заголовками) ───────────────────
-function Eyebrow({ children, accent, style }) {
+function Eyebrow({ children, accent, style }: { children?: React.ReactNode; accent?: boolean; style?: React.CSSProperties }) {
   return (
     <span className={'eyebrow' + (accent ? ' accent' : '')} style={style}>
       {children}
@@ -17,7 +18,7 @@ function Eyebrow({ children, accent, style }) {
 }
 
 // ── Cat. No — каталожный индекс (mono) ────────────────────────
-function CatNo({ n, total }) {
+function CatNo({ n, total }: { n: number | string; total?: number | string }) {
   const pad = String(n).padStart(3, '0');
   return (
     <span className="cat-no">
@@ -27,7 +28,7 @@ function CatNo({ n, total }) {
 }
 
 // ── Breadcrumbs ───────────────────────────────────────────────
-function Breadcrumbs({ items }) {
+function Breadcrumbs({ items }: { items: Array<{ label: React.ReactNode; onClick?: () => void }> }) {
   return (
     <nav style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', fontSize: 12 }} className="mono">
       {items.map((it, i) => (
@@ -58,7 +59,7 @@ function Breadcrumbs({ items }) {
 }
 
 // ── PageTitle — кикер + крупный H1 + лид ──────────────────────
-function PageTitle({ kicker, title, lead, align }) {
+function PageTitle({ kicker, title, lead, align }: { kicker?: React.ReactNode; title?: React.ReactNode; lead?: React.ReactNode; align?: React.CSSProperties['textAlign'] }) {
   return (
     <header style={{ textAlign: align || 'left' }}>
       {kicker && <div style={{ marginBottom: 20 }}><Eyebrow accent>{kicker}</Eyebrow></div>}
@@ -81,7 +82,7 @@ function PageTitle({ kicker, title, lead, align }) {
 }
 
 // ── StatusTag — индикатор available / reserved / sold ─────────
-function StatusTag({ status }) {
+function StatusTag({ status }: { status?: string }) {
   const map = {
     available: { label: 'в наличии', c1: 'var(--accent)', c2: 'var(--bg)' },
     reserved:  { label: 'забронировано', c1: 'var(--ink-3)', c2: 'var(--bg)' },
@@ -102,7 +103,7 @@ function StatusTag({ status }) {
 }
 
 // ── ArtCard — карточка работы для каталога/сетки ──────────────
-function ArtCard({ art, onOpen, index, total, size = 'thumb' }) {
+function ArtCard({ art, onOpen, index, total, size = 'thumb' }: { art: any; onOpen?: (id: string) => void; index?: number; total?: number; size?: ImgSize }) {
   const series = seriesById(art.series);
   const isRound = art.shape === 'round';
   return (
@@ -169,7 +170,7 @@ function ArtCard({ art, onOpen, index, total, size = 'thumb' }) {
 }
 
 // ── ArtRow — строка для view=list в каталоге ──────────────────
-function ArtRow({ art, onOpen, index, total }) {
+function ArtRow({ art, onOpen, index, total }: { art: any; onOpen?: (id: string) => void; index?: number; total?: number }) {
   const series = seriesById(art.series);
   const isRound = art.shape === 'round';
   return (

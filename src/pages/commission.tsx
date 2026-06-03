@@ -38,8 +38,8 @@ function CommissionPage({ go, refId }) {
     palette: 'bone',
     budget: 200000,
     weeks: 8,
-    name: '', email: '', city: '', notes: '',
-    file: null,
+    name: '', email: '', city: '', notes: '', where: '',
+    file: null as File | null,
   });
   const [sent, setSent] = React.useState(false);
 
@@ -223,7 +223,7 @@ function CommissionPage({ go, refId }) {
                   <input className="field" placeholder="Город" value={form.city} onChange={(e) => upd('city', e.target.value)} />
                   <input className="field" placeholder="Куда повесим (опц.)" value={form.where || ''} onChange={(e) => upd('where', e.target.value)} />
                 </div>
-                <textarea className="field" placeholder="Дополнительно — настроение, ассоциации, ссылки на референсы…" rows="4" style={{ marginTop: 14 }}
+                <textarea className="field" placeholder="Дополнительно — настроение, ассоциации, ссылки на референсы…" rows={4} style={{ marginTop: 14 }}
                           value={form.notes} onChange={(e) => upd('notes', e.target.value)} />
               </div>
 

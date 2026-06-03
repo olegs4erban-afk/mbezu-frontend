@@ -56,13 +56,13 @@ export function initAnalytics(): void {
   if (!isPlaceholder(ANALYTICS_IDS.vkPixel)) initVkPixel(ANALYTICS_IDS.vkPixel);
 
   if (import.meta.env?.DEV) {
-    // eslint-disable-next-line no-console
     console.info('[analytics] placeholders active — no trackers loaded. UTM:', getUtm());
   }
 }
 
 function initYandexMetrika(id: string): void {
   (function (m: any, e: any, t: any, r: any, i: any) {
+    // eslint-disable-next-line prefer-rest-params -- verbatim Yandex.Metrika snippet
     m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
     m[i].l = 1 * (new Date() as any);
     const k = e.createElement(t); const a = e.getElementsByTagName(t)[0];
@@ -77,6 +77,7 @@ function initGa4(id: string): void {
   s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
   document.head.appendChild(s);
   window.dataLayer = window.dataLayer || [];
+  // eslint-disable-next-line prefer-rest-params -- verbatim gtag.js snippet
   window.gtag = function () { window.dataLayer!.push(arguments); };
   window.gtag('js', new Date());
   window.gtag('config', id);

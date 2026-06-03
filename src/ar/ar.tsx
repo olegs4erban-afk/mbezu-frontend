@@ -48,11 +48,12 @@ export function ArViewer({ art, style, autoRotate = true, controls = true }: any
 
   // model-viewer — тяжёлая зависимость. Грузим её динамически (lazy) только когда
   // у работы реально есть 3D-ассеты. Сейчас ready:false → не загружается вовсе.
+  const arReady = !!(assets && assets.ready);
   React.useEffect(() => {
-    if (assets && assets.ready) {
+    if (arReady) {
       import('@google/model-viewer').catch(() => { /* offline / blocked — placeholder остаётся */ });
     }
-  }, [assets && assets.ready]);
+  }, [arReady]);
 
   if (!assets) return null;
 

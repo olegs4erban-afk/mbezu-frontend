@@ -111,8 +111,8 @@
 > При обрыве — продолжать с первой незавершённой S3-фазы.
 
 ## Sprint 3 — статус
-- **Активная фаза:** Phase 1 (статические проверки) — следующая.
-- **Последняя завершённая:** Phase 0.
+- **Активная фаза:** Phase 2 (runtime-аудит) — следующая.
+- **Последняя завершённая:** Phase 1.
 
 ## Sprint 3 — окружение (на старте не установлено, ставим по фазам с ретраями)
 - playwright, eslint, vitest, lighthouse — **НЕ установлены** на старте S3. `npm install` работал (S2). 
@@ -125,3 +125,11 @@
   - Скрипты: dev/build/build:only/prerender/smoke/containers/preview/typecheck. Чанки: common 182 / model-viewer(lazy) 930 / pages 6–35 КБ.
   - Тулинг аудита (playwright/eslint/vitest/lighthouse) отсутствует → ставлю по фазам.
   - **Дальше:** Phase 1 — `tsc --noEmit` начисто + минимальный ESLint, билд зелёный.
+- `[done] S3 Phase 1 — Статические проверки` — 2026-06-04 01:40 +0300
+  - Установлен `@types/node` (tsconfig ссылался). `tsc --noEmit` — **EXIT 0**.
+  - Типы починены БЕЗ массового any: добавлены интерфейсы пропсов общих компонентов (`Eyebrow/CatNo/Breadcrumbs/PageTitle/StatusTag/ArtCard/ArtRow` — опциональные поля; `align` → `CSSProperties['textAlign']`; `size` → `ImgSize`); `Shell.children?` опционален.
+  - 🐞 Реальные баги в `commission.tsx`: `form.where` не было в initial state (добавлено `where:''`); `rows="4"` (строка) → `rows={4}`. `file: null as File|null`.
+  - ESLint 9 flat-config (`eslint.config.js`): `@eslint/js` + `typescript-eslint` + `react-hooks` (rules-of-hooks error, exhaustive-deps warn). `no-explicit-any` off (ported loose code). Скрипт `npm run lint`.
+  - Lint починен начисто: убран unused `import React` в `data.ts`; `arReady`-переменная в `ar.tsx` (чистый dep effect); вендорные сниппеты Метрики/gtag помечены `eslint-disable prefer-rest-params` (verbatim). **`npm run lint` EXIT 0**.
+  - `npm run build` остался зелёным.
+  - **Дальше:** Phase 2 — поднять preview, Playwright (не стоит → ставлю) headless по маршрутам, скриншоты + консоль → `AUDIT.md`.

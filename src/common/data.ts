@@ -1,4 +1,3 @@
-import React from 'react';
 import { worksImage, TILDA_IMAGES } from './tilda-images';
 
 // ─────────────────────────────────────────────────────────────
