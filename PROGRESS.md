@@ -5,8 +5,8 @@
 > **Прод НЕ трогаем:** ни Tilda-записи, ни публикации, ни правок T123. Всё локально.
 
 ## Текущий статус
-- **Активная фаза:** Phase 1 (скелет репозитория) — следующая.
-- **Последняя завершённая:** Phase 0.
+- **Активная фаза:** Phase 2 (порт исходников в модули) — следующая.
+- **Последняя завершённая:** Phase 1.
 - Репозиторий: `C:\MBezu\mbezu-frontend` (branch `main`). GitHub remote: пока нет.
 
 ## Ключевые факты окружения
@@ -30,3 +30,10 @@
   - Фото 21/22 работ реальные; без фото — **MN-03**. Провизорные цена/размер (⚠ в исходнике) — **ST-08, TD-01, TD-02** (важно для Phase 5).
   - Расхождение со sprint-хинтом: sprint называл TS-01/ST-01/ST-02 «без фото» — в новейших данных у них фото ЕСТЬ. Применяю правило Phase 5 к фактическим данным.
   - **Дальше:** Phase 1 — создать структуру каталогов и конфиги.
+- `[done] Phase 1 — Скелет репозитория` — 2026-06-03 23:31 +0300
+  - Конфиги: `package.json` (vite/react/ts, scripts build/preview/prerender/typecheck), `vite.config.ts` (MPA: 8 HTML-входов, manualChunks common+ar, manifest), `tsconfig.json` (lenient), `prerender.config.ts`, `.gitignore`, `.gitattributes` (LF).
+  - `public/`: `robots.txt` (+ sitemap ref), `favicon.svg`. `public/assets/works/` создан (фото скопируем в Phase 2/3).
+  - 8 HTML-харнесов (index/about/catalog/painting/commission/cart/tracking/legal) → каждый грузит `/src/entries/<page>.ts`. Глобальный CSS будет импортирован из `app.tsx` (не инлайнится в HTML), поэтому `cssCodeSplit:false`.
+  - Каталоги `src/{common,pages,ar,entries}` (пока `.gitkeep`).
+  - Решение: сборка как Vite-MPA (HTML на маршрут) — даёт per-page чанки + превью маршрутов + `manifest.json` для Phase 5. Реальные прод-страницы (тонкие Tilda-контейнеры) — Phase 6.
+  - **Дальше:** Phase 2 — портировать 14 JSX → TS/TSX, разнести по модулям, заменить window-глобалы на ES-импорты.

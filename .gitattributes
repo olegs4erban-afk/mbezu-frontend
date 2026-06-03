@@ -1,0 +1,9 @@
+# Normalize line endings to LF for text files (repo is built on Windows + Cloudflare)
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.glb binary
+*.usdz binary
