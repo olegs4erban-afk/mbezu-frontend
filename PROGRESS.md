@@ -111,8 +111,8 @@
 > При обрыве — продолжать с первой незавершённой S3-фазы.
 
 ## Sprint 3 — статус
-- **Активная фаза:** Phase 7 (тесты) — следующая.
-- **Последняя завершённая:** Phase 6.
+- **Активная фаза:** Phase 8 (документация + финал) — следующая.
+- **Последняя завершённая:** Phase 7.
 
 ## Sprint 3 — окружение (на старте не установлено, ставим по фазам с ретраями)
 - playwright, eslint, vitest, lighthouse — **НЕ установлены** на старте S3. `npm install` работал (S2). 
@@ -171,3 +171,8 @@
   - Секреты `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` — плейсхолдеры, описаны в `DEPLOY.md` (репо-secrets владельца).
   - JSON валиден, lint/build зелёные. (Репо ещё локальный → workflow задремлет до push на GitHub.)
   - **Дальше:** Phase 7 — `vitest`: routeToPath/imageOf/formatPrice, форма JSON-LD, обязательные поля «готовых» работ. `npm test` зелёный.
+- `[done] S3 Phase 7 — Тесты` — 2026-06-04 03:25 +0300
+  - `vitest` 2.1 + `vitest.config.ts` (node env, `css:false` чтобы `import './styles.css'` из app.tsx был no-op, react-plugin для tsx). Скрипт `npm test` (`vitest run`).
+  - `src/__tests__/unit.test.ts` — **19 тестов**: `routeToPath` для каждого slug (+query); `formatPrice`/`imageOf` (включая null для MN-03); форма JSON-LD (Organization/Person/Product/Breadcrumb/seoFor, cart=noindex); целостность данных (обязательные поля всех работ, уникальные id, «готовые» работы резолвят фото).
+  - **`npm test` зелёный (19/19).** typecheck/lint/build тоже зелёные.
+  - **Дальше:** Phase 8 — README + handover, финал PROGRESS/AUDIT/TODO.
