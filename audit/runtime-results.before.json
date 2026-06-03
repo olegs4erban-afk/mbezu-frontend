@@ -1,0 +1,127 @@
+[
+  {
+    "name": "home",
+    "path": "/",
+    "status": 200,
+    "root": {
+      "children": 4,
+      "textLen": 4604
+    },
+    "errors": [],
+    "warnings": [],
+    "failedRes": [],
+    "modelViewerLoaded": false
+  },
+  {
+    "name": "about",
+    "path": "/about.html",
+    "status": 200,
+    "root": {
+      "children": 4,
+      "textLen": 3846
+    },
+    "errors": [],
+    "warnings": [],
+    "failedRes": [],
+    "modelViewerLoaded": false
+  },
+  {
+    "name": "catalog",
+    "path": "/catalog.html",
+    "status": 200,
+    "root": {
+      "children": 4,
+      "textLen": 2465
+    },
+    "errors": [],
+    "warnings": [],
+    "failedRes": [],
+    "modelViewerLoaded": false
+  },
+  {
+    "name": "painting",
+    "path": "/painting.html?id=MN-01",
+    "status": 200,
+    "root": {
+      "children": 4,
+      "textLen": 1992
+    },
+    "errors": [
+      "Failed to load resource: the server responded with a status of 400 ()"
+    ],
+    "warnings": [],
+    "failedRes": [
+      "400 https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=&margin=0&color=2a2520&bgcolor=f5efe2"
+    ],
+    "modelViewerLoaded": false
+  },
+  {
+    "name": "painting-clean",
+    "path": "/painting/mn-01.html",
+    "status": 200,
+    "root": {
+      "children": 4,
+      "textLen": 1992
+    },
+    "errors": [
+      "Failed to load resource: the server responded with a status of 400 ()"
+    ],
+    "warnings": [],
+    "failedRes": [
+      "400 https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=&margin=0&color=2a2520&bgcolor=f5efe2"
+    ],
+    "modelViewerLoaded": false
+  },
+  {
+    "name": "commission",
+    "path": "/commission.html",
+    "status": 200,
+    "root": {
+      "children": 4,
+      "textLen": 1468
+    },
+    "errors": [],
+    "warnings": [],
+    "failedRes": [],
+    "modelViewerLoaded": false
+  },
+  {
+    "name": "cart",
+    "path": "/cart.html",
+    "status": 200,
+    "root": {
+      "children": 4,
+      "textLen": 934
+    },
+    "errors": [],
+    "warnings": [],
+    "failedRes": [],
+    "modelViewerLoaded": false
+  },
+  {
+    "name": "tracking",
+    "path": "/tracking.html",
+    "status": 200,
+    "root": {
+      "children": 4,
+      "textLen": 1757
+    },
+    "errors": [],
+    "warnings": [],
+    "failedRes": [],
+    "modelViewerLoaded": false
+  },
+  {
+    "name": "legal",
+    "path": "/legal.html",
+    "status": 200,
+    "root": {
+      "children": 4,
+      "textLen": 6223
+    },
+    "errors": [],
+    "warnings": [],
+    "failedRes": [],
+    "modelViewerLoaded": false
+  }
+]

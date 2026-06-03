@@ -111,9 +111,9 @@
 > При обрыве — продолжать с первой незавершённой S3-фазы.
 
 ## Sprint 3 — статус
-- **Активная фаза:** Phase 3 (Lighthouse) — следующая.
-- **Последняя завершённая:** Phase 2.
-- **Открытый findings для Phase 4:** QR-`<img>` в пререндере painting рендерится с пустым `data=` (SSR без `window`) → 400 на api.qrserver.com до клиентского ре-рендера. Фикс: в `QrBlock` рендерить `<img>` только при непустом url.
+- **Активная фаза:** Phase 4 (фиксы к целям) — следующая.
+- **Последняя завершённая:** Phase 3.
+- **Цели Phase 4 (из Lighthouse «before»):** home Perf 82→≥90; A11y везде (84–94)→≥95; SEO 100 и BP≥95 уже есть. + фикс QR-`<img>` (пустой `data=` 400).
 
 ## Sprint 3 — окружение (на старте не установлено, ставим по фазам с ретраями)
 - playwright, eslint, vitest, lighthouse — **НЕ установлены** на старте S3. `npm install` работал (S2). 
@@ -142,3 +142,10 @@
   - **2 находки** (painting, painting-clean): пререндеренный QR-`<img>` с пустым `data=` → 400 на api.qrserver.com. Страница рендерится корректно; 400 от статического img до клиентского ре-рендера. → фикс в Phase 4.
   - `AUDIT.md` (таблица + детали) и `audit/runtime-results.json` закоммичены; PNG-скриншоты в .gitignore (регенерируются `npm run audit`).
   - **Дальше:** Phase 3 — Lighthouse (home/about/catalog/painting) → `audit/lighthouse/`, баллы в `AUDIT.md`.
+- `[done] S3 Phase 3 — Lighthouse` — 2026-06-04 02:20 +0300
+  - Установлен `lighthouse` 12.8 + `chrome-launcher`; гоняется через Chromium от Playwright (`CHROME_PATH`) с `--no-sandbox`.
+  - `scripts/lh.mjs` (`BASE=… node scripts/lh.mjs`): mobile-аудит home/about/catalog/painting → `audit/lighthouse/<page>.report.{html,json}`, баллы в `AUDIT.md` + `audit/lh-results.json`.
+  - ⚠️ `chrome.kill()` падал EPERM на очистке temp (Windows file-lock) → обёрнут в try/catch, результаты пишутся ДО kill.
+  - **Baseline «before»:** home P82/A93/BP100/SEO100 · about P95/A92/BP100/SEO100 · catalog P94/**A84**/BP96/SEO100 · painting P95/A94/BP96/SEO100. Сохранён `audit/*.before.json`.
+  - Отчёты Lighthouse (html/json) в .gitignore; `AUDIT.md` + `lh-results.json` + `*.before.json` коммитятся.
+  - **Дальше:** Phase 4 — фиксы (a11y контраст/alt/aria/skip-link/lang; perf preload/prefetch/img-dims; QR-фикс), перепрогон → before/after.

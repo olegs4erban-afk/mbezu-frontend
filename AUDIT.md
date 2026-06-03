@@ -23,3 +23,13 @@ Headless Chromium (1366×900) против `npm run preview`. Скриншоты
 - **painting-clean** console-error: `Failed to load resource: the server responded with a status of 400 ()`
 - **painting-clean** failed-resource: `400 https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=&margin=0&color=2a2520&bgcolor=f5efe2`
 
+## Phase 3 — Lighthouse (mobile)
+
+Цели: Perf ≥90, SEO 100, A11y ≥95, Best-Practices ≥95. Отчёты: `audit/lighthouse/<page>.report.html`.
+
+| Page | Performance | Accessibility | Best-Practices | SEO |
+|------|-------------|---------------|----------------|-----|
+| home | 82 | 93 | 100 | 100 |
+| about | 95 | 92 | 100 | 100 |
+| catalog | 94 | 84 | 96 | 100 |
+| painting | 95 | 94 | 96 | 100 |
