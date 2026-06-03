@@ -5,8 +5,8 @@
 > **Прод НЕ трогаем:** ни Tilda-записи, ни публикации, ни правок T123. Всё локально.
 
 ## Текущий статус
-- **Активная фаза:** Phase 3 (сборка и чанки) — следующая.
-- **Последняя завершённая:** Phase 2.
+- **Активная фаза:** Phase 4 (пререндер, SEO, аналитика) — следующая.
+- **Последняя завершённая:** Phase 3 (сборка зелёная).
 - Репозиторий: `C:\MBezu\mbezu-frontend` (branch `main`). GitHub remote: пока нет.
 
 ## Ключевые факты окружения
@@ -46,3 +46,12 @@
   - Фото: 63 файла (21 работа × 3 размера) → `public/assets/works/`. `public/assets/ar/README.txt`.
   - ~4900 строк TS/TSX. Babel-standalone убран (компиляция на билде).
   - **Дальше:** Phase 3 — `npm install` (ретраи) + `npm run build` до зелёного, проверить чанки.
+- `[done] Phase 3 — Сборка и чанки` — 2026-06-04 00:00 +0300
+  - `npm install` — успешно с 1-й попытки (84 пакета). `npm run build` — **EXIT 0, без предупреждений**.
+  - 🐞 Найдено и исправлено: первая сборка засосала **three.js** (зависимость model-viewer) в `common` (908 КБ) — `manualChunks` отправлял все `node_modules` кроме model-viewer в common. Починка: в `common` идёт ТОЛЬКО react/react-dom/scheduler; three+model-viewer уходят в ленивый async-чанк.
+  - Чанки `dist/assets/`: `common` 179 КБ (react + весь src/common) · per-page: home 30 / legal 35 / cart 16 / commission 10 / painting 9 / tracking 9 / about 8 / catalog 6 КБ · `ar` 5.3 КБ · `model-viewer` 908 КБ (**lazy**, three.js внутри).
+  - ✅ model-viewer/three **НЕ preload-ится ни на одной странице** (проверено по dist/*.html) — грузится только динамически при готовности AR-ассетов.
+  - `cssCodeSplit:false` → один `style-*.css` 9.2 КБ со всеми `:root` переменными. `chunkSizeWarningLimit:950` (единственный крупный чанк — ленивый 3D).
+  - Рендер-гейт: `scripts/smoke.tsx` (SSR `renderToStaticMarkup` всех 8 страниц + 3 вариаций) — **все рендерятся без ошибок**. Playwright не установлен → SSR-смоук вместо headless-браузера.
+  - `package-lock.json` закоммичен. `dist/` и `node_modules/` в .gitignore.
+  - **Дальше:** Phase 4 — пререндер критичных страниц в dist, `seo.ts` JSON-LD + per-page meta, `analytics.ts` (плейсхолдеры), `sitemap.xml` + `robots.txt` на билде.

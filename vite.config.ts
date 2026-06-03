@@ -16,6 +16,10 @@ export default defineConfig({
   build: {
     target: 'es2019',
     manifest: true,
+    // The only chunk over 500 kB is the lazy model-viewer+three.js bundle, loaded
+    // on-demand only when a work has real 3D/AR assets. Raise the limit so the
+    // build stays warning-free; common stays ~180 kB.
+    chunkSizeWarningLimit: 950,
     cssCodeSplit: false, // single shared stylesheet (global :root vars must apply on every page)
     rollupOptions: {
       input: Object.fromEntries(
@@ -29,9 +33,13 @@ export default defineConfig({
           if (id.includes('/src/ar/')) return 'ar';
           if (id.includes('/src/common/')) return 'common';
           if (id.includes('node_modules')) {
-            // model-viewer is dynamically imported (lazy) — let Rollup give it its own async chunk
-            if (id.includes('@google/model-viewer')) return undefined;
-            return 'common'; // react / react-dom shared across every page
+            // ONLY the React runtime is shared into `common`. Everything else —
+            // notably @google/model-viewer + its heavy three.js dep — is left to
+            // Rollup, which folds it into the lazy async chunk (loaded only for AR).
+            if (/[\\/]node_modules[\\/](react|react-dom|scheduler|object-assign)[\\/]/.test(id)) {
+              return 'common';
+            }
+            return undefined;
           }
           return undefined;
         },
