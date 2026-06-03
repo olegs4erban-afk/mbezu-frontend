@@ -5,7 +5,7 @@
 > **Прод НЕ трогаем:** ни Tilda-записи, ни публикации, ни правок T123. Всё локально.
 
 ## Текущий статус
-- **ВСЕ 6 ФАЗ ЗАВЕРШЕНЫ.** Сборка зелёная. Прод Tilda не тронут.
+- **Sprint 2: ВСЕ 6 ФАЗ ЗАВЕРШЕНЫ.** **Sprint 3 (hardening) АКТИВЕН → см. раздел «# Sprint 3» внизу файла.**
 - Репозиторий: `C:\MBezu\mbezu-frontend` (branch `main`). GitHub remote: нет (`gh` не установлен) → только локальные коммиты по фазам.
 
 ## Ключевые факты окружения
@@ -102,3 +102,26 @@
 ## Команды
 - `npm install` · `npm run build` (vite + prerender) · `npm run preview`
 - `npm run smoke` (SSR рендер-тест) · `npm run containers` (перегенерация контейнеров) · `npm run typecheck`
+
+---
+
+# Sprint 3 — Hardening + деплой-подготовка (по `../sprint-3.md`)
+
+> Продолжение в ТОМ ЖЕ репо. Прод Tilda НЕ трогаем. После каждой фазы — commit + запись здесь.
+> При обрыве — продолжать с первой незавершённой S3-фазы.
+
+## Sprint 3 — статус
+- **Активная фаза:** Phase 1 (статические проверки) — следующая.
+- **Последняя завершённая:** Phase 0.
+
+## Sprint 3 — окружение (на старте не установлено, ставим по фазам с ретраями)
+- playwright, eslint, vitest, lighthouse — **НЕ установлены** на старте S3. `npm install` работал (S2). 
+- Sprint утверждал «Playwright уже стоит» — фактически нет; ставлю в Phase 2 (+ `playwright install chromium`).
+
+## Sprint 3 — лог фаз
+- `[done] S3 Phase 0 — Ground truth` — 2026-06-04 01:27 +0300
+  - Прочитаны PROGRESS/TODO/DEPLOY/painting-containers (написаны в S2, контекст актуален). git чистый, HEAD = `phase 6`.
+  - `npm run build` — **EXIT 0, без предупреждений**; 30 HTML + sitemap(27). Все 8 страниц реальные (заглушек нет).
+  - Скрипты: dev/build/build:only/prerender/smoke/containers/preview/typecheck. Чанки: common 182 / model-viewer(lazy) 930 / pages 6–35 КБ.
+  - Тулинг аудита (playwright/eslint/vitest/lighthouse) отсутствует → ставлю по фазам.
+  - **Дальше:** Phase 1 — `tsc --noEmit` начисто + минимальный ESLint, билд зелёный.
