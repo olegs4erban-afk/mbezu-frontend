@@ -111,8 +111,8 @@
 > При обрыве — продолжать с первой незавершённой S3-фазы.
 
 ## Sprint 3 — статус
-- **Активная фаза:** Phase 6 (CI/CD) — следующая.
-- **Последняя завершённая:** Phase 5.
+- **Активная фаза:** Phase 7 (тесты) — следующая.
+- **Последняя завершённая:** Phase 6.
 
 ## Sprint 3 — окружение (на старте не установлено, ставим по фазам с ретраями)
 - playwright, eslint, vitest, lighthouse — **НЕ установлены** на старте S3. `npm install` работал (S2). 
@@ -164,3 +164,10 @@
   - DEPLOY.md §4a: кэш/security/CSP + инструкция «переключить CSP на enforcing после проверки в проде».
   - Build кладёт `_headers`/`_redirects` в `dist/` ✓. lint/build зелёные.
   - **Дальше:** Phase 6 — `.github/workflows/deploy.yml` (install+cache → build → LH-бюджет → Cloudflare Pages deploy; секреты-плейсхолдеры, инертно без них).
+- `[done] S3 Phase 6 — CI/CD` — 2026-06-04 03:18 +0300
+  - `.github/workflows/deploy.yml`: job `quality` (npm ci с кэшем → typecheck → lint → build → **Lighthouse-бюджет** `@lhci/cli` → артефакт dist); job `deploy` (push в main, Cloudflare `pages-action@v1`).
+  - **Инертно без секретов:** deploy-шаг гейтится `if env.CF_API_TOKEN != ''` (секреты → env, т.к. в `if` напрямую нельзя). Нет секретов → skip + `::notice`, workflow зелёный. Коммитить безопасно.
+  - `lighthouserc.json`: пороги (CI-floor с буфером: Perf 0.85 / A11y 0.95 / BP 0.93 / SEO 0.98), preview как сервер, `--no-sandbox`, отчёты в `audit/lhci` (gitignore).
+  - Секреты `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` — плейсхолдеры, описаны в `DEPLOY.md` (репо-secrets владельца).
+  - JSON валиден, lint/build зелёные. (Репо ещё локальный → workflow задремлет до push на GitHub.)
+  - **Дальше:** Phase 7 — `vitest`: routeToPath/imageOf/formatPrice, форма JSON-LD, обязательные поля «готовых» работ. `npm test` зелёный.

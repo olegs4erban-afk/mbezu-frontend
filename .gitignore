@@ -18,3 +18,5 @@ audit/lighthouse/*.html
 audit/lighthouse/*.report.json
 audit/last-runtime.md
 audit/last-lh.md
+audit/lhci/
+.lighthouseci/

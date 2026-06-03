@@ -70,6 +70,13 @@
   ```
 - Cloudflare Pages подключается к этому репозиторию (§1.3).
 
+### CI/CD (`.github/workflows/deploy.yml`)
+- На push в `main`: `npm ci` → `typecheck` → `lint` → `build` → **Lighthouse-бюджет** (`@lhci/cli`, `lighthouserc.json` — фейл если ниже порога) → деплой на Cloudflare Pages.
+- Деплой-шаг **инертен без секретов** (skip, workflow зелёный). Чтобы включить — добавить в **Settings → Secrets → Actions** репо:
+  - `CLOUDFLARE_API_TOKEN` (токен с правами Pages:Edit)
+  - `CLOUDFLARE_ACCOUNT_ID`
+- Деплой использует `cloudflare/pages-action@v1`, `projectName: mbezu-frontend`, `directory: dist`.
+
 ## 4a. Заголовки / кэш / CSP (`public/_headers`, `public/_redirects`, `wrangler.toml`)
 Файлы лежат в `public/` и копируются в `dist/` на билде — Cloudflare Pages читает их из корня вывода.
 - **Кэш:** `/assets/*` (хешированные бандлы) — `immutable, 1 год`; `/assets/works/*` (стабильные имена фото) — 7 дней + SWR; HTML — `max-age=0, must-revalidate`.
