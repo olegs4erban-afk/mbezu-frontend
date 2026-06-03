@@ -5,7 +5,7 @@
 > **Прод НЕ трогаем:** ни Tilda-записи, ни публикации, ни правок T123. Всё локально.
 
 ## Текущий статус
-- **Sprint 2: ВСЕ 6 ФАЗ ЗАВЕРШЕНЫ.** **Sprint 3 (hardening) АКТИВЕН → см. раздел «# Sprint 3» внизу файла.**
+- **Sprint 2 (сборка): ВСЕ 6 ФАЗ ЗАВЕРШЕНЫ.** **Sprint 3 (hardening): ВСЕ 9 ФАЗ ЗАВЕРШЕНЫ → см. «# Sprint 3» внизу.**
 - Репозиторий: `C:\MBezu\mbezu-frontend` (branch `main`). GitHub remote: нет (`gh` не установлен) → только локальные коммиты по фазам.
 
 ## Ключевые факты окружения
@@ -111,8 +111,7 @@
 > При обрыве — продолжать с первой незавершённой S3-фазы.
 
 ## Sprint 3 — статус
-- **Активная фаза:** Phase 8 (документация + финал) — следующая.
-- **Последняя завершённая:** Phase 7.
+- **ВСЕ 9 ФАЗ (0–8) ЗАВЕРШЕНЫ.** Прод и Tilda не тронуты.
 
 ## Sprint 3 — окружение (на старте не установлено, ставим по фазам с ретраями)
 - playwright, eslint, vitest, lighthouse — **НЕ установлены** на старте S3. `npm install` работал (S2). 
@@ -176,3 +175,22 @@
   - `src/__tests__/unit.test.ts` — **19 тестов**: `routeToPath` для каждого slug (+query); `formatPrice`/`imageOf` (включая null для MN-03); форма JSON-LD (Organization/Person/Product/Breadcrumb/seoFor, cart=noindex); целостность данных (обязательные поля всех работ, уникальные id, «готовые» работы резолвят фото).
   - **`npm test` зелёный (19/19).** typecheck/lint/build тоже зелёные.
   - **Дальше:** Phase 8 — README + handover, финал PROGRESS/AUDIT/TODO.
+- `[done] S3 Phase 8 — Документация + финал` — 2026-06-04 03:32 +0300
+  - `README.md`: что это, путь репо, команды (build/preview/test/lint/typecheck/audit/containers), архитектура, структура `dist/`, качество (LH/тесты/CI), ссылки на DEPLOY/AUDIT/containers, **handover** («на владельце» / «на Миле»).
+  - `AUDIT.md` — before/after (Phase 4). `TODO-incomplete.md` — §1–6 актуальны.
+  - Финальная проверка: typecheck/lint/test(19)/build — зелёные.
+
+## Sprint 3 — Финал (итог)
+**Сделано:** L3-сборка доведена до прод-качества, всё готово к деплою — локально, прод не тронут.
+- **Статика:** `tsc --noEmit` чисто (типы без mass-any); ESLint 9 flat (ts+react-hooks) — 0 проблем.
+- **Runtime-аудит (Playwright):** 9/9 маршрутов чисто; model-viewer ленивый (не грузится вне AR).
+- **Lighthouse (mobile) — все цели достигнуты:** home 91/95/100/100 · about 95/95/100/100 · catalog 92/95/96/100 · painting 94/96/100/100 (Perf/A11y/BP/SEO). Before/after — `AUDIT.md`.
+- **Фиксы:** WCAG-контраст (`--ink-3`), skip-link/aria/focus/sr-only, адаптивные `srcSet` + eager LCP, QR-400 баг.
+- **Cloudflare:** `_headers` (immutable assets, no-cache HTML, security, **CSP Report-Only**), `_redirects` (no SPA catch-all), `wrangler.toml`.
+- **CI/CD:** `.github/workflows/deploy.yml` — gate (typecheck/lint/build) + Lighthouse-бюджет + Pages-деплой; инертен без секретов.
+- **Тесты:** `vitest`, 19 юнит-тестов (routeToPath/imageOf/formatPrice/JSON-LD/целостность данных) — зелёные.
+- **Доки:** README + DEPLOY + AUDIT + painting-/page-containers + TODO-incomplete.
+
+**Заблокировано (в `TODO-incomplete.md`):** реальные ID аналитики · Cloudflare/домен/GitHub-remote · CSP→enforcing · CI-секреты *(владелец)*; MN-03 без фото · ST-08/TD-01/TD-02 провизорные · AR-ассеты · webp *(Мила/контент)*.
+
+**Прод и Tilda НЕ тронуты.** Остановка.
