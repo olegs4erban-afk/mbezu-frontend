@@ -204,7 +204,7 @@ export function productLd(id: string) {
     name: art.title,
     sku: art.id,
     description: art.description,
-    image: img ? [SITE_ORIGIN + img] : undefined,
+    image: img ? [img.startsWith('http') ? img : SITE_ORIGIN + img] : undefined,
     category: series?.title,
     brand: { '@type': 'Brand', name: 'Mila Bezú' },
     width: { '@type': 'QuantitativeValue', value: art.w, unitCode: 'CMT' },

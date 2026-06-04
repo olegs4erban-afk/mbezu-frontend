@@ -6,8 +6,13 @@
 
 export type ImgSize = 'thumb' | 'large' | 'full';
 
-/** Root-absolute base so paths resolve on any route (/, /about, /painting/<id>). */
-export const IMAGE_BASE = '/assets/works';
+/**
+ * ABSOLUTE CDN base — work photos are served only from GitHub Pages (cdn.mbezu.ru),
+ * NOT from Tilda. When the chunks run inside a Tilda page (mbezu.ru/...), a root-relative
+ * `/assets/works/...` would resolve to mbezu.ru and 404; an absolute CDN URL works on
+ * both the CDN preview and live Tilda pages.
+ */
+export const IMAGE_BASE = 'https://cdn.mbezu.ru/assets/works';
 
 const SUFFIX: Record<ImgSize, string> = {
   thumb: '@sm', // 320w · миниатюра
