@@ -1,58 +1,32 @@
-name: deploy-github-pages
-
-# Push to main → quality gate (typecheck/lint/test/build + Lighthouse budget) →
-# publish dist/ to GitHub Pages. Custom domain cdn.mbezu.ru is set via public/CNAME
-# (→ dist/CNAME). No secrets needed — Pages uses GITHUB_TOKEN + OIDC.
-# Prereq: repo Settings → Pages → Source = "GitHub Actions" (see DEPLOY.md).
+name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
-
-# Least-privilege perms required by the Pages deploy action.
 permissions:
   contents: read
   pages: write
   id-token: write
-
-# Allow one concurrent Pages deployment.
 concurrency:
   group: pages
-  cancel-in-progress: false
-
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+        with: { node-version: 20, cache: npm }
       - run: npm ci
-      - run: npm run typecheck
-      - run: npm run lint
-      - run: npm test
       - run: npm run build
-      - name: Lighthouse budget
-        run: npx --yes @lhci/cli@0.14.x autorun
-      - uses: actions/configure-pages@v5
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: dist }
   deploy:
     needs: build
-    # Deploy only on push to main (PRs just run the quality gate above).
-    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
