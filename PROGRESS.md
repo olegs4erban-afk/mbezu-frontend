@@ -279,6 +279,11 @@
   - Re-swap **/home** (`home-CLJrw-Gp.js`): VERIFY PASS (root=5, картинки грузятся 6/12 above-fold + lazy, 706 на месте, cdn 9/9 ok, 0 site-fails). Nav: все переходы → 200 (native-страницы root=0 — ожидаемо).
   - Verify-скрипт усилён: игнор third-party (fonts.gstatic/аналитика, недоступны из песочницы — не блокеры), 706 требуется только на mbezu.ru.
   - Дальше: /legal (нужен ADD T123 — блока 131 нет), затем открытие root.
+- `[done] Phase 1b — /legal (ADD React-блок)` — 2026-06-04
+  - `/legal` не имел 131 → `scripts/tilda_add.mjs`: `tp__addRecord(131,…)` создал блок **rec2349904171**, `saverecord` контейнер (`legal-CYjNOFpC.js`) → OK, publish OK. recid сохранён (`backup/legal-added-recid.txt`) для отката (`MODE=delete`).
+  - VERIFY PASS: root=5, **text=6237** (юр-документы рендерятся), нативная корзина 706 на месте, cdn 4/4, 0 ошибок.
+  - commission/tracking — оставлены нативными (опционально по sprint; не блокеры для ЮKassa) → TODO.
+  - **Открыты пробы Phase 2 (root):** `tp__addRecord/delRecord` есть; механизм смены домашней страницы (getpageinfo/project) НЕ найден (Error/404) → root-флип без подтверждённого механизма не делаю.
 
 ## Sprint 5 — Итог
 - **Сделано:** `/about` (единственная React-страница) переподключена на тонкий CDN-контейнер — теперь грузит чанки с `cdn.mbezu.ru` вместо инлайн-бандла. Проверено (рендер+консоль+навигация). Нативный Tilda Store не тронут.
