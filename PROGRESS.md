@@ -204,3 +204,21 @@
 - **GH Pages игнорирует `_headers`/`_redirects`** (Cloudflare-формат, оставлены как fallback) → CSP+security перенесены в `DEPLOY.md §0b` как `<meta>`-сниппет для HEAD страниц Tilda (с оговорками: meta-CSP enforcing-only, нет report-only/frame-ancestors/HSTS/X-Frame).
 - DEPLOY.md §0a/§0b добавлены; README/TODO обновлены (Cloudflare→GitHub Pages, Cloudflare остаётся fallback).
 - Build зелёный, `dist/CNAME` на месте, ассеты `/assets/*` (base `/`); typecheck/lint зелёные. Прод/Tilda не тронуты.
+
+---
+
+# Sprint 5 — автономная раскатка на ПРОД (по `../sprint-5.md`)
+
+## Sprint 5 — статус
+- **⛔ ОСТАНОВЛЕНО на пред-проверке (Фаза -1), ДО любой правки прода. Tilda НЕ тронута** (только read-only проверки).
+- **Блокер:** deployed-чанки навигируют на `.html`-URL, а живая Tilda — на чистые алиасы → reconnect сломал бы навигацию магазина, а render-check Фазы 2 это НЕ ловит. Нужен фикс routeToPath + редеплой ДО reconnect.
+
+## Sprint 5 — лог
+- `[done] Фаза -1 — пред-проверка прод-готовности (read-only)` — 2026-06-04
+  - ✅ Prerequisite: `cdn.mbezu.ru` живой (GitHub Pages, IP 185.199.111.153), отдаёт закоммиченный билд: `common-CHVDPQIG.js` → 200 (`application/javascript`, 190 КБ), `/about.html` ссылается на `/assets/*`, painting-чанк 200, `CNAME`/`sitemap.xml` 200.
+  - ✅ CDN рендерится headless (audit.mjs против `https://cdn.mbezu.ru`): **9/9 маршрутов чисто** (#root непустой, 0 console-errors, 0 failed-res, model-viewer ленивый).
+  - 🛑 **Блокер (routing mismatch):** `routeToPath` в чанках выдаёт `.html` (`/about.html`, `/catalog.html?series=`, `/painting.html?id=`), а живая Tilda — чистые алиасы:
+    - `https://mbezu.ru/about` → 200, `/about.html` → **404**; `/catalog` → 200, `/catalog.html` → **404**; `/`,`/home`,`/commission`,`/cart`,`/tracking`,`/legal` → 200; `/painting/mn-01` → **200** (painting-страницы уже есть на чистых URL).
+    - Reconnect как есть: страницы бы отрендерились (Phase-2 check прошёл бы), но любой клик по навигации → `/X.html` → 404. Render-only авто-проверка это НЕ ловит → молча сломанный магазин.
+  - **Решение (детерминированное, алиасы подтверждены curl'ом, без угадывания):** сменить `routeToPath` на чистые алиасы (`/`, `/catalog`, `/about`, `/commission`, `/cart`, `/tracking`, `/legal`, `/painting/<id>`), пересобрать, запушить → редеплой на cdn → перепроверить (вкл. клик по навигации) → ТОЛЬКО ПОТОМ reconnect Tilda.
+  - **Прод не тронут**: снимков/правок/publish не делал. Жду подтверждения курса (фикс+редеплой первым), т.к. это отклонение от плана sprint-5 (он предполагал drop-in чанки).
