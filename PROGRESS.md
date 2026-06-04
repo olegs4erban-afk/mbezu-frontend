@@ -259,7 +259,8 @@
 > ПРОД. React = витрина/контент; нативный Tilda Store (776/706/checkout) НЕ трогаем и НЕ заменяем; оплату НЕ подключаем (после договора, в настройках Store).
 
 ## Sprint 7 — статус
-- В работе. Цикл снимок→правка→publish→Playwright→откат. Перед открытием root — проверка home.
+- В работе. Phase 1: **/home + /about переподключены на CDN, проверены (PASS)**. Дальше: legal (ADD), затем открытие root.
+- 🐞 Найден+исправлен баг: фото работ грузились по root-relative `/assets/works` → на Tilda это `mbezu.ru/...` → 404. Фикс: `IMAGE_BASE` → абсолютный `https://cdn.mbezu.ru/assets/works`; редеплой; перепроверено (картинки грузятся).
 
 ## Sprint 7 — лог
 - `[done] Phase 0 — read-only baseline` — 2026-06-04
@@ -271,6 +272,13 @@
   - Общие блоки на всех страницах: pageid 143102566/229331079 (футер/корзина), 706 `rec2293310791` (нативная корзина) — site-wide.
   - ЮKassa-инфо: реквизиты/контакты/легал-ссылки видны в футере site-wide; полные тексты документов рендерятся только на React-LegalPage (поэтому /legal надо переподключить).
   - **Прод не тронут.**
+- `[done] Phase 1 — /home + /about → CDN` — 2026-06-04
+  - Снимки: `backup/home-T123.html`, `backup/about-T123.html` (оригинальные инлайн-бандлы, точки отката).
+  - 🐞 Первый swap /home → картинки 404 (root-relative `/assets/works` на Tilda). **Откат** /home + /about → инлайн (по циклу). Фикс `IMAGE_BASE`→абсолютный CDN + `seo.ts` (не дублировать префикс) → push `d027447` → редеплой (common `common--hIEmJ87.js`), перегенерированы контейнеры.
+  - Re-swap **/about** (`about-BPPr3c-A.js`): VERIFY PASS (root=5, нативная корзина 706 на месте, cdn 4/4 ok, 0 site-fails, 0 JS-errors).
+  - Re-swap **/home** (`home-CLJrw-Gp.js`): VERIFY PASS (root=5, картинки грузятся 6/12 above-fold + lazy, 706 на месте, cdn 9/9 ok, 0 site-fails). Nav: все переходы → 200 (native-страницы root=0 — ожидаемо).
+  - Verify-скрипт усилён: игнор third-party (fonts.gstatic/аналитика, недоступны из песочницы — не блокеры), 706 требуется только на mbezu.ru.
+  - Дальше: /legal (нужен ADD T123 — блока 131 нет), затем открытие root.
 
 ## Sprint 5 — Итог
 - **Сделано:** `/about` (единственная React-страница) переподключена на тонкий CDN-контейнер — теперь грузит чанки с `cdn.mbezu.ru` вместо инлайн-бандла. Проверено (рендер+консоль+навигация). Нативный Tilda Store не тронут.
