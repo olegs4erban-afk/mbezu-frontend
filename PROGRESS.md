@@ -210,9 +210,9 @@
 # Sprint 5 — автономная раскатка на ПРОД (по `../sprint-5.md`)
 
 ## Sprint 5 — статус
-- **Вариант 1 (по решению владельца): только `/about`.** Нативные страницы (706/776) НЕ трогаем; CSP/painting не делаем.
-- Stage A (чанки/CDN) сделан. Аудит: живой магазин — нативный Tilda Store; React-блок только на `/about` (rec2337667041).
-- В работе: снимок `/about` T123 снят → swap на тонкий контейнер → publish → проверка → откат при провале.
+- **✅ Вариант 1 ВЫПОЛНЕН: `/about` переподключён на тонкий CDN-контейнер, проверен, откат НЕ потребовался.**
+- Нативные страницы (catalog/cart/…, блоки 706/776) НЕ тронуты. CSP/painting НЕ делались (по решению владельца).
+- Stage A (чанки/CDN, чистые алиасы, dir-style) сделан и проверен.
 
 ## Sprint 5 — лог
 - `[done] Фаза -1 — пред-проверка прод-готовности (read-only)` — 2026-06-04
@@ -245,3 +245,16 @@
   - Снимок `backup/about-T123.html` = оригинальный React-бандл **109 230 символов** (`text/babel`, совпадает с task-1). Это точка отката (закоммичено).
   - Целевой блок: pageid 142948406, recordid **2337667041** (131). `706` (нативная корзина rec2293310791) — НЕ трогаем.
   - Контейнер `backup/about-container.html` грузит live-чанки `common-1BQTux0a.js` + `about-BjCPdX1N.js` + `style-BTwwbX5Y.css` (все 200 на cdn).
+- `[ok] /about — swap → publish → verify` — 2026-06-04
+  - `saverecord` → `OK`; `publish` → `link: mbezu.ru/about`. Propagation ~10с.
+  - Live `/about`: `cdn.mbezu.ru` присутствует, `text/babel` исчез, нативная корзина `706` НА МЕСТЕ.
+  - **Playwright-проверка (свежий контекст):** `#root` children=5, text=3860, **0 console-errors**, 4 запроса к cdn — все 2xx, title верный → **ABOUT VERIFY: PASS**.
+  - **Навигация (клик):** все 5 nav-ссылок с `/about` → переход **HTTP 200** (чистые алиасы совпадают с Tilda; 404 нет). Заметка: `navcheck` ругнулся «4 failed» ложно — критерий `root>0` неверен для НАТИВНЫХ страниц-назначений (`/catalog` и т.п. без React-`#root`); фактический критерий «переход→200» выполнен 5/5.
+  - Откат НЕ потребовался. Снимок `backup/about-T123.html` остаётся точкой отката.
+
+## Sprint 5 — Итог
+- **Сделано:** `/about` (единственная React-страница) переподключена на тонкий CDN-контейнер — теперь грузит чанки с `cdn.mbezu.ru` вместо инлайн-бандла. Проверено (рендер+консоль+навигация). Нативный Tilda Store не тронут.
+- **Не делалось (по решению/безопасности):** 6 нативных страниц (это реальный Tilda Store, не React — reconnect разрушил бы магазин); CSP (Вариант 1 без CSP); painting (нативные страницы).
+- **Артефакты:** `backup/about-T123.html` (оригинал, откат), `backup/about-container.html` (контейнер), `scripts/tilda_edit.mjs` (browser-login editor: snapshot/swap/rollback), `scripts/about-verify.mjs`, `scripts/navcheck.mjs`.
+- **Откат при необходимости:** `node scripts/tilda_edit.mjs rollback` (вернёт оригинальный бандл из снимка + publish).
+- Прочее (реальные ID аналитики, миграция магазина на React требует реального checkout) — в `TODO-incomplete.md`.
