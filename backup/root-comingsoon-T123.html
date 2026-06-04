@@ -1,0 +1,172 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Manrope:wght@300;400;500&display=swap');
+
+  .mbez-cover {
+    min-height: 100vh;
+    background: #efe5cd;
+    color: #2d2419;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    font-family: 'Manrope', system-ui, sans-serif;
+    position: relative;
+    margin: 0 -40px;
+  }
+
+  .mbez-cover::before,
+  .mbez-cover::after {
+    content: "";
+    position: absolute;
+    border: 1px solid #c9a44b;
+    pointer-events: none;
+  }
+  .mbez-cover::before { inset: 30px; }
+  .mbez-cover::after  { inset: 38px; opacity: .55; }
+
+  .mbez-inner {
+    text-align: center;
+    max-width: 640px;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .mbez-logo {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(64px, 10vw, 108px);
+    color: #b88a26;
+    letter-spacing: .04em;
+    line-height: 1;
+    margin: 0;
+  }
+
+  .mbez-stroke {
+    width: 92px;
+    height: 5px;
+    background: linear-gradient(90deg,
+      transparent 0%, #8c6920 18%, #b88a26 35%, #d4a93c 50%,
+      #b88a26 65%, #8c6920 82%, transparent 100%);
+    border-radius: 50%;
+    margin: 10px auto 40px;
+    filter: blur(.3px);
+  }
+
+  .mbez-name {
+    font-family: 'Marcellus', serif;
+    font-size: clamp(32px, 4.5vw, 44px);
+    font-weight: 400;
+    margin: 0 0 6px;
+    letter-spacing: -.01em;
+    line-height: 1.1;
+  }
+
+  .mbez-alias {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(18px, 2.4vw, 24px);
+    color: #5a4a36;
+    margin: 0 0 32px;
+  }
+
+  .mbez-divider {
+    width: 60px;
+    height: 1px;
+    background: #8a7556;
+    margin: 0 auto 32px;
+    opacity: .6;
+  }
+
+  .mbez-tagline {
+    font-size: clamp(11px, 1.3vw, 13px);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #5a4a36;
+    margin: 0 0 48px;
+    font-weight: 500;
+  }
+
+  .mbez-status {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(22px, 2.8vw, 28px);
+    color: #2d2419;
+    margin: 0 0 14px;
+    font-weight: 400;
+  }
+  .mbez-status strong {
+    color: #b88a26;
+    font-weight: 400;
+  }
+
+  .mbez-note {
+    font-size: 14px;
+    color: #8a7556;
+    margin: 0 0 40px;
+    line-height: 1.6;
+  }
+
+  .mbez-contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 0 0 48px;
+    font-size: 14px;
+  }
+  .mbez-contacts a {
+    color: #2d2419;
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: color .2s;
+    display: inline-block;
+    position: relative;
+  }
+  .mbez-contacts a::after {
+    content: "";
+    position: absolute;
+    left: 50%; right: 50%; bottom: -3px;
+    height: 1px; background: #b88a26;
+    transition: left .25s, right .25s;
+  }
+  .mbez-contacts a:hover { color: #b88a26; }
+  .mbez-contacts a:hover::after { left: 25%; right: 25%; }
+
+  .mbez-copy {
+    font-size: 10px;
+    letter-spacing: .22em;
+    color: #8a7556;
+    font-weight: 500;
+  }
+
+  @media (max-width: 600px) {
+    .mbez-cover { padding: 40px 20px; }
+    .mbez-cover::before { inset: 16px; }
+    .mbez-cover::after  { inset: 22px; }
+  }
+</style>
+
+<div class="mbez-cover">
+  <div class="mbez-inner">
+    <div class="mbez-logo">MB</div>
+    <div class="mbez-stroke"></div>
+
+    <h1 class="mbez-name">Mila Bezú</h1>
+    <p class="mbez-alias">Мила Бэзу</p>
+
+    <div class="mbez-divider"></div>
+
+    <p class="mbez-tagline">Интерьерная живопись маслом · Москва</p>
+
+    <p class="mbez-status">Сайт открывается <strong>летом 2026</strong></p>
+    <p class="mbez-note">До открытия — пишите напрямую по работам и заказам</p>
+
+    <div class="mbez-contacts">
+      <a href="mailto:milabezu.art@gmail.com">milabezu.art@gmail.com</a>
+      <a href="tel:+79167641039">+7 916 764 10 39</a>
+      <a href="https://t.me/mbezu_art" target="_blank" rel="noopener noreferrer">Telegram · @mbezu_art</a>
+      <a href="https://instagram.com/m.bezu_art" target="_blank" rel="noopener noreferrer">Instagram · @m.bezu_art</a>
+    </div>
+
+    <div class="mbez-copy">© M.BEZ STUDIO · 2014–2026</div>
+  </div>
+</div>
