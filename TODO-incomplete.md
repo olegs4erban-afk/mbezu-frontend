@@ -27,7 +27,7 @@
 `@google/model-viewer` (ленивый чанк) не грузится. → Добавить .glb/.usdz, выставить `ready:true` в `src/ar/ar.tsx`.
 
 ## 5. Деплой-привязки (см. DEPLOY.md, Phase 6)
-- Cloudflare Pages проект + custom domain `cdn.mbezu.ru` (CNAME) — действие владельца.
+- GitHub Pages: включить Pages (Source = GitHub Actions) + DNS-CNAME `cdn` → `<user>.github.io` для `cdn.mbezu.ru` — действие владельца. (Cloudflare-вариант — fallback, см. DEPLOY.md.)
 - GitHub remote: `gh` не установлен на машине → репозиторий пока только локальный.
 
 ## 6. Остаточные перф-оптимизации (Sprint 3, не блокеры — Lighthouse-цели достигнуты)

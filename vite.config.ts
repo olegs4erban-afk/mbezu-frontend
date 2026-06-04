@@ -12,6 +12,8 @@ const r = (p: string) => resolve(__dirname, p);
 const ROUTES = ['home', 'about', 'catalog', 'painting', 'commission', 'cart', 'tracking', 'legal'];
 
 export default defineConfig({
+  // Custom domain at root (cdn.mbezu.ru via public/CNAME) → base must be '/'.
+  base: '/',
   plugins: [react()],
   build: {
     target: 'es2019',

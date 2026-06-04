@@ -6,6 +6,40 @@
 
 ---
 
+## 0a. Платформа деплоя: GitHub Pages (актуально)
+> Деплой переключён на **GitHub Pages**. Разделы §1–§4a (Cloudflare) оставлены как **альтернатива/fallback**.
+
+1. Запушить репо на GitHub (см. §4): `git push -u origin main`.
+2. **Settings → Pages → Build and deployment → Source = «GitHub Actions».**
+3. Workflow `.github/workflows/deploy.yml` на push в `main`: `npm ci` → typecheck → lint → test → build → Lighthouse-бюджет → `upload-pages-artifact` (`dist/`) → `deploy-pages`. **Секреты не нужны** (GITHUB_TOKEN + OIDC).
+4. **Кастомный домен `cdn.mbezu.ru`:**
+   - `public/CNAME` (→ `dist/CNAME`) уже содержит `cdn.mbezu.ru` — GitHub Pages подхватит домен.
+   - В DNS зоны `mbezu.ru`: **CNAME `cdn` → `<github-user-или-org>.github.io`** (для apex был бы A-record; здесь поддомен → CNAME).
+   - Settings → Pages → Custom domain: `cdn.mbezu.ru`, дождаться проверки DNS, включить **Enforce HTTPS**.
+5. `base: '/'` в `vite.config.ts` (домен в корне) — ассеты адресуются от `/`.
+
+### 0b. Заголовки и CSP на GitHub Pages
+**GitHub Pages НЕ поддерживает кастомные HTTP-заголовки** — файлы `public/_headers` и `public/_redirects`
+(формат Cloudflare) **игнорируются** (оставлены на случай возврата на Cloudflare). Значит:
+- **Кэш**: GH Pages сам отдаёт хешированные `/assets/*` с дальним кэшем; отдельная настройка не нужна.
+- **CSP + security**: ставятся **не на CDN, а в HEAD страниц Tilda** — именно Tilda отдаёт пользовательские
+  страницы, а `cdn.mbezu.ru` (GH Pages) отдаёт только JS/CSS-чанки (суб-ресурсы).
+
+**Сниппет CSP для вставки в HEAD страницы Tilda** (Настройки страницы → «HEAD code»; добавить на каждую страницу
+с контейнером). Перенесён из `public/_headers`:
+```html
+<!-- M.Bez · CSP (вставить в HEAD страниц Tilda). Сначала ПРОТЕСТИРОВАТЬ в DevTools,
+     дополнить домены по violation-репортам, и только потом полагаться на политику. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.mbezu.ru https://mc.yandex.ru https://www.googletagmanager.com https://www.google-analytics.com https://vk.com https://*.vk.com https://unpkg.com https://*.tildacdn.com https://*.tilda.cc; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://cdn.mbezu.ru https://api.qrserver.com https://*.tildacdn.com https://static.tildacdn.com https://res.cloudinary.com https://mc.yandex.ru https://www.google-analytics.com; connect-src 'self' https://cdn.mbezu.ru https://mc.yandex.ru https://www.google-analytics.com https://*.vk.com https://*.tilda.cc https://*.tildacdn.com https://res.cloudinary.com; media-src 'self' https://*.tildacdn.com; frame-src 'self' https://vk.com">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+```
+**Важные оговорки `<meta>`-CSP:**
+- `<meta>`-CSP **enforcing** (report-only через meta невозможен) → перед вставкой прогнать политику в DevTools
+  (вкладка Console покажет блокировки) и расширить список доменов; иначе можно молча сломать легитимный скрипт/картинку.
+- Директивы `frame-ancestors`, `report-uri`/`report-to`, а также заголовки **HSTS / X-Frame-Options /
+  X-Content-Type-Options** работают **только как HTTP-заголовки** и через `<meta>` НЕ задаются. На GH Pages их
+  выставить нельзя; антикликджекинг при необходимости — настройками самого Tilda или фронтальным прокси.
+
 ## 0. Предусловия
 - Node ≥ 20, репозиторий `mbezu-frontend` (этот каталог).
 - Доступ к: Cloudflare (аккаунт), DNS-зоне `mbezu.ru`, админке Tilda (проект 13712449).

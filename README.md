@@ -46,19 +46,17 @@ sitemap.xml · robots.txt · favicon.svg · _headers · _redirects
 - Lighthouse (mobile): **Perf ≥90, A11y ≥95, Best-Practices ≥95, SEO 100** на home/about/catalog/painting (before/after — `AUDIT.md`).
 - Runtime-аудит: **9/9 маршрутов чисто**, `model-viewer` не грузится вне AR (ленивость).
 - `npm test` — 19 юнит-тестов; `typecheck`/`lint`/`build` — зелёные.
-- CI: `.github/workflows/deploy.yml` (gate + Lighthouse-бюджет + деплой; инертен без секретов).
+- CI: `.github/workflows/deploy.yml` (gate + Lighthouse-бюджет + деплой на **GitHub Pages**; секреты не нужны — GITHUB_TOKEN/OIDC).
 
 ## Деплой
-Полный раннбук — **`DEPLOY.md`** (Cloudflare Pages, домен `cdn.mbezu.ru`, реальные ID, переподключение Tilda, CSP enforce, откат).
+**Платформа — GitHub Pages** (домен `cdn.mbezu.ru` через `public/CNAME`, `base:'/'`). Полный раннбук — **`DEPLOY.md` §0a** (Cloudflare-разделы оставлены как fallback). CSP/security — в HEAD страниц Tilda (`DEPLOY.md §0b`), т.к. GH Pages игнорирует `_headers`.
 Контейнеры для вставки в Tilda — **`painting-containers.md`** (18 работ) и **`page-containers.md`** (7 страниц).
 
 ## Handover — что заблокировано (см. `TODO-incomplete.md`)
 **На владельце (деплой/инфра):**
-- Cloudflare Pages проект + домен `cdn.mbezu.ru` (CNAME).
-- GitHub: `gh` не установлен → репозиторий пока локальный (команды push — `DEPLOY.md §4`).
+- GitHub Pages: запушить репо, включить Pages (Source = GitHub Actions), добавить DNS-CNAME `cdn` → `<user>.github.io` (`DEPLOY.md §0a`). `gh` не установлен → репо пока локальный.
 - Реальные ID аналитики (Я.Метрика/GA4/VK) — плейсхолдеры в `analytics.ts` (трекеры не грузятся, пока плейсхолдеры).
-- Переключить CSP `Report-Only` → enforcing после проверки в проде (`DEPLOY.md §4a`).
-- Репо-secrets для CI: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`.
+- Вставить CSP/security в HEAD страниц Tilda (готовый `<meta>`-сниппет — `DEPLOY.md §0b`); сначала протестировать политику.
 
 **На Миле (контент/данные):**
 - **MN-03 «Шторм»** — нет фото (рендерится плейсхолдер).

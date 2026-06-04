@@ -194,3 +194,13 @@
 **Заблокировано (в `TODO-incomplete.md`):** реальные ID аналитики · Cloudflare/домен/GitHub-remote · CSP→enforcing · CI-секреты *(владелец)*; MN-03 без фото · ST-08/TD-01/TD-02 провизорные · AR-ассеты · webp *(Мила/контент)*.
 
 **Прод и Tilda НЕ тронуты.** Остановка.
+
+---
+
+## Post-S3 — переключение деплоя на GitHub Pages — 2026-06-04
+- `.github/workflows/deploy.yml` заменён на **GitHub Pages** workflow (build+gate+LH → `upload-pages-artifact` → `deploy-pages`; permissions pages/id-token; без секретов — GITHUB_TOKEN/OIDC).
+- `public/CNAME` = `cdn.mbezu.ru` (→ `dist/CNAME`); `vite.config.ts` `base: '/'` (явно, домен в корне).
+- `package-lock.json` — уже закоммичен/в синхроне (нужен для `npm ci`).
+- **GH Pages игнорирует `_headers`/`_redirects`** (Cloudflare-формат, оставлены как fallback) → CSP+security перенесены в `DEPLOY.md §0b` как `<meta>`-сниппет для HEAD страниц Tilda (с оговорками: meta-CSP enforcing-only, нет report-only/frame-ancestors/HSTS/X-Frame).
+- DEPLOY.md §0a/§0b добавлены; README/TODO обновлены (Cloudflare→GitHub Pages, Cloudflare остаётся fallback).
+- Build зелёный, `dist/CNAME` на месте, ассеты `/assets/*` (base `/`); typecheck/lint зелёные. Прод/Tilda не тронуты.
