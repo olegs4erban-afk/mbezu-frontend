@@ -3,23 +3,24 @@ import { routeToPath } from '../common/app';
 import { imageOf, formatPrice, ARTWORKS, artworkById, seriesById } from '../common/data';
 import { seoFor, organizationLd, personLd, productLd, breadcrumbLd } from '../common/seo';
 
-describe('routeToPath — resolves each slug', () => {
+describe('routeToPath — clean aliases (match live Tilda)', () => {
   it('home → /', () => expect(routeToPath('home')).toBe('/'));
-  it('about → /about.html', () => expect(routeToPath('about')).toBe('/about.html'));
-  it('simple routes → /<name>.html', () => {
+  it('about → /about', () => expect(routeToPath('about')).toBe('/about'));
+  it('simple routes → /<name>', () => {
     for (const r of ['commission', 'cart', 'tracking'] as const) {
-      expect(routeToPath(r)).toBe(`/${r}.html`);
+      expect(routeToPath(r)).toBe(`/${r}`);
     }
   });
   it('catalog with series → query', () => {
-    expect(routeToPath('catalog', { series: 'monochrome' })).toBe('/catalog.html?series=monochrome');
-    expect(routeToPath('catalog')).toBe('/catalog.html');
+    expect(routeToPath('catalog', { series: 'monochrome' })).toBe('/catalog?series=monochrome');
+    expect(routeToPath('catalog')).toBe('/catalog');
   });
-  it('painting with id → query', () => {
-    expect(routeToPath('painting', { id: 'MN-01' })).toBe('/painting.html?id=MN-01');
+  it('painting with id → /painting/<id> (lowercased)', () => {
+    expect(routeToPath('painting', { id: 'MN-01' })).toBe('/painting/mn-01');
+    expect(routeToPath('painting')).toBe('/painting');
   });
   it('legal with section → query', () => {
-    expect(routeToPath('legal', { section: 'offer' })).toBe('/legal.html?section=offer');
+    expect(routeToPath('legal', { section: 'offer' })).toBe('/legal?section=offer');
   });
 });
 

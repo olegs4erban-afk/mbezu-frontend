@@ -1,13 +1,14 @@
 // prerender.tsx — runs after `vite build`. Static-site-generation for SEO:
 //  • renders each route to static markup → injects into <div id="root">
 //  • injects per-route <title>/meta/canonical/OG + JSON-LD into <head>
-//  • emits per-artwork pages dist/painting/<id>.html (clean URLs)
+//  • dir-style output (about/index.html, painting/<id>/index.html) so GitHub Pages
+//    serves CLEAN URLs (/about, /painting/mn-01 → 200) matching live Tilda aliases
 //  • emits dist/sitemap.xml
 // Note: client uses createRoot (not hydrate) → markup is SEO/first-paint, then
 // React re-renders on load. No hydration mismatch warnings.
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 
 import { TopBar, Footer } from '../src/common/chrome';
@@ -95,33 +96,37 @@ const STATIC: Array<{ name: string; file: string; params?: any; contentful?: boo
   { name: 'cart', file: 'cart.html', contentful: false }, // head-only (noindex order flow)
 ];
 
+// dir-style target so GH Pages serves clean URLs. home stays at root index.html;
+// others → <name>/index.html; flat <name>.html (Vite output) is removed.
+const outFile = (name: string) => (name === 'home' ? 'index.html' : `${name}/index.html`);
+
 let count = 0;
 for (const r of STATIC) {
-  const f = resolve(DIST, r.file);
-  if (!existsSync(f)) { console.warn(`  ! missing ${r.file}, skipped`); continue; }
+  const src = resolve(DIST, r.file);
+  if (!existsSync(src)) { console.warn(`  ! missing ${r.file}, skipped`); continue; }
   const seo = seoFor(r.name, r.params || {});
   const markup = r.contentful ? renderMarkup(r.name, r.params || {}) : '';
-  writeFileSync(f, inject(readFileSync(f, 'utf-8'), seo, markup, r.name), 'utf-8');
-  console.log(`  ✓ ${r.file}${markup ? '' : ' (head only)'}`);
+  write(outFile(r.name), inject(readFileSync(src, 'utf-8'), seo, markup, r.name));
+  if (r.name !== 'home') rmSync(src); // drop flat <name>.html — dir-style is authoritative
+  console.log(`  ✓ ${outFile(r.name)}${markup ? '' : ' (head only)'}`);
   count++;
 }
 
-// ── painting: template + per-artwork clean-URL pages ─────────
+// ── painting: /painting (template) + /painting/<id> per-artwork (dir-style) ──
 const tplPath = resolve(DIST, 'painting.html');
 if (existsSync(tplPath)) {
   const template = readFileSync(tplPath, 'utf-8');
-  // base template page (representative artwork)
   const first = ARTWORKS[0];
-  writeFileSync(tplPath, inject(template, seoFor('painting', { id: first.id }), renderMarkup('painting', { id: first.id }), 'painting'), 'utf-8');
+  write('painting/index.html', inject(template, seoFor('painting', { id: first.id }), renderMarkup('painting', { id: first.id }), 'painting'));
   count++;
-  // one clean-URL page per artwork
   for (const art of ARTWORKS) {
     const seo = seoFor('painting', { id: art.id });
     const html = inject(template, seo, renderMarkup('painting', { id: art.id }), 'painting');
-    write(`painting/${art.id.toLowerCase()}.html`, html);
+    write(`painting/${art.id.toLowerCase()}/index.html`, html);
     count++;
   }
-  console.log(`  ✓ painting.html + ${ARTWORKS.length} per-artwork pages`);
+  rmSync(tplPath); // drop flat painting.html
+  console.log(`  ✓ painting/index.html + ${ARTWORKS.length} per-artwork dirs`);
 }
 
 // ── sitemap.xml ──────────────────────────────────────────────

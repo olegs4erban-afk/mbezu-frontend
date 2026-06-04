@@ -7,14 +7,13 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 const BASE = process.env.BASE || 'http://localhost:4173';
 const ROUTES = [
   ['home', '/'],
-  ['about', '/about.html'],
-  ['catalog', '/catalog.html'],
-  ['painting', '/painting.html?id=MN-01'],
-  ['painting-clean', '/painting/mn-01.html'],
-  ['commission', '/commission.html'],
-  ['cart', '/cart.html'],
-  ['tracking', '/tracking.html'],
-  ['legal', '/legal.html'],
+  ['about', '/about'],
+  ['catalog', '/catalog'],
+  ['painting', '/painting/mn-01'],
+  ['commission', '/commission'],
+  ['cart', '/cart'],
+  ['tracking', '/tracking'],
+  ['legal', '/legal'],
 ];
 
 async function waitForServer(url, tries = 40) {

@@ -33,13 +33,13 @@ function container(a: Assets, comment: string, bakeId?: string): string {
   return l.join('\n');
 }
 
-if (!existsSync(resolve('dist/painting.html'))) {
+if (!existsSync(resolve('dist/painting/index.html'))) {
   console.error('dist missing — run `npm run build` first.');
   process.exit(1);
 }
 
 // ── painting-containers.md ───────────────────────────────────
-const pa = extractAssets('painting.html');
+const pa = extractAssets('painting/index.html');
 const eligible = ARTWORKS.filter((a: any) => a.image && !NO_PHOTO.has(a.id) && !PROVISIONAL.has(a.id));
 const excluded = ARTWORKS.filter((a: any) => !(a.image && !NO_PHOTO.has(a.id) && !PROVISIONAL.has(a.id)));
 
@@ -82,9 +82,9 @@ writeFileSync(resolve('painting-containers.md'), P.join('\n'), 'utf-8');
 
 // ── page-containers.md (7 standard pages) ────────────────────
 const PAGES: Array<[string, string]> = [
-  ['home', 'index.html'], ['about', 'about.html'], ['catalog', 'catalog.html'],
-  ['commission', 'commission.html'], ['cart', 'cart.html'],
-  ['tracking', 'tracking.html'], ['legal', 'legal.html'],
+  ['home', 'index.html'], ['about', 'about/index.html'], ['catalog', 'catalog/index.html'],
+  ['commission', 'commission/index.html'], ['cart', 'cart/index.html'],
+  ['tracking', 'tracking/index.html'], ['legal', 'legal/index.html'],
 ];
 const G: string[] = [];
 G.push('# page-containers.md — тонкие Tilda-контейнеры для 7 стандартных страниц');

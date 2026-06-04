@@ -24,17 +24,17 @@ export type RouteName =
 
 export interface RouteParams { id?: string; series?: string; ref?: string; section?: string }
 
-// Static MPA harnesses are served as <name>.html (works in vite preview AND on
-// Cloudflare Pages, which also resolves the clean /<name> form). Painting uses a
-// query id so navigation never depends on per-id prerendered files existing.
+// CLEAN aliases — matching the live Tilda page structure (verified: /about → 200,
+// /about.html → 404; /painting/<id> → 200). The CDN serves the same clean URLs via
+// dir-style prerender (about/index.html, painting/<id>/index.html — see scripts/prerender.tsx).
 export function routeToPath(name: RouteName, params: RouteParams = {}): string {
   switch (name) {
     case 'home':       return '/';
-    case 'painting':   return params.id ? `/painting.html?id=${encodeURIComponent(params.id)}` : '/painting.html';
-    case 'catalog':    return params.series ? `/catalog.html?series=${encodeURIComponent(params.series)}` : '/catalog.html';
-    case 'commission': return params.ref ? `/commission.html?ref=${encodeURIComponent(params.ref)}` : '/commission.html';
-    case 'legal':      return params.section ? `/legal.html?section=${encodeURIComponent(params.section)}` : '/legal.html';
-    default:           return `/${name}.html`;
+    case 'painting':   return params.id ? `/painting/${encodeURIComponent(String(params.id).toLowerCase())}` : '/painting';
+    case 'catalog':    return params.series ? `/catalog?series=${encodeURIComponent(params.series)}` : '/catalog';
+    case 'commission': return params.ref ? `/commission?ref=${encodeURIComponent(params.ref)}` : '/commission';
+    case 'legal':      return params.section ? `/legal?section=${encodeURIComponent(params.section)}` : '/legal';
+    default:           return `/${name}`;
   }
 }
 
