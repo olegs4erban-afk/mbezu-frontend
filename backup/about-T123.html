@@ -1,0 +1,2518 @@
+<div id="root"></div>
+<script type="text/babel" data-presets="env,react">
+/* ════════════════════════════════════════════════════════════
+ * M.Bez · React bundle для Tilda T123
+ * Содержит: data + adapter + atoms + ar + chrome + page-home + page-about + app-multipage
+ * Поддерживает: главная (/home) + О художнице (/about) — для других страниц fallback
+ * ════════════════════════════════════════════════════════════ */
+
+/* ── 1/8 · data.jsx ─────────────────────────────────────── */
+// ─────────────────────────────────────────────────────────────
+// data.jsx — единый источник правды для каталога M.Bez.
+// 19 реальных работ из портфолио · 3 серии · цены утверждены.
+// Plates остаются placeholder-градиентами до загрузки реальных фото.
+// ─────────────────────────────────────────────────────────────
+
+const SERIES = [
+  {
+    id: 'monochrome',
+    title: 'Монохромная серия',
+    subtitle: 'Форма без цвета',
+    years: '2024–2025',
+    count: 6,
+    description:
+      'Морские волны и горные пейзажи в чёрно-белом решении. ' +
+      'Опыт работы с формой и ритмом без цвета как самостоятельная художественная задача.',
+    palette: ['#a89888', '#3a3835'],
+    color: '#4a4a4a',  // tag-цвет серии (тёмно-серый — шапка в портфолио)
+  },
+  {
+    id: 'streets',
+    title: 'Улицы мира',
+    subtitle: 'Дневник путешествий',
+    years: '2023–2024',
+    count: 7,
+    description:
+      'Городские пейзажи Греции, Франции, Камбоджи, Вьетнама. ' +
+      'Каждая работа написана по мотивам личной поездки — ' +
+      'по живым впечатлениям от места, его света и атмосферы.',
+    palette: ['#dad4c4', '#5e4d3d'],
+    color: '#4d3826',  // корица — шапка в портфолио
+  },
+  {
+    id: 'silence',
+    title: 'Тихая сила',
+    subtitle: 'Природа без громкости',
+    years: '2023–2025',
+    count: 6,
+    description:
+      'Ботанический реализм и пейзажи, в которых природа пишется как сила, ' +
+      'не нуждающаяся в громкости. Зелёная волна, осенний лес, кувшинки на тёмной воде.',
+    palette: ['#7ca058', '#1c2818'],
+    color: '#1d3324',  // тёмно-зелёный — шапка в портфолио
+  },
+];
+
+const SUBJECTS = [
+  { id: 'all',       label: 'Все работы' },
+  { id: 'sea',       label: 'Море и волны' },
+  { id: 'mountain',  label: 'Горы' },
+  { id: 'city',      label: 'Города' },
+  { id: 'botanical', label: 'Сады и ботаника' },
+  { id: 'landscape', label: 'Пейзажи' },
+];
+
+const CATEGORIES = SUBJECTS; // alias для обратной совместимости
+
+const ARTWORKS = [
+  // ─── МОНОХРОМНАЯ СЕРИЯ ─────────────────────────────────────
+  {
+    id: 'MN-01', title: 'Wave sepia', subtitle: 'Волна в сепии',
+    series: 'monochrome', subject: 'sea', cat: 'sea',
+    year: 2024, w: 100, h: 60,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Современный реализм',
+    framing: 'Без рамы, на подрамнике',
+    price: 210000, status: 'available',
+    description:
+      'Монохромная волна в момент наивысшего напряжения — секунда до падения. ' +
+      'Палитра сепии убирает всё лишнее, оставляя только силу и форму.',
+    palette: ['#a89888', '#5e4d3d'],
+    featured: true,
+  },
+  {
+    id: 'MN-02', title: 'Вершина',
+    series: 'monochrome', subject: 'mountain', cat: 'mountain',
+    year: 2024, w: 30, h: 30,
+    medium: 'Холст на картоне, масло',
+    style: 'Современный реализм', framing: 'Без рамы',
+    price: 42000, status: 'available',
+    description: 'Острый пик уходит в светлые облака. Форма без цвета — только свет, тень и вертикаль.',
+    palette: ['#c8c5c0', '#3a3835'],
+  },
+  {
+    id: 'MN-03', title: 'Шторм',
+    series: 'monochrome', subject: 'mountain', cat: 'mountain',
+    year: 2024, w: 30, h: 30,
+    medium: 'Холст на картоне, масло',
+    style: 'Современный реализм', framing: 'Без рамы',
+    price: 42000, status: 'available',
+    description: 'Вершина в буре — гора как живое существо, борющееся со стихией. Динамика передана через движение кисти.',
+    palette: ['#9c9892', '#252320'],
+  },
+  {
+    id: 'MN-04', title: 'Перевал',
+    series: 'monochrome', subject: 'mountain', cat: 'mountain',
+    year: 2025, w: 30, h: 30,
+    medium: 'Холст на картоне, масло',
+    style: 'Современный реализм', framing: 'Без рамы',
+    price: 42000, status: 'available',
+    description: 'Горный пейзаж с долиной — панорама снега и леса в серебряном свете. Самая тихая из трёх работ серии.',
+    palette: ['#b5b3ac', '#454540'],
+  },
+  {
+    id: 'MN-05', title: 'Камни на берегу',
+    series: 'monochrome', subject: 'sea', cat: 'sea',
+    year: 2025, w: 30, h: 40,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Современный реализм', framing: 'Без рамы, на подрамнике',
+    price: 62000, status: 'available',
+    description: 'Морская пена омывает камни — натюрморт о движении и покое. Детальная проработка текстуры камней и пены.',
+    palette: ['#d8c8a8', '#8a7050'],
+  },
+  {
+    id: 'MN-06', title: 'Shell', subtitle: 'Ракушка',
+    series: 'monochrome', subject: 'sea', cat: 'sea',
+    year: 2025, w: 24, h: 30,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Современный реализм', framing: 'Без рамы, на подрамнике',
+    price: 38000, status: 'available',
+    description: 'Ракушка на мокром песке — натюрморт о времени и море. Каждая деталь текстуры написана с натуры.',
+    palette: ['#d4b89a', '#8c6e50'],
+  },
+
+  // ─── УЛИЦЫ МИРА ────────────────────────────────────────────
+  {
+    id: 'ST-01', title: 'Греция. Полдень',
+    series: 'streets', subject: 'city', cat: 'city',
+    year: 2023, w: 18, h: 24,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Городской реализм', framing: 'Без рамы, на подрамнике',
+    price: 38000, status: 'available',
+    description: 'Белые стены, синяя дверь, горшки с геранью — полдень в греческом переулке. Написана по мотивам личной поездки.',
+    palette: ['#dad4c4', '#4a5870'],
+  },
+  {
+    id: 'ST-02', title: 'Некуда спешить',
+    series: 'streets', subject: 'city', cat: 'city',
+    year: 2023, w: 18, h: 24,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Городской реализм', framing: 'Без рамы, на подрамнике',
+    price: 38000, status: 'available',
+    description: 'Фонарь, ступени, цветы в горшках — переулок, по которому хочется пройти снова и снова. Греция, написана с натуры.',
+    palette: ['#c8b894', '#5e6878'],
+  },
+  {
+    id: 'ST-03', title: 'Франция. Лаванда',
+    series: 'streets', subject: 'botanical', cat: 'botanical',
+    year: 2024, w: 15, h: 15,
+    medium: 'Холст на картоне, масло',
+    style: 'Импрессионизм', framing: 'Без рамы',
+    price: 28000, status: 'available',
+    description: 'Лавандовое поле Прованса крупным планом — аромат, который можно почти почувствовать.',
+    palette: ['#a89cb8', '#7c8c5e'],
+  },
+  {
+    id: 'ST-04', title: 'Франция. Le Bouquineur',
+    series: 'streets', subject: 'city', cat: 'city',
+    year: 2024, w: 15, h: 15,
+    medium: 'Холст на картоне, масло',
+    style: 'Городской реализм', framing: 'Без рамы',
+    price: 28000, status: 'available',
+    description: 'Книжная лавка в Париже — стопки книг, голубые ставни, каштан над крышей. Место, где время замедляется.',
+    palette: ['#a8b4b8', '#5e7068'],
+  },
+  {
+    id: 'ST-05', title: 'Ангкор-Ват. Камбоджа',
+    series: 'streets', subject: 'city', cat: 'city',
+    year: 2024, w: 100, h: 80,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Архитектурный реализм', framing: 'Без рамы, на подрамнике',
+    price: 380000, status: 'available',
+    description: 'Храм, который смотрит на тебя сотнями каменных лиц. Написан по впечатлениям от поездки — воздух Камбоджи, тяжёлый и горячий, до сих пор ощущается в этой работе.',
+    palette: ['#9c8870', '#54422c'],
+    featured: true,
+  },
+  {
+    id: 'ST-06', title: 'Рисовое поле. Вьетнам',
+    series: 'streets', subject: 'landscape', cat: 'landscape',
+    year: 2023, w: 40, h: 50,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Пейзаж, реализм', framing: 'Без рамы, на подрамнике',
+    price: 88000, status: 'available',
+    description: 'Бесконечная перспектива рисовых полей Вьетнама — тропинка уходит в горизонт между зелёными рядами.',
+    palette: ['#a8b890', '#5a7050'],
+  },
+  {
+    id: 'ST-07', title: 'Крыши старого города',
+    series: 'streets', subject: 'city', cat: 'city',
+    year: 2023, w: 25, h: 70,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Архитектурный реализм', framing: 'Без рамы, на подрамнике',
+    price: 105000, status: 'available',
+    description: 'Панорама черепичных крыш европейского старого города — купола, шпили, трубы.',
+    palette: ['#b87858', '#6e3c2c'],
+  },
+
+  // ─── ТИХАЯ СИЛА ────────────────────────────────────────────
+  {
+    id: 'TS-01', title: 'Freedom', subtitle: 'Свобода',
+    series: 'silence', subject: 'sea', cat: 'sea',
+    year: 2024, w: 70, h: 50,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Современный реализм', framing: 'Без рамы, на подрамнике',
+    price: 140000, status: 'available',
+    description: 'Зелёная волна в полном движении — свобода как физическое ощущение. Работа о том моменте, когда море говорит громче всего.',
+    palette: ['#7ea098', '#3a5654'],
+    featured: true,
+  },
+  {
+    id: 'TS-02', title: 'Зеркало леса',
+    series: 'silence', subject: 'landscape', cat: 'landscape',
+    year: 2024, w: 50, h: 90,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Пейзаж, реализм', framing: 'Без рамы, на подрамнике',
+    price: 165000, status: 'available',
+    description: 'Осенний лес отражается в тёмной воде — горизонтальная композиция, тёплая палитра. Момент между последним теплом и первым снегом.',
+    palette: ['#b08858', '#523825'],
+  },
+  {
+    id: 'TS-03', title: 'Waterlilies', subtitle: 'Кувшинки',
+    series: 'silence', subject: 'botanical', cat: 'botanical',
+    year: 2025, w: 50, h: 50,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Ботанический реализм', framing: 'Без рамы, на подрамнике',
+    price: 105000, status: 'available',
+    description: 'Кувшинки на тёмной воде — вечный сюжет, написанный заново. Каждый цветок — отдельная история света.',
+    palette: ['#a4a890', '#2c3a2a'],
+  },
+  {
+    id: 'TS-04', title: 'Тропические листья',
+    series: 'silence', subject: 'botanical', cat: 'botanical',
+    year: 2023, w: 40, h: 30,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Ботанический реализм', framing: 'Без рамы, на подрамнике',
+    price: 68000, status: 'available',
+    description: 'Тропические листья с каплями воды — гиперреалистичная детализация на тёмном фоне. Ощущение влажного тепла.',
+    palette: ['#688054', '#1c2818'],
+  },
+  {
+    id: 'TS-05', title: 'Дождь пошёл',
+    series: 'silence', subject: 'botanical', cat: 'botanical',
+    year: 2023, w: 18, h: 24,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Ботанический реализм', framing: 'Без рамы, на подрамнике',
+    price: 36000, status: 'available',
+    description: 'Зелёные листья в каплях дождя на тёмном фоне — момент после ливня. Свет играет на каждой капле.',
+    palette: ['#5a8050', '#0e1a0e'],
+  },
+  {
+    id: 'TS-06', title: 'Бамбук',
+    series: 'silence', subject: 'botanical', cat: 'botanical',
+    year: 2023, w: 18, h: 24,
+    medium: 'Холст, масло, на подрамнике',
+    style: 'Ботанический реализм', framing: 'Без рамы, на подрамнике',
+    price: 36000, status: 'available',
+    description: 'Молодые побеги бамбука на тёмном фоне — символ роста и спокойной силы. Тонкая детализация стволов и листьев.',
+    palette: ['#7ca058', '#1a2a18'],
+  },
+];
+
+// ─── Helpers ─────────────────────────────────────────────────
+
+const formatPrice = (n) => new Intl.NumberFormat('ru-RU').format(n) + ' ₽';
+
+const seriesById  = (id) => SERIES.find((s) => s.id === id);
+const subjectById = (id) => SUBJECTS.find((c) => c.id === id);
+const catById     = (id) => SUBJECTS.find((c) => c.id === id);
+const artworkById = (id) => ARTWORKS.find((a) => a.id === id);
+const featuredArtworks = () => ARTWORKS.filter((a) => a.featured);
+const availableCount   = () => ARTWORKS.filter((a) => a.status === 'available').length;
+
+// ─────────────────────────────────────────────────────────────
+// О художнице
+// ─────────────────────────────────────────────────────────────
+
+const ABOUT = {
+  name: 'Mila Bezú',
+  alias: 'Мила Бэзу',
+  full: 'Mila Bezú · Мила Бэзу',
+  city: 'Москва',
+  studio: 'Студия — Москва · по записи',
+
+  tagline: 'Живопись маслом — для тех, кто понимает, как картина живёт в пространстве.',
+
+  short: [
+    'Художник-живописец из Москвы. 15 лет практики масляной живописи. ' +
+    'Образование в области дизайна интерьера определяет особый подход — ' +
+    'каждая работа создаётся с пониманием того, как она будет жить в реальном пространстве.',
+
+    'Серии «Улицы мира» и монохромное направление — пейзажи и натюрморты, ' +
+    'написанные по мотивам собственных путешествий и творческих исследований.',
+  ],
+
+  bio: [
+    'Художник-живописец из Москвы. Более 15 лет практики масляной живописи.',
+
+    'Образование в области дизайна интерьера определяет особый подход к работе. ' +
+    'Это не «вторая профессия» — это профессиональное понимание пространства, ' +
+    'цвета и композиции в контексте реальной среды. Каждая работа создаётся ' +
+    'с мыслью о том, как она будет жить в комнате — рядом с каким светом, ' +
+    'какой мебелью, какими стенами.',
+
+    'Творческая практика основана на авторских путешествиях. ' +
+    'Каждая серия рождается из непосредственного контакта с местом — ' +
+    'его светом, архитектурой, повседневной атмосферой.',
+
+    'Серия «Улицы мира» — городские пейзажи Греции, Франции, Камбоджи, Вьетнама, ' +
+    'написанные по живым впечатлениям. Серия «Монохромная» — морские волны и ' +
+    'горные пейзажи в чёрно-белом решении: опыт работы с формой и ритмом без цвета ' +
+    'как самостоятельная художественная задача. Серия «Тихая сила» — ботанический ' +
+    'реализм и пейзажи, в которых природа пишется как сила, не нуждающаяся в громкости.',
+
+    'Каждая работа — в единственном экземпляре. С авторской подписью и фирменным ' +
+    'сертификатом подлинности. К работе прилагается открытка из страны или места, ' +
+    'вдохновившего серию, с личным посланием художника.',
+
+    'Параллельно развивается монохромное направление — продолжение исследования ' +
+    'формы, света и ритма как основных выразительных средств живописи.',
+  ],
+
+  studio_note:
+    'Студия — Москва. Картины пишутся на заказ от 4 до 10 недель: ' +
+    'после знакомства с пространством, для которого предназначена работа.',
+
+  ritual: [
+    { icon: '◆', label: 'Авторская подпись',     note: 'Лицевая сторона работы' },
+    { icon: '◇', label: 'Фирменный сертификат',   note: 'С номером и датой создания' },
+    { icon: '◆', label: 'Стильная упаковка',      note: 'Зелёная коробка M.Bez с золотом' },
+    { icon: '◇', label: 'Открытка из страны',     note: 'С личным посланием художника' },
+  ],
+
+  contacts: {
+    email:     'milabezu.art@gmail.com',
+    phone:     '+7 916 764 10 39',
+    instagram: 'm.bezu_art',
+    telegram:  'mbezu_art',
+    vk:        'mbezu_art',
+  },
+};
+
+Object.assign(window, {
+  CATEGORIES, SUBJECTS, SERIES, ARTWORKS, ABOUT,
+  formatPrice, seriesById, catById, subjectById, artworkById,
+  featuredArtworks, availableCount,
+});
+
+/* ── 2/8 · tilda-adapter (TILDA_IMAGES + PaintingPlate v2) ──── */
+// ═══════════════════════════════════════════════════════════
+// Tilda adapter — TILDA_IMAGES + imageOf() + multipage routing
+// Вставляется ПОСЛЕ data.jsx и atoms.jsx, заменяет PaintingPlate
+// ═══════════════════════════════════════════════════════════
+
+// TILDA CDN URLs для 19 работ
+const TILDA_IMAGES = {
+  'MN-01': {  // MN-01 Wave sepia [flagship]
+    sm:   'https://static.tildacdn.com/tild6434-3665-4932-b932-363536623234/mn-01-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3036-6238-4636-b261-653033643666/mn-01-md.jpg',
+    full: 'https://static.tildacdn.com/tild6461-3636-4431-a538-366166646263/mn-01.jpg',
+  },
+  'MN-02': {  // MN-02 Вершина
+    sm:   'https://static.tildacdn.com/tild3731-6337-4562-b236-646362333761/mn-02-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3638-3061-4835-a264-646433393361/mn-02-md.jpg',
+    full: 'https://static.tildacdn.com/tild6235-3539-4766-b965-666430363138/mn-02.jpg',
+  },
+  'MN-03': {  // MN-03 Шторм [unconfirmed]
+    sm:   'https://static.tildacdn.com/tild3964-3463-4433-b937-653566316634/mn-03-sm.jpg',
+    md:   'https://static.tildacdn.com/tild6235-6261-4365-a361-333763383237/mn-03-md.jpg',
+    full: 'https://static.tildacdn.com/tild3334-6630-4130-a239-326366663638/mn-03.jpg',
+  },
+  'MN-04': {  // MN-04 Перевал
+    sm:   'https://static.tildacdn.com/tild6364-6630-4362-b937-633431623932/mn-04-sm.jpg',
+    md:   'https://static.tildacdn.com/tild6166-3661-4334-a131-356365306137/mn-04-md.jpg',
+    full: 'https://static.tildacdn.com/tild3661-3534-4533-a466-646564323631/mn-04.jpg',
+  },
+  'MN-05': {  // MN-05 Камни на берегу
+    sm:   'https://static.tildacdn.com/tild3932-3063-4761-a537-613133313532/mn-05-sm.jpg',
+    md:   'https://static.tildacdn.com/tild6131-3464-4330-b937-303838363538/mn-05-md.jpg',
+    full: 'https://static.tildacdn.com/tild3863-3565-4863-b164-323035623535/mn-05.jpg',
+  },
+  'MN-06': {  // MN-06 Shell · Ракушка
+    sm:   'https://static.tildacdn.com/tild3632-3939-4235-b436-346534353338/mn-06-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3436-3863-4638-b265-663565626431/mn-06-md.jpg',
+    full: 'https://static.tildacdn.com/tild6262-3265-4063-b664-643761353137/mn-06.jpg',
+  },
+  'ST-03': {  // ST-03 Франция. Лаванда
+    sm:   'https://static.tildacdn.com/tild6336-3332-4666-b030-633762666262/st-03-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3238-3832-4532-b865-313461353238/st-03-md.jpg',
+    full: 'https://static.tildacdn.com/tild3032-6637-4463-a334-666136336130/st-03.jpg',
+  },
+  'ST-04': {  // ST-04 Le Bouquineur
+    sm:   'https://static.tildacdn.com/tild6464-6364-4333-a134-373736613764/st-04-sm.jpg',
+    md:   'https://static.tildacdn.com/tild6231-3262-4562-b163-633835343561/st-04-md.jpg',
+    full: 'https://static.tildacdn.com/tild3637-3037-4830-b938-333831643133/st-04.jpg',
+  },
+  'ST-05': {  // ST-05 Ангкор-Ват [flagship]
+    sm:   'https://static.tildacdn.com/tild3364-3564-4836-b162-303865313262/st-05-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3435-3262-4336-b262-366537316265/st-05-md.jpg',
+    full: 'https://static.tildacdn.com/tild3431-3965-4365-a566-353234623362/st-05.jpg',
+  },
+  'ST-06': {  // ST-06 Рисовое поле · Вьетнам
+    sm:   'https://static.tildacdn.com/tild3637-3135-4461-b163-636165623535/st-06-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3536-3661-4265-b665-386265663832/st-06-md.jpg',
+    full: 'https://static.tildacdn.com/tild6466-3831-4666-b131-653431316539/st-06.jpg',
+  },
+  'ST-07': {  // ST-07 Крыши старого города
+    sm:   'https://static.tildacdn.com/tild3763-3965-4330-a362-343462396538/st-07-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3033-3864-4464-b538-336362366630/st-07-md.jpg',
+    full: 'https://static.tildacdn.com/tild6438-6631-4633-b136-663437626362/st-07.jpg',
+  },
+  'ST-08': {  // ST-08 Обидуш · Португалия [unconfirmed-which-of-3-obidos]
+    sm:   'https://static.tildacdn.com/tild3339-6133-4862-a135-306439623339/st-08-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3261-3339-4331-b566-353039303165/st-08-md.jpg',
+    full: 'https://static.tildacdn.com/tild6466-3736-4038-b936-616365623531/st-08.jpg',
+  },
+  'TD-01': {  // TD-01 Sands · Дюны
+    sm:   'https://static.tildacdn.com/tild3337-6666-4636-b436-356461633462/td-01-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3966-3731-4132-b065-323234316130/td-01-md.jpg',
+    full: 'https://static.tildacdn.com/tild3633-6132-4837-b663-643537336337/td-01.jpg',
+  },
+  'TD-02': {  // TD-02 Hibiscus [flagship]
+    sm:   'https://static.tildacdn.com/tild6332-3038-4266-a231-663437613932/td-02-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3063-3662-4837-b737-313433356334/td-02-md.jpg',
+    full: 'https://static.tildacdn.com/tild6130-6366-4134-a465-373137663533/td-02.jpg',
+  },
+  'TS-02': {  // TS-02 Зеркало леса
+    sm:   'https://static.tildacdn.com/tild3432-6264-4131-b966-616237366664/ts-02-sm.jpg',
+    md:   'https://static.tildacdn.com/tild6132-6330-4761-a230-343261323539/ts-02-md.jpg',
+    full: 'https://static.tildacdn.com/tild6233-3739-4935-b266-646432333563/ts-02.jpg',
+  },
+  'TS-03': {  // TS-03 Waterlilies · Кувшинки
+    sm:   'https://static.tildacdn.com/tild6362-6432-4439-b936-306332363631/ts-03-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3738-6163-4362-b637-633330313539/ts-03-md.jpg',
+    full: 'https://static.tildacdn.com/tild3932-3538-4238-a165-656339386364/ts-03.jpg',
+  },
+  'TS-04': {  // TS-04 Тропические листья
+    sm:   'https://static.tildacdn.com/tild3534-3637-4066-b865-633263656439/ts-04-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3165-6639-4733-b138-633833623536/ts-04-md.jpg',
+    full: 'https://static.tildacdn.com/tild3561-3635-4663-b139-333130613034/ts-04.jpg',
+  },
+  'TS-05': {  // TS-05 Дождь пошёл
+    sm:   'https://static.tildacdn.com/tild6335-6634-4265-b837-613131383662/ts-05-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3634-3632-4863-a434-393665303263/ts-05-md.jpg',
+    full: 'https://static.tildacdn.com/tild3231-6139-4538-a337-303530643034/ts-05.jpg',
+  },
+  'TS-06': {  // TS-06 Бамбук
+    sm:   'https://static.tildacdn.com/tild6463-3665-4433-b366-393165393736/ts-06-sm.jpg',
+    md:   'https://static.tildacdn.com/tild3531-3237-4738-b939-623436303630/ts-06-md.jpg',
+    full: 'https://static.tildacdn.com/tild6239-6236-4863-a231-316263643936/ts-06.jpg',
+  },
+};
+
+// imageOf(art, size) — получить URL фото работы
+function imageOf(art, size) {
+  size = size || 'md';
+  if (!art || !art.id) return '';
+  const set = TILDA_IMAGES[art.id];
+  return set ? (set[size] || set.md || '') : '';
+}
+
+// ═══════════════════════════════════════════════════════════
+// PaintingPlate v2 — с поддержкой реальных фото с Tilda CDN
+// Если фото есть в TILDA_IMAGES — рендерим <img>, иначе fallback на градиент
+// ═══════════════════════════════════════════════════════════
+function PaintingPlate({ art, fit, ratio, showMeta = true, style, onClick }) {
+  if (!art) return null;
+  const url = imageOf(art, 'md');
+  const isTondo = art.series === 'tondi';
+  const aspectRatio = ratio || (fit === 'bare' ? undefined : `${art.w} / ${art.h}`);
+
+  // Если есть фото — рендерим <img>
+  if (url) {
+    return (
+      <div 
+        style={{
+          width: '100%',
+          aspectRatio,
+          borderRadius: isTondo ? '50%' : 'var(--r-md)',
+          overflow: 'hidden',
+          boxShadow: 'var(--shadow-md)',
+          cursor: onClick ? 'pointer' : 'default',
+          background: '#d9cfba',
+          ...style,
+        }}
+        onClick={onClick}
+      >
+        <img 
+          src={url}
+          alt={art.title || art.id}
+          loading="lazy"
+          referrerPolicy="no-referrer"
+          crossOrigin="anonymous"
+          onError={(e) => {
+            // Если фото не загрузилось — скрываем img, чтобы был виден bg плитки
+            e.currentTarget.style.display = 'none';
+            const parent = e.currentTarget.parentElement;
+            if (parent && !parent.dataset.failover) {
+              parent.dataset.failover = '1';
+              const palette = (art.palette && art.palette.length === 2) ? art.palette : ['#d9cfba', '#5a4a36'];
+              parent.style.background = `linear-gradient(135deg, ${palette[0]} 0%, ${palette[1]} 100%)`;
+            }
+          }}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+            transition: 'transform .6s cubic-bezier(.2,.7,.2,1)',
+          }}
+        />
+      </div>
+    );
+  }
+
+  // Fallback — градиент-плашка (для ST-01, ST-02, TS-01 пока без фото)
+  const [c1, c2] = art.palette || ['#d9cfba', '#5a4a36'];
+  const baseStyle = {
+    aspectRatio,
+    width: '100%',
+    background: `linear-gradient(135deg, ${c1} 0%, ${c2} 100%)`,
+    borderRadius: isTondo ? '50%' : 'var(--r-md)',
+    boxShadow: 'var(--shadow-md)',
+    cursor: onClick ? 'pointer' : 'default',
+    ...style,
+  };
+  return (
+    <div className="ph-art" style={baseStyle} onClick={onClick}>
+      {showMeta && art.id && (
+        <div className="ph-meta">
+          <span>[{art.id}]</span>
+          <span>{art.w}×{art.h} см</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+Object.assign(window, { TILDA_IMAGES, imageOf, PaintingPlate });
+
+/* ── 3/8 · atoms.jsx (modified — без PaintingPlate) ──────── */
+// ─────────────────────────────────────────────────────────────
+// atoms.jsx — общие компоненты сайта M.Bez.
+// Maison-палитра, Inter Tight, увеличенные радиусы и мягкие тени.
+// ─────────────────────────────────────────────────────────────
+
+// ── Eyebrow (mono-надбровь над заголовками) ───────────────────
+function Eyebrow({ children, accent, style }) {
+  return (
+    <span className={'eyebrow' + (accent ? ' accent' : '')} style={style}>
+      {children}
+    </span>
+  );
+}
+
+// ── Cat. No — каталожный индекс (mono) ────────────────────────
+function CatNo({ n, total }) {
+  const pad = String(n).padStart(3, '0');
+  return (
+    <span className="cat-no">
+      cat. № {pad}{total ? ` / ${String(total).padStart(3, '0')}` : ''}
+    </span>
+  );
+}
+
+// ── Breadcrumbs ───────────────────────────────────────────────
+function Breadcrumbs({ items }) {
+  return (
+    <nav style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', fontSize: 12 }} className="mono">
+      {items.map((it, i) => (
+        <React.Fragment key={i}>
+          {i > 0 && <span style={{ color: 'var(--ink-3)' }}>/</span>}
+          {it.onClick ? (
+            <a href="#" onClick={(e) => { e.preventDefault(); it.onClick(); }}
+               style={{
+                 color: i === items.length - 1 ? 'var(--ink)' : 'var(--ink-3)',
+                 textDecoration: 'none',
+                 letterSpacing: '.14em', textTransform: 'uppercase',
+                 fontWeight: i === items.length - 1 ? 500 : 400,
+               }}
+               className="uh">
+              {it.label}
+            </a>
+          ) : (
+            <span style={{
+              color: i === items.length - 1 ? 'var(--ink)' : 'var(--ink-3)',
+              letterSpacing: '.14em', textTransform: 'uppercase',
+              fontWeight: i === items.length - 1 ? 500 : 400,
+            }}>{it.label}</span>
+          )}
+        </React.Fragment>
+      ))}
+    </nav>
+  );
+}
+
+// ── PageTitle — кикер + крупный H1 + лид ──────────────────────
+function PageTitle({ kicker, title, lead, align }) {
+  return (
+    <header style={{ textAlign: align || 'left' }}>
+      {kicker && <div style={{ marginBottom: 20 }}><Eyebrow accent>{kicker}</Eyebrow></div>}
+      <h1 className="display resp-h1" style={{
+        margin: 0,
+        fontSize: 'clamp(44px, 7vw, 96px)',
+        lineHeight: 0.95,
+        fontWeight: 500,
+        letterSpacing: '-.03em',
+      }}>{title}</h1>
+      {lead && (
+        <p style={{
+          margin: '28px 0 0', maxWidth: 640,
+          fontSize: 17, lineHeight: 1.55,
+          color: 'var(--ink-2)', fontWeight: 300,
+        }}>{lead}</p>
+      )}
+    </header>
+  );
+}
+
+// ── StatusTag — индикатор available / reserved / sold ─────────
+function StatusTag({ status }) {
+  const map = {
+    available: { label: 'в наличии', c1: 'var(--accent)', c2: 'var(--bg)' },
+    reserved:  { label: 'забронировано', c1: 'var(--ink-3)', c2: 'var(--bg)' },
+    sold:      { label: 'продано', c1: 'var(--ink)', c2: 'var(--bg)' },
+  };
+  const s = map[status] || map.available;
+  return (
+    <span style={{
+      display: 'inline-flex', alignItems: 'center', gap: 8,
+      padding: '6px 14px',
+      background: s.c1, color: s.c2,
+      borderRadius: 'var(--r-pill)',
+      fontFamily: 'var(--mono)', fontSize: 10,
+      letterSpacing: '.18em', textTransform: 'uppercase',
+      fontWeight: 500,
+    }}>{s.label}</span>
+  );
+}
+
+// ── ArtCard — карточка работы для каталога/сетки ──────────────
+function ArtCard({ art, onOpen, index, total }) {
+  const series = seriesById(art.series);
+  return (
+    <article className="lift" style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 14 }}
+             onClick={() => onOpen && onOpen(art.id)}>
+      <div style={{ position: 'relative' }}>
+        <PaintingPlate art={art} fit="bare" style={{ aspectRatio: '3 / 4' }} />
+        {art.featured && (
+          <span style={{
+            position: 'absolute', top: 14, left: 14,
+            background: 'var(--accent)', color: 'var(--bg)',
+            padding: '6px 12px', borderRadius: 'var(--r-pill)',
+            fontFamily: 'var(--mono)', fontSize: 9.5,
+            letterSpacing: '.2em', textTransform: 'uppercase', fontWeight: 600,
+          }}>Флагман</span>
+        )}
+      </div>
+      <div style={{ paddingTop: 4 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, marginBottom: 8 }}>
+          {index != null && <CatNo n={index} total={total} />}
+          <span className="cat-no" style={{ color: series?.color, opacity: .8 }}>
+            {series?.title?.split(' ')[0] || ''}
+          </span>
+        </div>
+        <h3 className="display" style={{ margin: '4px 0 6px', fontSize: 22, fontWeight: 500, letterSpacing: '-.01em' }}>
+          {art.title}
+        </h3>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10, fontSize: 13, color: 'var(--ink-2)' }}>
+          <span>{art.w}×{art.h} см · {art.year}</span>
+          <span style={{ fontWeight: 500, color: 'var(--ink)' }}>{formatPrice(art.price)}</span>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+// ── ArtRow — строка для view=list в каталоге ──────────────────
+function ArtRow({ art, onOpen, index, total }) {
+  const series = seriesById(art.series);
+  return (
+    <article
+      className="resp-list-row"
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '80px 60px 1fr 1fr auto',
+        gap: 28, padding: '20px 0',
+        borderTop: '1px solid var(--rule-soft)',
+        alignItems: 'center', cursor: 'pointer',
+      }}
+      onClick={() => onOpen && onOpen(art.id)}>
+      <div style={{ width: 80 }}>
+        <PaintingPlate art={art} fit="bare" style={{ aspectRatio: '1', borderRadius: 'var(--r-sm)' }} showMeta={false} />
+      </div>
+      <CatNo n={index} total={total} />
+      <div>
+        <h3 className="display" style={{ margin: 0, fontSize: 20, fontWeight: 500, letterSpacing: '-.01em' }}>{art.title}</h3>
+        <div className="cat-no" style={{ marginTop: 6, color: series?.color }}>{series?.title} · {art.year}</div>
+      </div>
+      <div className="resp-list-hide" style={{ fontSize: 14, color: 'var(--ink-2)' }}>
+        {art.w}×{art.h} см · {art.medium}
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+        <span className="display" style={{ fontSize: 18, fontWeight: 500 }}>{formatPrice(art.price)}</span>
+        <span style={{
+          width: 32, height: 32, borderRadius: 'var(--r-pill)',
+          border: '1px solid var(--rule)',
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        }}>→</span>
+      </div>
+    </article>
+  );
+}
+
+// Глобальная экспозиция компонентов
+Object.assign(window, {
+  Eyebrow, CatNo, Breadcrumbs, PageTitle, StatusTag,
+  PaintingPlate, ArtCard, ArtRow,
+});
+
+/* ── 4/8 · ar.jsx ─────────────────────────────────────── */
+// ─────────────────────────────────────────────────────────────
+// ar.jsx — AR-функционал на базе <model-viewer>.
+// AR Quick Look (iOS) + Scene Viewer (Android) + 3D на desktop.
+// ─────────────────────────────────────────────────────────────
+
+// ── Detect platform ──────────────────────────────────────────
+function detectPlatform() {
+  if (typeof navigator === 'undefined') return 'unknown';
+  const ua = navigator.userAgent || '';
+  if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) return 'ios';
+  if (/android/i.test(ua)) return 'android';
+  return 'desktop';
+}
+
+function useArSupport() {
+  const [state, setState] = React.useState({ platform: 'unknown', ready: false });
+  React.useEffect(() => { setState({ platform: detectPlatform(), ready: true }); }, []);
+  return state;
+}
+
+// ── Build asset paths (placeholder для финальных файлов) ─────
+// Когда у нас будут реальные .glb / .usdz файлы — положим их в /assets/ar/<id>.{glb|usdz}
+function arAssets(art) {
+  if (!art) return null;
+  const base = `assets/ar/${art.id.toLowerCase()}`;
+  return {
+    glb:  `${base}.glb`,    // Android Scene Viewer + desktop 3D
+    usdz: `${base}.usdz`,   // iOS Quick Look
+    ready: false,           // → true когда файлы реально лежат рядом
+    title: art.title,
+    artist: 'Mila Bezú',
+    w: art.w,
+    h: art.h,
+  };
+}
+
+// ── QR-код через бесплатный сервис (для desktop fallback) ───
+function qrUrl(url, size = 280) {
+  const u = encodeURIComponent(url);
+  return `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${u}&margin=0&color=2a2520&bgcolor=f5efe2`;
+}
+
+// ── ArViewer — обёртка над <model-viewer> ───────────────────
+function ArViewer({ art, style, autoRotate = true, controls = true }) {
+  const assets = arAssets(art);
+  if (!assets) return null;
+
+  // Fallback пока нет реальных .glb/.usdz — показываем placeholder
+  if (!assets.ready) {
+    return (
+      <div style={{
+        position: 'relative', width: '100%', height: '100%',
+        background: `linear-gradient(135deg, ${(art.palette || ['#d9cfba'])[0]}, ${(art.palette || ['#5a4a36','#5a4a36'])[1]})`,
+        borderRadius: 'var(--r-md)', overflow: 'hidden',
+        display: 'grid', placeItems: 'center',
+        ...style,
+      }}>
+        <div style={{ textAlign: 'center', color: 'rgba(245,239,226,.88)', padding: 32 }}>
+          <div className="mono" style={{ fontSize: 10, letterSpacing: '.32em', marginBottom: 14, opacity: .7 }}>
+            3D · AR-MODEL
+          </div>
+          <div className="display" style={{ fontSize: 28, fontWeight: 500, letterSpacing: '-.02em' }}>{art.title}</div>
+          <div className="mono" style={{ fontSize: 10, letterSpacing: '.18em', marginTop: 14, opacity: .7 }}>
+            {art.w} × {art.h} см · placeholder
+          </div>
+          <div className="mono" style={{
+            marginTop: 24, fontSize: 9.5, letterSpacing: '.16em',
+            padding: '6px 14px', background: 'rgba(0,0,0,.25)',
+            borderRadius: 'var(--r-pill)', display: 'inline-block',
+          }}>
+            ▶ AR-готовность: ждём .glb/.usdz
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Когда файлы готовы — рендерим настоящий model-viewer
+  return React.createElement('model-viewer', {
+    src: assets.glb,
+    'ios-src': assets.usdz,
+    alt: `${assets.title} — масло, ${art.w}×${art.h} см`,
+    ar: true,
+    'ar-modes': 'webxr scene-viewer quick-look',
+    'ar-scale': 'fixed',
+    'camera-controls': controls,
+    'auto-rotate': autoRotate,
+    'shadow-intensity': 0.8,
+    'environment-image': 'neutral',
+    poster: '',
+    style: { width: '100%', height: '100%', ...style },
+  });
+}
+
+// ── ArButton — кнопка-CTA «Попробовать на стене» ────────────
+function ArButton({ art, label, small }) {
+  const { platform, ready } = useArSupport();
+  const assets = arAssets(art);
+  if (!ready || !assets) return null;
+
+  const text = label || (platform === 'ios' ? 'Открыть на iPhone' :
+                         platform === 'android' ? 'Открыть на Android' :
+                         'Примерить на стене');
+
+  // На мобильном — нативная AR-ссылка (когда файлы готовы)
+  if (platform === 'ios' && assets.ready) {
+    return (
+      <a className="ar-btn" rel="ar" href={assets.usdz}>
+        <span className="ar-icon">▣</span>
+        <span>{text}</span>
+      </a>
+    );
+  }
+  if (platform === 'android' && assets.ready) {
+    const intent = `intent://arvr.google.com/scene-viewer/1.0?file=${encodeURIComponent(window.location.origin + '/' + assets.glb)}&mode=ar_preferred&title=${encodeURIComponent(assets.title)}#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;end;`;
+    return (
+      <a className="ar-btn" href={intent}>
+        <span className="ar-icon">▣</span>
+        <span>{text}</span>
+      </a>
+    );
+  }
+
+  // На desktop / при отсутствии файлов — кнопка-плашка
+  return (
+    <button
+      className="ar-btn"
+      onClick={() => {
+        const el = document.getElementById('ar-block');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }}
+      style={small ? { padding: '14px 22px', fontSize: 11 } : undefined}
+    >
+      <span className="ar-icon" style={small ? { width: 28, height: 28, fontSize: 12 } : undefined}>▣</span>
+      <span>{text}</span>
+    </button>
+  );
+}
+
+// ── QrBlock — QR + инструкция «Отсканируйте телефоном» ──────
+function QrBlock({ art }) {
+  const url = typeof window !== 'undefined'
+    ? `${window.location.origin}${window.location.pathname}?ar=${art.id}`
+    : '';
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: 28,
+      padding: 28,
+      background: 'var(--bg-card)',
+      borderRadius: 'var(--r-lg)',
+      border: '1px solid var(--rule-soft)',
+      boxShadow: 'var(--shadow-sm)',
+    }}>
+      <div style={{
+        width: 128, height: 128, flexShrink: 0,
+        background: 'var(--bg-card)', borderRadius: 'var(--r-md)',
+        padding: 8, border: '1px solid var(--rule-soft)',
+      }}>
+        <img src={qrUrl(url, 256)} alt="QR-код для открытия в AR"
+             style={{ width: '100%', height: '100%', display: 'block' }} />
+      </div>
+      <div>
+        <Eyebrow accent>На десктопе</Eyebrow>
+        <div className="display" style={{
+          fontSize: 18, fontWeight: 500, lineHeight: 1.3, marginTop: 10, letterSpacing: '-.005em',
+        }}>
+          Отсканируйте<br/>
+          камерой телефона
+        </div>
+        <div className="cat-no" style={{ marginTop: 10 }}>
+          Камера айфона или Android · откроет AR
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { detectPlatform, useArSupport, arAssets, ArViewer, ArButton, QrBlock });
+
+/* ── 5/8 · chrome.jsx ─────────────────────────────────── */
+// ─────────────────────────────────────────────────────────────
+// chrome.jsx — каркас сайта: TopBar / Footer / Marquee / ZeroBanner.
+// ─────────────────────────────────────────────────────────────
+
+// ── Логотип M.B — wordmark в Inter Tight ──────────────────────
+function LogoMB({ size = 32, onClick }) {
+  return (
+    <div onClick={onClick} style={{
+      display: 'inline-flex', flexDirection: 'column', alignItems: 'center',
+      lineHeight: 1, gap: 4, cursor: onClick ? 'pointer' : 'default',
+    }}>
+      <div className="display" style={{
+        fontSize: size, fontWeight: 500, letterSpacing: '-.02em',
+        color: 'var(--ink)', fontStyle: 'italic',
+      }}>M.Bez</div>
+      <div className="mono" style={{
+        fontSize: 8.5, letterSpacing: '.4em', textTransform: 'uppercase',
+        color: 'var(--ink-3)', fontWeight: 500,
+      }}>Maison · Moscou</div>
+    </div>
+  );
+}
+
+// ── ZeroBanner — тонкий «индекс выпуска» вверху ───────────────
+function ZeroBanner() {
+  const date = new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+  return (
+    <div className="resp-pad" style={{
+      padding: '12px 40px',
+      background: 'var(--bg-soft)',
+      borderBottom: '1px solid var(--rule-soft)',
+    }}>
+      <div style={{
+        maxWidth: 'var(--max)', margin: '0 auto',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 24, flexWrap: 'wrap',
+      }} className="eyebrow">
+        <span>Mila Bezú · Maison · est. 2010</span>
+        <span className="resp-hide" style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
+          <span style={{ width: 16, height: 1, background: 'var(--accent)' }} />
+          <span>19 работ · 3 серии · масло на холсте</span>
+          <span style={{ width: 16, height: 1, background: 'var(--accent)' }} />
+        </span>
+        <span>{date} · Moscou</span>
+      </div>
+    </div>
+  );
+}
+
+// ── TopBar — навигация и корзина ──────────────────────────────
+function TopBar({ route, go, cartCount }) {
+  const [scrolled, setScrolled] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const navItems = [
+    { id: 'catalog',    label: 'Каталог' },
+    { id: 'commission', label: 'На заказ' },
+    { id: 'about',      label: 'Художница' },
+    { id: 'tracking',   label: 'Статус заказа' },
+  ];
+
+  return (
+    <>
+      <ZeroBanner />
+      <header className="resp-pad" style={{
+        position: 'sticky', top: 0, zIndex: 50,
+        padding: scrolled ? '14px 40px' : '24px 40px',
+        background: scrolled ? 'rgba(237, 229, 214, 0.92)' : 'var(--bg)',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+        borderBottom: scrolled ? '1px solid var(--rule-soft)' : '1px solid transparent',
+        transition: 'all .25s cubic-bezier(.2,.7,.2,1)',
+      }}>
+        <div style={{
+          maxWidth: 'var(--max)', margin: '0 auto',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        }}>
+          <LogoMB size={28} onClick={() => go('home')} />
+
+          <nav className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
+            {navItems.map((n) => (
+              <a key={n.id} href="#" onClick={(e) => { e.preventDefault(); go(n.id); }}
+                 className="uh"
+                 style={{
+                   textDecoration: 'none', color: route === n.id ? 'var(--accent)' : 'var(--ink)',
+                   fontSize: 13, letterSpacing: '.1em', textTransform: 'uppercase',
+                   fontWeight: 500,
+                 }}>{n.label}</a>
+            ))}
+          </nav>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
+            <a href="#" onClick={(e) => { e.preventDefault(); go('cart'); }}
+               style={{
+                 textDecoration: 'none', color: 'var(--ink)',
+                 fontSize: 13, letterSpacing: '.1em', textTransform: 'uppercase',
+                 fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: 8,
+               }} className="hide-mobile">
+              Корзина {cartCount > 0 && (
+                <span style={{
+                  background: 'var(--accent)', color: 'var(--bg)',
+                  width: 22, height: 22, borderRadius: 'var(--r-pill)',
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 10, fontWeight: 600,
+                }}>{cartCount}</span>
+              )}
+            </a>
+            <button className="show-mobile" onClick={() => setMobileOpen(!mobileOpen)}
+                    style={{
+                      background: 'transparent', border: '1px solid var(--rule)',
+                      borderRadius: 'var(--r-pill)', padding: '10px 16px',
+                      fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.16em',
+                      textTransform: 'uppercase', color: 'var(--ink)', cursor: 'pointer',
+                    }}>
+              {mobileOpen ? 'Закрыть' : 'Меню'}{cartCount > 0 && ` · ${cartCount}`}
+            </button>
+          </div>
+        </div>
+
+        {mobileOpen && (
+          <nav className="show-mobile fade-in" style={{
+            marginTop: 18, padding: '20px 0', borderTop: '1px solid var(--rule-soft)',
+            display: 'flex', flexDirection: 'column', gap: 18,
+          }}>
+            {[...navItems, { id: 'cart', label: `Корзина${cartCount > 0 ? ` · ${cartCount}` : ''}` }].map((n) => (
+              <a key={n.id} href="#"
+                 onClick={(e) => { e.preventDefault(); go(n.id); setMobileOpen(false); }}
+                 style={{
+                   textDecoration: 'none', color: route === n.id ? 'var(--accent)' : 'var(--ink)',
+                   fontSize: 18, letterSpacing: '-.005em', fontWeight: 500,
+                 }} className="display">{n.label}</a>
+            ))}
+          </nav>
+        )}
+      </header>
+    </>
+  );
+}
+
+// ── Marquee — бегущая строка ──────────────────────────────────
+function Marquee({ items, big }) {
+  const stream = [...items, ...items, ...items];
+  return (
+    <div style={{
+      padding: big ? '40px 0' : '20px 0',
+      borderTop: '1px solid var(--rule-soft)',
+      borderBottom: '1px solid var(--rule-soft)',
+      overflow: 'hidden',
+      background: 'var(--bg)',
+    }}>
+      <div style={{
+        display: 'flex', gap: 56,
+        animation: `marquee ${big ? 48 : 32}s linear infinite`,
+        whiteSpace: 'nowrap',
+      }}>
+        {stream.map((t, i) => (
+          <span key={i} style={{
+            fontFamily: 'var(--display)',
+            fontSize: big ? 'clamp(36px, 5vw, 76px)' : 13,
+            fontWeight: big ? 500 : 500,
+            letterSpacing: big ? '-.025em' : '.16em',
+            textTransform: big ? 'none' : 'uppercase',
+            color: i % 2 === 0 ? 'var(--ink)' : 'var(--accent)',
+            fontStyle: i % 2 === 0 ? 'normal' : 'italic',
+          }}>{t}</span>
+        ))}
+      </div>
+      <style>{`@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-33.33%); } }`}</style>
+    </div>
+  );
+}
+
+// ── Footer ────────────────────────────────────────────────────
+function Footer({ go }) {
+  return (
+    <footer className="resp-pad" style={{
+      background: 'var(--bg-deep)',
+      color: 'var(--bg-cream)',
+      padding: '100px 40px 40px',
+      marginTop: 80,
+    }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div className="resp-stack" style={{
+          display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 60,
+          paddingBottom: 60, borderBottom: '1px solid rgba(245, 239, 226, 0.18)',
+        }}>
+          <div>
+            <div className="display" style={{
+              fontSize: 56, fontWeight: 500, letterSpacing: '-.03em', lineHeight: 1,
+              color: 'var(--bg-cream)', fontStyle: 'italic',
+            }}>M.Bez</div>
+            <p style={{ marginTop: 24, maxWidth: 360, fontSize: 14, lineHeight: 1.6, color: 'rgba(245, 239, 226, .72)' }}>
+              Mila Bezú — художник-живописец из Москвы. Интерьерная живопись маслом, на заказ и в наличии.
+            </p>
+            <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
+              <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener"
+                 style={{
+                   color: 'var(--bg-cream)', textDecoration: 'none',
+                   padding: '10px 18px', border: '1px solid rgba(245,239,226,.3)',
+                   borderRadius: 'var(--r-pill)', fontSize: 12, letterSpacing: '.12em',
+                   textTransform: 'uppercase',
+                 }}>Telegram</a>
+              <a href={`https://instagram.com/${ABOUT.contacts.instagram}`} target="_blank" rel="noopener"
+                 style={{
+                   color: 'var(--bg-cream)', textDecoration: 'none',
+                   padding: '10px 18px', border: '1px solid rgba(245,239,226,.3)',
+                   borderRadius: 'var(--r-pill)', fontSize: 12, letterSpacing: '.12em',
+                   textTransform: 'uppercase',
+                 }}>Instagram</a>
+              <a href={`https://vk.com/${ABOUT.contacts.vk}`} target="_blank" rel="noopener"
+                 style={{
+                   color: 'var(--bg-cream)', textDecoration: 'none',
+                   padding: '10px 18px', border: '1px solid rgba(245,239,226,.3)',
+                   borderRadius: 'var(--r-pill)', fontSize: 12, letterSpacing: '.12em',
+                   textTransform: 'uppercase',
+                 }}>VK</a>
+            </div>
+          </div>
+
+          <div>
+            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .5)', marginBottom: 20 }}>Магазин</div>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[['catalog', 'Каталог'], ['commission', 'На заказ'], ['cart', 'Корзина'], ['tracking', 'Отследить заказ']].map(([id, label]) => (
+                <li key={id}>
+                  <a href="#" onClick={(e) => { e.preventDefault(); go(id); }}
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}
+                     className="uh">{label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .5)', marginBottom: 20 }}>Студия</div>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <li><a href="#" onClick={(e) => { e.preventDefault(); go('about'); }} className="uh"
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>О художнице</a></li>
+              <li><span style={{ color: 'rgba(245,239,226,.5)', fontSize: 14 }}>Школа · скоро</span></li>
+              <li><span style={{ color: 'rgba(245,239,226,.5)', fontSize: 14 }}>Доставка и оплата</span></li>
+              <li><span style={{ color: 'rgba(245,239,226,.5)', fontSize: 14 }}>Сертификат подлинности</span></li>
+            </ul>
+          </div>
+
+          <div>
+            <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .5)', marginBottom: 20 }}>Связь</div>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, fontSize: 14 }}>
+              <li><a href={`mailto:${ABOUT.contacts.email}`} className="uh"
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none' }}>{ABOUT.contacts.email}</a></li>
+              <li><a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} className="uh"
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none' }}>{ABOUT.contacts.phone}</a></li>
+              <li style={{ color: 'rgba(245,239,226,.5)' }}>Москва · по записи</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style={{
+          paddingTop: 40, display: 'flex', justifyContent: 'space-between',
+          alignItems: 'center', flexWrap: 'wrap', gap: 16,
+        }}>
+          <span className="mono" style={{ fontSize: 10.5, letterSpacing: '.22em', color: 'rgba(245,239,226,.5)' }}>
+            © M.BEZ STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ
+          </span>
+          <span className="mono" style={{ fontSize: 10.5, letterSpacing: '.22em', color: 'rgba(245,239,226,.5)' }}>
+            ХУДОЖНИК · MILA BEZÚ · MOSCOU
+          </span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+Object.assign(window, { TopBar, Footer, Marquee, LogoMB });
+
+/* ── 6/8 · page-home.jsx ──────────────────────────────── */
+// ─────────────────────────────────────────────────────────────
+// page-home.jsx — главная M.Bez.
+// Hero крупный (Editorial Dark) + Series + Manifest + InStock +
+// StudioBanner (примерка) + Packaging + Stats + Process + CTA + Newsletter.
+// ─────────────────────────────────────────────────────────────
+
+function heroArt() { return featuredArtworks()[0] || ARTWORKS[0]; }
+
+// ── HERO Editorial: крупная типографика 200px / lineheight 0.86 ──
+function HeroEditorial({ go }) {
+  const hero = heroArt();
+  return (
+    <section className="resp-pad" style={{
+      padding: '80px 40px 120px',
+      position: 'relative', overflow: 'hidden',
+    }}>
+      {/* Atmospheric terracotta glow */}
+      <div style={{
+        position: 'absolute', top: '-15%', right: '-10%',
+        width: 600, height: 600, borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(184, 92, 58, 0.10), transparent 60%)',
+        animation: 'glow 10s ease-in-out infinite',
+        pointerEvents: 'none', zIndex: 0,
+      }} />
+
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto', position: 'relative' }}>
+        {/* Ribbon: issue + featured info */}
+        <div className="reveal r1" style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          gap: 24, marginBottom: 48, flexWrap: 'wrap',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+            <Eyebrow accent>Saison printemps–été · MMXXVI</Eyebrow>
+          </div>
+          <Eyebrow>œuvre du jour · {hero.id} · {hero.w}×{hero.h} см · {formatPrice(hero.price)}</Eyebrow>
+        </div>
+
+        {/* Big hero — text left, painting right */}
+        <div className="resp-stack" style={{
+          display: 'grid', gridTemplateColumns: '1.05fr .95fr',
+          gap: 80, alignItems: 'center',
+        }}>
+          <div style={{ position: 'relative', zIndex: 2 }}>
+            <h1 className="display reveal r2 resp-display-md" style={{
+              margin: 0,
+              fontSize: 'clamp(64px, 11vw, 200px)',
+              lineHeight: 0.86,
+              fontWeight: 500,
+              letterSpacing: '-.04em',
+            }}>
+              Картины,<br/>
+              <span className="italic" style={{
+                color: 'var(--accent)', fontStyle: 'italic',
+                position: 'relative', display: 'inline-block',
+              }}>живущие</span><br/>
+              в&nbsp;комнатах.
+            </h1>
+            <p className="reveal r3" style={{
+              margin: '40px 0 0', maxWidth: 460,
+              fontSize: 18, lineHeight: 1.55,
+              color: 'var(--ink-2)', fontWeight: 300,
+            }}>{ABOUT.tagline}</p>
+            <div className="reveal r4" style={{ display: 'flex', gap: 14, marginTop: 36, flexWrap: 'wrap' }}>
+              <button className="btn btn-solid" onClick={() => go('catalog')}>Смотреть каталог →</button>
+              <button className="btn btn-ghost" onClick={() => go('commission')}>Заказать картину</button>
+            </div>
+
+            {/* meta-stripe */}
+            <div className="reveal r5" style={{
+              display: 'flex', gap: 48, marginTop: 56, paddingTop: 32,
+              borderTop: '1px solid var(--rule-soft)', flexWrap: 'wrap',
+            }}>
+              {[
+                [String(availableCount()), 'в наличии'],
+                ['4–10', 'недель на заказ'],
+                ['15+', 'лет практики'],
+                ['РФ', 'доставка'],
+              ].map(([n, l]) => (
+                <div key={l}>
+                  <div className="display" style={{
+                    fontSize: 40, fontWeight: 500, lineHeight: 1,
+                    letterSpacing: '-.03em', color: 'var(--accent)',
+                  }}>{n}</div>
+                  <div className="eyebrow" style={{ marginTop: 8 }}>{l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Painting on the right */}
+          <div className="reveal r3" style={{ position: 'relative' }}>
+            <div className="display" style={{
+              position: 'absolute', right: -10, top: -80,
+              fontSize: 'clamp(140px, 18vw, 280px)',
+              color: 'var(--accent)', opacity: .08,
+              fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1,
+              pointerEvents: 'none', zIndex: 0, fontStyle: 'italic',
+            }}>M.B</div>
+            <figure style={{ margin: 0, position: 'relative', zIndex: 1, cursor: 'pointer' }}
+                    className="drift" onClick={() => go('painting', { id: hero.id })}>
+              <PaintingPlate art={hero} fit="bare" style={{
+                aspectRatio: '4 / 5', borderRadius: 'var(--r-md)',
+                boxShadow: 'var(--shadow-lg)',
+              }} showMeta={false} />
+            </figure>
+            <figcaption style={{
+              position: 'absolute', left: -28, bottom: -36,
+              background: 'var(--bg-card)',
+              padding: '20px 28px',
+              display: 'flex', flexDirection: 'column', gap: 6,
+              borderRadius: 'var(--r-pill)',
+              border: '1px solid var(--rule-soft)',
+              boxShadow: 'var(--shadow-md)',
+              zIndex: 2,
+            }}>
+              <span className="cat-no">[{hero.id}] · {hero.year} · {hero.w}×{hero.h} см</span>
+              <span className="display" style={{ fontSize: 22, fontWeight: 500, letterSpacing: '-.01em' }}>
+                {hero.title}
+              </span>
+            </figcaption>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── HERO Center ───────────────────────────────────────────────
+function HeroCenter({ go }) {
+  const fts = featuredArtworks();
+  return (
+    <section className="resp-pad" style={{ padding: '120px 40px 80px', textAlign: 'center' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div className="reveal r1"><Eyebrow accent>15+ лет — Москва</Eyebrow></div>
+        <h1 className="display reveal r2 resp-display-md" style={{
+          margin: '32px 0 0',
+          fontSize: 'clamp(52px, 10vw, 168px)',
+          lineHeight: 0.92,
+          fontWeight: 500,
+          letterSpacing: '-.035em',
+        }}>
+          Тихая <span className="italic" style={{ color: 'var(--accent)' }}>живопись</span>
+          <br/>для светлых комнат.
+        </h1>
+        <p className="reveal r3" style={{
+          margin: '36px auto 0', maxWidth: 540,
+          fontSize: 18, lineHeight: 1.55,
+          color: 'var(--ink-2)', fontWeight: 300,
+        }}>
+          Авторские интерьерные работы маслом. В наличии и&nbsp;на&nbsp;заказ — для дома, бюро и&nbsp;архитектурных проектов.
+        </p>
+        <div className="reveal r4" style={{ display: 'flex', gap: 14, marginTop: 44, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <button className="btn btn-solid" onClick={() => go('catalog')}>Каталог · {ARTWORKS.length}</button>
+          <button className="btn btn-ghost" onClick={() => go('commission')}>На заказ</button>
+        </div>
+      </div>
+      <div className="resp-stack-3 reveal r5" style={{
+        marginTop: 100, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36,
+        maxWidth: 'var(--max)', marginInline: 'auto',
+      }}>
+        {fts.map((a) => (
+          <div key={a.id} className="lift" style={{ cursor: 'pointer' }}
+               onClick={() => go('painting', { id: a.id })}>
+            <PaintingPlate art={a} fit="bare" style={{ aspectRatio: '4 / 5' }} showMeta={false} />
+            <div className="cat-no" style={{ marginTop: 14, textAlign: 'left' }}>
+              {a.title} · {a.w}×{a.h} см
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── HERO Split ────────────────────────────────────────────────
+function HeroSplit({ go }) {
+  const hero = featuredArtworks().find((a) => a.series === 'silence') || heroArt();
+  const series = seriesById(hero.series);
+  return (
+    <section className="resp-stack" style={{
+      display: 'grid', gridTemplateColumns: '1fr 1fr',
+      minHeight: 'calc(100vh - 130px)',
+      borderBottom: '1px solid var(--rule-soft)',
+    }}>
+      <div className="resp-pad" style={{
+        padding: '80px 60px', display: 'flex', flexDirection: 'column',
+        justifyContent: 'space-between', gap: 40,
+        borderRight: '1px solid var(--rule-soft)',
+      }}>
+        <div className="reveal r1"><Eyebrow accent>Saison printemps–été · MMXXVI</Eyebrow></div>
+        <div>
+          <h1 className="display reveal r2 resp-display-md" style={{
+            margin: 0, fontSize: 'clamp(56px, 8vw, 132px)',
+            lineHeight: 0.92, fontWeight: 500, letterSpacing: '-.035em',
+          }}>
+            {series.title.split(' ')[0]},<br/>
+            <span className="italic" style={{ color: 'var(--accent)' }}>
+              {series.subtitle.toLowerCase()}.
+            </span>
+          </h1>
+          <p className="reveal r3" style={{
+            margin: '32px 0 0', maxWidth: 460,
+            fontSize: 17, lineHeight: 1.55, color: 'var(--ink-2)', fontWeight: 300,
+          }}>{series.description}</p>
+        </div>
+        <div className="reveal r4" style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          <button className="btn btn-solid" onClick={() => go('catalog', { series: series.id })}>
+            Серия «{series.title}»
+          </button>
+          <button className="btn btn-ghost" onClick={() => go('commission')}>На заказ</button>
+        </div>
+      </div>
+      <div className="reveal r2" style={{ position: 'relative', background: 'var(--bg-soft)' }}>
+        <PaintingPlate art={hero} fit="bare" style={{
+          height: '100%', aspectRatio: 'auto', borderRadius: 0, boxShadow: 'none',
+        }} showMeta={false} />
+      </div>
+    </section>
+  );
+}
+
+// ── Series Triptych — 3 серии большими карточками ────────────
+function SeriesTriptych({ go }) {
+  return (
+    <section className="resp-pad" style={{ padding: '120px 40px 80px' }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div className="resp-stack" style={{
+          display: 'grid', gridTemplateColumns: '1fr 2fr',
+          gap: 80, marginBottom: 60, alignItems: 'end',
+        }}>
+          <div>
+            <Eyebrow accent>Три серии · 0{SERIES.length}</Eyebrow>
+            <h2 className="display resp-h1" style={{
+              margin: '20px 0 0', fontSize: 'clamp(44px, 5.5vw, 80px)',
+              lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
+            }}>
+              Три <span className="italic" style={{ color: 'var(--accent)' }}>наблюдения</span>
+            </h2>
+          </div>
+          <p style={{
+            margin: 0, maxWidth: 460, color: 'var(--ink-2)',
+            fontSize: 16, lineHeight: 1.6, fontWeight: 300,
+          }}>
+            Работы группируются в серии. Каждая — про одно место, один свет, одну часть пути.
+          </p>
+        </div>
+
+        <div className="resp-stack-3" style={{
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36,
+        }}>
+          {SERIES.map((s, i) => {
+            const cover = ARTWORKS.find((a) => a.series === s.id && a.featured)
+                       || ARTWORKS.find((a) => a.series === s.id);
+            return (
+              <a key={s.id} href="#" onClick={(e) => { e.preventDefault(); go('catalog', { series: s.id }); }}
+                 className="lift" style={{
+                   textDecoration: 'none', color: 'inherit',
+                   display: 'flex', flexDirection: 'column', gap: 18,
+                 }}>
+                <div style={{ position: 'relative' }}>
+                  <PaintingPlate art={cover} fit="bare" style={{
+                    aspectRatio: '3 / 4', borderRadius: 'var(--r-md)',
+                    boxShadow: 'var(--shadow-md)',
+                  }} showMeta={false} />
+                  <span style={{
+                    position: 'absolute', top: 18, left: 18,
+                    background: s.color, color: 'var(--bg-cream)',
+                    padding: '8px 14px', borderRadius: 'var(--r-pill)',
+                    fontFamily: 'var(--mono)', fontSize: 10,
+                    letterSpacing: '.18em', fontWeight: 600,
+                  }}>0{i + 1} · {s.title.toUpperCase().split(' ')[0]}</span>
+                </div>
+                <div>
+                  <div className="cat-no">{s.years} · {s.count} работ</div>
+                  <h3 className="display" style={{
+                    margin: '10px 0 4px', fontSize: 28, fontWeight: 500,
+                    letterSpacing: '-.015em', lineHeight: 1.1,
+                  }}>{s.title}</h3>
+                  <p className="italic" style={{
+                    margin: 0, fontSize: 15, color: 'var(--accent)', fontStyle: 'italic',
+                  }}>{s.subtitle}</p>
+                  <p style={{
+                    margin: '14px 0 0', fontSize: 14, color: 'var(--ink-2)', lineHeight: 1.6,
+                  }}>{s.description}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Manifest на тёмном (deep ink) ────────────────────────────
+function ManifestBand() {
+  return (
+    <section className="resp-pad" style={{
+      padding: '140px 40px',
+      background: 'var(--bg-deep)',
+      color: 'var(--bg-cream)',
+      position: 'relative', overflow: 'hidden',
+      borderRadius: 'var(--r-xl) var(--r-xl) 0 0',
+      marginTop: 40,
+    }}>
+      <div style={{
+        position: 'absolute', top: -120, right: -120,
+        width: 480, height: 480, borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(184, 92, 58, 0.40), transparent 70%)',
+        animation: 'glow 8s ease-in-out infinite',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 48 }}>
+          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+          <span className="mono" style={{ fontSize: 11, letterSpacing: '.32em', color: 'var(--accent-2)', fontWeight: 600 }}>
+            МАНИФЕСТ · MMXXVI
+          </span>
+        </div>
+        <h2 className="display resp-h1" style={{
+          margin: 0, fontSize: 'clamp(36px, 5.2vw, 84px)',
+          lineHeight: 1.1, fontWeight: 500, letterSpacing: '-.025em',
+          maxWidth: 1100, color: 'var(--bg-cream)',
+        }}>
+          Картина — это <span className="italic" style={{ color: 'var(--accent-2)' }}>тихий житель</span> комнаты. Она появляется однажды, и&nbsp;остаётся надолго: меняет свет, задаёт тон, удерживает внимание.
+        </h2>
+
+        <div style={{
+          marginTop: 80, display: 'flex', justifyContent: 'space-between',
+          alignItems: 'flex-end', flexWrap: 'wrap', gap: 32,
+        }}>
+          <div>
+            <div className="italic" style={{
+              fontSize: 44, color: 'var(--accent-2)', fontWeight: 500,
+              lineHeight: 1, letterSpacing: '-.02em', fontStyle: 'italic',
+            }}>M. Bez</div>
+            <div className="mono" style={{
+              fontSize: 11, letterSpacing: '.22em', color: 'rgba(245,239,226,.5)',
+              marginTop: 14, fontWeight: 500,
+            }}>МИЛА БЭЗУ · ПСЕВДОНИМ</div>
+          </div>
+          <div className="mono" style={{
+            fontSize: 11, letterSpacing: '.22em',
+            color: 'rgba(245,239,226,.5)', fontWeight: 500,
+          }}>СТУДИЯ · MOSCOU</div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── InStock — featured + recent ───────────────────────────────
+function InStock({ go }) {
+  const fts = featuredArtworks();
+  const rest = ARTWORKS
+    .filter((a) => a.status === 'available' && !a.featured)
+    .sort((a, b) => b.year - a.year);
+  const items = [...fts, ...rest].slice(0, 6);
+
+  return (
+    <section className="resp-pad" style={{ padding: '120px 40px 80px' }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div style={{
+          display: 'flex', justifyContent: 'space-between',
+          alignItems: 'flex-end', marginBottom: 56, flexWrap: 'wrap', gap: 20,
+        }}>
+          <div>
+            <Eyebrow accent>В наличии</Eyebrow>
+            <h2 className="display resp-h2" style={{
+              margin: '20px 0 0', fontSize: 'clamp(40px, 5vw, 72px)',
+              lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
+            }}>Избранные работы</h2>
+          </div>
+          <button className="btn btn-ghost" onClick={() => go('catalog')}>Весь каталог →</button>
+        </div>
+
+        <div className="resp-stack-3" style={{
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px 36px',
+        }}>
+          {items.map((a, i) => (
+            <ArtCard key={a.id} art={a} onOpen={(id) => go('painting', { id })}
+                     index={i + 1} total={ARTWORKS.length} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── StudioBanner — AR-ПРИМЕРКА НА СТЕНЕ (iPhone + Android) ───
+// Два режима: AR (real wall via camera) + Room preview (desktop visualization)
+function StudioBanner({ go }) {
+  const [mode, setMode] = React.useState('ar');           // 'ar' | 'room'
+  const [room, setRoom] = React.useState('living');
+  const { platform, ready } = useArSupport();
+  const featured = heroArt();
+
+  const rooms = [
+    { id: 'living',  label: 'Гостиная',  bg: 'oklch(0.93 0.014 75)',  floor: 'oklch(0.74 0.022 60)' },
+    { id: 'bedroom', label: 'Спальня',   bg: 'oklch(0.90 0.018 60)',  floor: 'oklch(0.70 0.024 50)' },
+    { id: 'study',   label: 'Кабинет',   bg: 'oklch(0.85 0.020 55)',  floor: 'oklch(0.65 0.026 45)' },
+    { id: 'hall',    label: 'Холл',      bg: 'oklch(0.95 0.010 80)',  floor: 'oklch(0.78 0.018 65)' },
+  ];
+  const current = rooms.find((r) => r.id === room) || rooms[0];
+
+  return (
+    <section id="ar-block" className="resp-pad" style={{
+      padding: '120px 40px',
+      background: 'var(--bg-soft)',
+      position: 'relative',
+    }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div className="resp-stack" style={{
+          display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 80, alignItems: 'center',
+        }}>
+          {/* LEFT — text + CTA */}
+          <div>
+            <Eyebrow accent>Камера телефона · AR</Eyebrow>
+            <h2 className="display resp-h1" style={{
+              margin: '24px 0 0', fontSize: 'clamp(44px, 5.5vw, 88px)',
+              lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
+            }}>
+              Картина на<br/>вашей <span className="italic" style={{ color: 'var(--accent)' }}>реальной&nbsp;стене.</span>
+            </h2>
+            <p style={{
+              marginTop: 32, maxWidth: 480, color: 'var(--ink-2)',
+              fontSize: 16, lineHeight: 1.65, fontWeight: 300,
+            }}>
+              Откройте сайт на&nbsp;iPhone или Android, нажмите AR — камера наведётся на&nbsp;стену, картина появится в&nbsp;реальном масштабе. Без приложений, прямо из&nbsp;браузера.
+            </p>
+
+            {/* Platform indicators */}
+            <div style={{ display: 'flex', gap: 10, marginTop: 28, flexWrap: 'wrap' }}>
+              <span className={'ar-os-pill' + (ready && platform === 'ios' ? ' is-on' : '')}>iPhone · AR Quick Look</span>
+              <span className={'ar-os-pill' + (ready && platform === 'android' ? ' is-on' : '')}>Android · Scene Viewer</span>
+              <span className={'ar-os-pill' + (ready && platform === 'desktop' ? ' is-on' : '')}>Desktop · 3D + QR</span>
+            </div>
+
+            {/* CTA */}
+            <div style={{ marginTop: 36, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+              <ArButton art={featured} />
+              <button className="btn btn-ghost" onClick={() => go('catalog')}>
+                Выбрать другую работу
+              </button>
+            </div>
+
+            {/* Mode toggle: AR (real) vs Room (rendered) */}
+            <div style={{
+              marginTop: 40, paddingTop: 28,
+              borderTop: '1px solid var(--rule-soft)',
+              display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap',
+            }}>
+              <span className="cat-no">Превью режим:</span>
+              <button onClick={() => setMode('ar')}
+                      className={'chip' + (mode === 'ar' ? ' is-active' : '')}>
+                AR · реальная стена
+              </button>
+              <button onClick={() => setMode('room')}
+                      className={'chip' + (mode === 'room' ? ' is-active' : '')}>
+                В типовой комнате
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT — visualization (mode-dependent) */}
+          <div>
+            {mode === 'ar' ? (
+              // ── AR mode ──
+              <div style={{
+                display: 'flex', flexDirection: 'column', gap: 20,
+              }}>
+                <div style={{
+                  position: 'relative', aspectRatio: '4/3',
+                  background: 'var(--bg-card)',
+                  borderRadius: 'var(--r-lg)', overflow: 'hidden',
+                  boxShadow: 'var(--shadow-lg)',
+                  border: '1px solid var(--rule-soft)',
+                }}>
+                  <ArViewer art={featured} />
+                  {/* Top-left tag */}
+                  <div style={{
+                    position: 'absolute', top: 16, left: 16,
+                    background: 'rgba(245, 239, 226, 0.92)',
+                    padding: '8px 14px', borderRadius: 'var(--r-pill)',
+                    fontFamily: 'var(--mono)', fontSize: 9.5,
+                    letterSpacing: '.18em', textTransform: 'uppercase',
+                    color: 'var(--ink-2)', backdropFilter: 'blur(8px)',
+                    fontWeight: 600,
+                  }}>3D · поверните → AR</div>
+                  {/* Bottom-right caption */}
+                  <div style={{
+                    position: 'absolute', bottom: 16, right: 16,
+                    background: 'rgba(245, 239, 226, 0.92)',
+                    padding: '10px 16px', borderRadius: 'var(--r-pill)',
+                    fontSize: 11, color: 'var(--ink-2)',
+                    fontFamily: 'var(--mono)', letterSpacing: '.14em',
+                    textTransform: 'uppercase', backdropFilter: 'blur(8px)',
+                  }}>{featured.title} · {featured.w}×{featured.h} см</div>
+                </div>
+
+                {/* Desktop fallback — QR code */}
+                {ready && platform === 'desktop' && <QrBlock art={featured} />}
+              </div>
+            ) : (
+              // ── Room mode (старый mockup) ──
+              <div>
+                <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
+                  {rooms.map((r) => (
+                    <button key={r.id} onClick={() => setRoom(r.id)}
+                            className={'chip' + (room === r.id ? ' is-active' : '')}>
+                      {r.label}
+                    </button>
+                  ))}
+                </div>
+                <div className="card" style={{
+                  position: 'relative', aspectRatio: '4/3',
+                  background: current.bg, overflow: 'hidden',
+                  boxShadow: 'var(--shadow-lg)',
+                  borderRadius: 'var(--r-lg)',
+                  transition: 'background .6s',
+                }}>
+                  <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '28%', background: current.floor, transition: 'background .6s' }} />
+                  <div style={{ position: 'absolute', left: 0, right: 0, bottom: '28%', height: 3, background: 'oklch(0.55 0.022 50)' }} />
+                  <div style={{ position: 'absolute', left: '14%', right: '14%', bottom: '8%', height: '22%', background: 'oklch(0.42 0.022 45)', borderRadius: '8px 8px 0 0' }} />
+                  <div style={{ position: 'absolute', left: '12%', right: '12%', bottom: '6%', height: '8%', background: 'oklch(0.36 0.020 45)', borderRadius: '0 0 4px 4px' }} />
+                  <div className="drift" style={{
+                    position: 'absolute', left: '34%', top: '12%',
+                    width: '32%', aspectRatio: featured.w / featured.h,
+                    boxShadow: '0 28px 56px -18px rgba(0,0,0,.35), 0 8px 16px -8px rgba(0,0,0,.2)',
+                    borderRadius: 6, overflow: 'hidden',
+                  }}>
+                    <PaintingPlate art={featured} fit="bare" style={{ borderRadius: 6, boxShadow: 'none' }} showMeta={false} />
+                  </div>
+                  <div style={{ position: 'absolute', right: '6%', bottom: '28%', width: 40, height: '34%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div style={{ width: 38, height: 22, background: 'oklch(0.88 0.04 80)', borderRadius: '50% 50% 4px 4px' }} />
+                    <div style={{ width: 2, flex: 1, background: 'oklch(0.45 0.02 50)' }} />
+                    <div style={{ width: 20, height: 4, background: 'oklch(0.4 0.02 50)' }} />
+                  </div>
+                  <div style={{
+                    position: 'absolute', left: '34%', top: 'calc(12% - 26px)', width: '32%',
+                    fontSize: 10, letterSpacing: '.18em', color: 'rgba(0,0,0,.55)',
+                    textAlign: 'center', fontWeight: 600, fontFamily: 'var(--mono)',
+                  }}>← {featured.w} × {featured.h} СМ →</div>
+                  <div style={{
+                    position: 'absolute', top: 16, right: 16,
+                    background: 'rgba(245, 239, 226, 0.92)',
+                    padding: '10px 16px', borderRadius: 'var(--r-pill)',
+                    fontSize: 10, letterSpacing: '.16em', color: 'var(--ink-2)',
+                    fontFamily: 'var(--mono)', textTransform: 'uppercase',
+                    backdropFilter: 'blur(8px)',
+                  }}>«{featured.title}» · {current.label.toLowerCase()}</div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Packaging — open box + thank-you card ─────────────────────
+function Packaging() {
+  return (
+    <section className="resp-pad" style={{ padding: '120px 40px' }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div className="resp-stack" style={{
+          display: 'grid', gridTemplateColumns: '1fr 1.2fr',
+          gap: 80, alignItems: 'center',
+        }}>
+          {/* Visual — boxes + thank-you card */}
+          <div style={{ position: 'relative', aspectRatio: '1 / 1' }}>
+            {/* Big green box */}
+            <div style={{
+              position: 'absolute', left: '6%', top: '12%',
+              width: '60%', aspectRatio: '1',
+              background: 'var(--series-silence)',
+              border: '1px solid rgba(212, 169, 60, 0.4)',
+              borderRadius: 'var(--r-md)',
+              boxShadow: 'var(--shadow-lg)',
+              display: 'grid', placeItems: 'center',
+            }}>
+              <div className="display" style={{
+                fontSize: 80, fontWeight: 500, letterSpacing: '-.02em',
+                color: '#d4a93c', fontStyle: 'italic',
+              }}>M.B</div>
+            </div>
+
+            {/* Smaller box */}
+            <div className="drift" style={{
+              position: 'absolute', right: '4%', bottom: '8%',
+              width: '46%', aspectRatio: '1',
+              background: 'var(--series-silence)',
+              border: '1px solid rgba(212, 169, 60, 0.4)',
+              borderRadius: 'var(--r-md)',
+              boxShadow: 'var(--shadow-lg)',
+              display: 'grid', placeItems: 'center',
+            }}>
+              <div className="display" style={{
+                fontSize: 64, fontWeight: 500, letterSpacing: '-.02em',
+                color: '#d4a93c', fontStyle: 'italic',
+              }}>M.B</div>
+            </div>
+
+            {/* Thank-you card */}
+            <div style={{
+              position: 'absolute', left: '0%', bottom: '4%',
+              width: '38%', aspectRatio: '5 / 6',
+              background: 'var(--bg-card)',
+              borderRadius: 'var(--r-sm)', padding: '24px 20px',
+              boxShadow: 'var(--shadow-md)',
+              transform: 'rotate(-6deg)', color: 'var(--ink)',
+              display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+              border: '1px solid rgba(184, 92, 58, 0.3)',
+            }}>
+              <div>
+                <div className="italic" style={{
+                  fontSize: 'clamp(15px, 1.6vw, 22px)', color: 'var(--accent)',
+                  fontStyle: 'italic', fontWeight: 500,
+                }}>Thank you</div>
+                <div style={{
+                  fontSize: 9, color: 'var(--ink-2)', marginTop: 10,
+                  lineHeight: 1.5, fontFamily: 'var(--sans)',
+                }}>За доверие к ручной работе.<br/>Каждое полотно — часть дома.</div>
+              </div>
+              <div className="italic" style={{
+                fontSize: 'clamp(13px, 1.4vw, 18px)', color: 'var(--accent)',
+                alignSelf: 'flex-end', fontStyle: 'italic', fontWeight: 500,
+              }}>M. Bez</div>
+            </div>
+          </div>
+
+          <div>
+            <Eyebrow accent>Упаковка</Eyebrow>
+            <h2 className="display resp-h1" style={{
+              margin: '24px 0 0', fontSize: 'clamp(40px, 5.2vw, 80px)',
+              lineHeight: 0.98, fontWeight: 500, letterSpacing: '-.03em',
+            }}>
+              Картина приезжает<br/>как <span className="italic" style={{ color: 'var(--accent)' }}>подарок</span>.
+            </h2>
+            <p style={{
+              marginTop: 32, maxWidth: 480, fontSize: 16, lineHeight: 1.7,
+              color: 'var(--ink-2)', fontWeight: 300,
+            }}>
+              Фирменная зелёная коробка с&nbsp;золотым тиснением, бархатный мешочек, тубус для&nbsp;транспортировки, открытка из&nbsp;страны вдохновения и&nbsp;сертификат подлинности.
+            </p>
+            <ul style={{
+              marginTop: 32, padding: 0, listStyle: 'none',
+              display: 'flex', flexDirection: 'column', gap: 16,
+            }}>
+              {[
+                'Зелёная коробка с золотым логотипом MB',
+                'Бархатный мешочек M.Bez',
+                'Открытка из страны вдохновения с личным посланием',
+                'Сертификат подлинности с номером работы',
+              ].map((t, i) => (
+                <li key={i} style={{ display: 'flex', gap: 16, alignItems: 'baseline' }}>
+                  <span style={{
+                    width: 28, height: 28, borderRadius: 'var(--r-pill)',
+                    background: 'var(--accent)', color: 'var(--bg)',
+                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 11, fontWeight: 600, flexShrink: 0,
+                    fontFamily: 'var(--mono)',
+                  }}>{String(i + 1).padStart(2, '0')}</span>
+                  <span style={{ fontSize: 15, color: 'var(--ink)' }}>{t}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Stats row ────────────────────────────────────────────────
+function StatsRow() {
+  const items = [
+    { n: '15+', l: 'лет практики' },
+    { n: String(availableCount()), l: 'работ в наличии' },
+    { n: String(SERIES.length), l: 'серии в развитии' },
+    { n: '4–10', l: 'недель на заказ' },
+  ];
+  return (
+    <section className="resp-pad" style={{
+      padding: '0 40px',
+    }}>
+      <div className="resp-stack-4 card-soft" style={{
+        maxWidth: 'var(--max)', margin: '0 auto',
+        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
+        padding: '12px 0',
+        borderRadius: 'var(--r-xl)',
+        border: '1px solid var(--rule-soft)',
+      }}>
+        {items.map((it, i) => (
+          <div key={i} style={{
+            padding: '36px 36px',
+            borderRight: i < 3 ? '1px solid var(--rule-soft)' : 'none',
+            display: 'flex', flexDirection: 'column', gap: 12,
+          }}>
+            <div className="display" style={{
+              fontSize: 'clamp(52px, 6vw, 96px)', fontWeight: 500, lineHeight: 0.92,
+              letterSpacing: '-.04em', color: 'var(--accent)',
+            }}>{it.n}</div>
+            <div className="eyebrow">{it.l}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ── Process — 5 шагов от брифа до подрамника ────────────────
+function ProcessRow() {
+  const steps = [
+    { n: '01', label: 'Брифинг',  t: 'Размер, палитра, настроение, помещение' },
+    { n: '02', label: 'Эскизы',   t: 'Два-три варианта на согласование' },
+    { n: '03', label: 'Холст',    t: 'Лён на сосновом подрамнике, грунт' },
+    { n: '04', label: 'Письмо',   t: 'Масло, 4–10 недель в зависимости от размера' },
+    { n: '05', label: 'Доставка', t: 'Курьер, страховка, фирменная упаковка' },
+  ];
+  return (
+    <section className="resp-pad" style={{ padding: '120px 40px' }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div className="resp-stack" style={{
+          display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 80,
+          marginBottom: 60, alignItems: 'end',
+        }}>
+          <div>
+            <Eyebrow accent>Процесс</Eyebrow>
+            <h2 className="display resp-h2" style={{
+              margin: '20px 0 0', fontSize: 'clamp(40px, 5vw, 72px)',
+              lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
+            }}>
+              От брифа<br/>до <span className="italic" style={{ color: 'var(--accent)' }}>подрамника</span>.
+            </h2>
+          </div>
+          <p style={{
+            margin: 0, fontSize: 17, lineHeight: 1.55,
+            color: 'var(--ink-2)', fontWeight: 300, maxWidth: 540,
+          }}>
+            Работа на&nbsp;заказ — это разговор. Мы&nbsp;согласуем настроение и&nbsp;палитру, делаем эскизы и&nbsp;подбираем размер под конкретное место.
+          </p>
+        </div>
+        <div className="resp-stack-5 card-soft" style={{
+          display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)',
+          borderRadius: 'var(--r-xl)', overflow: 'hidden',
+          border: '1px solid var(--rule-soft)',
+        }}>
+          {steps.map((s, i) => (
+            <div key={s.n} style={{
+              padding: '40px 28px 32px',
+              borderRight: i < 4 ? '1px solid var(--rule-soft)' : 'none',
+            }}>
+              <div className="mono" style={{
+                fontSize: 11, letterSpacing: '.18em', color: 'var(--accent)', fontWeight: 600,
+              }}>{s.n}</div>
+              <h3 className="display" style={{
+                margin: '16px 0 10px', fontSize: 24, fontWeight: 500, letterSpacing: '-.01em',
+              }}>{s.label}</h3>
+              <p style={{ margin: 0, fontSize: 13.5, color: 'var(--ink-2)', lineHeight: 1.6 }}>{s.t}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── CommissionCTA — золотой terracotta-блок ─────────────────
+function CommissionCTA({ go }) {
+  return (
+    <section className="resp-pad" style={{
+      padding: '0 40px', marginTop: 60,
+    }}>
+      <div style={{
+        maxWidth: 'var(--max)', margin: '0 auto',
+        padding: '140px 60px', background: 'var(--accent)',
+        color: 'var(--bg-cream)',
+        borderRadius: 'var(--r-xl)',
+        boxShadow: 'var(--shadow-xl)',
+        position: 'relative', overflow: 'hidden',
+      }}>
+        <div style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: 'linear-gradient(110deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%)',
+          backgroundSize: '300% 100%',
+          animation: 'shimmer 12s linear infinite',
+          pointerEvents: 'none',
+        }} />
+        <div className="display" style={{
+          position: 'absolute', right: -30, top: -50,
+          fontSize: 'clamp(180px, 22vw, 360px)',
+          color: 'rgba(245,239,226,.10)',
+          fontWeight: 500, letterSpacing: '-.04em', lineHeight: 1,
+          pointerEvents: 'none', fontStyle: 'italic',
+        }}>M.B</div>
+
+        <div className="resp-stack" style={{
+          display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 60,
+          alignItems: 'end', position: 'relative',
+        }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 32 }}>
+              <span style={{ width: 32, height: 1, background: 'var(--bg-cream)' }} />
+              <span className="mono" style={{
+                fontSize: 11, letterSpacing: '.32em', fontWeight: 600,
+              }}>НА ЗАКАЗ · MMXXVI</span>
+            </div>
+            <h2 className="display resp-h1" style={{
+              margin: 0, fontSize: 'clamp(44px, 6.5vw, 108px)',
+              lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.035em',
+            }}>
+              Картина под<br/>ваше место,<br/><span style={{ fontStyle: 'italic' }}>ваш свет.</span>
+            </h2>
+          </div>
+          <div style={{ paddingBottom: 12 }}>
+            <p style={{
+              margin: '0 0 32px', fontSize: 17, lineHeight: 1.6,
+              opacity: .82, fontWeight: 300,
+            }}>
+              Расскажите о&nbsp;комнате, размере и&nbsp;настроении. Художница ответит лично с&nbsp;эскизами и&nbsp;сроком.
+            </p>
+            <button className="btn" style={{
+              borderColor: 'var(--bg-cream)', color: 'var(--bg-cream)', background: 'transparent',
+            }} onClick={() => go('commission')}>
+              Оставить заявку →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ── Newsletter ───────────────────────────────────────────────
+function Newsletter() {
+  const [email, setEmail] = React.useState('');
+  const [sent, setSent] = React.useState(false);
+  return (
+    <section className="resp-pad" style={{ padding: '100px 40px', marginTop: 80 }}>
+      <div className="card-soft resp-stack" style={{
+        maxWidth: 1200, margin: '0 auto',
+        display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 60, alignItems: 'center',
+        padding: '64px 60px', borderRadius: 'var(--r-xl)',
+        border: '1px solid var(--rule-soft)',
+      }}>
+        <div>
+          <Eyebrow accent>Письма из студии</Eyebrow>
+          <h2 className="display resp-h2" style={{
+            margin: '20px 0 0', fontSize: 'clamp(36px, 4.4vw, 60px)',
+            lineHeight: 1.02, fontWeight: 500, letterSpacing: '-.03em',
+          }}>
+            Раз в&nbsp;месяц — <span className="italic" style={{ color: 'var(--accent)' }}>новые работы</span> и&nbsp;закрытые продажи.
+          </h2>
+        </div>
+        {sent ? (
+          <div style={{
+            padding: '20px 28px', background: 'var(--bg)',
+            borderRadius: 'var(--r-pill)', display: 'inline-flex',
+            alignItems: 'center', gap: 14, justifySelf: 'start',
+            border: '1px solid var(--rule-soft)',
+          }}>
+            <span style={{
+              width: 28, height: 28, borderRadius: 'var(--r-pill)',
+              background: 'var(--accent)', color: 'var(--bg)',
+              display: 'inline-grid', placeItems: 'center',
+              fontSize: 14, fontWeight: 600,
+            }}>✓</span>
+            <span style={{ fontSize: 14 }}>Письмо отправлено на&nbsp;{email}</span>
+          </div>
+        ) : (
+          <form onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                style={{
+                  display: 'flex', gap: 8, alignItems: 'center',
+                  background: 'var(--bg)', borderRadius: 'var(--r-pill)',
+                  padding: 6, border: '1px solid var(--rule-soft)',
+                }}>
+            <input type="email" placeholder="ваша почта" required
+                   value={email} onChange={(e) => setEmail(e.target.value)}
+                   style={{
+                     border: 0, background: 'transparent', flex: 1,
+                     padding: '14px 22px', fontSize: 14, outline: 'none',
+                     font: 'inherit', fontFamily: 'var(--sans)', color: 'var(--ink)',
+                   }} />
+            <button type="submit" className="btn btn-solid" style={{ flexShrink: 0 }}>Подписаться</button>
+          </form>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// ── HomePage композиция ───────────────────────────────────────
+function HomePage({ go, hero }) {
+  return (
+    <div className="fade-in">
+      {hero === 'editorial' && <HeroEditorial go={go} />}
+      {hero === 'center' && <HeroCenter go={go} />}
+      {hero === 'split' && <HeroSplit go={go} />}
+      {(!hero || !['editorial','center','split'].includes(hero)) && <HeroEditorial go={go} />}
+
+      <Marquee items={[
+        'Улицы мира', 'Монохромная', 'Тихая сила',
+        '— три серии одного автора —',
+      ]} big />
+
+      <SeriesTriptych go={go} />
+      <ManifestBand />
+      <InStock go={go} />
+      <StudioBanner go={go} />
+      <Packaging />
+      <StatsRow />
+      <ProcessRow />
+      <CommissionCTA go={go} />
+      <Newsletter />
+    </div>
+  );
+}
+
+Object.assign(window, { HomePage });
+
+/* ── 7/8 · page-about.jsx ─────────────────────────────── */
+// ─────────────────────────────────────────────────────────────
+// page-about.jsx — страница «Художница».
+// ─────────────────────────────────────────────────────────────
+
+function AboutPage({ go }) {
+  return (
+    <div className="fade-in">
+      {/* ── Hero ── */}
+      <section className="resp-pad" style={{ padding: '60px 40px 80px' }}>
+        <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+          <Breadcrumbs items={[
+            { label: 'M.BEZ', onClick: () => go('home') },
+            { label: 'Художница' },
+          ]} />
+          <div className="resp-stack" style={{
+            marginTop: 40,
+            display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 80, alignItems: 'end',
+          }}>
+            <div>
+              <Eyebrow accent>Художник · Москва</Eyebrow>
+              <h1 className="display resp-display-md" style={{
+                margin: '24px 0 0',
+                fontSize: 'clamp(72px, 10vw, 168px)',
+                lineHeight: 0.92, fontWeight: 500, letterSpacing: '-.04em',
+              }}>
+                Mila<br/><span className="italic" style={{ color: 'var(--accent)' }}>Bezú.</span>
+              </h1>
+              <div className="cat-no" style={{ marginTop: 28, lineHeight: 1.8 }}>
+                {ABOUT.full}<br/>
+                {ABOUT.city}<br/>
+                {ABOUT.studio}
+              </div>
+            </div>
+            <div>
+              <PaintingPlate
+                art={{ id: 'PORTRAIT', w: 4, h: 5, palette: ['#c4b69a', '#6b5d4a'] }}
+                fit="bare"
+                showMeta={false}
+                style={{ borderRadius: 'var(--r-md)', boxShadow: 'var(--shadow-lg)' }}
+              />
+              <div className="cat-no" style={{ marginTop: 14, textAlign: 'right' }}>
+                [портрет художницы — будет добавлен]
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Bio ── */}
+      <section className="resp-pad" style={{
+        padding: '80px 40px',
+        borderTop: '1px solid var(--rule-soft)',
+      }}>
+        <div className="resp-stack" style={{
+          maxWidth: 1100, margin: '0 auto',
+          display: 'grid', gridTemplateColumns: '200px 1fr', gap: 80,
+        }}>
+          <div><Eyebrow accent>О работе</Eyebrow></div>
+          <div className="display" style={{
+            fontSize: 22, lineHeight: 1.6, color: 'var(--ink)',
+            fontWeight: 400, letterSpacing: '-.005em',
+            display: 'flex', flexDirection: 'column', gap: 28,
+          }}>
+            {ABOUT.bio.map((p, i) => <p key={i} style={{ margin: 0 }}>{p}</p>)}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Studio strip ── */}
+      <section className="resp-pad" style={{ padding: '40px 40px 80px' }}>
+        <div className="resp-stack-3" style={{
+          maxWidth: 'var(--max)', margin: '0 auto',
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28,
+        }}>
+          {[
+            ['#bcb6a8', 'студия — окно, естественный свет'],
+            ['#a89a82', 'мастерская — палитра, кисти'],
+            ['#8c7c66', 'мольберт — работа в процессе'],
+          ].map(([c, t], i) => (
+            <div key={i}>
+              <div style={{
+                aspectRatio: '4 / 5', background: c,
+                borderRadius: 'var(--r-md)',
+                boxShadow: 'var(--shadow-md)',
+              }} />
+              <div className="cat-no" style={{ marginTop: 12 }}>
+                [фото — {t}]
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Серии ── */}
+      <section className="resp-pad" style={{
+        padding: '100px 40px', background: 'var(--bg-soft)',
+        marginTop: 40, borderRadius: 'var(--r-xl) var(--r-xl) 0 0',
+      }}>
+        <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+          <div style={{
+            display: 'flex', justifyContent: 'space-between',
+            alignItems: 'flex-end', flexWrap: 'wrap', gap: 16, marginBottom: 48,
+          }}>
+            <div>
+              <Eyebrow accent>Серии</Eyebrow>
+              <h2 className="display resp-h2" style={{
+                margin: '20px 0 0', fontSize: 'clamp(40px, 4.8vw, 64px)',
+                fontWeight: 500, lineHeight: 0.95, letterSpacing: '-.025em',
+              }}>
+                Три направления<br/><span className="italic" style={{ color: 'var(--ink-2)', fontStyle: 'italic' }}>одного автора.</span>
+              </h2>
+            </div>
+            <button className="btn btn-ghost" onClick={() => go('catalog')}>Все работы →</button>
+          </div>
+
+          <div className="resp-stack-3" style={{
+            display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36,
+          }}>
+            {SERIES.map((s) => (
+              <a key={s.id} href="#" onClick={(e) => { e.preventDefault(); go('catalog', { series: s.id }); }}
+                 className="lift" style={{
+                   textDecoration: 'none', color: 'inherit',
+                   cursor: 'pointer', display: 'block',
+                 }}>
+                <div className="ph-art" style={{
+                  width: '100%', aspectRatio: '4 / 3',
+                  background: `linear-gradient(135deg, ${s.palette[0]}, ${s.palette[1]})`,
+                  borderRadius: 'var(--r-md)',
+                  boxShadow: 'var(--shadow-md)',
+                  position: 'relative', overflow: 'hidden',
+                }}>
+                  <span style={{
+                    position: 'absolute', top: 16, left: 16,
+                    background: s.color, color: 'var(--bg-cream)',
+                    padding: '7px 14px', borderRadius: 'var(--r-pill)',
+                    fontFamily: 'var(--mono)', fontSize: 10,
+                    letterSpacing: '.18em', fontWeight: 600,
+                  }}>{s.title.toUpperCase().split(' ')[0]}</span>
+                </div>
+                <div style={{ paddingTop: 20 }}>
+                  <div className="cat-no">{s.years} · {s.count} работ</div>
+                  <h3 className="display" style={{ margin: '10px 0 6px', fontSize: 28, fontWeight: 500, letterSpacing: '-.015em' }}>{s.title}</h3>
+                  <div className="italic" style={{ fontSize: 15, color: 'var(--accent)', fontStyle: 'italic' }}>{s.subtitle}</div>
+                  <p style={{ margin: '14px 0 0', fontSize: 14, color: 'var(--ink-2)', lineHeight: 1.6 }}>
+                    {s.description}
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Ритуал получения ── */}
+      <section className="resp-pad" style={{ padding: '100px 40px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          <Eyebrow accent>С каждой работой</Eyebrow>
+          <h2 className="display resp-h2" style={{
+            margin: '20px 0 56px', fontSize: 'clamp(36px, 4.4vw, 60px)',
+            fontWeight: 500, lineHeight: 1, letterSpacing: '-.025em',
+          }}>
+            Не просто картина — <span className="italic" style={{ color: 'var(--accent)' }}>ритуал получения.</span>
+          </h2>
+          <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+            {ABOUT.ritual.map((r, i) => (
+              <li key={i} style={{
+                display: 'grid', gridTemplateColumns: '40px 1fr 1fr',
+                gap: 28, padding: '28px 0',
+                borderTop: '1px solid var(--rule-soft)',
+                borderBottom: i === ABOUT.ritual.length - 1 ? '1px solid var(--rule-soft)' : undefined,
+                alignItems: 'baseline',
+              }}>
+                <span style={{ color: 'var(--accent)', fontSize: 16 }}>{r.icon}</span>
+                <span className="display" style={{ fontSize: 24, fontWeight: 500, letterSpacing: '-.01em' }}>{r.label}</span>
+                <span className="cat-no" style={{ textAlign: 'right' }}>{r.note}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── Студия + контакты ── */}
+      <section className="resp-pad" style={{ padding: '80px 40px', borderTop: '1px solid var(--rule-soft)' }}>
+        <div className="resp-stack" style={{
+          maxWidth: 1100, margin: '0 auto',
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'start',
+        }}>
+          <div>
+            <Eyebrow accent>Студия</Eyebrow>
+            <p className="display" style={{
+              margin: '20px 0 0', fontSize: 24, lineHeight: 1.5,
+              color: 'var(--ink)', fontWeight: 400, letterSpacing: '-.005em',
+            }}>{ABOUT.studio_note}</p>
+          </div>
+          <div>
+            <Eyebrow accent>Связь</Eyebrow>
+            <ul style={{ listStyle: 'none', margin: '20px 0 0', padding: 0, fontSize: 16, color: 'var(--ink-2)', lineHeight: 2 }}>
+              <li><a href={`mailto:${ABOUT.contacts.email}`} className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>{ABOUT.contacts.email}</a></li>
+              <li><a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>{ABOUT.contacts.phone}</a></li>
+              <li><a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>Telegram · @{ABOUT.contacts.telegram}</a></li>
+              <li><a href={`https://instagram.com/${ABOUT.contacts.instagram}`} target="_blank" rel="noopener" className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>Instagram · @{ABOUT.contacts.instagram}</a></li>
+              <li><a href={`https://vk.com/${ABOUT.contacts.vk}`} target="_blank" rel="noopener" className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>VK · @{ABOUT.contacts.vk}</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="resp-pad" style={{
+        padding: '120px 40px', textAlign: 'center',
+        borderTop: '1px solid var(--rule-soft)',
+      }}>
+        <h2 className="display resp-h1" style={{
+          margin: 0, fontSize: 'clamp(48px, 6vw, 88px)',
+          fontWeight: 500, lineHeight: 0.95, letterSpacing: '-.03em',
+        }}>
+          Заказать картину<br/><span className="italic" style={{ color: 'var(--accent)' }}>специально для вашей стены.</span>
+        </h2>
+        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 44, flexWrap: 'wrap' }}>
+          <button className="btn btn-solid" onClick={() => go('commission')}>На заказ</button>
+          <button className="btn btn-ghost" onClick={() => go('catalog')}>В каталог</button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+Object.assign(window, { AboutPage });
+
+/* ── 8/8 · app-multipage.jsx (mount) ──────────────────── */
+// ═══════════════════════════════════════════════════════════
+// app.jsx — Multipage version для Tilda
+// Читает route из window.location.pathname
+// Cart persists в localStorage между страницами
+// ═══════════════════════════════════════════════════════════
+
+const TWEAK_DEFAULTS = {
+  "palette": "maison",
+  "dark": false,
+  "hero": "editorial",
+  "density": "regular",
+  "accent": "#b85c3a"
+};
+
+// pathToRoute — преобразует URL в route object
+function pathToRoute() {
+  const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+
+  // Painting card: /painting/<slug>
+  const mPainting = path.match(/^painting\/(.+)$/);
+  if (mPainting) {
+    return { name: 'painting', params: { id: mPainting[1].toUpperCase() } };
+  }
+
+  // Catalog с фильтром по серии: /catalog?series=monochrome
+  if (path === 'catalog') {
+    const series = new URLSearchParams(window.location.search).get('series');
+    return { name: 'catalog', params: series ? { series } : {} };
+  }
+
+  // Прочие простые роуты
+  const simpleRoutes = ['home', 'about', 'commission', 'cart', 'tracking', 'legal'];
+  if (simpleRoutes.includes(path)) {
+    return { name: path, params: {} };
+  }
+
+  // Default — главная
+  return { name: 'home', params: {} };
+}
+
+// Преобразование route → URL
+function routeToPath(name, params) {
+  params = params || {};
+  if (name === 'home') return '/home';
+  if (name === 'painting' && params.id) return '/painting/' + params.id.toLowerCase();
+  if (name === 'catalog' && params.series) return '/catalog?series=' + params.series;
+  return '/' + name;
+}
+
+function App() {
+  const [t] = typeof useTweaks === 'function' ? useTweaks(TWEAK_DEFAULTS) : [TWEAK_DEFAULTS, () => {}];
+  const [route, setRoute] = React.useState(() => pathToRoute());
+  
+  // Cart — persist в localStorage
+  const [cart, setCart] = React.useState(() => {
+    try { return JSON.parse(localStorage.getItem('mbez-cart') || '[]'); }
+    catch { return []; }
+  });
+
+  React.useEffect(() => {
+    try { localStorage.setItem('mbez-cart', JSON.stringify(cart)); } catch {}
+  }, [cart]);
+
+  // Navigation — меняем URL (multipage)
+  const go = (name, params = {}) => {
+    const url = routeToPath(name, params);
+    if (window.location.pathname + window.location.search === url) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    window.location.href = url;
+  };
+
+  // Reaction на back/forward навигацию
+  React.useEffect(() => {
+    const onPop = () => setRoute(pathToRoute());
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  // Theme + accent
+  React.useEffect(() => {
+    const root = document.documentElement;
+    root.dataset.theme = t.dark ? 'dark' : 'light';
+    if (t.accent) root.style.setProperty('--accent', t.accent);
+  }, [t]);
+
+  const addToCart = (id) => setCart((c) => c.includes(id) ? c : [...c, id]);
+  const removeFromCart = (id) => setCart((c) => c.filter((x) => x !== id));
+
+  // Render по route
+  let page;
+  switch (route.name) {
+    case 'home':       
+      page = typeof HomePage === 'function' 
+        ? <HomePage go={go} hero={t.hero} /> 
+        : <FallbackPage name="home" />;
+      break;
+    case 'catalog':    
+      page = typeof CatalogPage === 'function' 
+        ? <CatalogPage go={go} density={t.density} initialSeries={route.params.series} /> 
+        : <FallbackPage name="catalog" />;
+      break;
+    case 'painting':   
+      page = typeof PaintingPage === 'function' 
+        ? <PaintingPage go={go} id={route.params.id || ARTWORKS[0].id} addToCart={addToCart} /> 
+        : <FallbackPage name="painting" id={route.params.id} />;
+      break;
+    case 'commission': 
+      page = typeof CommissionPage === 'function' 
+        ? <CommissionPage go={go} refId={route.params.ref} /> 
+        : <FallbackPage name="commission" />;
+      break;
+    case 'cart':       
+      page = typeof CartPage === 'function' 
+        ? <CartPage go={go} cart={cart} removeFromCart={removeFromCart} /> 
+        : <FallbackPage name="cart" />;
+      break;
+    case 'tracking':   
+      page = typeof TrackingPage === 'function' 
+        ? <TrackingPage go={go} /> 
+        : <FallbackPage name="tracking" />;
+      break;
+    case 'about':      
+      page = typeof AboutPage === 'function' 
+        ? <AboutPage go={go} /> 
+        : <FallbackPage name="about" />;
+      break;
+    default:           
+      page = <FallbackPage name="404" />;
+  }
+
+  return (
+    <>
+      {typeof TopBar === 'function' && <TopBar route={route.name} go={go} cartCount={cart.length} />}
+      <main>{page}</main>
+      {typeof Footer === 'function' && <Footer go={go} />}
+    </>
+  );
+}
+
+// Fallback страница — для роутов где компонент не подключён в bundle
+function FallbackPage({ name, id }) {
+  return (
+    <section style={{ padding: '120px 40px', maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
+      <h1 className="display" style={{ fontSize: 48, fontWeight: 500, letterSpacing: '-.02em' }}>
+        Страница «{name}» {id ? `(${id})` : ''}
+      </h1>
+      <p style={{ color: 'var(--ink-2)', marginTop: 16 }}>
+        Эта страница пока заглушка. Скоро будет наполнена.
+      </p>
+      <a href="/home" className="btn btn-ghost" style={{ marginTop: 32, display: 'inline-flex' }}>
+        ← На главную
+      </a>
+    </section>
+  );
+}
+
+// Mount — ждём готовности DOM и наличия #root (работает в HEAD-вставке и на любой странице)
+function __mbezMount() {
+  const rootEl = document.getElementById('root');
+  if (!rootEl) return;            // на этой странице нет #root — выходим тихо (например /catalog с Tilda Store)
+  if (rootEl.__mbezMounted) return; // защита от двойного монтирования
+  rootEl.__mbezMounted = true;
+  ReactDOM.createRoot(rootEl).render(<App />);
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', __mbezMount);
+} else {
+  __mbezMount();
+}
+
+
+</script>
