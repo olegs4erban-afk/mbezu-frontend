@@ -28,12 +28,13 @@ export function worksImage(slug: string, size: ImgSize): string {
 /**
  * Per-artwork-id override map → transparent WebP cards on the CDN.
  * Cards are square 1200×1200 transparent WebP (Sprint 8) — one file per work,
- * used at every size (thumb/large/full). MN-03 «Шторм» has no card (placeholder).
+ * used at every size (thumb/large/full). Sprint 9: MN-02 «Вершина» has no card
+ * (только 2 горных холста: «Перевал» 551 + «Шторм» 900) — placeholder, скрыта.
  * Single source of truth shared with the native Tilda Store (same CDN URLs via CSV import).
  */
 const CARD_BASE = 'https://cdn.mbezu.ru/assets/cards';
 const CARD_SLUGS = [
-  'mn-01', 'mn-02', 'mn-04', 'mn-05', 'mn-06',
+  'mn-01', 'mn-03', 'mn-04', 'mn-05', 'mn-06',
   'st-01', 'st-02', 'st-03', 'st-04', 'st-05', 'st-06', 'st-07', 'st-08',
   'ts-01', 'ts-02', 'ts-03', 'ts-04', 'ts-05', 'ts-06',
   'td-01', 'td-02',

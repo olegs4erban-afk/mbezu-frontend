@@ -35,8 +35,11 @@ describe('data helpers', () => {
     expect(imageOf(artworkById('MN-01'), 'full')).toContain('/assets/cards/mn-01.webp');
     expect(imageOf(artworkById('MN-01'), 'thumb')).toContain('/assets/cards/mn-01.webp');
   });
-  it('imageOf null for work without photo (MN-03)', () => {
-    expect(imageOf(artworkById('MN-03'), 'full')).toBeNull();
+  it('imageOf null for work without photo (MN-02 «Вершина»)', () => {
+    expect(imageOf(artworkById('MN-02'), 'full')).toBeNull();
+  });
+  it('MN-03 «Шторм» now has its card (photo 900)', () => {
+    expect(imageOf(artworkById('MN-03'), 'full')).toContain('/assets/cards/mn-03.webp');
   });
   it('seriesById resolves', () => {
     expect(seriesById('monochrome')?.title).toBeTruthy();
