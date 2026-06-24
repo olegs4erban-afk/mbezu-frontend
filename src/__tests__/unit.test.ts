@@ -30,9 +30,9 @@ describe('data helpers', () => {
     expect(s).toMatch(/210/);
     expect(s).toMatch(/₽|RUB/);
   });
-  it('imageOf returns /assets/works path for a work with a photo', () => {
-    expect(imageOf(artworkById('MN-01'), 'full')).toContain('/assets/works/mn-01');
-    expect(imageOf(artworkById('MN-01'), 'thumb')).toContain('@sm');
+  it('imageOf returns CDN transparent-webp card for a work with a card (Sprint 8)', () => {
+    expect(imageOf(artworkById('MN-01'), 'full')).toContain('/assets/cards/mn-01.webp');
+    expect(imageOf(artworkById('MN-01'), 'thumb')).toContain('/assets/cards/mn-01.webp');
   });
   it('imageOf null for work without photo (MN-03)', () => {
     expect(imageOf(artworkById('MN-03'), 'full')).toBeNull();
@@ -98,6 +98,6 @@ describe('data integrity', () => {
   it('"ready" works (with photo) resolve a full image path', () => {
     const ready = (ARTWORKS as any[]).filter((a) => a.image);
     expect(ready.length).toBeGreaterThan(15);
-    for (const a of ready) expect(imageOf(a, 'full')).toContain('/assets/works/');
+    for (const a of ready) expect(imageOf(a, 'full')).toMatch(/\/assets\/(cards|works)\//);
   });
 });

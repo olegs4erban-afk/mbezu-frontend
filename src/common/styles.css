@@ -19,11 +19,11 @@
     --rule:        rgba(42, 37, 32, 0.18);
     --rule-soft:   rgba(42, 37, 32, 0.10);
 
-    /* Акцент — Hermès terracotta */
-    --accent:      #b85c3a;
-    --accent-2:    #d4825a;
-    --accent-soft: #e8a988;
-    --accent-deep: #8c3e22;
+    /* Акцент — золото M.Bez */
+    --accent:      #a08a4e;
+    --accent-2:    #bfa45e;
+    --accent-soft: #b3a583;
+    --accent-deep: #7d6a38;
 
     /* Цвета серий — из шапок страниц портфолио */
     --series-mono:    #4a4a4a;
@@ -63,7 +63,7 @@
     --ink-3: #9a8a72;
     --rule: rgba(245, 239, 226, 0.18);
     --rule-soft: rgba(245, 239, 226, 0.10);
-    --accent: #d4825a;
+    --accent: #c2a85e;
   }
 
   body {
@@ -196,7 +196,7 @@
     outline: none;
     transition: border-color .2s, background .2s, box-shadow .2s;
   }
-  .field:focus { border-color: var(--accent); background: rgba(255,255,255,0.7); box-shadow: 0 0 0 4px rgba(184, 92, 58, 0.08); }
+  .field:focus { border-color: var(--accent); background: rgba(255,255,255,0.7); box-shadow: 0 0 0 4px rgba(160, 138, 78, 0.08); }
   .field::placeholder { color: var(--ink-4); }
   textarea.field { resize: vertical; min-height: 100px; border-radius: var(--r-md); }
 

@@ -7,14 +7,32 @@
       "children": 5,
       "textLen": 4618
     },
-    "errors": [],
+    "errors": [
+      "Failed to load resource: net::ERR_CONNECTION_CLOSED",
+      "Failed to load resource: net::ERR_CONNECTION_CLOSED",
+      "Failed to load resource: net::ERR_CONNECTION_CLOSED",
+      "Failed to load resource: net::ERR_CONNECTION_CLOSED",
+      "Failed to load resource: net::ERR_CONNECTION_CLOSED",
+      "Failed to load resource: net::ERR_CONNECTION_CLOSED",
+      "Failed to load resource: net::ERR_CONNECTION_CLOSED",
+      "Failed to load resource: net::ERR_CONNECTION_CLOSED"
+    ],
     "warnings": [],
-    "failedRes": [],
+    "failedRes": [
+      "FAILED https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxDcwg.woff2 (net::ERR_CONNECTION_CLOSED)",
+      "FAILED https://fonts.gstatic.com/s/intertight/v9/NGSyv5HMAFg6IuGlBNMjxLsCwapkRA.woff2 (net::ERR_CONNECTION_CLOSED)",
+      "FAILED https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsD8ah8QA.woff2 (net::ERR_CONNECTION_CLOSED)",
+      "FAILED https://fonts.gstatic.com/s/intertight/v9/NGSyv5HMAFg6IuGlBNMjxLsCwa5kRFe9.woff2 (net::ERR_CONNECTION_CLOSED)",
+      "FAILED https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsH8ag.woff2 (net::ERR_CONNECTION_CLOSED)",
+      "FAILED https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPxTcwhsk.woff2 (net::ERR_CONNECTION_CLOSED)",
+      "FAILED https://fonts.gstatic.com/s/jetbrainsmono/v24/tDbv2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKwBNntkaToggR7BYRbKPx7cwhsk.woff2 (net::ERR_CONNECTION_CLOSED)",
+      "FAILED https://fonts.gstatic.com/s/intertight/v9/NGSwv5HMAFg6IuGlBNMjxLsJ8ah8QA.woff2 (net::ERR_CONNECTION_CLOSED)"
+    ],
     "modelViewerLoaded": false
   },
   {
     "name": "about",
-    "path": "/about.html",
+    "path": "/about",
     "status": 200,
     "root": {
       "children": 5,
@@ -27,7 +45,7 @@
   },
   {
     "name": "catalog",
-    "path": "/catalog.html",
+    "path": "/catalog",
     "status": 200,
     "root": {
       "children": 5,
@@ -40,20 +58,7 @@
   },
   {
     "name": "painting",
-    "path": "/painting.html?id=MN-01",
-    "status": 200,
-    "root": {
-      "children": 5,
-      "textLen": 2006
-    },
-    "errors": [],
-    "warnings": [],
-    "failedRes": [],
-    "modelViewerLoaded": false
-  },
-  {
-    "name": "painting-clean",
-    "path": "/painting/mn-01.html",
+    "path": "/painting/mn-01",
     "status": 200,
     "root": {
       "children": 5,
@@ -66,7 +71,7 @@
   },
   {
     "name": "commission",
-    "path": "/commission.html",
+    "path": "/commission",
     "status": 200,
     "root": {
       "children": 5,
@@ -79,7 +84,7 @@
   },
   {
     "name": "cart",
-    "path": "/cart.html",
+    "path": "/cart",
     "status": 200,
     "root": {
       "children": 5,
@@ -92,7 +97,7 @@
   },
   {
     "name": "tracking",
-    "path": "/tracking.html",
+    "path": "/tracking",
     "status": 200,
     "root": {
       "children": 5,
@@ -105,7 +110,7 @@
   },
   {
     "name": "legal",
-    "path": "/legal.html",
+    "path": "/legal",
     "status": 200,
     "root": {
       "children": 5,

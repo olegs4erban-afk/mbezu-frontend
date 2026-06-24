@@ -9,11 +9,11 @@
 ```html
 <!-- M.Bez · home -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-BTwwbX5Y.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common--hIEmJ87.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DKkpMzLE.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/home-CLJrw-Gp.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-VZWimJJH.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-B85bGEh7.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/home-BGw4vpWm.js"></script>
 ```
 
 ### about  (Tilda alias: `/about`)
@@ -22,10 +22,10 @@
 ```html
 <!-- M.Bez · about -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-BTwwbX5Y.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common--hIEmJ87.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/about-BPPr3c-A.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-VZWimJJH.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/about-Cre4ml77.js"></script>
 ```
 
 ### catalog  (Tilda alias: `/catalog`)
@@ -34,10 +34,10 @@
 ```html
 <!-- M.Bez · catalog -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-BTwwbX5Y.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common--hIEmJ87.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/catalog-DCnzCOzC.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-VZWimJJH.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/catalog-CNm9usBC.js"></script>
 ```
 
 ### commission  (Tilda alias: `/commission`)
@@ -46,10 +46,10 @@
 ```html
 <!-- M.Bez · commission -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-BTwwbX5Y.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common--hIEmJ87.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/commission-CKApbhUc.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-VZWimJJH.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/commission-CY8E16vv.js"></script>
 ```
 
 ### cart  (Tilda alias: `/cart`)
@@ -59,10 +59,10 @@
 ```html
 <!-- M.Bez · cart -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-BTwwbX5Y.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common--hIEmJ87.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/cart-CoWXex7e.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-VZWimJJH.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/cart-BwZljwZQ.js"></script>
 ```
 
 ### tracking  (Tilda alias: `/tracking`)
@@ -72,10 +72,10 @@
 ```html
 <!-- M.Bez · tracking -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-BTwwbX5Y.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common--hIEmJ87.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/tracking-p2Ut1i1T.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-VZWimJJH.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/tracking-DZDpF4XO.js"></script>
 ```
 
 ### legal  (Tilda alias: `/legal`)
@@ -84,8 +84,8 @@
 ```html
 <!-- M.Bez · legal -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-BTwwbX5Y.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common--hIEmJ87.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/legal-CYjNOFpC.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-VZWimJJH.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/legal-B5Ya2z1S.js"></script>
 ```

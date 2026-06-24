@@ -26,8 +26,22 @@ export function worksImage(slug: string, size: ImgSize): string {
 }
 
 /**
- * Optional per-artwork-id override map. Empty by default.
- * Prod/Tilda can populate this with absolute CDN URLs without touching data.ts:
- *   TILDA_IMAGES['MN-01'] = { full: 'https://static.tildacdn.com/.../mn-01.jpg', ... }
+ * Per-artwork-id override map → transparent WebP cards on the CDN.
+ * Cards are square 1200×1200 transparent WebP (Sprint 8) — one file per work,
+ * used at every size (thumb/large/full). MN-03 «Шторм» has no card (placeholder).
+ * Single source of truth shared with the native Tilda Store (same CDN URLs via CSV import).
  */
-export const TILDA_IMAGES: Record<string, Partial<Record<ImgSize, string>>> = {};
+const CARD_BASE = 'https://cdn.mbezu.ru/assets/cards';
+const CARD_SLUGS = [
+  'mn-01', 'mn-02', 'mn-04', 'mn-05', 'mn-06',
+  'st-01', 'st-02', 'st-03', 'st-04', 'st-05', 'st-06', 'st-07', 'st-08',
+  'ts-01', 'ts-02', 'ts-03', 'ts-04', 'ts-05', 'ts-06',
+  'td-01', 'td-02',
+];
+export const TILDA_IMAGES: Record<string, Partial<Record<ImgSize, string>>> =
+  Object.fromEntries(
+    CARD_SLUGS.map((slug) => {
+      const url = `${CARD_BASE}/${slug}.webp`;
+      return [slug.toUpperCase(), { thumb: url, large: url, full: url }];
+    }),
+  );

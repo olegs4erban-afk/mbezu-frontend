@@ -15,7 +15,7 @@ const info = await page.evaluate(() => {
   const txt = document.body.innerText || '';
   const links = [...document.querySelectorAll('a[href*="/artwork/"]')].map((a) => a.getAttribute('href'));
   // price-ish tokens
-  const prices = (txt.match(/\d[\d  ]{2,}(₽|руб|р\.)/gi) || []).slice(0, 10);
+  const prices = (txt.match(/\d[\d\s]{2,}(₽|руб|р\.)/gi) || []).slice(0, 10);
   // any card containers
   const guessClasses = [...new Set([...document.querySelectorAll('[class*="card"],[class*="item"],[class*="product"],[class*="artwork"]')].map((e) => e.className).filter(Boolean))].slice(0, 12);
   return {

@@ -24,7 +24,7 @@ for (let offset = 0; offset <= 300; offset += 30) {
       seen.add(href);
       const card = a.closest('[class*="card"],[class*="Card"],li,article,[class*="cardInfo"]') || a.parentElement?.parentElement || a;
       const text = (card?.innerText || '').replace(/\s+/g, ' ').trim();
-      const price = (text.match(/\d[\d   ]{2,}\d\s*(?:₽|руб|р\.)/i) || [])[0] || '';
+      const price = (text.match(/\d[\d\s]{2,}\d\s*(?:₽|руб|р\.)/i) || [])[0] || '';
       const size = (text.match(/\d{1,3}\s*[×xхX]\s*\d{1,3}(\s*см)?/) || [])[0] || '';
       out.push({ href, text: text.slice(0, 180), price, size });
     }

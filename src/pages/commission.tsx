@@ -12,10 +12,10 @@ function CommissionPage({ go, refId }) {
   const ref = refId ? artworkById(refId) : null;
 
   const sizes = [
-    { id: 'small',  label: 'Этюд',    dim: 'до 30×40 см',    from: 50000 },
-    { id: 'medium', label: 'Средний', dim: '50×70 см',       from: 140000 },
-    { id: 'large',  label: 'Большой', dim: '70×100 см',      from: 280000 },
-    { id: 'xl',     label: 'Крупный', dim: 'от 100×120 см',  from: 480000 },
+    { id: 'small',  label: 'Этюд',    dim: 'до 30×40 см',    from: 8000 },
+    { id: 'medium', label: 'Средний', dim: '40×50 — 50×70',  from: 17000 },
+    { id: 'large',  label: 'Большой', dim: '60×80 — 80×100', from: 33000 },
+    { id: 'xl',     label: 'Крупный', dim: 'от 90×120 см',   from: 42000 },
   ];
   const styles = [
     { id: 'urban',     label: 'Городской пейзаж' },
@@ -24,7 +24,7 @@ function CommissionPage({ go, refId }) {
     { id: 'mono',      label: 'Монохром' },
   ];
   const palettes = [
-    { id: 'bone',   label: 'Тёплая (bone)',    c1: '#ede5d6', c2: '#b85c3a' },
+    { id: 'bone',   label: 'Тёплая (bone)',    c1: '#ede5d6', c2: '#a08a4e' },
     { id: 'sepia',  label: 'Сепия',            c1: '#d8c8a8', c2: '#5e4d3d' },
     { id: 'warm',   label: 'Песочная',         c1: '#d4a48a', c2: '#8d5a44' },
     { id: 'cool',   label: 'Холодная',         c1: '#b3c0c4', c2: '#5e7480' },
@@ -32,11 +32,25 @@ function CommissionPage({ go, refId }) {
   ];
   const weeks = [4, 6, 8, 10];
 
+  // Прайс на заказ — базовая ставка «от» по размеру холста (Sprint 8 §2C).
+  const COMMISSION = {
+    intro: 'Базовая ставка «от» за размер холста для прямого заказа из РФ. Итог зависит от сложности сюжета, детализации и техники.',
+    groups: [
+      { title: 'Малый формат',   items: [['20 × 30 см', 6000], ['30 × 40 см', 8000], ['40 × 40 см', 9500]] },
+      { title: 'Средний формат',  items: [['40 × 50 см', 11000], ['40 × 60 см', 12000], ['50 × 60 см', 15000], ['50 × 70 см', 17000]] },
+      { title: 'Большой формат',  items: [['60 × 80 см', 22000], ['60 × 90 см', 24000], ['70 × 90 см', 27000], ['80 × 100 см', 33000], ['90 × 120 см', 42000]] },
+    ],
+    custom:   'Нестандартный размер или сторона больше 100 см — рассчитываются индивидуально.',
+    included: ['Холст на галерейном подрамнике', 'Защитное покрытие лаком', 'Сертификат подлинности', 'Фирменная упаковка', 'Рукописная открытка', 'Крепёж — готова к подвесу'],
+    extra:    ['Доставка: СДЭК / Почта / курьер', 'Оформление в багет', 'Срочное исполнение'],
+    terms:    'Предоплата 50%, остаток — после согласования готовой работы по фото. Эскиз утверждается до начала. Срок 2–4 недели.',
+  };
+
   const [form, setForm] = React.useState({
     size: 'medium',
     style: 'urban',
     palette: 'bone',
-    budget: 200000,
+    budget: 30000,
     weeks: 8,
     name: '', email: '', city: '', notes: '', where: '',
     file: null as File | null,
@@ -64,6 +78,70 @@ function CommissionPage({ go, refId }) {
             lead="Заполните бриф — Мила свяжется и предложит два-три эскиза. Договор заключаем после согласования эскиза, предоплата 50%."
           />
         </div>
+
+        {/* Прайс на заказ — «от / зависит от сложности» */}
+        <section style={{ marginTop: 56 }}>
+          <Eyebrow accent>Прайс на заказ</Eyebrow>
+          <p style={{ marginTop: 14, maxWidth: 760, fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.65 }}>
+            {COMMISSION.intro}
+          </p>
+          <div className="resp-stack-3" style={{
+            marginTop: 32, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20,
+          }}>
+            {COMMISSION.groups.map((g) => (
+              <div key={g.title} className="card" style={{
+                padding: 28, background: 'var(--bg-card)',
+                borderRadius: 'var(--r-lg)', border: '1px solid var(--rule-soft)',
+              }}>
+                <h3 className="display" style={{
+                  margin: '0 0 18px', fontSize: 18, fontWeight: 500,
+                  letterSpacing: '-.01em', color: 'var(--accent)',
+                }}>{g.title}</h3>
+                <dl style={{ margin: 0, display: 'grid', gridTemplateColumns: '1fr auto', gap: '10px 12px' }}>
+                  {g.items.map(([size, from]) => (
+                    <React.Fragment key={size}>
+                      <dt style={{ fontSize: 14, color: 'var(--ink-2)' }}>{size}</dt>
+                      <dd style={{ margin: 0, fontSize: 14, fontWeight: 500, textAlign: 'right' }}>
+                        от {formatPrice(from as number)}
+                      </dd>
+                    </React.Fragment>
+                  ))}
+                </dl>
+              </div>
+            ))}
+          </div>
+          <p className="cat-no" style={{ marginTop: 20, lineHeight: 1.6 }}>{COMMISSION.custom}</p>
+
+          <div className="resp-stack-2" style={{
+            marginTop: 36, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32,
+          }}>
+            <div>
+              <Eyebrow accent>В стоимость входит</Eyebrow>
+              <ul style={{ margin: '14px 0 0', padding: 0, listStyle: 'none', display: 'grid', gap: 8 }}>
+                {COMMISSION.included.map((it) => (
+                  <li key={it} style={{ fontSize: 14, color: 'var(--ink-2)', display: 'flex', gap: 10 }}>
+                    <span style={{ color: 'var(--accent)' }}>◆</span>{it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <Eyebrow accent>Оплачивается отдельно</Eyebrow>
+              <ul style={{ margin: '14px 0 0', padding: 0, listStyle: 'none', display: 'grid', gap: 8 }}>
+                {COMMISSION.extra.map((it) => (
+                  <li key={it} style={{ fontSize: 14, color: 'var(--ink-2)', display: 'flex', gap: 10 }}>
+                    <span style={{ color: 'var(--accent-soft)' }}>◇</span>{it}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <p style={{
+            marginTop: 28, padding: '16px 20px', background: 'var(--bg-soft)',
+            borderRadius: 'var(--r-md)', border: '1px solid var(--rule-soft)',
+            fontSize: 13.5, color: 'var(--ink-2)', lineHeight: 1.6,
+          }}>{COMMISSION.terms}</p>
+        </section>
 
         {sent ? (
           <section style={{
@@ -191,12 +269,12 @@ function CommissionPage({ go, refId }) {
                     {formatPrice(form.budget)}
                   </span>
                 </div>
-                <input type="range" min={50000} max={800000} step={10000}
+                <input type="range" min={6000} max={120000} step={1000}
                        value={form.budget} onChange={(e) => upd('budget', Number(e.target.value))}
                        style={{ width: '100%', accentColor: 'var(--accent)' }} />
                 <div className="cat-no" style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
-                  <span>50 000 ₽</span>
-                  <span>800 000+ ₽</span>
+                  <span>6 000 ₽</span>
+                  <span>от 120 000 ₽</span>
                 </div>
               </div>
 

@@ -15,7 +15,7 @@ export const TWEAK_DEFAULTS = {
   dark: false,
   hero: 'editorial',
   density: 'regular',
-  accent: '#b85c3a',
+  accent: '#a08a4e',
 } as const;
 
 export type RouteName =

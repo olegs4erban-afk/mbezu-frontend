@@ -25,7 +25,7 @@ function HeroEditorial({ go }) {
       <div style={{
         position: 'absolute', top: '-15%', right: '-10%',
         width: 600, height: 600, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(184, 92, 58, 0.10), transparent 60%)',
+        background: 'radial-gradient(circle, rgba(160, 138, 78, 0.10), transparent 60%)',
         animation: 'glow 10s ease-in-out infinite',
         pointerEvents: 'none', zIndex: 0,
       }} />
@@ -314,7 +314,7 @@ function ManifestBand() {
       <div style={{
         position: 'absolute', top: -120, right: -120,
         width: 480, height: 480, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(184, 92, 58, 0.40), transparent 70%)',
+        background: 'radial-gradient(circle, rgba(160, 138, 78, 0.40), transparent 70%)',
         animation: 'glow 8s ease-in-out infinite',
         pointerEvents: 'none',
       }} />
@@ -620,7 +620,7 @@ function Packaging() {
               boxShadow: 'var(--shadow-md)',
               transform: 'rotate(-6deg)', color: 'var(--ink)',
               display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-              border: '1px solid rgba(184, 92, 58, 0.3)',
+              border: '1px solid rgba(160, 138, 78, 0.3)',
             }}>
               <div>
                 <div className="italic" style={{
