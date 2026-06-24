@@ -356,3 +356,29 @@
 - **Артефакты:** `backup/about-T123.html` (оригинал, откат), `backup/about-container.html` (контейнер), `scripts/tilda_edit.mjs` (browser-login editor: snapshot/swap/rollback), `scripts/about-verify.mjs`, `scripts/navcheck.mjs`.
 - **Откат при необходимости:** `node scripts/tilda_edit.mjs rollback` (вернёт оригинальный бандл из снимка + publish).
 - Прочее (реальные ID аналитики, миграция магазина на React требует реального checkout) — в `TODO-incomplete.md`.
+
+---
+
+# Sprint 9 — каталог (навигация+крошки+единый размер+ховер-зум), фото автора, фикс «Шторм» (по `../sprint-9.md`)
+
+## Sprint 9 — статус
+- **✅ Фазы 1–4 (React-витрина) на live, проверены Playwright + визуально.** Один деплой-цикл (commit `8a3d190` → CDN), затем reswap 5 контейнеров на новые хеши (`common-DMB1QQzJ`) + reconnect `/catalog`.
+- **Осталось (натив Store, data-уровень):** дедуп галерей товаров до webp + unpublish товара MN-03 — см. ниже (CSV-импорт внешних URL картинок Tilda НЕ заменяет → нужен ручной шаг в Store-админке).
+
+## Sprint 9 — лог
+- `[done] Фаза 3 — фото автора в About` — 2026-06-25
+  - `about-author.jpg` (1245×1600) + `-square.jpg` → `public/assets/` → CDN. `page-about.jsx`: плейсхолдер «[портрет…]» → `<img>` (object-fit cover, alt="Mila Bezú, художник"). Live: портрет справа, плейсхолдер исчез.
+- `[done] Фаза 2 — единый квадрат + 1 webp + ховер-зум (React-каталог)` — 2026-06-25
+  - `ArtCard`: контейнер `aspect-ratio:1/1; overflow:hidden`, одна прозрачная webp (`PaintingPlate objectFit="contain" plain className="art-card-img"`), тондо — круг. CSS `.art-card-img:hover img{transform:scale(1.07)} transition .45s` (+ reduced-motion). На креме без «белой коробки».
+  - Live `/catalog`: 21 карточка, все `squareRatio=1.0`, 0 console/asset-ошибок.
+- `[done] Фаза 4 — «Шторм» (MN-03) скрыт` — 2026-06-25
+  - В data.ts `MN-03 hidden:true` (своего фото нет; на нативном каталоге дублировалось фото 422=Freedom). Фильтр `visibleArtworks()` в каталоге/home/related/счётчиках. 422 остаётся только у Freedom (65 000). Live: «Шторм» отсутствует, 21 работа.
+- `[done] Фаза 1 — каталог: TopBar+крошки + reconnect + аудит` — 2026-06-25
+  - Reswap root/home/about/legal/commission на новые хеши (после деплоя GH Pages удаляет старые → live на минуту падал, восстановлен).
+  - **Reconnect `/catalog`:** `tilda_add` добавил React-блок `rec2413986501` (контейнер с `<style>#rec2291453131{display:none}</style>` — прячет нативный Store-каталог 776, не удаляя; товары/корзина/чекаут целы). Удалён orphan-блок `rec2413982781` (пустой, от первой неуд. попытки add). 
+  - **Live verify:** React-каталог рендерит (root=5), нативный 776 скрыт (offsetHeight=0), TopBar (Каталог/На заказ/Художница/Статус/Корзина) + крошки «M.BEZ / Каталог», корзина 706 на месте; **клик по работе → `/catalog/tproduct/566542733172-wave-sepia` (100 000р. + BUY NOW)** → корзина → чекаут. Воронка цела.
+  - **Аудит витрин:** home/about/legal/commission/catalog = React (TopBar+крошки через Shell) ✓. Нативные product/cart/checkout — намеренно нативный UI (бэкенд покупки, не трогаем).
+  - Откат `/catalog`: `MODE=delete RECORDID=2413986501 PAGEID=142948046 node scripts/tilda_add.mjs` (вернёт нативный каталог). Контейнеры — `backup/s9/`.
+- `[follow-up] Натив Store — дедуп галерей до webp + скрыть товар MN-03`
+  - Факт: товары на product-страницах отдают ИСХОДНЫЕ tildacdn-фото (`mn-01-md.jpg` и т.п.); CSV-импорт `Photo`=внешний `cdn.mbezu.ru/.../*.webp` с «заменить изображения» цены обновил, а картинки галереи НЕ заменил (ограничение Tilda на внешние URL). Нативный каталог скрыт → витрина (React) чистая; правка нужна для product-страниц.
+  - Надёжный путь: загрузить webp в Store-медиа Tilda и поставить первым/единственным фото у каждого товара (ручной ~5-мин шаг в админке, как и предполагал sprint-9 «импортёру дочистить»), + скрыть/снять с публикации товар MN-03. Можно сделать Store-админ-автоматизацией по запросу.
