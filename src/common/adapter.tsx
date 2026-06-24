@@ -38,8 +38,13 @@ export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true
 
   // Если есть реальное фото — рендерим <img>
   if (src) {
-    const srcSet = art.image
-      ? `${art.image.thumb} 320w, ${art.image.large} 768w, ${art.image.full} 1600w`
+    // srcSet must follow the SAME resolver as `src` (imageOf), else a stale
+    // art.image (works-jpg) srcSet would win over a CDN card override.
+    // Transparent webp cards are one file for every size → emit no srcSet
+    // (browser falls back to `src`); only multi-size sources get a srcSet.
+    const t = imageOf(art, 'thumb'), l = imageOf(art, 'large'), f = imageOf(art, 'full');
+    const srcSet = (t && l && f && new Set([t, l, f]).size > 1)
+      ? `${t} 320w, ${l} 768w, ${f} 1600w`
       : undefined;
     return (
       <div style={baseStyle} onClick={onClick}>
