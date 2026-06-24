@@ -133,6 +133,15 @@
   .chip:hover { border-color: var(--accent); color: var(--accent); }
   .chip.is-active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 
+  /* Sprint 9 — каталог: единый квадрат + плавный ховер-зум прозрачной webp-карточки */
+  .art-card-img { overflow: hidden; }
+  .art-card-img img { transition: transform .45s ease; will-change: transform; }
+  .art-card-img:hover img { transform: scale(1.07); }
+  @media (prefers-reduced-motion: reduce) {
+    .art-card-img img { transition: none; }
+    .art-card-img:hover img { transform: none; }
+  }
+
   /* Underline hover */
   .uh { position: relative; }
   .uh::after {

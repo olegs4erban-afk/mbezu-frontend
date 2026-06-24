@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArtCard, ArtRow, Breadcrumbs, Eyebrow } from '../common/atoms';
-import { ARTWORKS, SERIES, SUBJECTS } from '../common/data';
+import { ARTWORKS, SERIES, SUBJECTS, visibleArtworks } from '../common/data';
 
 // ─────────────────────────────────────────────────────────────
 // page-catalog.jsx — каталог в стилистике Swiss-сетки.
@@ -14,7 +14,7 @@ function CatalogPage({ go, density, initialSeries }) {
   const [view, setView] = React.useState('grid');
 
   const items = React.useMemo(() => {
-    let r = ARTWORKS.slice();
+    let r = visibleArtworks();
     if (series !== 'all') r = r.filter((a) => a.series === series);
     if (subject !== 'all') r = r.filter((a) => a.subject === subject);
     if (sort === 'price-asc') r.sort((a, b) => a.price - b.price);
@@ -25,6 +25,7 @@ function CatalogPage({ go, density, initialSeries }) {
   }, [series, subject, sort]);
 
   const gridCols = density === 'compact' ? 4 : (density === 'comfy' ? 2 : 3);
+  const total = visibleArtworks().length;
 
   return (
     <div className="fade-in resp-pad" style={{ padding: '40px 40px 80px' }}>
@@ -52,11 +53,11 @@ function CatalogPage({ go, density, initialSeries }) {
             </h1>
           </div>
           <div style={{ gridColumn: '9 / 13', textAlign: 'right' }}>
-            <div className="cat-no" style={{ fontSize: 12 }}>всего · {ARTWORKS.length} работ</div>
+            <div className="cat-no" style={{ fontSize: 12 }}>всего · {total} работ</div>
             <div className="display" style={{
               fontSize: 56, fontWeight: 500, letterSpacing: '-.03em', lineHeight: 1, color: 'var(--accent)',
               marginTop: 12,
-            }}>{String(items.length).padStart(2, '0')}/{String(ARTWORKS.length).padStart(2, '0')}</div>
+            }}>{String(items.length).padStart(2, '0')}/{String(total).padStart(2, '0')}</div>
           </div>
         </div>
 

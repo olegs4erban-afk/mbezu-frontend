@@ -3,7 +3,7 @@ import { PaintingPlate } from '../common/adapter';
 import { ArButton, ArViewer, QrBlock, useArSupport } from '../ar/ar';
 import { ArtCard, Eyebrow } from '../common/atoms';
 import { Marquee } from '../common/chrome';
-import { ABOUT, ARTWORKS, SERIES, availableCount, featuredArtworks, formatPrice, seriesById } from '../common/data';
+import { ABOUT, ARTWORKS, SERIES, availableCount, featuredArtworks, formatPrice, seriesById, visibleArtworks } from '../common/data';
 
 // ─────────────────────────────────────────────────────────────
 // page-home.jsx — главная M.Bez.
@@ -158,7 +158,7 @@ function HeroCenter({ go }) {
           Авторские интерьерные работы маслом. В наличии и&nbsp;на&nbsp;заказ — для дома, бюро и&nbsp;архитектурных проектов.
         </p>
         <div className="reveal r4" style={{ display: 'flex', gap: 14, marginTop: 44, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button className="btn btn-solid" onClick={() => go('catalog')}>Каталог · {ARTWORKS.length}</button>
+          <button className="btn btn-solid" onClick={() => go('catalog')}>Каталог · {visibleArtworks().length}</button>
           <button className="btn btn-ghost" onClick={() => go('commission')}>На заказ</button>
         </div>
       </div>
@@ -361,7 +361,7 @@ function ManifestBand() {
 // ── InStock — featured + recent ───────────────────────────────
 function InStock({ go }) {
   const fts = featuredArtworks();
-  const rest = ARTWORKS
+  const rest = visibleArtworks()
     .filter((a) => a.status === 'available' && !a.featured)
     .sort((a, b) => b.year - a.year);
   const items = [...fts, ...rest].slice(0, 6);

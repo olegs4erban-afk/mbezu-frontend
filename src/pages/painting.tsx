@@ -16,7 +16,7 @@ function PaintingPage({ go, id, addToCart }) {
   if (!art) return null;
   const series = seriesById(art.series);
   const index = ARTWORKS.findIndex((a) => a.id === id) + 1;
-  const related = ARTWORKS.filter((a) => a.series === art.series && a.id !== art.id).slice(0, 4);
+  const related = ARTWORKS.filter((a) => a.series === art.series && a.id !== art.id && !a.hidden).slice(0, 4);
 
   return (
     <div className="fade-in resp-pad" style={{ padding: '36px 40px 80px' }}>

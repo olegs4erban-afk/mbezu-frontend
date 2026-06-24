@@ -121,6 +121,7 @@ const ARTWORKS = [
       'Вершина в буре — гора как живое существо, борющееся со стихией. ' +
       'Динамика передана через движение кисти.',
     palette: ['#7a7a73', '#2d2d28'],
+    hidden: true, // Sprint 9: своего фото нет (на live дублировалось 422 = Freedom) → скрыта до фото от Милы
     // ⚠ фото пока нет — placeholder
   },
   {
@@ -417,7 +418,8 @@ const subjectById = (id) => SUBJECTS.find((s) => s.id === id);
 const artworkById = (id) => ARTWORKS.find((a) => a.id === id);
 
 const featuredArtworks = () => ARTWORKS.filter((a) => a.featured);
-const availableCount   = () => ARTWORKS.filter((a) => a.status === 'available').length;
+const availableCount   = () => ARTWORKS.filter((a) => a.status === 'available' && !a.hidden).length;
+const visibleArtworks  = () => ARTWORKS.filter((a) => !a.hidden); // Sprint 9: исключает скрытые (MN-03 без фото)
 
 const imageOf = (art, size = 'large') => {
   if (!art) return null;
@@ -513,4 +515,4 @@ const ABOUT = {
   },
 };
 
-export { CATEGORIES, SUBJECTS, SERIES, ARTWORKS, ABOUT, formatPrice, seriesById, catById, subjectById, artworkById, featuredArtworks, availableCount, imageOf };
+export { CATEGORIES, SUBJECTS, SERIES, ARTWORKS, ABOUT, formatPrice, seriesById, catById, subjectById, artworkById, featuredArtworks, visibleArtworks, availableCount, imageOf };

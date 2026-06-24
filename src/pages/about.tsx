@@ -1,5 +1,4 @@
 import React from 'react';
-import { PaintingPlate } from '../common/adapter';
 import { Breadcrumbs, Eyebrow } from '../common/atoms';
 import { ABOUT, SERIES } from '../common/data';
 
@@ -37,14 +36,17 @@ function AboutPage({ go }) {
               </div>
             </div>
             <div>
-              <PaintingPlate
-                art={{ id: 'PORTRAIT', w: 4, h: 5, palette: ['#c4b69a', '#6b5d4a'] }}
-                fit="bare"
-                showMeta={false}
-                style={{ borderRadius: 'var(--r-md)', boxShadow: 'var(--shadow-lg)' }}
+              <img
+                src="https://cdn.mbezu.ru/assets/about-author.jpg"
+                alt="Mila Bezú, художник"
+                loading="lazy" decoding="async"
+                style={{
+                  width: '100%', aspectRatio: '4 / 5', objectFit: 'cover',
+                  borderRadius: 'var(--r-md)', boxShadow: 'var(--shadow-lg)', display: 'block',
+                }}
               />
               <div className="cat-no" style={{ marginTop: 14, textAlign: 'right' }}>
-                [портрет художницы — будет добавлен]
+                Mila Bezú · Москва
               </div>
             </div>
           </div>

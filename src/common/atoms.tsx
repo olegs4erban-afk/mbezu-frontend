@@ -110,29 +110,14 @@ function ArtCard({ art, onOpen, index, total, size = 'thumb' }: { art: any; onOp
     <article className="lift" style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 14 }}
              onClick={() => onOpen && onOpen(art.id)}>
       <div style={{ position: 'relative' }}>
-        {isRound ? (
-          // Для круглых работ — квадратный контейнер с центрированным кругом
-          <div style={{
-            aspectRatio: '3 / 4',
-            background: 'var(--bg-soft)',
-            borderRadius: 'var(--r-md)',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '8% 0',
-          }}>
-            <div style={{ width: '78%', aspectRatio: '1 / 1' }}>
-              <PaintingPlate art={art} size={size} fit="bare" showMeta={false} />
-            </div>
-          </div>
-        ) : (
-          <PaintingPlate art={art} size={size} fit="bare"
-                         style={{ aspectRatio: '3 / 4' }} showMeta={false} />
-        )}
+        {/* Sprint 9 — единый квадрат: одна прозрачная webp-карточка, object-fit:contain
+            (вся работа видна, на креме без «белой коробки»), плавный ховер-зум; тондо — круг. */}
+        <PaintingPlate art={art} size={size} fit="bare" objectFit="contain" plain
+                       className="art-card-img"
+                       style={{ aspectRatio: '1 / 1' }} showMeta={false} />
         {art.featured && (
           <span style={{
-            position: 'absolute', top: 14, left: 14,
+            position: 'absolute', top: 14, left: 14, zIndex: 2,
             background: 'var(--accent)', color: 'var(--bg)',
             padding: '6px 12px', borderRadius: 'var(--r-pill)',
             fontFamily: 'var(--mono)', fontSize: 9.5,
@@ -141,7 +126,7 @@ function ArtCard({ art, onOpen, index, total, size = 'thumb' }: { art: any; onOp
         )}
         {isRound && (
           <span style={{
-            position: 'absolute', top: 14, right: 14,
+            position: 'absolute', top: 14, right: 14, zIndex: 2,
             background: 'rgba(245,239,226,.9)', color: 'var(--ink)',
             padding: '6px 12px', borderRadius: 'var(--r-pill)',
             fontFamily: 'var(--mono)', fontSize: 9.5,

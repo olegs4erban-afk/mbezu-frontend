@@ -17,9 +17,12 @@ interface PaintingPlateProps {
   onClick?: () => void;
   priority?: boolean; // LCP image → eager + high fetchpriority
   sizes?: string;     // responsive sizes hint
+  objectFit?: 'cover' | 'contain'; // Sprint 9: catalog cards use 'contain' (whole work visible on cream)
+  plain?: boolean;    // Sprint 9: drop boxShadow/box — transparent webp floats on cream
+  className?: string; // Sprint 9: e.g. 'art-card-img' for hover-zoom
 }
 
-export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true, style, onClick, priority = false, sizes }: PaintingPlateProps) {
+export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true, style, onClick, priority = false, sizes, objectFit = 'cover', plain = false, className }: PaintingPlateProps) {
   if (!art) return null;
   const isRound = art.shape === 'round';
   const src = imageOf ? imageOf(art, size) : null;
@@ -29,7 +32,7 @@ export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true
     aspectRatio: isRound ? '1 / 1' : (ratio || (fit === 'bare' ? undefined : `${art.w} / ${art.h}`)),
     width: '100%',
     borderRadius: isRound ? '50%' : 'var(--r-md)',
-    boxShadow: 'var(--shadow-md)',
+    boxShadow: plain ? 'none' : 'var(--shadow-md)',
     cursor: onClick ? 'pointer' : 'default',
     overflow: 'hidden',
     position: 'relative',
@@ -47,7 +50,7 @@ export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true
       ? `${t} 320w, ${l} 768w, ${f} 1600w`
       : undefined;
     return (
-      <div style={baseStyle} onClick={onClick}>
+      <div className={className} style={baseStyle} onClick={onClick}>
         <img src={src} srcSet={srcSet}
              sizes={sizes || '(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw'}
              alt={art.title}
@@ -56,7 +59,7 @@ export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true
              decoding="async"
              style={{
                width: '100%', height: '100%',
-               objectFit: 'cover', display: 'block',
+               objectFit, display: 'block',
              }} />
         {showMeta && art.id && (
           <div style={{
@@ -83,7 +86,7 @@ export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true
   // Fallback — placeholder градиент
   const bg = `linear-gradient(135deg, ${c1} 0%, ${c2} 100%)`;
   return (
-    <div className="ph-art" style={{ ...baseStyle, background: bg }} onClick={onClick}>
+    <div className={'ph-art' + (className ? ' ' + className : '')} style={{ ...baseStyle, background: bg }} onClick={onClick}>
       {showMeta && art.id && (
         <div className="ph-meta">
           <span>[{art.id}]</span>
