@@ -9,6 +9,7 @@ import './styles.css';
 import { TopBar, Footer } from './chrome';
 import { useCart } from './cart';
 import { initAnalytics } from './analytics';
+import { storeProductPath } from './store-urls';
 
 export const TWEAK_DEFAULTS = {
   palette: 'maison',
@@ -30,7 +31,9 @@ export interface RouteParams { id?: string; series?: string; ref?: string; secti
 export function routeToPath(name: RouteName, params: RouteParams = {}): string {
   switch (name) {
     case 'home':       return '/';
-    case 'painting':   return params.id ? `/painting/${encodeURIComponent(String(params.id).toLowerCase())}` : '/painting';
+    // 3C: a work opens on its NATIVE Tilda Store product page (buy → cart 706 →
+    // YooKassa). Fallback to the React painting alias if a work isn't mapped.
+    case 'painting':   return (params.id && storeProductPath(params.id)) || (params.id ? `/painting/${encodeURIComponent(String(params.id).toLowerCase())}` : '/painting');
     case 'catalog':    return params.series ? `/catalog?series=${encodeURIComponent(params.series)}` : '/catalog';
     case 'commission': return params.ref ? `/commission?ref=${encodeURIComponent(params.ref)}` : '/commission';
     case 'legal':      return params.section ? `/legal?section=${encodeURIComponent(params.section)}` : '/legal';
