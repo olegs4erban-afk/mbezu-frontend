@@ -35,13 +35,19 @@ async function ipost(path, params) {
 
 if (MODE === 'add') {
   const before = await page.evaluate(() => [...document.querySelectorAll('[id^="rec"]')].map((e) => e.id).filter((id) => /^rec\d+$/.test(id)));
-  const ret = await page.evaluate(async () => {
-    try { const r = await window.tp__addRecord(131, null, null); return r && (r.recordid || r.id || (typeof r === 'string' || typeof r === 'number' ? String(r) : null)); }
+  const ADDAFTER = process.env.ADDAFTER || null; // place new block after this rec id (positioning)
+  const ret = await page.evaluate(async (after) => {
+    try { const r = await window.tp__addRecord(131, after, null); return r && (r.recordid || r.id || (typeof r === 'string' || typeof r === 'number' ? String(r) : JSON.stringify(r))); }
     catch (e) { return 'ERR:' + e.message; }
-  });
-  await page.waitForTimeout(4000);
-  const after = await page.evaluate(() => [...document.querySelectorAll('[id^="rec"]')].map((e) => e.id).filter((id) => /^rec\d+$/.test(id)));
-  const added = after.filter((x) => !before.includes(x)).map((x) => x.replace('rec', ''));
+  }, ADDAFTER);
+  // poll up to 20s for the new rec to appear in the editor DOM
+  let added = [];
+  for (let i = 0; i < 40; i++) {
+    await page.waitForTimeout(500);
+    const after = await page.evaluate(() => [...document.querySelectorAll('[id^="rec"]')].map((e) => e.id).filter((id) => /^rec\d+$/.test(id)));
+    added = after.filter((x) => !before.includes(x)).map((x) => x.replace('rec', ''));
+    if (added.length) break;
+  }
   const recid = (ret && /^\d+$/.test(String(ret))) ? String(ret) : added[0];
   console.log('addRecord ret=', JSON.stringify(ret), '| diff-added=', added, '| using recid=', recid);
   if (!recid) { console.log('!! could not determine new recid — abort'); await browser.close(); process.exit(2); }

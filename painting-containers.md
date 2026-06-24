@@ -16,11 +16,11 @@
 <!-- M.Bez · painting · <ID> -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="<ID>";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ## Готовые контейнеры — 18 работ (фото + цена + размер)
@@ -35,11 +35,11 @@
 <!-- M.Bez · painting · MN-01 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-01";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### MN-02 · Вершина
@@ -52,11 +52,11 @@
 <!-- M.Bez · painting · MN-02 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-02";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### MN-04 · Перевал
@@ -69,11 +69,11 @@
 <!-- M.Bez · painting · MN-04 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-04";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### MN-05 · Камни на берегу
@@ -86,11 +86,11 @@
 <!-- M.Bez · painting · MN-05 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-05";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### MN-06 · Shell (Ракушка)
@@ -103,11 +103,11 @@
 <!-- M.Bez · painting · MN-06 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-06";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### ST-01 · Греция. Полдень
@@ -120,11 +120,11 @@
 <!-- M.Bez · painting · ST-01 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-01";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### ST-02 · Некуда спешить
@@ -137,11 +137,11 @@
 <!-- M.Bez · painting · ST-02 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-02";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### ST-03 · Франция. Лаванда
@@ -154,11 +154,11 @@
 <!-- M.Bez · painting · ST-03 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-03";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### ST-04 · Франция. Le Bouquineur (Книжная лавка в Париже)
@@ -171,11 +171,11 @@
 <!-- M.Bez · painting · ST-04 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-04";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### ST-05 · Ангкор-Ват (Камбоджа)
@@ -188,11 +188,11 @@
 <!-- M.Bez · painting · ST-05 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-05";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### ST-06 · Рисовое поле (Вьетнам)
@@ -205,11 +205,11 @@
 <!-- M.Bez · painting · ST-06 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-06";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### ST-07 · Крыши старого города
@@ -222,11 +222,11 @@
 <!-- M.Bez · painting · ST-07 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-07";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### TS-01 · Freedom (Свобода)
@@ -239,11 +239,11 @@
 <!-- M.Bez · painting · TS-01 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-01";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### TS-02 · Зеркало леса
@@ -256,11 +256,11 @@
 <!-- M.Bez · painting · TS-02 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-02";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### TS-03 · Waterlilies (Кувшинки)
@@ -273,11 +273,11 @@
 <!-- M.Bez · painting · TS-03 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-03";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### TS-04 · Тропические листья
@@ -290,11 +290,11 @@
 <!-- M.Bez · painting · TS-04 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-04";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### TS-05 · Дождь пошёл
@@ -307,11 +307,11 @@
 <!-- M.Bez · painting · TS-05 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-05";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ### TS-06 · Бамбук
@@ -324,11 +324,11 @@
 <!-- M.Bez · painting · TS-06 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-06";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-v2znOyUf.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-85XhhDAw.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DTJyAftg.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-FtTcl8Fl.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
 ```
 
 ## Отложены (НЕ генерируем — см. TODO-incomplete.md)
