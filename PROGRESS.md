@@ -312,7 +312,8 @@
 - **Батч 2A+2C+3A+3B — ВЫПОЛНЕН и проверен на React-витрине (mbezu.ru): золото, прайс заказа, прозрачные webp-карточки, цены bizar.** 2 деплой-цикла + reswap 4 контейнеров + ADD /commission.
 - **Нативный Store: ✅ импорт выполнен (Playwright) — все 22 цены bizar на живом /catalog, ST-08=15000, +3 новых товара; webp-карточки залиты.**
 - **Золото на нативных: ✅ /custom.css перекрашен в золото (ACE-редактор), весь сайт золотой.**
-- **Осталось:** 3C чекаут (React «Купить» → нативная корзина) — в работе; data.ts ST-08=15000 уедет с деплоем 3C.
+- **3C чекаут: ✅ клик по работе на React-витрине → нативная страница товара `/catalog/tproduct/<uid>-<slug>` → BUY NOW → корзина 706 → нативный чекаут.**
+- **Sprint 8 — ВЕСЬ батч + 3C готовы и проверены на live.** Осталось: 2B (фото автора — нет файла) и живой тест-заказ/оплата (Олег).
 - 2B (фото автора) — **заблокировано: `about-author.jpg` отсутствует** (не входит в батч).
 
 ## Sprint 8 — лог
@@ -341,7 +342,13 @@
   - Механизм: Settings → **Вставка кода** → «Редактировать CSS» → страница `/projects/editcustomcss/` с **ACE-редактором** (НЕ textarea — `textarea.value` не сохраняется; правильный путь `ace.edit(el).setValue()`).
   - `scripts/css-apply.mjs` (APPLY=1): хирургично заменил 4 accent-hex + rgba на золото в текущем CSS (бэкап `backup/custom-css-live-before.css`), проверил editor=gold ДО сохранения, «Сохранить» → publish home → `/custom.css` регенерён.
   - **Verify:** live `/custom.css` — `--accent #a08a4e` (+ #c2a85e/#b3a583/#7d6a38), 0× b85c3a; нативный `/catalog` `getComputedStyle(--accent)=#a08a4e`. Весь сайт (React + нативный Store) — золотой.
-- `[pending] data.ts ST-08=15000` — поправлено в исходнике (невидимо на текущих React-страницах), уедет в прод со следующим деплоем (вместе с 3C).
+- `[done] data.ts ST-08=15000` — уехало с деплоем 3C (commit 4ea7801).
+- `[done] 3C — чекаут-хэндофф (React → нативный Store)` — 2026-06-24 (Олег: «делай 3C сейчас»)
+  - Открыл проблему: `go('painting',{id})` вёл на `/painting/<id>` — нативную страницу-тупик (только site-wide корзина 706, без покупки). Нативные товары имеют реальные страницы `/catalog/tproduct/<uid>-<slug>` с BUY NOW.
+  - Фикс (1 точка): `routeToPath('painting')` → нативный product-URL из нового `src/common/store-urls.ts` (22 работы → product-URL, UID'ы со скрейпа каталога; неизвестные id → фолбэк React-алиас). seo.ts/prerender не зависят от routeToPath('painting') (хардкод `/painting/<id>`) — SEO/пререндер не затронуты. Юнит-тест обновлён.
+  - Деплой commit `4ea7801` (push: schannel-обрыв → помог `http.postBuffer=512M` + HTTP/1.1) → reswap 5 контейнеров (root/home/about/legal/commission) на новые хеши (common-85XhhDAw…).
+  - **Verify (live):** home/commission — root=5, золото, корзина 706, новый common-чанк. **E2E: клик по флагману на home → переход на `mbezu.ru/catalog/tproduct/566542733172-wave-sepia`** (Wave sepia, Артикул MN-01, 100 000 р., **BUY NOW**). Хэндофф работает.
+  - Живой тест-заказ + 54-ФЗ чек + подключение оплаты ЮKassa — **за Олегом** (по sprint).
 
 ## Sprint 5 — Итог
 - **Сделано:** `/about` (единственная React-страница) переподключена на тонкий CDN-контейнер — теперь грузит чанки с `cdn.mbezu.ru` вместо инлайн-бандла. Проверено (рендер+консоль+навигация). Нативный Tilda Store не тронут.
