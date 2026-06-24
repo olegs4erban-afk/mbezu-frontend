@@ -1,0 +1,177 @@
+filechooser -> set C:/MBezu/02-tilda-store-import-v3.csv
+Загрузить файл -> chooser -> set C:/MBezu/02-tilda-store-import-v3.csv
+file chosen: true | still logged in: true
+
+== STEP2 ==
+text:  Мои сайтыCRMТарифы и оплатаПрофильПригласи друга Справочный центрВебинарыУроки и статьиВыйти mbezu.ru / Каталог Импортировать (или обновить) товары из CSV Импортировать (или обновить) товары из YML Скачать список товаров в CSV Скачать список товаров в YML Синхронизация через CommerceML Синхронизация с ВКонтакте Синхронизация с Wildberries Синхронизация с Ozon Синхронизация с Яндекс Маркетом Скидки Промокоды Настройки Разделы Фильтры Добавить По разделам: Все Монохромная Улицы мира Тихая сила Тондо Без раздела Порядок: по умолчанию Порядок: обратный Название: А — Я Название: Я — А Цена: по возрастанию Цена: по убыванию Артикул: A — Z Артикул: Z — A Дата: сперва новые Дата: сперва старые Сперва опубликованные Сперва черновики Фото Заголовок Артикул Цена Кол-во Дубл. Видимость Удалить Wave sepia MN-01 210000 1 Вершина MN-02 42000 1 Шторм MN-03 42000 1 Перевал MN-04 42000 1 Камни на берегу 
+checks: [
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ },
+ {
+  "id": "",
+  "name": "",
+  "checked": false,
+  "near": "",
+  "visible": true
+ }
+]
+selects: [{"name":"","value":"default","opts":["Порядок: по умолчанию","Порядок: обратный","Название: А — Я","Название: Я — А","Цена: по возрастанию","Цена: по убыванию","Артикул: A — Z","Артикул: Z — A"]}]
+buttons: [
+ {
+  "t": "Импортировать (или обновить) товары из C",
+  "oc": "javascript:tstore_start_import('csv'); return false;"
+ },
+ {
+  "t": "Импортировать (или обновить) товары из Y",
+  "oc": "javascript:tstore_start_import('yml'); return false;"
+ }
+]
+screenshot -> audit/store-import-step2.png
+
+!! CONFIRM=1 — committing import to live catalog
+commit click 1: Импортировать (getByText exact)
+step2 setReplace: true | labels: ["[ ] Обновить только существующие товары и не создавать новы","[ ] Заменить имеющиеся изображения у обновлённых товаров","[ ] Заменить только выбранные табы и удалить остальные"]
+step2 finalize candidates: [
+ {
+  "t": "Отмена Начать запись данных",
+  "oc": "",
+  "cls": "td-popup-window__btn-wrap_right"
+ },
+ {
+  "t": "Начать запись данных",
+  "oc": "",
+  "cls": "td-popup-btn btn_importcsv_proccess"
+ }
+]
+step2 finalize click: null
