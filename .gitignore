@@ -20,3 +20,4 @@ audit/last-runtime.md
 audit/last-lh.md
 audit/lhci/
 .lighthouseci/
+audit/.tilda-profile/

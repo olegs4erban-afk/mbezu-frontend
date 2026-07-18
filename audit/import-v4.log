@@ -1,0 +1,52 @@
+menu/modal path failed: locator.click: Timeout 6000ms exceeded.
+file chosen: false | still logged in: false
+
+== STEP2 ==
+text: Эл. почта Пароль Войти ЗарегистрироватьсяЗабыли пароль?
+checks: []
+selects: []
+buttons: []
+screenshot -> audit/store-import-step2.png
+
+!! CONFIRM=1 — committing import to live catalog
+commit click failed: locator.click: Timeout 8000ms exceeded.
+commit click 1: null
+step2 setReplace: false | replaceChecked: null | labels: []
+step2 finalize candidates: []
+step2 finalize click: null
+status@0: pct=null fin="" modalGone=true
+status@1: pct=null fin="" modalGone=true
+status@2: pct=null fin="" modalGone=true
+status@3: pct=null fin="" modalGone=true
+status@4: pct=null fin="" modalGone=true
+status@5: pct=null fin="" modalGone=true
+status@6: pct=null fin="" modalGone=true
+status@7: pct=null fin="" modalGone=true
+status@8: pct=null fin="" modalGone=true
+status@9: pct=null fin="" modalGone=true
+status@10: pct=null fin="" modalGone=true
+status@11: pct=null fin="" modalGone=true
+status@12: pct=null fin="" modalGone=true
+status@13: pct=null fin="" modalGone=true
+status@14: pct=null fin="" modalGone=true
+status@15: pct=null fin="" modalGone=true
+status@16: pct=null fin="" modalGone=true
+status@17: pct=null fin="" modalGone=true
+status@18: pct=null fin="" modalGone=true
+status@19: pct=null fin="" modalGone=true
+status@20: pct=null fin="" modalGone=true
+status@21: pct=null fin="" modalGone=true
+status@22: pct=null fin="" modalGone=true
+status@23: pct=null fin="" modalGone=true
+status@24: pct=null fin="" modalGone=true
+status@25: pct=null fin="" modalGone=true
+status@26: pct=null fin="" modalGone=true
+status@27: pct=null fin="" modalGone=true
+status@28: pct=null fin="" modalGone=true
+status@29: pct=null fin="" modalGone=true
+status@30: pct=null fin="" modalGone=true
+status@31: pct=null fin="" modalGone=true
+status@32: pct=null fin="" modalGone=true
+status@33: pct=null fin="" modalGone=true
+status@34: pct=null fin="" modalGone=true
+status@35: pct=null fin="" modalGone=true
