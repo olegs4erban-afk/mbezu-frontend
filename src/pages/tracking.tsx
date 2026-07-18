@@ -27,7 +27,7 @@ function TrackingPage({ go }) {
     <div className="fade-in resp-pad" style={{ padding: '36px 40px 80px' }}>
       <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
         <Breadcrumbs items={[
-          { label: 'M.BEZ', onClick: () => go('home') },
+          { label: 'MBezu', onClick: () => go('home') },
           { label: 'Статус заказа' },
         ]} />
 
@@ -216,7 +216,7 @@ function TrackingPage({ go }) {
                     «Сегодня прошлась по теням архитектуры. Завтра — небо.»
                   </p>
                   <div className="cat-no" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span>M. Bez · студия, Москва</span>
+                    <span>MBezu · студия, Москва</span>
                     <span>11 мая · 18:42</span>
                   </div>
                 </div>

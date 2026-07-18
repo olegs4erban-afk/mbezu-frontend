@@ -63,7 +63,7 @@ function headFragment(seo: RouteSeo, name: string): string {
   if (seo.canonical) t.push(`<meta property="og:url" content="${esc(seo.canonical)}">`);
   if (seo.ogImage) t.push(`<meta property="og:image" content="${esc(seo.ogImage)}">`);
   t.push('<meta property="og:locale" content="ru_RU">');
-  t.push('<meta property="og:site_name" content="M.Bez">');
+  t.push('<meta property="og:site_name" content="MBezu">');
   if (seo.noindex) t.push('<meta name="robots" content="noindex,nofollow">');
   // id matches client injectJsonLd('ld-<name>-<i>') so hydration replaces (no duplicate)
   (seo.jsonLd || []).forEach((ld, i) => {

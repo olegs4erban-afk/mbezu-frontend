@@ -18,12 +18,12 @@
 <script>window.__MB_ART_ID="<ID>";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
-## Готовые контейнеры — 18 работ (фото + цена + размер)
+## Готовые контейнеры — 17 работ (фото + цена + размер)
 
 ### MN-01 · Wave sepia (Волна в сепии)
 - Серия: **Монохромная серия** · 100×60 см · 100 000 ₽ · available
@@ -37,26 +37,9 @@
 <script>window.__MB_ART_ID="MN-01";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
-```
-
-### MN-02 · Вершина
-- Серия: **Монохромная серия** · 30×30 см · 25 000 ₽ · available
-- **SEO Title:** Вершина — Монохромная серия · Mila Bezú
-- **SEO Description:** Острый пик уходит в светлые облака. Форма без цвета — только свет, тень и вертикаль. 30×30 см, холст на картоне, масло. 25 000 ₽.
-- **OG image:** https://cdn.mbezu.ru/assets/cards/mn-02.webp
-- **Canonical:** https://mbezu.ru/painting/mn-02
-```html
-<!-- M.Bez · painting · MN-02 -->
-<div id="root"></div>
-<script>window.__MB_ART_ID="MN-02";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### MN-04 · Перевал
@@ -71,9 +54,9 @@
 <script>window.__MB_ART_ID="MN-04";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### MN-05 · Камни на берегу
@@ -88,9 +71,9 @@
 <script>window.__MB_ART_ID="MN-05";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### MN-06 · Shell (Ракушка)
@@ -105,9 +88,9 @@
 <script>window.__MB_ART_ID="MN-06";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### ST-01 · Греция. Полдень
@@ -122,9 +105,9 @@
 <script>window.__MB_ART_ID="ST-01";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### ST-02 · Некуда спешить
@@ -139,9 +122,9 @@
 <script>window.__MB_ART_ID="ST-02";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### ST-03 · Франция. Лаванда
@@ -156,9 +139,9 @@
 <script>window.__MB_ART_ID="ST-03";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### ST-04 · Франция. Le Bouquineur (Книжная лавка в Париже)
@@ -173,9 +156,9 @@
 <script>window.__MB_ART_ID="ST-04";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### ST-05 · Ангкор-Ват (Камбоджа)
@@ -190,9 +173,9 @@
 <script>window.__MB_ART_ID="ST-05";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### ST-06 · Рисовое поле (Вьетнам)
@@ -207,9 +190,9 @@
 <script>window.__MB_ART_ID="ST-06";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### ST-07 · Крыши старого города
@@ -224,9 +207,9 @@
 <script>window.__MB_ART_ID="ST-07";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### TS-01 · Freedom (Свобода)
@@ -241,9 +224,9 @@
 <script>window.__MB_ART_ID="TS-01";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### TS-02 · Зеркало леса
@@ -258,9 +241,9 @@
 <script>window.__MB_ART_ID="TS-02";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### TS-03 · Waterlilies (Кувшинки)
@@ -275,9 +258,9 @@
 <script>window.__MB_ART_ID="TS-03";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### TS-04 · Тропические листья
@@ -292,9 +275,9 @@
 <script>window.__MB_ART_ID="TS-04";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### TS-05 · Дождь пошёл
@@ -309,9 +292,9 @@
 <script>window.__MB_ART_ID="TS-05";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ### TS-06 · Бамбук
@@ -326,12 +309,13 @@
 <script>window.__MB_ART_ID="TS-06";</script>
 <link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-DMB1QQzJ.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D9FHuLnG.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-CIHSuKB4.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-NaWBT0hM.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-DNiAikyb.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-D1ygSsOD.js"></script>
 ```
 
 ## Отложены (НЕ генерируем — см. TODO-incomplete.md)
+- **MN-02 · Вершина** — нет данных.
 - **MN-03 · Шторм** — нет фото.
 - **ST-08 · Обидуш** — цена/размер «уточнить».
 - **TD-01 · Sands** — цена/размер «уточнить».

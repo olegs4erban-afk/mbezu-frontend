@@ -13,7 +13,7 @@ function AboutPage({ go }) {
       <section className="resp-pad" style={{ padding: '60px 40px 80px' }}>
         <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
           <Breadcrumbs items={[
-            { label: 'M.BEZ', onClick: () => go('home') },
+            { label: 'MBezu', onClick: () => go('home') },
             { label: 'Художница' },
           ]} />
           <div className="resp-stack" style={{

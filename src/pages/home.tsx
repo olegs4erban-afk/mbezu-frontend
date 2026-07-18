@@ -31,18 +31,7 @@ function HeroEditorial({ go }) {
       }} />
 
       <div style={{ maxWidth: 'var(--max)', margin: '0 auto', position: 'relative' }}>
-        {/* Ribbon: issue + featured info */}
-        <div className="reveal r1" style={{
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          gap: 24, marginBottom: 48, flexWrap: 'wrap',
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
-            <Eyebrow accent>Saison printemps–été · MMXXVI</Eyebrow>
-          </div>
-          <Eyebrow>œuvre du jour · {hero.id} · {hero.w}×{hero.h} см · {formatPrice(hero.price)}</Eyebrow>
-        </div>
-
+        {/* Sprint 10 (A): верхние плашки (Saison…/œuvre du jour…) убраны */}
         {/* Big hero — text left, painting right */}
         <div className="resp-stack" style={{
           display: 'grid', gridTemplateColumns: '1.05fr .95fr',
@@ -61,7 +50,7 @@ function HeroEditorial({ go }) {
                 color: 'var(--accent)', fontStyle: 'italic',
                 position: 'relative', display: 'inline-block',
               }}>живущие</span><br/>
-              в&nbsp;комнатах.
+              в&nbsp;комнатах
             </h1>
             <p className="reveal r3" style={{
               margin: '40px 0 0', maxWidth: 460,
@@ -80,7 +69,7 @@ function HeroEditorial({ go }) {
             }}>
               {[
                 [String(availableCount()), 'в наличии'],
-                ['4–10', 'недель на заказ'],
+                ['от 2', 'недель на заказ'],
                 ['15+', 'лет практики'],
                 ['РФ', 'доставка'],
               ].map(([n, l]) => (
@@ -237,26 +226,26 @@ function SeriesTriptych({ go }) {
           gap: 80, marginBottom: 60, alignItems: 'end',
         }}>
           <div>
-            <Eyebrow accent>Три серии · 0{SERIES.length}</Eyebrow>
+            <Eyebrow accent>Наблюдения · 0{SERIES.length}</Eyebrow>
             <h2 className="display resp-h1" style={{
               margin: '20px 0 0', fontSize: 'clamp(44px, 5.5vw, 80px)',
               lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
             }}>
-              Три <span className="italic" style={{ color: 'var(--accent)' }}>наблюдения</span>
+              <span className="italic" style={{ color: 'var(--accent)' }}>Наблюдения</span>
             </h2>
           </div>
           <p style={{
             margin: 0, maxWidth: 460, color: 'var(--ink-2)',
             fontSize: 16, lineHeight: 1.6, fontWeight: 300,
           }}>
-            Работы группируются в серии. Каждая — про одно место, один свет, одну часть пути.
+            Работы группируются в серии. Каждая — про один свет, одни эмоции, одну атмосферу.
           </p>
         </div>
 
         <div className="resp-stack-3" style={{
           display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36,
         }}>
-          {SERIES.map((s, i) => {
+          {SERIES.map((s) => {
             const cover = ARTWORKS.find((a) => a.series === s.id && a.featured)
                        || ARTWORKS.find((a) => a.series === s.id);
             return (
@@ -266,17 +255,11 @@ function SeriesTriptych({ go }) {
                    display: 'flex', flexDirection: 'column', gap: 18,
                  }}>
                 <div style={{ position: 'relative' }}>
+                  {/* Sprint 10 (F): оверлей-плашка с названием серии убрана */}
                   <PaintingPlate art={cover} fit="bare" style={{
                     aspectRatio: '3 / 4', borderRadius: 'var(--r-md)',
                     boxShadow: 'var(--shadow-md)',
                   }} showMeta={false} />
-                  <span style={{
-                    position: 'absolute', top: 18, left: 18,
-                    background: s.color, color: 'var(--bg-cream)',
-                    padding: '8px 14px', borderRadius: 'var(--r-pill)',
-                    fontFamily: 'var(--mono)', fontSize: 10,
-                    letterSpacing: '.18em', fontWeight: 600,
-                  }}>0{i + 1} · {s.title.toUpperCase().split(' ')[0]}</span>
                 </div>
                 <div>
                   <div className="cat-no">{s.years} · {s.count} работ</div>
@@ -320,38 +303,24 @@ function ManifestBand() {
       }} />
 
       <div style={{ maxWidth: 1200, margin: '0 auto', position: 'relative' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 48 }}>
-          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
-          <span className="mono" style={{ fontSize: 11, letterSpacing: '.32em', color: 'var(--accent-2)', fontWeight: 600 }}>
-            МАНИФЕСТ · MMXXVI
-          </span>
-        </div>
+        {/* Sprint 10 (H): мета «МАНИФЕСТ · MMXXVI» убрана */}
         <h2 className="display resp-h1" style={{
           margin: 0, fontSize: 'clamp(36px, 5.2vw, 84px)',
           lineHeight: 1.1, fontWeight: 500, letterSpacing: '-.025em',
           maxWidth: 1100, color: 'var(--bg-cream)',
         }}>
-          Картина — это <span className="italic" style={{ color: 'var(--accent-2)' }}>тихий житель</span> комнаты. Она появляется однажды, и&nbsp;остаётся надолго: меняет свет, задаёт тон, удерживает внимание.
+          Картина — это <span className="italic" style={{ color: 'var(--accent-2)' }}>тихий житель</span> пространства. Она появляется однажды, и&nbsp;остаётся надолго: меняет свет, задаёт тон, удерживает внимание.
         </h2>
 
+        {/* Sprint 10 (H): меты «МИЛА БЭЗУ · ПСЕВДОНИМ» и «СТУДИЯ · MOSCOU» убраны; подпись-лого осталась (K: MBezu) */}
         <div style={{
           marginTop: 80, display: 'flex', justifyContent: 'space-between',
           alignItems: 'flex-end', flexWrap: 'wrap', gap: 32,
         }}>
-          <div>
-            <div className="italic" style={{
-              fontSize: 44, color: 'var(--accent-2)', fontWeight: 500,
-              lineHeight: 1, letterSpacing: '-.02em', fontStyle: 'italic',
-            }}>M. Bez</div>
-            <div className="mono" style={{
-              fontSize: 11, letterSpacing: '.22em', color: 'rgba(245,239,226,.5)',
-              marginTop: 14, fontWeight: 500,
-            }}>МИЛА БЭЗУ · ПСЕВДОНИМ</div>
-          </div>
-          <div className="mono" style={{
-            fontSize: 11, letterSpacing: '.22em',
-            color: 'rgba(245,239,226,.5)', fontWeight: 500,
-          }}>СТУДИЯ · MOSCOU</div>
+          <div className="italic" style={{
+            fontSize: 44, color: 'var(--accent-2)', fontWeight: 500,
+            lineHeight: 1, letterSpacing: '-.02em', fontStyle: 'italic',
+          }}>MBezu</div>
         </div>
       </div>
     </section>
@@ -399,18 +368,9 @@ function InStock({ go }) {
 // ── StudioBanner — AR-ПРИМЕРКА НА СТЕНЕ (iPhone + Android) ───
 // Два режима: AR (real wall via camera) + Room preview (desktop visualization)
 function StudioBanner({ go }) {
-  const [mode, setMode] = React.useState('ar');           // 'ar' | 'room'
-  const [room, setRoom] = React.useState('living');
+  // Sprint 10 (J): режим «В типовой комнате» удалён — остался только AR
   const { platform, ready } = useArSupport();
   const featured = heroArt();
-
-  const rooms = [
-    { id: 'living',  label: 'Гостиная',  bg: 'oklch(0.93 0.014 75)',  floor: 'oklch(0.74 0.022 60)' },
-    { id: 'bedroom', label: 'Спальня',   bg: 'oklch(0.90 0.018 60)',  floor: 'oklch(0.70 0.024 50)' },
-    { id: 'study',   label: 'Кабинет',   bg: 'oklch(0.85 0.020 55)',  floor: 'oklch(0.65 0.026 45)' },
-    { id: 'hall',    label: 'Холл',      bg: 'oklch(0.95 0.010 80)',  floor: 'oklch(0.78 0.018 65)' },
-  ];
-  const current = rooms.find((r) => r.id === room) || rooms[0];
 
   return (
     <section id="ar-block" className="resp-pad" style={{
@@ -429,7 +389,7 @@ function StudioBanner({ go }) {
               margin: '24px 0 0', fontSize: 'clamp(44px, 5.5vw, 88px)',
               lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
             }}>
-              Картина на<br/>вашей <span className="italic" style={{ color: 'var(--accent)' }}>реальной&nbsp;стене.</span>
+              Картина на<br/>вашей <span className="italic" style={{ color: 'var(--accent)' }}>реальной&nbsp;стене</span>
             </h2>
             <p style={{
               marginTop: 32, maxWidth: 480, color: 'var(--ink-2)',
@@ -453,27 +413,20 @@ function StudioBanner({ go }) {
               </button>
             </div>
 
-            {/* Mode toggle: AR (real) vs Room (rendered) */}
+            {/* Sprint 10 (J): тумблер «В типовой комнате» убран — остался индикатор AR-режима */}
             <div style={{
               marginTop: 40, paddingTop: 28,
               borderTop: '1px solid var(--rule-soft)',
               display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap',
             }}>
               <span className="cat-no">Превью режим:</span>
-              <button onClick={() => setMode('ar')}
-                      className={'chip' + (mode === 'ar' ? ' is-active' : '')}>
-                AR · реальная стена
-              </button>
-              <button onClick={() => setMode('room')}
-                      className={'chip' + (mode === 'room' ? ' is-active' : '')}>
-                В типовой комнате
-              </button>
+              <span className="chip is-active">AR · реальная стена</span>
             </div>
           </div>
 
-          {/* RIGHT — visualization (mode-dependent) */}
+          {/* RIGHT — AR visualization */}
           <div>
-            {mode === 'ar' ? (
+            {(
               // ── AR mode ──
               <div style={{
                 display: 'flex', flexDirection: 'column', gap: 20,
@@ -509,56 +462,6 @@ function StudioBanner({ go }) {
 
                 {/* Desktop fallback — QR code */}
                 {ready && platform === 'desktop' && <QrBlock art={featured} />}
-              </div>
-            ) : (
-              // ── Room mode (старый mockup) ──
-              <div>
-                <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap' }}>
-                  {rooms.map((r) => (
-                    <button key={r.id} onClick={() => setRoom(r.id)}
-                            className={'chip' + (room === r.id ? ' is-active' : '')}>
-                      {r.label}
-                    </button>
-                  ))}
-                </div>
-                <div className="card" style={{
-                  position: 'relative', aspectRatio: '4/3',
-                  background: current.bg, overflow: 'hidden',
-                  boxShadow: 'var(--shadow-lg)',
-                  borderRadius: 'var(--r-lg)',
-                  transition: 'background .6s',
-                }}>
-                  <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '28%', background: current.floor, transition: 'background .6s' }} />
-                  <div style={{ position: 'absolute', left: 0, right: 0, bottom: '28%', height: 3, background: 'oklch(0.55 0.022 50)' }} />
-                  <div style={{ position: 'absolute', left: '14%', right: '14%', bottom: '8%', height: '22%', background: 'oklch(0.42 0.022 45)', borderRadius: '8px 8px 0 0' }} />
-                  <div style={{ position: 'absolute', left: '12%', right: '12%', bottom: '6%', height: '8%', background: 'oklch(0.36 0.020 45)', borderRadius: '0 0 4px 4px' }} />
-                  <div className="drift" style={{
-                    position: 'absolute', left: '34%', top: '12%',
-                    width: '32%', aspectRatio: featured.w / featured.h,
-                    boxShadow: '0 28px 56px -18px rgba(0,0,0,.35), 0 8px 16px -8px rgba(0,0,0,.2)',
-                    borderRadius: 6, overflow: 'hidden',
-                  }}>
-                    <PaintingPlate art={featured} fit="bare" style={{ borderRadius: 6, boxShadow: 'none' }} showMeta={false} />
-                  </div>
-                  <div style={{ position: 'absolute', right: '6%', bottom: '28%', width: 40, height: '34%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <div style={{ width: 38, height: 22, background: 'oklch(0.88 0.04 80)', borderRadius: '50% 50% 4px 4px' }} />
-                    <div style={{ width: 2, flex: 1, background: 'oklch(0.45 0.02 50)' }} />
-                    <div style={{ width: 20, height: 4, background: 'oklch(0.4 0.02 50)' }} />
-                  </div>
-                  <div style={{
-                    position: 'absolute', left: '34%', top: 'calc(12% - 26px)', width: '32%',
-                    fontSize: 10, letterSpacing: '.18em', color: 'rgba(0,0,0,.55)',
-                    textAlign: 'center', fontWeight: 600, fontFamily: 'var(--mono)',
-                  }}>← {featured.w} × {featured.h} СМ →</div>
-                  <div style={{
-                    position: 'absolute', top: 16, right: 16,
-                    background: 'rgba(245, 239, 226, 0.92)',
-                    padding: '10px 16px', borderRadius: 'var(--r-pill)',
-                    fontSize: 10, letterSpacing: '.16em', color: 'var(--ink-2)',
-                    fontFamily: 'var(--mono)', textTransform: 'uppercase',
-                    backdropFilter: 'blur(8px)',
-                  }}>«{featured.title}» · {current.label.toLowerCase()}</div>
-                </div>
               </div>
             )}
           </div>
@@ -635,7 +538,7 @@ function Packaging() {
               <div className="italic" style={{
                 fontSize: 'clamp(13px, 1.4vw, 18px)', color: 'var(--accent)',
                 alignSelf: 'flex-end', fontStyle: 'italic', fontWeight: 500,
-              }}>M. Bez</div>
+              }}>MBezu</div>
             </div>
           </div>
 
@@ -659,7 +562,7 @@ function Packaging() {
             }}>
               {[
                 'Зелёная коробка с золотым логотипом MB',
-                'Бархатный мешочек M.Bez',
+                'Бархатный мешочек MBezu',
                 'Открытка из страны вдохновения с личным посланием',
                 'Сертификат подлинности с номером работы',
               ].map((t, i) => (
@@ -688,7 +591,7 @@ function StatsRow() {
     { n: '15+', l: 'лет практики' },
     { n: String(availableCount()), l: 'работ в наличии' },
     { n: String(SERIES.length), l: 'серии в развитии' },
-    { n: '4–10', l: 'недель на заказ' },
+    { n: 'от 2', l: 'недель на заказ' },
   ];
   return (
     <section className="resp-pad" style={{
@@ -910,8 +813,8 @@ function HomePage({ go, hero }) {
       {(!hero || !['editorial','center','split'].includes(hero)) && <HeroEditorial go={go} />}
 
       <Marquee items={[
-        'Улицы мира', 'Монохромная', 'Тихая сила',
-        '— три серии одного автора —',
+        'Улицы мира и других стран', 'Монохромная', 'Тихая сила',
+        '— серии одного автора —',
       ]} big />
 
       <SeriesTriptych go={go} />

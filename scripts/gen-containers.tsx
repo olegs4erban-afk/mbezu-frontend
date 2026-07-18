@@ -58,7 +58,7 @@ P.push('');
 P.push('Работа выбирается через `window.__MB_ART_ID` (вход `painting` читает его первым).');
 P.push('');
 P.push('### Базовый шаблон (общий, `<ID>` заменить)');
-P.push('```html'); P.push(container(pa, 'M.Bez · painting · <ID>', '<ID>')); P.push('```'); P.push('');
+P.push('```html'); P.push(container(pa, 'MBezu · painting · <ID>', '<ID>')); P.push('```'); P.push('');
 P.push(`## Готовые контейнеры — ${eligible.length} работ (фото + цена + размер)`);
 P.push('');
 for (const a of eligible as any[]) {
@@ -70,7 +70,7 @@ for (const a of eligible as any[]) {
   P.push(`- **SEO Description:** ${seo.description}`);
   P.push(`- **OG image:** ${seo.ogImage}`);
   P.push(`- **Canonical:** ${seo.canonical}`);
-  P.push('```html'); P.push(container(pa, `M.Bez · painting · ${a.id}`, a.id)); P.push('```'); P.push('');
+  P.push('```html'); P.push(container(pa, `MBezu · painting · ${a.id}`, a.id)); P.push('```'); P.push('');
 }
 P.push('## Отложены (НЕ генерируем — см. TODO-incomplete.md)');
 for (const a of excluded as any[]) {
@@ -100,7 +100,7 @@ for (const [name, file] of PAGES) {
   G.push(`- **SEO Title:** ${seo.title}`);
   if (seo.description) G.push(`- **SEO Description:** ${seo.description}`);
   if (seo.noindex) G.push('- **robots:** noindex (служебная страница)');
-  G.push('```html'); G.push(container(a, `M.Bez · ${name}`)); G.push('```'); G.push('');
+  G.push('```html'); G.push(container(a, `MBezu · ${name}`)); G.push('```'); G.push('');
 }
 writeFileSync(resolve('page-containers.md'), G.join('\n'), 'utf-8');
 

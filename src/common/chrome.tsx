@@ -5,21 +5,17 @@ import { ABOUT } from './data';
 // chrome.jsx — каркас сайта: TopBar / Footer / Marquee / ZeroBanner.
 // ─────────────────────────────────────────────────────────────
 
-// ── Логотип M.B — wordmark в Inter Tight ──────────────────────
+// ── Логотип MBezu — wordmark в Inter Tight (Sprint 10: без подписи Maison · Moscou) ──
 function LogoMB({ size = 32, onClick }) {
   return (
     <div onClick={onClick} style={{
       display: 'inline-flex', flexDirection: 'column', alignItems: 'center',
-      lineHeight: 1, gap: 4, cursor: onClick ? 'pointer' : 'default',
+      lineHeight: 1, cursor: onClick ? 'pointer' : 'default',
     }}>
       <div className="display" style={{
         fontSize: size, fontWeight: 500, letterSpacing: '-.02em',
         color: 'var(--ink)', fontStyle: 'italic',
-      }}>M.Bez</div>
-      <div className="mono" style={{
-        fontSize: 8.5, letterSpacing: '.4em', textTransform: 'uppercase',
-        color: 'var(--ink-3)', fontWeight: 500,
-      }}>Maison · Moscou</div>
+      }}>MBezu</div>
     </div>
   );
 }
@@ -198,7 +194,7 @@ function Footer({ go }) {
             <div className="display" style={{
               fontSize: 56, fontWeight: 500, letterSpacing: '-.03em', lineHeight: 1,
               color: 'var(--bg-cream)', fontStyle: 'italic',
-            }}>M.Bez</div>
+            }}>MBezu</div>
             <p style={{ marginTop: 24, maxWidth: 360, fontSize: 14, lineHeight: 1.6, color: 'rgba(245, 239, 226, .72)' }}>
               Mila Bezú — художник-живописец из Москвы. Интерьерная живопись маслом, на заказ и в наличии.
             </p>
@@ -307,7 +303,7 @@ function Footer({ go }) {
             paddingTop: 24, borderTop: '1px solid rgba(245, 239, 226, .12)',
           }}>
             <span className="mono" style={{ fontSize: 10.5, letterSpacing: '.22em', color: 'rgba(245,239,226,.72)' }}>
-              © M.BEZ STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ
+              © MBEZU STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ
             </span>
             <span className="mono" style={{ fontSize: 10.5, letterSpacing: '.22em', color: 'rgba(245,239,226,.72)' }}>
               ХУДОЖНИК · MILA BEZÚ · MOSCOU

@@ -28,7 +28,7 @@ export function applySeo(seo: PageSeo): void {
   setMeta('property', 'og:url', seo.canonical);
   setMeta('property', 'og:image', seo.ogImage);
   setMeta('property', 'og:locale', 'ru_RU');
-  setMeta('property', 'og:site_name', 'M.Bez');
+  setMeta('property', 'og:site_name', 'MBezu');
   if (seo.noindex) setMeta('name', 'robots', 'noindex,nofollow');
   setCanonical(seo.canonical);
 }
@@ -72,7 +72,7 @@ export function organizationLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'M.Bez · Mila Bezú',
+    name: 'MBezu · Mila Bezú',
     legalName: `${ABOUT.legal.type} ${ABOUT.legal.full_name}`,
     url: SITE_ORIGIN,
     email: ABOUT.contacts.email,
@@ -124,7 +124,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
     case 'home':
       return {
         title: 'Mila Bezú — интерьерная живопись маслом · Москва',
-        description: 'Картины маслом современной российской художницы Mila Bezú. Серии «Улицы мира», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.',
+        description: 'Картины маслом современной российской художницы Mila Bezú. Серии «Улицы мира и других стран», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.',
         canonical: SITE_ORIGIN + '/',
         ogImage: abs(heroImg || ''),
         jsonLd: [organizationLd(), personLd()],
@@ -135,7 +135,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         description: ABOUT.short[0],
         canonical: SITE_ORIGIN + '/about',
         ogImage: abs(heroImg || ''),
-        jsonLd: [personLd(), breadcrumbLd([{ name: 'M.Bez', url: '/' }, { name: 'Художница', url: '/about' }])],
+        jsonLd: [personLd(), breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Художница', url: '/about' }])],
       };
     case 'catalog': {
       const series = params.series ? seriesById(params.series) : null;
@@ -143,7 +143,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         title: series ? `${series.title} — каталог · Mila Bezú` : 'Каталог работ — Mila Bezú',
         description: series ? series.description : 'Каталог живописи маслом Mila Bezú: 22 работы в четырёх сериях. Пейзажи, море, ботаника, города. Купить картину или заказать.',
         canonical: SITE_ORIGIN + '/catalog' + (params.series ? `?series=${params.series}` : ''),
-        jsonLd: [breadcrumbLd([{ name: 'M.Bez', url: '/' }, { name: 'Каталог', url: '/catalog' }])],
+        jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }])],
       };
     }
     case 'painting': {
@@ -162,7 +162,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         jsonLd: [
           pld,
           breadcrumbLd([
-            { name: 'M.Bez', url: '/' },
+            { name: 'MBezu', url: '/' },
             { name: 'Каталог', url: '/catalog' },
             { name: series?.title || '', url: `/catalog?series=${art.series}` },
             { name: art.title, url: `/painting/${art.id.toLowerCase()}` },
@@ -175,7 +175,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         title: 'Картина на заказ — Mila Bezú',
         description: 'Закажите картину маслом под ваше пространство. Бриф из 6 шагов: размер, сюжет, палитра, сроки. Студия в Москве, доставка по РФ.',
         canonical: SITE_ORIGIN + '/commission',
-        jsonLd: [breadcrumbLd([{ name: 'M.Bez', url: '/' }, { name: 'На заказ', url: '/commission' }])],
+        jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'На заказ', url: '/commission' }])],
       };
     case 'cart':
       return { title: 'Корзина — Mila Bezú', description: 'Корзина и оформление заказа.', canonical: SITE_ORIGIN + '/cart', noindex: true, jsonLd: [] };
@@ -186,7 +186,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         title: 'Документы и реквизиты — Mila Bezú',
         description: `Оферта, политика обработки персональных данных, доставка, возврат и реквизиты. ${ABOUT.legal.name_short}, ИНН ${ABOUT.legal.inn}.`,
         canonical: SITE_ORIGIN + '/legal' + (params.section ? `?section=${params.section}` : ''),
-        jsonLd: [breadcrumbLd([{ name: 'M.Bez', url: '/' }, { name: 'Документы', url: '/legal' }])],
+        jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Документы', url: '/legal' }])],
       };
     default:
       return { title: 'Mila Bezú', canonical: SITE_ORIGIN + '/', jsonLd: [] };
