@@ -13,7 +13,7 @@
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/home-CaWtj4KI.js"></script>
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/home-BA5ouQ6l.js"></script>
 ```
 
 ### about  (Tilda alias: `/about`)
