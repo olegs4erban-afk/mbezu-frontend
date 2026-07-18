@@ -480,66 +480,21 @@ function Packaging() {
           display: 'grid', gridTemplateColumns: '1fr 1.2fr',
           gap: 80, alignItems: 'center',
         }}>
-          {/* Visual — boxes + thank-you card */}
-          <div style={{ position: 'relative', aspectRatio: '1 / 1' }}>
-            {/* Big green box */}
-            <div style={{
-              position: 'absolute', left: '6%', top: '12%',
-              width: '60%', aspectRatio: '1',
-              background: 'var(--series-silence)',
-              border: '1px solid rgba(212, 169, 60, 0.4)',
-              borderRadius: 'var(--r-md)',
-              boxShadow: 'var(--shadow-lg)',
-              display: 'grid', placeItems: 'center',
-            }}>
-              <div className="display" style={{
-                fontSize: 80, fontWeight: 500, letterSpacing: '-.02em',
-                color: '#d4a93c', fontStyle: 'italic',
-              }}>M.B</div>
-            </div>
-
-            {/* Smaller box */}
-            <div className="drift" style={{
-              position: 'absolute', right: '4%', bottom: '8%',
-              width: '46%', aspectRatio: '1',
-              background: 'var(--series-silence)',
-              border: '1px solid rgba(212, 169, 60, 0.4)',
-              borderRadius: 'var(--r-md)',
-              boxShadow: 'var(--shadow-lg)',
-              display: 'grid', placeItems: 'center',
-            }}>
-              <div className="display" style={{
-                fontSize: 64, fontWeight: 500, letterSpacing: '-.02em',
-                color: '#d4a93c', fontStyle: 'italic',
-              }}>M.B</div>
-            </div>
-
-            {/* Thank-you card */}
-            <div style={{
-              position: 'absolute', left: '0%', bottom: '4%',
-              width: '38%', aspectRatio: '5 / 6',
-              background: 'var(--bg-card)',
-              borderRadius: 'var(--r-sm)', padding: '24px 20px',
-              boxShadow: 'var(--shadow-md)',
-              transform: 'rotate(-6deg)', color: 'var(--ink)',
-              display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-              border: '1px solid rgba(160, 138, 78, 0.3)',
-            }}>
-              <div>
-                <div className="italic" style={{
-                  fontSize: 'clamp(15px, 1.6vw, 22px)', color: 'var(--accent)',
-                  fontStyle: 'italic', fontWeight: 500,
-                }}>Thank you</div>
-                <div style={{
-                  fontSize: 9, color: 'var(--ink-2)', marginTop: 10,
-                  lineHeight: 1.5, fontFamily: 'var(--sans)',
-                }}>За доверие к ручной работе.<br/>Каждое полотно — часть дома.</div>
-              </div>
-              <div className="italic" style={{
-                fontSize: 'clamp(13px, 1.4vw, 18px)', color: 'var(--accent)',
-                alignSelf: 'flex-end', fontStyle: 'italic', fontWeight: 500,
-              }}>MBezu</div>
-            </div>
+          {/* Visual — оригинальный сертификат подлинности (Sprint 10: зелёные коробки убраны) */}
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <img
+              src="https://cdn.mbezu.ru/assets/certificate.webp"
+              alt="Сертификат подлинности MBezu Fine Art"
+              loading="lazy" decoding="async"
+              className="drift"
+              style={{
+                width: '100%', maxWidth: 420,
+                aspectRatio: '437 / 612', objectFit: 'contain',
+                borderRadius: 'var(--r-sm)',
+                boxShadow: 'var(--shadow-lg)',
+                border: '1px solid var(--rule-soft)',
+              }}
+            />
           </div>
 
           <div>
