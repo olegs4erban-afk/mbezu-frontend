@@ -33,7 +33,7 @@ function ZeroBanner() {
         maxWidth: 'var(--max)', margin: '0 auto',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 24, flexWrap: 'wrap',
       }} className="eyebrow">
-        <span>Mila Bezú · Maison · est. 2010</span>
+        <span>Mila Bezú</span>
         <span className="resp-hide" style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
           <span style={{ width: 16, height: 1, background: 'var(--accent)' }} />
           <span>21 работа · 4 серии · масло на холсте</span>

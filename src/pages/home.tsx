@@ -509,7 +509,7 @@ function Packaging() {
               marginTop: 32, maxWidth: 480, fontSize: 16, lineHeight: 1.7,
               color: 'var(--ink-2)', fontWeight: 300,
             }}>
-              Работа приезжает в&nbsp;фирменной зелёной коробке с&nbsp;золотым тиснением: бархатный мешочек, открытка из&nbsp;страны вдохновения и&nbsp;сертификат подлинности.
+              Работа приходит как подарок: фирменная зелёная коробка с&nbsp;золотым тиснением, бархатный мешочек, открытка из&nbsp;страны вдохновения и&nbsp;сертификат подлинности.
             </p>
             <ul style={{
               marginTop: 32, padding: 0, listStyle: 'none',
@@ -822,11 +822,12 @@ function Newsletter() {
   const [sent, setSent] = React.useState(false);
   return (
     <section className="resp-pad" style={{ padding: '100px 40px', marginTop: 80 }}>
-      <div className="card-soft resp-stack" style={{
+      <div className="card-soft resp-stack resp-pad resp-pad-y" style={{
         maxWidth: 1200, margin: '0 auto',
         display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: 60, alignItems: 'center',
         padding: '64px 60px', borderRadius: 'var(--r-xl)',
         border: '1px solid var(--rule-soft)',
+        minWidth: 0,
       }}>
         <div>
           <Eyebrow accent>Письма из студии</Eyebrow>
@@ -854,15 +855,18 @@ function Newsletter() {
           </div>
         ) : (
           <form onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+                className="nl-form"
                 style={{
                   display: 'flex', gap: 8, alignItems: 'center',
                   background: 'var(--bg)', borderRadius: 'var(--r-pill)',
                   padding: 6, border: '1px solid var(--rule-soft)',
+                  minWidth: 0, maxWidth: '100%',
                 }}>
             <input type="email" placeholder="ваша почта" required
                    value={email} onChange={(e) => setEmail(e.target.value)}
                    style={{
                      border: 0, background: 'transparent', flex: 1,
+                     minWidth: 0, width: '100%',
                      padding: '14px 22px', fontSize: 14, outline: 'none',
                      font: 'inherit', fontFamily: 'var(--sans)', color: 'var(--ink)',
                    }} />

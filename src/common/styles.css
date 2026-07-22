@@ -394,6 +394,13 @@
     .resp-scroll-x > * { flex-shrink: 0; }
   }
 
+  /* Sprint 12: блок подписки — на узких экранах инпут+кнопка в колонку, без переполнения */
+  @media (max-width: 600px) {
+    .nl-form { flex-direction: column !important; align-items: stretch !important; border-radius: var(--r-lg) !important; padding: 10px !important; }
+    .nl-form input { width: 100% !important; min-width: 0 !important; }
+    .nl-form button { width: 100% !important; justify-content: center !important; }
+  }
+
   @media (max-width: 600px) {
     .resp-pad { padding-left: 18px !important; padding-right: 18px !important; }
     .resp-stack-3, .resp-stack-4, .resp-stack-5 { grid-template-columns: 1fr !important; }
