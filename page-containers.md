@@ -5,15 +5,15 @@
 
 ### home  (Tilda alias: `/`)
 - **SEO Title:** Mila Bezú — интерьерная живопись маслом · Москва
-- **SEO Description:** Картины маслом современной российской художницы Mila Bezú. Серии «Улицы мира и других стран», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.
+- **SEO Description:** Картины маслом современной российской художницы Mila Bezú. Серии «Улицы мира», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.
 ```html
 <!-- MBezu · home -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/home-BA5ouQ6l.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/home-Ca2p-3jl.js"></script>
 ```
 
 ### about  (Tilda alias: `/about`)
@@ -22,10 +22,10 @@
 ```html
 <!-- MBezu · about -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/about-BpId5BuY.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/about-CSN9njrA.js"></script>
 ```
 
 ### catalog  (Tilda alias: `/catalog`)
@@ -34,10 +34,10 @@
 ```html
 <!-- MBezu · catalog -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/catalog-DpTuqtR5.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/catalog-D1xT_OX5.js"></script>
 ```
 
 ### commission  (Tilda alias: `/commission`)
@@ -46,10 +46,10 @@
 ```html
 <!-- MBezu · commission -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/commission-C6sHwSbP.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/commission-Cov8ERvO.js"></script>
 ```
 
 ### cart  (Tilda alias: `/cart`)
@@ -59,10 +59,10 @@
 ```html
 <!-- MBezu · cart -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/cart-Dk_fzaYz.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/cart-DNBi5a-8.js"></script>
 ```
 
 ### tracking  (Tilda alias: `/tracking`)
@@ -72,10 +72,10 @@
 ```html
 <!-- MBezu · tracking -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/tracking-CHT23HZc.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/tracking-DVfmOrzh.js"></script>
 ```
 
 ### legal  (Tilda alias: `/legal`)
@@ -84,8 +84,8 @@
 ```html
 <!-- MBezu · legal -->
 <div id="root"></div>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/legal-y287jWL6.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/legal-DbyctJn-.js"></script>
 ```

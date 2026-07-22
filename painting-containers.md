@@ -16,11 +16,11 @@
 <!-- MBezu · painting · <ID> -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="<ID>";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ## Готовые контейнеры — 17 работ (фото + цена + размер)
@@ -35,11 +35,11 @@
 <!-- MBezu · painting · MN-01 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-01";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### MN-04 · Перевал
@@ -52,11 +52,11 @@
 <!-- MBezu · painting · MN-04 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-04";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### MN-05 · Камни на берегу
@@ -69,11 +69,11 @@
 <!-- MBezu · painting · MN-05 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-05";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### MN-06 · Shell (Ракушка)
@@ -86,16 +86,16 @@
 <!-- MBezu · painting · MN-06 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="MN-06";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### ST-01 · Греция. Полдень
-- Серия: **Улицы мира и других стран** · 18×24 см · 15 000 ₽ · available
-- **SEO Title:** Греция. Полдень — Улицы мира и других стран · Mila Bezú
+- Серия: **Улицы мира** · 18×24 см · 15 000 ₽ · available
+- **SEO Title:** Греция. Полдень — Улицы мира · Mila Bezú
 - **SEO Description:** Белые стены, синяя дверь, горшки с геранью — полдень в греческом переулке. Написана по мотивам личной поездки. 18×24 см, холст, масло, на подрамнике. 15 000 ₽.
 - **OG image:** https://cdn.mbezu.ru/assets/cards/st-01.webp
 - **Canonical:** https://mbezu.ru/painting/st-01
@@ -103,16 +103,16 @@
 <!-- MBezu · painting · ST-01 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-01";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### ST-02 · Некуда спешить
-- Серия: **Улицы мира и других стран** · 18×24 см · 15 000 ₽ · available
-- **SEO Title:** Некуда спешить — Улицы мира и других стран · Mila Bezú
+- Серия: **Улицы мира** · 18×24 см · 15 000 ₽ · available
+- **SEO Title:** Некуда спешить — Улицы мира · Mila Bezú
 - **SEO Description:** Фонарь, ступени, цветы в горшках — переулок, по которому хочется пройти снова и снова. Греция, написана с натуры. 18×24 см, холст, масло, на подрамнике. 15 000 ₽.
 - **OG image:** https://cdn.mbezu.ru/assets/cards/st-02.webp
 - **Canonical:** https://mbezu.ru/painting/st-02
@@ -120,16 +120,16 @@
 <!-- MBezu · painting · ST-02 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-02";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### ST-03 · Франция. Лаванда
-- Серия: **Улицы мира и других стран** · 15×15 см · 28 000 ₽ · available
-- **SEO Title:** Франция. Лаванда — Улицы мира и других стран · Mila Bezú
+- Серия: **Улицы мира** · 15×15 см · 28 000 ₽ · available
+- **SEO Title:** Франция. Лаванда — Улицы мира · Mila Bezú
 - **SEO Description:** Лавандовое поле Прованса крупным планом — аромат, который можно почти почувствовать. 15×15 см, холст на картоне, масло. 28 000 ₽.
 - **OG image:** https://cdn.mbezu.ru/assets/cards/st-03.webp
 - **Canonical:** https://mbezu.ru/painting/st-03
@@ -137,16 +137,16 @@
 <!-- MBezu · painting · ST-03 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-03";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### ST-04 · Франция. Le Bouquineur (Книжная лавка в Париже)
-- Серия: **Улицы мира и других стран** · 15×15 см · 6 000 ₽ · available
-- **SEO Title:** Франция. Le Bouquineur · Книжная лавка в Париже — Улицы мира и других стран · Mila Bezú
+- Серия: **Улицы мира** · 15×15 см · 6 000 ₽ · available
+- **SEO Title:** Франция. Le Bouquineur · Книжная лавка в Париже — Улицы мира · Mila Bezú
 - **SEO Description:** Книжная лавка в Париже — стопки книг, голубые ставни, каштан над крышей. Место, где время замедляется. 15×15 см, холст на картоне, масло. 6 000 ₽.
 - **OG image:** https://cdn.mbezu.ru/assets/cards/st-04.webp
 - **Canonical:** https://mbezu.ru/painting/st-04
@@ -154,16 +154,16 @@
 <!-- MBezu · painting · ST-04 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-04";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### ST-05 · Ангкор-Ват (Камбоджа)
-- Серия: **Улицы мира и других стран** · 100×80 см · 130 000 ₽ · available
-- **SEO Title:** Ангкор-Ват · Камбоджа — Улицы мира и других стран · Mila Bezú
+- Серия: **Улицы мира** · 100×80 см · 130 000 ₽ · available
+- **SEO Title:** Ангкор-Ват · Камбоджа — Улицы мира · Mila Bezú
 - **SEO Description:** Храм, который смотрит на тебя сотнями каменных лиц. Написан по впечатлениям от поездки — воздух Камбоджи, тяжёлый и горячий, до сих пор ощущается в этой работе. 100×80 см, холст, масло, на подрамнике. 130 000 ₽.
 - **OG image:** https://cdn.mbezu.ru/assets/cards/st-05.webp
 - **Canonical:** https://mbezu.ru/painting/st-05
@@ -171,16 +171,16 @@
 <!-- MBezu · painting · ST-05 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-05";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### ST-06 · Рисовое поле (Вьетнам)
-- Серия: **Улицы мира и других стран** · 40×50 см · 30 000 ₽ · available
-- **SEO Title:** Рисовое поле · Вьетнам — Улицы мира и других стран · Mila Bezú
+- Серия: **Улицы мира** · 40×50 см · 30 000 ₽ · available
+- **SEO Title:** Рисовое поле · Вьетнам — Улицы мира · Mila Bezú
 - **SEO Description:** Бесконечная перспектива рисовых полей Вьетнама — тропинка уходит в горизонт между зелёными рядами. 40×50 см, холст, масло, на подрамнике. 30 000 ₽.
 - **OG image:** https://cdn.mbezu.ru/assets/cards/st-06.webp
 - **Canonical:** https://mbezu.ru/painting/st-06
@@ -188,16 +188,16 @@
 <!-- MBezu · painting · ST-06 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-06";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### ST-07 · Крыши старого города
-- Серия: **Улицы мира и других стран** · 25×70 см · 45 000 ₽ · available
-- **SEO Title:** Крыши старого города — Улицы мира и других стран · Mila Bezú
+- Серия: **Улицы мира** · 25×70 см · 45 000 ₽ · available
+- **SEO Title:** Крыши старого города — Улицы мира · Mila Bezú
 - **SEO Description:** Панорама черепичных крыш европейского старого города — купола, шпили, трубы. 25×70 см, холст, масло, на подрамнике. 45 000 ₽.
 - **OG image:** https://cdn.mbezu.ru/assets/cards/st-07.webp
 - **Canonical:** https://mbezu.ru/painting/st-07
@@ -205,11 +205,11 @@
 <!-- MBezu · painting · ST-07 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="ST-07";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### TS-01 · Freedom (Свобода)
@@ -222,11 +222,11 @@
 <!-- MBezu · painting · TS-01 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-01";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### TS-02 · Зеркало леса
@@ -239,11 +239,11 @@
 <!-- MBezu · painting · TS-02 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-02";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### TS-03 · Waterlilies (Кувшинки)
@@ -256,11 +256,11 @@
 <!-- MBezu · painting · TS-03 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-03";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### TS-04 · Тропические листья
@@ -273,11 +273,11 @@
 <!-- MBezu · painting · TS-04 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-04";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### TS-05 · Дождь пошёл
@@ -290,11 +290,11 @@
 <!-- MBezu · painting · TS-05 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-05";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ### TS-06 · Бамбук
@@ -307,11 +307,11 @@
 <!-- MBezu · painting · TS-06 -->
 <div id="root"></div>
 <script>window.__MB_ART_ID="TS-06";</script>
-<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-C4B3r8LZ.css">
+<link rel="stylesheet" href="https://cdn.mbezu.ru/assets/style-MJSdk9n5.css">
 <link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/modulepreload-polyfill-B5Qt9EMX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-BYcwa9zX.js">
-<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-D_KnOWoF.js">
-<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-DIZBgO4C.js"></script>
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/common-Br2biVON.js">
+<link rel="modulepreload" crossorigin href="https://cdn.mbezu.ru/assets/ar-CZ2sqyMX.js">
+<script type="module" crossorigin src="https://cdn.mbezu.ru/assets/painting-De5h-FHe.js"></script>
 ```
 
 ## Отложены (НЕ генерируем — см. TODO-incomplete.md)
