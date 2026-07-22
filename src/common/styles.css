@@ -133,10 +133,13 @@
   .chip:hover { border-color: var(--accent); color: var(--accent); }
   .chip.is-active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 
-  /* Sprint 9 — каталог: единый квадрат + плавный ховер-зум прозрачной webp-карточки */
+  /* Sprint 9 — каталог: единый квадрат + плавный ховер-зум прозрачной webp-карточки.
+     Sprint 11: зум только на hover-способных устройствах (на таче — просто тап). */
   .art-card-img { overflow: hidden; }
   .art-card-img img { transition: transform .45s ease; will-change: transform; }
-  .art-card-img:hover img { transform: scale(1.07); }
+  @media (hover: hover) and (pointer: fine) {
+    .art-card-img:hover img { transform: scale(1.07); }
+  }
   @media (prefers-reduced-motion: reduce) {
     .art-card-img img { transition: none; }
     .art-card-img:hover img { transform: none; }
@@ -305,6 +308,49 @@
     font-weight: 500;
   }
 
+  /* ── Sprint 11: нижний таб-бар (app-style, только мобайл) ── */
+  .tabbar {
+    display: none;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 90;
+    background: rgba(245, 239, 226, 0.96);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid var(--rule-soft);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-shadow: 0 -6px 24px -16px rgba(42, 37, 32, 0.25);
+  }
+  .tabbar-item {
+    flex: 1 1 0;
+    min-height: 60px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 4px;
+    text-decoration: none;
+    color: var(--ink-2);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tabbar-item.is-active { color: var(--accent); }
+  .tabbar-icon { position: relative; display: inline-grid; place-items: center; line-height: 0; }
+  .tabbar-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .tabbar-badge {
+    position: absolute; top: -6px; right: -10px;
+    min-width: 17px; height: 17px;
+    padding: 0 4px;
+    background: var(--accent); color: var(--bg);
+    border-radius: var(--r-pill);
+    font-family: var(--mono); font-size: 9.5px; font-weight: 700;
+    display: inline-grid; place-items: center;
+    line-height: 1;
+  }
+
   /* Responsive */
   .hide-mobile { display: initial; }
   .show-mobile { display: none; }
@@ -313,6 +359,15 @@
     .show-mobile { display: initial; }
     .hide-mobile { display: none !important; }
     body { font-size: 14px; }
+
+    /* Sprint 11: таб-бар виден, контент не перекрывается */
+    .tabbar { display: flex; }
+    main#main { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+    footer { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
+    /* тач-таргеты ≥44px */
+    .chip { min-height: 44px; padding: 10px 18px; }
+    .btn { min-height: 48px; }
+    .btn-link { min-height: 44px; display: inline-flex; align-items: center; }
 
     .resp-pad { padding-left: 24px !important; padding-right: 24px !important; }
     .resp-pad-y { padding-top: 48px !important; padding-bottom: 48px !important; }
@@ -323,6 +378,8 @@
     .resp-stack-5 { grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
     .resp-stack-6 { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
     .resp-stack-12 { grid-template-columns: 1fr !important; gap: 28px !important; }
+    /* Sprint 11: инлайновые gridColumn-спаны (1/9, 9/13) не должны пережить схлопывание в 1 колонку */
+    .resp-stack-12 > * { grid-column: auto !important; }
     .resp-display-md { font-size: clamp(40px, 10vw, 76px) !important; }
     .resp-h1 { font-size: clamp(36px, 8.5vw, 64px) !important; }
     .resp-h2 { font-size: clamp(28px, 7vw, 44px) !important; }

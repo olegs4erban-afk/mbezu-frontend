@@ -50,7 +50,7 @@ function HeroEditorial({ go }) {
                 color: 'var(--accent)', fontStyle: 'italic',
                 position: 'relative', display: 'inline-block',
               }}>живущие</span><br/>
-              в&nbsp;комнатах
+              в&nbsp;интерьерах
             </h1>
             <p className="reveal r3" style={{
               margin: '40px 0 0', maxWidth: 460,
@@ -184,7 +184,7 @@ function HeroSplit({ go }) {
         justifyContent: 'space-between', gap: 40,
         borderRight: '1px solid var(--rule-soft)',
       }}>
-        <div className="reveal r1"><Eyebrow accent>Saison printemps–été · MMXXVI</Eyebrow></div>
+        {/* Sprint 11 (Ф4.2): мета MMXXVI убрана */}
         <div>
           <h1 className="display reveal r2 resp-display-md" style={{
             margin: 0, fontSize: 'clamp(56px, 8vw, 132px)',
@@ -226,7 +226,7 @@ function SeriesTriptych({ go }) {
           gap: 80, marginBottom: 60, alignItems: 'end',
         }}>
           <div>
-            <Eyebrow accent>Наблюдения · 0{SERIES.length}</Eyebrow>
+            {/* Sprint 11 (Ф2.4): надзаголовок «НАБЛЮДЕНИЯ · 04» убран */}
             <h2 className="display resp-h1" style={{
               margin: '20px 0 0', fontSize: 'clamp(44px, 5.5vw, 80px)',
               lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
@@ -238,7 +238,7 @@ function SeriesTriptych({ go }) {
             margin: 0, maxWidth: 460, color: 'var(--ink-2)',
             fontSize: 16, lineHeight: 1.6, fontWeight: 300,
           }}>
-            Работы группируются в серии. Каждая — про один свет, одни эмоции, одну атмосферу.
+            Работы группируются в серии. Каждая — про один свет, одни эмоции, одну атмосферу
           </p>
         </div>
 
@@ -389,7 +389,7 @@ function StudioBanner({ go }) {
               margin: '24px 0 0', fontSize: 'clamp(44px, 5.5vw, 88px)',
               lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
             }}>
-              Картина на<br/>вашей <span className="italic" style={{ color: 'var(--accent)' }}>реальной&nbsp;стене</span>
+              Примерка картин<br/>в <span className="italic" style={{ color: 'var(--accent)' }}>реальном&nbsp;времени</span>
             </h2>
             <p style={{
               marginTop: 32, maxWidth: 480, color: 'var(--ink-2)',
@@ -503,20 +503,20 @@ function Packaging() {
               margin: '24px 0 0', fontSize: 'clamp(40px, 5.2vw, 80px)',
               lineHeight: 0.98, fontWeight: 500, letterSpacing: '-.03em',
             }}>
-              Картина приезжает<br/>как <span className="italic" style={{ color: 'var(--accent)' }}>подарок</span>.
+              Картина приезжает<br/>как <span className="italic" style={{ color: 'var(--accent)' }}>подарок</span>
             </h2>
             <p style={{
               marginTop: 32, maxWidth: 480, fontSize: 16, lineHeight: 1.7,
               color: 'var(--ink-2)', fontWeight: 300,
             }}>
-              Фирменная зелёная коробка с&nbsp;золотым тиснением, бархатный мешочек, тубус для&nbsp;транспортировки, открытка из&nbsp;страны вдохновения и&nbsp;сертификат подлинности.
+              Работа приезжает в&nbsp;фирменной зелёной коробке с&nbsp;золотым тиснением: бархатный мешочек, открытка из&nbsp;страны вдохновения и&nbsp;сертификат подлинности.
             </p>
             <ul style={{
               marginTop: 32, padding: 0, listStyle: 'none',
               display: 'flex', flexDirection: 'column', gap: 16,
             }}>
               {[
-                'Зелёная коробка с золотым логотипом MB',
+                'Зелёная коробка с золотым тиснением',
                 'Бархатный мешочек MBezu',
                 'Открытка из страны вдохновения с личным посланием',
                 'Сертификат подлинности с номером работы',
@@ -583,7 +583,7 @@ function ProcessRow() {
     { n: '01', label: 'Брифинг',  t: 'Размер, палитра, настроение, помещение' },
     { n: '02', label: 'Эскизы',   t: 'Два-три варианта на согласование' },
     { n: '03', label: 'Холст',    t: 'Лён на сосновом подрамнике, грунт' },
-    { n: '04', label: 'Письмо',   t: 'Масло, 4–10 недель в зависимости от размера' },
+    { n: '04', label: 'Письмо',   t: 'Масло, от 2 недель в зависимости от размера' },
     { n: '05', label: 'Доставка', t: 'Курьер, страховка, фирменная упаковка' },
   ];
   return (
@@ -599,14 +599,14 @@ function ProcessRow() {
               margin: '20px 0 0', fontSize: 'clamp(40px, 5vw, 72px)',
               lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
             }}>
-              От брифа<br/>до <span className="italic" style={{ color: 'var(--accent)' }}>подрамника</span>.
+              От брифа<br/>до <span className="italic" style={{ color: 'var(--accent)' }}>подрамника</span>
             </h2>
           </div>
           <p style={{
             margin: 0, fontSize: 17, lineHeight: 1.55,
             color: 'var(--ink-2)', fontWeight: 300, maxWidth: 540,
           }}>
-            Работа на&nbsp;заказ — это разговор. Мы&nbsp;согласуем настроение и&nbsp;палитру, делаем эскизы и&nbsp;подбираем размер под конкретное место.
+            Работа на&nbsp;заказ — это разговор. Мы&nbsp;согласуем настроение и&nbsp;палитру, делаем эскизы и&nbsp;подбираем размер под конкретное место и&nbsp;задачу
           </p>
         </div>
         <div className="resp-stack-5 card-soft" style={{
@@ -634,13 +634,132 @@ function ProcessRow() {
   );
 }
 
+// ── LeadForm — открытая форма заявки (Sprint 11, item 17) ────
+// Endpoint пока не выбран (решение Олега: TG-бот / Tilda-вебхук / email-сервис).
+// До подключения: заявка сохраняется локально (localStorage) + даём прямой Telegram.
+const LEAD_ENDPOINT = ''; // ← сюда URL (TG-прокси / вебхук), когда Олег выберет канал
+
+function LeadForm({ go }) {
+  const [lead, setLead] = React.useState({ name: '', contact: '', about: '', consent: false });
+  const [state, setState] = React.useState<'idle' | 'sending' | 'ok' | 'err'>('idle');
+  const [touched, setTouched] = React.useState(false);
+
+  const nameOk = lead.name.trim().length >= 2;
+  const contactOk = lead.contact.trim().length >= 5;
+  const valid = nameOk && contactOk && lead.consent;
+
+  const upd = (k: string, v: unknown) => setLead((f) => ({ ...f, [k]: v }));
+
+  const submit = async () => {
+    setTouched(true);
+    if (!valid || state === 'sending') return;
+    setState('sending');
+    const payload = { ...lead, page: 'home-cta', ts: new Date().toISOString() };
+    try {
+      if (LEAD_ENDPOINT) {
+        const r = await fetch(LEAD_ENDPOINT, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (!r.ok) throw new Error('http ' + r.status);
+      } else {
+        // endpoint ещё не подключён — локальный бэкап, чтобы заявка не потерялась
+        const box = JSON.parse(localStorage.getItem('mbezu-leads') || '[]');
+        box.push(payload);
+        localStorage.setItem('mbezu-leads', JSON.stringify(box));
+      }
+      setState('ok');
+    } catch {
+      setState('err');
+    }
+  };
+
+  const fieldStyle: React.CSSProperties = {
+    background: 'rgba(245,239,226,0.94)', border: '1px solid rgba(245,239,226,0.4)',
+  };
+
+  if (state === 'ok') {
+    return (
+      <div style={{
+        padding: '28px 28px', background: 'rgba(245,239,226,0.14)',
+        border: '1px solid rgba(245,239,226,0.35)', borderRadius: 'var(--r-lg)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <span style={{
+            width: 34, height: 34, borderRadius: 'var(--r-pill)', flexShrink: 0,
+            background: 'var(--bg-cream)', color: 'var(--accent)',
+            display: 'inline-grid', placeItems: 'center', fontSize: 16, fontWeight: 700,
+          }}>✓</span>
+          <span className="display" style={{ fontSize: 20, fontWeight: 500 }}>
+            Заявка отправлена — художница свяжется лично
+          </span>
+        </div>
+        <p style={{ margin: '16px 0 0', fontSize: 14, lineHeight: 1.6, opacity: .85 }}>
+          Хотите быстрее — напишите напрямую:{' '}
+          <a href="https://t.me/mbezu_art" target="_blank" rel="noopener"
+             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Telegram @mbezu_art</a>
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      <input className="field" style={fieldStyle} placeholder="Имя *"
+             value={lead.name} onChange={(e) => upd('name', e.target.value)} />
+      {touched && !nameOk && <span style={{ fontSize: 12, opacity: .85 }}>Укажите имя</span>}
+      <input className="field" style={fieldStyle} placeholder="Телефон / Telegram / email *"
+             value={lead.contact} onChange={(e) => upd('contact', e.target.value)} />
+      {touched && !contactOk && <span style={{ fontSize: 12, opacity: .85 }}>Укажите контакт — телефон, Telegram или email</span>}
+      <textarea className="field" style={{ ...fieldStyle, minHeight: 84 }} rows={3}
+                placeholder="О работе: размер, настроение, место (необязательно)"
+                value={lead.about} onChange={(e) => upd('about', e.target.value)} />
+
+      <label style={{
+        display: 'flex', gap: 10, alignItems: 'flex-start', cursor: 'pointer',
+        fontSize: 12.5, lineHeight: 1.55, opacity: .92,
+      }}>
+        <input type="checkbox" checked={lead.consent}
+               onChange={(e) => upd('consent', e.target.checked)}
+               style={{ marginTop: 3, accentColor: 'var(--bg-cream)', width: 16, height: 16, flexShrink: 0 }} />
+        <span>
+          Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
+          <a href="/legal?section=privacy"
+             onClick={(e) => { e.preventDefault(); go('legal', { section: 'privacy' }); }}
+             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Политика ПД</a>
+        </span>
+      </label>
+      {touched && !lead.consent && (
+        <span style={{ fontSize: 12, opacity: .85 }}>Для отправки нужно согласие на обработку ПД</span>
+      )}
+
+      {state === 'err' && (
+        <span style={{ fontSize: 13, fontWeight: 600 }}>
+          Не удалось отправить. Напишите напрямую:{' '}
+          <a href="https://t.me/mbezu_art" target="_blank" rel="noopener"
+             style={{ color: 'var(--bg-cream)' }}>@mbezu_art</a>
+        </span>
+      )}
+
+      <button className="btn" disabled={state === 'sending'}
+              style={{
+                borderColor: 'var(--bg-cream)', color: 'var(--bg-cream)', background: 'transparent',
+                alignSelf: 'flex-start', opacity: state === 'sending' ? .6 : 1,
+              }}
+              onClick={submit}>
+        {state === 'sending' ? 'Отправляем…' : 'Оставить заявку →'}
+      </button>
+    </div>
+  );
+}
+
 // ── CommissionCTA — золотой terracotta-блок ─────────────────
 function CommissionCTA({ go }) {
   return (
     <section className="resp-pad" style={{
       padding: '0 40px', marginTop: 60,
     }}>
-      <div style={{
+      <div className="resp-pad resp-pad-y" style={{
         maxWidth: 'var(--max)', margin: '0 auto',
         padding: '140px 60px', background: 'var(--accent)',
         color: 'var(--bg-cream)',
@@ -672,27 +791,24 @@ function CommissionCTA({ go }) {
               <span style={{ width: 32, height: 1, background: 'var(--bg-cream)' }} />
               <span className="mono" style={{
                 fontSize: 11, letterSpacing: '.32em', fontWeight: 600,
-              }}>НА ЗАКАЗ · MMXXVI</span>
+              }}>НА ЗАКАЗ</span>
             </div>
             <h2 className="display resp-h1" style={{
               margin: 0, fontSize: 'clamp(44px, 6.5vw, 108px)',
               lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.035em',
             }}>
-              Картина под<br/>ваше место,<br/><span style={{ fontStyle: 'italic' }}>ваш свет.</span>
+              Картина для вашего<br/><span style={{ fontStyle: 'italic' }}>пространства</span>
             </h2>
           </div>
           <div style={{ paddingBottom: 12 }}>
             <p style={{
-              margin: '0 0 32px', fontSize: 17, lineHeight: 1.6,
+              margin: '0 0 24px', fontSize: 17, lineHeight: 1.6,
               opacity: .82, fontWeight: 300,
             }}>
               Расскажите о&nbsp;комнате, размере и&nbsp;настроении. Художница ответит лично с&nbsp;эскизами и&nbsp;сроком.
             </p>
-            <button className="btn" style={{
-              borderColor: 'var(--bg-cream)', color: 'var(--bg-cream)', background: 'transparent',
-            }} onClick={() => go('commission')}>
-              Оставить заявку →
-            </button>
+            {/* Sprint 11 (item 17): открытая форма заявки вместо кнопки */}
+            <LeadForm go={go} />
           </div>
         </div>
       </div>
@@ -718,7 +834,7 @@ function Newsletter() {
             margin: '20px 0 0', fontSize: 'clamp(36px, 4.4vw, 60px)',
             lineHeight: 1.02, fontWeight: 500, letterSpacing: '-.03em',
           }}>
-            Раз в&nbsp;месяц — <span className="italic" style={{ color: 'var(--accent)' }}>новые работы</span> и&nbsp;закрытые продажи.
+            Раз в&nbsp;месяц — <span className="italic" style={{ color: 'var(--accent)' }}>новые работы</span> и&nbsp;закрытые продажи
           </h2>
         </div>
         {sent ? (
@@ -768,7 +884,7 @@ function HomePage({ go, hero }) {
       {(!hero || !['editorial','center','split'].includes(hero)) && <HeroEditorial go={go} />}
 
       <Marquee items={[
-        'Улицы мира и других стран', 'Монохромная', 'Тихая сила',
+        'Улицы мира', 'Монохромная', 'Тихая сила',
         '— серии одного автора —',
       ]} big />
 

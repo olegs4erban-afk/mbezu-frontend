@@ -36,7 +36,7 @@ function ZeroBanner() {
         <span>Mila Bezú · Maison · est. 2010</span>
         <span className="resp-hide" style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
           <span style={{ width: 16, height: 1, background: 'var(--accent)' }} />
-          <span>19 работ · 3 серии · масло на холсте</span>
+          <span>21 работа · 4 серии · масло на холсте</span>
           <span style={{ width: 16, height: 1, background: 'var(--accent)' }} />
         </span>
         <span>{date} · Moscou</span>
@@ -48,7 +48,6 @@ function ZeroBanner() {
 // ── TopBar — навигация и корзина ──────────────────────────────
 function TopBar({ route, go, cartCount }) {
   const [scrolled, setScrolled] = React.useState(false);
-  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -110,36 +109,66 @@ function TopBar({ route, go, cartCount }) {
                 }}>{cartCount}</span>
               )}
             </a>
-            <button className="show-mobile" onClick={() => setMobileOpen(!mobileOpen)}
-                    aria-label={mobileOpen ? 'Закрыть меню' : 'Открыть меню'} aria-expanded={mobileOpen}
-                    style={{
-                      background: 'transparent', border: '1px solid var(--rule)',
-                      borderRadius: 'var(--r-pill)', padding: '10px 16px',
-                      fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '.16em',
-                      textTransform: 'uppercase', color: 'var(--ink)', cursor: 'pointer',
-                    }}>
-              {mobileOpen ? 'Закрыть' : 'Меню'}{cartCount > 0 && ` · ${cartCount}`}
-            </button>
           </div>
         </div>
-
-        {mobileOpen && (
-          <nav className="show-mobile fade-in" style={{
-            marginTop: 18, padding: '20px 0', borderTop: '1px solid var(--rule-soft)',
-            display: 'flex', flexDirection: 'column', gap: 18,
-          }}>
-            {[...navItems, { id: 'cart', label: `Корзина${cartCount > 0 ? ` · ${cartCount}` : ''}` }].map((n) => (
-              <a key={n.id} href="#"
-                 onClick={(e) => { e.preventDefault(); go(n.id); setMobileOpen(false); }}
-                 style={{
-                   textDecoration: 'none', color: route === n.id ? 'var(--accent)' : 'var(--ink)',
-                   fontSize: 18, letterSpacing: '-.005em', fontWeight: 500,
-                 }} className="display">{n.label}</a>
-            ))}
-          </nav>
-        )}
+        {/* Sprint 11: мобильный бургер убран — навигация на мобайле через нижний таб-бар */}
       </header>
     </>
+  );
+}
+
+// ── BottomTabBar — нижняя app-style навигация (только мобайл, Sprint 11) ──
+const TAB_ICONS: Record<string, React.ReactNode> = {
+  home: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" />
+    </svg>
+  ),
+  catalog: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
+      <rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" />
+      <rect x="3" y="13" width="8" height="8" rx="1.5" /><rect x="13" y="13" width="8" height="8" rx="1.5" />
+    </svg>
+  ),
+  commission: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" />
+    </svg>
+  ),
+  cart: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M6 7h12l1.2 13H4.8L6 7z" /><path d="M9 10V6a3 3 0 0 1 6 0v4" />
+    </svg>
+  ),
+};
+
+function BottomTabBar({ route, go, cartCount }) {
+  const tabs = [
+    { id: 'home',       label: 'Главная' },
+    { id: 'catalog',    label: 'Каталог' },
+    { id: 'commission', label: 'На заказ' },
+    { id: 'cart',       label: 'Корзина' },
+  ];
+  return (
+    <nav className="tabbar" aria-label="Нижняя навигация">
+      {tabs.map((t) => {
+        const active = route === t.id;
+        return (
+          <a key={t.id} href="#"
+             onClick={(e) => { e.preventDefault(); go(t.id); }}
+             className={'tabbar-item' + (active ? ' is-active' : '')}
+             aria-current={active ? 'page' : undefined}>
+            <span className="tabbar-icon">
+              {TAB_ICONS[t.id]}
+              {t.id === 'cart' && cartCount > 0 && (
+                <span className="tabbar-badge">{cartCount}</span>
+              )}
+            </span>
+            <span className="tabbar-label">{t.label}</span>
+          </a>
+        );
+      })}
+    </nav>
   );
 }
 
@@ -315,4 +344,4 @@ function Footer({ go }) {
   );
 }
 
-export { TopBar, Footer, Marquee, LogoMB };
+export { TopBar, Footer, Marquee, LogoMB, BottomTabBar };

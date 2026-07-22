@@ -62,7 +62,7 @@ function CatalogPage({ go, density, initialSeries }) {
         </div>
 
         {/* Filter bar */}
-        <div className="reveal r2" style={{
+        <div className="reveal r2 resp-stack-12" style={{
           marginTop: 40,
           display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 24,
           paddingBottom: 28, borderBottom: '1px solid var(--rule-soft)',

@@ -6,7 +6,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
-import { TopBar, Footer } from './chrome';
+import { TopBar, Footer, BottomTabBar } from './chrome';
 import { useCart } from './cart';
 import { initAnalytics } from './analytics';
 import { storeProductPath } from './store-urls';
@@ -70,6 +70,7 @@ function Shell({ pageName, cartCount, children }: { pageName: string; cartCount:
       <TopBar route={pageName} go={go} cartCount={cartCount} />
       <main id="main">{children}</main>
       <Footer go={go} />
+      <BottomTabBar route={pageName} go={go} cartCount={cartCount} />
     </>
   );
 }

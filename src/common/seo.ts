@@ -124,7 +124,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
     case 'home':
       return {
         title: 'Mila Bezú — интерьерная живопись маслом · Москва',
-        description: 'Картины маслом современной российской художницы Mila Bezú. Серии «Улицы мира и других стран», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.',
+        description: 'Картины маслом современной российской художницы Mila Bezú. Серии «Улицы мира», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.',
         canonical: SITE_ORIGIN + '/',
         ogImage: abs(heroImg || ''),
         jsonLd: [organizationLd(), personLd()],
