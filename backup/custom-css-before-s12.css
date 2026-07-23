@@ -273,3 +273,22 @@ a { color: inherit; }
   .resp-stack-12 { grid-template-columns: 1fr !important; gap: 28px !important; }
   .resp-display-md { font-size: clamp(40px, 10vw, 76px) !important; }
   .resp-h1 { font-size: clamp(36px, 8.5vw, 64px) !import
+
+/* ── S12: t706 cart/checkout brand MBezu (start) ── */
+.t706 .t706__cartwin { background: rgba(42,37,32,.5) !important; }
+.t706 .t706__cartwin-content { background: #ede5d6 !important; border-radius: 20px !important; }
+.t706 .t706__cartwin-content, .t706 .t706__cartwin-content * { font-family: 'Inter Tight', system-ui, sans-serif !important; }
+.t706 .t706__cartwin-heading { color: #2a2520 !important; font-weight: 500 !important; letter-spacing: -0.02em; }
+.t706 .t706__product-title, .t706 .t706__product-title a { color: #2a2520 !important; }
+.t706 .t706__product-amount, .t706 .t706__product-price, .t706 .t706__cartwin-prodamount { color: #6b5d4a !important; }
+.t706 .t706__cartwin-totalamount-label { color: #6b5d4a !important; }
+.t706 .t706__cartwin-totalamount { color: #a08a4e !important; font-weight: 600 !important; }
+.t706 .t706__product-del, .t706 .t706__product-plus, .t706 .t706__product-minus { color: #6b5d4a !important; }
+.t706 .t-form .t-input, .t706 input.t-input { background: #f5efe2 !important; border: 1px solid rgba(42,37,32,.14) !important; border-radius: 14px !important; color: #2a2520 !important; }
+.t706 .t-form .t-input:focus { border-color: #a08a4e !important; }
+.t706 .t-input-title, .t706 .t-input-subtitle, .t706 .t-form label, .t706 .t-checkbox__labeltext, .t706 .t-radio__labeltext { color: #2a2520 !important; }
+.t706 .t-submit, .t706 button[type="submit"] { background: #a08a4e !important; color: #ede5d6 !important; border: 0 !important; border-radius: 999px !important; letter-spacing: .08em; text-transform: uppercase; font-weight: 600 !important; }
+.t706 .t-submit:hover { background: #7d6a38 !important; }
+.t706 .t706__carticon-counter { background: #a08a4e !important; }
+.t706 .t706__cartwin-form { padding-top: 8px !important; }
+/* ── S12: t706 cart/checkout brand MBezu (end) ── */
