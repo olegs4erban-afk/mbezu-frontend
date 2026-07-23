@@ -268,8 +268,8 @@ function DeliverySection() {
       </header>
 
       <Clause n="01" title="Способы доставки">
-        <p>Работы отправляются в фирменной упаковке Mila Bezú — зелёная коробка с золотым логотипом MB,
-        бархатный мешочек и тубус для безопасной транспортировки.</p>
+        <p>Работы отправляются в фирменной упаковке Mila Bezú с надёжной защитой
+        для безопасной транспортировки.</p>
         <div style={{
           marginTop: 16, padding: 24, background: 'var(--bg-card)',
           borderRadius: 'var(--r-md)', border: '1px solid var(--rule-soft)',

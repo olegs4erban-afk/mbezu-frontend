@@ -49,7 +49,7 @@ function CatalogPage({ go, density, initialSeries }) {
               fontSize: 'clamp(56px, 9vw, 144px)',
               lineHeight: 0.92, fontWeight: 500, letterSpacing: '-.04em',
             }}>
-              Каталог,<br/><span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>в наличии.</span>
+              Каталог,<br/><span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>в наличии</span>
             </h1>
           </div>
           <div style={{ gridColumn: '9 / 13', textAlign: 'right' }}>

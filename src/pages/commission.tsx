@@ -16,12 +16,14 @@ function CommissionPage({ go, refId }) {
     { id: 'medium', label: 'Средний', dim: '40×50 — 50×70',  from: 17000 },
     { id: 'large',  label: 'Большой', dim: '60×80 — 80×100', from: 33000 },
     { id: 'xl',     label: 'Крупный', dim: 'от 90×120 см',   from: 42000 },
+    { id: 'custom', label: 'Другое',  dim: 'свой размер',    from: 0 },
   ];
   const styles = [
     { id: 'urban',     label: 'Городской пейзаж' },
     { id: 'landscape', label: 'Природный пейзаж' },
     { id: 'botanical', label: 'Ботаника' },
     { id: 'mono',      label: 'Монохром' },
+    { id: 'custom',    label: 'Другое' },
   ];
   const palettes = [
     { id: 'bone',   label: 'Тёплая (bone)',    c1: '#ede5d6', c2: '#a08a4e' },
@@ -31,6 +33,21 @@ function CommissionPage({ go, refId }) {
     { id: 'green',  label: 'Растительная',     c1: '#bcc5a8', c2: '#6f7d54' },
   ];
   const weeks = [4, 6, 8, 10];
+
+  // Sprint 13 (Ф4): сетка произвольных цветов — 8 оттенков × 6 светлот (HSL → hex)
+  const hslHex = (h: number, s: number, l: number) => {
+    const a = (s / 100) * Math.min(l / 100, 1 - l / 100);
+    const f = (n: number) => {
+      const k = (n + h / 30) % 12;
+      const c = l / 100 - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
+      return Math.round(255 * c).toString(16).padStart(2, '0');
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
+  };
+  const SWATCH_HUES = [0, 45, 90, 135, 180, 225, 270, 315];
+  const SWATCH_LIGHT = [85, 70, 55, 40, 28, 16];
+  const swatches: string[] = [];
+  for (const l of SWATCH_LIGHT) for (const h of SWATCH_HUES) swatches.push(hslHex(h, 42, l));
 
   // Прайс на заказ — базовая ставка «от» по размеру холста (Sprint 8 §2C).
   const COMMISSION = {
@@ -49,19 +66,31 @@ function CommissionPage({ go, refId }) {
   const [form, setForm] = React.useState({
     size: 'medium',
     style: 'urban',
-    palette: 'bone',
+    palette: 'bone', // preset id ИЛИ '#rrggbb' (сетка/пикер «Другое»)
     budget: 30000,
     weeks: 8,
     name: '', email: '', city: '', notes: '', where: '',
+    customW: '', customH: '',   // размер «Другое», см
+    customStyle: '',            // стиль «Другое»
     file: null as File | null,
   });
   const [sent, setSent] = React.useState(false);
+  const [showPicker, setShowPicker] = React.useState(false);
 
   const upd = (k, v) => setForm((f) => ({ ...f, [k]: v }));
   const handle = (e) => { e.preventDefault(); setSent(true); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
+  const isHexPalette = form.palette.startsWith('#');
   const currentSize = sizes.find((s) => s.id === form.size);
-  const currentPalette = palettes.find((p) => p.id === form.palette);
+  const currentPalette = isHexPalette
+    ? { id: 'hex', label: `Палитра: ${form.palette.toUpperCase()}`, c1: form.palette, c2: form.palette }
+    : palettes.find((p) => p.id === form.palette);
+  const sizeSummary = form.size === 'custom'
+    ? `Другое · ${form.customW || '?'}×${form.customH || '?'} см`
+    : `${currentSize?.label} · ${currentSize?.dim}`;
+  const styleSummary = form.style === 'custom'
+    ? (form.customStyle.trim() || 'Другое')
+    : styles.find((s) => s.id === form.style)?.label;
 
   return (
     <div className="fade-in resp-pad" style={{ padding: '36px 40px 80px' }}>
@@ -74,7 +103,7 @@ function CommissionPage({ go, refId }) {
         <div style={{ marginTop: 36 }}>
           <PageTitle
             kicker="Картина под ваше место"
-            title={<>Заказать<br/><span className="italic" style={{ color: 'var(--accent)' }}>индивидуально.</span></>}
+            title={<>Заказать<br/><span className="italic" style={{ color: 'var(--accent)' }}>индивидуально</span></>}
             lead="Заполните бриф — Мила свяжется и предложит два-три эскиза. Договор заключаем после согласования эскиза, предоплата 50%."
           />
         </div>
@@ -198,15 +227,17 @@ function CommissionPage({ go, refId }) {
               <div>
                 <div style={{ marginBottom: 18, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                   <Eyebrow accent>01 · Размер</Eyebrow>
-                  <span className="cat-no">{currentSize?.dim} · от {formatPrice(currentSize?.from || 0)}</span>
+                  <span className="cat-no">
+                    {form.size === 'custom' ? 'свой размер · расчёт индивидуально' : `${currentSize?.dim} · от ${formatPrice(currentSize?.from || 0)}`}
+                  </span>
                 </div>
-                <div className="resp-stack-4" style={{
-                  display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12,
+                <div className="resp-stack-5" style={{
+                  display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12,
                 }}>
                   {sizes.map((s) => (
                     <button key={s.id} type="button" onClick={() => upd('size', s.id)}
                             style={{
-                              padding: '20px 18px',
+                              padding: '20px 18px', minHeight: 44,
                               background: form.size === s.id ? 'var(--ink)' : 'var(--bg-card)',
                               color: form.size === s.id ? 'var(--bg)' : 'var(--ink)',
                               border: '1px solid ' + (form.size === s.id ? 'var(--ink)' : 'var(--rule-soft)'),
@@ -220,6 +251,22 @@ function CommissionPage({ go, refId }) {
                     </button>
                   ))}
                 </div>
+                {form.size === 'custom' && (
+                  <div className="fade-in" style={{ marginTop: 16 }}>
+                    <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+                      <input className="field" type="number" min={10} max={300} placeholder="Ширина, см"
+                             value={form.customW} onChange={(e) => upd('customW', e.target.value)}
+                             style={{ width: 150 }} />
+                      <span style={{ color: 'var(--ink-3)' }}>×</span>
+                      <input className="field" type="number" min={10} max={300} placeholder="Высота, см"
+                             value={form.customH} onChange={(e) => upd('customH', e.target.value)}
+                             style={{ width: 150 }} />
+                    </div>
+                    <div className="cat-no" style={{ marginTop: 10 }}>
+                      Сторона больше 100 см — расчёт индивидуально
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* 2. Стиль */}
@@ -233,18 +280,26 @@ function CommissionPage({ go, refId }) {
                     </button>
                   ))}
                 </div>
+                {form.style === 'custom' && (
+                  <input className="field fade-in" placeholder="Опишите стиль — например, «абстракция в тёплых тонах»"
+                         value={form.customStyle} onChange={(e) => upd('customStyle', e.target.value)}
+                         style={{ marginTop: 14 }} />
+                )}
               </div>
 
-              {/* 3. Палитра */}
+              {/* 3. Палитра — пресеты + сетка произвольного цвета + «Другое» (Sprint 13 Ф4) */}
               <div>
-                <Eyebrow accent style={{ marginBottom: 18, display: 'block' }}>03 · Палитра</Eyebrow>
+                <div style={{ marginBottom: 18, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                  <Eyebrow accent>03 · Палитра</Eyebrow>
+                  {isHexPalette && <span className="cat-no">Палитра: {form.palette.toUpperCase()}</span>}
+                </div>
                 <div className="resp-stack-5" style={{
                   display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 10,
                 }}>
                   {palettes.map((p) => (
-                    <button key={p.id} type="button" onClick={() => upd('palette', p.id)}
+                    <button key={p.id} type="button" onClick={() => { upd('palette', p.id); setShowPicker(false); }}
                             style={{
-                              padding: '14px 14px', background: 'var(--bg-card)',
+                              padding: '14px 14px', minHeight: 44, background: 'var(--bg-card)',
                               border: '1px solid ' + (form.palette === p.id ? 'var(--accent)' : 'var(--rule-soft)'),
                               borderRadius: 'var(--r-md)', cursor: 'pointer',
                               transition: 'all .2s', textAlign: 'left',
@@ -258,6 +313,46 @@ function CommissionPage({ go, refId }) {
                       <div style={{ fontSize: 11, color: 'var(--ink-2)' }}>{p.label}</div>
                     </button>
                   ))}
+                </div>
+
+                {/* сетка 48 образцов (8 оттенков × 6 светлот) */}
+                <div className="swatch-grid" style={{
+                  marginTop: 14, display: 'grid',
+                  gridTemplateColumns: 'repeat(8, 1fr)', gap: 8,
+                }}>
+                  {swatches.map((hex) => (
+                    <button key={hex} type="button" aria-label={`Цвет ${hex}`}
+                            onClick={() => { upd('palette', hex); setShowPicker(false); }}
+                            style={{
+                              aspectRatio: '1', minHeight: 44, width: '100%',
+                              background: hex, cursor: 'pointer',
+                              borderRadius: 'var(--r-sm)',
+                              border: form.palette === hex ? '3px solid var(--accent)' : '1px solid var(--rule-soft)',
+                              boxShadow: form.palette === hex ? 'var(--shadow-md)' : 'none',
+                              transition: 'border-color .15s',
+                              padding: 0,
+                            }} />
+                  ))}
+                </div>
+
+                {/* «Другое» → нативный color-picker */}
+                <div style={{ marginTop: 14, display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+                  <button type="button"
+                          className={'chip' + (showPicker ? ' is-active' : '')}
+                          onClick={() => { setShowPicker(!showPicker); if (!isHexPalette) upd('palette', '#a08a4e'); }}>
+                    Другое
+                  </button>
+                  {showPicker && (
+                    <input type="color" aria-label="Произвольный цвет"
+                           value={isHexPalette ? form.palette : '#a08a4e'}
+                           onChange={(e) => upd('palette', e.target.value)}
+                           style={{ width: 64, height: 44, border: '1px solid var(--rule-soft)', borderRadius: 'var(--r-sm)', background: 'var(--bg-card)', cursor: 'pointer', padding: 2 }} />
+                  )}
+                  {isHexPalette && (
+                    <span style={{ fontSize: 13, color: 'var(--ink-2)' }}>
+                      В заявку уйдёт строкой: <span className="mono">Палитра: {form.palette.toUpperCase()}</span>
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -329,8 +424,8 @@ function CommissionPage({ go, refId }) {
 
                 <dl style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '12px 16px', margin: 0 }}>
                   {[
-                    ['Размер',  currentSize?.label + ' · ' + currentSize?.dim],
-                    ['Стиль',   styles.find((s) => s.id === form.style)?.label],
+                    ['Размер',  sizeSummary],
+                    ['Стиль',   styleSummary],
                     ['Палитра', currentPalette?.label],
                     ['Сроки',   `${form.weeks} недель`],
                   ].map(([k, v]) => (

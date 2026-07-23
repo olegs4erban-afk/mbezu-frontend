@@ -59,8 +59,7 @@ function TopBar({ route, go, cartCount }) {
   const navItems = [
     { id: 'catalog',    label: 'Каталог' },
     { id: 'commission', label: 'На заказ' },
-    { id: 'about',      label: 'Художница' },
-    { id: 'tracking',   label: 'Статус заказа' },
+    { id: 'about',      label: 'Художник' },
   ];
 
   return (
@@ -255,7 +254,7 @@ function Footer({ go }) {
           <div>
             <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Магазин</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {[['catalog', 'Каталог'], ['commission', 'На заказ'], ['cart', 'Корзина'], ['tracking', 'Отследить заказ']].map(([id, label]) => (
+              {[['catalog', 'Каталог'], ['commission', 'На заказ'], ['cart', 'Корзина']].map(([id, label]) => (
                 <li key={id}>
                   <a href="#" onClick={(e) => { e.preventDefault(); go(id); }}
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}
@@ -269,7 +268,7 @@ function Footer({ go }) {
             <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Студия</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <li><a href="#" onClick={(e) => { e.preventDefault(); go('about'); }} className="uh"
-                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>О художнице</a></li>
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>О художнике</a></li>
               <li><span style={{ color: 'rgba(245,239,226,.72)', fontSize: 14 }}>Школа · скоро</span></li>
               <li><a href="#" onClick={(e) => { e.preventDefault(); go('legal', { section: 'delivery' }); }} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>Доставка и оплата</a></li>

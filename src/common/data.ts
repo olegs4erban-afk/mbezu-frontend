@@ -82,7 +82,7 @@ const img = (slug) => ({
 const ARTWORKS = [
   // ─── МОНОХРОМНАЯ СЕРИЯ ─────────────────────────────────────
   {
-    id: 'MN-01', title: 'Wave sepia', subtitle: 'Волна в сепии',
+    id: 'MN-01', title: 'Волна. Сепия',
     series: 'monochrome', subject: 'sea', cat: 'sea',
     year: 2024, w: 100, h: 60,
     medium: 'Холст, масло, на подрамнике',
@@ -152,7 +152,7 @@ const ARTWORKS = [
     image: img('mn-05'),
   },
   {
-    id: 'MN-06', title: 'Shell', subtitle: 'Ракушка',
+    id: 'MN-06', title: 'Раковина',
     series: 'monochrome', subject: 'sea', cat: 'sea',
     year: 2025, w: 24, h: 30,
     medium: 'Холст, масло, на подрамнике',
@@ -210,7 +210,7 @@ const ARTWORKS = [
     image: img('st-03'),
   },
   {
-    id: 'ST-04', title: 'Франция. Le Bouquineur', subtitle: 'Книжная лавка в Париже',
+    id: 'ST-04', title: 'Франция. Букинист', subtitle: 'Книжная лавка в Париже',
     series: 'streets', subject: 'city', cat: 'city',
     year: 2024, w: 15, h: 15,
     medium: 'Холст на картоне, масло',
@@ -286,7 +286,7 @@ const ARTWORKS = [
 
   // ─── ТИХАЯ СИЛА ────────────────────────────────────────────
   {
-    id: 'TS-01', title: 'Freedom', subtitle: 'Свобода',
+    id: 'TS-01', title: 'Свобода',
     series: 'silence', subject: 'sea', cat: 'sea',
     year: 2024, w: 70, h: 50,
     medium: 'Холст, масло, на подрамнике',
@@ -315,7 +315,7 @@ const ARTWORKS = [
     image: img('ts-02'),
   },
   {
-    id: 'TS-03', title: 'Waterlilies', subtitle: 'Кувшинки',
+    id: 'TS-03', title: 'Кувшинки',
     series: 'silence', subject: 'botanical', cat: 'botanical',
     year: 2025, w: 50, h: 50,
     medium: 'Холст, масло, на подрамнике',
@@ -484,7 +484,7 @@ const ABOUT = {
   ritual: [
     { icon: '◆', label: 'Авторская подпись',     note: 'Лицевая сторона работы' },
     { icon: '◇', label: 'Фирменный сертификат',   note: 'С номером и датой создания' },
-    { icon: '◆', label: 'Стильная упаковка',      note: 'Зелёная коробка MBezu с золотом' },
+    { icon: '◆', label: 'Стильная упаковка',      note: 'Фирменная упаковка MBezu' },
     { icon: '◇', label: 'Открытка из страны',     note: 'С личным посланием художника' },
   ],
 

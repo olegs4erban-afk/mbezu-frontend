@@ -14,7 +14,7 @@ function AboutPage({ go }) {
         <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
           <Breadcrumbs items={[
             { label: 'MBezu', onClick: () => go('home') },
-            { label: 'Художница' },
+            { label: 'Художник' },
           ]} />
           <div className="resp-stack" style={{
             marginTop: 40,

@@ -394,6 +394,11 @@
     .resp-scroll-x > * { flex-shrink: 0; }
   }
 
+  /* Sprint 13: сетка цветов формы заказа — 6 колонок на мобайле (тач ≥44px) */
+  @media (max-width: 600px) {
+    .swatch-grid { grid-template-columns: repeat(6, 1fr) !important; }
+  }
+
   /* Sprint 12: блок подписки — на узких экранах инпут+кнопка в колонку, без переполнения */
   @media (max-width: 600px) {
     .nl-form { flex-direction: column !important; align-items: stretch !important; border-radius: var(--r-lg) !important; padding: 10px !important; }

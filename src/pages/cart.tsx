@@ -380,7 +380,7 @@ function CartPage({ go, cart, removeFromCart }) {
               Картина<br/><span className="italic" style={{ color: 'var(--accent)' }}>едет к вам.</span>
             </h1>
             <p style={{ fontSize: 17, color: 'var(--ink-2)', maxWidth: 540, margin: '0 auto', lineHeight: 1.6 }}>
-              Подтверждение и&nbsp;квитанция отправлены на&nbsp;{form.email || 'вашу почту'}. Художница свяжется с&nbsp;вами в&nbsp;течение дня.
+              Подтверждение и&nbsp;квитанция отправлены на&nbsp;{form.email || 'вашу почту'}. Художник свяжется с&nbsp;вами в&nbsp;течение дня.
             </p>
 
             <div style={{

@@ -124,18 +124,18 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
     case 'home':
       return {
         title: 'Mila Bezú — интерьерная живопись маслом · Москва',
-        description: 'Картины маслом современной российской художницы Mila Bezú. Серии «Улицы мира», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.',
+        description: 'Картины маслом современного российского художника Mila Bezú. Серии «Улицы мира», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.',
         canonical: SITE_ORIGIN + '/',
         ogImage: abs(heroImg || ''),
         jsonLd: [organizationLd(), personLd()],
       };
     case 'about':
       return {
-        title: 'О художнице — Mila Bezú · 15 лет масляной живописи',
+        title: 'О художнике — Mila Bezú · 15 лет масляной живописи',
         description: ABOUT.short[0],
         canonical: SITE_ORIGIN + '/about',
         ogImage: abs(heroImg || ''),
-        jsonLd: [personLd(), breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Художница', url: '/about' }])],
+        jsonLd: [personLd(), breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Художник', url: '/about' }])],
       };
     case 'catalog': {
       const series = params.series ? seriesById(params.series) : null;

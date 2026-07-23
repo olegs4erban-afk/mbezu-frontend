@@ -509,15 +509,13 @@ function Packaging() {
               marginTop: 32, maxWidth: 480, fontSize: 16, lineHeight: 1.7,
               color: 'var(--ink-2)', fontWeight: 300,
             }}>
-              Работа приходит как подарок: фирменная зелёная коробка с&nbsp;золотым тиснением, бархатный мешочек, открытка из&nbsp;страны вдохновения и&nbsp;сертификат подлинности.
+              Каждая работа приезжает с&nbsp;открыткой из&nbsp;страны вдохновения и&nbsp;сертификатом подлинности.
             </p>
             <ul style={{
               marginTop: 32, padding: 0, listStyle: 'none',
               display: 'flex', flexDirection: 'column', gap: 16,
             }}>
               {[
-                'Зелёная коробка с золотым тиснением',
-                'Бархатный мешочек MBezu',
                 'Открытка из страны вдохновения с личным посланием',
                 'Сертификат подлинности с номером работы',
               ].map((t, i) => (
@@ -691,7 +689,7 @@ function LeadForm({ go }) {
             display: 'inline-grid', placeItems: 'center', fontSize: 16, fontWeight: 700,
           }}>✓</span>
           <span className="display" style={{ fontSize: 20, fontWeight: 500 }}>
-            Заявка отправлена — художница свяжется лично
+            Заявка отправлена — художник свяжется лично
           </span>
         </div>
         <p style={{ margin: '16px 0 0', fontSize: 14, lineHeight: 1.6, opacity: .85 }}>
@@ -805,7 +803,7 @@ function CommissionCTA({ go }) {
               margin: '0 0 24px', fontSize: 17, lineHeight: 1.6,
               opacity: .82, fontWeight: 300,
             }}>
-              Расскажите о&nbsp;комнате, размере и&nbsp;настроении. Художница ответит лично с&nbsp;эскизами и&nbsp;сроком.
+              Расскажите о&nbsp;комнате, размере и&nbsp;настроении. Художник ответит лично с&nbsp;эскизами и&nbsp;сроком.
             </p>
             {/* Sprint 11 (item 17): открытая форма заявки вместо кнопки */}
             <LeadForm go={go} />

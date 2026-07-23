@@ -107,7 +107,7 @@ function TrackingPage({ go }) {
                 <div className="rule-soft" style={{ margin: '24px 0' }} />
 
                 <div className="cat-no" style={{ lineHeight: 1.6 }}>
-                  Связь с художницей —<br/>
+                  Связь с художником —<br/>
                   <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh"
                      style={{ color: 'var(--accent)', textDecoration: 'none' }}>Telegram · @{ABOUT.contacts.telegram}</a>
                 </div>

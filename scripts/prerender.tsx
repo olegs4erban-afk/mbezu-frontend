@@ -19,7 +19,6 @@ import AboutPage from '../src/pages/about';
 import CatalogPage from '../src/pages/catalog';
 import PaintingPage from '../src/pages/painting';
 import CommissionPage from '../src/pages/commission';
-import TrackingPage from '../src/pages/tracking';
 import LegalPage from '../src/pages/legal';
 
 const DIST = resolve('dist');
@@ -32,7 +31,6 @@ function pageEl(name: string, params: any): React.ReactElement | null {
     case 'catalog': return <CatalogPage go={NOOP} density="regular" initialSeries={params.series} />;
     case 'painting': return <PaintingPage go={NOOP} id={params.id} addToCart={NOOP} />;
     case 'commission': return <CommissionPage go={NOOP} refId={undefined} />;
-    case 'tracking': return <TrackingPage go={NOOP} />;
     case 'legal': return <LegalPage go={NOOP} section={params.section} />;
     default: return null;
   }
@@ -91,7 +89,6 @@ const STATIC: Array<{ name: string; file: string; params?: any; contentful?: boo
   { name: 'about', file: 'about.html', contentful: true },
   { name: 'catalog', file: 'catalog.html', contentful: true },
   { name: 'commission', file: 'commission.html', contentful: true },
-  { name: 'tracking', file: 'tracking.html', contentful: true },
   { name: 'legal', file: 'legal.html', contentful: true },
   { name: 'cart', file: 'cart.html', contentful: false }, // head-only (noindex order flow)
 ];
@@ -127,6 +124,20 @@ if (existsSync(tplPath)) {
   }
   rmSync(tplPath); // drop flat painting.html
   console.log(`  ✓ painting/index.html + ${ARTWORKS.length} per-artwork dirs`);
+}
+
+// ── /tracking → редирект на главную (Sprint 13: отслеживание убрано) ──
+{
+  const flat = resolve(DIST, 'tracking.html');
+  if (existsSync(flat)) rmSync(flat);
+  write('tracking/index.html', [
+    '<!doctype html><html lang="ru"><head><meta charset="utf-8">',
+    '<meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/">',
+    `<link rel="canonical" href="${SITE_ORIGIN}/"><title>MBezu</title>`,
+    "<script>location.replace('/');</script></head>",
+    '<body>Перенаправление на <a href="/">главную</a>…</body></html>',
+  ].join('\n'));
+  console.log('  ✓ tracking/index.html (redirect → /)');
 }
 
 // ── sitemap.xml ──────────────────────────────────────────────
