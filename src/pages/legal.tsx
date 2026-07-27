@@ -497,6 +497,14 @@ function LegalPage({ go, section }) {
           { label: 'Юридическая информация' },
         ]} />
 
+        {/* Sprint 14 (Ф5): единственный H1 страницы — раньше документ был без H1 */}
+        <h1 className="display" style={{
+          margin: '28px 0 0', fontSize: 'clamp(30px, 4vw, 52px)',
+          fontWeight: 500, letterSpacing: '-.03em', lineHeight: 1.05,
+        }}>
+          Документы и реквизиты
+        </h1>
+
         <div className="resp-stack" style={{
           marginTop: 36,
           display: 'grid', gridTemplateColumns: '260px 1fr',

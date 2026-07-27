@@ -2,7 +2,17 @@
 // seo.ts — per-page <title>/meta + JSON-LD генераторы.
 // Полный набор схем (Organization, Product, BreadcrumbList) — Phase 4.
 // ─────────────────────────────────────────────────────────────
-import { ABOUT, ARTWORKS, artworkById, seriesById, featuredArtworks, formatPrice, imageOf } from './data';
+import { ABOUT, ARTWORKS, artworkById, seriesById, featuredArtworks, formatPrice, imageOf, visibleArtworks } from './data';
+
+// ── Sprint 14: счётчики работ (видимых) — чтобы «21 работа» не расходилась с фактом ──
+export const workCount = () => visibleArtworks().length;
+export const seriesCount = (id: string) => visibleArtworks().filter((a: any) => a.series === id).length;
+export const plural = (n: number) => {
+  const d10 = n % 10, d100 = n % 100;
+  if (d10 === 1 && d100 !== 11) return 'работа';
+  if (d10 >= 2 && d10 <= 4 && (d100 < 10 || d100 >= 20)) return 'работы';
+  return 'работ';
+};
 
 export const SITE_ORIGIN = 'https://mbezu.ru';
 
@@ -123,15 +133,15 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
   switch (name) {
     case 'home':
       return {
-        title: 'Mila Bezú — интерьерная живопись маслом · Москва',
-        description: 'Картины маслом современного российского художника Mila Bezú. Серии «Улицы мира», «Монохромная», «Тихая сила» и «Тондо». Работы в наличии и на заказ. Доставка по РФ.',
+        title: 'Картины маслом для интерьера — Mila Bezú | Москва',
+        description: 'Авторская живопись маслом в единственном экземпляре. Картины для интерьера дома, квартиры и дачи. Работа на заказ от 2 недель. Доставка по России.',
         canonical: SITE_ORIGIN + '/',
         ogImage: abs(heroImg || ''),
         jsonLd: [organizationLd(), personLd()],
       };
     case 'about':
       return {
-        title: 'О художнике — Mila Bezú · 15 лет масляной живописи',
+        title: 'Mila Bezú — художник, живопись маслом | Москва',
         description: ABOUT.short[0],
         canonical: SITE_ORIGIN + '/about',
         ogImage: abs(heroImg || ''),
@@ -140,8 +150,12 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
     case 'catalog': {
       const series = params.series ? seriesById(params.series) : null;
       return {
-        title: series ? `${series.title} — каталог · Mila Bezú` : 'Каталог работ — Mila Bezú',
-        description: series ? series.description : 'Каталог живописи маслом Mila Bezú: 22 работы в четырёх сериях. Пейзажи, море, ботаника, города. Купить картину или заказать.',
+        title: series
+          ? `${series.title} — картины маслом, ${seriesCount(series.id)} ${plural(seriesCount(series.id))} | MBezu`
+          : `Купить картину маслом для интерьера — ${workCount()} ${plural(workCount())} | MBezu`,
+        description: series
+          ? `${series.description} Оригиналы маслом на холсте с сертификатом подлинности. Доставка по РФ.`
+          : 'Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.',
         canonical: SITE_ORIGIN + '/catalog' + (params.series ? `?series=${params.series}` : ''),
         jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }])],
       };
@@ -154,13 +168,14 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
       const series = seriesById(art.series);
       const pld = productLd(art.id);
       return {
-        title: `${art.title}${art.subtitle ? ' · ' + art.subtitle : ''} — ${series?.title || ''} · Mila Bezú`,
-        description: `${art.description} ${art.w}×${art.h} см, ${art.medium.toLowerCase()}. ${formatPrice(art.price)}.`,
+        title: `${art.title} — картина маслом ${art.w}×${art.h} см | купить`,
+        description: `${art.title} — авторская картина маслом на холсте, ${art.w}×${art.h} см, ${art.year}. Единственный экземпляр, сертификат подлинности. ${formatPrice(art.price)}, доставка по РФ.`,
         canonical: `${SITE_ORIGIN}/painting/${art.id.toLowerCase()}`,
         ogImage: abs(imageOf(art, 'full') || ''),
         ogType: 'product',
         jsonLd: [
           pld,
+          visualArtworkLd(art.id),
           breadcrumbLd([
             { name: 'MBezu', url: '/' },
             { name: 'Каталог', url: '/catalog' },
@@ -172,10 +187,13 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
     }
     case 'commission':
       return {
-        title: 'Картина на заказ — Mila Bezú',
-        description: 'Закажите картину маслом под ваше пространство. Бриф из 6 шагов: размер, сюжет, палитра, сроки. Студия в Москве, доставка по РФ.',
+        title: 'Картина на заказ маслом — от 2 недель | MBezu Москва',
+        description: 'Напишем картину маслом на заказ под ваш интерьер: размер, палитра, сюжет. Эскизы до начала работы. Срок от 2 недель, доставка по России.',
         canonical: SITE_ORIGIN + '/commission',
-        jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'На заказ', url: '/commission' }])],
+        jsonLd: [
+          breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'На заказ', url: '/commission' }]),
+          faqLd(),
+        ],
       };
     case 'cart':
       return { title: 'Корзина — Mila Bezú', description: 'Корзина и оформление заказа.', canonical: SITE_ORIGIN + '/cart', noindex: true, jsonLd: [] };
@@ -191,6 +209,63 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
     default:
       return { title: 'Mila Bezú', canonical: SITE_ORIGIN + '/', jsonLd: [] };
   }
+}
+
+/**
+ * VisualArtwork (Sprint 14 Ф7) — специальный тип для произведений искусства.
+ * Даёт поисковику точную сущность (не просто товар): техника, основа, размеры, автор.
+ */
+export function visualArtworkLd(id: string) {
+  const art = artworkById(id);
+  if (!art) return null;
+  const img = imageOf(art, 'full');
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VisualArtwork',
+    name: art.title,
+    description: art.description,
+    image: img ? (img.startsWith('http') ? img : SITE_ORIGIN + img) : undefined,
+    url: `${SITE_ORIGIN}/painting/${art.id.toLowerCase()}`,
+    artform: 'Живопись',
+    artMedium: 'Масло',
+    artworkSurface: art.medium?.includes('картоне') ? 'Холст на картоне' : 'Холст',
+    width: { '@type': 'QuantitativeValue', value: art.w, unitCode: 'CMT' },
+    height: { '@type': 'QuantitativeValue', value: art.h, unitCode: 'CMT' },
+    dateCreated: String(art.year),
+    creator: { '@type': 'Person', name: ABOUT.name, alternateName: ABOUT.alias },
+    isFamilyFriendly: true,
+  };
+}
+
+/**
+ * Вопросы для /commission. ВАЖНО: этот же список рендерится на странице —
+ * FAQPage-разметка без видимого текста нарушает правила Яндекса и Google.
+ */
+export const COMMISSION_FAQ: Array<[string, string]> = [
+  ['Сколько времени занимает картина на заказ?',
+   'Работа пишется от 2 недель — срок зависит от размера и сложности сюжета. Точную дату согласуем после утверждения эскиза.'],
+  ['Как происходит оплата?',
+   'Предоплата 50% после согласования эскиза, остаток — когда готовая работа согласована по фото. Оплата картой онлайн через ЮKassa.'],
+  ['Можно ли заказать картину по своему фото?',
+   'Да. Пришлите референсы или своё фото — художник предложит композицию и палитру под ваш интерьер.'],
+  ['Как доставляется работа?',
+   'Доставка по России — СДЭК, курьером или в пункт выдачи. Работа едет в фирменной упаковке с сертификатом подлинности.'],
+  ['Что входит в стоимость?',
+   'Холст на галерейном подрамнике, защитное покрытие лаком, сертификат подлинности, фирменная упаковка, рукописная открытка и крепёж — работа готова к подвесу.'],
+];
+
+/** FAQPage для /commission (Sprint 14 Ф7) — расширенный сниппет по частым вопросам. */
+export function faqLd() {
+  const qa = COMMISSION_FAQ;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: qa.map(([q, a]) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  };
 }
 
 export function productLd(id: string) {

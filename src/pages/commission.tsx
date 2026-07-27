@@ -2,6 +2,7 @@ import React from 'react';
 import { PaintingPlate } from '../common/adapter';
 import { Breadcrumbs, Eyebrow, PageTitle } from '../common/atoms';
 import { ABOUT, artworkById, formatPrice } from '../common/data';
+import { COMMISSION_FAQ } from '../common/seo';
 
 // ─────────────────────────────────────────────────────────────
 // page-commission.jsx — бриф на заказ.
@@ -111,6 +112,10 @@ function CommissionPage({ go, refId }) {
         {/* Прайс на заказ — «от / зависит от сложности» */}
         <section style={{ marginTop: 56 }}>
           <Eyebrow accent>Прайс на заказ</Eyebrow>
+          <h2 className="display resp-h2" style={{
+            margin: '12px 0 0', fontSize: 'clamp(26px, 3vw, 40px)',
+            fontWeight: 500, letterSpacing: '-.02em',
+          }}>Стоимость по размерам</h2>
           <p style={{ marginTop: 14, maxWidth: 760, fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.65 }}>
             {COMMISSION.intro}
           </p>
@@ -141,8 +146,12 @@ function CommissionPage({ go, refId }) {
           </div>
           <p className="cat-no" style={{ marginTop: 20, lineHeight: 1.6 }}>{COMMISSION.custom}</p>
 
+          <h2 className="display resp-h2" style={{
+            margin: '40px 0 0', fontSize: 'clamp(24px, 2.6vw, 34px)',
+            fontWeight: 500, letterSpacing: '-.02em',
+          }}>Что входит в стоимость</h2>
           <div className="resp-stack-2" style={{
-            marginTop: 36, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32,
+            marginTop: 20, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32,
           }}>
             <div>
               <Eyebrow accent>В стоимость входит</Eyebrow>
@@ -201,8 +210,13 @@ function CommissionPage({ go, refId }) {
             </div>
           </section>
         ) : (
+          <>
+          <h2 className="display resp-h2" id="brief" style={{
+            margin: '56px 0 0', fontSize: 'clamp(26px, 3vw, 40px)',
+            fontWeight: 500, letterSpacing: '-.02em', scrollMarginTop: 90,
+          }}>Оставить заявку</h2>
           <form onSubmit={handle} className="resp-stack" style={{
-            marginTop: 56,
+            marginTop: 24,
             display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 60, alignItems: 'start',
           }}>
             {/* LEFT — form */}
@@ -451,6 +465,24 @@ function CommissionPage({ go, refId }) {
               </div>
             </aside>
           </form>
+
+          {/* Sprint 14 (Ф7): видимый FAQ — тот же список, что уходит в FAQPage JSON-LD */}
+          <section style={{ marginTop: 80 }}>
+            <Eyebrow accent>Вопросы и ответы</Eyebrow>
+            <h2 className="display resp-h2" style={{
+              margin: '12px 0 28px', fontSize: 'clamp(26px, 3vw, 40px)',
+              fontWeight: 500, letterSpacing: '-.02em',
+            }}>Частые вопросы</h2>
+            <dl style={{ margin: 0, maxWidth: 860 }}>
+              {COMMISSION_FAQ.map(([q, a]) => (
+                <div key={q} style={{ padding: '20px 0', borderTop: '1px solid var(--rule-soft)' }}>
+                  <dt className="display" style={{ fontSize: 18, fontWeight: 500, letterSpacing: '-.01em' }}>{q}</dt>
+                  <dd style={{ margin: '10px 0 0', fontSize: 15, lineHeight: 1.65, color: 'var(--ink-2)' }}>{a}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+          </>
         )}
       </div>
     </div>

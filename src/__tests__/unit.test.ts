@@ -11,8 +11,9 @@ describe('routeToPath — clean aliases (match live Tilda)', () => {
       expect(routeToPath(r)).toBe(`/${r}`);
     }
   });
-  it('catalog with series → query', () => {
-    expect(routeToPath('catalog', { series: 'monochrome' })).toBe('/catalog?series=monochrome');
+  it('catalog with series → own URL /catalog/<slug> (Sprint 14 Ф6)', () => {
+    expect(routeToPath('catalog', { series: 'monochrome' })).toBe('/catalog/monohromnaya');
+    expect(routeToPath('catalog', { series: 'tondi' })).toBe('/catalog/tondo');
     expect(routeToPath('catalog')).toBe('/catalog');
   });
   it('painting with id → native Store product URL (3C handoff); fallback for unmapped', () => {
@@ -72,7 +73,8 @@ describe('SEO JSON-LD — valid shape', () => {
   });
   it('seoFor(painting) → title + canonical + jsonLd', () => {
     const s = seoFor('painting', { id: 'MN-01' });
-    expect(s.title).toContain('Mila Bezú');
+    expect(s.title).toContain('картина маслом'); // Sprint 14 Ф5 шаблон: «{Название} — картина маслом {Ш}×{В} см | купить»
+    expect(s.title).toContain('100×60');
     expect(s.canonical).toBe('https://mbezu.ru/painting/mn-01');
     expect(s.jsonLd.length).toBeGreaterThanOrEqual(1);
   });

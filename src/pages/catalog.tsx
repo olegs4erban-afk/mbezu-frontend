@@ -26,14 +26,22 @@ function CatalogPage({ go, density, initialSeries }) {
 
   const gridCols = density === 'compact' ? 4 : (density === 'comfy' ? 2 : 3);
   const total = visibleArtworks().length;
+  // Sprint 14 (Ф6): серия из URL /catalog/<slug> → лендинг серии (H1 + текст + крошки)
+  const activeSeries = series !== 'all' ? SERIES.find((s) => s.id === series) : null;
 
   return (
     <div className="fade-in resp-pad" style={{ padding: '40px 40px 80px' }}>
       <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
-        <Breadcrumbs items={[
-          { label: 'MBezu', onClick: () => go('home') },
-          { label: 'Каталог' },
-        ]} />
+        <Breadcrumbs items={activeSeries
+          ? [
+              { label: 'MBezu', onClick: () => go('home') },
+              { label: 'Каталог', onClick: () => go('catalog') },
+              { label: activeSeries.title },
+            ]
+          : [
+              { label: 'MBezu', onClick: () => go('home') },
+              { label: 'Каталог' },
+            ]} />
 
         {/* Hero strip: H1 + counter */}
         <div style={{
@@ -43,13 +51,15 @@ function CatalogPage({ go, density, initialSeries }) {
           gap: 24, alignItems: 'end',
         }} className="reveal r1 resp-stack-12">
           <div style={{ gridColumn: '1 / 9' }}>
-            <Eyebrow accent>§ 01 · index · 2026</Eyebrow>
+            <Eyebrow accent>{activeSeries ? `Серия · ${activeSeries.years}` : '§ 01 · index · 2026'}</Eyebrow>
             <h1 className="display resp-display-md" style={{
               margin: '20px 0 0',
-              fontSize: 'clamp(56px, 9vw, 144px)',
-              lineHeight: 0.92, fontWeight: 500, letterSpacing: '-.04em',
+              fontSize: activeSeries ? 'clamp(40px, 6vw, 88px)' : 'clamp(56px, 9vw, 144px)',
+              lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.04em',
             }}>
-              Каталог,<br/><span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>в наличии</span>
+              {activeSeries
+                ? activeSeries.h1
+                : <>Каталог,<br/><span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>в наличии</span></>}
             </h1>
           </div>
           <div style={{ gridColumn: '9 / 13', textAlign: 'right' }}>
@@ -118,7 +128,16 @@ function CatalogPage({ go, density, initialSeries }) {
           </div>
         </div>
 
-        <h2 className="sr-only">Работы в каталоге</h2>
+        {/* Sprint 14 (Ф6): SEO-текст серии — 500–800 знаков, виден роботу в prerender */}
+        {activeSeries && (
+          <section style={{ marginTop: 36, maxWidth: 900 }}>
+            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', fontWeight: 300 }}>
+              {activeSeries.seoText}
+            </p>
+          </section>
+        )}
+
+        <h2 className="sr-only">{activeSeries ? `Работы серии «${activeSeries.title}»` : 'Работы в каталоге'}</h2>
         {/* Results */}
         {items.length === 0 ? (
           <div style={{

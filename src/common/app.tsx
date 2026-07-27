@@ -25,6 +25,14 @@ export type RouteName =
 
 export interface RouteParams { id?: string; series?: string; ref?: string; section?: string }
 
+/** series id → url-slug (Sprint 14 Ф6). Принимает и id, и уже готовый slug. */
+export function seriesSlug(idOrSlug: string): string {
+  const map: Record<string, string> = {
+    monochrome: 'monohromnaya', streets: 'ulitsy-mira', silence: 'tihaya-sila', tondi: 'tondo',
+  };
+  return map[idOrSlug] || idOrSlug;
+}
+
 // CLEAN aliases — matching the live Tilda page structure (verified: /about → 200,
 // /about.html → 404; /painting/<id> → 200). The CDN serves the same clean URLs via
 // dir-style prerender (about/index.html, painting/<id>/index.html — see scripts/prerender.tsx).
@@ -34,7 +42,8 @@ export function routeToPath(name: RouteName, params: RouteParams = {}): string {
     // 3C: a work opens on its NATIVE Tilda Store product page (buy → cart 706 →
     // YooKassa). Fallback to the React painting alias if a work isn't mapped.
     case 'painting':   return (params.id && storeProductPath(params.id)) || (params.id ? `/painting/${encodeURIComponent(String(params.id).toLowerCase())}` : '/painting');
-    case 'catalog':    return params.series ? `/catalog?series=${encodeURIComponent(params.series)}` : '/catalog';
+    // Sprint 14 (Ф6): серии — отдельные URL /catalog/<slug> (ранее клиентский ?series=)
+    case 'catalog':    return params.series ? `/catalog/${seriesSlug(params.series)}` : '/catalog';
     case 'commission': return params.ref ? `/commission?ref=${encodeURIComponent(params.ref)}` : '/commission';
     case 'legal':      return params.section ? `/legal?section=${encodeURIComponent(params.section)}` : '/legal';
     default:           return `/${name}`;

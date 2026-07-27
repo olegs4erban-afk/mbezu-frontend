@@ -20,6 +20,18 @@ const PAGES = [
 ];
 
 mkdirSync(join(DIST, 'e'), { recursive: true });
+
+// Sprint 14: стабильный CSS-алиас — чтобы prerendered-разметка в Tilda-блоке
+// была оформлена СРАЗУ (не ждала загрузки модуля), но без хеша в контейнере.
+{
+  const home = readFileSync(join(DIST, 'index.html'), 'utf-8');
+  const css = (home.match(/<link[^>]+rel="stylesheet"[^>]+href="(\/assets\/[^"]+\.css)"/) || [])[1];
+  if (css) {
+    writeFileSync(join(DIST, 'e', 'style.css'), `@import url("..${css}");\n`, 'utf-8');
+    console.log(`e/style.css → ${css}`);
+  }
+}
+
 let made = 0;
 for (const [name, htmlPath] of PAGES) {
   const p = join(DIST, htmlPath);

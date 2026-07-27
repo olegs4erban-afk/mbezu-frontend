@@ -754,8 +754,8 @@ function LeadForm({ go }) {
 // ── CommissionCTA — золотой terracotta-блок ─────────────────
 function CommissionCTA({ go }) {
   return (
-    <section className="resp-pad" style={{
-      padding: '0 40px', marginTop: 60,
+    <section id="zayavka" className="resp-pad" style={{
+      padding: '0 40px', marginTop: 60, scrollMarginTop: 90,
     }}>
       <div className="resp-pad resp-pad-y" style={{
         maxWidth: 'var(--max)', margin: '0 auto',
@@ -778,7 +778,7 @@ function CommissionCTA({ go }) {
           color: 'rgba(245,239,226,.10)',
           fontWeight: 500, letterSpacing: '-.04em', lineHeight: 1,
           pointerEvents: 'none', fontStyle: 'italic',
-        }}>M.B</div>
+        }}>MB</div>
 
         <div className="resp-stack" style={{
           display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 60,
@@ -809,6 +809,38 @@ function CommissionCTA({ go }) {
             <LeadForm go={go} />
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+// ── CommissionCTAShort — короткий повтор CTA внизу (Sprint 14 Ф1) ──
+function CommissionCTAShort() {
+  const toForm = () => {
+    const el = document.getElementById('zayavka');
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  return (
+    <section className="resp-pad" style={{ padding: '40px 40px 0' }}>
+      <div className="card-soft resp-stack" style={{
+        maxWidth: 'var(--max)', margin: '0 auto',
+        display: 'grid', gridTemplateColumns: '1fr auto', gap: 32,
+        alignItems: 'center', padding: '40px 48px',
+        borderRadius: 'var(--r-xl)', border: '1px solid var(--rule-soft)',
+      }}>
+        <div>
+          <Eyebrow accent>Дочитали до конца?</Eyebrow>
+          <h2 className="display resp-h2" style={{
+            margin: '12px 0 0', fontSize: 'clamp(26px, 3vw, 38px)',
+            fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1.1,
+          }}>
+            Картина маслом под ваш <span className="italic" style={{ color: 'var(--accent)' }}>интерьер</span>
+          </h2>
+        </div>
+        <a href="#zayavka" className="btn btn-solid" style={{ textDecoration: 'none', whiteSpace: 'nowrap' }}
+           onClick={(e) => { e.preventDefault(); toForm(); }}>
+          Заказать картину →
+        </a>
       </div>
     </section>
   );
@@ -890,6 +922,9 @@ function HomePage({ go, hero }) {
         '— серии одного автора —',
       ]} big />
 
+      {/* Sprint 14 (Ф1): форма заявки — сразу после бегущей строки (оффер → контакт без скролла) */}
+      <CommissionCTA go={go} />
+
       <SeriesTriptych go={go} />
       <ManifestBand />
       <InStock go={go} />
@@ -897,7 +932,7 @@ function HomePage({ go, hero }) {
       <Packaging />
       <StatsRow />
       <ProcessRow />
-      <CommissionCTA go={go} />
+      <CommissionCTAShort />
       <Newsletter />
     </div>
   );

@@ -12,7 +12,7 @@ import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node
 import { resolve, dirname } from 'node:path';
 
 import { TopBar, Footer } from '../src/common/chrome';
-import { ARTWORKS } from '../src/common/data';
+import { ARTWORKS, SERIES } from '../src/common/data';
 import { seoFor, SITE_ORIGIN, type RouteSeo } from '../src/common/seo';
 import HomePage from '../src/pages/home';
 import AboutPage from '../src/pages/about';
@@ -126,6 +126,21 @@ if (existsSync(tplPath)) {
   console.log(`  ✓ painting/index.html + ${ARTWORKS.length} per-artwork dirs`);
 }
 
+// ── серии: /catalog/<slug>/ (Sprint 14 Ф6) ───────────────────
+{
+  const catTpl = resolve(DIST, 'catalog/index.html');
+  if (existsSync(catTpl)) {
+    const template = readFileSync(catTpl, 'utf-8');
+    for (const s of SERIES as any[]) {
+      const seo = seoFor('catalog', { series: s.id });
+      write(`catalog/${s.slug}/index.html`,
+        inject(template, seo, renderMarkup('catalog', { series: s.id }), 'catalog'));
+      count++;
+    }
+    console.log(`  ✓ catalog/<series> × ${SERIES.length} (${(SERIES as any[]).map((s) => s.slug).join(', ')})`);
+  }
+}
+
 // ── /tracking → редирект на главную (Sprint 13: отслеживание убрано) ──
 {
   const flat = resolve(DIST, 'tracking.html');
@@ -141,13 +156,16 @@ if (existsSync(tplPath)) {
 }
 
 // ── sitemap.xml ──────────────────────────────────────────────
+// Sprint 14 (Ф3): только https, без /home-дубля, с lastmod; + серии (Ф6); скрытые работы исключены
+const lastmod = new Date().toISOString().slice(0, 10);
 const urls = [
   '/', '/about', '/catalog', '/commission', '/legal',
-  ...ARTWORKS.map((a) => `/painting/${a.id.toLowerCase()}`),
+  ...(SERIES as any[]).map((s) => `/catalog/${s.slug}`),
+  ...ARTWORKS.filter((a: any) => !a.hidden).map((a) => `/painting/${a.id.toLowerCase()}`),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`
   + `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`
-  + urls.map((u) => `  <url><loc>${SITE_ORIGIN}${u}</loc></url>`).join('\n')
+  + urls.map((u) => `  <url><loc>${SITE_ORIGIN}${u}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')
   + `\n</urlset>\n`;
 write('sitemap.xml', sitemap);
 console.log(`  ✓ sitemap.xml (${urls.length} urls)`);
