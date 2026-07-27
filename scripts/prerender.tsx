@@ -14,6 +14,7 @@ import { resolve, dirname } from 'node:path';
 import { TopBar, Footer } from '../src/common/chrome';
 import { ARTWORKS, SERIES } from '../src/common/data';
 import { seoFor, SITE_ORIGIN, type RouteSeo } from '../src/common/seo';
+import { SERIES_PAGES_LIVE } from '../src/common/flags';
 import HomePage from '../src/pages/home';
 import AboutPage from '../src/pages/about';
 import CatalogPage from '../src/pages/catalog';
@@ -160,7 +161,8 @@ if (existsSync(tplPath)) {
 const lastmod = new Date().toISOString().slice(0, 10);
 const urls = [
   '/', '/about', '/catalog', '/commission', '/legal',
-  ...(SERIES as any[]).map((s) => `/catalog/${s.slug}`),
+  // серии попадают в sitemap только когда для них есть страницы Tilda (иначе робот увидит 404)
+  ...(SERIES_PAGES_LIVE ? (SERIES as any[]).map((s) => `/catalog/${s.slug}`) : []),
   ...ARTWORKS.filter((a: any) => !a.hidden).map((a) => `/painting/${a.id.toLowerCase()}`),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`

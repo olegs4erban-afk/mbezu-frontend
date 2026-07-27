@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { routeToPath } from '../common/app';
+import { routeToPath, seriesSlug, SERIES_PAGES_LIVE } from '../common/app';
 import { imageOf, formatPrice, ARTWORKS, artworkById, seriesById } from '../common/data';
 import { seoFor, organizationLd, personLd, productLd, breadcrumbLd } from '../common/seo';
 
@@ -11,9 +11,11 @@ describe('routeToPath — clean aliases (match live Tilda)', () => {
       expect(routeToPath(r)).toBe(`/${r}`);
     }
   });
-  it('catalog with series → own URL /catalog/<slug> (Sprint 14 Ф6)', () => {
-    expect(routeToPath('catalog', { series: 'monochrome' })).toBe('/catalog/monohromnaya');
-    expect(routeToPath('catalog', { series: 'tondi' })).toBe('/catalog/tondo');
+  it('catalog with series → slug-URL когда страницы Tilda есть, иначе ?series= (Sprint 14 Ф6)', () => {
+    const s = routeToPath('catalog', { series: 'monochrome' });
+    expect(SERIES_PAGES_LIVE ? s : s).toBe(SERIES_PAGES_LIVE ? '/catalog/monohromnaya' : '/catalog?series=monochrome');
+    expect(seriesSlug('monochrome')).toBe('monohromnaya');
+    expect(seriesSlug('tondi')).toBe('tondo');
     expect(routeToPath('catalog')).toBe('/catalog');
   });
   it('painting with id → native Store product URL (3C handoff); fallback for unmapped', () => {
