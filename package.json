@@ -16,8 +16,13 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
-    "tilda:login": "node scripts/tilda-session.mjs login",
-    "tilda:check": "node scripts/tilda-session.mjs check"
+    "tilda:login": "cross-env TILDA_HEADED=1 node scripts/tilda-session.mjs login",
+    "tilda:check": "node scripts/tilda-session.mjs check",
+    "containers:seo": "node scripts/gen-seo-containers.mjs",
+    "deploy:cdn": "node scripts/deploy-cdn.mjs",
+    "push": "node scripts/tilda-push.mjs",
+    "verify": "node scripts/verify-live.mjs",
+    "deploy": "npm run build && npm run containers:seo && npm run deploy:cdn && npm run push && npm run verify"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -31,6 +36,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "chrome-launcher": "^1.2.1",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^17.6.0",

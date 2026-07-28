@@ -14,7 +14,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const DIST = 'dist';
-const OUT = 'backup/s14';
+const OUT = process.env.CONTAINERS_OUT || 'out/containers';
 const CDN = 'https://cdn.mbezu.ru';
 // расширяемо: [имя контейнера, prerendered html, имя лоадера, доп. <style>]
 const PAGES = [
@@ -64,9 +64,31 @@ for (const [name, file, loader, extra] of PAGES) {
     '',
   ].filter(Boolean).join('\n');
 
-  writeFileSync(join(OUT, `c-${name}.html`), out, 'utf-8');
+  writeFileSync(join(OUT, `${name}.html`), out, 'utf-8');
   made++;
   report.push({ name, kb: Math.round(out.length / 1024), h1, h2, ld: (ld.match(/<script/g) || []).length });
 }
-for (const r of report) console.log(`  ✓ ${OUT}/c-${r.name}.html — ${r.kb}KB · h1=${r.h1} h2=${r.h2} jsonld=${r.ld}`);
+for (const r of report) console.log(`  ✓ ${OUT}/${r.name}.html — ${r.kb}KB · h1=${r.h1} h2=${r.h2} jsonld=${r.ld}`);
+
+// Ф1.5 — человекочитаемая шпаргалка на случай отказа автоклика
+try {
+  const seo = JSON.parse(readFileSync('seo/pages.json', 'utf-8')).pages;
+  const rows = Object.entries(seo).map(([k, p]) => [
+    `### ${k} — ${p.alias} (pageId ${p.pageId}, блок ${p.recordId ?? '—'})`,
+    `- **Имя страницы (оно же og:title):** ${p.title}`,
+    `- **meta_title:** ${p.metaTitle}`,
+    `- **meta_descr:** ${p.metaDescr}`,
+    `- **link_canonical:** ${p.canonical}`,
+    `- **og:image (imgfile + fb_imgfile):** ${p.ogImage}`,
+    `- **Контейнер T123:** \`${OUT}/${p.container}.html\``,
+  ].join('\n'));
+  writeFileSync('out/manual-steps.md', [
+    '# Ручная заливка (фолбэк, если автоклик недоступен)', '',
+    'Порядок на каждую страницу: открыть редактор → вставить контейнер в блок T123 →',
+    'Настройки страницы → заполнить поля ниже → Сохранить → Опубликовать.', '',
+    ...rows, '',
+  ].join('\n'), 'utf-8');
+  console.log('  ✓ out/manual-steps.md (фолбэк для ручной заливки)');
+} catch (e) { console.log('  ! manual-steps не собран:', e.message); }
+
 console.log(`[seo-containers] ${made} готово`);

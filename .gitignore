@@ -25,3 +25,6 @@ audit/last-lh.md
 audit/lhci/
 .lighthouseci/
 audit/.tilda-profile/
+
+# Sprint 15: артефакты деплоя (контейнеры + шпаргалка) — регенерируются билдом
+out/

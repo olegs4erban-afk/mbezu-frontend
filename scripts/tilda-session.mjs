@@ -1,86 +1,99 @@
 // ─────────────────────────────────────────────────────────────
-// tilda-session.mjs (Sprint 15, Ф1.1) — одна сохранённая сессия вместо логина на каждый прогон.
+// tilda-session.mjs (Sprint 15, Ф1.1) — одна живая сессия вместо логина на каждый прогон.
 //
-// Причина: в Sprint 14 каждый скрипт логинился заново, и после серии входов Tilda
-// включала reCAPTCHA — спринт вставал дважды. Playwright умеет сохранять cookie
-// (storageState): вход руками один раз, дальше недели прогонов без капчи.
+// Причина капчи в Sprint 14: каждый скрипт логинился заново. Лечится сохранением
+// сессии — но НЕ через storageState:
+//   • storageState кладёт в файл в т.ч. PHPSESSID — сессионную cookie, которую
+//     сервер убивает при закрытии браузера. При следующем запуске мы предъявляем
+//     мёртвый PHPSESSID, и Tilda отправляет на /login/ (проверено: редирект-цепочка
+//     /projects/ → detectdomain → /login/, редактор отвечает «Авторизуйтесь»).
+//   • launchPersistentContext хранит ПОЛНЫЙ профиль браузера в папке, как у живого
+//     пользователя: cookie, localStorage, IndexedDB. Сессия переживает перезапуск.
 //
-// Использование в скриптах:
-//     import { withSession, pace } from './tilda-session.mjs';
-//     await withSession(async ({ page }) => { … });   // сам закроет браузер
+// Проверка «залогинены ли» идёт по РЕАЛЬНОЙ рабочей поверхности — редактору страницы,
+// а не по /projects/ (тот уходит в бесконечный редирект через detectdomain даже
+// у авторизованного пользователя и даёт ложный «протух»).
 //
-// Вход руками (раз в несколько недель, когда скрипт скажет «сессия протухла»):
-//     TILDA_HEADED=1 npm run tilda:login
-//
-// ⚠️ .secrets/ в .gitignore. Файл сессии = доступ к аккаунту с боевым магазином.
+// Вход руками (раз в несколько недель):  npm run tilda:login
 // ─────────────────────────────────────────────────────────────
 import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
 
-export const STATE = process.env.TILDA_STATE || '.secrets/tilda-session.json';
+export const PROFILE = process.env.TILDA_PROFILE || '.secrets/tilda-profile';
 export const PROJECTID = process.env.TILDA_PROJECT || '13712449';
-const HOME = 'https://tilda.ru/projects/';
+/** Страница-пробник: открываем её редактор только для проверки доступа (ничего не меняем). */
+const PROBE_PAGEID = process.env.TILDA_PROBE || '142950726'; // legal
 
-/** Пауза между действиями в админке: гонка запросов = новая капча. 1.5–3 с. */
+/** Пауза между действиями в админке: гонка запросов = новая капча. 1,5–3 с. */
 export const pace = (min = 1500, max = 3000) =>
   new Promise((r) => setTimeout(r, Math.round(min + Math.random() * (max - min))));
 
-/** Залогинены ли мы: на /login/ Tilda редиректит неавторизованных. */
-async function loggedIn(page) {
-  const url = page.url();
-  if (/\/login/.test(url)) return false;
-  // «Мои сайты» / список проектов виден только авторизованному
-  return await page.evaluate(() => !document.querySelector('input[name="password"]')).catch(() => false);
+const editorUrl = (pageid) => `https://tilda.ru/page/?pageid=${pageid}&projectid=${PROJECTID}`;
+
+/** Пускает ли Tilda в редактор — единственный надёжный признак живой сессии. */
+export async function checkAccess(page) {
+  await page.goto(editorUrl(PROBE_PAGEID), { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+  await page.waitForTimeout(4000);
+  return page.evaluate(() => {
+    const t = document.body?.innerText || '';
+    if (/Авторизуйтесь|Эл\. почта\s+Пароль/i.test(t)) return false;
+    if (/\/login\//.test(location.href)) return false;
+    return !!document.querySelector('[data-record-type], #allrecords, .js-page-settings, #formpageedit')
+      || /Настройки страницы/i.test(t);
+  });
 }
 
 /**
- * Открывает браузер с сохранённой сессией.
+ * Открывает браузер с сохранённым профилем.
  * headless по умолчанию; TILDA_HEADED=1 — окно (нужно для ручного входа).
- * Если сессии нет/протухла и мы headless — понятная ошибка + exit 2, БЕЗ автологина
- * (автологин и есть причина капчи; риск блокировки боевого аккаунта).
+ * Автологин намеренно НЕ делается: именно он вызывал reCAPTCHA, а блокировка
+ * аккаунта с боевым магазином недопустима.
  */
 export async function openSession({ headed = !!process.env.TILDA_HEADED } = {}) {
-  const browser = await chromium.launch({ headless: !headed });
-  const hasState = fs.existsSync(STATE);
-  const ctx = hasState
-    ? await browser.newContext({ storageState: STATE, viewport: { width: 1500, height: 1000 } })
-    : await browser.newContext({ viewport: { width: 1500, height: 1000 } });
-  const page = await ctx.newPage();
-  await page.goto(HOME, { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
-  await page.waitForTimeout(2500);
+  fs.mkdirSync(PROFILE, { recursive: true });
+  const ctx = await chromium.launchPersistentContext(PROFILE, {
+    headless: !headed,
+    viewport: { width: 1500, height: 1000 },
+    locale: 'ru-RU',
+    args: ['--disable-blink-features=AutomationControlled'],
+  });
+  const page = ctx.pages()[0] || (await ctx.newPage());
 
-  if (!(await loggedIn(page))) {
+  if (!(await checkAccess(page))) {
     if (!headed) {
       console.error(
-        `\n  СЕССИЯ ${hasState ? 'ПРОТУХЛА' : 'НЕ НАЙДЕНА'} (${STATE}).\n` +
-        '  Войди один раз руками:  TILDA_HEADED=1 npm run tilda:login\n' +
-        '  (автологин намеренно НЕ делается — именно он вызывал reCAPTCHA)\n',
+        `\n  СЕССИЯ НЕ АКТИВНА (профиль ${PROFILE}).\n` +
+        '  Войди один раз руками:  npm run tilda:login\n' +
+        '  (автологин намеренно не делается — он и вызывал reCAPTCHA)\n',
       );
-      await browser.close();
+      await ctx.close();
       process.exit(2);
     }
-    await manualLogin(page, ctx);
+    await manualLogin(page);
   }
-  return { browser, ctx, page };
+  // единый интерфейс: browser.close() закрывает персистентный контекст
+  return { browser: { close: () => ctx.close() }, ctx, page };
 }
 
-/** Ручной вход в открытом окне: ждём, пока пользователь войдёт (в т.ч. пройдёт капчу). */
-async function manualLogin(page, ctx) {
+/** Ручной вход в открытом окне: ждём, пока откроется доступ к редактору. */
+async function manualLogin(page) {
+  await page.goto('https://tilda.ru/login/', { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
   console.log('\n  Открылось окно Tilda. Войди в аккаунт (логин, пароль, капча если попросят).');
-  console.log('  Как только увидишь список сайтов — скрипт сам сохранит сессию.\n');
-  const deadline = Date.now() + 10 * 60 * 1000; // 10 минут
+  console.log('  Если есть галочка «запомнить меня» — поставь.');
+  console.log('  Скрипт сам поймёт, что доступ появился, и закроет окно.\n');
+  const deadline = Date.now() + 10 * 60 * 1000;
   while (Date.now() < deadline) {
-    await page.waitForTimeout(2000);
-    if (await loggedIn(page)) {
-      fs.mkdirSync(path.dirname(STATE), { recursive: true });
-      await ctx.storageState({ path: STATE });
-      console.log(`  ✓ Сессия сохранена: ${STATE}`);
-      console.log('  Дальше прогоны идут без капчи. Файл в .gitignore — не коммитится.\n');
+    await page.waitForTimeout(3000);
+    const url = page.url();
+    if (/\/login\//.test(url)) continue;         // ещё на форме входа
+    if (await checkAccess(page)) {
+      console.log(`  ✓ Доступ к редактору подтверждён. Профиль сохранён: ${PROFILE}`);
+      console.log('  Дальше прогоны идут без логина и без капчи. Папка в .gitignore.\n');
       return true;
     }
   }
-  throw new Error('login-timeout: за 10 минут вход не завершён');
+  throw new Error('login-timeout: за 10 минут доступ не появился');
 }
 
 /** Обёртка: открыть сессию, выполнить работу, гарантированно закрыть браузер. */
@@ -105,22 +118,11 @@ export async function publishPage(page, pageid) {
   }, { pageid: String(pageid), PROJECTID });
 }
 
-// ── CLI: npm run tilda:login / tilda:check ───────────────────
+// ── CLI: npm run tilda:login / npm run tilda:check ───────────
 const isMain = process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]));
 if (isMain) {
-  const mode = process.argv[2] || (process.env.TILDA_HEADED ? 'login' : 'check');
-  if (mode === 'login') {
-    const { browser, ctx, page } = await openSession({ headed: true });
-    if (await loggedIn(page)) {
-      fs.mkdirSync(path.dirname(STATE), { recursive: true });
-      await ctx.storageState({ path: STATE });
-      console.log(`  ✓ Сессия актуальна и сохранена: ${STATE}`);
-    }
-    await browser.close();
-  } else {
-    // проверка живости без окна — используется деплоем перед началом работы
-    const { browser, page } = await openSession({ headed: false });
-    console.log(`  ✓ Сессия жива (${page.url()})`);
-    await browser.close();
-  }
+  const mode = process.argv[2] || 'check';
+  const { browser } = await openSession({ headed: mode === 'login' || !!process.env.TILDA_HEADED });
+  console.log(mode === 'login' ? '  ✓ Сессия активна.\n' : '  ✓ Сессия активна — деплой может работать.\n');
+  await browser.close();
 }

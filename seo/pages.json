@@ -1,0 +1,90 @@
+{
+  "_comment": [
+    "Sprint 15 (Ф1.2) — ИСТОЧНИК ИСТИНЫ по мета-тегам страниц Tilda.",
+    "Правится здесь и в git, а не в полях админки: диффы ревьюятся, ручная правка в Tilda перетирается следующим деплоем.",
+    "Поля кладутся скриптом tilda-push.mjs в форму #formpageedit (comm=savepagesettings):",
+    "  title       → имя страницы в Tilda; ИМЕННО ОНО уходит в og:title (сейчас на / стоит «Blank page»)",
+    "  description → поле descr",
+    "  metaTitle   → meta_title (<title> в выдаче)",
+    "  metaDescr   → meta_descr (description в выдаче, ≤160 знаков)",
+    "  canonical   → link_canonical (обязательно https, иначе Tilda сгенерит http://)",
+    "  ogImage     → imgfile + fb_imgfile",
+    "ВНИМАНИЕ (Ф3.3): индексная страница сейчас 140814006 (бывшая Blank page), 142947296 живёт на /home.",
+    "После смены индексной страницы обновить pageId у home — иначе мета уедет не туда."
+  ],
+  "pages": {
+    "home": {
+      "pageId": 140814006,
+      "alias": "/",
+      "title": "Mila Bezú — интерьерная живопись маслом · Москва",
+      "description": "Авторские картины маслом в единственном экземпляре",
+      "metaTitle": "Картины маслом для интерьера — Mila Bezú | Москва",
+      "metaDescr": "Авторская живопись маслом в единственном экземпляре: пейзаж, море, ботаника. Картина на заказ от 2 недель. Сертификат подлинности, доставка по России.",
+      "canonical": "https://mbezu.ru/",
+      "ogImage": "https://cdn.mbezu.ru/og/og-default-1200x630.jpg",
+      "recordId": 2257585841,
+      "container": "home"
+    },
+    "home2": {
+      "pageId": 142947296,
+      "alias": "/home",
+      "_note": "дубль главной; до Ф3.3 держим canonical на / , чтобы не плодить второй индексируемый адрес",
+      "title": "Mila Bezú — интерьерная живопись маслом · Москва",
+      "description": "Авторские картины маслом в единственном экземпляре",
+      "metaTitle": "Картины маслом для интерьера — Mila Bezú | Москва",
+      "metaDescr": "Авторская живопись маслом в единственном экземпляре: пейзаж, море, ботаника. Картина на заказ от 2 недель. Сертификат подлинности, доставка по России.",
+      "canonical": "https://mbezu.ru/",
+      "ogImage": "https://cdn.mbezu.ru/og/og-default-1200x630.jpg",
+      "recordId": 2337252301,
+      "container": "home"
+    },
+    "catalog": {
+      "pageId": 142948046,
+      "alias": "/catalog",
+      "title": "Каталог картин маслом — MBezu",
+      "description": "Оригиналы маслом на холсте с сертификатом подлинности",
+      "metaTitle": "Купить картину маслом для интерьера — 21 работа | MBezu",
+      "metaDescr": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.",
+      "canonical": "https://mbezu.ru/catalog",
+      "ogImage": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "recordId": 2413986501,
+      "container": "catalog"
+    },
+    "about": {
+      "pageId": 142948406,
+      "alias": "/about",
+      "title": "Mila Bezú — художник",
+      "description": "Художник-живописец из Москвы, 15 лет масляной живописи",
+      "metaTitle": "Mila Bezú — художник, живопись маслом | Москва",
+      "metaDescr": "Художник-живописец из Москвы. 15 лет масляной живописи: пейзаж, город, ботаника, монохром. Работы в наличии и на заказ, сертификат подлинности.",
+      "canonical": "https://mbezu.ru/about",
+      "ogImage": "https://cdn.mbezu.ru/og/og-default-1200x630.jpg",
+      "recordId": 2337667041,
+      "container": "about"
+    },
+    "commission": {
+      "pageId": 142949736,
+      "alias": "/commission",
+      "title": "Картина на заказ — MBezu",
+      "description": "Картина маслом под ваш интерьер, срок от 2 недель",
+      "metaTitle": "Картина на заказ маслом — от 2 недель | MBezu Москва",
+      "metaDescr": "Напишем картину маслом на заказ под ваш интерьер: размер, палитра, сюжет. Эскизы до начала работы. Срок от 2 недель, доставка по России.",
+      "canonical": "https://mbezu.ru/commission",
+      "ogImage": "https://cdn.mbezu.ru/og/og-commission-1200x630.jpg",
+      "recordId": 2412598301,
+      "container": "commission"
+    },
+    "legal": {
+      "pageId": 142950726,
+      "alias": "/legal",
+      "title": "Документы и реквизиты — MBezu",
+      "description": "Оферта, политика ПД, доставка и возврат, реквизиты ИП",
+      "metaTitle": "Документы и реквизиты — MBezu | оферта, доставка, возврат",
+      "metaDescr": "Публичная оферта, политика обработки персональных данных, условия доставки и возврата, реквизиты ИП. Интернет-магазин картин MBezu.",
+      "canonical": "https://mbezu.ru/legal",
+      "ogImage": "https://cdn.mbezu.ru/og/og-default-1200x630.jpg",
+      "recordId": 2349904171,
+      "container": "legal"
+    }
+  }
+}
