@@ -15,7 +15,9 @@
     "preview": "vite preview --port 4173",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "tilda:login": "node scripts/tilda-session.mjs login",
+    "tilda:check": "node scripts/tilda-session.mjs check"
   },
   "dependencies": {
     "react": "^18.3.1",

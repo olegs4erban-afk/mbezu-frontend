@@ -12,6 +12,10 @@ yarn-error.log*
 .env.*
 !.env.example
 
+# Sprint 15: сессия Tilda = фактический доступ к аккаунту с боевым магазином.
+# НИКОГДА не коммитить. Логин делается руками: TILDA_HEADED=1 npm run tilda:login
+.secrets/
+
 # audit artifacts: keep AUDIT.md + JSON data, ignore heavy/regenerable outputs
 audit/screens/
 audit/lighthouse/*.html
