@@ -27,11 +27,11 @@ function AboutPage({ go }) {
                 fontSize: 'clamp(72px, 10vw, 168px)',
                 lineHeight: 0.92, fontWeight: 500, letterSpacing: '-.04em',
               }}>
-                Mila<br/><span className="italic" style={{ color: 'var(--accent)' }}>Bezú.</span>
+                Mila{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>Bezú.</span>
               </h1>
               <div className="cat-no" style={{ marginTop: 28, lineHeight: 1.8 }}>
-                {ABOUT.full}<br/>
-                {ABOUT.city}<br/>
+                {ABOUT.full}{' '}<br/>
+                {ABOUT.city}{' '}<br/>
                 {ABOUT.studio}
               </div>
             </div>
@@ -114,7 +114,7 @@ function AboutPage({ go }) {
                 margin: '20px 0 0', fontSize: 'clamp(40px, 4.8vw, 64px)',
                 fontWeight: 500, lineHeight: 0.95, letterSpacing: '-.025em',
               }}>
-                Три направления<br/><span className="italic" style={{ color: 'var(--ink-2)', fontStyle: 'italic' }}>одного автора.</span>
+                Три направления{' '}<br/><span className="italic" style={{ color: 'var(--ink-2)', fontStyle: 'italic' }}>одного автора.</span>
               </h2>
             </div>
             <button className="btn btn-ghost" onClick={() => go('catalog')}>Все работы →</button>
@@ -221,7 +221,7 @@ function AboutPage({ go }) {
           margin: 0, fontSize: 'clamp(48px, 6vw, 88px)',
           fontWeight: 500, lineHeight: 0.95, letterSpacing: '-.03em',
         }}>
-          Заказать картину<br/><span className="italic" style={{ color: 'var(--accent)' }}>специально для вашей стены.</span>
+          Заказать картину{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>специально для вашей стены.</span>
         </h2>
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 44, flexWrap: 'wrap' }}>
           <button className="btn btn-solid" onClick={() => go('commission')}>На заказ</button>

@@ -59,7 +59,7 @@ function CatalogPage({ go, density, initialSeries }) {
             }}>
               {activeSeries
                 ? activeSeries.h1
-                : <>Каталог,<br/><span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>в наличии</span></>}
+                : <>Каталог,{' '}<br/><span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>в наличии</span></>}
             </h1>
           </div>
           <div style={{ gridColumn: '9 / 13', textAlign: 'right' }}>

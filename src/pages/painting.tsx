@@ -217,14 +217,14 @@ function PaintingPage({ go, id, addToCart }) {
                 margin: '20px 0 16px', fontSize: 'clamp(32px, 3.6vw, 48px)',
                 lineHeight: 1.05, fontWeight: 500, letterSpacing: '-.025em',
               }}>
-                «{art.title}»<br/>на вашей <span className="italic" style={{ color: 'var(--accent)' }}>стене</span>.
+                «{art.title}»{' '}<br/>на вашей <span className="italic" style={{ color: 'var(--accent)' }}>стене</span>.
               </h2>
               <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--ink-2)', maxWidth: 380, marginBottom: 28 }}>
                 Откройте страницу на&nbsp;iPhone или Android — нажмите кнопку, наведите камеру на&nbsp;стену. Картина появится в&nbsp;размере {art.w}×{art.h}&nbsp;см.
               </p>
               <ArButton art={art} />
               <div className="cat-no" style={{ marginTop: 20, lineHeight: 1.7 }}>
-                iPhone · iOS 12+ Safari<br/>
+                iPhone · iOS 12+ Safari{' '}<br/>
                 Android · Chrome + Google ARCore
               </div>
             </div>

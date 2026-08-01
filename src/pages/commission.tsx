@@ -3,6 +3,18 @@ import { PaintingPlate } from '../common/adapter';
 import { Breadcrumbs, Eyebrow, PageTitle } from '../common/atoms';
 import { ABOUT, artworkById, formatPrice } from '../common/data';
 import { COMMISSION_FAQ } from '../common/seo';
+import { submitLead } from '../lib/tildaLead';
+
+/** UTM первого захода — уезжают вместе с заявкой (дубль helper'а с главной). */
+function utmFromStorage(): Record<string, string> {
+  try {
+    const u = JSON.parse(localStorage.getItem('mbezu-utm') || '{}');
+    return {
+      utm_source: u.utm_source || '', utm_medium: u.utm_medium || '',
+      utm_campaign: u.utm_campaign || '', utm_content: u.utm_content || '',
+    };
+  } catch { return {}; }
+}
 
 // ─────────────────────────────────────────────────────────────
 // page-commission.jsx — бриф на заказ.
@@ -77,9 +89,43 @@ function CommissionPage({ go, refId }) {
   });
   const [sent, setSent] = React.useState(false);
   const [showPicker, setShowPicker] = React.useState(false);
+  // Sprint 15 (Ф0): бриф раньше только переключал экран — заявка никуда не шла.
+  const [state, setState] = React.useState<'idle' | 'sending' | 'err'>('idle');
+  const [leadNo, setLeadNo] = React.useState('');
+  const [consent, setConsent] = React.useState(false);
+  const [touched, setTouched] = React.useState(false);
 
   const upd = (k, v) => setForm((f) => ({ ...f, [k]: v }));
-  const handle = (e) => { e.preventDefault(); setSent(true); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+
+  const handle = async (e) => {
+    e.preventDefault();
+    setTouched(true);
+    if (!consent || state === 'sending') return;
+    setState('sending');
+    const res = await submitLead({
+      name: form.name.trim(),
+      phone: form.email.trim(),                       // поле «Email или Telegram»
+      email: /@/.test(form.email) ? form.email.trim() : '',
+      city: form.city.trim(),
+      notes: [form.notes.trim(), form.where ? `Куда повесим: ${form.where}` : ''].filter(Boolean).join(' · '),
+      size: sizeSummary,
+      style: styleSummary,
+      palette: isHexPalette ? form.palette.toUpperCase() : (currentPalette?.label || ''),
+      budget: form.budget,
+      weeks: form.weeks,
+      source: 'commission-brief',
+      page: typeof location !== 'undefined' ? location.pathname : '/commission',
+      ...utmFromStorage(),
+    });
+    if (res.ok) {
+      setLeadNo(res.ref);
+      setSent(true);
+      setState('idle');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      setState('err');
+    }
+  };
 
   const isHexPalette = form.palette.startsWith('#');
   const currentSize = sizes.find((s) => s.id === form.size);
@@ -104,7 +150,7 @@ function CommissionPage({ go, refId }) {
         <div style={{ marginTop: 36 }}>
           <PageTitle
             kicker="Картина под ваше место"
-            title={<>Заказать<br/><span className="italic" style={{ color: 'var(--accent)' }}>индивидуально</span></>}
+            title={<>Заказать{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>индивидуально</span></>}
             lead="Заполните бриф — Мила свяжется и предложит два-три эскиза. Договор заключаем после согласования эскиза, предоплата 50%."
           />
         </div>
@@ -199,6 +245,9 @@ function CommissionPage({ go, refId }) {
               margin: '0 0 16px', fontSize: 'clamp(32px, 4vw, 48px)',
               fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1.1,
             }}>Бриф получен</h2>
+            {leadNo && (
+              <p className="cat-no" style={{ margin: '0 0 14px' }}>Номер заявки: <b>{leadNo}</b></p>
+            )}
             <p style={{ fontSize: 16, color: 'var(--ink-2)', maxWidth: 480, margin: '0 auto', lineHeight: 1.6 }}>
               Мила ответит лично в течение 24 часов. Если хотите ускорить — напишите
               в&nbsp;<a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh"
@@ -412,10 +461,38 @@ function CommissionPage({ go, refId }) {
                 </div>
                 <textarea className="field" placeholder="Дополнительно — настроение, ассоциации, ссылки на референсы…" rows={4} style={{ marginTop: 14 }}
                           value={form.notes} onChange={(e) => upd('notes', e.target.value)} />
+
+                {/* 152-ФЗ: без согласия отправка заблокирована */}
+                <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginTop: 16, cursor: 'pointer', fontSize: 13, lineHeight: 1.55 }}>
+                  <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
+                         style={{ marginTop: 3, width: 16, height: 16, accentColor: 'var(--accent)', flexShrink: 0 }} />
+                  <span style={{ color: 'var(--ink-2)' }}>
+                    Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
+                    <a href="/legal?section=privacy" onClick={(e) => { e.preventDefault(); go('legal', { section: 'privacy' }); }}
+                       style={{ color: 'var(--accent)' }}>Политика ПД</a>
+                  </span>
+                </label>
+                {touched && !consent && (
+                  <div style={{ marginTop: 8, fontSize: 12.5, color: 'var(--accent-deep)' }}>
+                    Для отправки нужно согласие на обработку ПД
+                  </div>
+                )}
+                {state === 'err' && (
+                  <div style={{
+                    marginTop: 14, padding: '14px 16px', borderRadius: 'var(--r-md)',
+                    background: 'var(--bg-soft)', border: '1px solid var(--accent)', fontSize: 13.5, lineHeight: 1.6,
+                  }}>
+                    <b>Не удалось отправить бриф.</b> Напишите напрямую:{' '}
+                    <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" style={{ color: 'var(--accent)' }}>Telegram</a>{' · '}
+                    <a href={`mailto:${ABOUT.contacts.email}`} style={{ color: 'var(--accent)' }}>{ABOUT.contacts.email}</a>{' · '}
+                    <a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} style={{ color: 'var(--accent)' }}>{ABOUT.contacts.phone}</a>
+                  </div>
+                )}
               </div>
 
-              <button type="submit" className="btn btn-solid" style={{ alignSelf: 'flex-start', padding: '20px 40px', fontSize: 13 }}>
-                Отправить бриф →
+              <button type="submit" className="btn btn-solid" disabled={state === 'sending'}
+                      style={{ alignSelf: 'flex-start', padding: '20px 40px', fontSize: 13, opacity: state === 'sending' ? .6 : 1 }}>
+                {state === 'sending' ? 'Отправляем…' : 'Отправить бриф →'}
               </button>
             </div>
 

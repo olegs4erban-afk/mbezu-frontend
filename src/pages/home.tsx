@@ -4,6 +4,7 @@ import { ArButton, ArViewer, QrBlock, useArSupport } from '../ar/ar';
 import { ArtCard, Eyebrow } from '../common/atoms';
 import { Marquee } from '../common/chrome';
 import { ABOUT, ARTWORKS, SERIES, availableCount, featuredArtworks, formatPrice, seriesById, visibleArtworks } from '../common/data';
+import { submitLead } from '../lib/tildaLead';
 
 // ─────────────────────────────────────────────────────────────
 // page-home.jsx — главная M.Bez.
@@ -45,11 +46,11 @@ function HeroEditorial({ go }) {
               fontWeight: 500,
               letterSpacing: '-.04em',
             }}>
-              Картины,<br/>
+              Картины,{' '}<br/>
               <span className="italic" style={{
                 color: 'var(--accent)', fontStyle: 'italic',
                 position: 'relative', display: 'inline-block',
-              }}>живущие</span><br/>
+              }}>живущие</span>{' '}<br/>
               в&nbsp;интерьерах
             </h1>
             <p className="reveal r3" style={{
@@ -190,7 +191,7 @@ function HeroSplit({ go }) {
             margin: 0, fontSize: 'clamp(56px, 8vw, 132px)',
             lineHeight: 0.92, fontWeight: 500, letterSpacing: '-.035em',
           }}>
-            {series.title.split(' ')[0]},<br/>
+            {series.title.split(' ')[0]},{' '}<br/>
             <span className="italic" style={{ color: 'var(--accent)' }}>
               {series.subtitle.toLowerCase()}.
             </span>
@@ -389,7 +390,7 @@ function StudioBanner({ go }) {
               margin: '24px 0 0', fontSize: 'clamp(44px, 5.5vw, 88px)',
               lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
             }}>
-              Примерка картин<br/>в <span className="italic" style={{ color: 'var(--accent)' }}>реальном&nbsp;времени</span>
+              Примерка картин{' '}<br/>в <span className="italic" style={{ color: 'var(--accent)' }}>реальном&nbsp;времени</span>
             </h2>
             <p style={{
               marginTop: 32, maxWidth: 480, color: 'var(--ink-2)',
@@ -503,7 +504,7 @@ function Packaging() {
               margin: '24px 0 0', fontSize: 'clamp(40px, 5.2vw, 80px)',
               lineHeight: 0.98, fontWeight: 500, letterSpacing: '-.03em',
             }}>
-              Картина приезжает<br/>как <span className="italic" style={{ color: 'var(--accent)' }}>подарок</span>
+              Картина приезжает{' '}<br/>как <span className="italic" style={{ color: 'var(--accent)' }}>подарок</span>
             </h2>
             <p style={{
               marginTop: 32, maxWidth: 480, fontSize: 16, lineHeight: 1.7,
@@ -597,7 +598,7 @@ function ProcessRow() {
               margin: '20px 0 0', fontSize: 'clamp(40px, 5vw, 72px)',
               lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
             }}>
-              От брифа<br/>до <span className="italic" style={{ color: 'var(--accent)' }}>подрамника</span>
+              От брифа{' '}<br/>до <span className="italic" style={{ color: 'var(--accent)' }}>подрамника</span>
             </h2>
           </div>
           <p style={{
@@ -632,15 +633,31 @@ function ProcessRow() {
   );
 }
 
-// ── LeadForm — открытая форма заявки (Sprint 11, item 17) ────
-// Endpoint пока не выбран (решение Олега: TG-бот / Tilda-вебхук / email-сервис).
-// До подключения: заявка сохраняется локально (localStorage) + даём прямой Telegram.
-const LEAD_ENDPOINT = ''; // ← сюда URL (TG-прокси / вебхук), когда Олег выберет канал
+// ── LeadForm — открытая форма заявки ─────────────────────────
+// Sprint 15 (Ф0): доставка через скрытые нативные формы Tilda (submitLead):
+//   A [data-mbezu-lead] — ПД → Входящие + Email (РФ), критична, ждём await
+//   B [data-mbezu-notify] — обезличенное уведомление → Telegram, не блокирует UI
+// «✓ принято» показывается ТОЛЬКО при успехе A. Раньше форма писала в localStorage
+// браузера клиента и всё равно показывала успех — ни одна заявка не доходила.
+
+/** UTM-метки, сохранённые при первом заходе (см. analytics.ts) — уезжают вместе с заявкой. */
+function utmFromStorage(): Record<string, string> {
+  try {
+    const raw = localStorage.getItem('mbezu-utm');
+    if (!raw) return {};
+    const u = JSON.parse(raw);
+    return {
+      utm_source: u.utm_source || '', utm_medium: u.utm_medium || '',
+      utm_campaign: u.utm_campaign || '', utm_content: u.utm_content || '',
+    };
+  } catch { return {}; }
+}
 
 function LeadForm({ go }) {
   const [lead, setLead] = React.useState({ name: '', contact: '', about: '', consent: false });
   const [state, setState] = React.useState<'idle' | 'sending' | 'ok' | 'err'>('idle');
   const [touched, setTouched] = React.useState(false);
+  const [ref, setRef] = React.useState('');
 
   const nameOk = lead.name.trim().length >= 2;
   const contactOk = lead.contact.trim().length >= 5;
@@ -652,24 +669,19 @@ function LeadForm({ go }) {
     setTouched(true);
     if (!valid || state === 'sending') return;
     setState('sending');
-    const payload = { ...lead, page: 'home-cta', ts: new Date().toISOString() };
-    try {
-      if (LEAD_ENDPOINT) {
-        const r = await fetch(LEAD_ENDPOINT, {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-        if (!r.ok) throw new Error('http ' + r.status);
-      } else {
-        // endpoint ещё не подключён — локальный бэкап, чтобы заявка не потерялась
-        const box = JSON.parse(localStorage.getItem('mbezu-leads') || '[]');
-        box.push(payload);
-        localStorage.setItem('mbezu-leads', JSON.stringify(box));
-      }
-      setState('ok');
-    } catch {
-      setState('err');
-    }
+    // Sprint 15 (Ф0): реальная доставка. Контакт может быть телефоном/почтой/telegram —
+    // кладём в оба поля, лишнее в скрытой форме просто не заполнится.
+    const contact = lead.contact.trim();
+    const res = await submitLead({
+      name: lead.name.trim(),
+      phone: contact,
+      email: /@/.test(contact) ? contact : '',
+      message: lead.about.trim(),
+      source: 'home-cta',
+      page: typeof location !== 'undefined' ? location.pathname : '/',
+      ...utmFromStorage(),
+    });
+    if (res.ok) { setRef(res.ref); setState('ok'); } else { setState('err'); }
   };
 
   const fieldStyle: React.CSSProperties = {
@@ -692,7 +704,12 @@ function LeadForm({ go }) {
             Заявка отправлена — художник свяжется лично
           </span>
         </div>
-        <p style={{ margin: '16px 0 0', fontSize: 14, lineHeight: 1.6, opacity: .85 }}>
+        {ref && (
+          <p className="mono" style={{ margin: '12px 0 0', fontSize: 12.5, opacity: .8 }}>
+            Номер заявки: <b>{ref}</b> — назовите его, если будете писать сами
+          </p>
+        )}
+        <p style={{ margin: '12px 0 0', fontSize: 14, lineHeight: 1.6, opacity: .85 }}>
           Хотите быстрее — напишите напрямую:{' '}
           <a href="https://t.me/mbezu_art" target="_blank" rel="noopener"
              style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Telegram @mbezu_art</a>
@@ -732,11 +749,19 @@ function LeadForm({ go }) {
       )}
 
       {state === 'err' && (
-        <span style={{ fontSize: 13, fontWeight: 600 }}>
-          Не удалось отправить. Напишите напрямую:{' '}
+        <div style={{
+          padding: '14px 16px', borderRadius: 'var(--r-md)',
+          background: 'rgba(245,239,226,0.16)', border: '1px solid rgba(245,239,226,0.4)',
+          fontSize: 13.5, lineHeight: 1.6,
+        }}>
+          <b>Не удалось отправить заявку.</b> Напишите напрямую — ответим так же быстро:{' '}
           <a href="https://t.me/mbezu_art" target="_blank" rel="noopener"
-             style={{ color: 'var(--bg-cream)' }}>@mbezu_art</a>
-        </span>
+             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Telegram @mbezu_art</a>{' · '}
+          <a href={`mailto:${ABOUT.contacts.email}`}
+             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>{ABOUT.contacts.email}</a>{' · '}
+          <a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`}
+             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>{ABOUT.contacts.phone}</a>
+        </div>
       )}
 
       <button className="btn" disabled={state === 'sending'}
@@ -795,7 +820,7 @@ function CommissionCTA({ go }) {
               margin: 0, fontSize: 'clamp(44px, 6.5vw, 108px)',
               lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.035em',
             }}>
-              Картина для вашего<br/><span style={{ fontStyle: 'italic' }}>пространства</span>
+              Картина для вашего{' '}<br/><span style={{ fontStyle: 'italic' }}>пространства</span>
             </h2>
           </div>
           <div style={{ paddingBottom: 12 }}>
@@ -850,6 +875,19 @@ function CommissionCTAShort() {
 function Newsletter() {
   const [email, setEmail] = React.useState('');
   const [sent, setSent] = React.useState(false);
+  // Sprint 15 (Ф0): подписка тоже ничего не отправляла — только показывала «Письмо отправлено».
+  const [nlState, setNlState] = React.useState<'idle' | 'sending' | 'err'>('idle');
+
+  const subscribe = async (e) => {
+    e.preventDefault();
+    if (nlState === 'sending') return;
+    setNlState('sending');
+    const res = await submitLead(
+      { email: email.trim(), source: 'newsletter', page: typeof location !== 'undefined' ? location.pathname : '/', ...utmFromStorage() },
+      { selector: '[data-mbezu-newsletter]' },
+    );
+    if (res.ok) { setSent(true); setNlState('idle'); } else { setNlState('err'); }
+  };
   return (
     <section className="resp-pad" style={{ padding: '100px 40px', marginTop: 80 }}>
       <div className="card-soft resp-stack resp-pad resp-pad-y" style={{
@@ -884,7 +922,7 @@ function Newsletter() {
             <span style={{ fontSize: 14 }}>Письмо отправлено на&nbsp;{email}</span>
           </div>
         ) : (
-          <form onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+          <form onSubmit={subscribe}
                 className="nl-form"
                 style={{
                   display: 'flex', gap: 8, alignItems: 'center',
@@ -900,8 +938,17 @@ function Newsletter() {
                      padding: '14px 22px', fontSize: 14, outline: 'none',
                      font: 'inherit', fontFamily: 'var(--sans)', color: 'var(--ink)',
                    }} />
-            <button type="submit" className="btn btn-solid" style={{ flexShrink: 0 }}>Подписаться</button>
+            <button type="submit" className="btn btn-solid" disabled={nlState === 'sending'}
+                    style={{ flexShrink: 0, opacity: nlState === 'sending' ? .6 : 1 }}>
+              {nlState === 'sending' ? 'Отправляем…' : 'Подписаться'}
+            </button>
           </form>
+        )}
+        {nlState === 'err' && !sent && (
+          <div style={{ gridColumn: '1 / -1', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
+            Не удалось подписать. Напишите нам:{' '}
+            <a href={`mailto:${ABOUT.contacts.email}`} style={{ color: 'var(--accent)' }}>{ABOUT.contacts.email}</a>
+          </div>
         )}
       </div>
     </section>

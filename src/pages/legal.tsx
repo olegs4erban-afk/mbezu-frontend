@@ -142,11 +142,11 @@ function OfferSection() {
 
       <Clause n="8." title="Реквизиты Продавца">
         <p style={{ fontFamily: 'var(--mono)', fontSize: 13, color: 'var(--ink)' }}>
-          <strong>{L.full_name}</strong><br/>
-          ИНН: {L.inn}<br/>
-          ОГРНИП: {L.ogrnip}<br/>
-          Адрес: {L.address}<br/>
-          E-mail: {ABOUT.contacts.email}<br/>
+          <strong>{L.full_name}</strong>{' '}<br/>
+          ИНН: {L.inn}{' '}<br/>
+          ОГРНИП: {L.ogrnip}{' '}<br/>
+          Адрес: {L.address}{' '}<br/>
+          E-mail: {ABOUT.contacts.email}{' '}<br/>
           Сайт: {L.site}
         </p>
       </Clause>
@@ -165,7 +165,7 @@ function PrivacySection() {
           margin: '20px 0 16px', fontSize: 'clamp(36px, 4.4vw, 60px)',
           fontWeight: 500, lineHeight: 1, letterSpacing: '-.025em',
         }}>
-          Политика обработки<br/><span className="italic" style={{ color: 'var(--accent)' }}>персональных данных</span>
+          Политика обработки{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>персональных данных</span>
         </h2>
         <div className="cat-no">Редакция от {L.docs_updated}</div>
       </header>
@@ -243,9 +243,9 @@ function PrivacySection() {
 
       <Clause n="9." title="Контакты оператора">
         <p style={{ fontFamily: 'var(--mono)', fontSize: 13, color: 'var(--ink)' }}>
-          {L.full_name}<br/>
-          ИНН: {L.inn}<br/>
-          E-mail для запросов: {ABOUT.contacts.email}<br/>
+          {L.full_name}{' '}<br/>
+          ИНН: {L.inn}{' '}<br/>
+          E-mail для запросов: {ABOUT.contacts.email}{' '}<br/>
           Адрес: {L.address}
         </p>
       </Clause>

@@ -71,7 +71,7 @@ function CartPage({ go, cart, removeFromCart }) {
           <>
             <PageTitle
               kicker={`${items.length} ${items.length === 1 ? 'работа' : 'работы'} в корзине`}
-              title={<>Ваша<br/><span className="italic" style={{ color: 'var(--accent)' }}>корзина.</span></>}
+              title={<>Ваша{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>корзина.</span></>}
             />
 
             {items.length === 0 ? (
@@ -347,7 +347,7 @@ function CartPage({ go, cart, removeFromCart }) {
                     {formatPrice(total)}
                   </div>
                   <div className="cat-no" style={{ marginTop: 14, lineHeight: 1.7 }}>
-                    {items.length} {items.length === 1 ? 'работа' : 'работы'} · доставка {deliveryPrice > 0 ? formatPrice(deliveryPrice) : 'бесплатно'}<br/>
+                    {items.length} {items.length === 1 ? 'работа' : 'работы'} · доставка {deliveryPrice > 0 ? formatPrice(deliveryPrice) : 'бесплатно'}{' '}<br/>
                     После оплаты — подтверждение на&nbsp;email и&nbsp;трекинг
                   </div>
                 </div>
@@ -377,7 +377,7 @@ function CartPage({ go, cart, removeFromCart }) {
               margin: '24px 0 16px', fontSize: 'clamp(40px, 5.5vw, 80px)',
               fontWeight: 500, lineHeight: 0.98, letterSpacing: '-.03em',
             }}>
-              Картина<br/><span className="italic" style={{ color: 'var(--accent)' }}>едет к вам.</span>
+              Картина{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>едет к вам.</span>
             </h1>
             <p style={{ fontSize: 17, color: 'var(--ink-2)', maxWidth: 540, margin: '0 auto', lineHeight: 1.6 }}>
               Подтверждение и&nbsp;квитанция отправлены на&nbsp;{form.email || 'вашу почту'}. Художник свяжется с&nbsp;вами в&nbsp;течение дня.
