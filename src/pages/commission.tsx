@@ -3,7 +3,7 @@ import { PaintingPlate } from '../common/adapter';
 import { Breadcrumbs, Eyebrow, PageTitle } from '../common/atoms';
 import { ABOUT, artworkById, formatPrice } from '../common/data';
 import { COMMISSION_FAQ } from '../common/seo';
-import { submitLead } from '../lib/tildaLead';
+import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
 
 /** UTM первого захода — уезжают вместе с заявкой (дубль helper'а с главной). */
 function utmFromStorage(): Record<string, string> {
@@ -94,6 +94,7 @@ function CommissionPage({ go, refId }) {
   const [leadNo, setLeadNo] = React.useState('');
   const [consent, setConsent] = React.useState(false);
   const [touched, setTouched] = React.useState(false);
+  const [trap, setTrap] = React.useState(''); // honeypot: люди не видят, боты заполняют
 
   const upd = (k, v) => setForm((f) => ({ ...f, [k]: v }));
 
@@ -102,7 +103,12 @@ function CommissionPage({ go, refId }) {
     setTouched(true);
     if (!consent || state === 'sending') return;
     setState('sending');
+    // ref один на попытку: повтор после ошибки не должен плодить вторую карточку во Входящих
+    const attemptRef = leadNo || leadRef();
+    setLeadNo(attemptRef);
     const res = await submitLead({
+      lead_ref: attemptRef,
+      [HONEYPOT_FIELD]: trap,
       name: form.name.trim(),
       phone: form.email.trim(),                       // поле «Email или Telegram»
       email: /@/.test(form.email) ? form.email.trim() : '',
@@ -461,6 +467,10 @@ function CommissionPage({ go, refId }) {
                 </div>
                 <textarea className="field" placeholder="Дополнительно — настроение, ассоциации, ссылки на референсы…" rows={4} style={{ marginTop: 14 }}
                           value={form.notes} onChange={(e) => upd('notes', e.target.value)} />
+
+                <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
+                       value={trap} onChange={(e) => setTrap(e.target.value)}
+                       style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} />
 
                 {/* 152-ФЗ: без согласия отправка заблокирована */}
                 <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginTop: 16, cursor: 'pointer', fontSize: 13, lineHeight: 1.55 }}>

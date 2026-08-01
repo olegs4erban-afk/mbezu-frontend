@@ -43,12 +43,38 @@ export interface LeadPayload {
 /** ЕДИНСТВЕННЫЙ разрешённый состав уведомления (Telegram). Не расширять без пересмотра 152-ФЗ-решения. */
 export const NOTIFY_FIELDS = ['lead_ref', 'source', 'page', 'city', 'budget', 'ts'] as const;
 
-/** Короткий человекочитаемый идентификатор заявки: K3F9-7QW2 */
-export function leadRef(now: number = Date.now()): string {
+/**
+ * Идентификатор заявки: MB-260801-7QK4 (Sprint 15 §3.3).
+ * Дата — чтобы Мила видела день заявки прямо в Telegram; хвост случайный.
+ * НЕ последовательный: порядковый номер выдавал бы конкурентам объём заявок.
+ */
+export function leadRef(now: Date = new Date()): string {
   const A = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // без похожих 0/O, 1/I
-  const rnd = (n: number) => Array.from({ length: n }, () => A[Math.floor(Math.random() * A.length)]).join('');
-  const t = now.toString(36).toUpperCase().slice(-4);
-  return `${t}-${rnd(4)}`;
+  const p = (n: number) => String(n).padStart(2, '0');
+  const d = `${p(now.getFullYear() % 100)}${p(now.getMonth() + 1)}${p(now.getDate())}`;
+  const tail = Array.from({ length: 4 }, () => A[Math.floor(Math.random() * A.length)]).join('');
+  return `MB-${d}-${tail}`;
+}
+
+/** Момент загрузки страницы — для отсечки слишком быстрых сабмитов (боты). */
+const LOADED_AT = Date.now();
+/** Минимальное время до отправки: человек не заполняет форму за 2 секунды. */
+export const MIN_FILL_MS = 2000;
+
+/** Имя поля-ловушки. Люди его не видят и не заполняют, боты заполняют всё. */
+export const HONEYPOT_FIELD = 'company_website';
+
+export interface AntiSpamInput { [HONEYPOT_FIELD]?: string; honeypot?: string }
+
+/**
+ * Антиспам без капчи (капча бьёт конверсию): ловушка + отсечка по времени.
+ * Возвращает причину отказа или null, если всё чисто.
+ */
+export function spamReason(values: AntiSpamInput = {}, loadedAt = LOADED_AT): string | null {
+  const trap = values[HONEYPOT_FIELD] ?? values.honeypot ?? '';
+  if (String(trap).trim()) return 'honeypot';
+  if (Date.now() - loadedAt < MIN_FILL_MS) return 'too-fast';
+  return null;
 }
 
 /**
@@ -122,9 +148,19 @@ export interface SubmitResult { ok: boolean; ref: string; notified: boolean; err
  * Обратный порядок недопустим: «ok» при упавшей A = та же ложь, что и localStorage.
  */
 export async function submitLead(payload: LeadPayload, opts: SendOptions = {}): Promise<SubmitResult> {
+  // Антиспам до любой отправки. Боту отвечаем «ok» без отправки — чтобы он не подбирал
+  // обход; настоящая заявка при этом не теряется, потому что человек ловушку не заполняет.
+  const spam = spamReason(payload as AntiSpamInput);
+  if (spam) {
+    console.warn('[lead] отправка отклонена антиспамом:', spam);
+    return { ok: true, ref: payload.lead_ref || leadRef(), notified: false, error: 'spam:' + spam };
+  }
+  // lead_ref переиспользуется при ретрае (передаётся вызывающим) — иначе повторная
+  // попытка создаст второй номер, и во Входящих будет две карточки на одну заявку.
   const ref = payload.lead_ref || leadRef();
   const ts = payload.ts || new Date().toISOString();
   const full = { ...payload, lead_ref: ref, ts };
+  delete (full as Record<string, unknown>)[HONEYPOT_FIELD];
 
   // локальный дубль — только для диагностики, каналом доставки НЕ считается
   try {

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildNotifyPayload, NOTIFY_FIELDS, leadRef } from '../lib/tildaLead';
+import { buildNotifyPayload, NOTIFY_FIELDS, leadRef, spamReason, HONEYPOT_FIELD, MIN_FILL_MS } from '../lib/tildaLead';
 
 // Sprint 15 (Ф0, 152-ФЗ). Решение Олега: в Telegram уходит ОБЕЗЛИЧЕННОЕ уведомление.
 // Эти тесты — не документация, а замок: если кто-то добавит notes/message в форму B,
@@ -56,14 +56,33 @@ describe('форма B (Telegram) — обезличивание', () => {
 });
 
 describe('lead_ref — связка Telegram ↔ Входящие', () => {
-  it('формат XXXX-XXXX, читаемый вслух', () => {
-    expect(leadRef()).toMatch(/^[A-Z0-9]{4}-[A-Z0-9]{4}$/);
+  it('формат MB-YYMMDD-XXXX (Sprint 15 §3.3)', () => {
+    expect(leadRef(new Date(2026, 7, 1))).toMatch(/^MB-260801-[A-Z0-9]{4}$/);
   });
-  it('не содержит похожих символов 0/O и 1/I', () => {
-    for (let i = 0; i < 50; i++) expect(leadRef()).not.toMatch(/[01OI]/);
+  it('не последовательный: хвост случайный, номер не выдаёт объём заявок', () => {
+    const d = new Date(2026, 7, 1);
+    const tails = new Set(Array.from({ length: 200 }, () => leadRef(d).split('-')[2]));
+    expect(tails.size).toBeGreaterThan(150);
   });
-  it('разные вызовы дают разные ref', () => {
-    const s = new Set(Array.from({ length: 200 }, () => leadRef()));
-    expect(s.size).toBeGreaterThan(190);
+  it('не содержит похожих символов 0/O и 1/I в хвосте', () => {
+    for (let i = 0; i < 50; i++) expect(leadRef().split('-')[2]).not.toMatch(/[01OI]/);
+  });
+});
+
+describe('антиспам без капчи (Sprint 15 §3.4)', () => {
+  const давно = Date.now() - 60_000;
+  it('пропускает нормальную отправку', () => {
+    expect(spamReason({}, давно)).toBeNull();
+  });
+  it('ловит бота по honeypot-полю', () => {
+    expect(spamReason({ [HONEYPOT_FIELD]: 'https://spam.example' }, давно)).toBe('honeypot');
+  });
+  it('отсекает сабмит раньше 2 секунд после загрузки', () => {
+    expect(spamReason({}, Date.now() - 500)).toBe('too-fast');
+    expect(MIN_FILL_MS).toBe(2000);
+  });
+  it('honeypot не уезжает в уведомление (он не в белом списке)', () => {
+    const b = buildNotifyPayload({ lead_ref: 'MB-260801-AB12', source: 'home-cta', [HONEYPOT_FIELD]: 'бот' });
+    expect(JSON.stringify(b)).not.toContain('бот');
   });
 });

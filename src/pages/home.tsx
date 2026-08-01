@@ -4,7 +4,7 @@ import { ArButton, ArViewer, QrBlock, useArSupport } from '../ar/ar';
 import { ArtCard, Eyebrow } from '../common/atoms';
 import { Marquee } from '../common/chrome';
 import { ABOUT, ARTWORKS, SERIES, availableCount, featuredArtworks, formatPrice, seriesById, visibleArtworks } from '../common/data';
-import { submitLead } from '../lib/tildaLead';
+import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
 
 // ─────────────────────────────────────────────────────────────
 // page-home.jsx — главная M.Bez.
@@ -654,7 +654,7 @@ function utmFromStorage(): Record<string, string> {
 }
 
 function LeadForm({ go }) {
-  const [lead, setLead] = React.useState({ name: '', contact: '', about: '', consent: false });
+  const [lead, setLead] = React.useState({ name: '', contact: '', about: '', consent: false, trap: '' });
   const [state, setState] = React.useState<'idle' | 'sending' | 'ok' | 'err'>('idle');
   const [touched, setTouched] = React.useState(false);
   const [ref, setRef] = React.useState('');
@@ -667,18 +667,24 @@ function LeadForm({ go }) {
 
   const submit = async () => {
     setTouched(true);
-    if (!valid || state === 'sending') return;
+    if (!valid || state === 'sending') return;   // кнопка заблокирована на время отправки
     setState('sending');
     // Sprint 15 (Ф0): реальная доставка. Контакт может быть телефоном/почтой/telegram —
     // кладём в оба поля, лишнее в скрытой форме просто не заполнится.
     const contact = lead.contact.trim();
+    // ref один на попытку: при повторе после ошибки переиспользуем прежний,
+    // иначе во Входящих появятся две карточки на одну заявку.
+    const attemptRef = ref || leadRef();
+    setRef(attemptRef);
     const res = await submitLead({
+      lead_ref: attemptRef,
       name: lead.name.trim(),
       phone: contact,
       email: /@/.test(contact) ? contact : '',
       message: lead.about.trim(),
       source: 'home-cta',
       page: typeof location !== 'undefined' ? location.pathname : '/',
+      [HONEYPOT_FIELD]: lead.trap,
       ...utmFromStorage(),
     });
     if (res.ok) { setRef(res.ref); setState('ok'); } else { setState('err'); }
@@ -720,6 +726,10 @@ function LeadForm({ go }) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      {/* Ловушка для ботов:человек её не видит (вне экрана, не в табуляции), бот заполняет всё подряд */}
+      <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
+             value={lead.trap} onChange={(e) => upd('trap', e.target.value)}
+             style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} />
       <input className="field" style={fieldStyle} placeholder="Имя *"
              value={lead.name} onChange={(e) => upd('name', e.target.value)} />
       {touched && !nameOk && <span style={{ fontSize: 12, opacity: .85 }}>Укажите имя</span>}
@@ -877,13 +887,27 @@ function Newsletter() {
   const [sent, setSent] = React.useState(false);
   // Sprint 15 (Ф0): подписка тоже ничего не отправляла — только показывала «Письмо отправлено».
   const [nlState, setNlState] = React.useState<'idle' | 'sending' | 'err'>('idle');
+  // Sprint 15 §3.5: для рассылки нужны ДВА основания — обработка ПД (152-ФЗ)
+  // и согласие на рекламные сообщения (ст. 18 ФЗ «О рекламе»). Одного мало.
+  const [nlConsent, setNlConsent] = React.useState(false);
+  const [nlAds, setNlAds] = React.useState(false);
+  const [nlTouched, setNlTouched] = React.useState(false);
+  const [nlTrap, setNlTrap] = React.useState('');
+  const [nlRef, setNlRef] = React.useState('');
 
   const subscribe = async (e) => {
     e.preventDefault();
-    if (nlState === 'sending') return;
+    setNlTouched(true);
+    if (nlState === 'sending' || !nlConsent || !nlAds) return;
     setNlState('sending');
+    const attemptRef = nlRef || leadRef();
+    setNlRef(attemptRef);
     const res = await submitLead(
-      { email: email.trim(), source: 'newsletter', page: typeof location !== 'undefined' ? location.pathname : '/', ...utmFromStorage() },
+      {
+        lead_ref: attemptRef, email: email.trim(), source: 'newsletter',
+        page: typeof location !== 'undefined' ? location.pathname : '/',
+        [HONEYPOT_FIELD]: nlTrap, ...utmFromStorage(),
+      },
       { selector: '[data-mbezu-newsletter]' },
     );
     if (res.ok) { setSent(true); setNlState('idle'); } else { setNlState('err'); }
@@ -938,11 +962,34 @@ function Newsletter() {
                      padding: '14px 22px', fontSize: 14, outline: 'none',
                      font: 'inherit', fontFamily: 'var(--sans)', color: 'var(--ink)',
                    }} />
+            <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
+                   value={nlTrap} onChange={(e) => setNlTrap(e.target.value)}
+                   style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} />
             <button type="submit" className="btn btn-solid" disabled={nlState === 'sending'}
                     style={{ flexShrink: 0, opacity: nlState === 'sending' ? .6 : 1 }}>
               {nlState === 'sending' ? 'Отправляем…' : 'Подписаться'}
             </button>
           </form>
+        )}
+        {!sent && (
+          <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4 }}>
+            <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', cursor: 'pointer', fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-2)' }}>
+              <input type="checkbox" checked={nlConsent} onChange={(e) => setNlConsent(e.target.checked)}
+                     style={{ marginTop: 2, width: 15, height: 15, accentColor: 'var(--accent)', flexShrink: 0 }} />
+              <span>Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
+                <a href="/legal?section=privacy" style={{ color: 'var(--accent)' }}>Политика ПД</a></span>
+            </label>
+            <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', cursor: 'pointer', fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-2)' }}>
+              <input type="checkbox" checked={nlAds} onChange={(e) => setNlAds(e.target.checked)}
+                     style={{ marginTop: 2, width: 15, height: 15, accentColor: 'var(--accent)', flexShrink: 0 }} />
+              <span>Согласен(на) получать письма о новых работах и закрытых продажах (реклама)</span>
+            </label>
+            {nlTouched && (!nlConsent || !nlAds) && (
+              <span style={{ fontSize: 12, color: 'var(--accent-deep)' }}>
+                Для подписки нужны оба согласия
+              </span>
+            )}
+          </div>
         )}
         {nlState === 'err' && !sent && (
           <div style={{ gridColumn: '1 / -1', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
