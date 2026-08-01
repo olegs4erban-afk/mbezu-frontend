@@ -21,6 +21,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export const PROFILE = process.env.TILDA_PROFILE || '.secrets/tilda-profile';
+/**
+ * Слепок cookie, снятый ПОКА браузер открыт. Нужен потому, что Chromium не пишет
+ * на диск сессионные cookie (PHPSESSID у Tilda именно такая) — после закрытия окна
+ * в профиле остаются только registered/deviceid, и доступ теряется. При следующем
+ * запуске слепок подмешивается в контекст, и серверная сессия продолжает работать.
+ */
+export const STATE = process.env.TILDA_STATE || '.secrets/tilda-cookies.json';
 export const PROJECTID = process.env.TILDA_PROJECT || '13712449';
 /** Страница-пробник: открываем её редактор только для проверки доступа (ничего не меняем). */
 const PROBE_PAGEID = process.env.TILDA_PROBE || '142950726'; // legal
@@ -50,8 +57,16 @@ export async function checkAccess(page) {
  * Автологин намеренно НЕ делается: именно он вызывал reCAPTCHA, а блокировка
  * аккаунта с боевым магазином недопустима.
  */
-export async function openSession({ headed = !!process.env.TILDA_HEADED } = {}) {
+export async function openSession({ headed = process.env.TILDA_HEADLESS !== '1' } = {}) {
   fs.mkdirSync(PROFILE, { recursive: true });
+  // ВАЖНО: headless Tilda НЕ пускает. Проверено на одной и той же живой сессии:
+  //   headless (профиль / +слепок cookie / +Chrome UA / channel=chrome) → «Авторизуйтесь», блоков 0
+  //   headed, отдельный процесс                                        → редактор, блоков 1, «Опубликовать»
+  // Поэтому режим по умолчанию — видимый. Окно за край экрана уводить НЕЛЬЗЯ
+  // (--window-position=-2400,0): полностью невидимое окно Chromium считает occluded
+  // и тормозит выполнение JS — редактор не успевает подняться, проверка ложно падает.
+  // TILDA_HEADLESS=1 — только для экспериментов, рабочие прогоны так не поедут.
+  const interactive = !!process.env.TILDA_HEADED; // ручной вход
   const ctx = await chromium.launchPersistentContext(PROFILE, {
     headless: !headed,
     viewport: { width: 1500, height: 1000 },
@@ -60,8 +75,17 @@ export async function openSession({ headed = !!process.env.TILDA_HEADED } = {}) 
   });
   const page = ctx.pages()[0] || (await ctx.newPage());
 
+  // Профиль мог потерять сессионные cookie — подмешиваем слепок и пробуем снова.
+  if (!(await checkAccess(page)) && fs.existsSync(STATE)) {
+    try {
+      const saved = JSON.parse(fs.readFileSync(STATE, 'utf-8'));
+      await ctx.addCookies(saved);
+      console.log(`  (восстановил ${saved.length} cookie из слепка)`);
+    } catch (e) { console.log('  слепок cookie не прочитался:', e.message); }
+  }
+
   if (!(await checkAccess(page))) {
-    if (!headed) {
+    if (!interactive) {
       console.error(
         `\n  СЕССИЯ НЕ АКТИВНА (профиль ${PROFILE}).\n` +
         '  Войди один раз руками:  npm run tilda:login\n' +
@@ -72,8 +96,20 @@ export async function openSession({ headed = !!process.env.TILDA_HEADED } = {}) 
     }
     await manualLogin(page);
   }
+  await saveCookies(ctx);
   // единый интерфейс: browser.close() закрывает персистентный контекст
   return { browser: { close: () => ctx.close() }, ctx, page };
+}
+
+/** Снять слепок cookie, пока браузер жив (иначе PHPSESSID будет потерян). */
+export async function saveCookies(ctx) {
+  try {
+    const cookies = (await ctx.cookies()).filter((c) => /tilda/.test(c.domain));
+    if (!cookies.length) return 0;
+    fs.mkdirSync(path.dirname(STATE), { recursive: true });
+    fs.writeFileSync(STATE, JSON.stringify(cookies, null, 1), 'utf-8');
+    return cookies.length;
+  } catch { return 0; }
 }
 
 /** Ручной вход в открытом окне: ждём, пока откроется доступ к редактору. */
@@ -122,7 +158,29 @@ export async function publishPage(page, pageid) {
 const isMain = process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]));
 if (isMain) {
   const mode = process.argv[2] || 'check';
-  const { browser } = await openSession({ headed: mode === 'login' || !!process.env.TILDA_HEADED });
-  console.log(mode === 'login' ? '  ✓ Сессия активна.\n' : '  ✓ Сессия активна — деплой может работать.\n');
+  // headed не передаём — берётся дефолт (видимый режим, т.к. headless Tilda не пускает).
+  // Для ручного входа режим «интерактивный» включается переменной TILDA_HEADED (см. npm run tilda:login).
+  if (mode === 'login') process.env.TILDA_HEADED = '1';
+  const { browser, ctx, page } = await openSession();
+
+  // Доказательство, а не утверждение: открываем редактор рабочей страницы и смотрим на неё.
+  const proofId = process.env.PROOF_PAGEID || '142947296'; // /home
+  await page.goto(`https://tilda.ru/page/?pageid=${proofId}&projectid=${PROJECTID}`,
+    { waitUntil: 'domcontentloaded', timeout: 60000 }).catch(() => {});
+  await page.waitForTimeout(5000);
+  const proof = await page.evaluate(() => ({
+    url: location.href,
+    редиректНаЛогин: /\/login\//.test(location.href),
+    просятАвторизоваться: /Авторизуйтесь/i.test(document.body?.innerText || ''),
+    блоков: document.querySelectorAll('[data-record-type]').length,
+  }));
+  const saved = await saveCookies(ctx);
+  console.log(`\n  Проверка редактора pageid=${proofId}:`);
+  console.log(`   URL: ${proof.url}`);
+  console.log(`   редирект на логин: ${proof.редиректНаЛогин} · «Авторизуйтесь»: ${proof.просятАвторизоваться} · блоков на странице: ${proof.блоков}`);
+  console.log(`   слепок cookie сохранён: ${saved} шт → ${STATE}`);
+  const ok = !proof.редиректНаЛогин && !proof.просятАвторизоваться && proof.блоков > 0;
+  console.log(`\n  ${ok ? '✓ РЕДАКТОР ОТКРЫЛСЯ — сессия рабочая' : '✗ РЕДАКТОР НЕ ОТКРЫЛСЯ'}\n`);
   await browser.close();
+  if (!ok) process.exit(1);
 }
