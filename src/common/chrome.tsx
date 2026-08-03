@@ -3,6 +3,7 @@ import { ABOUT } from './data';
 // Sprint 15 (аудит): пункты меню, таб-бар и подвал — настоящие <a href>,
 // а не «#» с обработчиком. go() и так делал обычный переход по адресу.
 import { routeToPath } from './routes';
+import type { RouteName } from './routes';
 
 // ─────────────────────────────────────────────────────────────
 // chrome.jsx — каркас сайта: TopBar / Footer / Marquee / ZeroBanner.
@@ -85,7 +86,7 @@ function TopBar({ route, go, cartCount }) {
 
           <nav className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
             {navItems.map((n) => (
-              <a key={n.id} href={routeToPath(n.id)}
+              <a key={n.id} href={routeToPath(n.id as RouteName)}
                  className="uh"
                  style={{
                    textDecoration: 'none', color: route === n.id ? 'var(--accent)' : 'var(--ink)',
@@ -156,7 +157,7 @@ function BottomTabBar({ route, go, cartCount }) {
       {tabs.map((t) => {
         const active = route === t.id;
         return (
-          <a key={t.id} href={routeToPath(t.id)}
+          <a key={t.id} href={routeToPath(t.id as RouteName)}
              className={'tabbar-item' + (active ? ' is-active' : '')}
              aria-current={active ? 'page' : undefined}>
             <span className="tabbar-icon">
@@ -258,7 +259,7 @@ function Footer({ go }) {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[['catalog', 'Каталог'], ['commission', 'На заказ'], ['cart', 'Корзина']].map(([id, label]) => (
                 <li key={id}>
-                  <a href={routeToPath(id)}
+                  <a href={routeToPath(id as RouteName)}
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}
                      className="uh">{label}</a>
                 </li>

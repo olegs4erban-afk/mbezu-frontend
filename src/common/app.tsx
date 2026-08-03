@@ -21,8 +21,14 @@ export const TWEAK_DEFAULTS = {
 // Маршруты живут в ./routes — отдельным модулем, чтобы chrome.tsx и страницы
 // могли строить настоящие href без цикла app ↔ chrome. Здесь только реэкспорт,
 // чтобы не переписывать существующие импорты из './app'.
-export type { RouteName, RouteParams } from './routes';
-export { routeToPath, go } from './routes';
+// ВАЖНО: именно import + export, а не `export { go } from './routes'`.
+// Реэкспорт НЕ вводит имя в область видимости модуля, а app.tsx вызывает go()
+// сам (Shell, PageApi) — с одним лишь реэкспортом это падало в бою
+// «ReferenceError: go is not defined», и витрина не монтировалась вовсе.
+import { routeToPath, go } from './routes';
+import type { RouteName, RouteParams } from './routes';
+export type { RouteName, RouteParams };
+export { routeToPath, go };
 
 export { seriesSlug, SERIES_PAGES_LIVE } from './flags';
 
