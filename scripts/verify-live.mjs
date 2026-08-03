@@ -124,9 +124,47 @@ async function checkGlobal() {
   } catch { rec('/cart', false, '/cart закрыт noindex', 'страница недоступна'); }
 }
 
+// ── Проверка, что витрина ЖИВАЯ ────────────────────────────────
+// Sprint 15: всё остальное здесь ходит curl'ом без JS — и поэтому мёртвая
+// витрина спокойно проходила приёмку на 54/59. Реально было так: из-за
+// `export { go } from './routes'` (реэкспорт не вводит имя в модуль) React
+// падал с ReferenceError, #root оставался пустым, страницы отдавали пустой
+// экран — а разметка в HTML была безупречной. Проверяем в браузере: контент
+// смонтирован и в консоли нет ошибок.
+async function checkAlive(paths) {
+  let chromium;
+  try { ({ chromium } = await import('playwright')); }
+  catch { rec('живость', false, 'проверка монтирования', 'playwright не установлен'); return; }
+
+  const browser = await chromium.launch();
+  try {
+    for (const p of paths) {
+      const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+      const page = await ctx.newPage();
+      const errors = [];
+      page.on('pageerror', (e) => errors.push(String(e).slice(0, 120)));
+      try {
+        await page.goto(ORIGIN + p, { waitUntil: 'networkidle', timeout: 60000 });
+        await page.waitForTimeout(2000);
+        const st = await page.evaluate(() => {
+          const root = document.getElementById('root');
+          return { kids: root ? root.children.length : -1, len: document.body.innerText.trim().length };
+        });
+        rec(p || '/', st.kids > 0 && st.len > 400, 'витрина смонтирована',
+          st.kids < 0 ? '#root отсутствует' : `#root: ${st.kids} узлов, текста ${st.len} симв.`);
+        rec(p || '/', errors.length === 0, 'нет ошибок в консоли', errors[0] || '');
+      } catch (e) {
+        rec(p || '/', false, 'витрина смонтирована', String(e).slice(0, 90));
+      }
+      await ctx.close();
+    }
+  } finally { await browser.close(); }
+}
+
 console.log(`\n  verify-live · ${ORIGIN} · User-Agent: YandexBot · без JS\n`);
 for (const n of names) { await checkPage(n); }
 if (!only.length) await checkGlobal();
+await checkAlive(only.length ? ['/'] : ['/', '/catalog', '/about']);
 
 let cur = '';
 for (const r of results) {
