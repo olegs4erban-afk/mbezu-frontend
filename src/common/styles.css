@@ -19,11 +19,18 @@
     --rule:        rgba(42, 37, 32, 0.18);
     --rule-soft:   rgba(42, 37, 32, 0.10);
 
-    /* Акцент — золото M.Bez */
-    --accent:      #a08a4e;
+    /* Акцент — золото MBezu.
+       Sprint 15 (аудит, направление 3): было #a08a4e — 2.69:1 на креме,
+       не проходило даже норму 3.0 для крупного текста; на главной 28 сочетаний
+       ниже нормы, включая кнопку «Смотреть каталог». Затемнено до #6f5c2b:
+       5.18:1 на #ede5d6, 5.44:1 на #f5efe2, 4.63:1 на #e3d9c5 — AA везде,
+       в том числе когда золото стоит фоном под кремовым текстом.
+       --accent-2 остаётся светлым: он только для декора (линии, заливки),
+       текстом не печатается. */
+    --accent:      #6f5c2b;
     --accent-2:    #bfa45e;
     --accent-soft: #b3a583;
-    --accent-deep: #7d6a38;
+    --accent-deep: #57471f;
 
     /* Цвета серий — из шапок страниц портфолио */
     --series-mono:    #4a4a4a;
@@ -202,13 +209,15 @@
     color: var(--ink);
     font: inherit;
     font-family: var(--sans);
-    font-size: 15px;
+    /* Sprint 15 (аудит, направление 3): было 15px — Safari на iPhone при фокусе
+       зумит страницу, если кегль поля меньше 16px, и форма «прыгает». */
+    font-size: 16px;
     padding: 16px 20px;
     border-radius: var(--r-md);
     outline: none;
     transition: border-color .2s, background .2s, box-shadow .2s;
   }
-  .field:focus { border-color: var(--accent); background: rgba(255,255,255,0.7); box-shadow: 0 0 0 4px rgba(160, 138, 78, 0.08); }
+  .field:focus { border-color: var(--accent); background: rgba(255,255,255,0.7); box-shadow: 0 0 0 4px rgba(111, 92, 43, 0.12); }
   .field::placeholder { color: var(--ink-4); }
   textarea.field { resize: vertical; min-height: 100px; border-radius: var(--r-md); }
 

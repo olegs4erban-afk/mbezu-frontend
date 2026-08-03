@@ -1,5 +1,8 @@
 import React from 'react';
 import { ABOUT } from './data';
+// Sprint 15 (аудит): пункты меню, таб-бар и подвал — настоящие <a href>,
+// а не «#» с обработчиком. go() и так делал обычный переход по адресу.
+import { routeToPath } from './routes';
 
 // ─────────────────────────────────────────────────────────────
 // chrome.jsx — каркас сайта: TopBar / Footer / Marquee / ZeroBanner.
@@ -82,7 +85,7 @@ function TopBar({ route, go, cartCount }) {
 
           <nav className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
             {navItems.map((n) => (
-              <a key={n.id} href="#" onClick={(e) => { e.preventDefault(); go(n.id); }}
+              <a key={n.id} href={routeToPath(n.id)}
                  className="uh"
                  style={{
                    textDecoration: 'none', color: route === n.id ? 'var(--accent)' : 'var(--ink)',
@@ -93,7 +96,7 @@ function TopBar({ route, go, cartCount }) {
           </nav>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-            <a href="#" onClick={(e) => { e.preventDefault(); go('cart'); }}
+            <a href={routeToPath('cart')}
                style={{
                  textDecoration: 'none', color: 'var(--ink)',
                  fontSize: 13, letterSpacing: '.1em', textTransform: 'uppercase',
@@ -153,8 +156,7 @@ function BottomTabBar({ route, go, cartCount }) {
       {tabs.map((t) => {
         const active = route === t.id;
         return (
-          <a key={t.id} href="#"
-             onClick={(e) => { e.preventDefault(); go(t.id); }}
+          <a key={t.id} href={routeToPath(t.id)}
              className={'tabbar-item' + (active ? ' is-active' : '')}
              aria-current={active ? 'page' : undefined}>
             <span className="tabbar-icon">
@@ -256,7 +258,7 @@ function Footer({ go }) {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[['catalog', 'Каталог'], ['commission', 'На заказ'], ['cart', 'Корзина']].map(([id, label]) => (
                 <li key={id}>
-                  <a href="#" onClick={(e) => { e.preventDefault(); go(id); }}
+                  <a href={routeToPath(id)}
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}
                      className="uh">{label}</a>
                 </li>
@@ -267,12 +269,12 @@ function Footer({ go }) {
           <div>
             <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Студия</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); go('about'); }} className="uh"
+              <li><a href={routeToPath('about')} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>О художнике</a></li>
               <li><span style={{ color: 'rgba(245,239,226,.72)', fontSize: 14 }}>Школа · скоро</span></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); go('legal', { section: 'delivery' }); }} className="uh"
+              <li><a href={routeToPath('legal', { section: 'delivery' })} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>Доставка и оплата</a></li>
-              <li><a href="#" onClick={(e) => { e.preventDefault(); go('legal', { section: 'returns' }); }} className="uh"
+              <li><a href={routeToPath('legal', { section: 'returns' })} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>Возврат и обмен</a></li>
             </ul>
           </div>
@@ -288,7 +290,7 @@ function Footer({ go }) {
                 ['requisites', 'Реквизиты'],
               ].map(([sec, lbl]) => (
                 <li key={sec}>
-                  <a href="#" onClick={(e) => { e.preventDefault(); go('legal', { section: sec }); }} className="uh"
+                  <a href={routeToPath('legal', { section: sec })} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>{lbl}</a>
                 </li>
               ))}

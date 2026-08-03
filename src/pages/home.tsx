@@ -1,10 +1,11 @@
 import React from 'react';
 import { PaintingPlate } from '../common/adapter';
-import { ArButton, ArViewer, QrBlock, useArSupport } from '../ar/ar';
+import { ArButton, ArViewer, QrBlock, useArSupport, arAssets } from '../ar/ar';
 import { ArtCard, Eyebrow } from '../common/atoms';
 import { Marquee } from '../common/chrome';
 import { ABOUT, ARTWORKS, SERIES, availableCount, featuredArtworks, formatPrice, seriesById, visibleArtworks } from '../common/data';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
+import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
 // page-home.jsx — главная M.Bez.
@@ -250,7 +251,7 @@ function SeriesTriptych({ go }) {
             const cover = ARTWORKS.find((a) => a.series === s.id && a.featured)
                        || ARTWORKS.find((a) => a.series === s.id);
             return (
-              <a key={s.id} href="#" onClick={(e) => { e.preventDefault(); go('catalog', { series: s.id }); }}
+              <a key={s.id} href={routeToPath('catalog', { series: s.id })}
                  className="lift" style={{
                    textDecoration: 'none', color: 'inherit',
                    display: 'flex', flexDirection: 'column', gap: 18,
@@ -372,6 +373,12 @@ function StudioBanner({ go }) {
   // Sprint 10 (J): режим «В типовой комнате» удалён — остался только AR
   const { platform, ready } = useArSupport();
   const featured = heroArt();
+
+  // Sprint 15 (аудит, направление 7): пока нет ни одного .glb/.usdz, блок показывал
+  // клиенту служебную записку — «placeholder» и «AR-готовность: ждём .glb/.usdz» —
+  // и обещал примерку, которая не работает. Блок скрыт целиком до появления моделей;
+  // как только у работы появятся ассеты (arAssets().ready), он вернётся сам.
+  if (!arAssets(featured)?.ready) return null;
 
   return (
     <section id="ar-block" className="resp-pad" style={{
@@ -725,15 +732,23 @@ function LeadForm({ go }) {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+    // Sprint 15 (аудит, направление 6): был <div> — Enter не отправлял заявку,
+    // браузер хуже подставлял сохранённые контакты, скринридер не объявлял форму.
+    // noValidate — потому что проверка своя, с человеческими подсказками ниже полей.
+    <form noValidate onSubmit={(e) => { e.preventDefault(); submit(); }}
+          style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       {/* Ловушка для ботов:человек её не видит (вне экрана, не в табуляции), бот заполняет всё подряд */}
       <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
              value={lead.trap} onChange={(e) => upd('trap', e.target.value)}
              style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} />
       <input className="field" style={fieldStyle} placeholder="Имя *"
+             name="name" autoComplete="name" aria-required="true"
+             aria-invalid={touched && !nameOk ? true : undefined}
              value={lead.name} onChange={(e) => upd('name', e.target.value)} />
       {touched && !nameOk && <span style={{ fontSize: 12, opacity: .85 }}>Укажите имя</span>}
       <input className="field" style={fieldStyle} placeholder="Телефон / Telegram / email *"
+             name="contact" autoComplete="tel" aria-required="true"
+             aria-invalid={touched && !contactOk ? true : undefined}
              value={lead.contact} onChange={(e) => upd('contact', e.target.value)} />
       {touched && !contactOk && <span style={{ fontSize: 12, opacity: .85 }}>Укажите контакт — телефон, Telegram или email</span>}
       <textarea className="field" style={{ ...fieldStyle, minHeight: 84 }} rows={3}
@@ -774,15 +789,14 @@ function LeadForm({ go }) {
         </div>
       )}
 
-      <button className="btn" disabled={state === 'sending'}
+      <button className="btn" type="submit" disabled={state === 'sending'}
               style={{
                 borderColor: 'var(--bg-cream)', color: 'var(--bg-cream)', background: 'transparent',
                 alignSelf: 'flex-start', opacity: state === 'sending' ? .6 : 1,
-              }}
-              onClick={submit}>
+              }}>
         {state === 'sending' ? 'Отправляем…' : 'Оставить заявку →'}
       </button>
-    </div>
+    </form>
   );
 }
 

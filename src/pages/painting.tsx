@@ -22,9 +22,9 @@ function PaintingPage({ go, id, addToCart }) {
     <div className="fade-in resp-pad" style={{ padding: '36px 40px 80px' }}>
       <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
         <Breadcrumbs items={[
-          { label: 'MBezu', onClick: () => go('home') },
-          { label: 'Каталог', onClick: () => go('catalog') },
-          { label: series?.title || '', onClick: () => go('catalog', { series: art.series }) },
+          { label: 'MBezu', href: '/' },
+          { label: 'Каталог', href: '/catalog' },
+          { label: series?.title || '', href: `/catalog?series=${encodeURIComponent(art.series)}` },
           { label: art.title },
         ]} />
 

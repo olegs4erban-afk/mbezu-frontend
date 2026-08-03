@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArtCard, ArtRow, Breadcrumbs, Eyebrow } from '../common/atoms';
 import { ARTWORKS, SERIES, SUBJECTS, visibleArtworks } from '../common/data';
+import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
 // page-catalog.jsx — каталог в стилистике Swiss-сетки.
@@ -34,12 +35,12 @@ function CatalogPage({ go, density, initialSeries }) {
       <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
         <Breadcrumbs items={activeSeries
           ? [
-              { label: 'MBezu', onClick: () => go('home') },
-              { label: 'Каталог', onClick: () => go('catalog') },
+              { label: 'MBezu', href: routeToPath('home') },
+              { label: 'Каталог', href: routeToPath('catalog') },
               { label: activeSeries.title },
             ]
           : [
-              { label: 'MBezu', onClick: () => go('home') },
+              { label: 'MBezu', href: routeToPath('home') },
               { label: 'Каталог' },
             ]} />
 

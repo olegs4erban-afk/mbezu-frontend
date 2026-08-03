@@ -2,6 +2,7 @@ import React from 'react';
 import { PaintingPlate } from './adapter';
 import { formatPrice, seriesById } from './data';
 import type { ImgSize } from './tilda-images';
+import { routeToPath } from './routes';
 
 // ─────────────────────────────────────────────────────────────
 // atoms.jsx — общие компоненты сайта M.Bez.
@@ -28,14 +29,16 @@ function CatNo({ n, total }: { n: number | string; total?: number | string }) {
 }
 
 // ── Breadcrumbs ───────────────────────────────────────────────
-function Breadcrumbs({ items }: { items: Array<{ label: React.ReactNode; onClick?: () => void }> }) {
+// Sprint 15 (аудит): у крошки может быть настоящий href — тогда обработчик не нужен.
+function Breadcrumbs({ items }: { items: Array<{ label: React.ReactNode; href?: string; onClick?: () => void }> }) {
   return (
     <nav style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', fontSize: 12 }} className="mono">
       {items.map((it, i) => (
         <React.Fragment key={i}>
           {i > 0 && <span style={{ color: 'var(--ink-3)' }}>/</span>}
-          {it.onClick ? (
-            <a href="#" onClick={(e) => { e.preventDefault(); it.onClick(); }}
+          {it.href || it.onClick ? (
+            <a href={it.href || '#'}
+               onClick={it.href ? undefined : (e) => { e.preventDefault(); it.onClick!(); }}
                style={{
                  color: i === items.length - 1 ? 'var(--ink)' : 'var(--ink-3)',
                  textDecoration: 'none',
@@ -106,9 +109,15 @@ function StatusTag({ status }: { status?: string }) {
 function ArtCard({ art, onOpen, index, total, size = 'thumb' }: { art: any; onOpen?: (id: string) => void; index?: number; total?: number; size?: ImgSize }) {
   const series = seriesById(art.series);
   const isRound = art.shape === 'round';
+  // Sprint 15 (аудит): карточка — настоящая ссылка на страницу товара.
+  // Было <article onClick>: робот не видел на /catalog ни одной ссылки на товар
+  // (22 страницы висели сиротами), человек не мог открыть работу в новой вкладке.
   return (
-    <article className="lift" style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 14 }}
-             onClick={() => onOpen && onOpen(art.id)}>
+    <a className="lift" href={routeToPath('painting', { id: art.id })}
+       style={{
+         cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 14,
+         textDecoration: 'none', color: 'inherit',
+       }}>
       <div style={{ position: 'relative' }}>
         {/* Sprint 9 — единый квадрат: одна прозрачная webp-карточка, object-fit:contain
             (вся работа видна, на креме без «белой коробки»), плавный ховер-зум; тондо — круг. */}
@@ -150,7 +159,7 @@ function ArtCard({ art, onOpen, index, total, size = 'thumb' }: { art: any; onOp
           <span style={{ fontWeight: 500, color: 'var(--ink)' }}>{formatPrice(art.price)}</span>
         </div>
       </div>
-    </article>
+    </a>
   );
 }
 
@@ -159,16 +168,17 @@ function ArtRow({ art, onOpen, index, total }: { art: any; onOpen?: (id: string)
   const series = seriesById(art.series);
   const isRound = art.shape === 'round';
   return (
-    <article
+    <a
       className="resp-list-row"
+      href={routeToPath('painting', { id: art.id })}
       style={{
         display: 'grid',
         gridTemplateColumns: '80px 60px 1fr 1fr auto',
         gap: 28, padding: '20px 0',
         borderTop: '1px solid var(--rule-soft)',
         alignItems: 'center', cursor: 'pointer',
-      }}
-      onClick={() => onOpen && onOpen(art.id)}>
+        textDecoration: 'none', color: 'inherit',
+      }}>
       <div style={{ width: 80 }}>
         <PaintingPlate art={art} size="thumb" fit="bare"
                        style={{
@@ -195,7 +205,7 @@ function ArtRow({ art, onOpen, index, total }: { art: any; onOpen?: (id: string)
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
         }} aria-hidden="true">→</span>
       </div>
-    </article>
+    </a>
   );
 }
 

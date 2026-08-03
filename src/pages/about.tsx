@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumbs, Eyebrow } from '../common/atoms';
 import { ABOUT, SERIES } from '../common/data';
+import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
 // page-about.jsx — страница «Художница».
@@ -13,7 +14,7 @@ function AboutPage({ go }) {
       <section className="resp-pad" style={{ padding: '60px 40px 80px' }}>
         <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
           <Breadcrumbs items={[
-            { label: 'MBezu', onClick: () => go('home') },
+            { label: 'MBezu', href: '/' },
             { label: 'Художник' },
           ]} />
           <div className="resp-stack" style={{
@@ -124,7 +125,7 @@ function AboutPage({ go }) {
             display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36,
           }}>
             {SERIES.map((s) => (
-              <a key={s.id} href="#" onClick={(e) => { e.preventDefault(); go('catalog', { series: s.id }); }}
+              <a key={s.id} href={routeToPath('catalog', { series: s.id })}
                  className="lift" style={{
                    textDecoration: 'none', color: 'inherit',
                    cursor: 'pointer', display: 'block',

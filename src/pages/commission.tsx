@@ -149,7 +149,7 @@ function CommissionPage({ go, refId }) {
     <div className="fade-in resp-pad" style={{ padding: '36px 40px 80px' }}>
       <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
         <Breadcrumbs items={[
-          { label: 'MBezu', onClick: () => go('home') },
+          { label: 'MBezu', href: '/' },
           { label: 'На заказ' },
         ]} />
 

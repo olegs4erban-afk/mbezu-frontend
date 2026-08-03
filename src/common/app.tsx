@@ -9,49 +9,22 @@ import './styles.css';
 import { TopBar, Footer, BottomTabBar } from './chrome';
 import { useCart } from './cart';
 import { initAnalytics } from './analytics';
-import { storeProductPath } from './store-urls';
 
 export const TWEAK_DEFAULTS = {
   palette: 'maison',
   dark: false,
   hero: 'editorial',
   density: 'regular',
-  accent: '#a08a4e',
+  accent: '#6f5c2b',   // Sprint 15: см. комментарий у --accent в styles.css
 } as const;
 
-export type RouteName =
-  | 'home' | 'about' | 'catalog' | 'painting'
-  | 'commission' | 'cart' | 'tracking' | 'legal';
-
-export interface RouteParams { id?: string; series?: string; ref?: string; section?: string }
+// Маршруты живут в ./routes — отдельным модулем, чтобы chrome.tsx и страницы
+// могли строить настоящие href без цикла app ↔ chrome. Здесь только реэкспорт,
+// чтобы не переписывать существующие импорты из './app'.
+export type { RouteName, RouteParams } from './routes';
+export { routeToPath, go } from './routes';
 
 export { seriesSlug, SERIES_PAGES_LIVE } from './flags';
-import { seriesSlug, SERIES_PAGES_LIVE } from './flags';
-
-
-// CLEAN aliases — matching the live Tilda page structure (verified: /about → 200,
-// /about.html → 404; /painting/<id> → 200). The CDN serves the same clean URLs via
-// dir-style prerender (about/index.html, painting/<id>/index.html — see scripts/prerender.tsx).
-export function routeToPath(name: RouteName, params: RouteParams = {}): string {
-  switch (name) {
-    case 'home':       return '/';
-    // 3C: a work opens on its NATIVE Tilda Store product page (buy → cart 706 →
-    // YooKassa). Fallback to the React painting alias if a work isn't mapped.
-    case 'painting':   return (params.id && storeProductPath(params.id)) || (params.id ? `/painting/${encodeURIComponent(String(params.id).toLowerCase())}` : '/painting');
-    // Sprint 14 (Ф6): серии — отдельные URL /catalog/<slug>; до создания страниц Tilda — ?series=
-    case 'catalog':    return params.series
-      ? (SERIES_PAGES_LIVE ? `/catalog/${seriesSlug(params.series)}` : `/catalog?series=${encodeURIComponent(params.series)}`)
-      : '/catalog';
-    case 'commission': return params.ref ? `/commission?ref=${encodeURIComponent(params.ref)}` : '/commission';
-    case 'legal':      return params.section ? `/legal?section=${encodeURIComponent(params.section)}` : '/legal';
-    default:           return `/${name}`;
-  }
-}
-
-export function go(name: RouteName, params: RouteParams = {}): void {
-  if (typeof window === 'undefined') return;
-  window.location.href = routeToPath(name, params);
-}
 
 // ── URL param helpers for entries ────────────────────────────
 export function qs(key: string): string | undefined {
