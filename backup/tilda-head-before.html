@@ -1,0 +1,83 @@
+<!-- M.Bez · HEAD · v1.0 -->
+
+<!-- Viewport / theme-color -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#ede5d6" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#2a2520" media="(prefers-color-scheme: dark)" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- Open Graph base -->
+<meta property="og:site_name" content="M.Bez" />
+<meta property="og:locale" content="ru_RU" />
+<meta property="og:type" content="website" />
+
+<!-- Schema.org · Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mila Bezú",
+  "alternateName": "Мила Бэзу",
+  "givenName": "Людмила",
+  "familyName": "Клевер",
+  "jobTitle": "Художник-живописец",
+  "knowsAbout": ["Масляная живопись", "Fine art", "Интерьерная живопись"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Москва",
+    "addressCountry": "RU"
+  },
+  "url": "https://mbezu.ru",
+  "email": "milabezu.art@gmail.com",
+  "telephone": "+79167641039",
+  "sameAs": [
+    "https://instagram.com/m.bezu_art",
+    "https://t.me/mbezu_art",
+    "https://vk.com/mbezu_art"
+  ]
+}
+</script>
+
+<!-- Schema.org · Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "M.Bez",
+  "legalName": "ИП Клевер Людмила Александровна",
+  "url": "https://mbezu.ru",
+  "logo": "https://mbezu.ru/logo.png",
+  "taxID": "772273980162",
+  "vatID": "772273980162",
+  "identifier": [
+    { "@type": "PropertyValue", "name": "ИНН", "value": "772273980162" },
+    { "@type": "PropertyValue", "name": "ОГРНИП", "value": "314774633901575" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Лефортовский Вал, д. 11, корп. 2, кв. 202",
+    "postalCode": "111250",
+    "addressLocality": "Москва",
+    "addressCountry": "RU"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "milabezu.art@gmail.com",
+    "telephone": "+79167641039",
+    "contactType": "customer service",
+    "areaServed": "RU",
+    "availableLanguage": ["ru", "en"]
+  }
+}
+</script>
+
+<!-- Шрифты -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<!-- React 18.3 production + Babel + model-viewer -->
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
