@@ -39,10 +39,15 @@ const CARD_SLUGS = [
   'ts-01', 'ts-02', 'ts-03', 'ts-04', 'ts-05', 'ts-06',
   'td-01', 'td-02',
 ];
+// Sprint 15 (аудит): раньше здесь для всех трёх размеров стоял ОДИН и тот же
+// файл 1200 px — из-за этого srcset не строился, и телефон качал каталог
+// целиком на 1996 КБ. Уменьшенные копии делает scripts/gen-card-sizes.mjs
+// (@480 — 13–36 КБ, @960 — 34–95 КБ против 100–156 КБ у оригинала).
 export const TILDA_IMAGES: Record<string, Partial<Record<ImgSize, string>>> =
   Object.fromEntries(
-    CARD_SLUGS.map((slug) => {
-      const url = `${CARD_BASE}/${slug}.webp`;
-      return [slug.toUpperCase(), { thumb: url, large: url, full: url }];
-    }),
+    CARD_SLUGS.map((slug) => [slug.toUpperCase(), {
+      thumb: `${CARD_BASE}/${slug}@480.webp`,
+      large: `${CARD_BASE}/${slug}@960.webp`,
+      full: `${CARD_BASE}/${slug}.webp`,
+    }]),
   );

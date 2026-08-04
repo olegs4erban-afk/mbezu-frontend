@@ -46,8 +46,10 @@ export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true
     // Transparent webp cards are one file for every size → emit no srcSet
     // (browser falls back to `src`); only multi-size sources get a srcSet.
     const t = imageOf(art, 'thumb'), l = imageOf(art, 'large'), f = imageOf(art, 'full');
+    // Ширины должны совпадать с реальными файлами, иначе браузер выберет не тот:
+    // карточки — 480 / 960 / 1200 (см. scripts/gen-card-sizes.mjs).
     const srcSet = (t && l && f && new Set([t, l, f]).size > 1)
-      ? `${t} 320w, ${l} 768w, ${f} 1600w`
+      ? `${t} 480w, ${l} 960w, ${f} 1200w`
       : undefined;
     return (
       <div className={className} style={baseStyle} onClick={onClick}>
