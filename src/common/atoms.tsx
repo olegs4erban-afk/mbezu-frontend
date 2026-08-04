@@ -106,7 +106,7 @@ function StatusTag({ status }: { status?: string }) {
 }
 
 // ── ArtCard — карточка работы для каталога/сетки ──────────────
-function ArtCard({ art, onOpen, index, total, size = 'thumb' }: { art: any; onOpen?: (id: string) => void; index?: number; total?: number; size?: ImgSize }) {
+function ArtCard({ art, onOpen, index, total, size = 'thumb', priority = false }: { art: any; onOpen?: (id: string) => void; index?: number; total?: number; size?: ImgSize; priority?: boolean }) {
   const series = seriesById(art.series);
   const isRound = art.shape === 'round';
   // Sprint 15 (аудит): карточка — настоящая ссылка на страницу товара.
@@ -121,7 +121,10 @@ function ArtCard({ art, onOpen, index, total, size = 'thumb' }: { art: any; onOp
       <div style={{ position: 'relative' }}>
         {/* Sprint 9 — единый квадрат: одна прозрачная webp-карточка, object-fit:contain
             (вся работа видна, на креме без «белой коробки»), плавный ховер-зум; тондо — круг. */}
+        {/* Sprint 15 (аудит): первым карточкам — eager + fetchpriority.
+            Раньше первая же картинка каталога грузилась lazy, а она и есть LCP. */}
         <PaintingPlate art={art} size={size} fit="bare" objectFit="contain" plain
+                       priority={priority}
                        className="art-card-img"
                        style={{ aspectRatio: '1 / 1' }} showMeta={false} />
         {art.featured && (

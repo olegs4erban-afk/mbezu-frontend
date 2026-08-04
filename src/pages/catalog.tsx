@@ -169,6 +169,7 @@ function CatalogPage({ go, density, initialSeries }) {
             `}</style>
             {items.map((art, i) => (
               <ArtCard key={art.id} art={art} index={i + 1} total={items.length}
+                       priority={i < 3}
                        onOpen={(id) => go('painting', { id })} />
             ))}
           </div>

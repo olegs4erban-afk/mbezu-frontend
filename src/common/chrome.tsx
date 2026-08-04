@@ -5,6 +5,19 @@ import { ABOUT } from './data';
 import { routeToPath } from './routes';
 import type { RouteName } from './routes';
 
+// Sprint 15 (аудит): страница /cart пустая — на ней стоят только блоки корзины
+// Tilda (706) и ни одного контейнера витрины, а создать блок программно нельзя
+// (эндпоинт создания записи 404 на любую команду). Поэтому «Корзина» открывает
+// РАБОЧУЮ нативную корзину Tilda, а href="/cart" остаётся как запасной путь
+// и для робота. Функция появляется вместе с tilda-cart-1.1.min.js.
+function openNativeCart(e: React.MouseEvent) {
+  const open = (window as any).tcart__openCart;
+  if (typeof open !== 'function') return;      // нет скрипта — уходим по href
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // новая вкладка
+  e.preventDefault();
+  open();
+}
+
 // ─────────────────────────────────────────────────────────────
 // chrome.jsx — каркас сайта: TopBar / Footer / Marquee / ZeroBanner.
 // ─────────────────────────────────────────────────────────────
@@ -97,7 +110,7 @@ function TopBar({ route, go, cartCount }) {
           </nav>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-            <a href={routeToPath('cart')}
+            <a href={routeToPath('cart')} onClick={openNativeCart}
                style={{
                  textDecoration: 'none', color: 'var(--ink)',
                  fontSize: 13, letterSpacing: '.1em', textTransform: 'uppercase',
@@ -158,6 +171,7 @@ function BottomTabBar({ route, go, cartCount }) {
         const active = route === t.id;
         return (
           <a key={t.id} href={routeToPath(t.id as RouteName)}
+             onClick={t.id === 'cart' ? openNativeCart : undefined}
              className={'tabbar-item' + (active ? ' is-active' : '')}
              aria-current={active ? 'page' : undefined}>
             <span className="tabbar-icon">
@@ -260,6 +274,7 @@ function Footer({ go }) {
               {[['catalog', 'Каталог'], ['commission', 'На заказ'], ['cart', 'Корзина']].map(([id, label]) => (
                 <li key={id}>
                   <a href={routeToPath(id as RouteName)}
+                     onClick={id === 'cart' ? openNativeCart : undefined}
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}
                      className="uh">{label}</a>
                 </li>
