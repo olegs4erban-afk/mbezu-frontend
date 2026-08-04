@@ -36,7 +36,16 @@ describe('data helpers', () => {
   });
   it('imageOf returns CDN transparent-webp card for a work with a card (Sprint 8)', () => {
     expect(imageOf(artworkById('MN-01'), 'full')).toContain('/assets/cards/mn-01.webp');
-    expect(imageOf(artworkById('MN-01'), 'thumb')).toContain('/assets/cards/mn-01.webp');
+  });
+  // Sprint 15: размеры должны РАЗЛИЧАТЬСЯ, иначе srcset не строится и телефон
+  // качает каталог в 1200 px (было 1996 КБ на /catalog).
+  it('imageOf отдаёт разные файлы под thumb/large/full — иначе нет srcset', () => {
+    const t = imageOf(artworkById('MN-01'), 'thumb');
+    const l = imageOf(artworkById('MN-01'), 'large');
+    const f = imageOf(artworkById('MN-01'), 'full');
+    expect(t).toContain('/assets/cards/mn-01@480.webp');
+    expect(l).toContain('/assets/cards/mn-01@960.webp');
+    expect(new Set([t, l, f]).size).toBe(3);
   });
   it('imageOf null for work without photo (MN-02 «Вершина»)', () => {
     expect(imageOf(artworkById('MN-02'), 'full')).toBeNull();
