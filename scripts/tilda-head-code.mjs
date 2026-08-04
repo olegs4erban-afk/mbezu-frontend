@@ -24,6 +24,44 @@ import { withSession, PROJECTID, pace } from './tilda-session.mjs';
 const APPLY = process.argv.includes('--apply');
 const DEAD = ['@babel/standalone', '@google/model-viewer', 'react-dom@18', 'react@18'];
 
+// ── Русификация Store на лету ────────────────────────────────
+// Поля блоков 776 (каталог) и 706 (корзина) программно недоступны: панель
+// «Контент» не отдаёт полей ни через edrec__editRecordContent, ни живым кликом,
+// а эндпоинты записи отвечают 404 (проверено трижды). Строки при этом видит
+// покупатель в момент оплаты — «Your Name», «CHECKOUT», «BUY NOW».
+// Поэтому подменяем их в браузере из head-кода, который нам подконтролен.
+// ВАЖНО: роботу без JS английский текст по-прежнему виден — verify-live
+// продолжит это ловить, и правильно: настоящее лечение — поля блоков руками.
+const MARK = 'MBezu · ru-store';
+const RU_SNIPPET = `
+<!-- ${MARK} · подмена английских строк Store (Sprint 15) -->
+<script>
+(function(){
+  var MAP={'Your Name':'Имя','Your Email':'Email','Your Phone':'Телефон',
+    'Your Comment':'Комментарий','Checkout':'Оформить заказ','CHECKOUT':'ОФОРМИТЬ ЗАКАЗ',
+    'BUY NOW':'Купить','Buy now':'Купить','More products':'Все работы',
+    'Load more':'Показать ещё','Total':'Итого','Sold out':'Продана'};
+  function fix(root){
+    if(!root||root.nodeType!==1&&root.nodeType!==9)return;
+    var f=root.querySelectorAll?root.querySelectorAll('input,textarea'):[];
+    for(var i=0;i<f.length;i++){var p=f[i].getAttribute('placeholder');if(p&&MAP[p])f[i].setAttribute('placeholder',MAP[p]);}
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false),n,l=[];
+    while(n=w.nextNode())l.push(n);
+    for(var j=0;j<l.length;j++){var s=l[j].nodeValue,k=s&&s.trim();if(k&&MAP[k])l[j].nodeValue=s.replace(k,MAP[k]);}
+  }
+  function run(){try{fix(document.body);}catch(e){}}
+  if(document.readyState!=='loading')run();
+  document.addEventListener('DOMContentLoaded',run);
+  window.addEventListener('load',run);
+  document.addEventListener('DOMContentLoaded',function(){
+    try{
+      var t,mo=new MutationObserver(function(){clearTimeout(t);t=setTimeout(run,60);});
+      mo.observe(document.body,{childList:true,subtree:true});
+    }catch(e){}
+  });
+})();
+</script>`;
+
 function patchHead(src) {
   let out = src;
   const removed = [];
@@ -43,7 +81,11 @@ function patchHead(src) {
   out = out.replace(/[ \t]*<meta[^>]+property="og:type"[^>]*>[ \t]*\r?\n?/i, '');
   const typeFixed = out !== t0;
 
-  return { out, removed, brandFixed, typeFixed };
+  // Русификатор Store — дописываем один раз, по метке.
+  const ruAdded = !out.includes(MARK);
+  if (ruAdded) out = out.trimEnd() + '\n' + RU_SNIPPET + '\n';
+
+  return { out, removed, brandFixed, typeFixed, ruAdded };
 }
 
 const openEditor = async (page) => {
@@ -72,11 +114,12 @@ await withSession(async ({ page }) => {
   writeFileSync('backup/tilda-head-before.html', src, 'utf8');
   console.log(`  снимок исходника: backup/tilda-head-before.html (${src.length} симв.)`);
 
-  const { out, removed, brandFixed, typeFixed } = patchHead(src);
+  const { out, removed, brandFixed, typeFixed, ruAdded } = patchHead(src);
   console.log('\n  план правки:');
   console.log('    убрать скриптов:', removed.length ? removed.join(', ') : 'ни одного');
   console.log('    M.Bez → MBezu  :', brandFixed ? 'да' : 'не найдено');
   console.log('    свой og:type   :', typeFixed ? 'убрать' : 'не найден');
+  console.log('    русификатор Store:', ruAdded ? 'дописать' : 'уже стоит');
   console.log(`    длина: ${src.length} → ${out.length} симв.`);
 
   if (!APPLY) { console.log('\n  прогон без записи. Применить: node scripts/tilda-head-code.mjs --apply'); return; }

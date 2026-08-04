@@ -95,7 +95,11 @@ async function checkPage(name) {
   rec(name, descOk, 'description непустой, ≤160, без «Открытие сайта»',
     desc ? `${desc.length} симв.: ${desc.slice(0, 48)}…` : 'отсутствует');
 
-  const found = STORE_EN.filter((s) => html.includes(s));
+  // Наш русификатор Store живёт в head сайта, и его словарь содержит те самые
+  // английские строки. Считать их «нерусифицированным контентом» неверно —
+  // вырезаем свой блок перед проверкой, иначе проверка ловит сама себя.
+  const content = html.replace(/<!--\s*MBezu · ru-store[\s\S]*?<\/script>/gi, '');
+  const found = STORE_EN.filter((s) => content.includes(s));
   rec(name, found.length === 0, 'нет нерусифицированных строк Store', found.join(', '));
 }
 
