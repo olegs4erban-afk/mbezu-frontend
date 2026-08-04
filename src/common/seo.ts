@@ -3,6 +3,7 @@
 // Полный набор схем (Organization, Product, BreadcrumbList) — Phase 4.
 // ─────────────────────────────────────────────────────────────
 import { ABOUT, ARTWORKS, artworkById, seriesById, featuredArtworks, formatPrice, imageOf, visibleArtworks } from './data';
+import { storeProductPath } from './store-urls';
 
 // ── Sprint 14: счётчики работ (видимых) — чтобы «21 работа» не расходилась с фактом ──
 export const workCount = () => visibleArtworks().length;
@@ -137,7 +138,9 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         description: 'Авторская живопись маслом в единственном экземпляре. Картины для интерьера дома, квартиры и дачи. Работа на заказ от 2 недель. Доставка по России.',
         canonical: SITE_ORIGIN + '/',
         ogImage: abs(heroImg || ''),
-        jsonLd: [organizationLd(), personLd()],
+        // Organization и Person уже отдаются site-wide из head-кода — здесь они
+        // давали дубли (робот видел по два объекта каждого типа).
+        jsonLd: [],
       };
     case 'about':
       return {
@@ -145,7 +148,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         description: ABOUT.short[0],
         canonical: SITE_ORIGIN + '/about',
         ogImage: abs(heroImg || ''),
-        jsonLd: [personLd(), breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Художник', url: '/about' }])],
+        jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Художник', url: '/about' }])],
       };
     case 'catalog': {
       const series = params.series ? seriesById(params.series) : null;
@@ -157,7 +160,9 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
           ? `${series.description} Оригиналы маслом на холсте с сертификатом подлинности. Доставка по РФ.`
           : 'Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.',
         canonical: SITE_ORIGIN + '/catalog' + (params.series ? `?series=${params.series}` : ''),
-        jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }])],
+        // Sprint 15: ItemList с Product+Offer по всем работам. Страницы товаров
+        // нативные и своей разметки не имеют — цена и наличие уезжают роботу отсюда.
+        jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }]), catalogItemListLd()],
       };
     }
     case 'painting': {
@@ -291,8 +296,34 @@ export function productLd(id: string) {
       availability: art.status === 'available'
         ? 'https://schema.org/InStock'
         : 'https://schema.org/SoldOut',
-      url: `${SITE_ORIGIN}/painting/${art.id.toLowerCase()}`,
+      // Sprint 15: раньше вело на /painting/<id> — React-заглушку, которая
+      // ничего не продаёт. Offer обязан указывать на страницу, где реально
+      // покупают: нативный товар Store. Фолбэк оставлен на случай неотображённой работы.
+      url: SITE_ORIGIN + (storeProductPath(art.id) || `/painting/${art.id.toLowerCase()}`),
       itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', name: 'MBezu' },
     },
+  };
+}
+
+/**
+ * ItemList из всех работ каталога с Product + Offer (Sprint 15).
+ *
+ * Зачем: страницы товаров — нативные тильдовские, своей разметки у них нет и
+ * добавить её туда нечем (контейнера витрины на них нет). Каталог же наш и
+ * попадает в HTML до JS — значит цену и наличие робот увидит именно отсюда.
+ * Каждый элемент ссылается на реальную страницу покупки.
+ */
+export function catalogItemListLd() {
+  const works = visibleArtworks();
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Каталог картин маслом MBezu',
+    numberOfItems: works.length,
+    itemListElement: works.map((art: any, i: number) => {
+      const p = productLd(art.id);
+      return { '@type': 'ListItem', position: i + 1, item: p };
+    }).filter((x: any) => x.item),
   };
 }
