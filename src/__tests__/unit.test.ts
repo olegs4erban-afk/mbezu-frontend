@@ -19,7 +19,7 @@ describe('routeToPath — clean aliases (match live Tilda)', () => {
     expect(routeToPath('catalog')).toBe('/catalog');
   });
   it('painting with id → native Store product URL (3C handoff); fallback for unmapped', () => {
-    expect(routeToPath('painting', { id: 'MN-01' })).toBe('/catalog/tproduct/566542733172-wave-sepia');
+    expect(routeToPath('painting', { id: 'MN-01' })).toBe('/catalog/tproduct/566542733172-volna-sepiya');
     expect(routeToPath('painting', { id: 'ZZ-99' })).toBe('/painting/zz-99'); // unmapped → React alias
     expect(routeToPath('painting')).toBe('/painting');
   });
