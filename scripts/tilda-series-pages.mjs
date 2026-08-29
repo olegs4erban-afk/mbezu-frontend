@@ -30,7 +30,7 @@ const metaFromDist = (slug) => {
   return {
     metaTitle: one(/<title[^>]*>([^<]*)<\/title>/),
     metaDescr: one(/<meta name="description" content="([^"]*)"/),
-    canonical: one(/<link rel="canonical" href="([^"]*)"/),
+    canonical: (() => { const all = [...h.matchAll(/<link rel="canonical" href="([^"]*)"/g)]; return all.length ? all[all.length - 1][1] : ""; })(),
   };
 };
 
