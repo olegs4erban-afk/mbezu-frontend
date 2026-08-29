@@ -13,7 +13,7 @@
  * Когда 4 страницы Tilda созданы (alias catalog/<slug> + контейнер):
  *   1) поставить true  2) npm run build  3) push  4) обновить контейнеры.
  */
-export const SERIES_PAGES_LIVE = false;
+export const SERIES_PAGES_LIVE = true; // Sprint 15: 4 страницы серий созданы в Tilda и живые
 
 /** series id → url-slug. Принимает и id, и уже готовый slug. */
 export function seriesSlug(idOrSlug: string): string {

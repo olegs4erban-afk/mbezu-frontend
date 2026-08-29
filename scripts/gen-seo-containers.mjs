@@ -23,6 +23,12 @@ const PAGES = [
   ['catalog', 'catalog/index.html', 'catalog', '<style>#rec2291453131{display:none !important;}</style>'],
   ['commission', 'commission/index.html', 'commission'],
   ['legal', 'legal/index.html', 'legal'],
+  // Sprint 15: посадочные серий — отдельные страницы Tilda /catalog/<slug>.
+  // Лоадер тот же catalog: рантайм берёт серию из последнего сегмента пути.
+  ['catalog-monohromnaya', 'catalog/monohromnaya/index.html', 'catalog'],
+  ['catalog-ulitsy-mira', 'catalog/ulitsy-mira/index.html', 'catalog'],
+  ['catalog-tihaya-sila', 'catalog/tihaya-sila/index.html', 'catalog'],
+  ['catalog-tondo', 'catalog/tondo/index.html', 'catalog'],
 ];
 
 mkdirSync(OUT, { recursive: true });

@@ -74,7 +74,18 @@ function headFragment(seo: RouteSeo, name: string): string {
 function inject(html: string, seo: RouteSeo, markup: string, name: string): string {
   html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(seo.title)}</title>`);
   html = html.replace('</head>', headFragment(seo, name) + '\n</head>');
-  if (markup) html = html.replace('<div id="root"></div>', `<div id="root">${markup}</div>`);
+  // Sprint 15: root бывает уже ЗАПОЛНЕН (шаблон серий = готовый catalog/index.html).
+  // Старый replace искал только пустой root и молча пропускал — все 4 страницы
+  // серий уносили body каталога с общим H1.
+  if (markup) {
+    const open = '<div id="root">';
+    const j = html.indexOf(open);
+    if (j >= 0) {
+      const rest = html.slice(j + open.length);
+      const end = rest.lastIndexOf('</div>');
+      html = html.slice(0, j + open.length) + markup + rest.slice(end);
+    }
+  }
   return html;
 }
 

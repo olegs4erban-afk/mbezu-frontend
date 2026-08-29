@@ -4,6 +4,7 @@
 // ─────────────────────────────────────────────────────────────
 import { ABOUT, ARTWORKS, artworkById, seriesById, featuredArtworks, formatPrice, imageOf, visibleArtworks } from './data';
 import { storeProductPath } from './store-urls';
+import { seriesSlug as seriesSlugOf } from './flags';
 
 // ── Sprint 14: счётчики работ (видимых) — чтобы «21 работа» не расходилась с фактом ──
 export const workCount = () => visibleArtworks().length;
@@ -162,7 +163,9 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         canonical: SITE_ORIGIN + '/catalog' + (params.series ? `?series=${params.series}` : ''),
         // Sprint 15: ItemList с Product+Offer по всем работам. Страницы товаров
         // нативные и своей разметки не имеют — цена и наличие уезжают роботу отсюда.
-        jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }]), catalogItemListLd()],
+        jsonLd: series
+          ? [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }, { name: series.title, url: '/catalog' + (params.series ? '/' + seriesSlugOf(params.series) : '') }]), catalogItemListLd(params.series)]
+          : [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }]), catalogItemListLd()],
       };
     }
     case 'painting': {
@@ -314,8 +317,10 @@ export function productLd(id: string) {
  * попадает в HTML до JS — значит цену и наличие робот увидит именно отсюда.
  * Каждый элемент ссылается на реальную страницу покупки.
  */
-export function catalogItemListLd() {
-  const works = visibleArtworks();
+export function catalogItemListLd(seriesId?: string) {
+  // На посадочной серии список фильтруется: уникальная разметка на каждой
+  // странице вместо пяти копий полного списка по сайту.
+  const works = seriesId ? visibleArtworks().filter((a: any) => a.series === seriesId) : visibleArtworks();
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
