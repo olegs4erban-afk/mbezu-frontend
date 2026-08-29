@@ -32,6 +32,35 @@ const DEAD = ['@babel/standalone', '@google/model-viewer', 'react-dom@18', 'reac
 // Поэтому подменяем их в браузере из head-кода, который нам подконтролен.
 // ВАЖНО: роботу без JS английский текст по-прежнему виден — verify-live
 // продолжит это ловить, и правильно: настоящее лечение — поля блоков руками.
+// ── Приёмники заявок: атрибуты и скрытие ────────────────────
+// Формы A/B вставлены блоками BF201N на главной и /commission (+пара на
+// служебной Header). Транспорт ищет [data-mbezu-lead]/[data-mbezu-notify];
+// вешаем атрибуты ПО СИГНАТУРЕ полей (lead_ref+notes → A, lead_ref без notes → B)
+// — так снипет не зависит от rec-id и работает на любой странице.
+const RCV_MARK = 'MBezu · lead-receivers';
+const RCV_SNIPPET = `
+<!-- ${RCV_MARK} · скрытые формы-приёмники (Sprint 15 Ф0) -->
+<style>[data-mbezu-lead],[data-mbezu-notify]{position:absolute!important;left:-9999px!important;height:1px!important;overflow:hidden!important}</style>
+<script>
+(function(){
+  function wire(){
+    try{
+      var inputs=document.querySelectorAll('input[name="lead_ref"]');
+      for(var i=0;i<inputs.length;i++){
+        var form=inputs[i].closest('form');if(!form)continue;
+        var wrap=form.closest('[id^="rec"]')||form;
+        var isA=!!form.querySelector('[name="notes"]');
+        if(isA){wrap.setAttribute('data-mbezu-lead','');}
+        else{wrap.setAttribute('data-mbezu-notify','');}
+      }
+    }catch(e){}
+  }
+  if(document.readyState!=='loading')wire();
+  document.addEventListener('DOMContentLoaded',wire);
+  window.addEventListener('load',wire);
+})();
+</script>`;
+
 const MARK = 'MBezu · ru-store';
 const RU_SNIPPET = `
 <!-- ${MARK} · подмена английских строк Store (Sprint 15) -->
@@ -85,7 +114,10 @@ function patchHead(src) {
   const ruAdded = !out.includes(MARK);
   if (ruAdded) out = out.trimEnd() + '\n' + RU_SNIPPET + '\n';
 
-  return { out, removed, brandFixed, typeFixed, ruAdded };
+  const rcvAdded = !out.includes(RCV_MARK);
+  if (rcvAdded) out = out.trimEnd() + String.fromCharCode(10) + RCV_SNIPPET + String.fromCharCode(10);
+
+  return { out, removed, brandFixed, typeFixed, ruAdded, rcvAdded };
 }
 
 const openEditor = async (page) => {
