@@ -160,7 +160,9 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         description: series
           ? `${series.description} Оригиналы маслом на холсте с сертификатом подлинности. Доставка по РФ.`
           : 'Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.',
-        canonical: SITE_ORIGIN + '/catalog' + (params.series ? `?series=${params.series}` : ''),
+        // Sprint 15: у посадочной серии canonical — её собственный /catalog/<slug>,
+        // иначе все четыре склеиваются с каталогом и не ранжируются.
+        canonical: SITE_ORIGIN + '/catalog' + (params.series ? '/' + seriesSlugOf(params.series) : ''),
         // Sprint 15: ItemList с Product+Offer по всем работам. Страницы товаров
         // нативные и своей разметки не имеют — цена и наличие уезжают роботу отсюда.
         jsonLd: series

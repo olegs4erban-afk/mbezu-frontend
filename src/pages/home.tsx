@@ -97,7 +97,7 @@ function HeroEditorial({ go }) {
             }}>M.B</div>
             <figure style={{ margin: 0, position: 'relative', zIndex: 1, cursor: 'pointer' }}
                     className="drift" onClick={() => go('painting', { id: hero.id })}>
-              <PaintingPlate art={hero} fit="bare" priority sizes="(max-width: 900px) 92vw, 46vw" style={{
+              <PaintingPlate art={hero} fit="bare" priority objectFit="contain" plain sizes="(max-width: 900px) 92vw, 46vw" style={{
                 aspectRatio: '4 / 5', borderRadius: 'var(--r-md)',
                 boxShadow: 'var(--shadow-lg)',
               }} showMeta={false} />
@@ -160,7 +160,7 @@ function HeroCenter({ go }) {
         {fts.map((a) => (
           <div key={a.id} className="lift" style={{ cursor: 'pointer' }}
                onClick={() => go('painting', { id: a.id })}>
-            <PaintingPlate art={a} fit="bare" style={{ aspectRatio: '4 / 5' }} showMeta={false} />
+            <PaintingPlate art={a} fit="bare" objectFit="contain" plain style={{ aspectRatio: '4 / 5' }} showMeta={false} />
             <div className="cat-no" style={{ marginTop: 14, textAlign: 'left' }}>
               {a.title} · {a.w}×{a.h} см
             </div>
@@ -210,7 +210,7 @@ function HeroSplit({ go }) {
         </div>
       </div>
       <div className="reveal r2" style={{ position: 'relative', background: 'var(--bg-soft)' }}>
-        <PaintingPlate art={hero} fit="bare" style={{
+        <PaintingPlate art={hero} fit="bare" objectFit="contain" plain style={{
           height: '100%', aspectRatio: 'auto', borderRadius: 0, boxShadow: 'none',
         }} showMeta={false} />
       </div>
@@ -258,7 +258,7 @@ function SeriesTriptych({ go }) {
                  }}>
                 <div style={{ position: 'relative' }}>
                   {/* Sprint 10 (F): оверлей-плашка с названием серии убрана */}
-                  <PaintingPlate art={cover} fit="bare" style={{
+                  <PaintingPlate art={cover} fit="bare" objectFit="contain" plain style={{
                     aspectRatio: '3 / 4', borderRadius: 'var(--r-md)',
                     boxShadow: 'var(--shadow-md)',
                   }} showMeta={false} />
