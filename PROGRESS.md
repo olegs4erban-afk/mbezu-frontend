@@ -453,9 +453,23 @@ feeds_GetList отвечал «Project not found!», а «Our news» в дроп
   reindex (script injection timeout — вероятно, окно свёрнуто). Некритично: /journal в sitemap,
   статьи слинкованы с него; при желании Олег жмёт переобход руками (journal + 3 tpost-URL).
 
+**Аналитика воронки — события целей Метрики (31.08, ночь).**
+- Счётчик 111308276 в head уже с `ecommerce:"dataLayer"` (проверено на живом) — покупки
+  Store уходят в e-commerce отчёты сами, второй init НЕ нужен.
+- `track()` в analytics.ts: reachGoal + дубль в «Параметры визитов» (params пишутся
+  без настройки целей — данные не теряются, пока цели не созданы).
+- События: **lead_submit** (source в params; все формы A), **commission_submit**,
+  **review_submit**, **cart_open** (клик «Корзина»). Динамический import в tildaLead —
+  тесты без DOM не трогают analytics. Проверено: события в живом бандле
+  cdn.mbezu.ru/assets/common-ClENlWJC.js.
+- ⚠️ Сами цели в интерфейсе Метрики НЕ созданы: расширение Chrome не инъектируется
+  (script injection timeout и на Вебмастере, и на Метрике — окно, видимо, свёрнуто).
+  Создать 4 цели типа «JavaScript-событие» с идентификаторами выше — руками Олега
+  или мной при живом окне Chrome.
+
 **Дальше по очереди:** при появлении первого реального отзыва — перенос в reviews.ts
 (Review LD включится сам); Email-сервис к формам A после активации почты;
-`npm run journal:next` — раз в 2–3 недели.
+`npm run journal:next` — раз в 2–3 недели; цели в Метрике (4 шт, JS-события).
 
 ## Sprint 15 — Store-админка: что нашлось и где это лежит
 
