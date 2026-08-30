@@ -61,6 +61,52 @@ const RCV_SNIPPET = `
 })();
 </script>`;
 
+// ── Страницы товара: Product JSON-LD из микроданных + золото AA в корзине ──
+// (аудит 3.13: инлайн #a08a4e в попапе корзины не перекрасить чистым CSS;
+//  мелочь 8: JSON-LD Product строим из уже существующих itemprop-микроданных)
+const PROD_MARK = 'MBezu · product-extras';
+const PROD_SNIPPET = `
+<!-- ${PROD_MARK} (Sprint 15) -->
+<script>
+(function(){
+  function goldFix(root){
+    try{
+      var els=(root||document).querySelectorAll('.t706 *,.t-store *');
+      for(var i=0;i<els.length;i++){
+        var cs=getComputedStyle(els[i]);
+        if(cs.color==='rgb(160, 138, 78)')els[i].style.color='#6f5c2b';
+        if(cs.backgroundColor==='rgb(160, 138, 78)')els[i].style.backgroundColor='#6f5c2b';
+      }
+    }catch(e){}
+  }
+  function productLd(){
+    try{
+      if(location.pathname.indexOf('/tproduct/')<0)return;
+      if(document.getElementById('mbezu-product-ld'))return;
+      var name=(document.querySelector('[itemprop="name"]')||document.querySelector('h1')||{}).textContent||'';
+      var priceEl=document.querySelector('[itemprop="price"]');
+      var price=priceEl?(priceEl.content||priceEl.textContent||'').replace(/[^0-9.]/g,''):'';
+      var img=(document.querySelector('meta[property="og:image"]')||{}).content||'';
+      var descr=(document.querySelector('meta[name="description"]')||{}).content||'';
+      if(!name||!price)return;
+      var ld={'@context':'https://schema.org','@type':'Product',name:name.trim(),image:[img],description:descr,
+        brand:{'@type':'Brand',name:'Mila Bezú'},
+        offers:{'@type':'Offer',price:price,priceCurrency:'RUB',availability:'https://schema.org/InStock',url:location.origin+location.pathname,itemCondition:'https://schema.org/NewCondition'}};
+      var s=document.createElement('script');s.type='application/ld+json';s.id='mbezu-product-ld';
+      s.textContent=JSON.stringify(ld);document.head.appendChild(s);
+    }catch(e){}
+  }
+  function run(){goldFix();productLd();}
+  if(document.readyState!=='loading')run();
+  document.addEventListener('DOMContentLoaded',run);
+  window.addEventListener('load',run);
+  document.addEventListener('DOMContentLoaded',function(){
+    try{var t2,mo=new MutationObserver(function(){clearTimeout(t2);t2=setTimeout(function(){goldFix();},120);});
+    mo.observe(document.body,{childList:true,subtree:true});}catch(e){}
+  });
+})();
+</script>`;
+
 const MARK = 'MBezu · ru-store';
 const RU_SNIPPET = `
 <!-- ${MARK} · подмена английских строк Store (Sprint 15) -->
@@ -113,6 +159,17 @@ function patchHead(src) {
   // Русификатор Store — дописываем один раз, по метке.
   const ruAdded = !out.includes(MARK);
   if (ruAdded) out = out.trimEnd() + '\n' + RU_SNIPPET + '\n';
+
+  // существующий блок product-extras заменяем целиком (иначе правки не доезжают)
+  if (out.includes(PROD_MARK)) {
+    const startIdx = out.indexOf('<!-- ' + PROD_MARK);
+    const endIdx = out.indexOf('</script>', startIdx);
+    if (startIdx >= 0 && endIdx > startIdx) {
+      out = out.slice(0, startIdx) + PROD_SNIPPET.trim() + out.slice(endIdx + '</script>'.length);
+    }
+  }
+  const prodAdded = !out.includes(PROD_MARK);
+  if (prodAdded) out = out.trimEnd() + String.fromCharCode(10) + PROD_SNIPPET + String.fromCharCode(10);
 
   const rcvAdded = !out.includes(RCV_MARK);
   if (rcvAdded) out = out.trimEnd() + String.fromCharCode(10) + RCV_SNIPPET + String.fromCharCode(10);
