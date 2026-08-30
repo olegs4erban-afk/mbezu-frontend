@@ -46,7 +46,7 @@ await withSession(async ({ page }) => {
   }, { pid, PROJECTID });
   console.log('T123:', rec);
 
-  const html = readFileSync('out/containers/podarok.html', 'utf8');
+  const html = readFileSync('content/podarok.html', 'utf8');
   const wr = await page.evaluate(async ({ pid, rec, html, PROJECTID }) => {
     const r = await fetch('/page/submit/', {
       method: 'POST', credentials: 'include',
