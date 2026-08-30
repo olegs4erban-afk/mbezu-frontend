@@ -1,0 +1,282 @@
+﻿
+> mbezu-frontend@2.0.0 deploy
+> npm run tilda:check && npm run typecheck && npm run test && npm run build && npm run containers:seo && npm run verify:containers && npm run deploy:cdn && npm run push && npm run verify
+
+
+> mbezu-frontend@2.0.0 tilda:check
+> node scripts/tilda-session.mjs check
+
+
+  Проверка редактора pageid=142947296:
+   URL: https://tilda.ru/page/?pageid=142947296&projectid=13712449
+   редирект на логин: false · «Авторизуйтесь»: false · блоков на странице: 1
+   слепок cookie сохранён: 10 шт → .secrets/tilda-cookies.json
+
+  ✓ РЕДАКТОР ОТКРЫЛСЯ — сессия рабочая
+
+
+> mbezu-frontend@2.0.0 typecheck
+> tsc --noEmit
+
+
+> mbezu-frontend@2.0.0 test
+> vitest run
+
+
+ RUN  v2.1.9 C:/MBezu/mbezu-frontend
+
+ ✓ src/__tests__/lead.test.ts (13 tests) 9ms
+ ✓ src/__tests__/unit.test.ts (20 tests) 28ms
+
+ Test Files  2 passed (2)
+      Tests  33 passed (33)
+   Start at  10:53:35
+   Duration  603ms (transform 170ms, setup 0ms, collect 263ms, tests 37ms, environment 0ms, prepare 250ms)
+
+
+> mbezu-frontend@2.0.0 build
+> vite build && node --import tsx scripts/prerender.tsx && node scripts/gen-entry-loaders.mjs
+
+vite v5.4.21 building for production...
+transforming...
+✓ 159 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/cart.html                                    0.93 kB │ gzip:   0.51 kB
+dist/about.html                                   0.93 kB │ gzip:   0.52 kB
+dist/catalog.html                                 0.93 kB │ gzip:   0.53 kB
+dist/tracking.html                                0.94 kB │ gzip:   0.52 kB
+dist/legal.html                                   0.94 kB │ gzip:   0.54 kB
+dist/painting.html                                1.00 kB │ gzip:   0.53 kB
+dist/commission.html                              1.02 kB │ gzip:   0.54 kB
+dist/index.html                                   1.10 kB │ gzip:   0.60 kB
+dist/.vite/manifest.json                          2.86 kB │ gzip:   0.56 kB
+dist/assets/style-Br2VpiKO.css                   11.68 kB │ gzip:   3.15 kB
+dist/assets/modulepreload-polyfill-B5Qt9EMX.js    0.71 kB │ gzip:   0.40 kB
+dist/assets/tildaLead-Od7wmfh9.js                 2.70 kB │ gzip:   1.47 kB
+dist/assets/ar-CYWqKXwN.js                        5.42 kB │ gzip:   2.66 kB
+dist/assets/catalog-IZJQrjY7.js                   6.60 kB │ gzip:   2.62 kB
+dist/assets/about-BE68J9EA.js                     8.37 kB │ gzip:   2.55 kB
+dist/assets/tracking-DOIPBcEw.js                  8.41 kB │ gzip:   3.25 kB
+dist/assets/painting-BvBTNpv_.js                  9.18 kB │ gzip:   3.75 kB
+dist/assets/cart-B2YGzn8b.js                     14.99 kB │ gzip:   4.25 kB
+dist/assets/commission-C58XIZAy.js               19.94 kB │ gzip:   6.71 kB
+dist/assets/legal-dI-jdExg.js                    26.57 kB │ gzip:   8.83 kB
+dist/assets/home-nawZN5TH.js                     30.99 kB │ gzip:   8.47 kB
+dist/assets/common-COov_CAf.js                  190.23 kB │ gzip:  62.64 kB
+dist/assets/model-viewer-CI_mGsJC.js            929.92 kB │ gzip: 260.18 kB
+✓ built in 2.95s
+node.exe : Warning: React does not recognize the `fetchPriority` prop on a DOM element. If you intentionally want it to
+ appear in the DOM as a custom attribute, spell it as lowercase `fetchpriority` instead. If you accidentally passed it 
+from a parent component, remove it from the DOM element.
+At line:1 char:1
++ & "C:\Program Files\nodejs/node.exe" "C:\Program Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: React ...he DOM element.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    at img
+    at div
+    at PaintingPlate (C:\MBezu\mbezu-frontend\src\common\adapter.tsx:25:33)
+    at figure
+    at div
+    at div
+    at div
+    at section
+    at HeroEditorial (C:\MBezu\mbezu-frontend\src\pages\home.tsx:19:26)
+    at div
+    at HomePage (C:\MBezu\mbezu-frontend\src\pages\home.tsx:1020:21)
+    at main
+  ✓ index.html
+  ✓ about/index.html
+  ✓ catalog/index.html
+  ✓ commission/index.html
+  ✓ legal/index.html
+  ✓ cart/index.html (head only)
+  ✓ painting/index.html + 22 per-artwork dirs
+  ✓ catalog/<series> × 4 (monohromnaya, ulitsy-mira, tihaya-sila, tondo)
+  ✓ tracking/index.html (redirect → /)
+  ✓ sitemap.xml (26 urls)
+[prerender] done — 33 html pages generated
+e/style.css → /assets/style-Br2VpiKO.css
+e/home.js → /assets/home-nawZN5TH.js + /assets/style-Br2VpiKO.css (+4 preloads)
+e/about.js → /assets/about-BE68J9EA.js + /assets/style-Br2VpiKO.css (+2 preloads)
+e/catalog.js → /assets/catalog-IZJQrjY7.js + /assets/style-Br2VpiKO.css (+2 preloads)
+e/commission.js → /assets/commission-C58XIZAy.js + /assets/style-Br2VpiKO.css (+3 preloads)
+e/legal.js → /assets/legal-dI-jdExg.js + /assets/style-Br2VpiKO.css (+2 preloads)
+e/cart.js → /assets/cart-B2YGzn8b.js + /assets/style-Br2VpiKO.css (+2 preloads)
+skip tracking: no module entry found
+e/painting.js → /assets/painting-BvBTNpv_.js + /assets/style-Br2VpiKO.css (+3 preloads)
+loaders: 7
+
+> mbezu-frontend@2.0.0 containers:seo
+> node scripts/gen-seo-containers.mjs
+
+  ✓ out/containers/home.html — 41KB · h1=1 h2=8 jsonld=2
+  ✓ out/containers/about.html — 21KB · h1=1 h2=3 jsonld=2
+  ✓ out/containers/catalog.html — 38KB · h1=1 h2=2 jsonld=1
+  ✓ out/containers/commission.html — 40KB · h1=1 h2=4 jsonld=2
+  ✓ out/containers/legal.html — 20KB · h1=1 h2=1 jsonld=1
+  ✓ out/manual-steps.md (фолбэк для ручной заливки)
+[seo-containers] 5 готово
+
+> mbezu-frontend@2.0.0 verify:containers
+> node scripts/verify-containers.mjs
+
+  ✓ about.html       h1=1 заголовков=4 jsonld=2 склеек=0
+  ✓ catalog.html     h1=1 заголовков=3 jsonld=1 склеек=0
+  ✓ commission.html  h1=1 заголовков=5 jsonld=2 склеек=0
+  ✓ home.html        h1=1 заголовков=9 jsonld=2 склеек=0
+  ✓ legal.html       h1=1 заголовков=2 jsonld=1 склеек=0
+
+  Контейнеры чистые: один H1, склеек нет.
+
+
+> mbezu-frontend@2.0.0 deploy:cdn
+> node scripts/deploy-cdn.mjs
+
+  push 1 коммит(ов) → origin/main
+To https://github.com/olegs4erban-afk/mbezu-frontend.git
+   f01b40a..670cea2  main -> main
+  жду CDN (670cea2): modulepreload-polyfill-B5Qt9EMX.js, common-COov_CAf.js, ar-CYWqKXwN.js, tildaLead-Od7wmfh9.js, style-Br2VpiKO.css, home-nawZN5TH.js
+...  ✓ CDN отдаёт свежую сборку
+
+
+> mbezu-frontend@2.0.0 push
+> node scripts/tilda-push.mjs
+
+
+  Снапшот → backup\tilda-snapshot\2026-08-04T07-54-30
+   ✓ home        блок=41KB мета=снята
+   ✓ catalog     блок=38KB мета=снята
+   ✓ about       блок=21KB мета=снята
+   ✓ commission  блок=40KB мета=снята
+   ✓ legal       блок=20KB мета=снята
+
+  ── home (pageId 142947296, /)
+     контейнер: уже актуален (пропуск)
+     мета: записана и сверена
+     publish: 200
+
+  ── catalog (pageId 142948046, /catalog)
+     контейнер: записан и сверен · 38KB
+     мета: записана и сверена
+     publish: 200
+
+  ── about (pageId 142948406, /about)
+     контейнер: уже актуален (пропуск)
+     мета: записана и сверена
+     publish: 200
+
+  ── commission (pageId 142949736, /commission)
+     контейнер: уже актуален (пропуск)
+     мета: записана и сверена
+     publish: 200
+
+  ── legal (pageId 142950726, /legal)
+     контейнер: уже актуален (пропуск)
+     мета: записана и сверена
+     publish: 200
+
+  Итог заливки:
+   home        контейнер=уже актуален (пропуск) · мета=записана и сверена · publish=200
+   catalog     контейнер=записан и сверен · 38KB · мета=записана и сверена · publish=200
+   about       контейнер=уже актуален (пропуск) · мета=записана и сверена · publish=200
+   commission  контейнер=уже актуален (пропуск) · мета=записана и сверена · publish=200
+   legal       контейнер=уже актуален (пропуск) · мета=записана и сверена · publish=200
+
+  Снапшот для отката: backup\tilda-snapshot\2026-08-04T07-54-30
+
+
+> mbezu-frontend@2.0.0 verify
+> node scripts/verify-live.mjs
+
+
+  verify-live · https://mbezu.ru · User-Agent: YandexBot · без JS
+
+  ── home
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — Your Name, Your Email, Your Phone, Checkout
+  ── catalog
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — BUY NOW, Your Name, Your Email, Your Phone, Checkout, Load more, More products
+  ── about
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — Your Name, Your Email, Your Phone, Checkout
+  ── commission
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — Your Name, Your Email, Your Phone, Checkout
+  ── legal
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — Your Name, Your Email, Your Phone, Checkout
+  ── глобально
+   ✓ http://mbezu.ru → 301
+   ✓ https://www.mbezu.ru → 301
+  ── sitemap
+   ✓ sitemap.xml отдаётся
+   ✓ нет http:// в sitemap
+   ✓ нет /home в sitemap
+   ✓ нет /cart в sitemap
+   ✓ нет /painting/ в sitemap
+   ✓ нет /page1431 в sitemap
+  ── /cart
+   ✓ /cart закрыт noindex
+  ── /
+   ✓ витрина смонтирована
+   ✓ нет ошибок в консоли
+  ── /catalog
+   ✓ витрина смонтирована
+   ✓ нет ошибок в консоли
+  ── /about
+   ✓ витрина смонтирована
+   ✓ нет ошибок в консоли
+
+  Итог: 60/65 пройдено, 5 провалено
+
+  ПРОВАЛЕНО:
+   ✗ [home] нет нерусифицированных строк Store — Your Name, Your Email, Your Phone, Checkout
+   ✗ [catalog] нет нерусифицированных строк Store — BUY NOW, Your Name, Your Email, Your Phone, Checkout, Load more, More products
+   ✗ [about] нет нерусифицированных строк Store — Your Name, Your Email, Your Phone, Checkout
+   ✗ [commission] нет нерусифицированных строк Store — Your Name, Your Email, Your Phone, Checkout
+   ✗ [legal] нет нерусифицированных строк Store — Your Name, Your Email, Your Phone, Checkout
+

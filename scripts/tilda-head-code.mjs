@@ -181,6 +181,41 @@ const RU_SNIPPET = `
 })();
 </script>`;
 
+const JRN_MARK = 'MBezu · journal-extras';
+const JRN_SNIPPET = `
+<!-- ${JRN_MARK} · h1 и Article-разметка на страницах статей /tpost/ (Sprint 15) -->
+<script>
+(function(){
+  function up(){
+    if(location.pathname.indexOf('/tpost/')!==0)return;
+    var s=document.querySelector('span[data-style="post_title_typo"] .js-cms-text-container')
+      ||document.querySelector('span[data-style="post_title_typo"]');
+    if(s&&!document.querySelector('h1')){
+      var h=document.createElement('h1');
+      h.style.cssText='margin:0;font:inherit;letter-spacing:inherit;display:inline';
+      while(s.firstChild)h.appendChild(s.firstChild);
+      s.appendChild(h);
+    }
+    if(!document.getElementById('mbezu-article-ld')){
+      var og=function(p){var m=document.querySelector('meta[property="'+p+'"]');return m?m.getAttribute('content'):'';};
+      var ld={'@context':'https://schema.org','@type':'Article',
+        headline:(og('og:title')||document.title).split(' | ')[0],
+        image:og('og:image')||undefined,
+        inLanguage:'ru',
+        mainEntityOfPage:og('og:url')||location.href,
+        author:{'@type':'Person',name:'Mila Bez\\u00fa',url:'https://mbezu.ru/about'}};
+      var sc=document.createElement('script');
+      sc.type='application/ld+json';sc.id='mbezu-article-ld';
+      sc.textContent=JSON.stringify(ld);
+      document.head.appendChild(sc);
+    }
+  }
+  if(document.readyState!=='loading')up();
+  document.addEventListener('DOMContentLoaded',up);
+  window.addEventListener('load',up);
+})();
+</script>`;
+
 function patchHead(src) {
   let out = src;
   const removed = [];
@@ -233,6 +268,14 @@ function patchHead(src) {
 
   const rcvAdded = !out.includes(RCV_MARK);
   if (rcvAdded) out = out.trimEnd() + String.fromCharCode(10) + RCV_SNIPPET + String.fromCharCode(10);
+
+  if (out.includes(JRN_MARK)) {
+    const js = out.indexOf('<!-- ' + JRN_MARK);
+    const je = out.indexOf('</script>', js);
+    if (js >= 0 && je > js) out = out.slice(0, js) + JRN_SNIPPET.trim() + out.slice(je + 9);
+  } else {
+    out = out.trimEnd() + String.fromCharCode(10) + JRN_SNIPPET + String.fromCharCode(10);
+  }
 
   return { out, removed, brandFixed, typeFixed, ruAdded, rcvAdded };
 }

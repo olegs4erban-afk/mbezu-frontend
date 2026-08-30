@@ -3,6 +3,7 @@ import { PaintingPlate } from '../common/adapter';
 import { ArButton, ArViewer, QrBlock } from '../ar/ar';
 import { ArtCard, Breadcrumbs, Eyebrow, StatusTag } from '../common/atoms';
 import { ARTWORKS, artworkById, formatPrice, imageOf, seriesById } from '../common/data';
+import { ProductReviews } from '../common/reviews-section';
 
 // ─────────────────────────────────────────────────────────────
 // page-painting.jsx — карточка работы.
@@ -249,6 +250,9 @@ function PaintingPage({ go, id, addToCart }) {
             </div>
           </div>
         </section>
+
+        {/* Sprint 15: отзывы об этой работе (рендер только при реальных отзывах) */}
+        <ProductReviews productId={art.id} />
 
         {/* Related works */}
         {related.length > 0 && (

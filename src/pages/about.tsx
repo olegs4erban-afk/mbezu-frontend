@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumbs, Eyebrow } from '../common/atoms';
 import { ABOUT, SERIES } from '../common/data';
+import { ReviewsSection } from '../common/reviews-section';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
@@ -212,6 +213,9 @@ function AboutPage({ go }) {
           </div>
         </div>
       </section>
+
+      {/* Sprint 15: отзывы (реальные; пока пусто — приглашение оставить первый) */}
+      <ReviewsSection compact />
 
       {/* ── CTA ── */}
       <section className="resp-pad" style={{

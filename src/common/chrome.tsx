@@ -293,6 +293,9 @@ function Footer({ go }) {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <li><a href={routeToPath('about')} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}>О художнике</a></li>
+              {/* Sprint 15: журнал — страница Tilda вне RouteName, прямой href */}
+              <li><a href="/journal" className="uh"
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}>Журнал</a></li>
               <li><span style={{ color: 'rgba(245,239,226,.72)', fontSize: 14 }}>Школа · скоро</span></li>
               <li><a href={routeToPath('legal', { section: 'delivery' })} className="uh"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}>Доставка и оплата</a></li>

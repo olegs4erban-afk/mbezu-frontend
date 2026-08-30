@@ -1,0 +1,106 @@
+<!-- M.Bez · HEAD · v1.0 -->
+
+<!-- Viewport / theme-color -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#ede5d6" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#2a2520" media="(prefers-color-scheme: dark)" />
+<meta name="format-detection" content="telephone=no" />
+
+<!-- Open Graph base -->
+<meta property="og:site_name" content="MBezu" />
+<meta property="og:locale" content="ru_RU" />
+
+<!-- Schema.org · Person -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mila Bezú",
+  "alternateName": "Мила Бэзу",
+  "givenName": "Людмила",
+  "familyName": "Клевер",
+  "jobTitle": "Художник-живописец",
+  "knowsAbout": ["Масляная живопись", "Fine art", "Интерьерная живопись"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Москва",
+    "addressCountry": "RU"
+  },
+  "url": "https://mbezu.ru",
+  "email": "milabezu.art@gmail.com",
+  "telephone": "+79167641039",
+  "sameAs": [
+    "https://instagram.com/m.bezu_art",
+    "https://t.me/mbezu_art",
+    "https://vk.com/mbezu_art"
+  ]
+}
+</script>
+
+<!-- Schema.org · Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "MBezu",
+  "legalName": "ИП Клевер Людмила Александровна",
+  "url": "https://mbezu.ru",
+  "logo": "https://mbezu.ru/logo.png",
+  "taxID": "772273980162",
+  "vatID": "772273980162",
+  "identifier": [
+    { "@type": "PropertyValue", "name": "ИНН", "value": "772273980162" },
+    { "@type": "PropertyValue", "name": "ОГРНИП", "value": "314774633901575" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Лефортовский Вал, д. 11, корп. 2, кв. 202",
+    "postalCode": "111250",
+    "addressLocality": "Москва",
+    "addressCountry": "RU"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "milabezu.art@gmail.com",
+    "telephone": "+79167641039",
+    "contactType": "customer service",
+    "areaServed": "RU",
+    "availableLanguage": ["ru", "en"]
+  }
+}
+</script>
+
+<!-- Шрифты -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,200;0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<!-- React 18.3 production + Babel + model-viewer -->
+
+<!-- MBezu · ru-store · подмена английских строк Store (Sprint 15) -->
+<script>
+(function(){
+  var MAP={'Your Name':'Имя','Your Email':'Email','Your Phone':'Телефон',
+    'Your Comment':'Комментарий','Checkout':'Оформить заказ','CHECKOUT':'ОФОРМИТЬ ЗАКАЗ',
+    'BUY NOW':'Купить','Buy now':'Купить','More products':'Все работы',
+    'Load more':'Показать ещё','Total':'Итого','Sold out':'Продана'};
+  function fix(root){
+    if(!root||root.nodeType!==1&&root.nodeType!==9)return;
+    var f=root.querySelectorAll?root.querySelectorAll('input,textarea'):[];
+    for(var i=0;i<f.length;i++){var p=f[i].getAttribute('placeholder');if(p&&MAP[p])f[i].setAttribute('placeholder',MAP[p]);}
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null,false),n,l=[];
+    while(n=w.nextNode())l.push(n);
+    for(var j=0;j<l.length;j++){var s=l[j].nodeValue,k=s&&s.trim();if(k&&MAP[k])l[j].nodeValue=s.replace(k,MAP[k]);}
+  }
+  function run(){try{fix(document.body);}catch(e){}}
+  if(document.readyState!=='loading')run();
+  document.addEventListener('DOMContentLoaded',run);
+  window.addEventListener('load',run);
+  document.addEventListener('DOMContentLoaded',function(){
+    try{
+      var t,mo=new MutationObserver(function(){clearTimeout(t);t=setTimeout(run,60);});
+      mo.observe(document.body,{childList:true,subtree:true});
+    }catch(e){}
+  });
+})();
+</script>

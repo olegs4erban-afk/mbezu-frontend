@@ -5,6 +5,7 @@ import { ArtCard, Eyebrow } from '../common/atoms';
 import { Marquee } from '../common/chrome';
 import { ABOUT, ARTWORKS, SERIES, availableCount, featuredArtworks, formatPrice, seriesById, visibleArtworks } from '../common/data';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
+import { ReviewsSection } from '../common/reviews-section';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
@@ -1046,6 +1047,8 @@ function HomePage({ go, hero }) {
       <Packaging />
       <StatsRow />
       <ProcessRow />
+      {/* Sprint 15: отзывы (реальные; пока пусто — приглашение оставить первый) */}
+      <ReviewsSection />
       <CommissionCTAShort />
       <Newsletter />
     </div>

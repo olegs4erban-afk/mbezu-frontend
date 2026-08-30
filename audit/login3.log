@@ -1,0 +1,20 @@
+
+> mbezu-frontend@2.0.0 tilda:login
+> cross-env TILDA_HEADED=1 node scripts/tilda-session.mjs login
+
+  (восстановил 9 cookie из слепка)
+
+  Открылось окно Tilda. Войди в аккаунт (логин, пароль, капча если попросят).
+  Если есть галочка «запомнить меня» — поставь.
+  Скрипт сам поймёт, что доступ появился, и закроет окно.
+
+file:///C:/MBezu/mbezu-frontend/scripts/tilda-session.mjs:132
+  throw new Error('login-timeout: за 10 минут доступ не появился');
+        ^
+
+Error: login-timeout: за 10 минут доступ не появился
+    at manualLogin (file:///C:/MBezu/mbezu-frontend/scripts/tilda-session.mjs:132:9)
+    at async openSession (file:///C:/MBezu/mbezu-frontend/scripts/tilda-session.mjs:97:5)
+    at async file:///C:/MBezu/mbezu-frontend/scripts/tilda-session.mjs:164:34
+
+Node.js v24.14.1

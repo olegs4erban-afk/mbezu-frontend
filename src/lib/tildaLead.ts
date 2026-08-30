@@ -19,7 +19,7 @@
 // Tilda-форма на Yandex Cloud Function без правки компонентов.
 // ─────────────────────────────────────────────────────────────
 
-export type LeadSource = 'home-cta' | 'commission-brief' | 'newsletter';
+export type LeadSource = 'home-cta' | 'commission-brief' | 'newsletter' | 'review';
 
 export interface LeadPayload {
   lead_ref?: string;

@@ -1,6 +1,8 @@
 import React from 'react';
 import { PaintingPlate } from './adapter';
 import { formatPrice, seriesById } from './data';
+import { averageRating, reviewsFor } from './reviews';
+import { Stars } from './reviews-section';
 import type { ImgSize } from './tilda-images';
 import { routeToPath } from './routes';
 
@@ -157,6 +159,13 @@ function ArtCard({ art, onOpen, index, total, size = 'thumb', priority = false }
         <h3 className="display" style={{ margin: '4px 0 6px', fontSize: 22, fontWeight: 500, letterSpacing: '-.01em' }}>
           {art.title}
         </h3>
+        {/* Sprint 15: звёзды в карточке — только когда у работы есть реальные отзывы */}
+        {reviewsFor(art.id).length > 0 && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, margin: '2px 0 6px' }}>
+            <Stars rating={averageRating(reviewsFor(art.id))} size={13} />
+            <span style={{ fontSize: 12, color: 'var(--ink-2)' }}>{reviewsFor(art.id).length}</span>
+          </div>
+        )}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10, fontSize: 13, color: 'var(--ink-2)' }}>
           <span>{isRound ? `⌀ ${art.w} см` : `${art.w}×${art.h} см`} · {art.year}</span>
           <span style={{ fontWeight: 500, color: 'var(--ink)' }}>{formatPrice(art.price)}</span>

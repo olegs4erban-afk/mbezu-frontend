@@ -1,0 +1,281 @@
+
+> mbezu-frontend@2.0.0 deploy
+> npm run tilda:check && npm run typecheck && npm run test && npm run build && npm run containers:seo && npm run verify:containers && npm run deploy:cdn && npm run push && npm run verify
+
+
+> mbezu-frontend@2.0.0 tilda:check
+> node scripts/tilda-session.mjs check
+
+
+  Проверка редактора pageid=142947296:
+   URL: https://tilda.ru/page/?pageid=142947296&projectid=13712449
+   редирект на логин: false · «Авторизуйтесь»: false · блоков на странице: 1
+   слепок cookie сохранён: 12 шт → .secrets/tilda-cookies.json
+
+  ✓ РЕДАКТОР ОТКРЫЛСЯ — сессия рабочая
+
+
+> mbezu-frontend@2.0.0 typecheck
+> tsc --noEmit
+
+
+> mbezu-frontend@2.0.0 test
+> vitest run
+
+
+[1m[7m[36m RUN [39m[27m[22m [36mv2.1.9 [39m[90mC:/MBezu/mbezu-frontend[39m
+
+ [32m✓[39m src/__tests__/lead.test.ts [2m([22m[2m13 tests[22m[2m)[22m[90m 10[2mms[22m[39m
+ [32m✓[39m src/__tests__/unit.test.ts [2m([22m[2m21 tests[22m[2m)[22m[90m 31[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m34 passed[39m[22m[90m (34)[39m
+[2m   Start at [22m 00:19:34
+[2m   Duration [22m 745ms[2m (transform 219ms, setup 0ms, collect 331ms, tests 41ms, environment 1ms, prepare 341ms)[22m
+
+
+> mbezu-frontend@2.0.0 build
+> vite build && node --import tsx scripts/prerender.tsx && node scripts/gen-entry-loaders.mjs
+
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 159 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mcart.html                                  [39m[1m[2m  0.93 kB[22m[1m[22m[2m │ gzip:   0.51 kB[22m
+[2mdist/[22m[32mabout.html                                 [39m[1m[2m  0.93 kB[22m[1m[22m[2m │ gzip:   0.52 kB[22m
+[2mdist/[22m[32mcatalog.html                               [39m[1m[2m  0.93 kB[22m[1m[22m[2m │ gzip:   0.53 kB[22m
+[2mdist/[22m[32mtracking.html                              [39m[1m[2m  0.94 kB[22m[1m[22m[2m │ gzip:   0.53 kB[22m
+[2mdist/[22m[32mlegal.html                                 [39m[1m[2m  0.94 kB[22m[1m[22m[2m │ gzip:   0.54 kB[22m
+[2mdist/[22m[32mpainting.html                              [39m[1m[2m  1.00 kB[22m[1m[22m[2m │ gzip:   0.53 kB[22m
+[2mdist/[22m[32mcommission.html                            [39m[1m[2m  1.02 kB[22m[1m[22m[2m │ gzip:   0.54 kB[22m
+[2mdist/[22m[32mindex.html                                 [39m[1m[2m  1.10 kB[22m[1m[22m[2m │ gzip:   0.59 kB[22m
+[2mdist/[22m[32m.vite/manifest.json                        [39m[1m[2m  2.86 kB[22m[1m[22m[2m │ gzip:   0.56 kB[22m
+[2mdist/[22m[35massets/style-Br2VpiKO.css                  [39m[1m[2m 11.68 kB[22m[1m[22m[2m │ gzip:   3.15 kB[22m
+[2mdist/[22m[36massets/modulepreload-polyfill-B5Qt9EMX.js  [39m[1m[2m  0.71 kB[22m[1m[22m[2m │ gzip:   0.40 kB[22m
+[2mdist/[22m[36massets/tildaLead-Od7wmfh9.js               [39m[1m[2m  2.70 kB[22m[1m[22m[2m │ gzip:   1.47 kB[22m
+[2mdist/[22m[36massets/ar-l4pfIyji.js                      [39m[1m[2m  5.42 kB[22m[1m[22m[2m │ gzip:   2.66 kB[22m
+[2mdist/[22m[36massets/catalog-D_kruQW5.js                 [39m[1m[2m  6.60 kB[22m[1m[22m[2m │ gzip:   2.62 kB[22m
+[2mdist/[22m[36massets/about-BDw-pK9Z.js                   [39m[1m[2m  8.37 kB[22m[1m[22m[2m │ gzip:   2.55 kB[22m
+[2mdist/[22m[36massets/tracking-DqRYhNXq.js                [39m[1m[2m  8.41 kB[22m[1m[22m[2m │ gzip:   3.25 kB[22m
+[2mdist/[22m[36massets/painting-BiYOlpS6.js                [39m[1m[2m  9.18 kB[22m[1m[22m[2m │ gzip:   3.75 kB[22m
+[2mdist/[22m[36massets/cart-D3xucHTa.js                    [39m[1m[2m 14.99 kB[22m[1m[22m[2m │ gzip:   4.25 kB[22m
+[2mdist/[22m[36massets/commission-nKrdUqrX.js              [39m[1m[2m 19.94 kB[22m[1m[22m[2m │ gzip:   6.71 kB[22m
+[2mdist/[22m[36massets/legal-CNPCxtXY.js                   [39m[1m[2m 26.57 kB[22m[1m[22m[2m │ gzip:   8.83 kB[22m
+[2mdist/[22m[36massets/home-CfdaBeLp.js                    [39m[1m[2m 30.99 kB[22m[1m[22m[2m │ gzip:   8.46 kB[22m
+[2mdist/[22m[36massets/common-CfCzZyB9.js                  [39m[1m[2m190.09 kB[22m[1m[22m[2m │ gzip:  62.61 kB[22m
+[2mdist/[22m[36massets/model-viewer-CI_mGsJC.js            [39m[1m[2m929.92 kB[22m[1m[22m[2m │ gzip: 260.18 kB[22m
+[32m✓ built in 3.74s[39m
+Warning: React does not recognize the `fetchPriority` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `fetchpriority` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+    at img
+    at div
+    at PaintingPlate (C:\MBezu\mbezu-frontend\src\common\adapter.tsx:25:33)
+    at figure
+    at div
+    at div
+    at div
+    at section
+    at HeroEditorial (C:\MBezu\mbezu-frontend\src\pages\home.tsx:19:26)
+    at div
+    at HomePage (C:\MBezu\mbezu-frontend\src\pages\home.tsx:1020:21)
+    at main
+  ✓ index.html
+  ✓ about/index.html
+  ✓ catalog/index.html
+  ✓ commission/index.html
+  ✓ legal/index.html
+  ✓ cart/index.html (head only)
+  ✓ painting/index.html + 22 per-artwork dirs
+  ✓ catalog/<series> × 4 (monohromnaya, ulitsy-mira, tihaya-sila, tondo)
+  ✓ tracking/index.html (redirect → /)
+  ✓ sitemap.xml (30 urls)
+[prerender] done — 33 html pages generated
+e/style.css → /assets/style-Br2VpiKO.css
+e/home.js → /assets/home-CfdaBeLp.js + /assets/style-Br2VpiKO.css (+4 preloads)
+e/about.js → /assets/about-BDw-pK9Z.js + /assets/style-Br2VpiKO.css (+2 preloads)
+e/catalog.js → /assets/catalog-D_kruQW5.js + /assets/style-Br2VpiKO.css (+2 preloads)
+e/commission.js → /assets/commission-nKrdUqrX.js + /assets/style-Br2VpiKO.css (+3 preloads)
+e/legal.js → /assets/legal-CNPCxtXY.js + /assets/style-Br2VpiKO.css (+2 preloads)
+e/cart.js → /assets/cart-D3xucHTa.js + /assets/style-Br2VpiKO.css (+2 preloads)
+skip tracking: no module entry found
+e/painting.js → /assets/painting-BiYOlpS6.js + /assets/style-Br2VpiKO.css (+3 preloads)
+loaders: 7
+
+> mbezu-frontend@2.0.0 containers:seo
+> node scripts/gen-seo-containers.mjs
+
+  ✓ out/containers/home.html — 42KB · h1=1 h2=8 jsonld=0
+  ✓ out/containers/about.html — 21KB · h1=1 h2=3 jsonld=1
+  ✓ out/containers/catalog.html — 58KB · h1=1 h2=2 jsonld=2
+  ✓ out/containers/commission.html — 40KB · h1=1 h2=4 jsonld=2
+  ✓ out/containers/legal.html — 20KB · h1=1 h2=1 jsonld=1
+  ✓ out/containers/catalog-monohromnaya.html — 40KB · h1=1 h2=2 jsonld=4
+  ✓ out/containers/catalog-ulitsy-mira.html — 47KB · h1=1 h2=2 jsonld=4
+  ✓ out/containers/catalog-tihaya-sila.html — 42KB · h1=1 h2=2 jsonld=4
+  ✓ out/containers/catalog-tondo.html — 35KB · h1=1 h2=2 jsonld=4
+  ✓ out/manual-steps.md (фолбэк для ручной заливки)
+[seo-containers] 9 готово
+
+> mbezu-frontend@2.0.0 verify:containers
+> node scripts/verify-containers.mjs
+
+  ✓ about.html       h1=1 заголовков=4 jsonld=1 склеек=0
+  ✓ catalog-monohromnaya.html h1=1 заголовков=3 jsonld=4 склеек=0
+  ✓ catalog-tihaya-sila.html h1=1 заголовков=3 jsonld=4 склеек=0
+  ✓ catalog-tondo.html h1=1 заголовков=3 jsonld=4 склеек=0
+  ✓ catalog-ulitsy-mira.html h1=1 заголовков=3 jsonld=4 склеек=0
+  ✓ catalog.html     h1=1 заголовков=3 jsonld=2 склеек=0
+  ✓ commission.html  h1=1 заголовков=5 jsonld=2 склеек=0
+  ✓ home.html        h1=1 заголовков=9 jsonld=0 склеек=0
+  ✓ legal.html       h1=1 заголовков=2 jsonld=1 склеек=0
+
+  Контейнеры чистые: один H1, склеек нет.
+
+
+> mbezu-frontend@2.0.0 deploy:cdn
+> node scripts/deploy-cdn.mjs
+
+  нечего пушить, проверяю что CDN уже отдаёт нужные ассеты
+  жду CDN (f14524a): modulepreload-polyfill-B5Qt9EMX.js, common-CfCzZyB9.js, ar-l4pfIyji.js, tildaLead-Od7wmfh9.js, style-Br2VpiKO.css, home-CfdaBeLp.js
+.  ✓ CDN отдаёт свежую сборку
+
+
+> mbezu-frontend@2.0.0 push
+> node scripts/tilda-push.mjs
+
+  (восстановил 12 cookie из слепка)
+
+  Снапшот → backup\tilda-snapshot\2026-08-29T21-19-58
+   ✓ home        блок=42KB мета=снята
+   ✓ catalog     блок=58KB мета=снята
+   ✓ about       блок=21KB мета=снята
+   ✓ commission  блок=40KB мета=снята
+   ✓ legal       блок=20KB мета=снята
+
+  ── home (pageId 142947296, /)
+     контейнер: записан и сверен · 42KB
+     мета: записана и сверена
+     publish: 200
+
+  ── catalog (pageId 142948046, /catalog)
+     контейнер: записан и сверен · 58KB
+     мета: записана и сверена
+     publish: 200
+
+  ── about (pageId 142948406, /about)
+     контейнер: записан и сверен · 21KB
+     мета: записана и сверена
+     publish: 200
+
+  ── commission (pageId 142949736, /commission)
+     контейнер: записан и сверен · 40KB
+     мета: записана и сверена
+     publish: 200
+
+  ── legal (pageId 142950726, /legal)
+     контейнер: записан и сверен · 20KB
+     мета: записана и сверена
+     publish: 200
+
+  Итог заливки:
+   home        контейнер=записан и сверен · 42KB · мета=записана и сверена · publish=200
+   catalog     контейнер=записан и сверен · 58KB · мета=записана и сверена · publish=200
+   about       контейнер=записан и сверен · 21KB · мета=записана и сверена · publish=200
+   commission  контейнер=записан и сверен · 40KB · мета=записана и сверена · publish=200
+   legal       контейнер=записан и сверен · 20KB · мета=записана и сверена · publish=200
+
+  Снапшот для отката: backup\tilda-snapshot\2026-08-29T21-19-58
+
+
+> mbezu-frontend@2.0.0 verify
+> node scripts/verify-live.mjs
+
+
+  verify-live · https://mbezu.ru · User-Agent: YandexBot · без JS
+
+  ── home
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — Your Name, Your Email, Your Phone, Checkout
+  ── catalog
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — BUY NOW, Your Name, Your Email, Your Phone, Checkout, Load more, More products
+  ── about
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — Your Name, Your Email, Your Phone, Checkout
+  ── commission
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — Your Name, Your Email, Your Phone, Checkout
+  ── legal
+   ✓ status 200
+   ✓ ровно один H1
+   ✓ H2 ≥ 1
+   ✓ H1/H2 без склеенных слов
+   ✓ canonical https://mbezu.ru
+   ✓ og:title заполнен и ≠ Blank page
+   ✓ og:site_name = MBezu
+   ✓ og:image указан и отдаёт 200
+   ✓ description непустой, ≤160, без «Открытие сайта»
+   ✗ нет нерусифицированных строк Store  — Your Name, Your Email, Your Phone, Checkout
+  ── глобально
+   ✓ http://mbezu.ru → 301
+   ✓ https://www.mbezu.ru → 301
+  ── sitemap
+   ✓ sitemap.xml отдаётся
+   ✓ нет http:// в sitemap
+   ✓ нет /home в sitemap
+   ✓ нет /cart в sitemap
+   ✓ нет /painting/ в sitemap
+   ✓ нет /page1431 в sitemap
+  ── /cart
+   ✓ /cart закрыт noindex
+  ── /
+   ✓ витрина смонтирована
+   ✓ нет ошибок в консоли
+  ── /catalog
+   ✓ витрина смонтирована
+   ✓ нет ошибок в консоли
+  ── /about
+   ✓ витрина смонтирована
+   ✓ нет ошибок в консоли
+
+  Итог: 60/65 пройдено, 5 провалено
+
+  ПРОВАЛЕНО:
+   ✗ [home] нет нерусифицированных строк Store — Your Name, Your Email, Your Phone, Checkout
+   ✗ [catalog] нет нерусифицированных строк Store — BUY NOW, Your Name, Your Email, Your Phone, Checkout, Load more, More products
+   ✗ [about] нет нерусифицированных строк Store — Your Name, Your Email, Your Phone, Checkout
+   ✗ [commission] нет нерусифицированных строк Store — Your Name, Your Email, Your Phone, Checkout
+   ✗ [legal] нет нерусифицированных строк Store — Your Name, Your Email, Your Phone, Checkout
+
