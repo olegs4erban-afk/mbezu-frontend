@@ -271,6 +271,12 @@ function Footer({ go }) {
           <div>
             <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Магазин</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {/* Sprint 15: посадочная «Картина в подарок» — прямой href, вне RouteName */}
+              <li>
+                <a href="/podarok"
+                   style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}
+                   className="uh">Картина в подарок</a>
+              </li>
               {[['catalog', 'Каталог'], ['commission', 'На заказ'], ['cart', 'Корзина']].map(([id, label]) => (
                 <li key={id}>
                   <a href={routeToPath(id as RouteName)}

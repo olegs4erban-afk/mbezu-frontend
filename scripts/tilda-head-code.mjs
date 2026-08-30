@@ -121,6 +121,8 @@ const CART_SNIPPET = `
   .t706__orderform{padding-bottom:40px}
 }
 .mbezu-trust{font-size:12.5px;color:#6b5d4a;text-align:center;margin:10px 0 0;line-height:1.5}
+/* мелочь 14: у кнопки покупки не было ховера вовсе */
+.t-store button:hover,.t-store a.t-btn:hover,.t706__submit button:hover{opacity:.85;transition:opacity .2s}
 </style>
 <script>
 (function(){
