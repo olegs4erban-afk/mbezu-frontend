@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArtCard, ArtRow, Breadcrumbs, Eyebrow } from '../common/atoms';
 import { ARTWORKS, SERIES, SUBJECTS, visibleArtworks } from '../common/data';
+import { INTERIOR_GUIDE_URL, SERIES_INTERIORS } from '../common/seo';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
@@ -190,6 +191,29 @@ function CatalogPage({ go, density, initialSeries }) {
                       onOpen={(id) => go('painting', { id })} />
             ))}
           </div>
+        )}
+
+        {/* Sprint 15 (план роста, шаг 6): интерьерный интент на посадочных серий */}
+        {activeSeries && SERIES_INTERIORS[activeSeries.id] && (
+          <section style={{ marginTop: 90 }}>
+            <Eyebrow accent>В интерьере</Eyebrow>
+            <h2 className="display" style={{ margin: '14px 0 26px', fontSize: 'clamp(28px,3.4vw,44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+              Куда впишется «{activeSeries.title}»
+            </h2>
+            <div className="resp-stack-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
+              {SERIES_INTERIORS[activeSeries.id].map((r) => (
+                <div key={r.room} style={{ background: 'var(--bg-card)', borderRadius: 'var(--r-lg)', padding: 26 }}>
+                  <h3 className="display" style={{ margin: '0 0 10px', fontSize: 19, fontWeight: 500 }}>{r.room}</h3>
+                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.65, color: 'var(--ink-2)' }}>{r.text}</p>
+                </div>
+              ))}
+            </div>
+            <p style={{ margin: '22px 0 0', fontSize: 14.5, color: 'var(--ink-2)' }}>
+              Сомневаетесь в размере и цвете — разбор с примерами в журнале:{' '}
+              <a href={INTERIOR_GUIDE_URL} style={{ color: 'var(--accent)' }}>как выбрать картину для гостиной</a>.
+              Ищете подарок — <a href="/podarok" style={{ color: 'var(--accent)' }}>картина в подарок</a>.
+            </p>
+          </section>
         )}
 
         {/* CTA at the end */}
