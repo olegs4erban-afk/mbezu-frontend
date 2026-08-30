@@ -90,7 +90,7 @@ function CommissionPage({ go, refId }) {
   const [sent, setSent] = React.useState(false);
   const [showPicker, setShowPicker] = React.useState(false);
   // Sprint 15 (Ф0): бриф раньше только переключал экран — заявка никуда не шла.
-  const [state, setState] = React.useState<'idle' | 'sending' | 'err'>('idle');
+  const [state, setState] = React.useState<'idle' | 'sending' | 'err' | 'err-fields'>('idle');
   const [leadNo, setLeadNo] = React.useState('');
   const [consent, setConsent] = React.useState(false);
   const [touched, setTouched] = React.useState(false);
@@ -101,7 +101,12 @@ function CommissionPage({ go, refId }) {
   const handle = async (e) => {
     e.preventDefault();
     setTouched(true);
+    // Sprint 15 (аудит 3.17): бриф принимал имя и контакт из 1 символа.
     if (!consent || state === 'sending') return;
+    if (form.name.trim().length < 2 || form.email.trim().length < 5) {
+      setState('err-fields');
+      return;
+    }
     setState('sending');
     // ref один на попытку: повтор после ошибки не должен плодить вторую карточку во Входящих
     const attemptRef = leadNo || leadRef();
@@ -485,6 +490,14 @@ function CommissionPage({ go, refId }) {
                 {touched && !consent && (
                   <div style={{ marginTop: 8, fontSize: 12.5, color: 'var(--accent-deep)' }}>
                     Для отправки нужно согласие на обработку ПД
+                  </div>
+                )}
+                {state === 'err-fields' && (
+                  <div style={{
+                    marginTop: 14, padding: '14px 16px', borderRadius: 'var(--r-md)',
+                    background: 'var(--bg-soft)', border: '1px solid var(--accent)', fontSize: 13.5, lineHeight: 1.6,
+                  }}>
+                    Укажите, пожалуйста, имя (от 2 символов) и контакт — телефон, Telegram или email.
                   </div>
                 )}
                 {state === 'err' && (

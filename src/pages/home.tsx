@@ -248,7 +248,11 @@ function SeriesTriptych({ go }) {
           display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36,
         }}>
           {SERIES.map((s) => {
-            const cover = ARTWORKS.find((a) => a.series === s.id && a.featured)
+            // Sprint 15 (аудит, мелочь 3): hero-работа дублировалась обложкой своей
+            // серии — на главной одна картина стояла дважды. Обложка ≠ hero.
+            const heroId = heroArt().id;
+            const cover = ARTWORKS.find((a) => a.series === s.id && a.featured && a.id !== heroId)
+                       || ARTWORKS.find((a) => a.series === s.id && a.id !== heroId && !a.hidden)
                        || ARTWORKS.find((a) => a.series === s.id);
             return (
               <a key={s.id} href={routeToPath('catalog', { series: s.id })}
