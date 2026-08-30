@@ -390,6 +390,44 @@ npm run deploy          # повторить прогон
 (он держит только `C:\Users\PKa\OneDrive`, Документы/Рабочий стол не перенаправлены), ни в
 Яндекс.Диск (доп. папок не настроено), ReparsePoint у каталога нет — переносить не требуется.
 
+## Sprint 15 — ЖУРНАЛ /journal + СИСТЕМА ОТЗЫВОВ (30.08, вечер)
+
+**Журнал (Tilda Feeds) — живой.** Модуль «Потоки» активирован (был не включён — потому
+feeds_GetList отвечал «Project not found!», а «Our news» в дропдауне блока был фантомом-примером).
+- Снят контракт создания потока: `POST feeds.tilda.ru/submit/` `action=feeds_Create`
+  + `projectid,title,typeid(0=информационный),tz_offset,tz`. Поток «Журнал» = feeduid **482342553881**.
+- 3 честные статьи (`scripts/tilda-journal-posts.mjs`, идемпотентен): «Как выбрать картину для
+  гостиной» (1h0ft7s671), «Оригинал или постер» (uge9s6lei1), «Сертификат подлинности» (kejc52adg1).
+  Текст — JSON-блоки (text/heading/br), обложки с cdn.mbezu.ru/assets/cards, перелинковка на
+  серии//podarok//commission//about. Демо-посты Tilda удалены. ⚠️ В `posts_GetList` uid — КЛЮЧ
+  объекта, в полях его нет: активация через `Object.entries`, не `.find(e=>e.uid)`.
+- Страница 214647109: T123-шапка (`content/journal.html`, H1 «Журнал о живописи»), Feed-блок
+  3447984701 → `feedpart=482342553881` (при выборе целого потока feedpart=feeduid), btitle «Журнал»
+  (`onlythisfield` для стандартных блоков работает), мета/alias `journal`/canonical, publish.
+- Live-приёмка: /journal 200, title/canonical/H1 ок, 3 карточки с обложками рендерятся (блок —
+  новый CMS-тип: карточки строит клиентский JS из `js-cms-data-holder`, в статике их НЕТ — это
+  норма); страницы статей /tpost/… — серверные, с canonical и ссылками на серии.
+- Head-код: снипет `MBezu · journal-extras` — на /tpost/ оборачивает заголовок статьи в h1
+  (у Tilda там span) + Article JSON-LD. Republish 13 страниц.
+
+**Система отзывов — каркас живой, контента нет намеренно.**
+- `src/common/reviews.ts` — данные. ПУСТО и это решение: только реальные покупатели, выдуманных
+  отзывов не кладём. Новый отзыв приходит заявкой (source=review) → после проверки переносится руками.
+- `src/common/reviews-section.tsx` — Stars/StarsInput (SVG, --accent), ReviewCard, ReviewForm
+  (имя/город/оценка/текст + honeypot + согласие; message=текст, notes=«Оценка: N/5» — в приёмнике A
+  поля rating нет), ReviewsSection (пустое состояние = честное приглашение + форма),
+  ProductReviews (страница работы; при пустых отзывах не рендерится вовсе).
+- Встроено: главная (перед CommissionCTAShort), /about (compact, перед CTA), painting.tsx,
+  звёзды в ArtCard при наличии отзывов у работы. AggregateRating JSON-LD — только при непустом
+  REVIEWS. `LeadSource` расширен 'review'.
+- Подвал: ссылка «Журнал». Деплой: 64/65 (единственный провал — известный BUY NOW в несносимом 776).
+- Live-приёмка: / и /about отдают секцию + ссылку; скрин формы `audit/reviews-live.png` (5 звёзд,
+  поля, чекбокс, кнопка). Тестовую заявку-отзыв НЕ отправлял — транспорт тот же submitLead,
+  что прошёл боевой тест 30.08.
+
+**Дальше по очереди:** интерьерные секции на страницах серий (шаг 6 плана роста); при появлении
+первого реального отзыва — перенос в reviews.ts (Review LD включится сам).
+
 ## Sprint 15 — Store-админка: что нашлось и где это лежит
 
 Разведка панели Store (`https://store.tilda.ru/store/?projectid=13712449`) — сессия живая, панель открывается.
