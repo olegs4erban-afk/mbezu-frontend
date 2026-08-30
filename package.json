@@ -23,7 +23,8 @@
     "push": "node scripts/tilda-push.mjs",
     "verify": "node scripts/verify-live.mjs",
     "deploy": "npm run tilda:check && npm run typecheck && npm run test && npm run build && npm run containers:seo && npm run verify:containers && npm run deploy:cdn && npm run push && npm run verify",
-    "verify:containers": "node scripts/verify-containers.mjs"
+    "verify:containers": "node scripts/verify-containers.mjs",
+    "journal:next": "node scripts/journal-publish-next.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
