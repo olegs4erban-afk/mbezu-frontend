@@ -71,6 +71,54 @@
       "ogImage": "https://cdn.mbezu.ru/og/og-default-1200x630.jpg",
       "recordId": 2349904171,
       "container": "legal"
+    },
+    "catalog-monohromnaya": {
+      "pageId": 213877409,
+      "alias": "/catalog/monohromnaya",
+      "title": "Монохромная серия — картины маслом, 5 работ | MBezu",
+      "description": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онла",
+      "metaTitle": "Монохромная серия — картины маслом, 5 работ | MBezu",
+      "metaDescr": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.",
+      "canonical": "https://mbezu.ru/catalog/monohromnaya",
+      "ogImage": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "recordId": 3437288501,
+      "container": "catalog-monohromnaya"
+    },
+    "catalog-ulitsy-mira": {
+      "pageId": 213877609,
+      "alias": "/catalog/ulitsy-mira",
+      "title": "Улицы мира — картины маслом, 8 работ | MBezu",
+      "description": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онла",
+      "metaTitle": "Улицы мира — картины маслом, 8 работ | MBezu",
+      "metaDescr": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.",
+      "canonical": "https://mbezu.ru/catalog/ulitsy-mira",
+      "ogImage": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "recordId": 3437289501,
+      "container": "catalog-ulitsy-mira"
+    },
+    "catalog-tihaya-sila": {
+      "pageId": 213877809,
+      "alias": "/catalog/tihaya-sila",
+      "title": "Тихая сила — картины маслом, 6 работ | MBezu",
+      "description": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онла",
+      "metaTitle": "Тихая сила — картины маслом, 6 работ | MBezu",
+      "metaDescr": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.",
+      "canonical": "https://mbezu.ru/catalog/tihaya-sila",
+      "ogImage": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "recordId": 3437290301,
+      "container": "catalog-tihaya-sila"
+    },
+    "catalog-tondo": {
+      "pageId": 213877909,
+      "alias": "/catalog/tondo",
+      "title": "Тондо — картины маслом, 2 работы | MBezu",
+      "description": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онла",
+      "metaTitle": "Тондо — картины маслом, 2 работы | MBezu",
+      "metaDescr": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.",
+      "canonical": "https://mbezu.ru/catalog/tondo",
+      "ogImage": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "recordId": 3437291101,
+      "container": "catalog-tondo"
     }
   }
 }
