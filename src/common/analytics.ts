@@ -91,3 +91,21 @@ function initVkPixel(id: string): void {
   s.dataset.vkPixel = id;
   document.head.appendChild(s);
 }
+
+// ─────────────────────────────────────────────────────────────
+// Sprint 15: события целей Метрики. Счётчик 111308276 стоит в head Tilda
+// (со своим init + ecommerce:"dataLayer" — покупки Store уходят сами),
+// поэтому здесь НЕ инициализируем второй раз — только шлём события через
+// window.ym, который уже создан head-скриптом.
+// Каждое событие дублируется в params: reachGoal без созданной цели Метрика
+// отбрасывает, а параметры визита видны всегда (отчёт «Параметры визитов»).
+// ─────────────────────────────────────────────────────────────
+export const YM_COUNTER = 111308276;
+
+export function track(goal: string, params?: Record<string, unknown>): void {
+  if (typeof window === 'undefined') return;
+  try {
+    window.ym?.(YM_COUNTER, 'reachGoal', goal, params);
+    window.ym?.(YM_COUNTER, 'params', { mbezu: { [goal]: params || true } });
+  } catch { /* аналитика никогда не мешает UX */ }
+}

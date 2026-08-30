@@ -4,6 +4,7 @@ import { ABOUT } from './data';
 // а не «#» с обработчиком. go() и так делал обычный переход по адресу.
 import { routeToPath } from './routes';
 import type { RouteName } from './routes';
+import { track } from './analytics';
 
 // Sprint 15 (аудит): страница /cart пустая — на ней стоят только блоки корзины
 // Tilda (706) и ни одного контейнера витрины, а создать блок программно нельзя
@@ -11,6 +12,7 @@ import type { RouteName } from './routes';
 // РАБОЧУЮ нативную корзину Tilda, а href="/cart" остаётся как запасной путь
 // и для робота. Функция появляется вместе с tilda-cart-1.1.min.js.
 function openNativeCart(e: React.MouseEvent) {
+  track('cart_open'); // Sprint 15: цель Метрики — интерес к покупке (и по href, и нативно)
   const open = (window as any).tcart__openCart;
   if (typeof open !== 'function') return;      // нет скрипта — уходим по href
   if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return; // новая вкладка

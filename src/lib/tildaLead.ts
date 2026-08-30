@@ -175,6 +175,15 @@ export async function submitLead(payload: LeadPayload, opts: SendOptions = {}): 
     return { ok: false, ref, notified: false, error: String((e as Error).message || e) };
   }
 
+  // Sprint 15: цель Метрики — форма A доставлена (источник в параметрах).
+  // Импорт функцией, а не статикой: tildaLead тестируется без DOM/analytics.
+  try {
+    const { track } = await import('../common/analytics');
+    track('lead_submit', { source: payload.source, ref });
+    if (payload.source === 'review') track('review_submit', { ref });
+    if (payload.source === 'commission-brief') track('commission_submit', { ref });
+  } catch { /* аналитика не мешает доставке */ }
+
   let notified = false;
   // Sprint 15 (боевой тест): два сабмита подряд иногда роняли B в анти-спам
   // Tilda — уведомление в Telegram не уходило, хотя запись в «Заявках» есть.
