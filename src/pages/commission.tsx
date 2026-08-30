@@ -389,7 +389,9 @@ function CommissionPage({ go, refId }) {
                   ))}
                 </div>
 
-                {/* сетка 48 образцов (8 оттенков × 6 светлот) */}
+                {/* Sprint 15 (аудит, мелочь 17): шаг был перегружен — 48 образцов
+                    всегда на виду. Сетка теперь раскрывается только по «Другое». */}
+                {showPicker && (
                 <div className="swatch-grid" style={{
                   marginTop: 14, display: 'grid',
                   gridTemplateColumns: 'repeat(8, 1fr)', gap: 8,
@@ -408,6 +410,7 @@ function CommissionPage({ go, refId }) {
                             }} />
                   ))}
                 </div>
+                )}
 
                 {/* «Другое» → нативный color-picker */}
                 <div style={{ marginTop: 14, display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>

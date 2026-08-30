@@ -278,7 +278,9 @@ function SeriesTriptych({ go }) {
                   }}>{s.subtitle}</p>
                   <p style={{
                     margin: '14px 0 0', fontSize: 14, color: 'var(--ink-2)', lineHeight: 1.6,
-                  }}>{s.description}</p>
+                  }}>{/* Sprint 15 (мелочь 4): тизер вместо полного описания —
+                      полный текст дословно повторялся на /about и посадочных серий */}
+                    {s.description.split(/(?<=.)s/)[0]}</p>
                 </div>
               </a>
             );

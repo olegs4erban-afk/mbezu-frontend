@@ -107,6 +107,48 @@ const PROD_SNIPPET = `
 })();
 </script>`;
 
+// ── Корзина: sticky-кнопка на мобильном, доверие, пустая корзина ──
+// (аудит 3.14: «ОФОРМИТЬ ЗАКАЗ» на 375 за экраном — после наших полей форма
+//  стала длиннее; 3.15: ноль доверия в момент оплаты; мелочь 9: пустая корзина
+//  показывала полную форму с активной кнопкой)
+const CART_MARK = 'MBezu · cart-extras';
+const CART_SNIPPET = `
+<!-- ${CART_MARK} (Sprint 15) -->
+<style>
+@media (max-width: 640px) {
+  /* 3.14: sticky/fixed ломаются transform-предками попапа Tilda — оставляем
+     нативный скролл с запасом снизу; кнопка достижима одним свайпом. */
+  .t706__orderform{padding-bottom:40px}
+}
+.mbezu-trust{font-size:12.5px;color:#6b5d4a;text-align:center;margin:10px 0 0;line-height:1.5}
+</style>
+<script>
+(function(){
+  function cartExtras(){
+    try{
+      var win=document.querySelector('.t706__cartwin');
+      if(!win||getComputedStyle(win).display==='none')return;
+      var hasItems=!!win.querySelector('.t706__product');
+      var form=win.querySelector('form');
+      if(form){form.style.display=hasItems?'':'none';}
+      var subm=win.querySelector('.t-form__submit');
+      if(hasItems&&subm&&!win.querySelector('.mbezu-trust')){
+        var p=document.createElement('p');
+        p.className='mbezu-trust';
+        p.textContent='Сертификат подлинности · Оплата онлайн (ЮKassa) · Бережная доставка СДЭК по РФ';
+        subm.appendChild(p);
+      }
+    }catch(e){}
+  }
+  document.addEventListener('DOMContentLoaded',function(){
+    try{
+      var t3,mo=new MutationObserver(function(){clearTimeout(t3);t3=setTimeout(cartExtras,150);});
+      mo.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
+    }catch(e){}
+  });
+})();
+</script>`;
+
 const MARK = 'MBezu · ru-store';
 const RU_SNIPPET = `
 <!-- ${MARK} · подмена английских строк Store (Sprint 15) -->
@@ -173,6 +215,17 @@ function patchHead(src) {
       out = out.slice(0, startIdx) + PROD_SNIPPET.trim() + out.slice(endIdx + '</script>'.length);
     }
   }
+  if (out.includes(CART_MARK)) {
+    const cs = out.indexOf('<!-- ' + CART_MARK);
+    const ce = out.indexOf('</script>', cs);
+    if (cs >= 0 && ce > cs) out = out.slice(0, cs) + CART_SNIPPET.trim() + out.slice(ce + 9);
+  }
+  const cartAdded = !out.includes(CART_MARK);
+  if (cartAdded) out = out.trimEnd() + String.fromCharCode(10) + CART_SNIPPET + String.fromCharCode(10);
+
+  // мелочь 20: старый бренд в head-комментарии
+  out = out.replace('<!-- M.Bez · HEAD · v1.0 -->', '<!-- MBezu · HEAD · v1.1 -->');
+
   const prodAdded = !out.includes(PROD_MARK);
   if (prodAdded) out = out.trimEnd() + String.fromCharCode(10) + PROD_SNIPPET + String.fromCharCode(10);
 
