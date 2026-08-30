@@ -140,6 +140,12 @@ const RU_SNIPPET = `
 function patchHead(src) {
   let out = src;
   const removed = [];
+  // Sprint 15 (3.19): Google Fonts блокировал критический путь до 4 с —
+  // шрифты теперь self-host в нашем бандле (cdn.mbezu.ru/fonts/*).
+  const gf = out;
+  out = out.replace(/[ 	]*<link[^>]*(fonts.googleapis|fonts.gstatic)[^>]*>[ 	]*?
+?/gi, '');
+  if (out !== gf) removed.push('google-fonts');
   for (const needle of DEAD) {
     const esc = needle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const re = new RegExp(`[ \\t]*<script\\b[^>]*src="[^"]*${esc}[^"]*"[^>]*>\\s*</script>[ \\t]*\\r?\\n?`, 'gi');
