@@ -9,7 +9,17 @@ import { routeToPath } from '../common/routes';
 // ─────────────────────────────────────────────────────────────
 
 function CatalogPage({ go, density, initialSeries }) {
-  const [series, setSeries] = React.useState(initialSeries || 'all');
+  const [series, setSeriesRaw] = React.useState(initialSeries || 'all');
+  // Sprint 15 (аудит, мелочь 11): фильтр серии живёт в ?series= — выбор
+  // переживает возврат «назад» и им можно поделиться ссылкой.
+  const setSeries = (id) => {
+    setSeriesRaw(id);
+    try {
+      const u = new URL(window.location.href);
+      if (id === 'all') u.searchParams.delete('series'); else u.searchParams.set('series', id);
+      window.history.replaceState(null, '', u.pathname + u.search);
+    } catch { /* SSR/старые браузеры — фильтр работает и без URL */ }
+  };
   const [subject, setSubject] = React.useState('all');
   const [sort, setSort] = React.useState('default');
   const [view, setView] = React.useState('grid');
@@ -96,12 +106,12 @@ function CatalogPage({ go, density, initialSeries }) {
             flexWrap: 'wrap',
           }} className="resp-flex-col">
             <select value={series} onChange={(e) => setSeries(e.target.value)} className="field" aria-label="Фильтр по серии"
-                    style={{ width: 'auto', padding: '12px 18px', fontSize: 13 }}>
+                    style={{ width: 'auto', padding: '12px 18px', fontSize: 16 }}>
               <option value="all">Все серии</option>
               {SERIES.map((s) => <option key={s.id} value={s.id}>{s.title}</option>)}
             </select>
             <select value={sort} onChange={(e) => setSort(e.target.value)} className="field" aria-label="Сортировка"
-                    style={{ width: 'auto', padding: '12px 18px', fontSize: 13 }}>
+                    style={{ width: 'auto', padding: '12px 18px', fontSize: 16 }}>
               <option value="default">Сначала новые</option>
               <option value="price-asc">Цена ↑</option>
               <option value="price-desc">Цена ↓</option>

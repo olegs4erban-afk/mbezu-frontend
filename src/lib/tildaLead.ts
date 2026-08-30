@@ -176,8 +176,18 @@ export async function submitLead(payload: LeadPayload, opts: SendOptions = {}): 
   }
 
   let notified = false;
+  // Sprint 15 (боевой тест): два сабмита подряд иногда роняли B в анти-спам
+  // Tilda — уведомление в Telegram не уходило, хотя запись в «Заявках» есть.
+  // Пауза перед B + один повтор через 4 с закрывают единичные сбои.
+  const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
   try {
-    await sendLead(buildNotifyPayload(full), { ...opts, selector: '[data-mbezu-notify]', timeout: 8000 });
+    await wait(1800 + Math.random() * 900);
+    try {
+      await sendLead(buildNotifyPayload(full), { ...opts, selector: '[data-mbezu-notify]', timeout: 8000 });
+    } catch {
+      await wait(4000);
+      await sendLead(buildNotifyPayload(full), { ...opts, selector: '[data-mbezu-notify]', timeout: 8000 });
+    }
     notified = true;
   } catch (e) {
     // не влияет на UI — заявка уже во Входящих

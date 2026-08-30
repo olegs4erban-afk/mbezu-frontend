@@ -275,7 +275,7 @@ function Footer({ go }) {
                 <li key={id}>
                   <a href={routeToPath(id as RouteName)}
                      onClick={id === 'cart' ? openNativeCart : undefined}
-                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}
                      className="uh">{label}</a>
                 </li>
               ))}
@@ -286,12 +286,12 @@ function Footer({ go }) {
             <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Студия</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <li><a href={routeToPath('about')} className="uh"
-                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>О художнике</a></li>
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}>О художнике</a></li>
               <li><span style={{ color: 'rgba(245,239,226,.72)', fontSize: 14 }}>Школа · скоро</span></li>
               <li><a href={routeToPath('legal', { section: 'delivery' })} className="uh"
-                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>Доставка и оплата</a></li>
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}>Доставка и оплата</a></li>
               <li><a href={routeToPath('legal', { section: 'returns' })} className="uh"
-                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>Возврат и обмен</a></li>
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}>Возврат и обмен</a></li>
             </ul>
           </div>
 
@@ -307,7 +307,7 @@ function Footer({ go }) {
               ].map(([sec, lbl]) => (
                 <li key={sec}>
                   <a href={routeToPath('legal', { section: sec })} className="uh"
-                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14 }}>{lbl}</a>
+                     style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}>{lbl}</a>
                 </li>
               ))}
             </ul>
