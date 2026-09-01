@@ -1,0 +1,354 @@
+{
+  "about": {
+    "visibleForms": [
+      {
+        "cls": "t-form js-form-proccess t-form_inputs-total_19 ",
+        "w": 202,
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "lead_ref",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "name",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "phone",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "email",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "city",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "message",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "notes",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "size",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "style",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "palette",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "budget",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "weeks",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "source",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "page",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "ts",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "utm_source",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "utm_medium",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "utm_campaign",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "utm_content",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          }
+        ],
+        "btn": "Отправить"
+      },
+      {
+        "cls": "t-form js-form-proccess t-form_inputs-total_6 ",
+        "w": 202,
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "lead_ref",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "source",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "page",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "city",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "budget",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "ts",
+            "fs": 16,
+            "w": 202,
+            "h": 60
+          }
+        ],
+        "btn": "Отправить"
+      },
+      {
+        "cls": "",
+        "w": 339,
+        "fields": [
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "Имя",
+            "fs": 16,
+            "w": 339,
+            "h": 48
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "Город (не обязательно)",
+            "fs": 16,
+            "w": 339,
+            "h": 48
+          },
+          {
+            "tag": "textarea",
+            "type": "textarea",
+            "ph": "Какая работа у вас и как она живёт ",
+            "fs": 16,
+            "w": 339,
+            "h": 110
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "ph": "company_website",
+            "fs": 13.3333,
+            "w": 8,
+            "h": 6
+          },
+          {
+            "tag": "input",
+            "type": "checkbox",
+            "ph": "",
+            "fs": 13.3333,
+            "w": 13,
+            "h": 13
+          }
+        ],
+        "btn": ""
+      }
+    ],
+    "consentCheckbox": {
+      "w": 13,
+      "h": 13,
+      "labelW": 339,
+      "labelH": 59,
+      "labelText": "Согласен(на) на обработку персональных данных и публикацию отзыва — политика кон"
+    },
+    "cta": {
+      "sel": "H2.display resp-h1",
+      "fs": 36,
+      "left": 18,
+      "right": 357,
+      "w": 339,
+      "scrollW": 339,
+      "clientW": 339,
+      "text": "Заказать картину специально для вашей стены.",
+      "yAbs": 9684
+    },
+    "reviewsY": 8701,
+    "hiddenTildaForms": [
+      {
+        "id": "input_1788041233686201",
+        "top": 9484,
+        "hiddenBy": [
+          "DIV.t-input-group t-input-group_in  d:none v:visible o:1 pos:static z:auto",
+          "DIV.t706__cartwin d:none v:visible o:1 pos:fixed z:4002"
+        ]
+      },
+      {
+        "id": "input_1788041233686202",
+        "top": 9484,
+        "hiddenBy": [
+          "DIV.t-input-group t-input-group_in  d:none v:visible o:1 pos:static z:auto",
+          "DIV.t706__cartwin d:none v:visible o:1 pos:fixed z:4002"
+        ]
+      },
+      {
+        "id": "input_1788039916510100",
+        "top": 105,
+        "hiddenBy": []
+      }
+    ]
+  },
+  "legal": {
+    "before": "Публичная оферта",
+    "after": {
+      "h2": "Возврат и обмен",
+      "url": "/legal",
+      "eyebrows": [
+        "MILA BEZÚ\n31 АВГУСТА 2026 Г. · MOSCOU",
+        "ДОКУМЕНТЫ",
+        "ОСОБЕННОСТИ ВОЗВРАТА ПРОИЗВЕДЕНИЙ ИСКУССТВА",
+        "ВАЖНО ЗНАТЬ ДО ПОКУПКИ",
+        "МАГАЗИН",
+        "СТУДИЯ",
+        "ДОКУМЕНТЫ",
+        "СВЯЗЬ"
+      ],
+      "textStart": "ТВА\nВозврат и обмен\nВАЖНО ЗНАТЬ ДО ПОКУПКИ\n\nКаждая работа Mila Bezú — оригинал в единственном экземпляре. По закону РФ это товар с индивидуально-определёнными свойствами, и возврат надлежащего качества не предусмотрен (п. 4 ст. 26.1 ЗоЗПП). Возврат возможен только при наличии недостатков.\n\n01\nВозврат возможен при следующих условиях\n\n1.1. Работа имеет недостатки, не оговорённые в описании на сайте:"
+    },
+    "paragraph": {
+      "fs": "14.5px",
+      "lh": "24.65px",
+      "color": "rgb(107, 93, 74)",
+      "w": 339
+    }
+  },
+  "cart": {
+    "overlay": {
+      "overlayShown": true,
+      "closeBtn": {
+        "w": 375,
+        "h": 50,
+        "top": 0,
+        "right": 375
+      },
+      "emptyMsg": "Корзина пуста. Добавьте в корзину хотя бы один товар"
+    },
+    "afterClose": {
+      "overlayShown": false,
+      "bridgeText": "Отправить\nОтправить\nКорзина\n\nКорзина открывается поверх любой страницы — сейчас откроем её здесь.\n\nОТКРЫТЬ КОРЗИНУ\nВ КАТАЛОГ\nMade on\t\tTilda"
+    },
+    "openBtnBox": {
+      "w": 203,
+      "h": 48
+    },
+    "reopened": true
+  }
+}

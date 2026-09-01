@@ -1,0 +1,51 @@
+{
+  "cta": {
+    "solids": [
+      {
+        "cls": "btn btn-solid",
+        "text": "ЗАКАЗАТЬ ИНДИВИДУАЛЬНО",
+        "rect": {
+          "w": 270,
+          "h": 48,
+          "top": 11582
+        },
+        "visible": true
+      }
+    ],
+    "anyCta": [
+      {
+        "tag": "BUTTON",
+        "text": "ЗАКАЗАТЬ ИНДИВИДУАЛЬНО"
+      }
+    ],
+    "h2s": [
+      "Работы в каталоге",
+      "Картина под ваше место."
+    ],
+    "docHeight": 13800
+  },
+  "tildaInputs": {
+    "found": true,
+    "rect": {
+      "top": -11110,
+      "left": -9979,
+      "w": 202,
+      "h": 60
+    },
+    "display": "inline-block",
+    "visibility": "visible",
+    "opacity": "1",
+    "hiddenBy": null,
+    "popupClass": null,
+    "popupDisplay": null,
+    "popupVisibility": null,
+    "popupZ": null,
+    "atPoint": "HEADER.resp-pad"
+  },
+  "certFails": [
+    {
+      "url": "https://hdrc.yandex.net/",
+      "err": "net::ERR_CERT_AUTHORITY_INVALID"
+    }
+  ]
+}

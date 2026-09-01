@@ -47,7 +47,7 @@ function Breadcrumbs({ items }: { items: Array<{ label: React.ReactNode; href?: 
                  letterSpacing: '.14em', textTransform: 'uppercase',
                  fontWeight: i === items.length - 1 ? 500 : 400,
                }}
-               className="uh">
+               className="uh uh-tap">
               {it.label}
             </a>
           ) : (
@@ -166,9 +166,10 @@ function ArtCard({ art, onOpen, index, total, size = 'thumb', priority = false }
             <span style={{ fontSize: 12, color: 'var(--ink-2)' }}>{reviewsFor(art.id).length}</span>
           </div>
         )}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10, fontSize: 13, color: 'var(--ink-2)' }}>
+        {/* Sprint 15 (моб. аудит): цена и размер были 13px — ключевая покупочная строка мельче основного текста */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10, fontSize: 14, color: 'var(--ink-2)' }}>
           <span>{isRound ? `⌀ ${art.w} см` : `${art.w}×${art.h} см`} · {art.year}</span>
-          <span style={{ fontWeight: 500, color: 'var(--ink)' }}>{formatPrice(art.price)}</span>
+          <span style={{ fontWeight: 600, fontSize: 15, color: 'var(--ink)' }}>{formatPrice(art.price)}</span>
         </div>
       </div>
     </a>

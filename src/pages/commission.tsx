@@ -471,7 +471,8 @@ function CommissionPage({ go, refId }) {
                   <input className="field" placeholder="Имя" required value={form.name} onChange={(e) => upd('name', e.target.value)} />
                   <input className="field" placeholder="Email или Telegram" required value={form.email} onChange={(e) => upd('email', e.target.value)} />
                   <input className="field" placeholder="Город" value={form.city} onChange={(e) => upd('city', e.target.value)} />
-                  <input className="field" placeholder="Куда повесим (опц.)" value={form.where || ''} onChange={(e) => upd('where', e.target.value)} />
+                  {/* Sprint 15 (моб. аудит): «(опц.)» обрезался в узкой колонке 375px */}
+                  <input className="field" placeholder="Куда повесим" value={form.where || ''} onChange={(e) => upd('where', e.target.value)} />
                 </div>
                 <textarea className="field" placeholder="Дополнительно — настроение, ассоциации, ссылки на референсы…" rows={4} style={{ marginTop: 14 }}
                           value={form.notes} onChange={(e) => upd('notes', e.target.value)} />
@@ -483,11 +484,11 @@ function CommissionPage({ go, refId }) {
                 {/* 152-ФЗ: без согласия отправка заблокирована */}
                 <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginTop: 16, cursor: 'pointer', fontSize: 13, lineHeight: 1.55 }}>
                   <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
-                         style={{ marginTop: 3, width: 16, height: 16, accentColor: 'var(--accent)', flexShrink: 0 }} />
+                         style={{ marginTop: 3, width: 20, height: 20, accentColor: 'var(--accent)', flexShrink: 0 }} />
                   <span style={{ color: 'var(--ink-2)' }}>
                     Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
                     <a href="/legal?section=privacy" onClick={(e) => { e.preventDefault(); go('legal', { section: 'privacy' }); }}
-                       style={{ color: 'var(--accent)' }}>Политика ПД</a>
+                       className="uh-tap" style={{ color: 'var(--accent)' }}>Политика ПД</a>
                   </span>
                 </label>
                 {touched && !consent && (

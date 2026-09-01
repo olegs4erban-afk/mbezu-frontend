@@ -204,11 +204,11 @@ function AboutPage({ go }) {
           <div>
             <Eyebrow accent>Связь</Eyebrow>
             <ul style={{ listStyle: 'none', margin: '20px 0 0', padding: 0, fontSize: 16, color: 'var(--ink-2)', lineHeight: 2 }}>
-              <li><a href={`mailto:${ABOUT.contacts.email}`} className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>{ABOUT.contacts.email}</a></li>
-              <li><a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>{ABOUT.contacts.phone}</a></li>
-              <li><a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>Telegram · @{ABOUT.contacts.telegram}</a></li>
-              <li><a href={`https://instagram.com/${ABOUT.contacts.instagram}`} target="_blank" rel="noopener" className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>Instagram · @{ABOUT.contacts.instagram}</a></li>
-              <li><a href={`https://vk.com/${ABOUT.contacts.vk}`} target="_blank" rel="noopener" className="uh" style={{ textDecoration: 'none', color: 'inherit' }}>VK · @{ABOUT.contacts.vk}</a></li>
+              <li><a href={`mailto:${ABOUT.contacts.email}`} className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>{ABOUT.contacts.email}</a></li>
+              <li><a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>{ABOUT.contacts.phone}</a></li>
+              <li><a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>Telegram · @{ABOUT.contacts.telegram}</a></li>
+              <li><a href={`https://instagram.com/${ABOUT.contacts.instagram}`} target="_blank" rel="noopener" className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>Instagram · @{ABOUT.contacts.instagram}</a></li>
+              <li><a href={`https://vk.com/${ABOUT.contacts.vk}`} target="_blank" rel="noopener" className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>VK · @{ABOUT.contacts.vk}</a></li>
             </ul>
           </div>
         </div>

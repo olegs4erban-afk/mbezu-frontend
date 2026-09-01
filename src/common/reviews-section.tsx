@@ -35,7 +35,7 @@ function StarsInput({ value, onChange }: { value: number; onChange: (v: number) 
                 aria-label={`${i} из 5`}
                 onClick={() => onChange(i)}
                 onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(0)}
-                style={{ background: 'none', border: 'none', padding: 4, cursor: 'pointer', lineHeight: 0 }}>
+                style={{ background: 'none', border: 'none', padding: 7, cursor: 'pointer', lineHeight: 0 }}>
           <svg width={30} height={30} viewBox="0 0 24 24" aria-hidden="true"
                fill={i <= shown ? 'var(--accent)' : 'none'} stroke="var(--accent)" strokeWidth="1.4">
             <path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z" />
@@ -141,7 +141,7 @@ function ReviewForm() {
              style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0 }} />
       <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontSize: 13, lineHeight: 1.5, color: 'var(--ink-2)', cursor: 'pointer' }}>
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
-               style={{ marginTop: 2, accentColor: 'var(--accent)' }} />
+               style={{ marginTop: 2, width: 18, height: 18, flexShrink: 0, accentColor: 'var(--accent)' }} />
         <span>
           Согласен(на) на обработку персональных данных и публикацию отзыва —{' '}
           <a href="/legal?section=privacy" style={{ color: 'var(--accent)' }}>политика конфиденциальности</a>

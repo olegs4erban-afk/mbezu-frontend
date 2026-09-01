@@ -12,7 +12,7 @@ const HTML = `<!-- MBezu · cart · заглушка-мост (Sprint 15, ауд
 <div style="min-height:60vh;display:grid;place-items:center;background:var(--bg,#ede5d6);padding:60px 24px;text-align:center">
   <div>
     <h1 class="display" style="margin:0 0 12px;font-size:clamp(40px,6vw,72px);font-weight:500;letter-spacing:-.03em;color:var(--ink,#2a2520)">Корзина</h1>
-    <p style="margin:0 0 28px;font-size:16px;color:var(--ink-2,#6b5d4a);max-width:420px">Корзина открывается поверх любой страницы — сейчас откроем её здесь.</p>
+    <p style="margin:0 0 28px;font-size:16px;color:var(--ink-2,#6b5d4a);max-width:420px">Если в корзине есть работы — она откроется здесь сама. Пусто? Каталог рядом.</p>
     <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <button class="btn btn-solid" style="cursor:pointer" onclick="typeof tcart__openCart==='function'&&tcart__openCart()">Открыть корзину</button>
       <a class="btn btn-ghost" style="text-decoration:none" href="/catalog">В каталог</a>
@@ -20,7 +20,7 @@ const HTML = `<!-- MBezu · cart · заглушка-мост (Sprint 15, ауд
   </div>
 </div>
 <script>
-(function(){var n=0,t=setInterval(function(){n++;if(typeof tcart__openCart==='function'){clearInterval(t);tcart__openCart();}else if(n>40)clearInterval(t);},250);})();
+(function(){function has(){try{var c=JSON.parse(localStorage.getItem('tcart')||'{}');return !!(c.products&&c.products.length);}catch(e){return false;}}var n=0,t=setInterval(function(){n++;if(typeof tcart__openCart==='function'){clearInterval(t);if(has())tcart__openCart();}else if(n>40)clearInterval(t);},250);})();
 </script>`;
 
 await withSession(async ({ page }) => {

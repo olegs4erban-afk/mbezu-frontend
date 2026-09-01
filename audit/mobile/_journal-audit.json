@@ -1,0 +1,302 @@
+[
+  {
+    "page": "journal",
+    "url": "https://mbezu.ru/journal",
+    "title": "Журнал о живописи — статьи художника Mila Bezú | mbezu.ru",
+    "common": {
+      "innerWidth": 375,
+      "scrollWidth": 375,
+      "hasHScroll": false,
+      "wide": [],
+      "smallTap": [],
+      "tinyText": [
+        {
+          "sel": "div.eyebrow.accent",
+          "size": 10.5,
+          "text": "ЗАМЕТКИ ИЗ МАСТЕРСКОЙ"
+        },
+        {
+          "sel": "span.t-cms__card__text.js-cms-text-container",
+          "size": 10,
+          "text": "30.08.2026"
+        }
+      ],
+      "zoomInputs": [],
+      "overlaps": []
+    },
+    "specific": {
+      "h1": {
+        "text": "Журнал о живописи",
+        "fontSize": "44px",
+        "sel": "h1.display"
+      },
+      "filters": [],
+      "cardCount": 0,
+      "cards": [],
+      "showMore": null,
+      "hasOurTabbar": false,
+      "hasOurTopbar": false,
+      "footerLinks": [],
+      "footerHtmlHint": "NO FOOTER ELEMENT"
+    },
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "failedReqs": []
+  },
+  {
+    "page": "tpost-kak-vibrat",
+    "url": "https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer",
+    "title": "Как выбрать картину для гостиной: размер, цвет, сюжет",
+    "common": {
+      "innerWidth": 375,
+      "scrollWidth": 375,
+      "hasHScroll": false,
+      "wide": [],
+      "smallTap": [
+        {
+          "sel": "a",
+          "text": "монохромная живопись",
+          "w": 155,
+          "h": 19,
+          "y": 1256
+        },
+        {
+          "sel": "a",
+          "text": "городские пейзажи",
+          "w": 128,
+          "h": 19,
+          "y": 1323
+        },
+        {
+          "sel": "a",
+          "text": "тондо",
+          "w": 38,
+          "h": 19,
+          "y": 1557
+        },
+        {
+          "sel": "a",
+          "text": "смотреть готовые работы",
+          "w": 168,
+          "h": 19,
+          "y": 2051
+        },
+        {
+          "sel": "a",
+          "text": "закажите картину индивидуально",
+          "w": 219,
+          "h": 19,
+          "y": 2096
+        }
+      ],
+      "tinyText": [
+        {
+          "sel": "span.t-cms__page__text.js-cms-text-container",
+          "size": 10,
+          "text": "30.08.2026"
+        }
+      ],
+      "zoomInputs": [],
+      "overlaps": []
+    },
+    "specific": {
+      "h1": {
+        "text": "Как выбрать картину для гостиной: размер, цвет, сюжет",
+        "fontSize": "26px",
+        "width": 295
+      },
+      "bodyText": {
+        "sel": "div.t-cms__page__atom.t-text.t-text_md",
+        "fontSize": "16px",
+        "lineHeight": "23.2px",
+        "width": 335,
+        "count": 7
+      },
+      "h2s": [
+        {
+          "text": "Шаг 1. Размер: правило двух третей",
+          "fontSize": "24px",
+          "width": 335
+        },
+        {
+          "text": "Шаг 2. Цвет: не совпадение, а поддержка",
+          "fontSize": "24px",
+          "width": 335
+        },
+        {
+          "text": "Шаг 3. Сюжет: что вы хотите чувствовать",
+          "fontSize": "24px",
+          "width": 335
+        },
+        {
+          "text": "Частые ошибки",
+          "fontSize": "24px",
+          "width": 335
+        }
+      ],
+      "cover": null,
+      "textLinks": [
+        {
+          "text": "монохромная живопись",
+          "href": "https://mbezu.ru/catalog/monohromnaya",
+          "w": 155,
+          "h": 19,
+          "fontSize": "16px"
+        },
+        {
+          "text": "городские пейзажи",
+          "href": "https://mbezu.ru/catalog/ulitsy-mira",
+          "w": 128,
+          "h": 19,
+          "fontSize": "16px"
+        },
+        {
+          "text": "тондо",
+          "href": "https://mbezu.ru/catalog/tondo",
+          "w": 38,
+          "h": 19,
+          "fontSize": "16px"
+        },
+        {
+          "text": "смотреть готовые работы",
+          "href": "https://mbezu.ru/catalog",
+          "w": 168,
+          "h": 19,
+          "fontSize": "16px"
+        },
+        {
+          "text": "закажите картину индивидуально",
+          "href": "https://mbezu.ru/commission",
+          "w": 219,
+          "h": 19,
+          "fontSize": "16px"
+        }
+      ],
+      "backNav": [],
+      "hasOurTabbar": false,
+      "footerLinks": [],
+      "footerHtmlHint": "NO FOOTER ELEMENT",
+      "prevNextNav": []
+    },
+    "consoleErrors": [],
+    "failedReqs": []
+  },
+  {
+    "page": "tpost-sertifikat",
+    "url": "https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto",
+    "title": "Сертификат подлинности картины: что это и зачем он нужен",
+    "common": {
+      "innerWidth": 375,
+      "scrollWidth": 375,
+      "hasHScroll": false,
+      "wide": [],
+      "smallTap": [
+        {
+          "sel": "a",
+          "text": "каталога",
+          "w": 59,
+          "h": 19,
+          "y": 1338
+        },
+        {
+          "sel": "a",
+          "text": "страницу контактов",
+          "w": 129,
+          "h": 19,
+          "y": 1952
+        },
+        {
+          "sel": "a",
+          "text": "здесь",
+          "w": 37,
+          "h": 19,
+          "y": 1975
+        }
+      ],
+      "tinyText": [
+        {
+          "sel": "span.t-cms__page__text.js-cms-text-container",
+          "size": 10,
+          "text": "30.08.2026"
+        }
+      ],
+      "zoomInputs": [],
+      "overlaps": []
+    },
+    "specific": {
+      "h1": {
+        "text": "Сертификат подлинности картины: что это и зачем он нужен",
+        "fontSize": "26px",
+        "width": 325
+      },
+      "bodyText": {
+        "sel": "div.t-cms__page__atom.t-text.t-text_md",
+        "fontSize": "16px",
+        "lineHeight": "23.2px",
+        "width": 335,
+        "count": 7
+      },
+      "h2s": [
+        {
+          "text": "Что такое сертификат подлинности",
+          "fontSize": "24px",
+          "width": 335
+        },
+        {
+          "text": "Зачем он покупателю",
+          "fontSize": "24px",
+          "width": 335
+        },
+        {
+          "text": "Как это оформлено у нас",
+          "fontSize": "24px",
+          "width": 335
+        },
+        {
+          "text": "На что смотреть при покупке живописи в целом",
+          "fontSize": "24px",
+          "width": 335
+        }
+      ],
+      "cover": null,
+      "textLinks": [
+        {
+          "text": "каталога",
+          "href": "https://mbezu.ru/catalog",
+          "w": 59,
+          "h": 19,
+          "fontSize": "16px"
+        },
+        {
+          "text": "картинам на заказ",
+          "href": "https://mbezu.ru/commission",
+          "w": 330,
+          "h": 41,
+          "fontSize": "16px"
+        },
+        {
+          "text": "страницу контактов",
+          "href": "https://mbezu.ru/contacts",
+          "w": 129,
+          "h": 19,
+          "fontSize": "16px"
+        },
+        {
+          "text": "здесь",
+          "href": "https://mbezu.ru/about",
+          "w": 37,
+          "h": 19,
+          "fontSize": "16px"
+        }
+      ],
+      "backNav": [],
+      "hasOurTabbar": false,
+      "footerLinks": [],
+      "footerHtmlHint": "NO FOOTER ELEMENT",
+      "prevNextNav": []
+    },
+    "consoleErrors": [],
+    "failedReqs": []
+  }
+]

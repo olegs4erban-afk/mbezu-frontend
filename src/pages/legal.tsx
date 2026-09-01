@@ -519,6 +519,8 @@ function LegalPage({ go, section }) {
               {LEGAL_TABS.map((t) => (
                 <button key={t.id} onClick={() => {
                   setTab(t.id);
+                  // Sprint 15 (моб. аудит): раздел — в URL, чтобы F5 и шаринг не теряли выбор
+                  try { history.replaceState(null, '', '/legal?section=' + t.id); } catch { /* SSR/старые браузеры */ }
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }} style={{
                   textAlign: 'left', padding: '14px 18px',

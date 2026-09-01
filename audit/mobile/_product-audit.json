@@ -1,0 +1,351 @@
+{
+  "pages": {
+    "product": {
+      "consoleErrors": [
+        "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+      ],
+      "failedRequests": [],
+      "horizScroll": {
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "hasHScroll": false
+      },
+      "wideElements": [
+        {
+          "sel": "div.t-slds__item.t-slds__item-loaded",
+          "left": 375,
+          "right": 750,
+          "w": 375,
+          "h": 375,
+          "text": ""
+        },
+        {
+          "sel": "div.t-slds__wrapper",
+          "left": 375,
+          "right": 750,
+          "w": 375,
+          "h": 375,
+          "text": ""
+        },
+        {
+          "sel": "div.t-slds__imgwrapper",
+          "left": 375,
+          "right": 750,
+          "w": 375,
+          "h": 375,
+          "text": ""
+        },
+        {
+          "sel": "div.t-slds__bgimg.t-bgimg.js-product-img",
+          "left": 375,
+          "right": 750,
+          "w": 375,
+          "h": 375,
+          "text": ""
+        }
+      ],
+      "smallTapTargets": [],
+      "smallText": [],
+      "smallInputs": [],
+      "specifics": {
+        "gallery": {
+          "found": true,
+          "x": 0,
+          "y": 50,
+          "w": 375,
+          "h": 375,
+          "slides": 3,
+          "thumbs": 1
+        },
+        "galleryArrows": [],
+        "price": {
+          "text": "100 000",
+          "visible": true,
+          "x": 20,
+          "y": 525,
+          "w": 57,
+          "h": 22
+        },
+        "priceCurrency": "₽",
+        "buyButtons": [
+          {
+            "text": "Купить",
+            "cls": "t-store__prod-popup__btn t-btn t-btnflex_sm t-btnflex t-btnf",
+            "x": 20,
+            "y": 567,
+            "w": 335,
+            "h": 50
+          }
+        ],
+        "characteristics": [
+          "Серия: МонохромнаяТехника: Холст, маслоРазмер: 100×60 смГод: 2024Ориентация: ГоризонтальнаяПодпись: ДаСертификат: Да"
+        ],
+        "description": {
+          "present": true,
+          "len": 1052,
+          "hasH2": true,
+          "firstH2": "О картине «Волна. Сепия»"
+        },
+        "h2s": [
+          {
+            "text": "О картине «Волна. Сепия»",
+            "fs": "18px",
+            "x": 20,
+            "y": 647,
+            "w": 335,
+            "h": 28
+          },
+          {
+            "text": "Серия «Монохромная серия»",
+            "fs": "18px",
+            "x": 20,
+            "y": 768,
+            "w": 335,
+            "h": 28
+          },
+          {
+            "text": "Картина в интерьере",
+            "fs": "18px",
+            "x": 20,
+            "y": 851,
+            "w": 335,
+            "h": 28
+          },
+          {
+            "text": "Покупка, доставка и подлинность",
+            "fs": "18px",
+            "x": 20,
+            "y": 972,
+            "w": 335,
+            "h": 28
+          }
+        ],
+        "similarCount": 0,
+        "title": "Волна. Сепия"
+      }
+    },
+    "cart": {
+      "consoleErrors": [],
+      "failedRequests": [],
+      "horizScroll": {
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "hasHScroll": false
+      },
+      "wideElements": [
+        {
+          "sel": "div.t-slds__item.t-slds__item-loaded",
+          "left": 375,
+          "right": 750,
+          "w": 375,
+          "h": 375,
+          "text": ""
+        },
+        {
+          "sel": "div.t-slds__wrapper",
+          "left": 375,
+          "right": 750,
+          "w": 375,
+          "h": 375,
+          "text": ""
+        },
+        {
+          "sel": "div.t-slds__imgwrapper",
+          "left": 375,
+          "right": 750,
+          "w": 375,
+          "h": 375,
+          "text": ""
+        },
+        {
+          "sel": "div.t-slds__bgimg.t-bgimg.js-product-img",
+          "left": 375,
+          "right": 750,
+          "w": 375,
+          "h": 375,
+          "text": ""
+        }
+      ],
+      "smallTapTargets": [
+        {
+          "tag": "button",
+          "cls": "t706__close-button.t706__cartwin-close-wrapper",
+          "text": "",
+          "w": 20,
+          "h": 36
+        },
+        {
+          "tag": "a",
+          "cls": "",
+          "text": "Волна. Сепия",
+          "w": 100,
+          "h": 21
+        }
+      ],
+      "smallText": [],
+      "smallInputs": [
+        {
+          "sel": "input[name=consent].t-checkbox.js-tilda-rule",
+          "size": 13.3333,
+          "placeholder": ""
+        }
+      ],
+      "specifics": {
+        "products": [
+          {
+            "title": "Волна. Сепия",
+            "amount": "100 000₽",
+            "plusMinus": true,
+            "delBtn": {
+              "x": 335,
+              "y": 163,
+              "w": 20,
+              "h": 20,
+              "bottom": 183
+            }
+          }
+        ],
+        "total": {
+          "text": "Сумма: 100 000₽",
+          "visible": true
+        },
+        "promo": {
+          "found": false
+        },
+        "promoLink": null,
+        "formInputs": [
+          {
+            "name": "Name",
+            "placeholder": "",
+            "type": "text",
+            "fs": "16px",
+            "x": 20,
+            "y": 390,
+            "w": 335,
+            "h": 56,
+            "bottom": 446
+          },
+          {
+            "name": "Email",
+            "placeholder": "",
+            "type": "email",
+            "fs": "16px",
+            "x": 20,
+            "y": 495,
+            "w": 335,
+            "h": 56,
+            "bottom": 551
+          },
+          {
+            "name": "tildaspec-phone-part[]",
+            "placeholder": "(000) 000-00-00",
+            "type": "tel",
+            "fs": "16px",
+            "x": 108,
+            "y": 600,
+            "w": 226,
+            "h": 54,
+            "bottom": 654
+          },
+          {
+            "name": "city",
+            "placeholder": "Москва",
+            "type": "text",
+            "fs": "16px",
+            "x": 20,
+            "y": 703,
+            "w": 335,
+            "h": 56,
+            "bottom": 759
+          },
+          {
+            "name": "address",
+            "placeholder": "улица, дом, квартира",
+            "type": "text",
+            "fs": "16px",
+            "x": 20,
+            "y": 807,
+            "w": 335,
+            "h": 56,
+            "bottom": 863
+          },
+          {
+            "name": "consent",
+            "placeholder": "",
+            "type": "checkbox",
+            "fs": "13.3333px",
+            "x": 24,
+            "y": 940,
+            "w": 13,
+            "h": 13,
+            "bottom": 953
+          }
+        ],
+        "formLabels": [
+          "Имя",
+          "Email",
+          "Телефон",
+          "Город",
+          "Адрес доставки или пункт выдачи СДЭК",
+          "Согласен(на) на обработку персональных данных (152"
+        ],
+        "consent": {
+          "found": true,
+          "visible": true,
+          "x": 24,
+          "y": 940,
+          "w": 13,
+          "h": 13,
+          "bottom": 953
+        },
+        "consentLabel": null,
+        "submitBtn": {
+          "text": "Оформить заказ #rec2293310791 .t-btnflex.t-btnflex",
+          "visible": true,
+          "x": 20,
+          "y": 1064,
+          "w": 335,
+          "h": 60,
+          "bottom": 1124,
+          "inViewportNow": false,
+          "disabled": false,
+          "fs": "16px"
+        },
+        "submitScrollParent": {
+          "cls": "t706__cartwin-content",
+          "scrollH": 1252,
+          "clientH": 1252,
+          "overflowY": "auto"
+        },
+        "transformAncestors": [],
+        "cartwinStyle": {
+          "position": "fixed",
+          "height": "812px",
+          "overflowY": "auto",
+          "top": "0px"
+        },
+        "cartwinRect": {
+          "x": 0,
+          "y": 0,
+          "w": 375,
+          "h": 812,
+          "bottom": 812
+        },
+        "windowH": 812,
+        "bodyOverflow": "hidden",
+        "submitReach": {
+          "found": true,
+          "inViewportAfterScroll": true,
+          "rect": {
+            "x": 20,
+            "y": 574,
+            "w": 335,
+            "h": 60
+          },
+          "elementAtCenter": "span.t-btnflex__text",
+          "coveredByOther": false
+        }
+      }
+    }
+  }
+}

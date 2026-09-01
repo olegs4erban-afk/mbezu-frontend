@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArtCard, ArtRow, Breadcrumbs, Eyebrow } from '../common/atoms';
 import { ARTWORKS, SERIES, SUBJECTS, visibleArtworks } from '../common/data';
-import { INTERIOR_GUIDE_URL, SERIES_INTERIORS } from '../common/seo';
+import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, plural } from '../common/seo';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
@@ -55,13 +55,14 @@ function CatalogPage({ go, density, initialSeries }) {
               { label: 'Каталог' },
             ]} />
 
-        {/* Hero strip: H1 + counter */}
+        {/* Hero strip: H1 + counter. Sprint 15 (моб. аудит): cat-hero сжимает отступы —
+            первая работа была на 2.3 экрана ниже верха */}
         <div style={{
           marginTop: 36, paddingBottom: 28,
           borderBottom: '1px solid var(--ink)',
           display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)',
           gap: 24, alignItems: 'end',
-        }} className="reveal r1 resp-stack-12">
+        }} className="reveal r1 resp-stack-12 cat-hero">
           <div style={{ gridColumn: '1 / 9' }}>
             <Eyebrow accent>{activeSeries ? `Серия · ${activeSeries.years}` : '§ 01 · index · 2026'}</Eyebrow>
             <h1 className="display resp-display-md" style={{
@@ -74,8 +75,10 @@ function CatalogPage({ go, density, initialSeries }) {
                 : <>Картины маслом,{' '}<br/><span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>в наличии</span></>}
             </h1>
           </div>
-          <div style={{ gridColumn: '9 / 13', textAlign: 'right' }}>
-            <div className="cat-no" style={{ fontSize: 12 }}>всего · {total} работ</div>
+          {/* Sprint 15 (моб. аудит): декоративный счётчик скрыт на мобиле (съедал пол-экрана),
+              «21 работ» → правильное склонение */}
+          <div style={{ gridColumn: '9 / 13', textAlign: 'right' }} className="hide-mobile">
+            <div className="cat-no" style={{ fontSize: 12 }}>всего · {total} {plural(total)}</div>
             <div className="display" style={{
               fontSize: 56, fontWeight: 500, letterSpacing: '-.03em', lineHeight: 1, color: 'var(--accent)',
               marginTop: 12,
@@ -84,14 +87,15 @@ function CatalogPage({ go, density, initialSeries }) {
         </div>
 
         {/* Filter bar */}
-        <div className="reveal r2 resp-stack-12" style={{
+        <div className="reveal r2 resp-stack-12 cat-filter" style={{
           marginTop: 40,
           display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 24,
           paddingBottom: 28, borderBottom: '1px solid var(--rule-soft)',
         }}>
-          {/* Subject chips */}
-          <div style={{ gridColumn: '1 / 9' }} className="resp-scroll-x" >
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          {/* Subject chips. Sprint 15 (моб. аудит): resp-scroll-x на flex-контейнере —
+              на мобиле чипы в одну прокручиваемую строку вместо 4 рядов */}
+          <div style={{ gridColumn: '1 / 9' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }} className="resp-scroll-x">
               {SUBJECTS.map((s) => (
                 <button key={s.id}
                         className={'chip' + (subject === s.id ? ' is-active' : '')}
@@ -102,10 +106,11 @@ function CatalogPage({ go, density, initialSeries }) {
             </div>
           </div>
           {/* Series select + sort */}
+          {/* Sprint 15 (моб. аудит): catalog-controls — селекты парой в ряд вместо трёх этажей */}
           <div style={{
             gridColumn: '9 / 13', display: 'flex', gap: 10, justifyContent: 'flex-end',
             flexWrap: 'wrap',
-          }} className="resp-flex-col">
+          }} className="catalog-controls">
             <select value={series} onChange={(e) => setSeries(e.target.value)} className="field" aria-label="Фильтр по серии"
                     style={{ width: 'auto', padding: '12px 18px', fontSize: 16 }}>
               <option value="all">Все серии</option>
@@ -124,7 +129,7 @@ function CatalogPage({ go, density, initialSeries }) {
                       style={{
                         background: view === 'grid' ? 'var(--ink)' : 'transparent',
                         color: view === 'grid' ? 'var(--bg)' : 'var(--ink)',
-                        border: 0, padding: '12px 18px', fontFamily: 'var(--mono)',
+                        border: 0, padding: '14px 18px', minHeight: 44, fontFamily: 'var(--mono)',
                         fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase',
                         cursor: 'pointer',
                       }}>Сетка</button>
@@ -132,7 +137,7 @@ function CatalogPage({ go, density, initialSeries }) {
                       style={{
                         background: view === 'list' ? 'var(--ink)' : 'transparent',
                         color: view === 'list' ? 'var(--bg)' : 'var(--ink)',
-                        border: 0, padding: '12px 18px', fontFamily: 'var(--mono)',
+                        border: 0, padding: '14px 18px', minHeight: 44, fontFamily: 'var(--mono)',
                         fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase',
                         cursor: 'pointer',
                       }}>Список</button>
@@ -166,7 +171,7 @@ function CatalogPage({ go, density, initialSeries }) {
             </button>
           </div>
         ) : view === 'grid' ? (
-          <div className="reveal r3"
+          <div className="reveal r3 cat-grid"
                style={{
                  marginTop: 48,
                  display: 'grid',
@@ -210,8 +215,8 @@ function CatalogPage({ go, density, initialSeries }) {
             </div>
             <p style={{ margin: '22px 0 0', fontSize: 14.5, color: 'var(--ink-2)' }}>
               Сомневаетесь в размере и цвете — разбор с примерами в журнале:{' '}
-              <a href={INTERIOR_GUIDE_URL} style={{ color: 'var(--accent)' }}>как выбрать картину для гостиной</a>.
-              Ищете подарок — <a href="/podarok" style={{ color: 'var(--accent)' }}>картина в подарок</a>.
+              <a href={INTERIOR_GUIDE_URL} className="uh-tap" style={{ color: 'var(--accent)' }}>как выбрать картину для гостиной</a>.
+              Ищете подарок — <a href="/podarok" className="uh-tap" style={{ color: 'var(--accent)' }}>картина в подарок</a>.
             </p>
           </section>
         )}

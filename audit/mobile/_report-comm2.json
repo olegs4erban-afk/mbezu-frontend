@@ -1,0 +1,51 @@
+{
+  "palette": {
+    "swatchGridVisible": true,
+    "colorInputVisible": true,
+    "gridColumns": 6,
+    "cellSize": "50x50",
+    "gridRight": 357,
+    "colorInputSize": "64x44"
+  },
+  "customSize": {
+    "visible": false
+  },
+  "consentAndSubmit": {
+    "checkbox": {
+      "w": 16,
+      "h": 16
+    },
+    "label": {
+      "w": 339,
+      "h": 40
+    },
+    "submit": {
+      "w": 237,
+      "h": 55
+    },
+    "submitFontSize": "13px"
+  },
+  "errNoConsent": {
+    "consentError": true,
+    "fieldsError": false,
+    "invalidNative": [],
+    "geom": {
+      "fontSize": "12.5px",
+      "color": "rgb(87, 71, 31)",
+      "top": 331,
+      "inViewport": true
+    }
+  },
+  "errShortFields": {
+    "fieldsError": true,
+    "sentScreen": false,
+    "geom": {
+      "fontSize": "13.5px",
+      "top": 337,
+      "inViewport": true
+    }
+  },
+  "failedRequests": [
+    "net::ERR_CERT_AUTHORITY_INVALID https://hdrc.yandex.net/"
+  ]
+}

@@ -1,0 +1,687 @@
+[
+  {
+    "name": "catalog",
+    "url": "https://mbezu.ru/catalog",
+    "audit": {
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "hasHScroll": false,
+      "wideElements": [],
+      "wideCount": 0,
+      "smallTaps": [
+        {
+          "sel": "a.skip-link",
+          "text": "К СОДЕРЖИМОМУ",
+          "w": 148,
+          "h": 39
+        },
+        {
+          "sel": "a.uh",
+          "text": "MBEZU",
+          "w": 44,
+          "h": 19
+        },
+        {
+          "sel": "button",
+          "text": "СЕТКА",
+          "w": 77,
+          "h": 38
+        },
+        {
+          "sel": "button",
+          "text": "СПИСОК",
+          "w": 85,
+          "h": 38
+        },
+        {
+          "sel": "a.uh",
+          "text": "milabezu.art@gmail.com",
+          "w": 148,
+          "h": 17
+        },
+        {
+          "sel": "a.uh",
+          "text": "+7 916 764 10 39",
+          "w": 102,
+          "h": 17
+        }
+      ],
+      "smallTapsCount": 6,
+      "smallText": [
+        {
+          "sel": "span",
+          "fontSize": 10.5,
+          "text": "MILA BEZÚ",
+          "count": 2
+        },
+        {
+          "sel": "span.eyebrow.accent",
+          "fontSize": 10.5,
+          "text": "§ 01 · INDEX · 2026",
+          "count": 2
+        },
+        {
+          "sel": "button.chip.is-active",
+          "fontSize": 10.5,
+          "text": "ВСЕ РАБОТЫ",
+          "count": 1
+        },
+        {
+          "sel": "button.chip",
+          "fontSize": 10.5,
+          "text": "МОРЕ И ВОЛНЫ",
+          "count": 5
+        },
+        {
+          "sel": "button",
+          "fontSize": 11,
+          "text": "СЕТКА",
+          "count": 2
+        },
+        {
+          "sel": "span",
+          "fontSize": 9.5,
+          "text": "ФЛАГМАН",
+          "count": 6
+        },
+        {
+          "sel": "span.cat-no",
+          "fontSize": 10,
+          "text": "CAT. № 001 / 021",
+          "count": 42
+        },
+        {
+          "sel": "div.eyebrow",
+          "fontSize": 10.5,
+          "text": "МАГАЗИН",
+          "count": 4
+        },
+        {
+          "sel": "span",
+          "fontSize": 11,
+          "text": "ИП Клевер Л.А.",
+          "count": 7
+        },
+        {
+          "sel": "span.mono",
+          "fontSize": 10.5,
+          "text": "© MBEZU STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ",
+          "count": 2
+        },
+        {
+          "sel": "span.tabbar-label",
+          "fontSize": 9,
+          "text": "ГЛАВНАЯ",
+          "count": 4
+        }
+      ],
+      "smallInputs": [],
+      "h1": {
+        "text": "Картины маслом, в наличии",
+        "fontSize": "40px"
+      },
+      "selects": [
+        {
+          "label": "Фильтр по серии",
+          "fontSize": "16px",
+          "w": 339,
+          "h": 51,
+          "top": 694,
+          "value": "Все серии"
+        },
+        {
+          "label": "Сортировка",
+          "fontSize": "16px",
+          "w": 339,
+          "h": 51,
+          "top": 755,
+          "value": "Сначала новые"
+        }
+      ],
+      "grid": {
+        "computedCols": 1,
+        "cardCount": 21,
+        "firstCardWidth": 339,
+        "firstCardHref": "/catalog/tproduct/566542733172-volna-sepiya",
+        "metaSamples": [
+          {
+            "text": "100×60 см · 2024",
+            "fontSize": "13px"
+          },
+          {
+            "text": "100 000 ₽",
+            "fontSize": "13px"
+          }
+        ],
+        "titleFontSize": "22px"
+      },
+      "seoText": null,
+      "kuda": null,
+      "cta": null,
+      "overlapsFirstScreen": [
+        {
+          "a": "input#input_1788039916510100 \"\"",
+          "b": "input#input_1788039918425100 \"\""
+        },
+        {
+          "a": "input#input_1788039916510101 \"\"",
+          "b": "input#input_1788039918425101 \"\""
+        },
+        {
+          "a": "input#input_1788039916510102 \"\"",
+          "b": "input#input_1788039918425102 \"\""
+        },
+        {
+          "a": "input#input_1788039916510103 \"\"",
+          "b": "input#input_1788039918425103 \"\""
+        },
+        {
+          "a": "input#input_1788039916510104 \"\"",
+          "b": "input#input_1788039918425104 \"\""
+        },
+        {
+          "a": "input#input_1788039916510105 \"\"",
+          "b": "input#input_1788039918425105 \"\""
+        },
+        {
+          "a": "input#input_1788039916510106 \"\"",
+          "b": "span.t-btnflex__text \"Отправить\""
+        }
+      ]
+    },
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "failedRequests": [],
+    "clickCheck": {
+      "cardHref": "/catalog/tproduct/566542733172-volna-sepiya",
+      "landedUrl": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+      "isTproduct": true,
+      "productH1": "Волна. Сепия"
+    }
+  },
+  {
+    "name": "catalog-monohromnaya",
+    "url": "https://mbezu.ru/catalog/monohromnaya",
+    "audit": {
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "hasHScroll": false,
+      "wideElements": [],
+      "wideCount": 0,
+      "smallTaps": [
+        {
+          "sel": "a.skip-link",
+          "text": "К СОДЕРЖИМОМУ",
+          "w": 148,
+          "h": 39
+        },
+        {
+          "sel": "a.uh",
+          "text": "MBEZU",
+          "w": 44,
+          "h": 19
+        },
+        {
+          "sel": "a.uh",
+          "text": "КАТАЛОГ",
+          "w": 62,
+          "h": 19
+        },
+        {
+          "sel": "button",
+          "text": "СЕТКА",
+          "w": 77,
+          "h": 38
+        },
+        {
+          "sel": "button",
+          "text": "СПИСОК",
+          "w": 85,
+          "h": 38
+        },
+        {
+          "sel": "a",
+          "text": "как выбрать картину для гостиной",
+          "w": 317,
+          "h": 39
+        },
+        {
+          "sel": "a",
+          "text": "картина в подарок",
+          "w": 122,
+          "h": 17
+        },
+        {
+          "sel": "a.uh",
+          "text": "milabezu.art@gmail.com",
+          "w": 148,
+          "h": 17
+        },
+        {
+          "sel": "a.uh",
+          "text": "+7 916 764 10 39",
+          "w": 102,
+          "h": 17
+        }
+      ],
+      "smallTapsCount": 9,
+      "smallText": [
+        {
+          "sel": "span",
+          "fontSize": 10.5,
+          "text": "MILA BEZÚ",
+          "count": 2
+        },
+        {
+          "sel": "span.eyebrow.accent",
+          "fontSize": 10.5,
+          "text": "СЕРИЯ · 2024–2025",
+          "count": 3
+        },
+        {
+          "sel": "button.chip.is-active",
+          "fontSize": 10.5,
+          "text": "ВСЕ РАБОТЫ",
+          "count": 1
+        },
+        {
+          "sel": "button.chip",
+          "fontSize": 10.5,
+          "text": "МОРЕ И ВОЛНЫ",
+          "count": 5
+        },
+        {
+          "sel": "button",
+          "fontSize": 11,
+          "text": "СЕТКА",
+          "count": 2
+        },
+        {
+          "sel": "span",
+          "fontSize": 9.5,
+          "text": "ФЛАГМАН",
+          "count": 1
+        },
+        {
+          "sel": "span.cat-no",
+          "fontSize": 10,
+          "text": "CAT. № 001 / 005",
+          "count": 10
+        },
+        {
+          "sel": "div.eyebrow",
+          "fontSize": 10.5,
+          "text": "МАГАЗИН",
+          "count": 4
+        },
+        {
+          "sel": "span",
+          "fontSize": 11,
+          "text": "ИП Клевер Л.А.",
+          "count": 7
+        },
+        {
+          "sel": "span.mono",
+          "fontSize": 10.5,
+          "text": "© MBEZU STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ",
+          "count": 2
+        },
+        {
+          "sel": "span.tabbar-label",
+          "fontSize": 9,
+          "text": "ГЛАВНАЯ",
+          "count": 4
+        }
+      ],
+      "smallInputs": [],
+      "h1": {
+        "text": "Монохромные картины маслом",
+        "fontSize": "40px"
+      },
+      "selects": [
+        {
+          "label": "Фильтр по серии",
+          "fontSize": "16px",
+          "w": 339,
+          "h": 51,
+          "top": 694,
+          "value": "Монохромная серия"
+        },
+        {
+          "label": "Сортировка",
+          "fontSize": "16px",
+          "w": 339,
+          "h": 51,
+          "top": 755,
+          "value": "Сначала новые"
+        }
+      ],
+      "grid": {
+        "computedCols": 1,
+        "cardCount": 5,
+        "firstCardWidth": 339,
+        "firstCardHref": "/catalog/tproduct/566542733172-volna-sepiya",
+        "metaSamples": [
+          {
+            "text": "100×60 см · 2024",
+            "fontSize": "13px"
+          },
+          {
+            "text": "100 000 ₽",
+            "fontSize": "13px"
+          }
+        ],
+        "titleFontSize": "22px"
+      },
+      "seoText": {
+        "length": 667,
+        "fontSize": "16px",
+        "preview": "Монохромная серия — живопись маслом без цвета: только свет, тень и форма. Морски"
+      },
+      "kuda": {
+        "heading": "Куда впишется «Монохромная серия»",
+        "cardCount": 3,
+        "cards": [
+          {
+            "room": "Картина в кабинет",
+            "left": 18,
+            "top": 4097,
+            "w": 339,
+            "h": 211
+          },
+          {
+            "room": "Картина в спальню",
+            "left": 18,
+            "top": 4332,
+            "w": 339,
+            "h": 211
+          },
+          {
+            "room": "Картина в гостиную",
+            "left": 18,
+            "top": 4567,
+            "w": 339,
+            "h": 211
+          }
+        ],
+        "stackedInColumn": true
+      },
+      "cta": null,
+      "overlapsFirstScreen": [
+        {
+          "a": "input#input_1788039916510100 \"\"",
+          "b": "input#input_1788039918425100 \"\""
+        },
+        {
+          "a": "input#input_1788039916510101 \"\"",
+          "b": "input#input_1788039918425101 \"\""
+        },
+        {
+          "a": "input#input_1788039916510102 \"\"",
+          "b": "input#input_1788039918425102 \"\""
+        },
+        {
+          "a": "input#input_1788039916510103 \"\"",
+          "b": "input#input_1788039918425103 \"\""
+        },
+        {
+          "a": "input#input_1788039916510104 \"\"",
+          "b": "input#input_1788039918425104 \"\""
+        },
+        {
+          "a": "input#input_1788039916510105 \"\"",
+          "b": "input#input_1788039918425105 \"\""
+        },
+        {
+          "a": "input#input_1788039916510106 \"\"",
+          "b": "span.t-btnflex__text \"Отправить\""
+        }
+      ]
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  {
+    "name": "catalog-tondo",
+    "url": "https://mbezu.ru/catalog/tondo",
+    "audit": {
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "hasHScroll": false,
+      "wideElements": [],
+      "wideCount": 0,
+      "smallTaps": [
+        {
+          "sel": "a.skip-link",
+          "text": "К СОДЕРЖИМОМУ",
+          "w": 148,
+          "h": 39
+        },
+        {
+          "sel": "a.uh",
+          "text": "MBEZU",
+          "w": 44,
+          "h": 19
+        },
+        {
+          "sel": "a.uh",
+          "text": "КАТАЛОГ",
+          "w": 62,
+          "h": 19
+        },
+        {
+          "sel": "button",
+          "text": "СЕТКА",
+          "w": 77,
+          "h": 38
+        },
+        {
+          "sel": "button",
+          "text": "СПИСОК",
+          "w": 85,
+          "h": 38
+        },
+        {
+          "sel": "a",
+          "text": "как выбрать картину для гостиной",
+          "w": 317,
+          "h": 39
+        },
+        {
+          "sel": "a",
+          "text": "картина в подарок",
+          "w": 122,
+          "h": 17
+        },
+        {
+          "sel": "a.uh",
+          "text": "milabezu.art@gmail.com",
+          "w": 148,
+          "h": 17
+        },
+        {
+          "sel": "a.uh",
+          "text": "+7 916 764 10 39",
+          "w": 102,
+          "h": 17
+        }
+      ],
+      "smallTapsCount": 9,
+      "smallText": [
+        {
+          "sel": "span",
+          "fontSize": 10.5,
+          "text": "MILA BEZÚ",
+          "count": 2
+        },
+        {
+          "sel": "span.eyebrow.accent",
+          "fontSize": 10.5,
+          "text": "СЕРИЯ · 2021–2022",
+          "count": 3
+        },
+        {
+          "sel": "button.chip.is-active",
+          "fontSize": 10.5,
+          "text": "ВСЕ РАБОТЫ",
+          "count": 1
+        },
+        {
+          "sel": "button.chip",
+          "fontSize": 10.5,
+          "text": "МОРЕ И ВОЛНЫ",
+          "count": 5
+        },
+        {
+          "sel": "button",
+          "fontSize": 11,
+          "text": "СЕТКА",
+          "count": 2
+        },
+        {
+          "sel": "span",
+          "fontSize": 9.5,
+          "text": "● ТОНДО",
+          "count": 3
+        },
+        {
+          "sel": "span.cat-no",
+          "fontSize": 10,
+          "text": "CAT. № 001 / 002",
+          "count": 4
+        },
+        {
+          "sel": "div.eyebrow",
+          "fontSize": 10.5,
+          "text": "МАГАЗИН",
+          "count": 4
+        },
+        {
+          "sel": "span",
+          "fontSize": 11,
+          "text": "ИП Клевер Л.А.",
+          "count": 7
+        },
+        {
+          "sel": "span.mono",
+          "fontSize": 10.5,
+          "text": "© MBEZU STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ",
+          "count": 2
+        },
+        {
+          "sel": "span.tabbar-label",
+          "fontSize": 9,
+          "text": "ГЛАВНАЯ",
+          "count": 4
+        }
+      ],
+      "smallInputs": [],
+      "h1": {
+        "text": "Круглые картины — тондо",
+        "fontSize": "40px"
+      },
+      "selects": [
+        {
+          "label": "Фильтр по серии",
+          "fontSize": "16px",
+          "w": 339,
+          "h": 51,
+          "top": 694,
+          "value": "Тондо"
+        },
+        {
+          "label": "Сортировка",
+          "fontSize": "16px",
+          "w": 339,
+          "h": 51,
+          "top": 755,
+          "value": "Сначала новые"
+        }
+      ],
+      "grid": {
+        "computedCols": 1,
+        "cardCount": 2,
+        "firstCardWidth": 339,
+        "firstCardHref": "/catalog/tproduct/362279226602-sands-dyuni",
+        "metaSamples": [
+          {
+            "text": "⌀ 40 см · 2021",
+            "fontSize": "13px"
+          },
+          {
+            "text": "17 000 ₽",
+            "fontSize": "13px"
+          }
+        ],
+        "titleFontSize": "22px"
+      },
+      "seoText": {
+        "length": 596,
+        "fontSize": "16px",
+        "preview": "Тондо — картина в круглом формате, традиция эпохи Возрождения, переосмысленная в"
+      },
+      "kuda": {
+        "heading": "Куда впишется «Тондо»",
+        "cardCount": 3,
+        "cards": [
+          {
+            "room": "Картина в прихожую",
+            "left": 18,
+            "top": 2536,
+            "w": 339,
+            "h": 211
+          },
+          {
+            "room": "Картина в детскую",
+            "left": 18,
+            "top": 2771,
+            "w": 339,
+            "h": 187
+          },
+          {
+            "room": "Картина в гостиную",
+            "left": 18,
+            "top": 2982,
+            "w": 339,
+            "h": 187
+          }
+        ],
+        "stackedInColumn": true
+      },
+      "cta": null,
+      "overlapsFirstScreen": [
+        {
+          "a": "input#input_1788039916510100 \"\"",
+          "b": "input#input_1788039918425100 \"\""
+        },
+        {
+          "a": "input#input_1788039916510101 \"\"",
+          "b": "input#input_1788039918425101 \"\""
+        },
+        {
+          "a": "input#input_1788039916510102 \"\"",
+          "b": "input#input_1788039918425102 \"\""
+        },
+        {
+          "a": "input#input_1788039916510103 \"\"",
+          "b": "input#input_1788039918425103 \"\""
+        },
+        {
+          "a": "input#input_1788039916510104 \"\"",
+          "b": "input#input_1788039918425104 \"\""
+        },
+        {
+          "a": "input#input_1788039916510105 \"\"",
+          "b": "input#input_1788039918425105 \"\""
+        },
+        {
+          "a": "input#input_1788039916510106 \"\"",
+          "b": "span.t-btnflex__text \"Отправить\""
+        }
+      ]
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  }
+]

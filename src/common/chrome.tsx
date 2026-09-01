@@ -327,9 +327,10 @@ function Footer({ go }) {
           <div>
             <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Связь</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12, fontSize: 14 }}>
-              <li><a href={`mailto:${ABOUT.contacts.email}`} className="uh"
+              {/* Sprint 15 (моб. аудит): тап-цели контактов были 17px высотой; uh-tap растит их до ~40px без сдвига макета */}
+              <li><a href={`mailto:${ABOUT.contacts.email}`} className="uh uh-tap"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none' }}>{ABOUT.contacts.email}</a></li>
-              <li><a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} className="uh"
+              <li><a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} className="uh uh-tap"
                      style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none' }}>{ABOUT.contacts.phone}</a></li>
               <li style={{ color: 'rgba(245,239,226,.72)' }}>Москва · по записи</li>
             </ul>

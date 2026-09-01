@@ -352,7 +352,8 @@
   .tabbar-icon { position: relative; display: inline-grid; place-items: center; line-height: 0; }
   .tabbar-label {
     font-family: var(--mono);
-    font-size: 9px;
+    /* Sprint 15 (моб. аудит): 9px был на грани читаемости у основной навигации */
+    font-size: 10px;
     letter-spacing: .12em;
     text-transform: uppercase;
     font-weight: 600;
@@ -481,3 +482,34 @@
     color: var(--ink-2);
   }
   .ar-os-pill.is-on { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+/* ── Sprint 15 · мобильный аудит ──────────────────────────────
+   .uh-tap — невидимое расширение тап-цели инлайновых ссылок до ~40px:
+   вертикальный padding компенсирован отрицательным margin, макет не едет. */
+.uh-tap { display: inline-block; padding: 11px 0; margin: -11px 0; }
+
+/* Слайдер бюджета брифа: тонкая полоса 16px — толще тач-зона и крупный бегунок */
+input[type="range"] { height: 32px; }
+input[type="range"]::-webkit-slider-thumb { width: 24px; height: 24px; }
+input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; }
+
+/* Каталог: на мобиле шапка и фильтры компактнее — первая работа ближе к 1-му экрану */
+@media (max-width: 600px) {
+  .cat-hero { margin-top: 14px !important; padding-bottom: 16px !important; }
+  .cat-filter { margin-top: 18px !important; padding-bottom: 18px !important; gap: 14px !important; }
+  .cat-grid { margin-top: 24px !important; }
+  /* селекты серия/сортировка — в один ряд по половине ширины вместо трёх этажей */
+  .catalog-controls {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px !important;
+  }
+  .catalog-controls > select { width: 100% !important; }
+  .catalog-controls > div { grid-column: 1 / -1; justify-content: center; }
+}
+
+/* Подписка: на мобиле согласия видны ДО кнопки «Подписаться» (аудит: жали кнопку, не видя чекбоксов) */
+@media (max-width: 600px) {
+  .nl-form { order: 3; }
+  .nl-consent { order: 2; }
+}

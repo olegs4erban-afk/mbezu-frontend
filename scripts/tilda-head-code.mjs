@@ -96,7 +96,17 @@ const PROD_SNIPPET = `
       s.textContent=JSON.stringify(ld);document.head.appendChild(s);
     }catch(e){}
   }
-  function run(){goldFix();productLd();}
+  function productNav(){
+    if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-prod-nav'))return;
+    var lab=document.querySelector('.t-tildalabel');var host=lab?lab.parentNode:document.body;
+    var nav=document.createElement('nav');nav.id='mbezu-prod-nav';nav.setAttribute('aria-label','Навигация по сайту');
+    nav.style.cssText='padding:28px 20px 36px;background:#ede5d6;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-family:Inter Tight,system-ui,sans-serif';
+    var L=[['/','Главная'],['/catalog','Каталог'],['/commission','На заказ'],['/podarok','В подарок'],['/journal','Журнал']];
+    for(var i=0;i<L.length;i++){var a=document.createElement('a');a.href=L[i][0];a.textContent=L[i][1];
+      a.style.cssText='display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #6f5c2b;border-radius:999px;color:#6f5c2b;text-decoration:none;font-size:14px';nav.appendChild(a);}
+    if(lab)host.insertBefore(nav,lab);else host.appendChild(nav);
+  }
+  function run(){goldFix();productLd();try{productNav();}catch(e){}}
   if(document.readyState!=='loading')run();
   document.addEventListener('DOMContentLoaded',run);
   window.addEventListener('load',run);
@@ -196,6 +206,24 @@ const JRN_SNIPPET = `
       while(s.firstChild)h.appendChild(s.firstChild);
       s.appendChild(h);
     }
+    // моб. аудит: «назад» вела на главную; читатель из поиска не попадал в /journal
+    var bb=document.querySelector('.js-cms-page-back-button');
+    if(bb&&bb.getAttribute('href')!=='/journal')bb.setAttribute('href','/journal');
+    var tt=document.querySelector('.t-cms__page-header__title');
+    if(tt&&!tt.querySelector('a')){tt.innerHTML='<a href="/journal" style="color:inherit;text-decoration:none">'+tt.textContent+'</a>';}
+    // мини-навигация витрины под статьёй (страницы потока живут без TopBar/подвала)
+    if(!document.getElementById('mbezu-post-nav')){
+      var host=document.querySelector('.t-cms__page-container')||document.querySelector('.t-cms__page')||null;
+      if(host){
+        var nav=document.createElement('nav');nav.id='mbezu-post-nav';
+        nav.setAttribute('aria-label','Навигация по сайту');
+        nav.style.cssText='max-width:760px;margin:48px auto 24px;padding:24px 20px;border-top:1px solid rgba(42,37,32,.14);display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-family:Inter Tight,system-ui,sans-serif';
+        var L=[['/journal','Все статьи'],['/catalog','Каталог картин'],['/commission','Картина на заказ'],['/podarok','Картина в подарок'],['/about','О художнике']];
+        for(var i=0;i<L.length;i++){var a=document.createElement('a');a.href=L[i][0];a.textContent=L[i][1];
+          a.style.cssText='display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #6f5c2b;border-radius:999px;color:#6f5c2b;text-decoration:none;font-size:14px;letter-spacing:.02em';nav.appendChild(a);}
+        host.appendChild(nav);
+      }
+    }
     if(!document.getElementById('mbezu-article-ld')){
       var og=function(p){var m=document.querySelector('meta[property="'+p+'"]');return m?m.getAttribute('content'):'';};
       var ld={'@context':'https://schema.org','@type':'Article',
@@ -215,6 +243,20 @@ const JRN_SNIPPET = `
   window.addEventListener('load',up);
 })();
 </script>`;
+
+const MOB_MARK = 'MBezu · mobile-polish';
+const MOB_SNIPPET = `
+<!-- ${MOB_MARK} · мобильный аудит Sprint 15: нативные блоки Tilda -->
+<style>
+@media (max-width:960px){
+  .t776 .t-slds__bullet_wrapper{display:block!important}
+  .t776 .t-slds__bullet{padding:8px 6px}
+}
+.t706 .t-checkbox__indicator{width:22px!important;height:22px!important}
+.t706 .t-checkbox__control{min-height:44px;display:flex;align-items:center}
+.t706__product-plus,.t706__product-minus,.t706__product-del{padding:12px;margin:-12px;box-sizing:content-box}
+.t2823 .t-uptitle_xs,.t-cms__page .t-uptitle_xs{font-size:12px!important}
+</style>`;
 
 function patchHead(src) {
   let out = src;
@@ -275,6 +317,14 @@ function patchHead(src) {
     if (js >= 0 && je > js) out = out.slice(0, js) + JRN_SNIPPET.trim() + out.slice(je + 9);
   } else {
     out = out.trimEnd() + String.fromCharCode(10) + JRN_SNIPPET + String.fromCharCode(10);
+  }
+
+  if (out.includes(MOB_MARK)) {
+    const ms = out.indexOf('<!-- ' + MOB_MARK);
+    const me = out.indexOf('</style>', ms);
+    if (ms >= 0 && me > ms) out = out.slice(0, ms) + MOB_SNIPPET.trim() + out.slice(me + 8);
+  } else {
+    out = out.trimEnd() + String.fromCharCode(10) + MOB_SNIPPET + String.fromCharCode(10);
   }
 
   return { out, removed, brandFixed, typeFixed, ruAdded, rcvAdded };

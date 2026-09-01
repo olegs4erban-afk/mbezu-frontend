@@ -1,0 +1,205 @@
+{
+  "commission": {
+    "url": "https://mbezu.ru/commission",
+    "title": "Картина на заказ маслом — от 2 недель | MBezu Москва",
+    "hscroll": {
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "has": false
+    },
+    "wide": [],
+    "smallTaps": [
+      {
+        "sel": "a.skip-link",
+        "label": "К содержимому",
+        "w": 148,
+        "h": 39
+      },
+      {
+        "sel": "a.uh",
+        "label": "MBezu",
+        "w": 44,
+        "h": 19
+      },
+      {
+        "sel": "input",
+        "label": "range",
+        "w": 339,
+        "h": 16
+      },
+      {
+        "sel": "input",
+        "label": "checkbox",
+        "w": 16,
+        "h": 16
+      },
+      {
+        "sel": "a",
+        "label": "Политика ПД",
+        "w": 77,
+        "h": 16
+      },
+      {
+        "sel": "a.uh",
+        "label": "milabezu.art@gmail.com",
+        "w": 148,
+        "h": 17
+      },
+      {
+        "sel": "a.uh",
+        "label": "+7 916 764 10 39",
+        "w": 102,
+        "h": 17
+      }
+    ],
+    "smallText": [
+      {
+        "sel": "span",
+        "size": 10.5,
+        "text": "Mila Bezú"
+      },
+      {
+        "sel": "span.eyebrow.accent",
+        "size": 10.5,
+        "text": "Картина под ваше место"
+      },
+      {
+        "sel": "p.cat-no",
+        "size": 10,
+        "text": "Нестандартный размер или сторона больше 100 см — р"
+      },
+      {
+        "sel": "span.cat-no",
+        "size": 10,
+        "text": "40×50 — 50×70 · от 17 000 ₽"
+      },
+      {
+        "sel": "div.cat-no",
+        "size": 10,
+        "text": "01"
+      },
+      {
+        "sel": "button.chip.is-active",
+        "size": 10.5,
+        "text": "Городской пейзаж"
+      },
+      {
+        "sel": "button.chip",
+        "size": 10.5,
+        "text": "Природный пейзаж"
+      },
+      {
+        "sel": "div",
+        "size": 11,
+        "text": "Тёплая (bone)"
+      },
+      {
+        "sel": "span",
+        "size": 10,
+        "text": "6 000 ₽"
+      },
+      {
+        "sel": "dt.cat-no",
+        "size": 10,
+        "text": "Размер"
+      },
+      {
+        "sel": "div.eyebrow",
+        "size": 10.5,
+        "text": "Магазин"
+      },
+      {
+        "sel": "span",
+        "size": 11,
+        "text": "ИП Клевер Л.А."
+      },
+      {
+        "sel": "span.mono",
+        "size": 10.5,
+        "text": "© MBEZU STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ"
+      },
+      {
+        "sel": "span.tabbar-label",
+        "size": 9,
+        "text": "Главная"
+      }
+    ],
+    "smallInputs": [
+      {
+        "sel": "input",
+        "size": 13.3333,
+        "placeholder": "range"
+      },
+      {
+        "sel": "input",
+        "size": 13.3333,
+        "placeholder": "checkbox"
+      }
+    ],
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "failedReqs": [],
+    "specific": {
+      "error": "locator.scrollIntoViewIfNeeded: Error: strict mode violation: locator('button[type=\"submit\"]') resolved to 6 elements:\n    1) <button type=\"submit\" class=\"t-submit t-btnflex t-btnflex_type_submit t-btnflex_md\">…</button> aka locator('button').filter({ hasText: 'Оформить заказ' })\n    2) <button type"
+    }
+  },
+  "podarok": {
+    "url": "https://mbezu.ru/podarok",
+    "title": "Картина в подарок — оригинал маслом | Mila Bezú",
+    "hscroll": {
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "has": false
+    },
+    "wide": [],
+    "smallTaps": [],
+    "smallText": [
+      {
+        "sel": "div.eyebrow.accent",
+        "size": 10.5,
+        "text": "Подарок со смыслом"
+      }
+    ],
+    "smallInputs": [],
+    "consoleErrors": [],
+    "failedReqs": [],
+    "specific": {
+      "grids": {
+        "respStacks": [
+          {
+            "cls": "resp-stack-3",
+            "display": "grid",
+            "cols": 1,
+            "right": 357,
+            "w": 339
+          },
+          {
+            "cls": "resp-stack",
+            "display": "grid",
+            "cols": 1,
+            "right": 357,
+            "w": 339
+          }
+        ],
+        "gridsWith3PlusCols": []
+      },
+      "cta": [
+        {
+          "text": "Выбрать из каталога",
+          "w": 230,
+          "h": 48,
+          "href": "/catalog",
+          "right": 248
+        },
+        {
+          "text": "Заказать индивидуально",
+          "w": 270,
+          "h": 48,
+          "href": "/commission",
+          "right": 288
+        }
+      ]
+    }
+  }
+}

@@ -768,12 +768,12 @@ function LeadForm({ go }) {
       }}>
         <input type="checkbox" checked={lead.consent}
                onChange={(e) => upd('consent', e.target.checked)}
-               style={{ marginTop: 3, accentColor: 'var(--bg-cream)', width: 16, height: 16, flexShrink: 0 }} />
+               style={{ marginTop: 3, accentColor: 'var(--bg-cream)', width: 18, height: 18, flexShrink: 0 }} />
         <span>
           Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
           <a href="/legal?section=privacy"
              onClick={(e) => { e.preventDefault(); go('legal', { section: 'privacy' }); }}
-             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Политика ПД</a>
+             className="uh-tap" style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Политика ПД</a>
         </span>
       </label>
       {touched && !lead.consent && (
@@ -975,12 +975,13 @@ function Newsletter() {
                   padding: 6, border: '1px solid var(--rule-soft)',
                   minWidth: 0, maxWidth: '100%',
                 }}>
+            {/* Sprint 15 (моб. аудит): fontSize 16 — меньше 16px iOS зумит страницу при фокусе */}
             <input type="email" placeholder="ваша почта" required
                    value={email} onChange={(e) => setEmail(e.target.value)}
                    style={{
                      border: 0, background: 'transparent', flex: 1,
                      minWidth: 0, width: '100%',
-                     padding: '14px 22px', fontSize: 14, outline: 'none',
+                     padding: '14px 22px', fontSize: 16, outline: 'none',
                      font: 'inherit', fontFamily: 'var(--sans)', color: 'var(--ink)',
                    }} />
             <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
@@ -993,16 +994,17 @@ function Newsletter() {
           </form>
         )}
         {!sent && (
-          <div style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4 }}>
+          /* Sprint 15 (моб. аудит): класс nl-consent — на мобиле согласия показываются ДО кнопки (order в styles.css) */
+          <div className="nl-consent" style={{ gridColumn: '1 / -1', display: 'flex', flexDirection: 'column', gap: 8, marginTop: 4 }}>
             <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', cursor: 'pointer', fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-2)' }}>
               <input type="checkbox" checked={nlConsent} onChange={(e) => setNlConsent(e.target.checked)}
-                     style={{ marginTop: 2, width: 15, height: 15, accentColor: 'var(--accent)', flexShrink: 0 }} />
+                     style={{ marginTop: 2, width: 18, height: 18, accentColor: 'var(--accent)', flexShrink: 0 }} />
               <span>Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
-                <a href="/legal?section=privacy" style={{ color: 'var(--accent)' }}>Политика ПД</a></span>
+                <a href="/legal?section=privacy" className="uh-tap" style={{ color: 'var(--accent)' }}>Политика ПД</a></span>
             </label>
             <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', cursor: 'pointer', fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-2)' }}>
               <input type="checkbox" checked={nlAds} onChange={(e) => setNlAds(e.target.checked)}
-                     style={{ marginTop: 2, width: 15, height: 15, accentColor: 'var(--accent)', flexShrink: 0 }} />
+                     style={{ marginTop: 2, width: 18, height: 18, accentColor: 'var(--accent)', flexShrink: 0 }} />
               <span>Согласен(на) получать письма о новых работах и закрытых продажах (реклама)</span>
             </label>
             {nlTouched && (!nlConsent || !nlAds) && (

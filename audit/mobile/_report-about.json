@@ -1,0 +1,827 @@
+{
+  "about": {
+    "url": "https://mbezu.ru/about",
+    "navError": null,
+    "metrics": {
+      "title": "Mila Bezú — художник, живопись маслом | Москва",
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "hasHScroll": false,
+      "wide": [],
+      "wideCount": 0,
+      "smallTaps": [
+        {
+          "sel": "a.skip-link",
+          "text": "К СОДЕРЖИМОМУ",
+          "w": 148,
+          "h": 39
+        },
+        {
+          "sel": "a.uh",
+          "text": "MBEZU",
+          "w": 44,
+          "h": 19
+        },
+        {
+          "sel": "a.uh",
+          "text": "milabezu.art@gmail.com",
+          "w": 169,
+          "h": 20
+        },
+        {
+          "sel": "a.uh",
+          "text": "+7 916 764 10 39",
+          "w": 117,
+          "h": 20
+        },
+        {
+          "sel": "a.uh",
+          "text": "Telegram · @mbezu_art",
+          "w": 162,
+          "h": 20
+        },
+        {
+          "sel": "a.uh",
+          "text": "Instagram · @m.bezu_art",
+          "w": 171,
+          "h": 20
+        },
+        {
+          "sel": "a.uh",
+          "text": "VK · @mbezu_art",
+          "w": 118,
+          "h": 20
+        },
+        {
+          "sel": "button",
+          "text": "1 из 5",
+          "w": 38,
+          "h": 38
+        },
+        {
+          "sel": "button",
+          "text": "2 из 5",
+          "w": 38,
+          "h": 38
+        },
+        {
+          "sel": "button",
+          "text": "3 из 5",
+          "w": 38,
+          "h": 38
+        },
+        {
+          "sel": "button",
+          "text": "4 из 5",
+          "w": 38,
+          "h": 38
+        },
+        {
+          "sel": "button",
+          "text": "5 из 5",
+          "w": 38,
+          "h": 38
+        },
+        {
+          "sel": "input",
+          "text": "on",
+          "w": 13,
+          "h": 13
+        },
+        {
+          "sel": "a",
+          "text": "политика конфиденциальности",
+          "w": 190,
+          "h": 36
+        },
+        {
+          "sel": "a.uh",
+          "text": "milabezu.art@gmail.com",
+          "w": 148,
+          "h": 17
+        },
+        {
+          "sel": "a.uh",
+          "text": "+7 916 764 10 39",
+          "w": 102,
+          "h": 17
+        }
+      ],
+      "smallTapsCount": 16,
+      "smallText": [
+        {
+          "sel": "span",
+          "size": 10.5,
+          "text": "Mila Bezú",
+          "count": 3
+        },
+        {
+          "sel": "span.eyebrow.accent",
+          "size": 10.5,
+          "text": "Художник · Москва",
+          "count": 6
+        },
+        {
+          "sel": "div.cat-no",
+          "size": 10,
+          "text": "Mila Bezú · Мила Бэзу",
+          "count": 29
+        },
+        {
+          "sel": "span",
+          "size": 10,
+          "text": "МОНОХРОМНАЯ",
+          "count": 4
+        },
+        {
+          "sel": "span.cat-no",
+          "size": 10,
+          "text": "Лицевая сторона работы",
+          "count": 4
+        },
+        {
+          "sel": "div.eyebrow.accent",
+          "size": 10.5,
+          "text": "Отзывы",
+          "count": 1
+        },
+        {
+          "sel": "div.eyebrow",
+          "size": 10.5,
+          "text": "Магазин",
+          "count": 4
+        },
+        {
+          "sel": "span",
+          "size": 11,
+          "text": "ИП Клевер Л.А.",
+          "count": 9
+        },
+        {
+          "sel": "span.mono",
+          "size": 10.5,
+          "text": "© MBEZU STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ",
+          "count": 2
+        },
+        {
+          "sel": "span.tabbar-label",
+          "size": 9,
+          "text": "Главная",
+          "count": 4
+        }
+      ],
+      "smallInputs": [
+        {
+          "sel": "input",
+          "size": 13.3333,
+          "placeholder": ""
+        }
+      ],
+      "overlaps": [
+        {
+          "a": "input#input_1788039916510100 \"\"",
+          "b": "input#input_1788039918425100 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510101 \"\"",
+          "b": "input#input_1788039918425101 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510102 \"\"",
+          "b": "input#input_1788039918425102 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510103 \"\"",
+          "b": "input#input_1788039918425103 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510104 \"\"",
+          "b": "input#input_1788039918425104 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510105 \"\"",
+          "b": "input#input_1788039918425105 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510106 \"\"",
+          "b": "button.t-submit.t-btnflex.t-btnflex_type_submit \"Отправить\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510106 \"\"",
+          "b": "span.t-btnflex__text \"Отправить\"",
+          "ix": 78,
+          "iy": 22
+        },
+        {
+          "a": "img \"\"",
+          "b": "a.tabbar-item \"ГЛАВНАЯ\"",
+          "ix": 76,
+          "iy": 60
+        },
+        {
+          "a": "img \"\"",
+          "b": "span.tabbar-icon \"\"",
+          "ix": 22,
+          "iy": 22
+        },
+        {
+          "a": "img \"\"",
+          "b": "svg \"\"",
+          "ix": 22,
+          "iy": 22
+        },
+        {
+          "a": "img \"\"",
+          "b": "a.tabbar-item \"КАТАЛОГ\"",
+          "ix": 94,
+          "iy": 60
+        },
+        {
+          "a": "img \"\"",
+          "b": "span.tabbar-icon \"\"",
+          "ix": 22,
+          "iy": 22
+        },
+        {
+          "a": "img \"\"",
+          "b": "svg \"\"",
+          "ix": 22,
+          "iy": 22
+        },
+        {
+          "a": "img \"\"",
+          "b": "a.tabbar-item \"НА ЗАКАЗ\"",
+          "ix": 94,
+          "iy": 60
+        }
+      ],
+      "badImgs": [],
+      "bigHeads": [
+        {
+          "sel": "div.display",
+          "text": "MBezu",
+          "fontSize": 56,
+          "right": 357,
+          "overflow": false
+        }
+      ],
+      "bodyTextLen": 4151,
+      "firstScreenText": "Отправить\nОтправить\nК СОДЕРЖИМОМУ\nMILA BEZÚ\n31 АВГУСТА 2026 Г. · MOSCOU\nMBezu\nMBEZU\n/\nХУДОЖНИК\nХУДОЖНИК · МОСКВА\nMila\nBezú.\nMILA BEZÚ · МИЛА БЭЗУ\nМОСКВА\nСТУДИЯ — МОСКВА · ПО ЗАПИСИ\nMILA BEZÚ · МОСКВА\nО РАБОТЕ\n\nХудожник-живописец из Москвы. Более 15 лет практики масляной живописи.\n\nОбразование в области дизайна интерьера определяет особый подход к работе. Это не «вторая профессия» — это профессиона"
+    },
+    "specific": {
+      "portraitImgs": [
+        {
+          "src": "https://cdn.mbezu.ru/assets/about-author.webp",
+          "loaded": true,
+          "w": 339,
+          "h": 424
+        }
+      ],
+      "reviewForm": {
+        "fields": [
+          {
+            "tag": "input",
+            "type": "hidden",
+            "placeholder": "",
+            "fontSize": 13.3333,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "hidden",
+            "placeholder": "",
+            "fontSize": 13.3333,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "placeholder": "",
+            "fontSize": 16,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "email",
+            "placeholder": "",
+            "fontSize": 16,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "hidden",
+            "placeholder": "",
+            "fontSize": 13.3333,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "tel",
+            "placeholder": "(000) 000-00-00",
+            "fontSize": 16,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "hidden",
+            "placeholder": "",
+            "fontSize": 13.3333,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "placeholder": "Москва",
+            "fontSize": 16,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "placeholder": "улица, дом, квартира",
+            "fontSize": 16,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "checkbox",
+            "placeholder": "",
+            "fontSize": 13.3333,
+            "w": 0
+          },
+          {
+            "tag": "input",
+            "type": "text",
+            "placeholder": "",
+            "fontSize": 13.3333,
+            "w": 0
+          }
+        ],
+        "submit": "Оформить заказ #rec2293310791 .t-btnflex.t-btnflex"
+      },
+      "ctaHeads": [],
+      "hasSeriesSection": true,
+      "hasFacts": true
+    },
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+    ],
+    "failedRequests": [
+      "FAILED net::ERR_CERT_AUTHORITY_INVALID https://hdrc.yandex.net/"
+    ]
+  },
+  "legal": {
+    "url": "https://mbezu.ru/legal",
+    "navError": null,
+    "metrics": {
+      "title": "Документы и реквизиты — Mila Bezú",
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "hasHScroll": false,
+      "wide": [],
+      "wideCount": 0,
+      "smallTaps": [
+        {
+          "sel": "a.skip-link",
+          "text": "К СОДЕРЖИМОМУ",
+          "w": 148,
+          "h": 39
+        },
+        {
+          "sel": "a.uh",
+          "text": "MBEZU",
+          "w": 44,
+          "h": 19
+        },
+        {
+          "sel": "a.uh",
+          "text": "milabezu.art@gmail.com",
+          "w": 299,
+          "h": 21
+        },
+        {
+          "sel": "a.uh",
+          "text": "@mbezu_art",
+          "w": 299,
+          "h": 21
+        },
+        {
+          "sel": "a.uh",
+          "text": "milabezu.art@gmail.com",
+          "w": 148,
+          "h": 17
+        },
+        {
+          "sel": "a.uh",
+          "text": "+7 916 764 10 39",
+          "w": 102,
+          "h": 17
+        }
+      ],
+      "smallTapsCount": 6,
+      "smallText": [
+        {
+          "sel": "span",
+          "size": 10.5,
+          "text": "Mila Bezú",
+          "count": 3
+        },
+        {
+          "sel": "span.eyebrow.accent",
+          "size": 10.5,
+          "text": "Документы",
+          "count": 2
+        },
+        {
+          "sel": "div.cat-no",
+          "size": 10,
+          "text": "Вопросы по документам",
+          "count": 3
+        },
+        {
+          "sel": "div.eyebrow",
+          "size": 10.5,
+          "text": "Магазин",
+          "count": 4
+        },
+        {
+          "sel": "span",
+          "size": 11,
+          "text": "ИП Клевер Л.А.",
+          "count": 9
+        },
+        {
+          "sel": "span.mono",
+          "size": 10.5,
+          "text": "© MBEZU STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ",
+          "count": 2
+        },
+        {
+          "sel": "span.tabbar-label",
+          "size": 9,
+          "text": "Главная",
+          "count": 4
+        }
+      ],
+      "smallInputs": [],
+      "overlaps": [
+        {
+          "a": "input#input_1788039916510100 \"\"",
+          "b": "input#input_1788039918425100 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510101 \"\"",
+          "b": "input#input_1788039918425101 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510102 \"\"",
+          "b": "input#input_1788039918425102 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510103 \"\"",
+          "b": "input#input_1788039918425103 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510104 \"\"",
+          "b": "input#input_1788039918425104 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510105 \"\"",
+          "b": "input#input_1788039918425105 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510106 \"\"",
+          "b": "button.t-submit.t-btnflex.t-btnflex_type_submit \"Отправить\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510106 \"\"",
+          "b": "span.t-btnflex__text \"Отправить\"",
+          "ix": 78,
+          "iy": 22
+        },
+        {
+          "a": "h2.display \"Публичная оферта\"",
+          "b": "a.tabbar-item \"ГЛАВНАЯ\"",
+          "ix": 76,
+          "iy": 28
+        },
+        {
+          "a": "h2.display \"Публичная оферта\"",
+          "b": "a.tabbar-item \"КАТАЛОГ\"",
+          "ix": 94,
+          "iy": 28
+        },
+        {
+          "a": "h2.display \"Публичная оферта\"",
+          "b": "a.tabbar-item \"НА ЗАКАЗ\"",
+          "ix": 94,
+          "iy": 28
+        },
+        {
+          "a": "h2.display \"Публичная оферта\"",
+          "b": "a.tabbar-item \"КОРЗИНА\"",
+          "ix": 76,
+          "iy": 28
+        },
+        {
+          "a": "span.italic \"оферта\"",
+          "b": "a.tabbar-item \"НА ЗАКАЗ\"",
+          "ix": 83,
+          "iy": 32
+        }
+      ],
+      "badImgs": [],
+      "bigHeads": [
+        {
+          "sel": "div.display",
+          "text": "MBezu",
+          "fontSize": 56,
+          "right": 357,
+          "overflow": false
+        }
+      ],
+      "bodyTextLen": 6216,
+      "firstScreenText": "Отправить\nОтправить\nК СОДЕРЖИМОМУ\nMILA BEZÚ\n31 АВГУСТА 2026 Г. · MOSCOU\nMBezu\nMBEZU\n/\nЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ\nДокументы и реквизиты\nДОКУМЕНТЫ\nОферта\nПолитика ПД\nДоставка и оплата\nВозврат и обмен\nРеквизиты\nВОПРОСЫ ПО ДОКУМЕНТАМ\nmilabezu.art@gmail.com\n@mbezu_art\nДОГОВОР · ПУБЛИЧНАЯ ОФЕРТА\nПубличная оферта\nРЕДАКЦИЯ ОТ 13 МАЯ 2026\n\nНастоящий документ является публичной офертой (предложением) ИП Клевер "
+    },
+    "specific": {
+      "tabs": [
+        {
+          "tag": "button",
+          "text": "Оферта",
+          "x": 18,
+          "right": 357,
+          "w": 339,
+          "h": 47,
+          "inViewportX": true
+        },
+        {
+          "tag": "button",
+          "text": "Политика ПД",
+          "x": 18,
+          "right": 357,
+          "w": 339,
+          "h": 47,
+          "inViewportX": true
+        },
+        {
+          "tag": "button",
+          "text": "Доставка и оплата",
+          "x": 18,
+          "right": 357,
+          "w": 339,
+          "h": 47,
+          "inViewportX": true
+        },
+        {
+          "tag": "button",
+          "text": "Возврат и обмен",
+          "x": 18,
+          "right": 357,
+          "w": 339,
+          "h": 47,
+          "inViewportX": true
+        },
+        {
+          "tag": "button",
+          "text": "Реквизиты",
+          "x": 18,
+          "right": 357,
+          "w": 339,
+          "h": 47,
+          "inViewportX": true
+        },
+        {
+          "tag": "a",
+          "text": "Доставка и оплата",
+          "x": 18,
+          "right": 134,
+          "w": 116,
+          "h": 42,
+          "inViewportX": true
+        },
+        {
+          "tag": "a",
+          "text": "Возврат и обмен",
+          "x": 18,
+          "right": 123,
+          "w": 105,
+          "h": 42,
+          "inViewportX": true
+        },
+        {
+          "tag": "a",
+          "text": "Оферта",
+          "x": 18,
+          "right": 65,
+          "w": 47,
+          "h": 42,
+          "inViewportX": true
+        },
+        {
+          "tag": "a",
+          "text": "Политика ПД",
+          "x": 18,
+          "right": 101,
+          "w": 83,
+          "h": 42,
+          "inViewportX": true
+        },
+        {
+          "tag": "a",
+          "text": "Доставка",
+          "x": 18,
+          "right": 77,
+          "w": 59,
+          "h": 42,
+          "inViewportX": true
+        },
+        {
+          "tag": "a",
+          "text": "Возврат",
+          "x": 18,
+          "right": 69,
+          "w": 51,
+          "h": 42,
+          "inViewportX": true
+        },
+        {
+          "tag": "a",
+          "text": "Реквизиты",
+          "x": 18,
+          "right": 85,
+          "w": 67,
+          "h": 42,
+          "inViewportX": true
+        }
+      ],
+      "tabContainer": {
+        "cls": "resp-flex-col",
+        "overflowX": "visible",
+        "scrollable": false,
+        "scrollW": 339,
+        "clientW": 339,
+        "flexWrap": "nowrap"
+      },
+      "bodyFontSizes": [
+        15,
+        14.5
+      ],
+      "lineLengthSample": 339,
+      "afterTabTap": {
+        "url": "/legal",
+        "firstHeading": "Документы и реквизиты",
+        "textHasReturn": true
+      }
+    },
+    "consoleErrors": [],
+    "failedRequests": []
+  },
+  "cart": {
+    "url": "https://mbezu.ru/cart",
+    "navError": null,
+    "metrics": {
+      "title": "Корзина · оформление заказа · M.Bezú",
+      "scrollWidth": 375,
+      "innerWidth": 375,
+      "hasHScroll": false,
+      "wide": [],
+      "wideCount": 0,
+      "smallTaps": [
+        {
+          "sel": "button.t706__close-button.t706__cartwin-close-wrapper",
+          "text": "Закрыть корзину",
+          "w": 20,
+          "h": 36
+        }
+      ],
+      "smallTapsCount": 1,
+      "smallText": [],
+      "smallInputs": [],
+      "overlaps": [
+        {
+          "a": "input#input_1788039916510100 \"\"",
+          "b": "input#input_1788039918425100 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510101 \"\"",
+          "b": "input#input_1788039918425101 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510102 \"\"",
+          "b": "input#input_1788039918425102 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510103 \"\"",
+          "b": "input#input_1788039918425103 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510104 \"\"",
+          "b": "input#input_1788039918425104 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510105 \"\"",
+          "b": "input#input_1788039918425105 \"\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510106 \"\"",
+          "b": "button.t-submit.t-btnflex.t-btnflex_type_submit \"Отправить\"",
+          "ix": 202,
+          "iy": 60
+        },
+        {
+          "a": "input#input_1788039916510106 \"\"",
+          "b": "span.t-btnflex__text \"Отправить\"",
+          "ix": 78,
+          "iy": 22
+        }
+      ],
+      "badImgs": [],
+      "bigHeads": [],
+      "bodyTextLen": 203,
+      "firstScreenText": "Ваш заказ:\nКорзина пуста. Добавьте в корзину хотя бы один товар\nОтправить\nОтправить\nКорзина\n\nКорзина открывается поверх любой страницы — сейчас откроем её здесь.\n\nОТКРЫТЬ КОРЗИНУ\nВ КАТАЛОГ\nMade on\t\tTilda"
+    },
+    "specific": {
+      "mainTextLen": 203,
+      "mainTextStart": "Ваш заказ:\nКорзина пуста. Добавьте в корзину хотя бы один товар\nОтправить\nОтправить\nКорзина\n\nКорзина открывается поверх любой страницы — сейчас откроем её здесь.\n\nОТКРЫТЬ КОРЗИНУ\nВ КАТАЛОГ\nMade on\t\tTilda",
+      "visibleButtons": [
+        {
+          "tag": "button",
+          "text": "Закрыть корзину",
+          "h": 36
+        },
+        {
+          "tag": "button",
+          "text": "Отправить",
+          "h": 60
+        },
+        {
+          "tag": "button",
+          "text": "Отправить",
+          "h": 60
+        },
+        {
+          "tag": "button",
+          "text": "ОТКРЫТЬ КОРЗИНУ",
+          "h": 48
+        },
+        {
+          "tag": "a",
+          "text": "В КАТАЛОГ",
+          "h": 48
+        },
+        {
+          "tag": "a",
+          "text": "Made on Tilda",
+          "h": 50
+        }
+      ],
+      "hasTcart": true,
+      "tildaCartBlocks": 2,
+      "docHeight": 812
+    },
+    "consoleErrors": [
+      "Error: Two cart widgets (block ST100) on the page. Remove a duplicate."
+    ],
+    "failedRequests": []
+  }
+}
