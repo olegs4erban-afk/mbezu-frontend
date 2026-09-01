@@ -106,12 +106,23 @@ const PROD_SNIPPET = `
       a.style.cssText='display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #6f5c2b;border-radius:999px;color:#6f5c2b;text-decoration:none;font-size:14px';nav.appendChild(a);}
     if(lab)host.insertBefore(nav,lab);else host.appendChild(nav);
   }
-  function run(){goldFix();productLd();try{productNav();}catch(e){}}
+  function galleryHint(){
+    if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-gal-hint'))return;
+    var sl=document.querySelector('.t-store .t-slds')||document.querySelector('.t776 .t-slds');if(!sl)return;
+    var items=[].slice.call(sl.querySelectorAll('.t-slds__item')).filter(function(x){return !/t-slds__item_loop/.test(x.className);});
+    var n=items.length;if(n<2)return;
+    var hint=document.createElement('div');hint.id='mbezu-gal-hint';
+    hint.style.cssText='text-align:center;font:12px/1.4 Inter Tight,system-ui,sans-serif;color:#6b5d4a;margin:8px 0 0;letter-spacing:.06em';
+    function upd(){var act=sl.querySelector('.t-slds__item_active');var idx=act?items.indexOf(act)+1:1;if(idx<1)idx=1;hint.textContent='Фото '+idx+' из '+n+' · листайте';}
+    upd();sl.parentNode.insertBefore(hint,sl.nextSibling);
+    try{new MutationObserver(function(){upd();}).observe(sl,{attributes:true,subtree:true,attributeFilter:['class']});}catch(e){}
+  }
+  function run(){goldFix();productLd();try{productNav();}catch(e){}try{galleryHint();}catch(e){}}
   if(document.readyState!=='loading')run();
   document.addEventListener('DOMContentLoaded',run);
   window.addEventListener('load',run);
   document.addEventListener('DOMContentLoaded',function(){
-    try{var t2,mo=new MutationObserver(function(){clearTimeout(t2);t2=setTimeout(function(){goldFix();},120);});
+    try{var t2,mo=new MutationObserver(function(){clearTimeout(t2);t2=setTimeout(function(){goldFix();try{galleryHint();}catch(e){}},120);});
     mo.observe(document.body,{childList:true,subtree:true});}catch(e){}
   });
 })();
@@ -255,7 +266,8 @@ const MOB_SNIPPET = `
 .t706 .t-checkbox__indicator{width:22px!important;height:22px!important}
 .t706 .t-checkbox__control{min-height:44px;display:flex;align-items:center}
 .t706__product-plus,.t706__product-minus,.t706__product-del{padding:12px;margin:-12px;box-sizing:content-box}
-.t2823 .t-uptitle_xs,.t-cms__page .t-uptitle_xs{font-size:12px!important}
+.t2823 .t-uptitle_xs,.t-cms__page .t-uptitle_xs,.t-cms__page .t-uptitle_sm{font-size:12px!important}
+@media (min-width:961px){#mbezu-gal-hint{display:none}}
 </style>`;
 
 function patchHead(src) {
