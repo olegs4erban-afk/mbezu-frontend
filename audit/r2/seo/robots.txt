@@ -1,0 +1,19 @@
+User-Agent: *
+Disallow: /page142949956.html
+Disallow: /cart
+Disallow: /page143102566.html
+Disallow: /_header-shop
+Disallow: /tilda/form*
+Disallow: /tilda/rec*
+Disallow: /tilda/click*
+Disallow: /tilda/scroll*
+Disallow: /tilda/popup*
+Disallow: /tilda/cart*
+Disallow: /tilda/product*
+Disallow: /tilda/event*
+Disallow:
+
+
+Sitemap: https://mbezu.ru/sitemap.xml
+Sitemap: https://mbezu.ru/sitemap-store.xml
+Sitemap: https://mbezu.ru/sitemap-feeds.xml

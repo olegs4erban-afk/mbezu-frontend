@@ -270,6 +270,14 @@ const MOB_SNIPPET = `
 @media (min-width:961px){#mbezu-gal-hint{display:none}}
 </style>`;
 
+const FAV_MARK = 'MBezu · favicon';
+const FAV_SNIPPET = `
+<!-- ${FAV_MARK} · Вебмастер: favicon SVG / 120×120 (Sprint 15) -->
+<link rel="icon" type="image/svg+xml" href="https://cdn.mbezu.ru/favicon.svg">
+<link rel="icon" type="image/png" sizes="120x120" href="https://cdn.mbezu.ru/favicon-120.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.mbezu.ru/favicon-180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="https://cdn.mbezu.ru/favicon-512.png">`;
+
 function patchHead(src) {
   let out = src;
   const removed = [];
@@ -337,6 +345,16 @@ function patchHead(src) {
     if (ms >= 0 && me > ms) out = out.slice(0, ms) + MOB_SNIPPET.trim() + out.slice(me + 8);
   } else {
     out = out.trimEnd() + String.fromCharCode(10) + MOB_SNIPPET + String.fromCharCode(10);
+  }
+
+  if (out.includes(FAV_MARK)) {
+    const fs0 = out.indexOf('<!-- ' + FAV_MARK);
+    const fe = out.indexOf('sizes="512x512"', fs0);
+    const fe2 = fe > 0 ? out.indexOf('>', fe) + 1 : -1;
+    if (fs0 >= 0 && fe2 > fs0) out = out.slice(0, fs0) + FAV_SNIPPET.trim() + out.slice(fe2);
+  } else {
+    // фавикон — В НАЧАЛО head-кода, до скриптов
+    out = FAV_SNIPPET.trim() + String.fromCharCode(10) + out;
   }
 
   return { out, removed, brandFixed, typeFixed, ruAdded, rcvAdded };

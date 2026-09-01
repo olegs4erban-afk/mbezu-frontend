@@ -4,6 +4,7 @@ import { Breadcrumbs, Eyebrow, PageTitle } from '../common/atoms';
 import { ABOUT, artworkById, formatPrice } from '../common/data';
 import { COMMISSION_FAQ } from '../common/seo';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
+import { ColorPicker } from '../common/color-picker';
 
 /** UTM первого захода — уезжают вместе с заявкой (дубль helper'а с главной). */
 function utmFromStorage(): Record<string, string> {
@@ -47,20 +48,7 @@ function CommissionPage({ go, refId }) {
   ];
   const weeks = [4, 6, 8, 10];
 
-  // Sprint 13 (Ф4): сетка произвольных цветов — 8 оттенков × 6 светлот (HSL → hex)
-  const hslHex = (h: number, s: number, l: number) => {
-    const a = (s / 100) * Math.min(l / 100, 1 - l / 100);
-    const f = (n: number) => {
-      const k = (n + h / 30) % 12;
-      const c = l / 100 - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
-      return Math.round(255 * c).toString(16).padStart(2, '0');
-    };
-    return `#${f(0)}${f(8)}${f(4)}`;
-  };
-  const SWATCH_HUES = [0, 45, 90, 135, 180, 225, 270, 315];
-  const SWATCH_LIGHT = [85, 70, 55, 40, 28, 16];
-  const swatches: string[] = [];
-  for (const l of SWATCH_LIGHT) for (const h of SWATCH_HUES) swatches.push(hslHex(h, 42, l));
+  // Sprint 15: произвольный цвет — ColorPicker (поле насыщенность/яркость + тон + HEX), см. common/color-picker.tsx
 
   // Прайс на заказ — базовая ставка «от» по размеру холста (Sprint 8 §2C).
   const COMMISSION = {
@@ -389,29 +377,6 @@ function CommissionPage({ go, refId }) {
                   ))}
                 </div>
 
-                {/* Sprint 15 (аудит, мелочь 17): шаг был перегружен — 48 образцов
-                    всегда на виду. Сетка теперь раскрывается только по «Другое». */}
-                {showPicker && (
-                <div className="swatch-grid" style={{
-                  marginTop: 14, display: 'grid',
-                  gridTemplateColumns: 'repeat(8, 1fr)', gap: 8,
-                }}>
-                  {swatches.map((hex) => (
-                    <button key={hex} type="button" aria-label={`Цвет ${hex}`}
-                            onClick={() => { upd('palette', hex); setShowPicker(false); }}
-                            style={{
-                              aspectRatio: '1', minHeight: 44, width: '100%',
-                              background: hex, cursor: 'pointer',
-                              borderRadius: 'var(--r-sm)',
-                              border: form.palette === hex ? '3px solid var(--accent)' : '1px solid var(--rule-soft)',
-                              boxShadow: form.palette === hex ? 'var(--shadow-md)' : 'none',
-                              transition: 'border-color .15s',
-                              padding: 0,
-                            }} />
-                  ))}
-                </div>
-                )}
-
                 {/* «Другое» → нативный color-picker */}
                 <div style={{ marginTop: 14, display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
                   <button type="button"
@@ -419,18 +384,19 @@ function CommissionPage({ go, refId }) {
                           onClick={() => { setShowPicker(!showPicker); if (!isHexPalette) upd('palette', '#a08a4e'); }}>
                     Другое
                   </button>
-                  {showPicker && (
-                    <input type="color" aria-label="Произвольный цвет"
-                           value={isHexPalette ? form.palette : '#a08a4e'}
-                           onChange={(e) => upd('palette', e.target.value)}
-                           style={{ width: 64, height: 44, border: '1px solid var(--rule-soft)', borderRadius: 'var(--r-sm)', background: 'var(--bg-card)', cursor: 'pointer', padding: 2 }} />
-                  )}
                   {isHexPalette && (
                     <span style={{ fontSize: 13, color: 'var(--ink-2)' }}>
                       В заявку уйдёт строкой: <span className="mono">Палитра: {form.palette.toUpperCase()}</span>
                     </span>
                   )}
                 </div>
+                {showPicker && (
+                  <div className="fade-in" style={{ marginTop: 14 }}>
+                    <ColorPicker value={isHexPalette ? form.palette : '#a08a4e'}
+                                 onChange={(hex) => upd('palette', hex)}
+                                 onDone={() => setShowPicker(false)} />
+                  </div>
+                )}
               </div>
 
               {/* 4. Бюджет */}

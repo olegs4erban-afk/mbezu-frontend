@@ -6,6 +6,8 @@ import { Marquee } from '../common/chrome';
 import { ABOUT, ARTWORKS, SERIES, availableCount, featuredArtworks, formatPrice, seriesById, visibleArtworks } from '../common/data';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
 import { ReviewsSection } from '../common/reviews-section';
+import { FaqSection } from '../common/faq-section';
+import { HOME_FAQ } from '../common/seo';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
@@ -1049,6 +1051,8 @@ function HomePage({ go, hero }) {
       <Packaging />
       <StatsRow />
       <ProcessRow />
+      {/* Sprint 15: FAQ под коммерческие интенты (видимый текст + FAQPage LD в seo.ts) */}
+      <FaqSection items={HOME_FAQ} title="Как выбрать и заказать картину" />
       {/* Sprint 15: отзывы (реальные; пока пусто — приглашение оставить первый) */}
       <ReviewsSection />
       <CommissionCTAShort />

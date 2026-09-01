@@ -1,0 +1,14 @@
+node:fs:2413
+    return binding.writeFileUtf8(
+                   ^
+
+Error: ENOENT: no such file or directory, open 'C:\MBezu\mbezu-frontend\audit\r2\seo\html\root.html'
+    at Object.writeFileSync (node:fs:2413:20)
+    at file:///C:/MBezu/mbezu-frontend/scripts/_r2-seo-crawl.mjs:152:18 {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'C:\\MBezu\\mbezu-frontend\\audit\\r2\\seo\\html\\root.html'
+}
+
+Node.js v24.14.1
