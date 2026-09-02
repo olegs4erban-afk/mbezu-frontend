@@ -354,13 +354,14 @@ const FAV_SNIPPET = `
 <link rel="icon" type="image/png" sizes="512x512" href="https://cdn.mbezu.ru/favicon-512.png">`;
 
 // 03.09 перф (Lighthouse mobile, холодная загрузка: perf 24–27, CLS 1.0 — «Web font loaded», TBT ~1 c — tag.js Метрики).
+// ВАЖНО: редактор head-кода Tilda вырезает обратные слэши — inline-скрипты здесь без regex-экранирования (allowlist вместо regex).
 // 1) preconnect к CDN витрины + preload четырёх шрифтов первого экрана и style.css — шрифты приходят до первой отрисовки,
 //    крупный H1 не перерисовывается; 2) тег Метрики (вебвизор+clickmap) вставляем после load + 2 с — очередь ym() копит события.
 const PRE_MARK = 'MBezu · perf-preload';
 const PRE_END = '<!-- /MBezu · perf-preload -->';
 const PRE_SNIPPET = `
 <!-- ${PRE_MARK} · Lighthouse: шрифты и CSS витрины до первой отрисовки (03.09) -->
-<script>(function(){try{var p=location.pathname.replace(/\/+$/,'')||'/';if(/^(\/|\/catalog|\/catalog\/(monohromnaya|ulitsy-mira|tihaya-sila|tondo)|\/about|\/commission|\/legal)$/.test(p)){document.documentElement.className+=' mbezu-app';document.documentElement.setAttribute('data-mbezu','app');}if(p.indexOf('/tproduct/')>=0){document.documentElement.className+=' mbezu-prod';document.documentElement.setAttribute('data-mbezu','prod');}}catch(e){}})();</script>
+<script>(function(){try{var p=location.pathname;while(p.length>1&&p.charAt(p.length-1)==='/')p=p.slice(0,-1);if(!p)p='/';var app=['/','/catalog','/catalog/monohromnaya','/catalog/ulitsy-mira','/catalog/tihaya-sila','/catalog/tondo','/about','/commission','/legal'];if(app.indexOf(p)>=0){document.documentElement.className+=' mbezu-app';document.documentElement.setAttribute('data-mbezu','app');}if(p.indexOf('/tproduct/')>=0){document.documentElement.className+=' mbezu-prod';document.documentElement.setAttribute('data-mbezu','prod');}}catch(e){}})();</script>
 <style>html.mbezu-app .mbezu-chrome,html[data-mbezu=app] .mbezu-chrome,html.mbezu-app .t706__carticon,html[data-mbezu=app] .t706__carticon{display:none!important}html.mbezu-prod #allrecords,html[data-mbezu=prod] #allrecords{padding-top:89px}html.mbezu-prod .t-store__prod-popup__slider .t-slds__container,html[data-mbezu=prod] .t-store__prod-popup__slider .t-slds__container{aspect-ratio:1/1}</style>
 <link rel="preconnect" href="https://cdn.mbezu.ru" crossorigin>
 <link rel="preconnect" href="https://cdn.mbezu.ru">
