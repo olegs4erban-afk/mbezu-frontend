@@ -114,9 +114,9 @@ const PROD_SNIPPET = `
     var items=[].slice.call(sl.querySelectorAll('.t-slds__item')).filter(function(x){return !/t-slds__item_loop/.test(x.className);});
     var n=items.length;if(n<2)return;
     var hint=document.createElement('div');hint.id='mbezu-gal-hint';
-    hint.style.cssText='text-align:center;font:12px/1.4 Inter Tight,system-ui,sans-serif;color:#6b5d4a;margin:8px 0 0;letter-spacing:.06em';
+    hint.style.cssText='position:absolute;left:12px;bottom:12px;z-index:5;font:12px/1.4 Inter Tight,system-ui,sans-serif;color:#2a2520;background:rgba(237,229,214,.88);padding:4px 10px;border-radius:999px;letter-spacing:.04em;pointer-events:none';
     function upd(){var act=sl.querySelector('.t-slds__item_active');var idx=act?items.indexOf(act)+1:1;if(idx<1)idx=1;hint.textContent='Фото '+idx+' из '+n+' · листайте';}
-    upd();sl.parentNode.insertBefore(hint,sl.nextSibling);
+    upd();var box=sl.querySelector('.t-slds__container')||sl;if(getComputedStyle(box).position==='static')box.style.position='relative';box.appendChild(hint);
     try{new MutationObserver(function(){upd();}).observe(sl,{attributes:true,subtree:true,attributeFilter:['class']});}catch(e){}
   }
   // 02.09 P1: страница товара как часть витрины — крошки с серией и «Ещё из серии» из /works.json
@@ -169,7 +169,7 @@ const PROD_SNIPPET = `
       '<a href="/" style="font-size:26px;font-weight:500;font-style:italic;letter-spacing:-.02em;color:inherit;text-decoration:none;padding:8px 0">MBezu</a>'+
       '<nav aria-label="Основная навигация" class="mbezu-prod-nav-links" style="display:flex;gap:26px">'+nav+'</nav>'+
       '<a href="/cart" id="mbezu-prod-cart" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #6f5c2b;border-radius:999px;color:#6f5c2b;text-decoration:none;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500">Корзина</a></div>';
-    host.insertBefore(h,host.firstChild);
+    host.insertBefore(h,host.firstChild);host.style.paddingTop='0px';
     var c=document.getElementById('mbezu-prod-cart');if(c)c.addEventListener('click',function(e){if(typeof tcart__openCart==='function'){e.preventDefault();tcart__openCart();}});
     if(!document.getElementById('mbezu-prod-header-css')){var st=document.createElement('style');st.id='mbezu-prod-header-css';st.textContent='@media (max-width:760px){.mbezu-prod-nav-links{display:none!important}}';document.head.appendChild(st);}
   }
@@ -360,8 +360,8 @@ const PRE_MARK = 'MBezu · perf-preload';
 const PRE_END = '<!-- /MBezu · perf-preload -->';
 const PRE_SNIPPET = `
 <!-- ${PRE_MARK} · Lighthouse: шрифты и CSS витрины до первой отрисовки (03.09) -->
-<script>(function(){try{var p=location.pathname.replace(/\/+$/,'')||'/';if(/^(\/|\/catalog|\/catalog\/(monohromnaya|ulitsy-mira|tihaya-sila|tondo)|\/about|\/commission|\/legal)$/.test(p))document.documentElement.className+=' mbezu-app';}catch(e){}})();</script>
-<style>html.mbezu-app .mbezu-chrome,html.mbezu-app .t706__carticon{display:none!important}</style>
+<script>(function(){try{var p=location.pathname.replace(/\/+$/,'')||'/';if(/^(\/|\/catalog|\/catalog\/(monohromnaya|ulitsy-mira|tihaya-sila|tondo)|\/about|\/commission|\/legal)$/.test(p))document.documentElement.className+=' mbezu-app';if(p.indexOf('/tproduct/')>=0)document.documentElement.className+=' mbezu-prod';}catch(e){}})();</script>
+<style>html.mbezu-app .mbezu-chrome,html.mbezu-app .t706__carticon{display:none!important}html.mbezu-prod #allrecords{padding-top:89px}html.mbezu-prod .t-store__prod-popup__slider .t-slds__container{aspect-ratio:1/1}</style>
 <link rel="preconnect" href="https://cdn.mbezu.ru" crossorigin>
 <link rel="preconnect" href="https://cdn.mbezu.ru">
 <link rel="preload" as="style" href="https://cdn.mbezu.ru/e/style.css">
