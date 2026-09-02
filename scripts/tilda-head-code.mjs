@@ -290,6 +290,22 @@ const FAV_SNIPPET = `
 <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.mbezu.ru/favicon-180.png">
 <link rel="icon" type="image/png" sizes="512x512" href="https://cdn.mbezu.ru/favicon-512.png">`;
 
+// Аудит r2 (SEO): Organization.logo вёл на 404, в адресе была квартира, у Organization не было sameAs,
+// Person.url указывал на главную. Правим JSON прямо в head-коде.
+function ldFix(out) {
+  let o = out;
+  o = o.split('"logo": "https://mbezu.ru/logo.png"').join('"logo": "https://cdn.mbezu.ru/favicon-512.png"');
+  const si = o.indexOf('"streetAddress"');
+  if (si >= 0) { const ls = o.lastIndexOf(NLC, si); const le = o.indexOf(NLC, si); if (ls >= 0 && le > ls) o = o.slice(0, ls) + o.slice(le); }
+  const orgI = o.indexOf('"@type": "Organization"');
+  if (orgI >= 0 && o.indexOf('"sameAs"', orgI) < 0) {
+    o = o.replace('"legalName": "ИП Клевер Людмила Александровна",', '"legalName": "ИП Клевер Людмила Александровна",' + NLC + '  "sameAs": ["https://instagram.com/m.bezu_art", "https://t.me/mbezu_art", "https://vk.com/mbezu_art"],');
+  }
+  const pI = o.indexOf('"@type": "Person"');
+  if (pI >= 0) { const key = '"url": "https://mbezu.ru"'; const uI = o.indexOf(key, pI); if (uI >= 0 && (orgI < 0 || uI < orgI)) o = o.slice(0, uI) + '"url": "https://mbezu.ru/about"' + o.slice(uI + key.length); }
+  return o;
+}
+const NLC = String.fromCharCode(10);
 function patchHead(src) {
   let out = src;
   const removed = [];
@@ -369,6 +385,7 @@ function patchHead(src) {
     out = FAV_SNIPPET.trim() + String.fromCharCode(10) + out;
   }
 
+  out = ldFix(out);
   return { out, removed, brandFixed, typeFixed, ruAdded, rcvAdded };
 }
 

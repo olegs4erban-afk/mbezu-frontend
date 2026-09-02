@@ -287,6 +287,16 @@ function Footer({ go }) {
           <div>
             <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Магазин</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {/* Аудит r2 (SEO): интерьерные посадочные — прямые href, вне RouteName */}
+              <li><a href="/kartina-v-gostinuyu"
+                   style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}
+                   className="uh">Картина в гостиную</a></li>
+              <li><a href="/kartina-v-spalnyu"
+                   style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}
+                   className="uh">Картина в спальню</a></li>
+              <li><a href="/kartina-v-kabinet"
+                   style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}
+                   className="uh">Картина в кабинет</a></li>
               {/* Sprint 15: посадочная «Картина в подарок» — прямой href, вне RouteName */}
               <li>
                 <a href="/podarok"

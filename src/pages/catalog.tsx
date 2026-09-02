@@ -217,6 +217,7 @@ function CatalogPage({ go, density, initialSeries }) {
               Сомневаетесь в размере и цвете — разбор с примерами в журнале:{' '}
               <a href={INTERIOR_GUIDE_URL} className="uh-tap" style={{ color: 'var(--accent)' }}>как выбрать картину для гостиной</a>.
               Ищете подарок — <a href="/podarok" className="uh-tap" style={{ color: 'var(--accent)' }}>картина в подарок</a>.
+              Подборки по комнатам: <a href="/kartina-v-gostinuyu" className="uh-tap" style={{ color: 'var(--accent)' }}>в гостиную</a>, <a href="/kartina-v-spalnyu" className="uh-tap" style={{ color: 'var(--accent)' }}>в спальню</a>, <a href="/kartina-v-kabinet" className="uh-tap" style={{ color: 'var(--accent)' }}>в кабинет</a>.
             </p>
           </section>
         )}

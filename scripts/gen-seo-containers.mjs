@@ -45,7 +45,18 @@ function rootInner(html) {
 
 /** JSON-LD блоки из <head> — переносим в блок, чтобы разметку видел робот на mbezu.ru. */
 function jsonLdBlocks(html) {
-  return (html.match(/<script type="application\/ld\+json"[\s\S]*?<\/script>/g) || []).join('\n');
+  // Аудит r2 (SEO): в dist серий лежали и шаблонные LD каталога, и серийные — на живых сериях
+  // робот видел по два BreadcrumbList/ItemList. Оставляем последний блок каждого @type (без регэкспов).
+  const OPEN = '<script type="application/ld+json"', CLOSE = '</script>';
+  const byType = new Map(); let i = 0;
+  while ((i = html.indexOf(OPEN, i)) >= 0) {
+    const e = html.indexOf(CLOSE, i); if (e < 0) break;
+    const block = html.slice(i, e + CLOSE.length); i = e + CLOSE.length;
+    const t = block.indexOf('"@type"'); const q1 = block.indexOf('"', block.indexOf(':', t) + 1); const q2 = block.indexOf('"', q1 + 1);
+    const type = t >= 0 && q1 > 0 && q2 > q1 ? block.slice(q1 + 1, q2) : block;
+    byType.set(type, block);
+  }
+  return [...byType.values()].join(String.fromCharCode(10));
 }
 
 let made = 0;
