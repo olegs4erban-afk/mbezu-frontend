@@ -56,7 +56,7 @@ function HeroEditorial({ go }) {
                 color: 'var(--accent)', fontStyle: 'italic',
                 position: 'relative', display: 'inline-block',
               }}>маслом</span>{' '}<br/>
-              или&nbsp;заказать
+              для&nbsp;интерьера
             </h1>
             <p className="reveal r3" style={{
               margin: '40px 0 0', maxWidth: 460,
