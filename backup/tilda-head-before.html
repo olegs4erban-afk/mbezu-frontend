@@ -198,13 +198,51 @@
     upd();sl.parentNode.insertBefore(hint,sl.nextSibling);
     try{new MutationObserver(function(){upd();}).observe(sl,{attributes:true,subtree:true,attributeFilter:['class']});}catch(e){}
   }
+  // 02.09 P1: страница товара как часть витрины — крошки с серией и «Ещё из серии» из /works.json
+  var WORKS=null;
+  function loadWorks(cb){
+    if(WORKS){cb(WORKS);return;}
+    var x=new XMLHttpRequest();x.open('GET','https://cdn.mbezu.ru/works.json?v=2',true);
+    x.onload=function(){try{WORKS=JSON.parse(x.responseText);cb(WORKS);}catch(e){}};x.send();
+  }
+  function fmtPrice(n){var t=String(n),o='';while(t.length>3){o=' '+t.slice(-3)+o;t=t.slice(0,-3);}return t+o+' ₽';}
+  function productSeries(){
+    if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-crumbs'))return;
+    var host=document.querySelector('.t-store__prod-snippet__container')||document.querySelector('.t-store');if(!host)return;
+    loadWorks(function(list){
+      var me=null;for(var i=0;i<list.length;i++){if(location.pathname.indexOf(list[i].url)===0){me=list[i];break;}}
+      if(!me||document.getElementById('mbezu-crumbs'))return;
+      var cr=document.createElement('nav');cr.id='mbezu-crumbs';cr.setAttribute('aria-label','Хлебные крошки');
+      cr.style.cssText='max-width:1180px;margin:0 auto;padding:18px 20px 0;font:12px/1.4 JetBrains Mono,ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#67583f;display:flex;flex-wrap:wrap;gap:10px;align-items:center';
+      var parts=[['/','MBezu'],['/catalog','Каталог'],['/catalog/'+me.seriesSlug,me.seriesTitle]];
+      for(var k=0;k<parts.length;k++){var a=document.createElement('a');a.href=parts[k][0];a.textContent=parts[k][1];a.style.cssText='color:#67583f;text-decoration:none;padding:10px 0';cr.appendChild(a);var sp=document.createElement('span');sp.textContent='/';cr.appendChild(sp);}
+      var cur=document.createElement('span');cur.textContent=me.title;cur.style.color='#2a2520';cr.appendChild(cur);
+      host.insertBefore(cr,host.firstChild);
+      var same=[];for(var j=0;j<list.length;j++){if(list[j].series===me.series&&list[j].id!==me.id)same.push(list[j]);}
+      if(!same.length||document.getElementById('mbezu-related'))return;
+      same=same.slice(0,4);
+      var sec=document.createElement('section');sec.id='mbezu-related';
+      sec.style.cssText='max-width:1180px;margin:0 auto;padding:40px 20px 56px;font-family:Inter Tight,system-ui,sans-serif;color:#2a2520';
+      sec.innerHTML='<div style="font:500 10.5px/1.4 JetBrains Mono,ui-monospace,monospace;letter-spacing:.22em;text-transform:uppercase;color:#6f5c2b;margin-bottom:12px">Ещё из серии</div><h2 style="margin:0 0 22px;font-size:clamp(26px,3vw,40px);font-weight:500;letter-spacing:-.02em">'+me.seriesTitle+'</h2>';
+      var grid=document.createElement('div');grid.style.cssText='display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:22px';
+      for(var m=0;m<same.length;m++){var w=same[m];var a2=document.createElement('a');a2.href=w.url;a2.style.cssText='text-decoration:none;color:inherit;display:block';
+        a2.innerHTML='<img src="'+w.img+'" alt="'+w.title+'" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:#ede5d6;border-radius:12px;transition:transform .5s"><div style="margin-top:10px;font-size:16px;font-weight:500">'+w.title+'</div><div style="font-size:13px;color:#6b5d4a">'+w.w+'×'+w.h+' см · '+fmtPrice(w.price)+'</div>';
+        grid.appendChild(a2);}
+      sec.appendChild(grid);
+      var more=document.createElement('a');more.href='/catalog/'+me.seriesSlug;more.textContent='Вся серия «'+me.seriesTitle+'» →';
+      more.style.cssText='display:inline-flex;align-items:center;min-height:44px;margin-top:22px;padding:0 20px;border:1px solid #6f5c2b;border-radius:999px;color:#6f5c2b;text-decoration:none;font-size:14px';
+      sec.appendChild(more);
+      var nav=document.getElementById('mbezu-prod-nav');var host2=document.getElementById('allrecords')||document.body;
+      if(nav&&nav.parentNode===host2)host2.insertBefore(sec,nav);else host2.appendChild(sec);
+    });
+  }
   function appMark(){try{if(document.getElementById('root'))document.body.classList.add('mbezu-app');}catch(e){}}
-  function run(){goldFix();productLd();try{productNav();}catch(e){}try{galleryHint();}catch(e){}appMark();}
+  function run(){goldFix();productLd();try{productNav();}catch(e){}try{galleryHint();}catch(e){}try{productSeries();}catch(e){}appMark();}
   if(document.readyState!=='loading')run();
   document.addEventListener('DOMContentLoaded',run);
   window.addEventListener('load',run);
   document.addEventListener('DOMContentLoaded',function(){
-    try{var t2,mo=new MutationObserver(function(){clearTimeout(t2);t2=setTimeout(function(){goldFix();try{galleryHint();}catch(e){}},120);});
+    try{var t2,mo=new MutationObserver(function(){clearTimeout(t2);t2=setTimeout(function(){goldFix();try{galleryHint();}catch(e){}try{productSeries();}catch(e){}},120);});
     mo.observe(document.body,{childList:true,subtree:true});}catch(e){}
   });
 })();
@@ -320,6 +358,8 @@
 .t706__carticon-img path,.t706__carticon-img circle,.t706__carticon-img line{stroke:#6f5c2b!important}
 .t706__carticon-text{color:#2a2520!important}
 body.mbezu-app .t706__carticon{display:none!important}
+body.mbezu-app .mbezu-chrome{display:none!important}
+#mbezu-related a:hover img{transform:scale(1.05)}
 /* страница товара — тот же тон, что у витрины */
 body.t-body:has(.t-store__prod-snippet__container),.t-store__prod-snippet__container,.t-store .t-slds__container,.t-store__prod-popup__slider{background:#ede5d6!important}
 .t-store .t-name,.t-store .t-descr,.t-store .t-text,.t-store .t-btn,.t-store__prod-popup__btn{font-family:'Inter Tight',system-ui,-apple-system,sans-serif!important}
