@@ -50,12 +50,13 @@ function HeroEditorial({ go }) {
               fontWeight: 500,
               letterSpacing: '-.04em',
             }}>
-              Картины маслом,{' '}<br/>
+              {/* 03.09 (Олег, Вебмастер): основной заголовок — SEO-ключи «купить картину маслом» + «заказать» */}
+              Купить картину{' '}<br/>
               <span className="italic" style={{
                 color: 'var(--accent)', fontStyle: 'italic',
                 position: 'relative', display: 'inline-block',
-              }}>живущие</span>{' '}<br/>
-              в&nbsp;интерьерах
+              }}>маслом</span>{' '}<br/>
+              или&nbsp;заказать
             </h1>
             <p className="reveal r3" style={{
               margin: '40px 0 0', maxWidth: 460,

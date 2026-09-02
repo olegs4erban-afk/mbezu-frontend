@@ -4,6 +4,7 @@ import { ABOUT, ARTWORKS, SERIES } from '../common/data';
 import { TILDA_IMAGES } from '../common/tilda-images';
 import { ReviewsSection } from '../common/reviews-section';
 import { routeToPath } from '../common/routes';
+import { PaintingPlate } from '../common/adapter';
 
 // ─────────────────────────────────────────────────────────────
 // page-about.jsx — страница «Художница».
@@ -129,7 +130,9 @@ function AboutPage({ go }) {
           maxWidth: 'var(--max)', margin: '0 auto',
           display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28,
         }}>
-          {[['frag-1', 'Фрагмент · «Волна. Сепия» — фактура мазка'], ['frag-2', 'Фрагмент · «Тропические листья» — капли и свет'], ['frag-3', 'Фрагмент · «Обидуш» — камень и синяя кромка']].map(([f, t]) => (
+          {/* 03.09 (Олег): вместо фрагментов картин — атмосферные фото по темам блоков
+              (Adobe Stock, бесплатная коллекция, лицензированы 02.09.2026: 319341329, 387415246, 327477069) */}
+          {[['studio-1', 'Студия — окно, естественный свет'], ['studio-2', 'Мастерская — палитра, кисти'], ['studio-3', 'Мольберт — работа в процессе']].map(([f, t]) => (
               <figure key={f} style={{ margin: 0 }}>
                 <img src={`https://cdn.mbezu.ru/assets/about-${f}.webp`} srcSet={`https://cdn.mbezu.ru/assets/about-${f}@720.webp 720w, https://cdn.mbezu.ru/assets/about-${f}.webp 1200w`} sizes="(max-width: 900px) 92vw, 30vw"
                      alt={t} loading="lazy" style={{ width: '100%', aspectRatio: '4 / 5', objectFit: 'cover', borderRadius: 'var(--r-md)', boxShadow: 'var(--shadow-md)', display: 'block' }} />
@@ -170,26 +173,13 @@ function AboutPage({ go }) {
                    textDecoration: 'none', color: 'inherit',
                    cursor: 'pointer', display: 'block',
                  }}>
-                {/* 02.09 (Олег, п.10): в карточках серий были градиенты — теперь флагман серии */}
-                <div className="ph-art" style={{
-                  width: '100%', aspectRatio: '4 / 3',
-                  background: `linear-gradient(135deg, ${s.palette[0]}, ${s.palette[1]})`,
-                  borderRadius: 'var(--r-md)',
-                  boxShadow: 'var(--shadow-md)',
-                  position: 'relative', overflow: 'hidden',
-                }}>
-                  {(() => { const art = ARTWORKS.find((x) => x.series === s.id && x.featured && !x.hidden && TILDA_IMAGES[x.id]) || ARTWORKS.find((x) => x.series === s.id && !x.hidden && TILDA_IMAGES[x.id]); return art ? (
-                    <img src={TILDA_IMAGES[art.id].large} alt={`${art.title} — серия ${s.title}`} loading="lazy"
-                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: 18 }} />
-                  ) : null; })()}
-                  <span style={{
-                    position: 'absolute', top: 16, left: 16,
-                    background: s.color, color: 'var(--bg-cream)',
-                    padding: '7px 14px', borderRadius: 'var(--r-pill)',
-                    fontFamily: 'var(--mono)', fontSize: 10,
-                    letterSpacing: '.18em', fontWeight: 600,
-                  }}>{s.title.toUpperCase().split(' ')[0]}</span>
-                </div>
+                {/* 03.09 (Олег): фон карточек серий был градиент+штриховка (.ph-art) и отличался
+                    от остального сайта — теперь та же PaintingPlate, что в триптихе серий на главной */}
+                {(() => { const cover = ARTWORKS.find((x) => x.series === s.id && x.featured && !x.hidden) || ARTWORKS.find((x) => x.series === s.id && !x.hidden) || ARTWORKS.find((x) => x.series === s.id); return (
+                  <PaintingPlate art={cover} fit="bare" objectFit="contain" plain style={{
+                    aspectRatio: '3 / 4', borderRadius: 'var(--r-md)', boxShadow: 'var(--shadow-md)',
+                  }} showMeta={false} />
+                ); })()}
                 <div style={{ paddingTop: 20 }}>
                   <div className="cat-no">{s.years} · {s.count} работ</div>
                   <h3 className="display" style={{ margin: '10px 0 6px', fontSize: 28, fontWeight: 500, letterSpacing: '-.015em' }}>{s.title}</h3>
