@@ -360,8 +360,8 @@ const PRE_MARK = 'MBezu · perf-preload';
 const PRE_END = '<!-- /MBezu · perf-preload -->';
 const PRE_SNIPPET = `
 <!-- ${PRE_MARK} · Lighthouse: шрифты и CSS витрины до первой отрисовки (03.09) -->
-<script>(function(){try{var p=location.pathname.replace(/\/+$/,'')||'/';if(/^(\/|\/catalog|\/catalog\/(monohromnaya|ulitsy-mira|tihaya-sila|tondo)|\/about|\/commission|\/legal)$/.test(p))document.documentElement.className+=' mbezu-app';if(p.indexOf('/tproduct/')>=0)document.documentElement.className+=' mbezu-prod';}catch(e){}})();</script>
-<style>html.mbezu-app .mbezu-chrome,html.mbezu-app .t706__carticon{display:none!important}html.mbezu-prod #allrecords{padding-top:89px}html.mbezu-prod .t-store__prod-popup__slider .t-slds__container{aspect-ratio:1/1}</style>
+<script>(function(){try{var p=location.pathname.replace(/\/+$/,'')||'/';if(/^(\/|\/catalog|\/catalog\/(monohromnaya|ulitsy-mira|tihaya-sila|tondo)|\/about|\/commission|\/legal)$/.test(p)){document.documentElement.className+=' mbezu-app';document.documentElement.setAttribute('data-mbezu','app');}if(p.indexOf('/tproduct/')>=0){document.documentElement.className+=' mbezu-prod';document.documentElement.setAttribute('data-mbezu','prod');}}catch(e){}})();</script>
+<style>html.mbezu-app .mbezu-chrome,html[data-mbezu=app] .mbezu-chrome,html.mbezu-app .t706__carticon,html[data-mbezu=app] .t706__carticon{display:none!important}html.mbezu-prod #allrecords,html[data-mbezu=prod] #allrecords{padding-top:89px}html.mbezu-prod .t-store__prod-popup__slider .t-slds__container,html[data-mbezu=prod] .t-store__prod-popup__slider .t-slds__container{aspect-ratio:1/1}</style>
 <link rel="preconnect" href="https://cdn.mbezu.ru" crossorigin>
 <link rel="preconnect" href="https://cdn.mbezu.ru">
 <link rel="preload" as="style" href="https://cdn.mbezu.ru/e/style.css">
