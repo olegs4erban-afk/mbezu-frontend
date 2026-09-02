@@ -40,7 +40,7 @@ const DEAD = ['@babel/standalone', '@google/model-viewer', 'react-dom@18', 'reac
 const RCV_MARK = 'MBezu · lead-receivers';
 const RCV_SNIPPET = `
 <!-- ${RCV_MARK} · скрытые формы-приёмники (Sprint 15 Ф0) -->
-<style>[data-mbezu-lead],[data-mbezu-notify]{position:absolute!important;left:-9999px!important;height:1px!important;overflow:hidden!important}</style>
+<style>[data-mbezu-lead],[data-mbezu-notify],.t-rec:has(input[name="lead_ref"]){position:absolute!important;left:-9999px!important;height:1px!important;overflow:hidden!important}</style>
 <script>
 (function(){
   function wire(){
@@ -360,6 +360,8 @@ const PRE_MARK = 'MBezu · perf-preload';
 const PRE_END = '<!-- /MBezu · perf-preload -->';
 const PRE_SNIPPET = `
 <!-- ${PRE_MARK} · Lighthouse: шрифты и CSS витрины до первой отрисовки (03.09) -->
+<script>(function(){try{var p=location.pathname.replace(/\/+$/,'')||'/';if(/^(\/|\/catalog|\/catalog\/(monohromnaya|ulitsy-mira|tihaya-sila|tondo)|\/about|\/commission|\/legal)$/.test(p))document.documentElement.className+=' mbezu-app';}catch(e){}})();</script>
+<style>html.mbezu-app .mbezu-chrome,html.mbezu-app .t706__carticon{display:none!important}</style>
 <link rel="preconnect" href="https://cdn.mbezu.ru" crossorigin>
 <link rel="preconnect" href="https://cdn.mbezu.ru">
 <link rel="preload" as="style" href="https://cdn.mbezu.ru/e/style.css">
@@ -457,6 +459,10 @@ function patchHead(src) {
   const prodAdded = !out.includes(PROD_MARK);
   if (prodAdded) out = out.trimEnd() + String.fromCharCode(10) + PROD_SNIPPET + String.fromCharCode(10);
 
+  if (out.includes(RCV_MARK)) {
+    const ra = out.indexOf('<!-- ' + RCV_MARK); const re0 = out.indexOf('</script>', ra);
+    if (ra >= 0 && re0 > ra) out = out.slice(0, ra) + RCV_SNIPPET.trim() + out.slice(re0 + 9);
+  }
   const rcvAdded = !out.includes(RCV_MARK);
   if (rcvAdded) out = out.trimEnd() + String.fromCharCode(10) + RCV_SNIPPET + String.fromCharCode(10);
 
