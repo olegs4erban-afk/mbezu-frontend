@@ -15,10 +15,11 @@
   },
   {
     "file": "content/404.html",
-    "alias": "404",
+    "alias": "not-found",
     "title": "Страница не найдена — Mila Bezú",
     "descr": "Такой страницы уже нет: работа продана или адрес изменился. Каталог картин маслом в наличии и картина на заказ — на mbezu.ru.",
-    "canonical": "https://mbezu.ru/404"
+    "canonical": "https://mbezu.ru/not-found",
+    "pageid": "219132109"
   },
   {
     "file": "content/kartina-v-gostinuyu.html",

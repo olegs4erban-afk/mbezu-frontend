@@ -33,7 +33,7 @@ await withSession(async ({ page }) => {
     [...document.querySelectorAll('a[href*="/page/?pageid="]')].map((a) => (a.getAttribute('href').match(/pageid=(\d+)/) || [])[1]).filter(Boolean));
 
   for (const m of items) {
-    let pid = byAlias[m.alias];
+    let pid = m.pageid || byAlias[m.alias];
     console.log(`\n▸ ${m.alias} — ${pid ? 'страница есть ' + pid : 'создаём'}`);
     if (!pid) {
       const before = new Set(await listPages());
