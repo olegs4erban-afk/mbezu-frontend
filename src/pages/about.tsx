@@ -76,6 +76,53 @@ function AboutPage({ go }) {
         </div>
       </section>
 
+      {/* 02.09 P2: /about как страница эксперта — опыт, процесс, мастерская, сертификат (только факты из ABOUT) */}
+      <section className="resp-pad" style={{ padding: '40px 40px 60px' }}>
+        <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+          <Eyebrow accent>Опыт и подход</Eyebrow>
+          <div className="resp-stack-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginTop: 20 }}>
+            {[
+              ['15+ лет', 'практики масляной живописи', 'Холст, масло, галерейный подрамник — работа пишется слоями и живёт десятилетиями.'],
+              ['Дизайн интерьера', 'образование и метод', 'Картина рассматривается как часть комнаты: свет, стена, мебель и расстояние до зрителя учитываются до первого мазка.'],
+              ['Путешествия', 'источник серий', 'Греция, Португалия, Франция, Камбоджа, Вьетнам — каждая серия рождается из личной поездки и её света.'],
+            ].map(([n, l, t]) => (
+              <div key={n} style={{ background: 'var(--bg-card)', borderRadius: 'var(--r-lg)', padding: 24 }}>
+                <div className="display" style={{ fontSize: 30, fontWeight: 500, letterSpacing: '-.02em', color: 'var(--accent)', lineHeight: 1 }}>{n}</div>
+                <div className="eyebrow" style={{ marginTop: 10 }}>{l}</div>
+                <p style={{ margin: '12px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>{t}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="resp-stack" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 20 }}>
+            <div style={{ background: 'var(--bg-card)', borderRadius: 'var(--r-lg)', padding: 26 }}>
+              <Eyebrow accent>Как проходит заказ</Eyebrow>
+              <ol style={{ margin: '14px 0 0', padding: '0 0 0 20px', fontSize: 15, lineHeight: 1.6, color: 'var(--ink-2)', display: 'grid', gap: 8 }}>
+                <li><b style={{ color: 'var(--ink)', fontWeight: 500 }}>Бриф.</b> Комната, стена, свет, размер и настроение — по фото и паре вопросов.</li>
+                <li><b style={{ color: 'var(--ink)', fontWeight: 500 }}>Эскизы.</b> Два-три варианта композиции и колорита до начала работы.</li>
+                <li><b style={{ color: 'var(--ink)', fontWeight: 500 }}>Живопись.</b> От двух недель: масло сохнет слоями, торопить нельзя.</li>
+                <li><b style={{ color: 'var(--ink)', fontWeight: 500 }}>Передача.</b> Сертификат, подпись, открытка, крепёж — доставка по России.</li>
+              </ol>
+              <a href={routeToPath('commission')} className="btn btn-ghost" style={{ marginTop: 18, textDecoration: 'none', display: 'inline-flex' }}>Заказать картину</a>
+            </div>
+            <div style={{ background: 'var(--bg-card)', borderRadius: 'var(--r-lg)', padding: 26 }}>
+              <Eyebrow accent>Мастерская в Москве</Eyebrow>
+              <p style={{ margin: '14px 0 0', fontSize: 15, lineHeight: 1.6, color: 'var(--ink-2)' }}>
+                Показ работ — по записи: можно посмотреть живопись при дневном свете, оценить фактуру и размер, обсудить заказ. Напишите в Telegram или позвоните — договоримся о времени.
+              </p>
+              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 18 }}>
+                <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="btn btn-solid" style={{ textDecoration: 'none' }}>Написать в Telegram</a>
+                <a href={`tel:${ABOUT.contacts.phone.split(' ').join('')}`} className="btn btn-ghost" style={{ textDecoration: 'none' }}>{ABOUT.contacts.phone}</a>
+              </div>
+              <div className="eyebrow accent" style={{ marginTop: 26 }}>Сертификат подлинности</div>
+              <p style={{ margin: '10px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
+                К каждой работе — фирменный сертификат: название, техника (холст, масло), точный размер, год, подпись автора. Плюс подпись на обороте холста и рукописная открытка из мастерской. <a href="/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto" style={{ color: 'var(--accent)' }}>Что фиксирует сертификат и зачем он нужен</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Studio strip ── */}
       <section className="resp-pad" style={{ padding: '40px 40px 80px' }}>
         <div className="resp-stack-3" style={{

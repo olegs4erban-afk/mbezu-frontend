@@ -47,8 +47,8 @@ function StarsInput({ value, onChange }: { value: number; onChange: (v: number) 
 }
 
 // ── карточка отзыва ──────────────────────────────────────────
-function ReviewCard({ name, city, rating, text, date }: {
-  name: string; city?: string; rating: number; text: string; date: string;
+function ReviewCard({ name, city, rating, text, date, source, sourceUrl }: {
+  name: string; city?: string; rating: number; text: string; date: string; source?: string; sourceUrl?: string;
 }) {
   const d = new Date(date);
   const when = Number.isNaN(d.getTime()) ? '' : d.toLocaleDateString('ru-RU', { month: 'long', year: 'numeric' });
@@ -62,6 +62,7 @@ function ReviewCard({ name, city, rating, text, date }: {
         <strong style={{ fontWeight: 500 }}>{name}</strong>
         {city ? <span style={{ color: 'var(--ink-2)' }}> · {city}</span> : null}
         {when ? <span style={{ color: 'var(--ink-2)' }}> · {when}</span> : null}
+        {source ? <span style={{ color: 'var(--ink-2)' }}> · {sourceUrl ? <a href={sourceUrl} target="_blank" rel="noopener nofollow" style={{ color: 'var(--accent)' }}>отзыв на {source}</a> : `источник: ${source}`}</span> : null}
       </figcaption>
     </figure>
   );

@@ -19,6 +19,8 @@ export interface Review {
   text: string;
   date: string;          // ISO, напр. '2026-09-02'
   productId?: string;    // артикул из каталога (MN-01 …), если отзыв о конкретной работе
+  source?: 'Яндекс' | 'Сайт' | 'Telegram' | 'Instagram'; // откуда отзыв — показывается рядом с датой (P3: отзывы через Яндекс Бизнес)
+  sourceUrl?: string;    // ссылка на оригинал отзыва, если есть
 }
 
 export const REVIEWS: Review[] = [
