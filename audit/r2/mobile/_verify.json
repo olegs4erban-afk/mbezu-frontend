@@ -1,0 +1,638 @@
+{
+ "catalog": {
+  "scrollX": {
+   "x": 18,
+   "r": 566,
+   "w": 548,
+   "y": 384,
+   "h": 48,
+   "sw": 688,
+   "cw": 548,
+   "canScroll": true,
+   "scrolledTo": 140,
+   "ov": "auto",
+   "minW": "0px"
+  },
+  "gridCol": {
+   "x": 18,
+   "r": 566,
+   "w": 548,
+   "y": 384,
+   "h": 48,
+   "minW": "auto",
+   "display": "grid",
+   "cols": "547.75px"
+  },
+  "controls": {
+   "x": 18,
+   "r": 566,
+   "w": 548,
+   "y": 446,
+   "h": 107,
+   "display": "grid",
+   "cols": "268.875px 268.875px"
+  },
+  "selects": [
+   {
+    "label": "Фильтр по серии",
+    "x": 18,
+    "r": 287,
+    "w": 269,
+    "y": 446,
+    "h": 51,
+    "minW": "auto",
+    "width": "268.875px",
+    "fs": "16px"
+   },
+   {
+    "label": "Сортировка",
+    "x": 297,
+    "r": 566,
+    "w": 269,
+    "y": 446,
+    "h": 51,
+    "minW": "auto",
+    "width": "268.875px",
+    "fs": "16px"
+   }
+  ],
+  "toggle": {
+   "x": 18,
+   "r": 566,
+   "w": 548,
+   "y": 507,
+   "h": 46
+  },
+  "toggleBtns": [
+   {
+    "t": "СЕТКА",
+    "x": 211,
+    "r": 288,
+    "w": 77,
+    "y": 508,
+    "h": 44
+   },
+   {
+    "t": "СПИСОК",
+    "x": 288,
+    "r": 373,
+    "w": 85,
+    "y": 508,
+    "h": 44
+   }
+  ],
+  "chips": [
+   {
+    "t": "ВСЕ РАБОТЫ",
+    "x": 18,
+    "r": 134,
+    "w": 116,
+    "y": 384,
+    "h": 44
+   },
+   {
+    "t": "МОРЕ И ВОЛНЫ",
+    "x": 142,
+    "r": 273,
+    "w": 131,
+    "y": 384,
+    "h": 44
+   },
+   {
+    "t": "ГОРЫ",
+    "x": 281,
+    "r": 350,
+    "w": 69,
+    "y": 384,
+    "h": 44
+   },
+   {
+    "t": "ГОРОДА",
+    "x": 358,
+    "r": 443,
+    "w": 85,
+    "y": 384,
+    "h": 44
+   },
+   {
+    "t": "САДЫ И БОТАНИКА",
+    "x": 451,
+    "r": 605,
+    "w": 155,
+    "y": 384,
+    "h": 44
+   },
+   {
+    "t": "ПЕЙЗАЖИ",
+    "x": 613,
+    "r": 706,
+    "w": 92,
+    "y": 384,
+    "h": 44
+   }
+  ],
+  "chipsCount": 6,
+  "chipsBeyondViewport": [
+   "ГОРОДА",
+   "САДЫ И БОТАНИКА",
+   "ПЕЙЗАЖИ"
+  ],
+  "recOverflow": {
+   "id": "rec2413986501",
+   "ov": "auto",
+   "ovx": "auto"
+  },
+  "hitUnderSortSelect": "SELECT.field",
+  "lastChipReachable": false
+ },
+ "catalogSwipe": {
+  "before": 140,
+  "after": 140,
+  "lastChipRight": 566
+ },
+ "home": {
+  "zeroBanner": {
+   "x": 0,
+   "r": 375,
+   "w": 375,
+   "y": 0,
+   "h": 82,
+   "text": "MILA BEZÚ | 01 СЕНТЯБРЯ 2026 Г. · MOSCOU",
+   "rows": 57
+  },
+  "header": {
+   "x": 0,
+   "r": 375,
+   "w": 375,
+   "y": 82,
+   "h": 77
+  },
+  "h1": {
+   "x": 18,
+   "r": 357,
+   "w": 339,
+   "y": 239,
+   "h": 103
+  },
+  "firstBtn": {
+   "x": 18,
+   "r": 245,
+   "w": 227,
+   "y": 501,
+   "h": 48
+  },
+  "metaStripe": {
+   "x": 18,
+   "r": 357,
+   "w": 339,
+   "y": 667,
+   "h": 210
+  },
+  "heroImg": {
+   "x": 18,
+   "r": 357,
+   "w": 339,
+   "y": 911,
+   "h": 424,
+   "src": "mn-01.webp",
+   "loading": "eager",
+   "fp": "high"
+  },
+  "figcaption": {
+   "x": -10,
+   "r": 261,
+   "w": 271,
+   "y": 1279,
+   "h": 98,
+   "text": "[MN-01] · 2024 · 100×60 СМ | Волна. Сепия",
+   "clippedLeft": true,
+   "sectionOv": "hidden"
+  },
+  "nlInput": {
+   "fs": "14px",
+   "inlineFont": "",
+   "inlineFs": "inherit",
+   "cssText": "border: 0px; background: transparent; flex: 1 1 0%; min-width: 0px; width: 100%; padding: 14px 22px; font-size: inherit; outline: none; font-style: inherit; font-variant: inherit; font-weight: inherit"
+  },
+  "firstScreenImgs": 0
+ },
+ "product": {
+  "back": {
+   "tag": "A",
+   "cls": "js-store-close-text t-store__prod-popup__close-txt t-descr t",
+   "href": "https://mbezu.ru/catalog",
+   "x": 0,
+   "r": 0,
+   "w": 0,
+   "y": 0,
+   "h": 0
+  },
+  "navRow": [
+   {
+    "t": "Главная",
+    "href": "/",
+    "x": 43,
+    "r": 132,
+    "w": 89,
+    "y": 1407,
+    "h": 44,
+    "fs": "14px"
+   },
+   {
+    "t": "Каталог",
+    "href": "/catalog",
+    "x": 142,
+    "r": 229,
+    "w": 87,
+    "y": 1407,
+    "h": 44,
+    "fs": "14px"
+   },
+   {
+    "t": "На заказ",
+    "href": "/commission",
+    "x": 239,
+    "r": 332,
+    "w": 93,
+    "y": 1407,
+    "h": 44,
+    "fs": "14px"
+   },
+   {
+    "t": "Журнал",
+    "href": "/journal",
+    "x": 201,
+    "r": 289,
+    "w": 88,
+    "y": 1461,
+    "h": 44,
+    "fs": "14px"
+   }
+  ],
+  "slider": {
+   "x": 0,
+   "r": 375,
+   "w": 375,
+   "y": 50,
+   "h": 375,
+   "bg": "rgb(235, 235, 235)"
+  },
+  "bgImg": {
+   "x": -375,
+   "r": 0,
+   "w": 375,
+   "y": 50,
+   "h": 375,
+   "bgSize": "cover",
+   "imgWrapBg": "rgba(0, 0, 0, 0)",
+   "bgImg": "url(\"https://cdn.mbezu.ru/assets/cards/mn-01.webp\")"
+  },
+  "hint": {
+   "t": "Фото 1 из 2 · листайте",
+   "fs": "12px",
+   "x": 0,
+   "r": 375,
+   "w": 375,
+   "y": 433,
+   "h": 17
+  },
+  "bodyBg": "rgb(255, 255, 255)",
+  "brandFs": "12px",
+  "price": {
+   "t": "100 000₽",
+   "fs": "16px",
+   "x": 20,
+   "r": 90,
+   "w": 70,
+   "y": 548,
+   "h": 23
+  },
+  "buy": {
+   "x": 20,
+   "r": 355,
+   "w": 335,
+   "y": 592,
+   "h": 50,
+   "fs": "14px",
+   "bg": "rgb(0, 0, 0)"
+  },
+  "allLinks": [
+   {
+    "t": "",
+    "href": "https://mbezu.ru/catalog",
+    "x": 0,
+    "r": 375,
+    "w": 375,
+    "y": 0,
+    "h": 50
+   },
+   {
+    "t": "Купить",
+    "href": "#order",
+    "x": 20,
+    "r": 355,
+    "w": 335,
+    "y": 592,
+    "h": 50
+   },
+   {
+    "t": "Made on\t\tTilda",
+    "href": "https://tilda.cc/",
+    "x": 0,
+    "r": 375,
+    "w": 375,
+    "y": 1309,
+    "h": 50
+   },
+   {
+    "t": "Главная",
+    "href": "/",
+    "x": 43,
+    "r": 132,
+    "w": 89,
+    "y": 1407,
+    "h": 44
+   },
+   {
+    "t": "Каталог",
+    "href": "/catalog",
+    "x": 142,
+    "r": 229,
+    "w": 87,
+    "y": 1407,
+    "h": 44
+   },
+   {
+    "t": "На заказ",
+    "href": "/commission",
+    "x": 239,
+    "r": 332,
+    "w": 93,
+    "y": 1407,
+    "h": 44
+   },
+   {
+    "t": "В подарок",
+    "href": "/podarok",
+    "x": 86,
+    "r": 191,
+    "w": 104,
+    "y": 1461,
+    "h": 44
+   },
+   {
+    "t": "Журнал",
+    "href": "/journal",
+    "x": 201,
+    "r": 289,
+    "w": 88,
+    "y": 1461,
+    "h": 44
+   }
+  ],
+  "docH": 1541,
+  "fonts": [
+   "TildaSans",
+   "\"Inter Tight\""
+  ]
+ },
+ "popupClose": {
+  "btn": {
+   "x": 345,
+   "y": 7,
+   "w": 20,
+   "h": 36
+  },
+  "wrap": {
+   "w": 375,
+   "h": 50
+  },
+  "wrapPointer": "auto",
+  "btnPad": "10px"
+ },
+ "popupCloseNearTap": "none",
+ "afterCart/catalog": {
+  "tcart": 1,
+  "mbezCart": null,
+  "tabbarBadge": null,
+  "tabbarCartText": "КОРЗИНА",
+  "icon": {
+   "visible": true,
+   "x": 295,
+   "y": 100,
+   "w": 60,
+   "h": 60,
+   "text": "= 100 000₽ 1",
+   "counter": "1",
+   "z": "4000",
+   "pos": "fixed"
+  },
+  "h1": {
+   "x": 18,
+   "y": 273,
+   "w": 339,
+   "h": 76,
+   "t": "Картины маслом,\nв наличии"
+  }
+ },
+ "afterCart/podarok": {
+  "tcart": 1,
+  "mbezCart": null,
+  "tabbarBadge": null,
+  "icon": {
+   "visible": true,
+   "x": 295,
+   "y": 100,
+   "w": 60,
+   "h": 60,
+   "text": "= 100 000₽ 1",
+   "counter": "1",
+   "z": "4000",
+   "pos": "fixed"
+  },
+  "h1": {
+   "x": 18,
+   "y": 96,
+   "w": 339,
+   "h": 84,
+   "t": "Картина в подарок"
+  }
+ },
+ "tpost": {
+  "hdr": {
+   "x": 0,
+   "y": 0,
+   "w": 375,
+   "h": 60,
+   "bg": "rgba(255, 255, 255, 0.4)"
+  },
+  "title": {
+   "t": "",
+   "href": "/journal",
+   "x": 0,
+   "y": 0,
+   "w": 60,
+   "h": 60,
+   "fs": "14px"
+  },
+  "back": {
+   "cls": "t-cms__page-header__back-button t-btn js-cms-page-",
+   "href": "/journal",
+   "x": 0,
+   "y": 0,
+   "w": 60,
+   "h": 60
+  },
+  "nav": [
+   {
+    "t": "Все статьи",
+    "href": "/journal",
+    "x": 60,
+    "y": 2314,
+    "w": 107,
+    "h": 44
+   },
+   {
+    "t": "Каталог картин",
+    "href": "/catalog",
+    "x": 176,
+    "y": 2314,
+    "w": 139,
+    "h": 44
+   },
+   {
+    "t": "О художнике",
+    "href": "/about",
+    "x": 125,
+    "y": 2476,
+    "w": 125,
+    "h": 44
+   }
+  ],
+  "bodyP": {
+   "fs": "16px",
+   "lh": "22.4px",
+   "ff": "TildaSans, Arial, sans-serif",
+   "color": "rgb(0, 0, 0)"
+  },
+  "h2": null,
+  "cover": {
+   "x": 20,
+   "y": 80,
+   "w": 335,
+   "h": 251,
+   "bgSize": "cover",
+   "bg": "url(\"https://cdn.mbezu.ru/assets/cards/mn-01.webp\")"
+  },
+  "bodyBg": "rgb(237, 229, 214)",
+  "linksCount": 13
+ },
+ "journal": {
+  "cards": [
+   {
+    "x": 20,
+    "y": 799,
+    "w": 335,
+    "h": 369,
+    "t": "Сертификат подлинности картины: что это и зачем он нужен 30.",
+    "link": "https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto",
+    "tag": "LI.t-cms__card t-cms__card_tile t-cms__card"
+   },
+   {
+    "x": 20,
+    "y": 799,
+    "w": 335,
+    "h": 369,
+    "t": "",
+    "link": null,
+    "tag": "A.t-cms__card__atom t-cms__card__link"
+   },
+   {
+    "x": 20,
+    "y": 886,
+    "w": 335,
+    "h": 188,
+    "t": "",
+    "link": null,
+    "tag": "DIV.t-cms__card__cell t-cms__card__cell_medi"
+   },
+   {
+    "x": 20,
+    "y": 886,
+    "w": 335,
+    "h": 188,
+    "t": "",
+    "link": null,
+    "tag": "DIV.t-cms__card__molecule t-cms__card__molec"
+   },
+   {
+    "x": 20,
+    "y": 886,
+    "w": 335,
+    "h": 188,
+    "t": "",
+    "link": null,
+    "tag": "DIV.t-cms__card__atom"
+   }
+  ],
+  "title": [
+   {
+    "t": "Журнал",
+    "fs": "30px",
+    "ff": "TildaSans, Arial, sans-serif",
+    "x": 20,
+    "y": 717,
+    "w": 335,
+    "h": 37
+   }
+  ],
+  "btns": [
+   {
+    "t": "КАТАЛОГ КАРТИН",
+    "x": 18,
+    "y": 437,
+    "w": 191,
+    "h": 48
+   },
+   {
+    "t": "КАРТИНА В ПОДАРОК",
+    "x": 18,
+    "y": 499,
+    "w": 219,
+    "h": 48
+   },
+   {
+    "t": "О ХУДОЖНИКЕ",
+    "x": 18,
+    "y": 561,
+    "w": 170,
+    "h": 48
+   }
+  ],
+  "covers": [
+   {
+    "x": 20,
+    "y": 886,
+    "w": 335,
+    "h": 188,
+    "bg": "ts-02.webp"
+   },
+   {
+    "x": 20,
+    "y": 1275,
+    "w": 335,
+    "h": 188,
+    "bg": "st-01.webp"
+   },
+   {
+    "x": 20,
+    "y": 1664,
+    "w": 335,
+    "h": 188,
+    "bg": "mn-01.webp"
+   }
+  ],
+  "docH": 2106,
+  "firstCardY": 799
+ }
+}

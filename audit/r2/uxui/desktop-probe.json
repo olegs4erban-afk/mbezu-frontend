@@ -1,0 +1,656 @@
+{
+ "tabOrder": {
+  "firstVisible": {
+   "index": 28,
+   "tag": "A",
+   "txt": "К СОДЕРЖИМОМУ",
+   "cls": "skip-link",
+   "x": 8,
+   "y": -42,
+   "w": 148,
+   "visible": true,
+   "outline": "2px auto rgb(32, 21, 255)"
+  },
+  "hiddenBefore": 27,
+  "seq": [
+   {
+    "tag": "INPUT",
+    "txt": "lead_ref",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9779,
+    "y": 105,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "name",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9715,
+    "y": 105,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "phone",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9650,
+    "y": 105,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "email",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9586,
+    "y": 105,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "city",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9521,
+    "y": 105,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "message",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9457,
+    "y": 105,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "notes",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9392,
+    "y": 105,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "size",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9328,
+    "y": 105,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "style",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9263,
+    "y": 105,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "palette",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9779,
+    "y": 150,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "budget",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9715,
+    "y": 150,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "weeks",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9650,
+    "y": 150,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "source",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9586,
+    "y": 150,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "page",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9521,
+    "y": 150,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "ts",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9457,
+    "y": 150,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "utm_source",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9392,
+    "y": 150,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "utm_medium",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9328,
+    "y": 150,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "utm_campaign",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9263,
+    "y": 150,
+    "w": 44,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "utm_content",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9779,
+    "y": 75,
+    "w": 342,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "BUTTON",
+    "txt": "Отправить",
+    "cls": "t-submit t-btnflex t-btnflex_t",
+    "x": -9417,
+    "y": 75,
+    "w": 198,
+    "visible": false,
+    "outline": "2px auto rgb(32, 21, 255)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "lead_ref",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9779,
+    "y": 105,
+    "w": 77,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "source",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9682,
+    "y": 105,
+    "w": 77,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "page",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9586,
+    "y": 105,
+    "w": 77,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "city",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9489,
+    "y": 105,
+    "w": 77,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "budget",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9392,
+    "y": 105,
+    "w": 77,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "ts",
+    "cls": "t-input js-tilda-rule t-focusa",
+    "x": -9296,
+    "y": 105,
+    "w": 77,
+    "visible": false,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "BUTTON",
+    "txt": "Отправить",
+    "cls": "t-submit t-btnflex t-btnflex_t",
+    "x": -9779,
+    "y": 150,
+    "w": 198,
+    "visible": false,
+    "outline": "2px auto rgb(32, 21, 255)"
+   },
+   {
+    "tag": "A",
+    "txt": "К СОДЕРЖИМОМУ",
+    "cls": "skip-link",
+    "x": 8,
+    "y": -42,
+    "w": 148,
+    "visible": true,
+    "outline": "2px auto rgb(32, 21, 255)"
+   },
+   {
+    "tag": "A",
+    "txt": "КАТАЛОГ",
+    "cls": "uh",
+    "x": 581,
+    "y": 69,
+    "w": 65,
+    "visible": true,
+    "outline": "2px auto rgb(32, 21, 255)"
+   },
+   {
+    "tag": "A",
+    "txt": "НА ЗАКАЗ",
+    "cls": "uh",
+    "x": 682,
+    "y": 69,
+    "w": 72,
+    "visible": true,
+    "outline": "2px auto rgb(32, 21, 255)"
+   },
+   {
+    "tag": "A",
+    "txt": "ХУДОЖНИК",
+    "cls": "uh",
+    "x": 790,
+    "y": 69,
+    "w": 84,
+    "visible": true,
+    "outline": "2px auto rgb(32, 21, 255)"
+   },
+   {
+    "tag": "A",
+    "txt": "КОРЗИНА",
+    "cls": "hide-mobile",
+    "x": 1331,
+    "y": 69,
+    "w": 69,
+    "visible": true,
+    "outline": "2px auto rgb(32, 21, 255)"
+   },
+   {
+    "tag": "BUTTON",
+    "txt": "СМОТРЕТЬ КАТАЛОГ →",
+    "cls": "btn btn-solid",
+    "x": 40,
+    "y": 739,
+    "w": 227,
+    "visible": true,
+    "outline": "2px auto rgb(106, 96, 240)"
+   },
+   {
+    "tag": "BUTTON",
+    "txt": "ЗАКАЗАТЬ КАРТИНУ",
+    "cls": "btn btn-ghost",
+    "x": 281,
+    "y": 739,
+    "w": 209,
+    "visible": true,
+    "outline": "2px auto rgb(37, 30, 136)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "Имя *",
+    "cls": "field",
+    "x": 848,
+    "y": 1530,
+    "w": 492,
+    "visible": true,
+    "outline": "2px solid rgb(111, 92, 43)"
+   },
+   {
+    "tag": "INPUT",
+    "txt": "Телефон / Telegram / emai",
+    "cls": "field",
+    "x": 848,
+    "y": 1582,
+    "w": 492,
+    "visible": true,
+    "outline": "2px solid rgb(111, 92, 43)"
+   }
+  ]
+ },
+ "btnFocus": {
+  "outline": "3px auto rgb(237, 229, 214)",
+  "offset": "0px",
+  "fv": true
+ },
+ "cartIcon": {
+  "present": true,
+  "display": "none",
+  "visible": false,
+  "rect": {
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0
+  },
+  "position": "fixed",
+  "wrapBg": "rgba(0, 0, 0, 0)",
+  "wrapShadow": "none",
+  "iconTag": "svg",
+  "iconSize": 0,
+  "iconDisplay": "inline",
+  "iconOpacity": "1",
+  "iconFill": "rgb(0, 0, 0)",
+  "paths": [
+   {
+    "tag": "path",
+    "fill": "none",
+    "stroke": "rgb(0, 0, 0)"
+   },
+   {
+    "tag": "path",
+    "fill": "none",
+    "stroke": "rgb(0, 0, 0)"
+   }
+  ],
+  "imgBg": "none",
+  "counter": {
+   "txt": "",
+   "bg": "rgb(160, 138, 78)",
+   "color": "rgb(255, 255, 255)",
+   "fs": "15px"
+  },
+  "html": "<div class=\"t706__carticon\" style=\"\"> <div class=\"t706__carticon-text t-name t-name_xs\" style=\"display: none;\">Оформить заказ</div> <div class=\"t706__carticon-wrapper\"> <div class=\"t706__carticon-imgwrap\"> <svg role=\"img\" class=\"t706__carticon-img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 64 64\"> <path fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M44 18h10v45H10V18h10z\"></path> <path fill=\"none\" stroke-width=\"2\" stroke-miterlimit=\"10\" d=\"M22 24V11c0-5.523 4.477-10 10-10s10 4.477 10 10v13\"></path> </svg> </div> <div class=\"t706__carticon-counter js-carticon-counter\" style=\"back"
+ },
+ "hero": {
+  "imgBox": {
+   "w": 373,
+   "h": 466
+  },
+  "plate": {
+   "w": 373,
+   "h": 466
+  },
+  "natural": {
+   "w": 662,
+   "h": 662
+  },
+  "src": "mn-01@960.webp",
+  "paintingEst": {
+   "w": 373,
+   "h": 224
+  },
+  "fill": "48%"
+ },
+ "product": {
+  "paras": [
+   {
+    "txt": "О картине «Волна. Сепия»",
+    "color": "rgb(0, 0, 0)",
+    "ratio": 21,
+    "fs": "21px",
+    "fw": "700",
+    "font": "TildaSans",
+    "sel": "h2."
+   },
+   {
+    "txt": "Монохромная волна в момент наивысшего напряжения —",
+    "color": "rgb(0, 0, 0)",
+    "ratio": 21,
+    "fs": "14px",
+    "fw": "300",
+    "font": "TildaSans",
+    "sel": "p."
+   },
+   {
+    "txt": "Серия «Монохромная серия»",
+    "color": "rgb(0, 0, 0)",
+    "ratio": 21,
+    "fs": "21px",
+    "fw": "700",
+    "font": "TildaSans",
+    "sel": "h2."
+   },
+   {
+    "txt": "Морские волны и горные пейзажи в чёрно-белом решен",
+    "color": "rgb(0, 0, 0)",
+    "ratio": 21,
+    "fs": "14px",
+    "fw": "300",
+    "font": "TildaSans",
+    "sel": "p."
+   },
+   {
+    "txt": "Если вы хотите купить картину маслом для интерьера",
+    "color": "rgb(0, 0, 0)",
+    "ratio": 21,
+    "fs": "14px",
+    "fw": "300",
+    "font": "TildaSans",
+    "sel": "p."
+   },
+   {
+    "txt": "Покупка, доставка и подлинность",
+    "color": "rgb(0, 0, 0)",
+    "ratio": 21,
+    "fs": "21px",
+    "fw": "700",
+    "font": "TildaSans",
+    "sel": "h2."
+   },
+   {
+    "txt": "Оплата онлайн. К работе прилагаются сертификат под",
+    "color": "rgb(0, 0, 0)",
+    "ratio": 21,
+    "fs": "14px",
+    "fw": "300",
+    "font": "TildaSans",
+    "sel": "p."
+   },
+   {
+    "txt": "Техника: Холст, масло",
+    "color": "rgb(0, 0, 0)",
+    "ratio": 21,
+    "fs": "14px",
+    "fw": "300",
+    "font": "TildaSans",
+    "sel": "p.t-typography__characteristics"
+   },
+   {
+    "txt": "Ориентация: Горизонтальная",
+    "color": "rgb(0, 0, 0)",
+    "ratio": 21,
+    "fs": "14px",
+    "fw": "300",
+    "font": "TildaSans",
+    "sel": "p.t-typography__characteristics"
+   },
+   {
+    "txt": "Адрес доставки или пункт выдачи СДЭК",
+    "color": "rgb(42, 37, 32)",
+    "ratio": 15.17,
+    "fs": "16px",
+    "fw": "300",
+    "font": "\"Inter Tight\"",
+    "sel": "label.t-input-title"
+   },
+   {
+    "txt": "Согласен(на) на обработку персональных данных (152",
+    "color": "rgb(42, 37, 32)",
+    "ratio": 15.17,
+    "fs": "16px",
+    "fw": "300",
+    "font": "\"Inter Tight\"",
+    "sel": "div.t-input-title"
+   }
+  ],
+  "price": {
+   "txt": "100 000₽",
+   "fs": "20px",
+   "fw": "400",
+   "font": "TildaSans",
+   "valueFs": "20px"
+  },
+  "image": {
+   "w": 560,
+   "h": 560,
+   "tag": "DIV",
+   "src": "url(\"https://cdn.mbezu.ru/assets/cards/mn-01.webp\")",
+   "natural": {},
+   "alt": null
+  },
+  "sliderBox": {
+   "w": 560,
+   "h": 560,
+   "bg": "rgb(235, 235, 235)"
+  },
+  "slides": 3,
+  "thumbs": 1,
+  "zoom": true,
+  "sliderText": ""
+ },
+ "brief": {
+  "found": true,
+  "noValidate": false,
+  "valid": false,
+  "required": [
+   "Имя",
+   "Email или Telegram"
+  ],
+  "submitTxt": "ОТПРАВИТЬ БРИФ →",
+  "submitBox": {
+   "w": 237,
+   "h": 55,
+   "top": 2848
+  },
+  "labels": [
+   {
+    "ph": "Имя",
+    "hasLabel": false,
+    "req": true,
+    "type": "text",
+    "ac": null,
+    "inputmode": null
+   },
+   {
+    "ph": "Email или Telegram",
+    "hasLabel": false,
+    "req": true,
+    "type": "text",
+    "ac": null,
+    "inputmode": null
+   },
+   {
+    "ph": "Город",
+    "hasLabel": false,
+    "req": false,
+    "type": "text",
+    "ac": null,
+    "inputmode": null
+   },
+   {
+    "ph": "Куда повесим",
+    "hasLabel": false,
+    "req": false,
+    "type": "text",
+    "ac": null,
+    "inputmode": null
+   },
+   {
+    "ph": "Дополнительно — настроение, ассоциации, ссылки на референсы…",
+    "hasLabel": false,
+    "req": false,
+    "type": "textarea",
+    "ac": null,
+    "inputmode": null
+   }
+  ],
+  "emptySubmit": {
+   "customMsgs": [],
+   "activeEl": "Имя",
+   "nativeInvalid": [
+    "Имя",
+    "Email или Telegram"
+   ],
+   "validationMessage": "Please fill out this field."
+  },
+  "shortSubmit": {
+   "msgs": [
+    {
+     "txt": "Укажите, пожалуйста, имя (от 2 символов) и контакт — телефон, Telegram или email.",
+     "inView": true,
+     "top": 360,
+     "fs": "13.5px",
+     "color": "rgb(42, 37, 32)",
+     "border": "rgb(111, 92, 43)",
+     "bg": "rgb(227, 217, 197)"
+    }
+   ],
+   "sent": false,
+   "summaryShowsContacts": false
+  },
+  "summary": {
+   "h": 521,
+   "sticky": "sticky",
+   "top": "100px",
+   "text": "РЕЗЮМЕ БРИФА Что мы делаем РАЗМЕР Средний · 40×50 — 50×70 СТИЛЬ Городской пейзаж ПАЛИТРА Тёплая (bone) СРОКИ 8 недель БЮДЖЕТ 30 000 ₽ ПРЕДОПЛАТА 50% ПОСЛЕ СОГЛАСОВАНИЯ ЭСКИЗА. ДОГОВОР, АКТ ПРИЁМА."
+  }
+ }
+}

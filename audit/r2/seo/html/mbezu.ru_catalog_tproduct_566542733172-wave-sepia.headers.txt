@@ -1,0 +1,19 @@
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 301 Moved Permanently
+Server: ddos-guard
+Connection: keep-alive
+Keep-Alive: timeout=60
+Set-Cookie: __ddg8_=bDxC6HYqraHgtMO9; Domain=.mbezu.ru; Path=/; Expires=Tue, 01-Sep-2026 20:36:56 GMT
+Set-Cookie: __ddg10_=1788293816; Domain=.mbezu.ru; Path=/; Expires=Tue, 01-Sep-2026 20:36:56 GMT
+Set-Cookie: __ddg9_=217.107.127.144; Domain=.mbezu.ru; Path=/; Expires=Tue, 01-Sep-2026 20:36:56 GMT
+Set-Cookie: __ddg1_=k712nn7wXoY9E2G3kzkP; Domain=.mbezu.ru; HttpOnly; Path=/; Expires=Wed, 01-Sep-2027 20:16:56 GMT
+date: Tue, 01 Sep 2026 20:16:56 GMT
+content-type: text/html; charset=UTF-8
+location: https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya
+access-control-allow-origin: *
+x-host: mbezu.ru
+x-tilda-server: 26
+x-tilda-imprint: f2b269e7-26e5-4d4f-a412-d8810576b0a6
+Transfer-Encoding: chunked
+

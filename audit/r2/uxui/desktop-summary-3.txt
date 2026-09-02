@@ -1,0 +1,3794 @@
+=== commission
+{
+ "url": "https://mbezu.ru/commission",
+ "title": "Картина на заказ маслом — от 2 недель | MBezu Москва",
+ "loadMs": 3745,
+ "screens": 5.1,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "hidden",
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": 0,
+ "crumbs": [
+  "MBEZU / НА ЗАКАЗ"
+ ],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Заказать индивидуально",
+   "fs": 96,
+   "top": 252
+  },
+  {
+   "tag": "H2",
+   "txt": "Стоимость по размерам",
+   "fs": 40,
+   "top": 606
+  },
+  {
+   "tag": "H3",
+   "txt": "Малый формат",
+   "fs": 18,
+   "top": 793
+  },
+  {
+   "tag": "H3",
+   "txt": "Средний формат",
+   "fs": 18,
+   "top": 793
+  },
+  {
+   "tag": "H3",
+   "txt": "Большой формат",
+   "fs": 18,
+   "top": 793
+  },
+  {
+   "tag": "H2",
+   "txt": "Что входит в стоимость",
+   "fs": 34,
+   "top": 1092
+  },
+  {
+   "tag": "H2",
+   "txt": "Оставить заявку",
+   "fs": 40,
+   "top": 1512
+  },
+  {
+   "tag": "H3",
+   "txt": "Что мы делаем",
+   "fs": 24,
+   "top": 1668
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9417,
+   "top": 275,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9357,
+   "top": 294,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9779,
+   "top": 190,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9719,
+   "top": 209,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "ОТПРАВИТЬ БРИФ →",
+   "sel": "div > button.btn.btn-solid",
+   "x": 40,
+   "top": 2848,
+   "w": 237,
+   "h": 55,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 13,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9417,
+   "top": 4754,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "range",
+   "name": "",
+   "ph": "",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 13.3333,
+   "h": 32,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Имя",
+   "label": "",
+   "req": true,
+   "ac": null,
+   "fs": 16,
+   "h": 59,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Email или Telegram",
+   "label": "",
+   "req": true,
+   "ac": null,
+   "fs": 16,
+   "h": 59,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Город",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 59,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Куда повесим",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 59,
+   "form": "form:native"
+  },
+  {
+   "tag": "TEXTAREA",
+   "type": "textarea",
+   "name": "",
+   "ph": "Дополнительно — настроение, ассоциации, ссылки на референсы…",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 133,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": false,
+   "label": "",
+   "checked": false,
+   "size": 0
+  },
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных (152-ФЗ) — Политика ПД",
+   "checked": false,
+   "size": 20
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": true,
+  "payment": true,
+  "yookassa": true,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "96px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "textEls": 182,
+ "smallText": {
+  "n": 58,
+  "s": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "span.resp-hide > span",
+    "fs": 10.5,
+    "txt": "21 работа · 4 серии · масло на холсте",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "div > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Картина под ваше место",
+    "inView": true
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#b3a583",
+   "bg": "#ede5d6",
+   "fs": 14,
+   "fw": 400,
+   "ratio": 1.95,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "li > span",
+   "txt": "◇",
+   "n": 3,
+   "inView": false
+  },
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 15,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 108,
+ "smallTargetsN": 34,
+ "smallTargets": [
+  {
+   "sel": "div > a.skip-link",
+   "tag": "A",
+   "txt": "К СОДЕРЖИМОМУ",
+   "w": 148,
+   "h": 39,
+   "top": -56,
+   "href": "#main"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "КАТАЛОГ",
+   "w": 65,
+   "h": 20,
+   "top": 69,
+   "href": "/catalog"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "НА ЗАКАЗ",
+   "w": 72,
+   "h": 20,
+   "top": 69,
+   "href": "/commission"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "ХУДОЖНИК",
+   "w": 84,
+   "h": 20,
+   "top": 69,
+   "href": "/about"
+  },
+  {
+   "sel": "div > a.hide-mobile",
+   "tag": "A",
+   "txt": "КОРЗИНА",
+   "w": 69,
+   "h": 20,
+   "top": 69,
+   "href": "/cart"
+  }
+ ],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1,
+  "s": [
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ },
+ "briefTop": 1512,
+ "form": {
+  "noValidate": false,
+  "valid": true,
+  "reqCount": 0,
+  "firstInvalid": null
+ },
+ "emptySubmit": {
+  "customMsgs": [],
+  "activeEl": "BODY"
+ },
+ "shortSubmit": {
+  "msgs": [],
+  "sent": false
+ },
+ "tab": [
+  {
+   "tag": "BUTTON",
+   "txt": "01 Этюд до 30×40 см",
+   "cls": "",
+   "outline": "2px auto rgb(34, 24, 211)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  },
+  {
+   "tag": "BUTTON",
+   "txt": "02 Средний 40×50 — 50×70",
+   "cls": "",
+   "outline": "2px auto rgb(47, 37, 252)",
+   "shadow": true,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  },
+  {
+   "tag": "BUTTON",
+   "txt": "03 Большой 60×80 — 80×100",
+   "cls": "",
+   "outline": "2px auto rgb(34, 24, 211)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  },
+  {
+   "tag": "BUTTON",
+   "txt": "04 Крупный от 90×120 см",
+   "cls": "",
+   "outline": "2px auto rgb(33, 23, 227)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  },
+  {
+   "tag": "BUTTON",
+   "txt": "05 Другое свой размер",
+   "cls": "",
+   "outline": "2px auto rgb(34, 24, 211)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  },
+  {
+   "tag": "BUTTON",
+   "txt": "ГОРОДСКОЙ ПЕЙЗАЖ",
+   "cls": "chip is-active",
+   "outline": "2px auto rgb(58, 47, 250)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  },
+  {
+   "tag": "BUTTON",
+   "txt": "ПРИРОДНЫЙ ПЕЙЗАЖ",
+   "cls": "chip",
+   "outline": "2px auto rgb(41, 30, 232)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  },
+  {
+   "tag": "BUTTON",
+   "txt": "БОТАНИКА",
+   "cls": "chip",
+   "outline": "2px auto rgb(47, 35, 219)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  },
+  {
+   "tag": "BUTTON",
+   "txt": "МОНОХРОМ",
+   "cls": "chip",
+   "outline": "2px auto rgb(42, 30, 232)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  },
+  {
+   "tag": "BUTTON",
+   "txt": "ДРУГОЕ",
+   "cls": "chip",
+   "outline": "2px auto rgb(42, 30, 232)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": false
+  }
+ ]
+}
+=== journal
+{
+ "url": "https://mbezu.ru/journal",
+ "title": "Журнал о живописи — статьи художника Mila Bezú | mbezu.ru",
+ "loadMs": 3610,
+ "screens": 3.1,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": 0,
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Журнал о живописи",
+   "fs": 96,
+   "top": 96
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9417,
+   "top": 275,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9357,
+   "top": 294,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9779,
+   "top": 190,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9719,
+   "top": 209,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "КАТАЛОГ КАРТИН",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 170,
+   "top": 359,
+   "w": 191,
+   "h": 46,
+   "inView": true,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/catalog"
+  },
+  {
+   "txt": "КАРТИНА В ПОДАРОК",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 375,
+   "top": 359,
+   "w": 219,
+   "h": 46,
+   "inView": true,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/podarok"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": false,
+   "label": "",
+   "checked": false,
+   "size": 0
+  }
+ ],
+ "trust": {
+  "delivery": false,
+  "returns": false,
+  "cert": true,
+  "payment": false,
+  "yookassa": false,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "96px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "textEls": 24,
+ "smallText": {
+  "n": 1,
+  "s": [
+   {
+    "sel": "div.resp-pad > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Заметки из мастерской",
+    "inView": true
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 15,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  },
+  {
+   "fg": "#777777",
+   "bg": "#ede5d6",
+   "fs": 12,
+   "fw": 600,
+   "ratio": 3.58,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "span.t-cms__card__atom > span.t-cms__card__text.js-cms-text-container",
+   "txt": "30.08.2026",
+   "n": 3,
+   "inView": true
+  }
+ ],
+ "targetsN": 34,
+ "smallTargetsN": 0,
+ "smallTargets": [],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1,
+  "s": [
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ },
+ "firstArticle": "https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto"
+}
+=== article
+{
+ "url": "https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto",
+ "title": "Сертификат подлинности картины: что это и зачем он нужен",
+ "loadMs": 3611,
+ "screens": 2.8,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": 0,
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Сертификат подлинности картины: что это и зачем он нужен",
+   "fs": 32,
+   "top": 699
+  },
+  {
+   "tag": "H2",
+   "txt": "Что такое сертификат подлинности",
+   "fs": 30,
+   "top": 915
+  },
+  {
+   "tag": "H2",
+   "txt": "Зачем он покупателю",
+   "fs": 30,
+   "top": 1126
+  },
+  {
+   "tag": "H2",
+   "txt": "Как это оформлено у нас",
+   "fs": 30,
+   "top": 1449
+  },
+  {
+   "tag": "H2",
+   "txt": "На что смотреть при покупке живописи в целом",
+   "fs": 30,
+   "top": 1688
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "",
+   "sel": "div.t-cms__page-header > a.t-cms__page-header__back-button.t-btn",
+   "x": 0,
+   "top": 0,
+   "w": 60,
+   "h": 60,
+   "inView": true,
+   "bg": "#ffffff",
+   "fg": "#000000",
+   "ratio": 21,
+   "fs": 15,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(0, 0, 0)",
+   "tag": "A",
+   "href": "/journal"
+  }
+ ],
+ "fields": [],
+ "checks": [],
+ "trust": {
+  "delivery": false,
+  "returns": false,
+  "cert": true,
+  "payment": false,
+  "yookassa": false,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": true
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "TildaSans",
+  "h1Fs": "32px",
+  "fams": [
+   "TildaSans",
+   "Inter Tight",
+   "Arial"
+  ]
+ },
+ "textEls": 35,
+ "smallText": {
+  "n": 0,
+  "s": []
+ },
+ "contrastFails": [
+  {
+   "fg": "#828282",
+   "bg": "#ffffff",
+   "fs": 12,
+   "fw": 600,
+   "ratio": 3.84,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "span.t-cms__page__atom > span.t-cms__page__text.js-cms-text-container",
+   "txt": "30.08.2026",
+   "n": 1,
+   "inView": false
+  }
+ ],
+ "targetsN": 12,
+ "smallTargetsN": 5,
+ "smallTargets": [
+  {
+   "sel": "div.t-cms__page-header__title > a",
+   "tag": "A",
+   "txt": "Журнал",
+   "w": 44,
+   "h": 16,
+   "top": 21,
+   "href": "/journal"
+  },
+  {
+   "sel": "p > a",
+   "tag": "A",
+   "txt": "каталога",
+   "w": 73,
+   "h": 24,
+   "top": 1514,
+   "href": "https://mbezu.ru/catalog"
+  },
+  {
+   "sel": "p > a",
+   "tag": "A",
+   "txt": "картинам на заказ",
+   "w": 155,
+   "h": 24,
+   "top": 1598,
+   "href": "https://mbezu.ru/commission"
+  },
+  {
+   "sel": "p > a",
+   "tag": "A",
+   "txt": "страницу контактов",
+   "w": 162,
+   "h": 24,
+   "top": 1982,
+   "href": "https://mbezu.ru/contacts"
+  },
+  {
+   "sel": "p > a",
+   "tag": "A",
+   "txt": "здесь",
+   "w": 46,
+   "h": 24,
+   "top": 2010,
+   "href": "https://mbezu.ru/about"
+  }
+ ],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1,
+  "s": [
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ },
+ "tildaBits": {
+  "back": [
+   {
+    "txt": "Журнал",
+    "href": "/journal"
+   },
+   {
+    "txt": "Все статьи",
+    "href": "/journal"
+   }
+  ],
+  "ctaToCatalog": 4,
+  "textW": 760,
+  "textFs": "20px",
+  "share": false,
+  "date": false,
+  "len": 1959
+ }
+}
+=== about
+{
+ "url": "https://mbezu.ru/about",
+ "title": "Mila Bezú — художник, живопись маслом | Москва",
+ "loadMs": 3667,
+ "screens": 8.4,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "hidden",
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": 0,
+ "crumbs": [
+  "MBEZU / ХУДОЖНИК"
+ ],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Mila Bezú.",
+   "fs": 144,
+   "top": 647
+  },
+  {
+   "tag": "H2",
+   "txt": "Три направления одного автора.",
+   "fs": 64,
+   "top": 3023
+  },
+  {
+   "tag": "H3",
+   "txt": "Монохромная серия",
+   "fs": 28,
+   "top": 3560
+  },
+  {
+   "tag": "H3",
+   "txt": "Улицы мира",
+   "fs": 28,
+   "top": 3560
+  },
+  {
+   "tag": "H3",
+   "txt": "Тихая сила",
+   "fs": 28,
+   "top": 3560
+  },
+  {
+   "tag": "H3",
+   "txt": "Тондо",
+   "fs": 28,
+   "top": 4117
+  },
+  {
+   "tag": "H2",
+   "txt": "Не просто картина — ритуал получения.",
+   "fs": 60,
+   "top": 4514
+  },
+  {
+   "tag": "H2",
+   "txt": "Что говорят покупатели",
+   "fs": 44,
+   "top": 5585
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9417,
+   "top": 275,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9357,
+   "top": 294,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9779,
+   "top": 190,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9719,
+   "top": 209,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "ВСЕ РАБОТЫ →",
+   "sel": "div > button.btn.btn-ghost",
+   "x": 1229,
+   "top": 3098,
+   "w": 171,
+   "h": 46,
+   "inView": false,
+   "bg": "#e3d9c5",
+   "fg": "#2a2520",
+   "ratio": 10.84,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ОТПРАВИТЬ ОТЗЫВ",
+   "sel": "form > button.btn.btn-solid",
+   "x": 130,
+   "top": 6163,
+   "w": 202,
+   "h": 46,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Имя",
+   "label": "",
+   "req": false,
+   "ac": "name",
+   "fs": 16,
+   "h": 48,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Город (не обязательно)",
+   "label": "",
+   "req": false,
+   "ac": "address-level2",
+   "fs": 16,
+   "h": 48,
+   "form": "form:native"
+  },
+  {
+   "tag": "TEXTAREA",
+   "type": "textarea",
+   "name": "",
+   "ph": "Какая работа у вас и как она живёт в интерьере?",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 110,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": false,
+   "label": "",
+   "checked": false,
+   "size": 0
+  },
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных и публикацию отзыва — политика конфиденциаль",
+   "checked": false,
+   "size": 18
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": true,
+  "payment": true,
+  "yookassa": false,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": true,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "144px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "textEls": 127,
+ "smallText": {
+  "n": 40,
+  "s": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "span.resp-hide > span",
+    "fs": 10.5,
+    "txt": "21 работа · 4 серии · масло на холсте",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "div > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Художник · Москва",
+    "inView": true
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 15,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 75,
+ "smallTargetsN": 24,
+ "smallTargets": [
+  {
+   "sel": "div > a.skip-link",
+   "tag": "A",
+   "txt": "К СОДЕРЖИМОМУ",
+   "w": 148,
+   "h": 39,
+   "top": -56,
+   "href": "#main"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "КАТАЛОГ",
+   "w": 65,
+   "h": 20,
+   "top": 69,
+   "href": "/catalog"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "НА ЗАКАЗ",
+   "w": 72,
+   "h": 20,
+   "top": 69,
+   "href": "/commission"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "ХУДОЖНИК",
+   "w": 84,
+   "h": 20,
+   "top": 69,
+   "href": "/about"
+  },
+  {
+   "sel": "div > a.hide-mobile",
+   "tag": "A",
+   "txt": "КОРЗИНА",
+   "w": 69,
+   "h": 20,
+   "top": 69,
+   "href": "/cart"
+  }
+ ],
+ "imgs": {
+  "n": 2,
+  "noAlt": 0,
+  "emptyAlt": 1,
+  "s": [
+   {
+    "src": "about-author.webp",
+    "alt": "Mila Bezú, художник",
+    "hasAlt": true,
+    "vis": true,
+    "w": 582,
+    "h": 727,
+    "nw": 1100,
+    "nh": 1414,
+    "loading": "eager",
+    "role": null
+   },
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ }
+}
+=== podarok
+{
+ "url": "https://mbezu.ru/podarok",
+ "title": "Картина в подарок — оригинал маслом | Mila Bezú",
+ "loadMs": 3625,
+ "screens": 1.9,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": 0,
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Картина в подарок",
+   "fs": 96,
+   "top": 96
+  },
+  {
+   "tag": "H2",
+   "txt": "Почему оригинал — сильный подарок",
+   "fs": 44,
+   "top": 417
+  },
+  {
+   "tag": "H2",
+   "txt": "Как выбрать картину в подарок",
+   "fs": 44,
+   "top": 744
+  },
+  {
+   "tag": "H2",
+   "txt": "Бюджет",
+   "fs": 44,
+   "top": 1124
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9417,
+   "top": 275,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9357,
+   "top": 294,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9779,
+   "top": 190,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9719,
+   "top": 209,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "ВЫБРАТЬ ИЗ КАТАЛОГА",
+   "sel": "div > a.btn.btn-solid",
+   "x": 170,
+   "top": 1375,
+   "w": 230,
+   "h": 46,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "A",
+   "href": "/catalog"
+  },
+  {
+   "txt": "ЗАКАЗАТЬ ИНДИВИДУАЛЬНО",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 414,
+   "top": 1375,
+   "w": 270,
+   "h": 46,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/commission"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": false,
+   "label": "",
+   "checked": false,
+   "size": 0
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": false,
+  "cert": true,
+  "payment": true,
+  "yookassa": true,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "96px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "textEls": 37,
+ "smallText": {
+  "n": 4,
+  "s": [
+   {
+    "sel": "div.resp-pad > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Подарок со смыслом",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Единственный экземпляр",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Готова к вручению",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Бережная доставка",
+    "inView": true
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 15,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 39,
+ "smallTargetsN": 0,
+ "smallTargets": [],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1,
+  "s": [
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ }
+}
+=== legal
+{
+ "url": "https://mbezu.ru/legal?section=delivery",
+ "title": "Документы и реквизиты — Mila Bezú",
+ "loadMs": 3703,
+ "screens": 2.7,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "hidden",
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": 0,
+ "crumbs": [
+  "MBEZU / ЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ"
+ ],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Документы и реквизиты",
+   "fs": 52,
+   "top": 201
+  },
+  {
+   "tag": "H2",
+   "txt": "Доставка и оплата",
+   "fs": 60,
+   "top": 335
+  },
+  {
+   "tag": "H3",
+   "txt": "01 Способы доставки",
+   "fs": 20,
+   "top": 451
+  },
+  {
+   "tag": "H3",
+   "txt": "02 Сроки",
+   "fs": 20,
+   "top": 924
+  },
+  {
+   "tag": "H3",
+   "txt": "03 Способы оплаты",
+   "fs": 20,
+   "top": 1075
+  },
+  {
+   "tag": "H3",
+   "txt": "04 Международная доставка",
+   "fs": 20,
+   "top": 1341
+  },
+  {
+   "tag": "H3",
+   "txt": "05 Страхование при доставке",
+   "fs": 20,
+   "top": 1453
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9417,
+   "top": 275,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9357,
+   "top": 294,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9779,
+   "top": 190,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9719,
+   "top": 209,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": false,
+   "label": "",
+   "checked": false,
+   "size": 0
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": false,
+  "payment": true,
+  "yookassa": true,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": true
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "52px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "textEls": 97,
+ "smallText": {
+  "n": 19,
+  "s": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "span.resp-hide > span",
+    "fs": 10.5,
+    "txt": "21 работа · 4 серии · масло на холсте",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "aside.resp-static > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Документы",
+    "inView": true
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 15,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 60,
+ "smallTargetsN": 25,
+ "smallTargets": [
+  {
+   "sel": "div > a.skip-link",
+   "tag": "A",
+   "txt": "К СОДЕРЖИМОМУ",
+   "w": 148,
+   "h": 39,
+   "top": -56,
+   "href": "#main"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "КАТАЛОГ",
+   "w": 65,
+   "h": 20,
+   "top": 69,
+   "href": "/catalog"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "НА ЗАКАЗ",
+   "w": 72,
+   "h": 20,
+   "top": 69,
+   "href": "/commission"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "ХУДОЖНИК",
+   "w": 84,
+   "h": 20,
+   "top": 69,
+   "href": "/about"
+  },
+  {
+   "sel": "div > a.hide-mobile",
+   "tag": "A",
+   "txt": "КОРЗИНА",
+   "w": 69,
+   "h": 20,
+   "top": 69,
+   "href": "/cart"
+  }
+ ],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1,
+  "s": [
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ },
+ "deliveryText": "Доставка и оплата Возврат и обмен Реквизиты ВОПРОСЫ ПО ДОКУМЕНТАМ milabezu.art@gmail.com @mbezu_art ДОСТАВКА КАРТИН ПО РФ Доставка и оплата 01 Способы доставки Работы отправляются в фирменной упаковке Mila Bezú с надёжной защитой для безопасной транспортировки. СДЭК 5–7 рабочих дней по РФ · от 4 500 ₽ До пункта выдачи или курьером до двери Арт-логистика 7–10 рабочих дней · от 9 000 ₽ Специализированная перевозка с дополнительной упаковкой и страховкой. Рекомендуется для крупных работ от 50×70 см. Самовывоз Москва · бесплатно Из студии в районе Лефортово, по предварительной записи 02 Сроки Работы, имеющиеся в наличии, отправляются в течение 3–5 рабочих дней с момента оплаты. Работы на заказ (commissi"
+}
+=== notFound
+{
+ "url": "https://mbezu.ru/catalog/tproduct/000000000000-net-takoy",
+ "title": "Page Not Found",
+ "loadMs": 3623,
+ "screens": 1,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": 0,
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [],
+ "ctas": [],
+ "fields": [],
+ "checks": [],
+ "trust": {
+  "delivery": false,
+  "returns": false,
+  "cert": false,
+  "payment": false,
+  "yookassa": false,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": false,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#aaaaaa",
+  "bodyFont": "\"Times New Roman\"",
+  "bodyFs": "16px",
+  "h1Font": null,
+  "h1Fs": null,
+  "fams": []
+ },
+ "textEls": 0,
+ "smallText": {
+  "n": 0,
+  "s": []
+ },
+ "contrastFails": [],
+ "targetsN": 1,
+ "smallTargetsN": 1,
+ "smallTargets": [
+  {
+   "sel": "td > a",
+   "tag": "A",
+   "txt": "",
+   "w": 120,
+   "h": 17,
+   "top": 480,
+   "href": "http://tilda.cc"
+  }
+ ],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 0,
+  "s": [
+   {
+    "src": "logo404.png",
+    "alt": "Tilda",
+    "hasAlt": true,
+    "vis": true,
+    "w": 120,
+    "h": 88,
+    "nw": 120,
+    "nh": 88,
+    "loading": null,
+    "role": null
+   }
+  ]
+ },
+ "bodyText": "",
+ "status": 404
+}

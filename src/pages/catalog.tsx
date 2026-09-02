@@ -72,7 +72,7 @@ function CatalogPage({ go, density, initialSeries }) {
             }}>
               {activeSeries
                 ? activeSeries.h1
-                : <>Картины маслом,{' '}<br/><span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>в наличии</span></>}
+                : <>Купить картину{' '}<br/>маслом <span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>— в наличии</span></>}
             </h1>
           </div>
           {/* Sprint 15 (моб. аудит): декоративный счётчик скрыт на мобиле (съедал пол-экрана),
@@ -96,7 +96,7 @@ function CatalogPage({ go, density, initialSeries }) {
               на мобиле чипы в одну прокручиваемую строку вместо 4 рядов */}
           <div style={{ gridColumn: '1 / 9' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }} className="resp-scroll-x">
-              {SUBJECTS.map((s) => (
+              {SUBJECTS.filter((s) => s.id === 'all' || series === 'all' || visibleArtworks().some((a) => a.series === series && a.subject === s.id)).map((s) => (
                 <button key={s.id}
                         className={'chip' + (subject === s.id ? ' is-active' : '')}
                         onClick={() => setSubject(s.id)}>
@@ -145,15 +145,6 @@ function CatalogPage({ go, density, initialSeries }) {
           </div>
         </div>
 
-        {/* Sprint 14 (Ф6): SEO-текст серии — 500–800 знаков, виден роботу в prerender */}
-        {activeSeries && (
-          <section style={{ marginTop: 36, maxWidth: 900 }}>
-            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', fontWeight: 300 }}>
-              {activeSeries.seoText}
-            </p>
-          </section>
-        )}
-
         <h2 className="sr-only">{activeSeries ? `Работы серии «${activeSeries.title}»` : 'Работы в каталоге'}</h2>
         {/* Results */}
         {items.length === 0 ? (
@@ -196,6 +187,15 @@ function CatalogPage({ go, density, initialSeries }) {
                       onOpen={(id) => go('painting', { id })} />
             ))}
           </div>
+        )}
+
+        {/* Sprint 14 (Ф6) + аудит r2: SEO-текст серии под сеткой — первая работа в первом экране */}
+        {activeSeries && (
+          <section style={{ marginTop: 72, maxWidth: 900 }}>
+            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', fontWeight: 300 }}>
+              {activeSeries.seoText}
+            </p>
+          </section>
         )}
 
         {/* Sprint 15 (план роста, шаг 6): интерьерный интент на посадочных серий */}

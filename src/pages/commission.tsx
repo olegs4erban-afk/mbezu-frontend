@@ -148,9 +148,9 @@ function CommissionPage({ go, refId }) {
 
         <div style={{ marginTop: 36 }}>
           <PageTitle
-            kicker="Картина под ваше место"
-            title={<>Заказать{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>индивидуально</span></>}
-            lead="Заполните бриф — Мила свяжется и предложит два-три эскиза. Договор заключаем после согласования эскиза, предоплата 50%."
+            kicker="Москва · доставка по России"
+            title={<>Картина на заказ{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>маслом, под ваш интерьер</span></>}
+            lead="Заказать картину художнику под комнату, размер и настроение: заполните бриф — Мила свяжется, предложит два-три эскиза и напишет работу от 2 недель. Мастерская в Москве, показ по записи. Договор после согласования эскиза, предоплата 50%."
           />
         </div>
 
@@ -263,7 +263,7 @@ function CommissionPage({ go, refId }) {
             margin: '56px 0 0', fontSize: 'clamp(26px, 3vw, 40px)',
             fontWeight: 500, letterSpacing: '-.02em', scrollMarginTop: 90,
           }}>Оставить заявку</h2>
-          <form onSubmit={handle} className="resp-stack" style={{
+          <form onSubmit={handle} noValidate className="resp-stack" style={{
             marginTop: 24,
             display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 60, alignItems: 'start',
           }}>
@@ -434,11 +434,11 @@ function CommissionPage({ go, refId }) {
               <div>
                 <Eyebrow accent style={{ marginBottom: 18, display: 'block' }}>06 · Контакты</Eyebrow>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }} className="resp-stack-2">
-                  <input className="field" placeholder="Имя" required value={form.name} onChange={(e) => upd('name', e.target.value)} />
-                  <input className="field" placeholder="Email или Telegram" required value={form.email} onChange={(e) => upd('email', e.target.value)} />
-                  <input className="field" placeholder="Город" value={form.city} onChange={(e) => upd('city', e.target.value)} />
+                  <input className="field" placeholder="Имя *" aria-label="Имя" autoComplete="name" value={form.name} onChange={(e) => upd('name', e.target.value)} />
+                  <input className="field" placeholder="Email или Telegram (@username) *" aria-label="Email или Telegram" autoComplete="email" inputMode="email" value={form.email} onChange={(e) => upd('email', e.target.value)} />
+                  <input className="field" placeholder="Город" aria-label="Город" autoComplete="address-level2" value={form.city} onChange={(e) => upd('city', e.target.value)} />
                   {/* Sprint 15 (моб. аудит): «(опц.)» обрезался в узкой колонке 375px */}
-                  <input className="field" placeholder="Куда повесим" value={form.where || ''} onChange={(e) => upd('where', e.target.value)} />
+                  <input className="field" placeholder="Куда повесим" aria-label="Куда повесим" value={form.where || ''} onChange={(e) => upd('where', e.target.value)} />
                 </div>
                 <textarea className="field" placeholder="Дополнительно — настроение, ассоциации, ссылки на референсы…" rows={4} style={{ marginTop: 14 }}
                           value={form.notes} onChange={(e) => upd('notes', e.target.value)} />

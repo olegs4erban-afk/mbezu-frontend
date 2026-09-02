@@ -1,0 +1,20 @@
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 OK
+Server: ddos-guard
+Connection: keep-alive
+Keep-Alive: timeout=60
+Set-Cookie: __ddg8_=dtT6Kbrx4oQyFi6n; Domain=.mbezu.ru; Path=/; Expires=Tue, 01-Sep-2026 20:36:23 GMT
+Set-Cookie: __ddg10_=1788293783; Domain=.mbezu.ru; Path=/; Expires=Tue, 01-Sep-2026 20:36:23 GMT
+Set-Cookie: __ddg9_=217.107.127.144; Domain=.mbezu.ru; Path=/; Expires=Tue, 01-Sep-2026 20:36:23 GMT
+Set-Cookie: __ddg1_=8n0AKSklMjrLH0OY5bFF; Domain=.mbezu.ru; HttpOnly; Path=/; Expires=Wed, 01-Sep-2027 20:16:23 GMT
+date: Tue, 01 Sep 2026 20:16:23 GMT
+content-type: text/html; charset=UTF-8
+last-modified: Tue, 01 Sep 2026 20:13:44 GMT
+etag: W/"1f5af-65a718e42c38a-gzip"
+x-frame-options: SAMEORIGIN
+x-host: mbezu.ru
+x-tilda-server: 29
+x-tilda-imprint: a4e039b9-7e22-4334-9143-54f4ee7629b3
+Transfer-Encoding: chunked
+

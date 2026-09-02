@@ -22,7 +22,7 @@ function heroArt() { return featuredArtworks()[0] || ARTWORKS[0]; }
 function HeroEditorial({ go }) {
   const hero = heroArt();
   return (
-    <section className="resp-pad" style={{
+    <section className="resp-pad home-hero" style={{
       padding: '80px 40px 120px',
       position: 'relative', overflow: 'hidden',
     }}>
@@ -50,7 +50,7 @@ function HeroEditorial({ go }) {
               fontWeight: 500,
               letterSpacing: '-.04em',
             }}>
-              Картины,{' '}<br/>
+              Картины маслом,{' '}<br/>
               <span className="italic" style={{
                 color: 'var(--accent)', fontStyle: 'italic',
                 position: 'relative', display: 'inline-block',
@@ -61,14 +61,14 @@ function HeroEditorial({ go }) {
               margin: '40px 0 0', maxWidth: 460,
               fontSize: 18, lineHeight: 1.55,
               color: 'var(--ink-2)', fontWeight: 300,
-            }}>{ABOUT.tagline}</p>
+            }}>{ABOUT.tagline} Оригиналы на холсте от 6&nbsp;000&nbsp;₽ — купить в наличии или заказать у художника в Москве, картина на заказ от 2&nbsp;недель.</p>
             <div className="reveal r4" style={{ display: 'flex', gap: 14, marginTop: 36, flexWrap: 'wrap' }}>
               <button className="btn btn-solid" onClick={() => go('catalog')}>Смотреть каталог →</button>
               <button className="btn btn-ghost" onClick={() => go('commission')}>Заказать картину</button>
             </div>
 
             {/* meta-stripe */}
-            <div className="reveal r5" style={{
+            <div className="reveal r5 hide-mobile" style={{
               display: 'flex', gap: 48, marginTop: 56, paddingTop: 32,
               borderTop: '1px solid var(--rule-soft)', flexWrap: 'wrap',
             }}>
@@ -98,13 +98,15 @@ function HeroEditorial({ go }) {
               fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1,
               pointerEvents: 'none', zIndex: 0, fontStyle: 'italic',
             }}>M.B</div>
+            <a href={routeToPath('painting', { id: hero.id })} aria-label={`${hero.title} — ${formatPrice(hero.price)}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <figure style={{ margin: 0, position: 'relative', zIndex: 1, cursor: 'pointer' }}
-                    className="drift" onClick={() => go('painting', { id: hero.id })}>
+                    className="drift">
               <PaintingPlate art={hero} fit="bare" priority objectFit="contain" plain sizes="(max-width: 900px) 92vw, 46vw" style={{
                 aspectRatio: '4 / 5', borderRadius: 'var(--r-md)',
                 boxShadow: 'var(--shadow-lg)',
               }} showMeta={false} />
             </figure>
+            </a>
             <figcaption style={{
               position: 'absolute', left: -28, bottom: -36,
               background: 'var(--bg-card)',
@@ -115,7 +117,7 @@ function HeroEditorial({ go }) {
               boxShadow: 'var(--shadow-md)',
               zIndex: 2,
             }}>
-              <span className="cat-no">[{hero.id}] · {hero.year} · {hero.w}×{hero.h} см</span>
+              <span className="cat-no">[{hero.id}] · {hero.w}×{hero.h} см · {formatPrice(hero.price)} · в наличии</span>
               <span className="display" style={{ fontSize: 22, fontWeight: 500, letterSpacing: '-.01em' }}>
                 {hero.title}
               </span>
@@ -983,8 +985,8 @@ function Newsletter() {
                    style={{
                      border: 0, background: 'transparent', flex: 1,
                      minWidth: 0, width: '100%',
-                     padding: '14px 22px', fontSize: 16, outline: 'none',
-                     font: 'inherit', fontFamily: 'var(--sans)', color: 'var(--ink)',
+                     padding: '14px 22px', outline: 'none',
+                     fontFamily: 'var(--sans)', fontSize: 16, lineHeight: 1.3, color: 'var(--ink)',
                    }} />
             <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
                    value={nlTrap} onChange={(e) => setNlTrap(e.target.value)}
@@ -1041,12 +1043,11 @@ function HomePage({ go, hero }) {
         '— серии одного автора —',
       ]} big />
 
-      {/* Sprint 14 (Ф1): форма заявки — сразу после бегущей строки (оффер → контакт без скролла) */}
-      <CommissionCTA go={go} />
-
+      {/* Аудит r2: работы раньше формы — покупатель видел товар только на 8-м экране */}
       <SeriesTriptych go={go} />
-      <ManifestBand />
       <InStock go={go} />
+      <CommissionCTA go={go} />
+      <ManifestBand />
       <StudioBanner go={go} />
       <Packaging />
       <StatsRow />

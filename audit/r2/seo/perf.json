@@ -1,0 +1,693 @@
+[
+  {
+    "url": "https://mbezu.ru/",
+    "status": 200,
+    "ttfb": 54,
+    "domContentLoaded": 726,
+    "load": 1029,
+    "fcp": 124,
+    "lcp": 744,
+    "cls": 1,
+    "resources": 42,
+    "bytesTransferKB": 134,
+    "bytesDecodedKB": 455,
+    "byType": {
+      "script": {
+        "n": 19,
+        "kb": 105
+      },
+      "link": {
+        "n": 8,
+        "kb": 3
+      },
+      "img": {
+        "n": 10,
+        "kb": 0
+      },
+      "fetch": {
+        "n": 2,
+        "kb": 0
+      },
+      "iframe": {
+        "n": 1,
+        "kb": 2
+      },
+      "xmlhttprequest": {
+        "n": 2,
+        "kb": 0
+      }
+    },
+    "domains": {
+      "neo.tildacdn.com": 1,
+      "static.tildacdn.com": 18,
+      "mbezu.ru": 1,
+      "cdn.mbezu.ru": 14,
+      "mc.yandex.ru": 5,
+      "geo.tildaapi.com": 1,
+      "store.tildaapi.com": 1,
+      "stat.tildaapi.com": 1
+    },
+    "blocking": [
+      "https://static.tildacdn.com/css/tilda-grid-3.0.min.css",
+      "https://static.tildacdn.com/ws/project13712449/tilda-blocks-page142947296.min.css?t=1788293607",
+      "https://static.tildacdn.com/css/tilda-forms-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-cart-1.0.min.css",
+      "https://mbezu.ru/custom.css?t=1788293607",
+      "https://static.tildacdn.com/css/fonts-tildasans.css",
+      "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+      "https://cdn.mbezu.ru/assets/style-DsJ3IIZY.css",
+      "https://static.tildacdn.com/js/tilda-phone-mask-1.1.min.js",
+      "https://static.tildacdn.com/js/tilda-forms-payments-1.0.min.js",
+      "https://static.tildacdn.com/css/tilda-cart-discounts-1.0.min.css",
+      "https://static.tildacdn.com/js/tilda-cart-discounts-1.0.min.js"
+    ],
+    "inlineHeadScripts": 12,
+    "h1": [
+      "Картины, живущие в интерьерах"
+    ],
+    "itemscope": 0,
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization",
+      "FAQPage"
+    ],
+    "imgs": 13,
+    "lazy": 11,
+    "noAlt": 1,
+    "bigImgs": [
+      {
+        "src": "https://cdn.mbezu.ru/assets/certificate.webp",
+        "nat": 1135,
+        "css": 352
+      }
+    ],
+    "fonts": 20,
+    "title": "Картины маслом для интерьера — Mila Bezú | Москва",
+    "canonical": "https://mbezu.ru/",
+    "desc": "Авторская живопись маслом в единственном экземпляре. Картины для интерьера дома, квартиры и дачи. Работа на заказ от 2 недель. Доставка по России.",
+    "words": 729,
+    "scrollW": 390,
+    "vw": 390,
+    "requests": 53,
+    "statuses": {
+      "200": 52,
+      "302": 1
+    },
+    "failed": [],
+    "noCacheAssets": 1,
+    "wall": 5867
+  },
+  {
+    "url": "https://mbezu.ru/catalog",
+    "status": 200,
+    "ttfb": 77,
+    "domContentLoaded": 668,
+    "load": 1019,
+    "fcp": 192,
+    "lcp": 688,
+    "cls": 0,
+    "resources": 67,
+    "bytesTransferKB": 133,
+    "bytesDecodedKB": 449,
+    "byType": {
+      "script": {
+        "n": 24,
+        "kb": 105
+      },
+      "link": {
+        "n": 13,
+        "kb": 3
+      },
+      "img": {
+        "n": 23,
+        "kb": 0
+      },
+      "fetch": {
+        "n": 2,
+        "kb": 0
+      },
+      "iframe": {
+        "n": 1,
+        "kb": 2
+      },
+      "xmlhttprequest": {
+        "n": 4,
+        "kb": 0
+      }
+    },
+    "domains": {
+      "neo.tildacdn.com": 1,
+      "static.tildacdn.com": 29,
+      "mbezu.ru": 1,
+      "cdn.mbezu.ru": 26,
+      "mc.yandex.ru": 5,
+      "store.tildaapi.com": 3,
+      "geo.tildaapi.com": 1,
+      "stat.tildaapi.com": 1
+    },
+    "blocking": [
+      "https://static.tildacdn.com/css/tilda-grid-3.0.min.css",
+      "https://static.tildacdn.com/ws/project13712449/tilda-blocks-page142948046.min.css?t=1788293624",
+      "https://static.tildacdn.com/css/tilda-popup-1.1.min.css",
+      "https://static.tildacdn.com/css/tilda-slds-1.4.min.css",
+      "https://static.tildacdn.com/css/tilda-catalog-1.1.min.css",
+      "https://static.tildacdn.com/css/tilda-forms-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-catalog-filters-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-cart-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-zoom-2.0.min.css",
+      "https://mbezu.ru/custom.css?t=1788293624",
+      "https://static.tildacdn.com/css/fonts-tildasans.css",
+      "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+      "https://cdn.mbezu.ru/assets/style-DsJ3IIZY.css",
+      "https://static.tildacdn.com/js/tilda-phone-mask-1.1.min.js",
+      "https://static.tildacdn.com/js/tilda-forms-payments-1.0.min.js",
+      "https://static.tildacdn.com/css/tilda-cart-discounts-1.0.min.css",
+      "https://static.tildacdn.com/js/tilda-cart-discounts-1.0.min.js",
+      "https://static.tildacdn.com/js/tilda-catalog-filters-1.0.min.js"
+    ],
+    "inlineHeadScripts": 13,
+    "h1": [
+      "Картины маслом, в наличии"
+    ],
+    "itemscope": 0,
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization",
+      "BreadcrumbList",
+      "ItemList"
+    ],
+    "imgs": 22,
+    "lazy": 18,
+    "noAlt": 1,
+    "bigImgs": [],
+    "fonts": 20,
+    "title": "Купить картину маслом для интерьера — 21 работа | MBezu",
+    "canonical": "https://mbezu.ru/catalog",
+    "desc": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.",
+    "words": 490,
+    "scrollW": 390,
+    "vw": 390,
+    "requests": 78,
+    "statuses": {
+      "200": 77,
+      "302": 1
+    },
+    "failed": [],
+    "noCacheAssets": 1,
+    "wall": 5780
+  },
+  {
+    "url": "https://mbezu.ru/commission",
+    "status": 200,
+    "ttfb": 43,
+    "domContentLoaded": 391,
+    "load": 609,
+    "fcp": 116,
+    "lcp": 496,
+    "cls": 0,
+    "resources": 34,
+    "bytesTransferKB": 129,
+    "bytesDecodedKB": 426,
+    "byType": {
+      "script": {
+        "n": 19,
+        "kb": 105
+      },
+      "link": {
+        "n": 8,
+        "kb": 3
+      },
+      "img": {
+        "n": 2,
+        "kb": 0
+      },
+      "fetch": {
+        "n": 2,
+        "kb": 0
+      },
+      "iframe": {
+        "n": 1,
+        "kb": 2
+      },
+      "xmlhttprequest": {
+        "n": 2,
+        "kb": 0
+      }
+    },
+    "domains": {
+      "neo.tildacdn.com": 1,
+      "static.tildacdn.com": 19,
+      "mbezu.ru": 1,
+      "cdn.mbezu.ru": 5,
+      "mc.yandex.ru": 5,
+      "geo.tildaapi.com": 1,
+      "store.tildaapi.com": 1,
+      "stat.tildaapi.com": 1
+    },
+    "blocking": [
+      "https://static.tildacdn.com/css/tilda-grid-3.0.min.css",
+      "https://static.tildacdn.com/ws/project13712449/tilda-blocks-page142949736.min.css?t=1788293657",
+      "https://static.tildacdn.com/css/tilda-forms-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-cart-1.0.min.css",
+      "https://mbezu.ru/custom.css?t=1788293657",
+      "https://static.tildacdn.com/css/fonts-tildasans.css",
+      "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+      "https://cdn.mbezu.ru/assets/style-DsJ3IIZY.css",
+      "https://static.tildacdn.com/js/tilda-phone-mask-1.1.min.js",
+      "https://static.tildacdn.com/js/tilda-forms-payments-1.0.min.js",
+      "https://static.tildacdn.com/css/tilda-cart-discounts-1.0.min.css",
+      "https://static.tildacdn.com/js/tilda-cart-discounts-1.0.min.js"
+    ],
+    "inlineHeadScripts": 13,
+    "h1": [
+      "Заказать индивидуально"
+    ],
+    "itemscope": 0,
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization",
+      "BreadcrumbList",
+      "FAQPage"
+    ],
+    "imgs": 1,
+    "lazy": 0,
+    "noAlt": 1,
+    "bigImgs": [],
+    "fonts": 20,
+    "title": "Картина на заказ маслом — от 2 недель | MBezu Москва",
+    "canonical": "https://mbezu.ru/commission",
+    "desc": "Напишем картину маслом на заказ под ваш интерьер: размер, палитра, сюжет. Эскизы до начала работы. Срок от 2 недель, доставка по России.",
+    "words": 591,
+    "scrollW": 390,
+    "vw": 390,
+    "requests": 45,
+    "statuses": {
+      "200": 44,
+      "302": 1
+    },
+    "failed": [],
+    "noCacheAssets": 1,
+    "wall": 5327
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tihaya-sila",
+    "status": 200,
+    "ttfb": 68,
+    "domContentLoaded": 442,
+    "load": 606,
+    "fcp": 148,
+    "lcp": 540,
+    "cls": 0,
+    "resources": 39,
+    "bytesTransferKB": 130,
+    "bytesDecodedKB": 427,
+    "byType": {
+      "script": {
+        "n": 18,
+        "kb": 105
+      },
+      "link": {
+        "n": 8,
+        "kb": 3
+      },
+      "img": {
+        "n": 8,
+        "kb": 0
+      },
+      "fetch": {
+        "n": 2,
+        "kb": 0
+      },
+      "iframe": {
+        "n": 1,
+        "kb": 2
+      },
+      "xmlhttprequest": {
+        "n": 2,
+        "kb": 0
+      }
+    },
+    "domains": {
+      "neo.tildacdn.com": 1,
+      "static.tildacdn.com": 18,
+      "mbezu.ru": 1,
+      "cdn.mbezu.ru": 11,
+      "mc.yandex.ru": 5,
+      "geo.tildaapi.com": 1,
+      "store.tildaapi.com": 1,
+      "stat.tildaapi.com": 1
+    },
+    "blocking": [
+      "https://static.tildacdn.com/css/tilda-grid-3.0.min.css",
+      "https://static.tildacdn.com/ws/project13712449/tilda-blocks-page213877809.min.css?t=1788293723",
+      "https://static.tildacdn.com/css/tilda-forms-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-cart-1.0.min.css",
+      "https://mbezu.ru/custom.css?t=1788293723",
+      "https://static.tildacdn.com/css/fonts-tildasans.css",
+      "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+      "https://cdn.mbezu.ru/assets/style-DsJ3IIZY.css",
+      "https://static.tildacdn.com/js/tilda-phone-mask-1.1.min.js",
+      "https://static.tildacdn.com/js/tilda-forms-payments-1.0.min.js",
+      "https://static.tildacdn.com/css/tilda-cart-discounts-1.0.min.css",
+      "https://static.tildacdn.com/js/tilda-cart-discounts-1.0.min.js"
+    ],
+    "inlineHeadScripts": 13,
+    "h1": [
+      "Морской пейзаж и природа маслом"
+    ],
+    "itemscope": 0,
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization",
+      "BreadcrumbList",
+      "ItemList",
+      "BreadcrumbList",
+      "ItemList"
+    ],
+    "imgs": 7,
+    "lazy": 3,
+    "noAlt": 1,
+    "bigImgs": [],
+    "fonts": 20,
+    "title": "Тихая сила — картины маслом, 6 работ | MBezu",
+    "canonical": "https://mbezu.ru/catalog/tihaya-sila",
+    "desc": "Ботанический реализм и пейзажи, в которых природа пишется как сила, не нуждающаяся в громкости. Зелёная волна, осенний лес, кувшинки на тёмной воде. Оригиналы маслом на холсте с сертификатом подлинности. Доставка по РФ.",
+    "words": 467,
+    "scrollW": 390,
+    "vw": 390,
+    "requests": 50,
+    "statuses": {
+      "200": 49,
+      "302": 1
+    },
+    "failed": [],
+    "noCacheAssets": 1,
+    "wall": 5337
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+    "status": 200,
+    "ttfb": 91,
+    "domContentLoaded": 237,
+    "load": 571,
+    "fcp": 228,
+    "lcp": 596,
+    "cls": 0,
+    "resources": 41,
+    "bytesTransferKB": 128,
+    "bytesDecodedKB": 382,
+    "byType": {
+      "script": {
+        "n": 19,
+        "kb": 105
+      },
+      "link": {
+        "n": 12,
+        "kb": 3
+      },
+      "img": {
+        "n": 2,
+        "kb": 0
+      },
+      "fetch": {
+        "n": 2,
+        "kb": 0
+      },
+      "xmlhttprequest": {
+        "n": 3,
+        "kb": 0
+      },
+      "iframe": {
+        "n": 1,
+        "kb": 2
+      },
+      "css": {
+        "n": 1,
+        "kb": 0
+      },
+      "beacon": {
+        "n": 1,
+        "kb": 0
+      }
+    },
+    "domains": {
+      "neo.tildacdn.com": 1,
+      "static.tildacdn.com": 28,
+      "mbezu.ru": 1,
+      "mc.yandex.ru": 6,
+      "geo.tildaapi.com": 1,
+      "store.tildaapi.com": 1,
+      "cdn.mbezu.ru": 1,
+      "stat.tildaapi.com": 2
+    },
+    "blocking": [
+      "https://static.tildacdn.com/css/tilda-grid-3.0.min.css",
+      "https://static.tildacdn.com/ws/project13712449/tilda-blocks-page142948046.min.css?t=1788293624",
+      "https://static.tildacdn.com/css/tilda-popup-1.1.min.css",
+      "https://static.tildacdn.com/css/tilda-slds-1.4.min.css",
+      "https://static.tildacdn.com/css/tilda-catalog-1.1.min.css",
+      "https://static.tildacdn.com/css/tilda-forms-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-catalog-filters-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-cart-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-zoom-2.0.min.css",
+      "https://mbezu.ru/custom.css?t=1788293624",
+      "https://static.tildacdn.com/css/fonts-tildasans.css",
+      "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+      "https://static.tildacdn.com/ws/project13712449/tilda-blocks-page142948046.min.js?t=1788293624",
+      "https://static.tildacdn.com/js/tilda-phone-mask-1.1.min.js",
+      "https://static.tildacdn.com/js/tilda-forms-payments-1.0.min.js",
+      "https://static.tildacdn.com/css/tilda-cart-discounts-1.0.min.css",
+      "https://static.tildacdn.com/js/tilda-cart-discounts-1.0.min.js"
+    ],
+    "inlineHeadScripts": 12,
+    "h1": [
+      "Волна. Сепия"
+    ],
+    "itemscope": 7,
+    "itemtypes": [
+      "http://schema.org/Product",
+      "https://schema.org/ImageObject",
+      "https://schema.org/Brand",
+      "http://schema.org/Offer",
+      "http://schema.org/ImageGallery"
+    ],
+    "ld": [
+      "Person",
+      "Organization",
+      "Product"
+    ],
+    "imgs": 1,
+    "lazy": 0,
+    "noAlt": 1,
+    "bigImgs": [],
+    "fonts": 8,
+    "title": "Волна. Сепия — картина маслом, 100×60 см, купить | Mila Bezú",
+    "canonical": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+    "desc": "Монохромная волна в момент наивысшего напряжения — секунда до падения. Оригинал маслом, 100×60 см, 100 000 ₽. Сертификат подлинности, доставка по РФ.",
+    "words": 174,
+    "scrollW": 390,
+    "vw": 390,
+    "requests": 45,
+    "statuses": {
+      "200": 44,
+      "302": 1
+    },
+    "failed": [],
+    "noCacheAssets": 1,
+    "wall": 5350
+  },
+  {
+    "url": "https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer",
+    "status": 200,
+    "ttfb": 50,
+    "domContentLoaded": 151,
+    "load": 382,
+    "fcp": 152,
+    "lcp": 352,
+    "cls": 0,
+    "resources": 36,
+    "bytesTransferKB": 124,
+    "bytesDecodedKB": 375,
+    "byType": {
+      "script": {
+        "n": 18,
+        "kb": 105
+      },
+      "link": {
+        "n": 11,
+        "kb": 3
+      },
+      "img": {
+        "n": 2,
+        "kb": 0
+      },
+      "css": {
+        "n": 1,
+        "kb": 0
+      },
+      "fetch": {
+        "n": 2,
+        "kb": 0
+      },
+      "iframe": {
+        "n": 1,
+        "kb": 2
+      },
+      "xmlhttprequest": {
+        "n": 1,
+        "kb": 0
+      }
+    },
+    "domains": {
+      "neo.tildacdn.com": 1,
+      "static.tildacdn.com": 26,
+      "mbezu.ru": 1,
+      "mc.yandex.ru": 5,
+      "cdn.mbezu.ru": 1,
+      "feeds.tildaapi.com": 1,
+      "stat.tildaapi.com": 1
+    },
+    "blocking": [
+      "https://static.tildacdn.com/css/tilda-grid-3.0.min.css",
+      "https://static.tildacdn.com/ws/project13712449/tilda-blocks-page214647109.min.css?t=1788292572",
+      "https://static.tildacdn.com/css/tilda-cms-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-animation-2.0.min.css",
+      "https://static.tildacdn.com/css/tilda-slds-1.4.min.css",
+      "https://static.tildacdn.com/css/highlight.min.css",
+      "https://static.tildacdn.com/css/tilda-popup-1.1.min.css",
+      "https://static.tildacdn.com/css/tilda-forms-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-cart-1.0.min.css",
+      "https://mbezu.ru/custom.css?t=1788292572",
+      "https://static.tildacdn.com/css/fonts-tildasans.css",
+      "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+      "https://static.tildacdn.com/js/highlight.min.js"
+    ],
+    "inlineHeadScripts": 12,
+    "h1": [
+      "Как выбрать картину для гостиной: размер, цвет, сюжет"
+    ],
+    "itemscope": 1,
+    "itemtypes": [
+      "http://schema.org/ImageObject"
+    ],
+    "ld": [
+      "Person",
+      "Organization",
+      "Article"
+    ],
+    "imgs": 1,
+    "lazy": 0,
+    "noAlt": 1,
+    "bigImgs": [],
+    "fonts": 8,
+    "title": "Как выбрать картину для гостиной: размер, цвет, сюжет",
+    "canonical": "https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer",
+    "desc": "Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",
+    "words": 378,
+    "scrollW": 390,
+    "vw": 390,
+    "requests": 40,
+    "statuses": {
+      "200": 39,
+      "302": 1
+    },
+    "failed": [],
+    "noCacheAssets": 1,
+    "wall": 5141
+  },
+  {
+    "url": "https://mbezu.ru/podarok",
+    "status": 200,
+    "ttfb": 38,
+    "domContentLoaded": 373,
+    "load": 535,
+    "fcp": 128,
+    "lcp": 180,
+    "cls": 0,
+    "resources": 29,
+    "bytesTransferKB": 124,
+    "bytesDecodedKB": 384,
+    "byType": {
+      "script": {
+        "n": 14,
+        "kb": 105
+      },
+      "link": {
+        "n": 8,
+        "kb": 3
+      },
+      "img": {
+        "n": 2,
+        "kb": 0
+      },
+      "fetch": {
+        "n": 2,
+        "kb": 0
+      },
+      "iframe": {
+        "n": 1,
+        "kb": 2
+      },
+      "xmlhttprequest": {
+        "n": 2,
+        "kb": 0
+      }
+    },
+    "domains": {
+      "neo.tildacdn.com": 1,
+      "static.tildacdn.com": 18,
+      "mbezu.ru": 1,
+      "cdn.mbezu.ru": 1,
+      "mc.yandex.ru": 5,
+      "geo.tildaapi.com": 1,
+      "store.tildaapi.com": 1,
+      "stat.tildaapi.com": 1
+    },
+    "blocking": [
+      "https://static.tildacdn.com/css/tilda-grid-3.0.min.css",
+      "https://static.tildacdn.com/ws/project13712449/tilda-blocks-page214634909.min.css?t=1788292570",
+      "https://static.tildacdn.com/css/tilda-forms-1.0.min.css",
+      "https://static.tildacdn.com/css/tilda-cart-1.0.min.css",
+      "https://mbezu.ru/custom.css?t=1788292570",
+      "https://static.tildacdn.com/css/fonts-tildasans.css",
+      "https://static.tildacdn.com/js/tilda-polyfill-1.0.min.js",
+      "https://static.tildacdn.com/js/tilda-phone-mask-1.1.min.js",
+      "https://static.tildacdn.com/js/tilda-forms-payments-1.0.min.js",
+      "https://static.tildacdn.com/css/tilda-cart-discounts-1.0.min.css",
+      "https://static.tildacdn.com/js/tilda-cart-discounts-1.0.min.js"
+    ],
+    "inlineHeadScripts": 11,
+    "h1": [
+      "Картина в подарок"
+    ],
+    "itemscope": 0,
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization"
+    ],
+    "imgs": 1,
+    "lazy": 0,
+    "noAlt": 1,
+    "bigImgs": [],
+    "fonts": 14,
+    "title": "Картина в подарок — оригинал маслом | Mila Bezú",
+    "canonical": "https://mbezu.ru/podarok",
+    "desc": "Картина маслом в подарок: единственный экземпляр с сертификатом подлинности. Готовые работы от 6 000 ₽ и на заказ от 2 недель. Доставка по России.",
+    "words": 261,
+    "scrollW": 390,
+    "vw": 390,
+    "requests": 40,
+    "statuses": {
+      "200": 39,
+      "302": 1
+    },
+    "failed": [],
+    "noCacheAssets": 1,
+    "wall": 5242
+  }
+]

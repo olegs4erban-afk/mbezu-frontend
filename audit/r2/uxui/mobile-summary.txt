@@ -1,0 +1,3540 @@
+=== home
+{
+ "url": "https://mbezu.ru/",
+ "loadMs": 4767,
+ "screens": 21.7,
+ "scrollH": 17656,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": 61,
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": [],
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Картины, живущие в интерьерах",
+   "fs": 40,
+   "top": 239
+  },
+  {
+   "tag": "H2",
+   "txt": "Картина для вашего пространства",
+   "fs": 36,
+   "top": 1756
+  },
+  {
+   "tag": "H2",
+   "txt": "Наблюдения",
+   "fs": 36,
+   "top": 2564
+  },
+  {
+   "tag": "H3",
+   "txt": "Монохромная серия",
+   "fs": 28,
+   "top": 3245
+  },
+  {
+   "tag": "H3",
+   "txt": "Улицы мира",
+   "fs": 28,
+   "top": 3904
+  },
+  {
+   "tag": "H3",
+   "txt": "Тихая сила",
+   "fs": 28,
+   "top": 4585
+  },
+  {
+   "tag": "H3",
+   "txt": "Тондо",
+   "fs": 28,
+   "top": 5266
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Картины, живущие в интерьерах",
+   "fs": 40,
+   "top": 239,
+   "inView": true
+  },
+  {
+   "txt": "живущие",
+   "fs": 40,
+   "top": 273,
+   "inView": true
+  },
+  {
+   "txt": "21",
+   "fs": 40,
+   "top": 700,
+   "inView": true
+  },
+  {
+   "txt": "от 2",
+   "fs": 40,
+   "top": 700,
+   "inView": true
+  },
+  {
+   "txt": "MBezu",
+   "fs": 28,
+   "top": 106,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "СМОТРЕТЬ КАТАЛОГ →",
+   "sel": "div.reveal > button.btn.btn-solid",
+   "x": 18,
+   "top": 501,
+   "w": 227,
+   "h": 48,
+   "inView": true,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ЗАКАЗАТЬ КАРТИНУ",
+   "sel": "div.reveal > button.btn.btn-ghost",
+   "x": 18,
+   "top": 563,
+   "w": 209,
+   "h": 48,
+   "inView": true,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ОСТАВИТЬ ЗАЯВКУ →",
+   "sel": "form > button.btn",
+   "x": 36,
+   "top": 2316,
+   "w": 217,
+   "h": 48,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(237, 229, 214)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ВЕСЬ КАТАЛОГ →",
+   "sel": "div > button.btn.btn-ghost",
+   "x": 18,
+   "top": 6516,
+   "w": 187,
+   "h": 48,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ОТПРАВИТЬ ОТЗЫВ",
+   "sel": "form > button.btn.btn-solid",
+   "x": 18,
+   "top": 14374,
+   "w": 202,
+   "h": 48,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ЗАКАЗАТЬ КАРТИНУ →",
+   "sel": "div.card-soft > a.btn.btn-solid",
+   "x": 67,
+   "top": 14738,
+   "w": 241,
+   "h": 48,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "A",
+   "href": "#zayavka"
+  },
+  {
+   "txt": "ПОДПИСАТЬСЯ",
+   "sel": "form.nl-form > button.btn.btn-solid",
+   "x": 48,
+   "top": 15419,
+   "w": 279,
+   "h": 48,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "Имя *",
+   "label": "",
+   "req": true,
+   "ac": "name",
+   "fs": 16,
+   "h": 59,
+   "form": "form:noValidate"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "contact",
+   "ph": "Телефон / Telegram / email *",
+   "label": "",
+   "req": true,
+   "ac": "tel",
+   "fs": 16,
+   "h": 59,
+   "form": "form:noValidate"
+  },
+  {
+   "tag": "TEXTAREA",
+   "type": "textarea",
+   "name": "",
+   "ph": "О работе: размер, настроение, место (необязательно)",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 108,
+   "form": "form:noValidate"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Имя",
+   "label": "",
+   "req": false,
+   "ac": "name",
+   "fs": 16,
+   "h": 48,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Город (не обязательно)",
+   "label": "",
+   "req": false,
+   "ac": "address-level2",
+   "fs": 16,
+   "h": 48,
+   "form": "form:native"
+  },
+  {
+   "tag": "TEXTAREA",
+   "type": "textarea",
+   "name": "",
+   "ph": "Какая работа у вас и как она живёт в интерьере?",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 110,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "email",
+   "name": "",
+   "ph": "ваша почта",
+   "label": "",
+   "req": true,
+   "ac": null,
+   "fs": 14,
+   "h": 50,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных (152-ФЗ) — Политика ПД",
+   "checked": false,
+   "size": 18
+  },
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных и публикацию отзыва — политика конфиденциаль",
+   "checked": false,
+   "size": 18
+  },
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных (152-ФЗ) — Политика ПД",
+   "checked": false,
+   "size": 18
+  },
+  {
+   "vis": true,
+   "label": "Согласен(на) получать письма о новых работах и закрытых продажах (реклама)",
+   "checked": false,
+   "size": 18
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": true,
+  "payment": true,
+  "yookassa": false,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": true,
+  "guarantee": false,
+  "original": true,
+  "insurance": true
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "40px",
+  "fams": [
+   "TildaSans",
+   "JetBrains Mono",
+   "Inter Tight",
+   "Arial"
+  ]
+ },
+ "firstProductTop": 6620,
+ "firstProductScreens": 8.2,
+ "textEls": 217,
+ "smallText": {
+  "n": 64,
+  "s": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow",
+    "fs": 10.5,
+    "txt": "в наличии",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow",
+    "fs": 10.5,
+    "txt": "недель на заказ",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow",
+    "fs": 10.5,
+    "txt": "лет практики",
+    "inView": false
+   },
+   {
+    "sel": "div > div.eyebrow",
+    "fs": 10.5,
+    "txt": "доставка",
+    "inView": false
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#7c6b3d",
+   "bg": "#6f5c2b",
+   "fs": 180,
+   "fw": 500,
+   "ratio": 1.24,
+   "need": 3,
+   "pass": false,
+   "img": false,
+   "sel": "div.resp-pad > div.display",
+   "txt": "MB",
+   "n": 1,
+   "inView": false
+  }
+ ],
+ "targetsN": 114,
+ "smallTargetsN": 24,
+ "smallTargets": [
+  {
+   "sel": "label > input",
+   "tag": "INPUT",
+   "txt": "on",
+   "w": 18,
+   "h": 18,
+   "top": 2269,
+   "href": null
+  },
+  {
+   "sel": "span > a.uh-tap",
+   "tag": "A",
+   "txt": "Политика ПД",
+   "w": 77,
+   "h": 41,
+   "top": 2274,
+   "href": "/legal?section=privacy"
+  },
+  {
+   "sel": "label > input",
+   "tag": "INPUT",
+   "txt": "on",
+   "w": 18,
+   "h": 18,
+   "top": 14304,
+   "href": null
+  },
+  {
+   "sel": "span > a",
+   "tag": "A",
+   "txt": "политика конфиденциальности",
+   "w": 190,
+   "h": 36,
+   "top": 14322,
+   "href": "/legal?section=privacy"
+  },
+  {
+   "sel": "label > input",
+   "tag": "INPUT",
+   "txt": "on",
+   "w": 18,
+   "h": 18,
+   "top": 15230,
+   "href": null
+  },
+  {
+   "sel": "span > a.uh-tap",
+   "tag": "A",
+   "txt": "Политика ПД",
+   "w": 74,
+   "h": 41,
+   "top": 15235,
+   "href": "/legal?section=privacy"
+  },
+  {
+   "sel": "label > input",
+   "tag": "INPUT",
+   "txt": "on",
+   "w": 18,
+   "h": 18,
+   "top": 15275,
+   "href": null
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "TELEGRAM",
+   "w": 109,
+   "h": 41,
+   "top": 16047,
+   "href": "https://t.me/mbezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "INSTAGRAM",
+   "w": 116,
+   "h": 41,
+   "top": 16047,
+   "href": "https://instagram.com/m.bezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "VK",
+   "w": 56,
+   "h": 41,
+   "top": 16047,
+   "href": "https://vk.com/mbezu_art"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Картина в подарок",
+   "w": 119,
+   "h": 42,
+   "top": 16163,
+   "href": "/podarok"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Каталог",
+   "w": 50,
+   "h": 42,
+   "top": 16217,
+   "href": "/catalog"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "На заказ",
+   "w": 54,
+   "h": 42,
+   "top": 16271,
+   "href": "/commission"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Корзина",
+   "w": 52,
+   "h": 42,
+   "top": 16325,
+   "href": "/cart"
+  }
+ ],
+ "imgs": {
+  "n": 13,
+  "noAlt": 0,
+  "emptyAlt": 1
+ },
+ "scrolledHeader": {
+  "top": -680,
+  "h": 0,
+  "bg": "rgba(0, 0, 0, 0)"
+ },
+ "tab": [
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  }
+ ],
+ "lead": {
+  "found": true,
+  "errors": [
+   {
+    "txt": "Укажите имя",
+    "fs": "12px",
+    "color": "rgb(237, 229, 214)"
+   },
+   {
+    "txt": "Укажите контакт — телефон, Telegram или email",
+    "fs": "12px",
+    "color": "rgb(237, 229, 214)"
+   },
+   {
+    "txt": "Для отправки нужно согласие на обработку ПД",
+    "fs": "12px",
+    "color": "rgb(237, 229, 214)"
+   }
+  ],
+  "invalid": 2,
+  "ariaLive": false
+ }
+}
+=== series
+{
+ "url": "https://mbezu.ru/catalog/monohromnaya",
+ "loadMs": 3732,
+ "screens": 8.7,
+ "scrollH": 7080,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": 61,
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": [],
+ "crumbs": [
+  "MBEZU / КАТАЛОГ / МОНОХРОМНАЯ СЕРИЯ"
+ ],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Монохромные картины маслом",
+   "fs": 40,
+   "top": 273
+  },
+  {
+   "tag": "H3",
+   "txt": "Волна. Сепия",
+   "fs": 22,
+   "top": 1474
+  },
+  {
+   "tag": "H3",
+   "txt": "Шторм",
+   "fs": 22,
+   "top": 1974
+  },
+  {
+   "tag": "H3",
+   "txt": "Перевал",
+   "fs": 22,
+   "top": 2474
+  },
+  {
+   "tag": "H3",
+   "txt": "Камни на берегу",
+   "fs": 22,
+   "top": 2974
+  },
+  {
+   "tag": "H3",
+   "txt": "Раковина",
+   "fs": 22,
+   "top": 3474
+  },
+  {
+   "tag": "H2",
+   "txt": "Куда впишется «Монохромная серия»",
+   "fs": 28,
+   "top": 3663
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Монохромные картины маслом",
+   "fs": 40,
+   "top": 273,
+   "inView": true
+  },
+  {
+   "txt": "MBezu",
+   "fs": 28,
+   "top": 106,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "ЗАКАЗАТЬ ИНДИВИДУАЛЬНО",
+   "sel": "div > button.btn.btn-solid",
+   "x": 59,
+   "top": 4862,
+   "w": 270,
+   "h": 48,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  }
+ ],
+ "fields": [
+  {
+   "tag": "SELECT",
+   "type": "select-one",
+   "name": "",
+   "ph": "",
+   "label": "Фильтр по серии",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 51,
+   "form": "no-form"
+  },
+  {
+   "tag": "SELECT",
+   "type": "select-one",
+   "name": "",
+   "ph": "",
+   "label": "Сортировка",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 51,
+   "form": "no-form"
+  }
+ ],
+ "checks": [],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": true,
+  "payment": true,
+  "yookassa": false,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "40px",
+  "fams": [
+   "TildaSans",
+   "JetBrains Mono",
+   "Inter Tight",
+   "Arial"
+  ]
+ },
+ "firstProductTop": 1094,
+ "firstProductScreens": 1.3,
+ "textEls": 104,
+ "smallText": {
+  "n": 41,
+  "s": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "div > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Серия · 2024–2025",
+    "inView": true
+   },
+   {
+    "sel": "div.resp-scroll-x > button.chip.is-active",
+    "fs": 10.5,
+    "txt": "Все работы",
+    "inView": true
+   },
+   {
+    "sel": "div.resp-scroll-x > button.chip",
+    "fs": 10.5,
+    "txt": "Море и волны",
+    "inView": true
+   },
+   {
+    "sel": "div.resp-scroll-x > button.chip",
+    "fs": 10.5,
+    "txt": "Горы",
+    "inView": true
+   }
+  ]
+ },
+ "contrastFails": [],
+ "targetsN": 71,
+ "smallTargetsN": 19,
+ "smallTargets": [
+  {
+   "sel": "nav.mono > a.uh.uh-tap",
+   "tag": "A",
+   "txt": "MBEZU",
+   "w": 44,
+   "h": 41,
+   "top": 188,
+   "href": "/"
+  },
+  {
+   "sel": "nav.mono > a.uh.uh-tap",
+   "tag": "A",
+   "txt": "КАТАЛОГ",
+   "w": 62,
+   "h": 41,
+   "top": 188,
+   "href": "/catalog"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "TELEGRAM",
+   "w": 109,
+   "h": 41,
+   "top": 5471,
+   "href": "https://t.me/mbezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "INSTAGRAM",
+   "w": 116,
+   "h": 41,
+   "top": 5471,
+   "href": "https://instagram.com/m.bezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "VK",
+   "w": 56,
+   "h": 41,
+   "top": 5471,
+   "href": "https://vk.com/mbezu_art"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Картина в подарок",
+   "w": 119,
+   "h": 42,
+   "top": 5587,
+   "href": "/podarok"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Каталог",
+   "w": 50,
+   "h": 42,
+   "top": 5641,
+   "href": "/catalog"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "На заказ",
+   "w": 54,
+   "h": 42,
+   "top": 5695,
+   "href": "/commission"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Корзина",
+   "w": 52,
+   "h": 42,
+   "top": 5748,
+   "href": "/cart"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "О художнике",
+   "w": 82,
+   "h": 42,
+   "top": 5866,
+   "href": "/about"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Журнал",
+   "w": 50,
+   "h": 42,
+   "top": 5920,
+   "href": "/journal"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Доставка и оплата",
+   "w": 116,
+   "h": 42,
+   "top": 6007,
+   "href": "/legal?section=delivery"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Возврат и обмен",
+   "w": 105,
+   "h": 42,
+   "top": 6061,
+   "href": "/legal?section=returns"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Оферта",
+   "w": 47,
+   "h": 42,
+   "top": 6179,
+   "href": "/legal?section=offer"
+  }
+ ],
+ "imgs": {
+  "n": 6,
+  "noAlt": 0,
+  "emptyAlt": 1
+ },
+ "chips": [
+  "ВСЕ РАБОТЫ",
+  "МОРЕ И ВОЛНЫ",
+  "ГОРЫ",
+  "ГОРОДА",
+  "САДЫ И БОТАНИКА",
+  "ПЕЙЗАЖИ"
+ ],
+ "empty": {
+  "chip": "ГОРОДА",
+  "text": "Ничего не нашли Попробуйте сбросить фильтры или поменять серию СБРОСИТЬ ФИЛЬТРЫ",
+  "urlAfter": "/catalog/monohromnaya"
+ },
+ "firstCard": {
+  "href": "/catalog/tproduct/566542733172-volna-sepiya",
+  "txt": "ФЛАГМАН CAT. № 001 / 005 МОНОХРОМНАЯ Волна. Сепия 100×60 см · 2024 100 000 ₽"
+ }
+}
+=== product
+{
+ "url": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+ "screens": 1.9,
+ "scrollH": 1541,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": [],
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Волна. Сепия",
+   "fs": 20,
+   "top": 480
+  },
+  {
+   "tag": "H2",
+   "txt": "О картине «Волна. Сепия»",
+   "fs": 18,
+   "top": 672
+  },
+  {
+   "tag": "H2",
+   "txt": "Серия «Монохромная серия»",
+   "fs": 18,
+   "top": 792
+  },
+  {
+   "tag": "H2",
+   "txt": "Картина в интерьере",
+   "fs": 18,
+   "top": 876
+  },
+  {
+   "tag": "H2",
+   "txt": "Покупка, доставка и подлинность",
+   "fs": 18,
+   "top": 997
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Волна. Сепия",
+   "fs": 20,
+   "top": 480,
+   "inView": true
+  },
+  {
+   "txt": "О картине «Волна. Сепия»",
+   "fs": 18,
+   "top": 672,
+   "inView": true
+  },
+  {
+   "txt": "Серия «Монохромная серия»",
+   "fs": 18,
+   "top": 792,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "Купить",
+   "sel": "div.t-store__prod-popup__info > div.t-store__prod-popup__btn-wrapper",
+   "x": 20,
+   "top": 592,
+   "w": 335,
+   "h": 50,
+   "inView": true,
+   "bg": "#ffffff",
+   "fg": "#2a2520",
+   "ratio": 15.17,
+   "fs": 14,
+   "radius": "0px",
+   "font": "\"Inter Tight\"",
+   "border": "0px rgb(42, 37, 32)",
+   "tag": "DIV",
+   "href": null
+  },
+  {
+   "txt": "Купить",
+   "sel": "div.t-store__prod-popup__btn-wrapper > a.t-store__prod-popup__btn.t-btn",
+   "x": 20,
+   "top": 592,
+   "w": 335,
+   "h": 50,
+   "inView": true,
+   "bg": "#000000",
+   "fg": "#2a2520",
+   "ratio": 1.38,
+   "fs": 14,
+   "radius": "5px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "A",
+   "href": "#order"
+  },
+  {
+   "txt": "Купить",
+   "sel": "tr > td.js-store-prod-popup-buy-btn-txt.t-btnflex__text",
+   "x": 40,
+   "top": 607,
+   "w": 295,
+   "h": 20,
+   "inView": true,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 14,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "TD",
+   "href": null
+  }
+ ],
+ "fields": [],
+ "checks": [],
+ "trust": {
+  "delivery": true,
+  "returns": false,
+  "cert": true,
+  "payment": true,
+  "yookassa": false,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ffffff",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "TildaSans",
+  "h1Fs": "20px",
+  "fams": [
+   "Inter Tight",
+   "TildaSans",
+   "Arial"
+  ]
+ },
+ "firstProductTop": 50,
+ "firstProductScreens": 0.1,
+ "textEls": 28,
+ "smallText": {
+  "n": 0,
+  "s": []
+ },
+ "contrastFails": [
+  {
+   "fg": "#777777",
+   "bg": "#ffffff",
+   "fs": 12,
+   "fw": 300,
+   "ratio": 4.48,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t-store__prod-popup__brand > span.js-product-brand",
+   "txt": "Mila Bezú",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 8,
+ "smallTargetsN": 0,
+ "smallTargets": [],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1
+ },
+ "tilda": {
+  "buy": [
+   {
+    "txt": "Купить",
+    "w": 335,
+    "h": 50,
+    "top": 592,
+    "bg": "rgb(0, 0, 0)",
+    "color": "rgb(42, 37, 32)",
+    "radius": "5px",
+    "fs": "14px",
+    "font": "TildaSans",
+    "inView": true
+   }
+  ],
+  "price": "100 000₽",
+  "h1": {
+   "txt": "Волна. Сепия",
+   "fs": "20px",
+   "font": "TildaSans"
+  },
+  "reactChrome": {
+   "header": false,
+   "footer": false,
+   "tabbar": false
+  },
+  "more": [
+   {
+    "txt": "Каталог",
+    "href": "/catalog"
+   }
+  ]
+ }
+}
+=== cartPopup
+{
+ "showed": true,
+ "contentW": 375,
+ "contentH": 1276,
+ "scrollable": false,
+ "fields": [
+  {
+   "type": "text",
+   "name": "Name",
+   "ph": "",
+   "label": "Имя",
+   "req": false,
+   "fs": "16px",
+   "h": 56,
+   "top": 390
+  },
+  {
+   "type": "email",
+   "name": "Email",
+   "ph": "",
+   "label": "Email",
+   "req": false,
+   "fs": "16px",
+   "h": 56,
+   "top": 495
+  },
+  {
+   "type": "tel",
+   "name": "tildaspec-phone-part[]",
+   "ph": "(000) 000-00-00",
+   "label": "Телефон",
+   "req": false,
+   "fs": "16px",
+   "h": 54,
+   "top": 600
+  },
+  {
+   "type": "text",
+   "name": "city",
+   "ph": "Москва",
+   "label": "Город",
+   "req": false,
+   "fs": "16px",
+   "h": 56,
+   "top": 703
+  },
+  {
+   "type": "text",
+   "name": "address",
+   "ph": "улица, дом, квартира",
+   "label": "Адрес доставки или пункт выдачи СДЭК",
+   "req": false,
+   "fs": "16px",
+   "h": 56,
+   "top": 807
+  }
+ ],
+ "checks": [
+  {
+   "label": "",
+   "checked": false,
+   "vis": true
+  }
+ ],
+ "submit": [
+  {
+   "txt": "",
+   "bg": "rgba(0, 0, 0, 0)",
+   "color": "rgb(0, 0, 0)",
+   "radius": "0px",
+   "fs": "0px",
+   "font": "Arial",
+   "w": 20,
+   "h": 36,
+   "top": 7
+  },
+  {
+   "txt": "ОФОРМИТЬ ЗАКАЗ",
+   "bg": "rgb(160, 138, 78)",
+   "color": "rgb(237, 229, 214)",
+   "radius": "999px",
+   "fs": "16px",
+   "font": "\"Inter Tight\"",
+   "w": 335,
+   "h": 60,
+   "top": 1088
+  }
+ ],
+ "closeBtn": {
+  "w": 375,
+  "h": 50
+ },
+ "qtyCtrl": true,
+ "emptySubmit": {
+  "n": 8,
+  "firstErrTop": null
+ }
+}
+=== cartPage
+{
+ "url": "https://mbezu.ru/cart",
+ "loadMs": 3630,
+ "screens": 1,
+ "scrollH": 812,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": [
+  {
+   "txt": "Волна. Сепия",
+   "href": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya"
+  }
+ ],
+ "crumbs": [],
+ "backLinks": [
+  {
+   "txt": "В КАТАЛОГ",
+   "href": "/catalog"
+  }
+ ],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Корзина",
+   "fs": 40,
+   "top": 101
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Корзина",
+   "fs": 40,
+   "top": 101,
+   "inView": true
+  },
+  {
+   "txt": "Ваш заказ:",
+   "fs": 20,
+   "top": 70,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "ОФОРМИТЬ ЗАКАЗ",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": 20,
+   "top": 1088,
+   "w": 335,
+   "h": 60,
+   "inView": false,
+   "bg": "#a08a4e",
+   "fg": "#ede5d6",
+   "ratio": 2.69,
+   "fs": 16,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "0px rgb(237, 229, 214)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ОФОРМИТЬ ЗАКАЗ",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": 105,
+   "top": 1107,
+   "w": 164,
+   "h": 22,
+   "inView": false,
+   "bg": "#a08a4e",
+   "fg": "#ede5d6",
+   "ratio": 2.69,
+   "fs": 16,
+   "radius": "0px",
+   "font": "\"Inter Tight\"",
+   "border": "0px rgb(237, 229, 214)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "ОТКРЫТЬ КОРЗИНУ",
+   "sel": "div > button.btn.btn-solid",
+   "x": 86,
+   "top": 278,
+   "w": 203,
+   "h": 48,
+   "inView": true,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "В КАТАЛОГ",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 116,
+   "top": 338,
+   "w": 143,
+   "h": 48,
+   "inView": true,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/catalog"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "Name",
+   "ph": "",
+   "label": "Имя",
+   "req": true,
+   "ac": "name",
+   "fs": 16,
+   "h": 56,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "email",
+   "name": "Email",
+   "ph": "",
+   "label": "Email",
+   "req": true,
+   "ac": "email",
+   "fs": 16,
+   "h": 56,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "tel",
+   "name": "tildaspec-phone-part[]",
+   "ph": "(000) 000-00-00",
+   "label": "Телефон",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 54,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "Москва",
+   "label": "Город",
+   "req": true,
+   "ac": null,
+   "fs": 16,
+   "h": 56,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "address",
+   "ph": "улица, дом, квартира",
+   "label": "Адрес доставки или пункт выдачи СДЭК",
+   "req": true,
+   "ac": null,
+   "fs": 16,
+   "h": 56,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": true,
+   "label": "",
+   "checked": false,
+   "size": 13
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": false,
+  "cert": true,
+  "payment": true,
+  "yookassa": true,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "40px",
+  "fams": [
+   "Inter Tight",
+   "TildaSans",
+   "Arial"
+  ]
+ },
+ "firstProductTop": 164,
+ "firstProductScreens": 0.2,
+ "textEls": 28,
+ "smallText": {
+  "n": 0,
+  "s": []
+ },
+ "contrastFails": [
+  {
+   "fg": "#ede5d6",
+   "bg": "#a08a4e",
+   "fs": 16,
+   "fw": 600,
+   "ratio": 2.69,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "txt": "Оформить заказ",
+   "n": 1,
+   "inView": false
+  }
+ ],
+ "targetsN": 38,
+ "smallTargetsN": 2,
+ "smallTargets": [
+  {
+   "sel": "div.t706__close > button.t706__close-button.t706__cartwin-close-wrapper",
+   "tag": "BUTTON",
+   "txt": "Закрыть корзину",
+   "w": 20,
+   "h": 36,
+   "top": 7,
+   "href": null
+  },
+  {
+   "sel": "div.t706__product-title > a",
+   "tag": "A",
+   "txt": "Волна. Сепия",
+   "w": 100,
+   "h": 20,
+   "top": 164,
+   "href": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya"
+  }
+ ],
+ "imgs": {
+  "n": 4,
+  "noAlt": 3,
+  "emptyAlt": 1
+ },
+ "bodyText": "Ваш заказ: Волна. Сепия 1 100 000₽ Сумма: 100 000₽ Имя Email Телефон +7 Город Адрес доставки или пункт выдачи СДЭК Согласен(на) на обработку персональных данных (152-ФЗ) Итоговая сумма: 100 000₽ ОФОРМИТЬ ЗАКАЗ Сертификат подлинности · Оплата онлайн (ЮKassa) · Бережная доставка СДЭК по РФ Отправить Отправить Корзина Если в корзине есть работы — она откроется здесь сама. Пусто? Каталог рядом. ОТКРЫТ"
+}
+=== commission
+{
+ "url": "https://mbezu.ru/commission",
+ "loadMs": 3724,
+ "screens": 10.1,
+ "scrollH": 8177,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": 61,
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": [],
+ "crumbs": [
+  "MBEZU / НА ЗАКАЗ"
+ ],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Заказать индивидуально",
+   "fs": 36,
+   "top": 291
+  },
+  {
+   "tag": "H2",
+   "txt": "Стоимость по размерам",
+   "fs": 28,
+   "top": 582
+  },
+  {
+   "tag": "H3",
+   "txt": "Малый формат",
+   "fs": 18,
+   "top": 775
+  },
+  {
+   "tag": "H3",
+   "txt": "Средний формат",
+   "fs": 18,
+   "top": 988
+  },
+  {
+   "tag": "H3",
+   "txt": "Большой формат",
+   "fs": 18,
+   "top": 1232
+  },
+  {
+   "tag": "H2",
+   "txt": "Что входит в стоимость",
+   "fs": 28,
+   "top": 1548
+  },
+  {
+   "tag": "H2",
+   "txt": "Оставить заявку",
+   "fs": 28,
+   "top": 2087
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Заказать индивидуально",
+   "fs": 36,
+   "top": 291,
+   "inView": true
+  },
+  {
+   "txt": "индивидуально",
+   "fs": 36,
+   "top": 320,
+   "inView": true
+  },
+  {
+   "txt": "MBezu",
+   "fs": 28,
+   "top": 106,
+   "inView": true
+  },
+  {
+   "txt": "Стоимость по размерам",
+   "fs": 28,
+   "top": 582,
+   "inView": true
+  },
+  {
+   "txt": "Малый формат",
+   "fs": 18,
+   "top": 775,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "ОТПРАВИТЬ БРИФ →",
+   "sel": "div > button.btn.btn-solid",
+   "x": 18,
+   "top": 4422,
+   "w": 237,
+   "h": 55,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 13,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "range",
+   "name": "",
+   "ph": "",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 13.3333,
+   "h": 32,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Имя",
+   "label": "",
+   "req": true,
+   "ac": null,
+   "fs": 16,
+   "h": 59,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Email или Telegram",
+   "label": "",
+   "req": true,
+   "ac": null,
+   "fs": 16,
+   "h": 59,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Город",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 59,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Куда повесим",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 59,
+   "form": "form:native"
+  },
+  {
+   "tag": "TEXTAREA",
+   "type": "textarea",
+   "name": "",
+   "ph": "Дополнительно — настроение, ассоциации, ссылки на референсы…",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 133,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных (152-ФЗ) — Политика ПД",
+   "checked": false,
+   "size": 20
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": true,
+  "payment": true,
+  "yookassa": true,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "36px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "firstProductTop": null,
+ "firstProductScreens": null,
+ "textEls": 181,
+ "smallText": {
+  "n": 61,
+  "s": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "div > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Картина под ваше место",
+    "inView": true
+   },
+   {
+    "sel": "section > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Прайс на заказ",
+    "inView": true
+   },
+   {
+    "sel": "section > p.cat-no",
+    "fs": 10,
+    "txt": "Нестандартный размер или сторона больше ",
+    "inView": false
+   },
+   {
+    "sel": "div > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "В стоимость входит",
+    "inView": false
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#b3a583",
+   "bg": "#ede5d6",
+   "fs": 14,
+   "fw": 400,
+   "ratio": 1.95,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "li > span",
+   "txt": "◇",
+   "n": 3,
+   "inView": false
+  },
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 14,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 108,
+ "smallTargetsN": 20,
+ "smallTargets": [
+  {
+   "sel": "nav.mono > a.uh.uh-tap",
+   "tag": "A",
+   "txt": "MBEZU",
+   "w": 44,
+   "h": 41,
+   "top": 184,
+   "href": "/"
+  },
+  {
+   "sel": "label > input",
+   "tag": "INPUT",
+   "txt": "on",
+   "w": 20,
+   "h": 20,
+   "top": 4328,
+   "href": null
+  },
+  {
+   "sel": "span > a.uh-tap",
+   "tag": "A",
+   "txt": "Политика ПД",
+   "w": 77,
+   "h": 42,
+   "top": 4334,
+   "href": "/legal?section=privacy"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "TELEGRAM",
+   "w": 109,
+   "h": 41,
+   "top": 6567,
+   "href": "https://t.me/mbezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "INSTAGRAM",
+   "w": 116,
+   "h": 41,
+   "top": 6567,
+   "href": "https://instagram.com/m.bezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "VK",
+   "w": 56,
+   "h": 41,
+   "top": 6567,
+   "href": "https://vk.com/mbezu_art"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Картина в подарок",
+   "w": 119,
+   "h": 42,
+   "top": 6684,
+   "href": "/podarok"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Каталог",
+   "w": 50,
+   "h": 42,
+   "top": 6737,
+   "href": "/catalog"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "На заказ",
+   "w": 54,
+   "h": 42,
+   "top": 6791,
+   "href": "/commission"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Корзина",
+   "w": 52,
+   "h": 42,
+   "top": 6845,
+   "href": "/cart"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "О художнике",
+   "w": 82,
+   "h": 42,
+   "top": 6963,
+   "href": "/about"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Журнал",
+   "w": 50,
+   "h": 42,
+   "top": 7017,
+   "href": "/journal"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Доставка и оплата",
+   "w": 116,
+   "h": 42,
+   "top": 7104,
+   "href": "/legal?section=delivery"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Возврат и обмен",
+   "w": 105,
+   "h": 42,
+   "top": 7158,
+   "href": "/legal?section=returns"
+  }
+ ],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1
+ },
+ "briefTop": 2087,
+ "form": {
+  "noValidate": false,
+  "valid": true,
+  "reqCount": 0,
+  "firstInvalid": null
+ },
+ "emptySubmit": {
+  "customMsgs": [],
+  "activeEl": "BODY"
+ },
+ "shortSubmit": {
+  "msgs": [],
+  "sent": false
+ }
+}
+=== journal
+{
+ "url": "https://mbezu.ru/journal",
+ "loadMs": 3724,
+ "screens": 2.6,
+ "scrollH": 2106,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": [],
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Журнал о живописи",
+   "fs": 44,
+   "top": 96
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Журнал о живописи",
+   "fs": 44,
+   "top": 96,
+   "inView": true
+  },
+  {
+   "txt": "о живописи",
+   "fs": 44,
+   "top": 89,
+   "inView": true
+  },
+  {
+   "txt": "Журнал",
+   "fs": 30,
+   "top": 717,
+   "inView": true
+  },
+  {
+   "txt": "Практичные статьи от художника: как выбрать картину маслом д",
+   "fs": 18,
+   "top": 202,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "КАТАЛОГ КАРТИН",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 18,
+   "top": 437,
+   "w": 191,
+   "h": 48,
+   "inView": true,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/catalog"
+  },
+  {
+   "txt": "КАРТИНА В ПОДАРОК",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 18,
+   "top": 499,
+   "w": 219,
+   "h": 48,
+   "inView": true,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/podarok"
+  },
+  {
+   "txt": "О ХУДОЖНИКЕ",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 18,
+   "top": 561,
+   "w": 170,
+   "h": 48,
+   "inView": true,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/about"
+  }
+ ],
+ "fields": [],
+ "checks": [],
+ "trust": {
+  "delivery": false,
+  "returns": false,
+  "cert": true,
+  "payment": false,
+  "yookassa": false,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "44px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "firstProductTop": null,
+ "firstProductScreens": null,
+ "textEls": 24,
+ "smallText": {
+  "n": 1,
+  "s": [
+   {
+    "sel": "div.resp-pad > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Заметки из мастерской",
+    "inView": true
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 14,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  },
+  {
+   "fg": "#777777",
+   "bg": "#ede5d6",
+   "fs": 12,
+   "fw": 600,
+   "ratio": 3.58,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "span.t-cms__card__atom > span.t-cms__card__text.js-cms-text-container",
+   "txt": "30.08.2026",
+   "n": 3,
+   "inView": false
+  }
+ ],
+ "targetsN": 34,
+ "smallTargetsN": 0,
+ "smallTargets": [],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1
+ }
+}
+=== article
+{
+ "url": "https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto",
+ "loadMs": 3738,
+ "screens": 3.1,
+ "scrollH": 2533,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": [],
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Сертификат подлинности картины: что это и зачем он нужен",
+   "fs": 26,
+   "top": 360
+  },
+  {
+   "tag": "H2",
+   "txt": "Что такое сертификат подлинности",
+   "fs": 24,
+   "top": 620
+  },
+  {
+   "tag": "H2",
+   "txt": "Зачем он покупателю",
+   "fs": 24,
+   "top": 900
+  },
+  {
+   "tag": "H2",
+   "txt": "Как это оформлено у нас",
+   "fs": 24,
+   "top": 1282
+  },
+  {
+   "tag": "H2",
+   "txt": "На что смотреть при покупке живописи в целом",
+   "fs": 24,
+   "top": 1575
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Сертификат подлинности картины: что это и зачем он нужен",
+   "fs": 26,
+   "top": 360,
+   "inView": true
+  },
+  {
+   "txt": "Что такое сертификат подлинности",
+   "fs": 24,
+   "top": 625,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "",
+   "sel": "div.t-cms__page-header > a.t-cms__page-header__back-button.t-btn",
+   "x": 0,
+   "top": 0,
+   "w": 60,
+   "h": 60,
+   "inView": true,
+   "bg": "#ffffff",
+   "fg": "#000000",
+   "ratio": 21,
+   "fs": 14,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(0, 0, 0)",
+   "tag": "A",
+   "href": "/journal"
+  }
+ ],
+ "fields": [],
+ "checks": [],
+ "trust": {
+  "delivery": false,
+  "returns": false,
+  "cert": true,
+  "payment": false,
+  "yookassa": false,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": true
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "TildaSans",
+  "h1Fs": "26px",
+  "fams": [
+   "TildaSans",
+   "Inter Tight",
+   "Arial"
+  ]
+ },
+ "firstProductTop": null,
+ "firstProductScreens": null,
+ "textEls": 35,
+ "smallText": {
+  "n": 0,
+  "s": []
+ },
+ "contrastFails": [
+  {
+   "fg": "#828282",
+   "bg": "#ffffff",
+   "fs": 12,
+   "fw": 600,
+   "ratio": 3.84,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "span.t-cms__page__atom > span.t-cms__page__text.js-cms-text-container",
+   "txt": "30.08.2026",
+   "n": 1,
+   "inView": false
+  }
+ ],
+ "targetsN": 12,
+ "smallTargetsN": 5,
+ "smallTargets": [
+  {
+   "sel": "div.t-cms__page-header__title > a",
+   "tag": "A",
+   "txt": "Журнал",
+   "w": 38,
+   "h": 14,
+   "top": 23,
+   "href": "/journal"
+  },
+  {
+   "sel": "p > a",
+   "tag": "A",
+   "txt": "каталога",
+   "w": 59,
+   "h": 19,
+   "top": 1338,
+   "href": "https://mbezu.ru/catalog"
+  },
+  {
+   "sel": "p > a",
+   "tag": "A",
+   "txt": "картинам на заказ",
+   "w": 330,
+   "h": 41,
+   "top": 1472,
+   "href": "https://mbezu.ru/commission"
+  },
+  {
+   "sel": "p > a",
+   "tag": "A",
+   "txt": "страницу контактов",
+   "w": 129,
+   "h": 19,
+   "top": 1952,
+   "href": "https://mbezu.ru/contacts"
+  },
+  {
+   "sel": "p > a",
+   "tag": "A",
+   "txt": "здесь",
+   "w": 37,
+   "h": 19,
+   "top": 1975,
+   "href": "https://mbezu.ru/about"
+  }
+ ],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1
+ },
+ "tildaBits": {
+  "back": [
+   {
+    "txt": "Журнал",
+    "href": "/journal"
+   },
+   {
+    "txt": "Все статьи",
+    "href": "/journal"
+   }
+  ],
+  "ctaToCatalog": 4,
+  "textW": 335,
+  "textFs": "16px",
+  "share": false,
+  "date": false,
+  "len": 1959
+ }
+}
+=== about
+{
+ "url": "https://mbezu.ru/about",
+ "loadMs": 3826,
+ "screens": 14.9,
+ "scrollH": 12072,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": 61,
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": [],
+ "crumbs": [
+  "MBEZU / ХУДОЖНИК"
+ ],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Mila Bezú.",
+   "fs": 40,
+   "top": 323
+  },
+  {
+   "tag": "H2",
+   "txt": "Три направления одного автора.",
+   "fs": 28,
+   "top": 5018
+  },
+  {
+   "tag": "H3",
+   "txt": "Монохромная серия",
+   "fs": 28,
+   "top": 5483
+  },
+  {
+   "tag": "H3",
+   "txt": "Улицы мира",
+   "fs": 28,
+   "top": 5960
+  },
+  {
+   "tag": "H3",
+   "txt": "Тихая сила",
+   "fs": 28,
+   "top": 6460
+  },
+  {
+   "tag": "H3",
+   "txt": "Тондо",
+   "fs": 28,
+   "top": 6960
+  },
+  {
+   "tag": "H2",
+   "txt": "Не просто картина — ритуал получения.",
+   "fs": 28,
+   "top": 7378
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Mila Bezú.",
+   "fs": 40,
+   "top": 323,
+   "inView": true
+  },
+  {
+   "txt": "Bezú.",
+   "fs": 40,
+   "top": 353,
+   "inView": true
+  },
+  {
+   "txt": "MBezu",
+   "fs": 28,
+   "top": 106,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "ВСЕ РАБОТЫ →",
+   "sel": "div > button.btn.btn-ghost",
+   "x": 18,
+   "top": 5087,
+   "w": 171,
+   "h": 48,
+   "inView": false,
+   "bg": "#e3d9c5",
+   "fg": "#2a2520",
+   "ratio": 10.84,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ОТПРАВИТЬ ОТЗЫВ",
+   "sel": "form > button.btn.btn-solid",
+   "x": 18,
+   "top": 9479,
+   "w": 202,
+   "h": 48,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "НА ЗАКАЗ",
+   "sel": "div > button.btn.btn-solid",
+   "x": 41,
+   "top": 9875,
+   "w": 136,
+   "h": 48,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "В КАТАЛОГ",
+   "sel": "div > button.btn.btn-ghost",
+   "x": 191,
+   "top": 9875,
+   "w": 143,
+   "h": 48,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "BUTTON",
+   "href": null
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Имя",
+   "label": "",
+   "req": false,
+   "ac": "name",
+   "fs": 16,
+   "h": 48,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Город (не обязательно)",
+   "label": "",
+   "req": false,
+   "ac": "address-level2",
+   "fs": 16,
+   "h": 48,
+   "form": "form:native"
+  },
+  {
+   "tag": "TEXTAREA",
+   "type": "textarea",
+   "name": "",
+   "ph": "Какая работа у вас и как она живёт в интерьере?",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 110,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных и публикацию отзыва — политика конфиденциаль",
+   "checked": false,
+   "size": 18
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": true,
+  "payment": true,
+  "yookassa": false,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": true,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "40px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "firstProductTop": null,
+ "firstProductScreens": null,
+ "textEls": 126,
+ "smallText": {
+  "n": 43,
+  "s": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "div > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Художник · Москва",
+    "inView": true
+   },
+   {
+    "sel": "div > div.cat-no",
+    "fs": 10,
+    "txt": "Mila Bezú · Мила Бэзу Москва Студия — Мо",
+    "inView": true
+   },
+   {
+    "sel": "div > div.cat-no",
+    "fs": 10,
+    "txt": "Mila Bezú · Москва",
+    "inView": false
+   },
+   {
+    "sel": "div > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "О работе",
+    "inView": false
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 14,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 75,
+ "smallTargetsN": 20,
+ "smallTargets": [
+  {
+   "sel": "nav.mono > a.uh.uh-tap",
+   "tag": "A",
+   "txt": "MBEZU",
+   "w": 44,
+   "h": 41,
+   "top": 208,
+   "href": "/"
+  },
+  {
+   "sel": "label > input",
+   "tag": "INPUT",
+   "txt": "on",
+   "w": 18,
+   "h": 18,
+   "top": 9409,
+   "href": null
+  },
+  {
+   "sel": "span > a",
+   "tag": "A",
+   "txt": "политика конфиденциальности",
+   "w": 190,
+   "h": 36,
+   "top": 9427,
+   "href": "/legal?section=privacy"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "TELEGRAM",
+   "w": 109,
+   "h": 41,
+   "top": 10462,
+   "href": "https://t.me/mbezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "INSTAGRAM",
+   "w": 116,
+   "h": 41,
+   "top": 10462,
+   "href": "https://instagram.com/m.bezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "VK",
+   "w": 56,
+   "h": 41,
+   "top": 10462,
+   "href": "https://vk.com/mbezu_art"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Картина в подарок",
+   "w": 119,
+   "h": 42,
+   "top": 10579,
+   "href": "/podarok"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Каталог",
+   "w": 50,
+   "h": 42,
+   "top": 10633,
+   "href": "/catalog"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "На заказ",
+   "w": 54,
+   "h": 42,
+   "top": 10686,
+   "href": "/commission"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Корзина",
+   "w": 52,
+   "h": 42,
+   "top": 10740,
+   "href": "/cart"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "О художнике",
+   "w": 82,
+   "h": 42,
+   "top": 10858,
+   "href": "/about"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Журнал",
+   "w": 50,
+   "h": 42,
+   "top": 10912,
+   "href": "/journal"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Доставка и оплата",
+   "w": 116,
+   "h": 42,
+   "top": 10999,
+   "href": "/legal?section=delivery"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Возврат и обмен",
+   "w": 105,
+   "h": 42,
+   "top": 11053,
+   "href": "/legal?section=returns"
+  }
+ ],
+ "imgs": {
+  "n": 2,
+  "noAlt": 0,
+  "emptyAlt": 1
+ }
+}
+=== podarok
+{
+ "url": "https://mbezu.ru/podarok",
+ "loadMs": 3608,
+ "screens": 3.8,
+ "scrollH": 3070,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": [],
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Картина в подарок",
+   "fs": 44,
+   "top": 96
+  },
+  {
+   "tag": "H2",
+   "txt": "Почему оригинал — сильный подарок",
+   "fs": 28,
+   "top": 554
+  },
+  {
+   "tag": "H2",
+   "txt": "Как выбрать картину в подарок",
+   "fs": 28,
+   "top": 1275
+  },
+  {
+   "tag": "H2",
+   "txt": "Бюджет",
+   "fs": 28,
+   "top": 2216
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Картина в подарок",
+   "fs": 44,
+   "top": 96,
+   "inView": true
+  },
+  {
+   "txt": "в подарок",
+   "fs": 44,
+   "top": 89,
+   "inView": true
+  },
+  {
+   "txt": "Почему оригинал — сильный подарок",
+   "fs": 28,
+   "top": 554,
+   "inView": true
+  },
+  {
+   "txt": "Оригинал живописи маслом — подарок, который не повторится: к",
+   "fs": 18,
+   "top": 202,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "ВЫБРАТЬ ИЗ КАТАЛОГА",
+   "sel": "div > a.btn.btn-solid",
+   "x": 18,
+   "top": 2551,
+   "w": 230,
+   "h": 48,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "A",
+   "href": "/catalog"
+  },
+  {
+   "txt": "ЗАКАЗАТЬ ИНДИВИДУАЛЬНО",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 18,
+   "top": 2613,
+   "w": 270,
+   "h": 48,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/commission"
+  },
+  {
+   "txt": "ГЛАВНАЯ",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 24,
+   "top": 2788,
+   "w": 131,
+   "h": 48,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/"
+  },
+  {
+   "txt": "КАТАЛОГ",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 165,
+   "top": 2788,
+   "w": 130,
+   "h": 48,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/catalog"
+  },
+  {
+   "txt": "НА ЗАКАЗ",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 24,
+   "top": 2846,
+   "w": 136,
+   "h": 48,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/commission"
+  },
+  {
+   "txt": "ЖУРНАЛ",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 170,
+   "top": 2846,
+   "w": 126,
+   "h": 48,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/journal"
+  },
+  {
+   "txt": "О ХУДОЖНИКЕ",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 24,
+   "top": 2904,
+   "w": 170,
+   "h": 48,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/about"
+  }
+ ],
+ "fields": [],
+ "checks": [],
+ "trust": {
+  "delivery": true,
+  "returns": false,
+  "cert": true,
+  "payment": true,
+  "yookassa": true,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "44px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "firstProductTop": null,
+ "firstProductScreens": null,
+ "textEls": 37,
+ "smallText": {
+  "n": 4,
+  "s": [
+   {
+    "sel": "div.resp-pad > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Подарок со смыслом",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Единственный экземпляр",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Готова к вручению",
+    "inView": false
+   },
+   {
+    "sel": "div > div.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Бережная доставка",
+    "inView": false
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 14,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 39,
+ "smallTargetsN": 0,
+ "smallTargets": [],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1
+ }
+}
+=== legal
+{
+ "url": "https://mbezu.ru/legal?section=delivery",
+ "loadMs": 3763,
+ "screens": 5.7,
+ "scrollH": 4622,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": 61,
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": [],
+ "crumbs": [
+  "MBEZU / ЮРИДИЧЕСКАЯ ИНФОРМАЦИЯ"
+ ],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Документы и реквизиты",
+   "fs": 30,
+   "top": 241
+  },
+  {
+   "tag": "H2",
+   "txt": "Доставка и оплата",
+   "fs": 36,
+   "top": 824
+  },
+  {
+   "tag": "H3",
+   "txt": "01 Способы доставки",
+   "fs": 20,
+   "top": 916
+  },
+  {
+   "tag": "H3",
+   "txt": "02 Сроки",
+   "fs": 20,
+   "top": 1503
+  },
+  {
+   "tag": "H3",
+   "txt": "03 Способы оплаты",
+   "fs": 20,
+   "top": 1727
+  },
+  {
+   "tag": "H3",
+   "txt": "04 Международная доставка",
+   "fs": 20,
+   "top": 2117
+  },
+  {
+   "tag": "H3",
+   "txt": "05 Страхование при доставке",
+   "fs": 20,
+   "top": 2302
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Документы и реквизиты",
+   "fs": 30,
+   "top": 241,
+   "inView": true
+  },
+  {
+   "txt": "MBezu",
+   "fs": 28,
+   "top": 106,
+   "inView": true
+  }
+ ],
+ "ctas": [],
+ "fields": [],
+ "checks": [],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": false,
+  "payment": true,
+  "yookassa": true,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": true
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "14px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "30px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "JetBrains Mono",
+   "Inter Tight"
+  ]
+ },
+ "firstProductTop": null,
+ "firstProductScreens": null,
+ "textEls": 96,
+ "smallText": {
+  "n": 22,
+  "s": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "aside.resp-static > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Документы",
+    "inView": true
+   },
+   {
+    "sel": "div > div.cat-no",
+    "fs": 10,
+    "txt": "Вопросы по документам",
+    "inView": true
+   },
+   {
+    "sel": "header > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Доставка картин по РФ",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow",
+    "fs": 10.5,
+    "txt": "Магазин",
+    "inView": false
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#ffffff",
+   "bg": "#a08a4e",
+   "fs": 14,
+   "fw": 400,
+   "ratio": 3.37,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t706__carticon-wrapper > div.t706__carticon-counter.js-carticon-counter",
+   "txt": "1",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 60,
+ "smallTargetsN": 21,
+ "smallTargets": [
+  {
+   "sel": "nav.mono > a.uh.uh-tap",
+   "tag": "A",
+   "txt": "MBEZU",
+   "w": 44,
+   "h": 41,
+   "top": 184,
+   "href": "/"
+  },
+  {
+   "sel": "div > a.uh",
+   "tag": "A",
+   "txt": "milabezu.art@gmail.com",
+   "w": 299,
+   "h": 21,
+   "top": 675,
+   "href": "mailto:milabezu.art@gmail.com"
+  },
+  {
+   "sel": "div > a.uh",
+   "tag": "A",
+   "txt": "@mbezu_art",
+   "w": 299,
+   "h": 21,
+   "top": 702,
+   "href": "https://t.me/mbezu_art"
+  },
+  {
+   "sel": "p > a",
+   "tag": "A",
+   "txt": "Telegram",
+   "w": 58,
+   "h": 17,
+   "top": 2216,
+   "href": "https://t.me/mbezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "TELEGRAM",
+   "w": 109,
+   "h": 41,
+   "top": 3012,
+   "href": "https://t.me/mbezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "INSTAGRAM",
+   "w": 116,
+   "h": 41,
+   "top": 3012,
+   "href": "https://instagram.com/m.bezu_art"
+  },
+  {
+   "sel": "div > a",
+   "tag": "A",
+   "txt": "VK",
+   "w": 56,
+   "h": 41,
+   "top": 3012,
+   "href": "https://vk.com/mbezu_art"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Картина в подарок",
+   "w": 119,
+   "h": 42,
+   "top": 3129,
+   "href": "/podarok"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Каталог",
+   "w": 50,
+   "h": 42,
+   "top": 3182,
+   "href": "/catalog"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "На заказ",
+   "w": 54,
+   "h": 42,
+   "top": 3236,
+   "href": "/commission"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Корзина",
+   "w": 52,
+   "h": 42,
+   "top": 3290,
+   "href": "/cart"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "О художнике",
+   "w": 82,
+   "h": 42,
+   "top": 3408,
+   "href": "/about"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Журнал",
+   "w": 50,
+   "h": 42,
+   "top": 3461,
+   "href": "/journal"
+  },
+  {
+   "sel": "li > a.uh",
+   "tag": "A",
+   "txt": "Доставка и оплата",
+   "w": 116,
+   "h": 42,
+   "top": 3549,
+   "href": "/legal?section=delivery"
+  }
+ ],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1
+ }
+}
+=== notFound
+{
+ "url": "https://mbezu.ru/catalog/tproduct/000000000000-net-takoy",
+ "loadMs": 3592,
+ "screens": 1,
+ "scrollH": 2122,
+ "hOverflow": 0,
+ "headerH": 0,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": [],
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [],
+ "bigText": [],
+ "ctas": [],
+ "fields": [],
+ "checks": [],
+ "trust": {
+  "delivery": false,
+  "returns": false,
+  "cert": false,
+  "payment": false,
+  "yookassa": false,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": false,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#aaaaaa",
+  "bodyFont": "\"Times New Roman\"",
+  "bodyFs": "16px",
+  "h1Font": null,
+  "h1Fs": null,
+  "fams": []
+ },
+ "firstProductTop": null,
+ "firstProductScreens": null,
+ "textEls": 0,
+ "smallText": {
+  "n": 0,
+  "s": []
+ },
+ "contrastFails": [],
+ "targetsN": 1,
+ "smallTargetsN": 1,
+ "smallTargets": [
+  {
+   "sel": "td > a",
+   "tag": "A",
+   "txt": "",
+   "w": 120,
+   "h": 17,
+   "top": 1091,
+   "href": "http://tilda.cc"
+  }
+ ],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 0
+ },
+ "bodyText": "",
+ "status": 404
+}

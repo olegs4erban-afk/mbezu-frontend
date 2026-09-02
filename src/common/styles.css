@@ -513,3 +513,26 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; }
   .nl-form { order: 3; }
   .nl-consent { order: 2; }
 }
+
+/* Аудит r2 (high): grid-item имеет min-width:auto — лента чипов nowrap растягивала колонку
+   до 548px, ряд фильтров и вся Tilda-запись каталога панорамировались вбок. */
+@media (max-width: 900px) {
+  .resp-stack-12 > *, .cat-filter, .cat-filter > * { min-width: 0; max-width: 100%; }
+  .resp-scroll-x { min-width: 0; max-width: 100%; }
+}
+@media (max-width: 600px) {
+  .catalog-controls { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .catalog-controls > select { min-width: 0; }
+  /* плавающая иконка корзины Tilda дублирует таб-бар и висит поверх шапки/H1 */
+  .t706__carticon { display: none !important; }
+}
+
+/* Аудит r2 (UX): плейсхолдер как единственная подпись имел контраст 1.75:1; фокус с клавиатуры не виден */
+.field::placeholder { color: var(--ink-3); opacity: 1; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+@media (max-width: 600px) {
+  /* первый экран главной: картина сразу под кнопками (мета-полоса скрыта), меньше воздуха сверху */
+  .home-hero { padding-top: 36px !important; padding-bottom: 56px !important; }
+}

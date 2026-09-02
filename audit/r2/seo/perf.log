@@ -1,0 +1,210 @@
+done https://mbezu.ru/ 744 53
+done https://mbezu.ru/catalog 688 78
+done https://mbezu.ru/commission 496 45
+done https://mbezu.ru/catalog/tihaya-sila 540 50
+done https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya 596 45
+done https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer 352 40
+done https://mbezu.ru/podarok 180 40
+[
+  {
+    "url": "https://mbezu.ru/",
+    "status": 200,
+    "ttfb": 54,
+    "fcp": 124,
+    "lcp": 744,
+    "cls": 1,
+    "dcl": 726,
+    "load": 1029,
+    "req": 53,
+    "kb": 134,
+    "blocking": 12,
+    "h1": [
+      "Картины, живущие в интерьерах"
+    ],
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization",
+      "FAQPage"
+    ],
+    "failed": [],
+    "scrollW": 390,
+    "vw": 390,
+    "bigImgs": 1,
+    "noCache": 1
+  },
+  {
+    "url": "https://mbezu.ru/catalog",
+    "status": 200,
+    "ttfb": 77,
+    "fcp": 192,
+    "lcp": 688,
+    "cls": 0,
+    "dcl": 668,
+    "load": 1019,
+    "req": 78,
+    "kb": 133,
+    "blocking": 18,
+    "h1": [
+      "Картины маслом, в наличии"
+    ],
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization",
+      "BreadcrumbList",
+      "ItemList"
+    ],
+    "failed": [],
+    "scrollW": 390,
+    "vw": 390,
+    "bigImgs": 0,
+    "noCache": 1
+  },
+  {
+    "url": "https://mbezu.ru/commission",
+    "status": 200,
+    "ttfb": 43,
+    "fcp": 116,
+    "lcp": 496,
+    "cls": 0,
+    "dcl": 391,
+    "load": 609,
+    "req": 45,
+    "kb": 129,
+    "blocking": 12,
+    "h1": [
+      "Заказать индивидуально"
+    ],
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization",
+      "BreadcrumbList",
+      "FAQPage"
+    ],
+    "failed": [],
+    "scrollW": 390,
+    "vw": 390,
+    "bigImgs": 0,
+    "noCache": 1
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tihaya-sila",
+    "status": 200,
+    "ttfb": 68,
+    "fcp": 148,
+    "lcp": 540,
+    "cls": 0,
+    "dcl": 442,
+    "load": 606,
+    "req": 50,
+    "kb": 130,
+    "blocking": 12,
+    "h1": [
+      "Морской пейзаж и природа маслом"
+    ],
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization",
+      "BreadcrumbList",
+      "ItemList",
+      "BreadcrumbList",
+      "ItemList"
+    ],
+    "failed": [],
+    "scrollW": 390,
+    "vw": 390,
+    "bigImgs": 0,
+    "noCache": 1
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+    "status": 200,
+    "ttfb": 91,
+    "fcp": 228,
+    "lcp": 596,
+    "cls": 0,
+    "dcl": 237,
+    "load": 571,
+    "req": 45,
+    "kb": 128,
+    "blocking": 17,
+    "h1": [
+      "Волна. Сепия"
+    ],
+    "itemtypes": [
+      "http://schema.org/Product",
+      "https://schema.org/ImageObject",
+      "https://schema.org/Brand",
+      "http://schema.org/Offer",
+      "http://schema.org/ImageGallery"
+    ],
+    "ld": [
+      "Person",
+      "Organization",
+      "Product"
+    ],
+    "failed": [],
+    "scrollW": 390,
+    "vw": 390,
+    "bigImgs": 0,
+    "noCache": 1
+  },
+  {
+    "url": "https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer",
+    "status": 200,
+    "ttfb": 50,
+    "fcp": 152,
+    "lcp": 352,
+    "cls": 0,
+    "dcl": 151,
+    "load": 382,
+    "req": 40,
+    "kb": 124,
+    "blocking": 13,
+    "h1": [
+      "Как выбрать картину для гостиной: размер, цвет, сюжет"
+    ],
+    "itemtypes": [
+      "http://schema.org/ImageObject"
+    ],
+    "ld": [
+      "Person",
+      "Organization",
+      "Article"
+    ],
+    "failed": [],
+    "scrollW": 390,
+    "vw": 390,
+    "bigImgs": 0,
+    "noCache": 1
+  },
+  {
+    "url": "https://mbezu.ru/podarok",
+    "status": 200,
+    "ttfb": 38,
+    "fcp": 128,
+    "lcp": 180,
+    "cls": 0,
+    "dcl": 373,
+    "load": 535,
+    "req": 40,
+    "kb": 124,
+    "blocking": 11,
+    "h1": [
+      "Картина в подарок"
+    ],
+    "itemtypes": [],
+    "ld": [
+      "Person",
+      "Organization"
+    ],
+    "failed": [],
+    "scrollW": 390,
+    "vw": 390,
+    "bigImgs": 0,
+    "noCache": 1
+  }
+]

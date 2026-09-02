@@ -1,0 +1,2388 @@
+=== home
+{
+ "url": "https://mbezu.ru/",
+ "title": "Картины маслом для интерьера — Mila Bezú | Москва",
+ "loadMs": 4278,
+ "screens": 11.9,
+ "scrollH": 10707,
+ "hOverflow": 0,
+ "headerH": 0,
+ "sticky": "static",
+ "tildaMenu": false,
+ "tabbar": "hidden",
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": [],
+ "crumbs": [],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Картины, живущие в интерьерах",
+   "fs": 158.4,
+   "top": 198
+  },
+  {
+   "tag": "H2",
+   "txt": "Картина для вашего пространства",
+   "fs": 93.6,
+   "top": 1619
+  },
+  {
+   "tag": "H2",
+   "txt": "Наблюдения",
+   "fs": 79.2,
+   "top": 2166
+  },
+  {
+   "tag": "H3",
+   "txt": "Монохромная серия",
+   "fs": 28,
+   "top": 2917
+  },
+  {
+   "tag": "H3",
+   "txt": "Улицы мира",
+   "fs": 28,
+   "top": 2917
+  },
+  {
+   "tag": "H3",
+   "txt": "Тихая сила",
+   "fs": 28,
+   "top": 2917
+  },
+  {
+   "tag": "H3",
+   "txt": "Тондо",
+   "fs": 28,
+   "top": 3708
+  },
+  {
+   "tag": "H2",
+   "txt": "Картина — это тихий житель пространства. Она появляется однажды, и ост",
+   "fs": 74.88,
+   "top": 4107
+  },
+  {
+   "tag": "H2",
+   "txt": "Избранные работы",
+   "fs": 72,
+   "top": 4947
+  },
+  {
+   "tag": "H3",
+   "txt": "Волна. Сепия",
+   "fs": 22,
+   "top": 5542
+  },
+  {
+   "tag": "H3",
+   "txt": "Ангкор-Ват",
+   "fs": 22,
+   "top": 5542
+  },
+  {
+   "tag": "H3",
+   "txt": "Свобода",
+   "fs": 22,
+   "top": 5542
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "M.B",
+   "fs": 259.2,
+   "top": 255,
+   "inView": true
+  },
+  {
+   "txt": "Картины, живущие в интерьерах",
+   "fs": 158.4,
+   "top": 198,
+   "inView": true
+  },
+  {
+   "txt": "живущие",
+   "fs": 158.4,
+   "top": 334,
+   "inView": true
+  },
+  {
+   "txt": "21",
+   "fs": 40,
+   "top": 874,
+   "inView": true
+  },
+  {
+   "txt": "от 2",
+   "fs": 40,
+   "top": 874,
+   "inView": true
+  },
+  {
+   "txt": "15+",
+   "fs": 40,
+   "top": 874,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9417,
+   "top": 275,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9357,
+   "top": 294,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9779,
+   "top": 190,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9719,
+   "top": 209,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "СМОТРЕТЬ КАТАЛОГ →",
+   "sel": "div.reveal > button.btn.btn-solid",
+   "x": 40,
+   "top": 739,
+   "w": 227,
+   "h": 46,
+   "inView": true,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ЗАКАЗАТЬ КАРТИНУ",
+   "sel": "div.reveal > button.btn.btn-ghost",
+   "x": 281,
+   "top": 739,
+   "w": 209,
+   "h": 46,
+   "inView": true,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ОСТАВИТЬ ЗАЯВКУ →",
+   "sel": "form > button.btn",
+   "x": 848,
+   "top": 1828,
+   "w": 217,
+   "h": 46,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(237, 229, 214)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ВЕСЬ КАТАЛОГ →",
+   "sel": "div > button.btn.btn-ghost",
+   "x": 1213,
+   "top": 4969,
+   "w": 187,
+   "h": 46,
+   "inView": false,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ОТПРАВИТЬ ОТЗЫВ",
+   "sel": "form > button.btn.btn-solid",
+   "x": 130,
+   "top": 8778,
+   "w": 202,
+   "h": 46,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ЗАКАЗАТЬ КАРТИНУ →",
+   "sel": "div.card-soft > a.btn.btn-solid",
+   "x": 1126,
+   "top": 9020,
+   "w": 225,
+   "h": 46,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "A",
+   "href": "#zayavka"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "Имя *",
+   "label": "",
+   "req": true,
+   "ac": "name",
+   "fs": 16,
+   "h": 59,
+   "form": "form:noValidate"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "contact",
+   "ph": "Телефон / Telegram / email *",
+   "label": "",
+   "req": true,
+   "ac": "tel",
+   "fs": 16,
+   "h": 59,
+   "form": "form:noValidate"
+  },
+  {
+   "tag": "TEXTAREA",
+   "type": "textarea",
+   "name": "",
+   "ph": "О работе: размер, настроение, место (необязательно)",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 108,
+   "form": "form:noValidate"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Имя",
+   "label": "",
+   "req": false,
+   "ac": "name",
+   "fs": 16,
+   "h": 48,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "",
+   "ph": "Город (не обязательно)",
+   "label": "",
+   "req": false,
+   "ac": "address-level2",
+   "fs": 16,
+   "h": 48,
+   "form": "form:native"
+  },
+  {
+   "tag": "TEXTAREA",
+   "type": "textarea",
+   "name": "",
+   "ph": "Какая работа у вас и как она живёт в интерьере?",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 110,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "email",
+   "name": "",
+   "ph": "ваша почта",
+   "label": "",
+   "req": true,
+   "ac": null,
+   "fs": 15,
+   "h": 51,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": false,
+   "label": "",
+   "checked": false,
+   "size": 0
+  },
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных (152-ФЗ) — Политика ПД",
+   "checked": false,
+   "size": 18
+  },
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных и публикацию отзыва — политика конфиденциаль",
+   "checked": false,
+   "size": 18
+  },
+  {
+   "vis": true,
+   "label": "Согласен(на) на обработку персональных данных (152-ФЗ) — Политика ПД",
+   "checked": false,
+   "size": 18
+  },
+  {
+   "vis": true,
+   "label": "Согласен(на) получать письма о новых работах и закрытых продажах (реклама)",
+   "checked": false,
+   "size": 18
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": true,
+  "payment": true,
+  "yookassa": false,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": true,
+  "guarantee": false,
+  "original": true,
+  "insurance": true
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "158.4px",
+  "fams": [
+   "TildaSans",
+   "JetBrains Mono",
+   "Inter Tight",
+   "Arial"
+  ]
+ },
+ "firstProductScreens": 5.6,
+ "firstProductTop": 5071,
+ "textEls": 198,
+ "smallText": {
+  "n": 60,
+  "samples": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "span.resp-hide > span",
+    "fs": 10.5,
+    "txt": "21 работа · 4 серии · масло на холсте",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "div > div.eyebrow",
+    "fs": 10.5,
+    "txt": "в наличии",
+    "inView": false
+   },
+   {
+    "sel": "div > div.eyebrow",
+    "fs": 10.5,
+    "txt": "недель на заказ",
+    "inView": false
+   },
+   {
+    "sel": "div > div.eyebrow",
+    "fs": 10.5,
+    "txt": "лет практики",
+    "inView": false
+   },
+   {
+    "sel": "div > div.eyebrow",
+    "fs": 10.5,
+    "txt": "доставка",
+    "inView": false
+   },
+   {
+    "sel": "figcaption > span.cat-no",
+    "fs": 10,
+    "txt": "[MN-01] · 2024 · 100×60 см",
+    "inView": true
+   },
+   {
+    "sel": "div > span.mono",
+    "fs": 11,
+    "txt": "НА ЗАКАЗ",
+    "inView": false
+   },
+   {
+    "sel": "div > div.cat-no",
+    "fs": 10,
+    "txt": "2024–2025 · 6 работ",
+    "inView": false
+   },
+   {
+    "sel": "div > div.cat-no",
+    "fs": 10,
+    "txt": "2023–2024 · 8 работ",
+    "inView": false
+   },
+   {
+    "sel": "div > div.cat-no",
+    "fs": 10,
+    "txt": "2023–2025 · 6 работ",
+    "inView": false
+   }
+  ]
+ },
+ "contrastFails": [
+  {
+   "fg": "#7c6b3d",
+   "bg": "#6f5c2b",
+   "fs": 316.8,
+   "fw": 500,
+   "ratio": 1.24,
+   "need": 3,
+   "pass": false,
+   "img": false,
+   "sel": "div.resp-pad > div.display",
+   "txt": "MB",
+   "n": 1,
+   "inView": false
+  }
+ ],
+ "targetsN": 114,
+ "smallTargetsN": 28,
+ "smallTargets": [
+  {
+   "sel": "div > a.skip-link",
+   "tag": "A",
+   "txt": "К СОДЕРЖИМОМУ",
+   "w": 148,
+   "h": 39,
+   "top": -56,
+   "href": "#main"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "КАТАЛОГ",
+   "w": 65,
+   "h": 20,
+   "top": 69,
+   "href": "/catalog"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "НА ЗАКАЗ",
+   "w": 72,
+   "h": 20,
+   "top": 69,
+   "href": "/commission"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "ХУДОЖНИК",
+   "w": 84,
+   "h": 20,
+   "top": 69,
+   "href": "/about"
+  },
+  {
+   "sel": "div > a.hide-mobile",
+   "tag": "A",
+   "txt": "КОРЗИНА",
+   "w": 69,
+   "h": 20,
+   "top": 69,
+   "href": "/cart"
+  },
+  {
+   "sel": "label > input",
+   "tag": "INPUT",
+   "txt": "on",
+   "w": 18,
+   "h": 18,
+   "top": 1795,
+   "href": null
+  },
+  {
+   "sel": "span > a.uh-tap",
+   "tag": "A",
+   "txt": "Политика ПД",
+   "w": 77,
+   "h": 41,
+   "top": 1781,
+   "href": "/legal?section=privacy"
+  },
+  {
+   "sel": "label > input",
+   "tag": "INPUT",
+   "txt": "on",
+   "w": 18,
+   "h": 18,
+   "top": 8727,
+   "href": null
+  }
+ ],
+ "imgs": {
+  "n": 13,
+  "noAltAttr": 0,
+  "emptyAlt": 1,
+  "samples": [
+   {
+    "src": "mn-01@960.webp",
+    "alt": "Волна. Сепия",
+    "hasAlt": true,
+    "vis": true,
+    "w": 373,
+    "h": 466,
+    "nw": 662,
+    "nh": 662,
+    "loading": "eager",
+    "role": null
+   },
+   {
+    "src": "mn-03@480.webp",
+    "alt": "Шторм",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 572,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "st-05@480.webp",
+    "alt": "Ангкор-Ват",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 572,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "ts-01@480.webp",
+    "alt": "Свобода",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 572,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "td-02@480.webp",
+    "alt": "Hibiscus",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 572,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "mn-01@960.webp",
+    "alt": "Волна. Сепия",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "st-05@480.webp",
+    "alt": "Ангкор-Ват",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "ts-01@480.webp",
+    "alt": "Свобода",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "td-02@480.webp",
+    "alt": "Hibiscus",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "mn-04@480.webp",
+    "alt": "Перевал",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "mn-05@480.webp",
+    "alt": "Камни на берегу",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "certificate.webp",
+    "alt": "Сертификат подлинности MBezu Fine Art",
+    "hasAlt": true,
+    "vis": true,
+    "w": 420,
+    "h": 588,
+    "nw": 1135,
+    "nh": 1592,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ }
+}
+=== series
+{
+ "url": "https://mbezu.ru/catalog/monohromnaya",
+ "title": "Монохромная серия — картины маслом, 5 работ | MBezu",
+ "loadMs": 3714,
+ "screens": 4.1,
+ "scrollH": 3714,
+ "hOverflow": 0,
+ "headerH": 0,
+ "sticky": "static",
+ "tildaMenu": false,
+ "tabbar": "hidden",
+ "footer": true,
+ "footLinks": 18,
+ "hdrLinks": [],
+ "crumbs": [
+  "MBEZU / КАТАЛОГ / МОНОХРОМНАЯ СЕРИЯ"
+ ],
+ "backLinks": [],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Монохромные картины маслом",
+   "fs": 86.4,
+   "top": 256
+  },
+  {
+   "tag": "H3",
+   "txt": "Волна. Сепия",
+   "fs": 22,
+   "top": 1370
+  },
+  {
+   "tag": "H3",
+   "txt": "Шторм",
+   "fs": 22,
+   "top": 1370
+  },
+  {
+   "tag": "H3",
+   "txt": "Перевал",
+   "fs": 22,
+   "top": 1370
+  },
+  {
+   "tag": "H3",
+   "txt": "Камни на берегу",
+   "fs": 22,
+   "top": 1960
+  },
+  {
+   "tag": "H3",
+   "txt": "Раковина",
+   "fs": 22,
+   "top": 1960
+  },
+  {
+   "tag": "H2",
+   "txt": "Куда впишется «Монохромная серия»",
+   "fs": 44,
+   "top": 2151
+  },
+  {
+   "tag": "H3",
+   "txt": "Картина в кабинет",
+   "fs": 19,
+   "top": 2271
+  },
+  {
+   "tag": "H3",
+   "txt": "Картина в спальню",
+   "fs": 19,
+   "top": 2271
+  },
+  {
+   "tag": "H3",
+   "txt": "Картина в гостиную",
+   "fs": 19,
+   "top": 2271
+  },
+  {
+   "tag": "H2",
+   "txt": "Картина под ваше место.",
+   "fs": 52,
+   "top": 2681
+  }
+ ],
+ "bigText": [
+  {
+   "txt": "Монохромные картины маслом",
+   "fs": 86.4,
+   "top": 256,
+   "inView": true
+  },
+  {
+   "txt": "05/21",
+   "fs": 56,
+   "top": 364,
+   "inView": true
+  },
+  {
+   "txt": "MBezu",
+   "fs": 28,
+   "top": 65,
+   "inView": true
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9417,
+   "top": 275,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9357,
+   "top": 294,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9779,
+   "top": 190,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9719,
+   "top": 209,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "ЗАКАЗАТЬ ИНДИВИДУАЛЬНО",
+   "sel": "div > button.btn.btn-solid",
+   "x": 585,
+   "top": 2760,
+   "w": 270,
+   "h": 46,
+   "inView": false,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "SELECT",
+   "type": "select-one",
+   "name": "",
+   "ph": "",
+   "label": "Фильтр по серии",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 51,
+   "form": "no-form"
+  },
+  {
+   "tag": "SELECT",
+   "type": "select-one",
+   "name": "",
+   "ph": "",
+   "label": "Сортировка",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 51,
+   "form": "no-form"
+  }
+ ],
+ "checks": [
+  {
+   "vis": false,
+   "label": "",
+   "checked": false,
+   "size": 0
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": true,
+  "cert": true,
+  "payment": true,
+  "yookassa": false,
+  "sbp": false,
+  "phone": true,
+  "email": true,
+  "telegram": true,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "86.4px",
+  "fams": [
+   "TildaSans",
+   "JetBrains Mono",
+   "Inter Tight",
+   "Arial"
+  ]
+ },
+ "firstProductScreens": 1,
+ "firstProductTop": 899,
+ "textEls": 107,
+ "smallText": {
+  "n": 38,
+  "samples": [
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "Mila Bezú",
+    "inView": true
+   },
+   {
+    "sel": "span.resp-hide > span",
+    "fs": 10.5,
+    "txt": "21 работа · 4 серии · масло на холсте",
+    "inView": true
+   },
+   {
+    "sel": "div.eyebrow > span",
+    "fs": 10.5,
+    "txt": "01 сентября 2026 г. · Moscou",
+    "inView": true
+   },
+   {
+    "sel": "div > span.eyebrow.accent",
+    "fs": 10.5,
+    "txt": "Серия · 2024–2025",
+    "inView": true
+   },
+   {
+    "sel": "div.resp-scroll-x > button.chip.is-active",
+    "fs": 10.5,
+    "txt": "Все работы",
+    "inView": true
+   },
+   {
+    "sel": "div.resp-scroll-x > button.chip",
+    "fs": 10.5,
+    "txt": "Море и волны",
+    "inView": true
+   },
+   {
+    "sel": "div.resp-scroll-x > button.chip",
+    "fs": 10.5,
+    "txt": "Горы",
+    "inView": true
+   },
+   {
+    "sel": "div.resp-scroll-x > button.chip",
+    "fs": 10.5,
+    "txt": "Города",
+    "inView": true
+   },
+   {
+    "sel": "div.resp-scroll-x > button.chip",
+    "fs": 10.5,
+    "txt": "Сады и ботаника",
+    "inView": true
+   },
+   {
+    "sel": "div.resp-scroll-x > button.chip",
+    "fs": 10.5,
+    "txt": "Пейзажи",
+    "inView": true
+   },
+   {
+    "sel": "div > button",
+    "fs": 11,
+    "txt": "Сетка",
+    "inView": true
+   },
+   {
+    "sel": "div > button",
+    "fs": 11,
+    "txt": "Список",
+    "inView": true
+   }
+  ]
+ },
+ "contrastFails": [],
+ "targetsN": 71,
+ "smallTargetsN": 29,
+ "smallTargets": [
+  {
+   "sel": "div > a.skip-link",
+   "tag": "A",
+   "txt": "К СОДЕРЖИМОМУ",
+   "w": 148,
+   "h": 39,
+   "top": -56,
+   "href": "#main"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "КАТАЛОГ",
+   "w": 65,
+   "h": 20,
+   "top": 69,
+   "href": "/catalog"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "НА ЗАКАЗ",
+   "w": 72,
+   "h": 20,
+   "top": 69,
+   "href": "/commission"
+  },
+  {
+   "sel": "nav.hide-mobile > a.uh",
+   "tag": "A",
+   "txt": "ХУДОЖНИК",
+   "w": 84,
+   "h": 20,
+   "top": 69,
+   "href": "/about"
+  },
+  {
+   "sel": "div > a.hide-mobile",
+   "tag": "A",
+   "txt": "КОРЗИНА",
+   "w": 69,
+   "h": 20,
+   "top": 69,
+   "href": "/cart"
+  },
+  {
+   "sel": "nav.mono > a.uh.uh-tap",
+   "tag": "A",
+   "txt": "MBEZU",
+   "w": 44,
+   "h": 41,
+   "top": 147,
+   "href": "/"
+  },
+  {
+   "sel": "nav.mono > a.uh.uh-tap",
+   "tag": "A",
+   "txt": "КАТАЛОГ",
+   "w": 62,
+   "h": 41,
+   "top": 147,
+   "href": "/catalog"
+  },
+  {
+   "sel": "div.resp-scroll-x > button.chip.is-active",
+   "tag": "BUTTON",
+   "txt": "ВСЕ РАБОТЫ",
+   "w": 112,
+   "h": 32,
+   "top": 489,
+   "href": null
+  }
+ ],
+ "imgs": {
+  "n": 6,
+  "noAltAttr": 0,
+  "emptyAlt": 1,
+  "samples": [
+   {
+    "src": "mn-01@960.webp",
+    "alt": "Волна. Сепия",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "eager",
+    "role": null
+   },
+   {
+    "src": "mn-03@480.webp",
+    "alt": "Шторм",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "eager",
+    "role": null
+   },
+   {
+    "src": "mn-04@480.webp",
+    "alt": "Перевал",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "eager",
+    "role": null
+   },
+   {
+    "src": "mn-05@480.webp",
+    "alt": "Камни на берегу",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "mn-06@480.webp",
+    "alt": "Раковина",
+    "hasAlt": true,
+    "vis": true,
+    "w": 429,
+    "h": 429,
+    "nw": 432,
+    "nh": 432,
+    "loading": "lazy",
+    "role": null
+   },
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ }
+}
+=== home.extra
+{
+ "scrolledHeader": {
+  "top": -680,
+  "h": 0,
+  "bg": "rgba(0, 0, 0, 0)"
+ },
+ "tab": [
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  },
+  {
+   "tag": "INPUT",
+   "txt": "",
+   "cls": "t-input js-tilda-rule t-focusable",
+   "outline": "2px solid rgb(111, 92, 43)",
+   "shadow": false,
+   "focusVisible": true,
+   "inView": true,
+   "offscreen": true
+  }
+ ],
+ "lead": {
+  "found": true,
+  "errors": [
+   {
+    "txt": "Укажите имя",
+    "fs": "12px",
+    "color": "rgb(237, 229, 214)"
+   },
+   {
+    "txt": "Укажите контакт — телефон, Telegram или email",
+    "fs": "12px",
+    "color": "rgb(237, 229, 214)"
+   },
+   {
+    "txt": "Для отправки нужно согласие на обработку ПД",
+    "fs": "12px",
+    "color": "rgb(237, 229, 214)"
+   }
+  ],
+  "invalid": 2,
+  "ariaLive": false
+ },
+ "nl": {
+  "noValidate": false,
+  "inputType": "email",
+  "required": true
+ }
+}
+=== series.extra
+{
+ "chips": [
+  "ВСЕ РАБОТЫ",
+  "МОРЕ И ВОЛНЫ",
+  "ГОРЫ",
+  "ГОРОДА",
+  "САДЫ И БОТАНИКА",
+  "ПЕЙЗАЖИ"
+ ],
+ "empty": {
+  "chip": "ГОРОДА",
+  "text": "Ничего не нашли Попробуйте сбросить фильтры или поменять серию СБРОСИТЬ ФИЛЬТРЫ",
+  "urlAfter": "/catalog/monohromnaya"
+ },
+ "firstCard": {
+  "href": "/catalog/tproduct/566542733172-volna-sepiya",
+  "txt": "ФЛАГМАН CAT. № 001 / 005 МОНОХРОМНАЯ Волна. Сепия 100×60 см · 2024 100 000 ₽"
+ }
+}

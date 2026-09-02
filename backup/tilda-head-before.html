@@ -184,7 +184,7 @@
   }
   function galleryHint(){
     if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-gal-hint'))return;
-    var sl=document.querySelector('.t776 .t-slds');if(!sl)return;
+    var sl=document.querySelector('.t-store .t-slds')||document.querySelector('.t776 .t-slds');if(!sl)return;
     var items=[].slice.call(sl.querySelectorAll('.t-slds__item')).filter(function(x){return !/t-slds__item_loop/.test(x.className);});
     var n=items.length;if(n<2)return;
     var hint=document.createElement('div');hint.id='mbezu-gal-hint';
@@ -198,7 +198,7 @@
   document.addEventListener('DOMContentLoaded',run);
   window.addEventListener('load',run);
   document.addEventListener('DOMContentLoaded',function(){
-    try{var t2,mo=new MutationObserver(function(){clearTimeout(t2);t2=setTimeout(function(){goldFix();},120);});
+    try{var t2,mo=new MutationObserver(function(){clearTimeout(t2);t2=setTimeout(function(){goldFix();try{galleryHint();}catch(e){}},120);});
     mo.observe(document.body,{childList:true,subtree:true});}catch(e){}
   });
 })();

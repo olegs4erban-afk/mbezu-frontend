@@ -1,0 +1,263 @@
+[
+  {
+    "url": "https://mbezu.ru/",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru.html",
+    "code": 200,
+    "size": 134879,
+    "redirect": "",
+    "time": 0.119226,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog.html",
+    "code": 200,
+    "size": 128431,
+    "redirect": "",
+    "time": 0.112505,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/about",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_about.html",
+    "code": 200,
+    "size": 83777,
+    "redirect": "",
+    "time": 0.10097,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/commission",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_commission.html",
+    "code": 200,
+    "size": 105169,
+    "redirect": "",
+    "time": 0.076232,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/legal",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_legal.html",
+    "code": 200,
+    "size": 79948,
+    "redirect": "",
+    "time": 0.130908,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog/monohromnaya",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog_monohromnaya.html",
+    "code": 200,
+    "size": 103717,
+    "redirect": "",
+    "time": 0.106136,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog/ulitsy-mira",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog_ulitsy-mira.html",
+    "code": 200,
+    "size": 110727,
+    "redirect": "",
+    "time": 0.069172,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tihaya-sila",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog_tihaya-sila.html",
+    "code": 200,
+    "size": 105808,
+    "redirect": "",
+    "time": 0.079615,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tondo",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog_tondo.html",
+    "code": 200,
+    "size": 96950,
+    "redirect": "",
+    "time": 0.1577,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/podarok",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_podarok.html",
+    "code": 200,
+    "size": 61714,
+    "redirect": "",
+    "time": 0.07413,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/journal",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_journal.html",
+    "code": 200,
+    "size": 88512,
+    "redirect": "",
+    "time": 0.068346,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog_tproduct_566542733172-volna-sepiya.html",
+    "code": 200,
+    "size": 59784,
+    "redirect": "",
+    "time": 0.10769,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tproduct/447936058052-obidush-portugaliya",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog_tproduct_447936058052-obidush-portugaliya.html",
+    "code": 200,
+    "size": 59846,
+    "redirect": "",
+    "time": 0.096742,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tproduct/345114046252-hibiscus-gibiskus",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog_tproduct_345114046252-hibiscus-gibiskus.html",
+    "code": 200,
+    "size": 59643,
+    "redirect": "",
+    "time": 0.13592,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "http://mbezu.ru/",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru.html",
+    "code": 301,
+    "size": 265,
+    "redirect": "https://mbezu.ru/",
+    "time": 0.042827,
+    "ct": "text/html; charset=iso-8859-1"
+  },
+  {
+    "url": "https://www.mbezu.ru/",
+    "file": "audit\\r2\\seo\\html\\www.mbezu.ru.html",
+    "code": 301,
+    "size": 265,
+    "redirect": "https://mbezu.ru/",
+    "time": 0.091189,
+    "ct": "text/html; charset=iso-8859-1"
+  },
+  {
+    "url": "http://www.mbezu.ru/",
+    "file": "audit\\r2\\seo\\html\\www.mbezu.ru.html",
+    "code": 301,
+    "size": 225,
+    "redirect": "https://mbezu.ru/",
+    "time": 0.051748,
+    "ct": "text/html; charset=iso-8859-1"
+  },
+  {
+    "url": "https://mbezu.ru/home",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_home.html",
+    "code": 404,
+    "size": 574,
+    "redirect": "",
+    "time": 0.050503,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/index.html",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_index.html.html",
+    "code": 404,
+    "size": 574,
+    "redirect": "",
+    "time": 0.047714,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog/",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog.html",
+    "code": 200,
+    "size": 128431,
+    "redirect": "",
+    "time": 0.06656,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/cart",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_cart.html",
+    "code": 200,
+    "size": 55231,
+    "redirect": "",
+    "time": 0.0561,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/this-page-does-not-exist-404",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_this-page-does-not-exist-404.html",
+    "code": 404,
+    "size": 574,
+    "redirect": "",
+    "time": 0.115258,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/painting/mn-01",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_painting_mn-01.html",
+    "code": 404,
+    "size": 574,
+    "redirect": "",
+    "time": 0.044176,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/Catalog",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_Catalog.html",
+    "code": 200,
+    "size": 128431,
+    "redirect": "",
+    "time": 0.069777,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/journal/",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_journal.html",
+    "code": 200,
+    "size": 88512,
+    "redirect": "",
+    "time": 0.064213,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/llms.txt",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_llms.txt.html",
+    "code": 404,
+    "size": 574,
+    "redirect": "",
+    "time": 0.056823,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/page142949956.html",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_page142949956.html.html",
+    "code": 200,
+    "size": 55231,
+    "redirect": "",
+    "time": 0.059737,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/tracking",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_tracking.html",
+    "code": 404,
+    "size": 574,
+    "redirect": "",
+    "time": 0.055865,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog?utm_source=test",
+    "file": "audit\\r2\\seo\\html\\mbezu.ru_catalog_utm_source_test.html",
+    "code": 200,
+    "size": 128431,
+    "redirect": "",
+    "time": 0.089707,
+    "ct": "text/html; charset=UTF-8"
+  }
+]

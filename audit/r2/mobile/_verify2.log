@@ -1,0 +1,48 @@
+{
+ "/catalog": {
+  "hOverflowContainers": [
+   {
+    "sel": "div#rec2413986501.r.t-rec",
+    "sw": 566,
+    "cw": 375,
+    "y": 0,
+    "h": 13478,
+    "intended": false
+   },
+   {
+    "sel": "div.resp-scroll-x",
+    "sw": 688,
+    "cw": 548,
+    "y": 384,
+    "h": 48,
+    "intended": true
+   }
+  ],
+  "recPan": {
+   "id": "rec2413986501",
+   "ov": "auto",
+   "sw": 566,
+   "cw": 375,
+   "scrollLeftAfter": 191,
+   "h": 13478.265625
+  },
+  "recs": [
+   {
+    "id": "rec2413986501",
+    "ov": "auto",
+    "sw": 566,
+    "cw": 375
+   }
+  ]
+ },
+ "/commission": {
+  "hOverflowContainers": [],
+  "recPan": null,
+  "recs": []
+ },
+ "/": {
+  "hOverflowContainers": [],
+  "recPan": null,
+  "recs": []
+ }
+}

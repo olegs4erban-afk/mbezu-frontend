@@ -1,0 +1,959 @@
+[
+  {
+    "url": "https://mbezu.ru/",
+    "code": 200,
+    "redirect": "",
+    "size": 134879,
+    "time": 0.063491,
+    "ct": "text/html; charset=UTF-8",
+    "title": "Картины маслом для интерьера — Mila Bezú | Москва",
+    "titleLen": 49,
+    "description": "Авторская живопись маслом в единственном экземпляре: пейзаж, море, ботаника. Картина на заказ от 2 недель. Сертификат подлинности, доставка по России.",
+    "descLen": 150,
+    "robots": null,
+    "yandexVerify": false,
+    "googleVerify": false,
+    "og": {
+      "title": "Картины маслом для интерьера — Mila Bezú | Москва",
+      "description": "Авторская живопись маслом в единственном экземпляре: пейзаж, море, ботаника. Картина на заказ от 2 недель. Сертификат подлинности, доставка по России.",
+      "image": "https://cdn.mbezu.ru/og/og-default-1200x630.jpg",
+      "url": "https://mbezu.ru",
+      "type": "website",
+      "site_name": "MBezu"
+    },
+    "canonical": "https://mbezu.ru/",
+    "canonicalCount": 1,
+    "lang": "ru",
+    "h1": [
+      "Картины, живущие в интерьерах"
+    ],
+    "h2": [
+      "Картина для вашего пространства",
+      "Наблюдения",
+      "Картина — это тихий житель пространства. Она появляется однажды, и остаётся надолго: меняет свет, задаёт тон, удерживает внимание.",
+      "Избранные работы",
+      "Картина приезжает как подарок",
+      "От брифа до подрамника",
+      "Как выбрать и заказать картину",
+      "Что говорят покупатели",
+      "Картина маслом под ваш интерьер",
+      "Раз в месяц — новые работы и закрытые продажи"
+    ],
+    "h3": 15,
+    "words": 970,
+    "textSample": "Имя Email Телефон Город Адрес доставки или пункт выдачи СДЭК Согласен(на) на обработку персональных данных (152-ФЗ) Оформить заказ Отправить Отправить Mila Bezú 21 работа · 4 серии · масло на холсте 01 сентября 2026 г. · Moscou MBezu Каталог На заказ Художник Корзина Картины, живущие в интерьерах Жи",
+    "kw": {
+      "заказать картину": 4,
+      "картина в подарок": 2,
+      "картина на заказ": 1,
+      "купить картину": 1,
+      "картину маслом": 1,
+      "в интерьер": 2,
+      "интерьер": 6,
+      "москв": 4,
+      "художник": 5,
+      "сертификат": 4,
+      "доставк": 7,
+      "кабинет": 1,
+      "стоимост": 1,
+      "тондо": 4,
+      "монохром": 8,
+      "пейзаж": 4,
+      "холст": 4
+    },
+    "jsonld": [
+      {
+        "type": "Person",
+        "name": "Mila Bezú",
+        "sameAs": [
+          "https://instagram.com/m.bezu_art",
+          "https://t.me/mbezu_art",
+          "https://vk.com/mbezu_art"
+        ],
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "alternateName",
+          "givenName",
+          "familyName",
+          "jobTitle",
+          "knowsAbout",
+          "address",
+          "url",
+          "email",
+          "telephone",
+          "sameAs"
+        ]
+      },
+      {
+        "type": "Organization",
+        "name": "MBezu",
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "legalName",
+          "url",
+          "logo",
+          "taxID",
+          "vatID",
+          "identifier",
+          "address",
+          "contactPoint"
+        ]
+      },
+      {
+        "type": "FAQPage",
+        "mainEntity": 6,
+        "keys": [
+          "@context",
+          "@type",
+          "mainEntity"
+        ]
+      }
+    ],
+    "linksTotal": 38,
+    "hashLinks": 1,
+    "internal": [
+      "/about",
+      "/cart",
+      "/catalog",
+      "/catalog/monohromnaya",
+      "/catalog/tihaya-sila",
+      "/catalog/tondo",
+      "/catalog/tproduct/263963629773-svoboda",
+      "/catalog/tproduct/305599314472-kamni-na-beregu",
+      "/catalog/tproduct/345114046252-hibiscus-gibiskus",
+      "/catalog/tproduct/440148681382-pereval",
+      "/catalog/tproduct/566542733172-volna-sepiya",
+      "/catalog/tproduct/763415825502-angkor-vat",
+      "/catalog/ulitsy-mira",
+      "/commission",
+      "/journal",
+      "/legal?section=delivery",
+      "/legal?section=offer",
+      "/legal?section=privacy",
+      "/legal?section=requisites",
+      "/legal?section=returns",
+      "/podarok"
+    ],
+    "external": [
+      "https://t.me",
+      "https://instagram.com",
+      "https://vk.com",
+      "https://tilda.cc"
+    ],
+    "imgCount": 14,
+    "imgNoAlt": 2,
+    "scripts": 10,
+    "scriptsAsync": 8,
+    "styles": 7,
+    "metrika": "111308276",
+    "ga": false,
+    "hasRootEmpty": false,
+    "tildaStrings": [
+      "BUY NOW",
+      "More products",
+      "Load more",
+      "Your Name"
+    ],
+    "hreflang": 0,
+    "viewport": "width=device-width, initial-scale=1.0",
+    "noscript": 1,
+    "htmlBytes": 134879
+  },
+  {
+    "url": "https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer",
+    "code": 200,
+    "redirect": "",
+    "size": 53445,
+    "time": 0.068137,
+    "ct": "text/html; charset=UTF-8",
+    "title": "Как выбрать картину для гостиной: размер, цвет, сюжет",
+    "titleLen": 53,
+    "description": "Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",
+    "descLen": 155,
+    "robots": null,
+    "yandexVerify": false,
+    "googleVerify": false,
+    "og": {
+      "title": "Как выбрать картину для гостиной: размер, цвет, сюжет",
+      "description": "Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",
+      "image": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "url": "https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer",
+      "type": "website",
+      "site_name": "MBezu"
+    },
+    "canonical": "https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer",
+    "canonicalCount": 1,
+    "lang": "ru",
+    "h1": [],
+    "h2": [
+      "Шаг 1. Размер: правило двух третей",
+      "Шаг 2. Цвет: не совпадение, а поддержка",
+      "Шаг 3. Сюжет: что вы хотите чувствовать",
+      "Частые ошибки"
+    ],
+    "h3": 0,
+    "words": 383,
+    "textSample": "{{title}} ● {{published}} ● {{description}} ● {{feedtitle}} {{title}} {{text}} {{published}} %%translate:seealso%% %%translate:load_more%% %%translate:code%% {{code}} Журнал Как выбрать картину для гостиной: размер, цвет, сюжет Гостиная — комната, где картину видят чаще всего: и хозяева, и гости. По",
+    "kw": {
+      "интерьер": 3,
+      "сертификат": 1,
+      "доставк": 1,
+      "кабинет": 1,
+      "тондо": 1,
+      "монохром": 1,
+      "пейзаж": 1,
+      "холст": 3
+    },
+    "jsonld": [
+      {
+        "type": "Person",
+        "name": "Mila Bezú",
+        "sameAs": [
+          "https://instagram.com/m.bezu_art",
+          "https://t.me/mbezu_art",
+          "https://vk.com/mbezu_art"
+        ],
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "alternateName",
+          "givenName",
+          "familyName",
+          "jobTitle",
+          "knowsAbout",
+          "address",
+          "url",
+          "email",
+          "telephone",
+          "sameAs"
+        ]
+      },
+      {
+        "type": "Organization",
+        "name": "MBezu",
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "legalName",
+          "url",
+          "logo",
+          "taxID",
+          "vatID",
+          "identifier",
+          "address",
+          "contactPoint"
+        ]
+      }
+    ],
+    "linksTotal": 10,
+    "hashLinks": 1,
+    "internal": [
+      "/catalog",
+      "/catalog/monohromnaya",
+      "/catalog/tondo",
+      "/catalog/ulitsy-mira",
+      "/commission",
+      "/journal"
+    ],
+    "external": [
+      "https://tilda.cc"
+    ],
+    "imgCount": 2,
+    "imgNoAlt": 2,
+    "scripts": 16,
+    "scriptsAsync": 14,
+    "styles": 13,
+    "metrika": "111308276",
+    "ga": false,
+    "hasRootEmpty": false,
+    "tildaStrings": [
+      "BUY NOW",
+      "More products",
+      "Load more",
+      "Your Name"
+    ],
+    "hreflang": 0,
+    "viewport": "width=device-width, initial-scale=1.0",
+    "noscript": 3,
+    "htmlBytes": 53445
+  },
+  {
+    "url": "https://mbezu.ru/tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom",
+    "code": 200,
+    "redirect": "",
+    "size": 52703,
+    "time": 0.127821,
+    "ct": "text/html; charset=UTF-8",
+    "title": "Оригинал или постер: что выбрать для дома и почему",
+    "titleLen": 50,
+    "description": "Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",
+    "descLen": 155,
+    "robots": null,
+    "yandexVerify": false,
+    "googleVerify": false,
+    "og": {
+      "title": "Оригинал или постер: что выбрать для дома и почему",
+      "description": "Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",
+      "image": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "url": "https://mbezu.ru/tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom",
+      "type": "website",
+      "site_name": "MBezu"
+    },
+    "canonical": "https://mbezu.ru/tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom",
+    "canonicalCount": 1,
+    "lang": "ru",
+    "h1": [],
+    "h2": [
+      "Чем физически отличается живопись",
+      "Когда постер — нормальный выбор",
+      "Когда стоит выбрать оригинал",
+      "Про цены: оригинал доступнее, чем кажется"
+    ],
+    "h3": 0,
+    "words": 316,
+    "textSample": "{{title}} ● {{published}} ● {{description}} ● {{feedtitle}} {{title}} {{text}} {{published}} %%translate:seealso%% %%translate:load_more%% %%translate:code%% {{code}} Журнал Оригинал или постер: что выбрать для дома и почему Постер за две тысячи или оригинал за двадцать? Вопрос, который встаёт перед",
+    "kw": {
+      "картина в подарок": 1,
+      "интерьер": 1,
+      "художник": 2,
+      "сертификат": 2,
+      "доставк": 1,
+      "кабинет": 1,
+      "детск": 1,
+      "цена": 2,
+      "холст": 3
+    },
+    "jsonld": [
+      {
+        "type": "Person",
+        "name": "Mila Bezú",
+        "sameAs": [
+          "https://instagram.com/m.bezu_art",
+          "https://t.me/mbezu_art",
+          "https://vk.com/mbezu_art"
+        ],
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "alternateName",
+          "givenName",
+          "familyName",
+          "jobTitle",
+          "knowsAbout",
+          "address",
+          "url",
+          "email",
+          "telephone",
+          "sameAs"
+        ]
+      },
+      {
+        "type": "Organization",
+        "name": "MBezu",
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "legalName",
+          "url",
+          "logo",
+          "taxID",
+          "vatID",
+          "identifier",
+          "address",
+          "contactPoint"
+        ]
+      }
+    ],
+    "linksTotal": 7,
+    "hashLinks": 1,
+    "internal": [
+      "/catalog",
+      "/journal",
+      "/podarok"
+    ],
+    "external": [
+      "https://tilda.cc"
+    ],
+    "imgCount": 2,
+    "imgNoAlt": 2,
+    "scripts": 16,
+    "scriptsAsync": 14,
+    "styles": 13,
+    "metrika": "111308276",
+    "ga": false,
+    "hasRootEmpty": false,
+    "tildaStrings": [
+      "BUY NOW",
+      "More products",
+      "Load more",
+      "Your Name"
+    ],
+    "hreflang": 0,
+    "viewport": "width=device-width, initial-scale=1.0",
+    "noscript": 3,
+    "htmlBytes": 52703
+  },
+  {
+    "url": "https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto",
+    "code": 200,
+    "redirect": "",
+    "size": 52719,
+    "time": 0.193099,
+    "ct": "text/html; charset=UTF-8",
+    "title": "Сертификат подлинности картины: что это и зачем он нужен",
+    "titleLen": 56,
+    "description": "Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",
+    "descLen": 155,
+    "robots": null,
+    "yandexVerify": false,
+    "googleVerify": false,
+    "og": {
+      "title": "Сертификат подлинности картины: что это и зачем он нужен",
+      "description": "Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",
+      "image": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "url": "https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto",
+      "type": "website",
+      "site_name": "MBezu"
+    },
+    "canonical": "https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto",
+    "canonicalCount": 1,
+    "lang": "ru",
+    "h1": [],
+    "h2": [
+      "Что такое сертификат подлинности",
+      "Зачем он покупателю",
+      "Как это оформлено у нас",
+      "На что смотреть при покупке живописи в целом"
+    ],
+    "h3": 0,
+    "words": 289,
+    "textSample": "{{title}} ● {{published}} ● {{description}} ● {{feedtitle}} {{title}} {{text}} {{published}} %%translate:seealso%% %%translate:load_more%% %%translate:code%% {{code}} Журнал Сертификат подлинности картины: что это и зачем он нужен Каждая работа из каталога mbezu.ru передаётся покупателю с фирменным ",
+    "kw": {
+      "художник": 1,
+      "сертификат": 7,
+      "холст": 3
+    },
+    "jsonld": [
+      {
+        "type": "Person",
+        "name": "Mila Bezú",
+        "sameAs": [
+          "https://instagram.com/m.bezu_art",
+          "https://t.me/mbezu_art",
+          "https://vk.com/mbezu_art"
+        ],
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "alternateName",
+          "givenName",
+          "familyName",
+          "jobTitle",
+          "knowsAbout",
+          "address",
+          "url",
+          "email",
+          "telephone",
+          "sameAs"
+        ]
+      },
+      {
+        "type": "Organization",
+        "name": "MBezu",
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "legalName",
+          "url",
+          "logo",
+          "taxID",
+          "vatID",
+          "identifier",
+          "address",
+          "contactPoint"
+        ]
+      }
+    ],
+    "linksTotal": 9,
+    "hashLinks": 1,
+    "internal": [
+      "/about",
+      "/catalog",
+      "/commission",
+      "/contacts",
+      "/journal"
+    ],
+    "external": [
+      "https://tilda.cc"
+    ],
+    "imgCount": 2,
+    "imgNoAlt": 2,
+    "scripts": 16,
+    "scriptsAsync": 14,
+    "styles": 13,
+    "metrika": "111308276",
+    "ga": false,
+    "hasRootEmpty": false,
+    "tildaStrings": [
+      "BUY NOW",
+      "More products",
+      "Load more",
+      "Your Name"
+    ],
+    "hreflang": 0,
+    "viewport": "width=device-width, initial-scale=1.0",
+    "noscript": 3,
+    "htmlBytes": 52719
+  },
+  {
+    "url": "https://mbezu.ru/catalog/tproduct/566542733172-wave-sepia",
+    "code": 301,
+    "redirect": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+    "size": 0,
+    "time": 0.106935,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/catalog?series=monochrome",
+    "code": 200,
+    "redirect": "",
+    "size": 128431,
+    "time": 0.104271,
+    "ct": "text/html; charset=UTF-8",
+    "title": "Купить картину маслом для интерьера — 21 работа | MBezu",
+    "titleLen": 55,
+    "description": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.",
+    "descLen": 143,
+    "robots": null,
+    "yandexVerify": false,
+    "googleVerify": false,
+    "og": {
+      "title": "Купить картину маслом для интерьера — 21 работа | MBezu",
+      "description": "Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.",
+      "image": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "url": "https://mbezu.ru/catalog",
+      "type": "website",
+      "site_name": "MBezu"
+    },
+    "canonical": "https://mbezu.ru/catalog",
+    "canonicalCount": 1,
+    "lang": "ru",
+    "h1": [
+      "Картины маслом, в наличии"
+    ],
+    "h2": [
+      "Работы в каталоге",
+      "Картина под ваше место."
+    ],
+    "h3": 21,
+    "words": 524,
+    "textSample": "Имя Email Телефон Город Адрес доставки или пункт выдачи СДЭК Согласен(на) на обработку персональных данных (152-ФЗ) Оформить заказ Отправить Отправить BUY NOW Load more Mila Bezú 21 работа · 4 серии · масло на холсте 01 сентября 2026 г. · Moscou MBezu Каталог На заказ Художник Корзина MBezu / Катало",
+    "kw": {
+      "картина в подарок": 1,
+      "картины маслом": 1,
+      "интерьер": 1,
+      "москв": 3,
+      "художник": 4,
+      "доставк": 3,
+      "цена": 2,
+      "тондо": 5,
+      "монохром": 6,
+      "пейзаж": 1,
+      "холст": 1
+    },
+    "jsonld": [
+      {
+        "type": "Person",
+        "name": "Mila Bezú",
+        "sameAs": [
+          "https://instagram.com/m.bezu_art",
+          "https://t.me/mbezu_art",
+          "https://vk.com/mbezu_art"
+        ],
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "alternateName",
+          "givenName",
+          "familyName",
+          "jobTitle",
+          "knowsAbout",
+          "address",
+          "url",
+          "email",
+          "telephone",
+          "sameAs"
+        ]
+      },
+      {
+        "type": "Organization",
+        "name": "MBezu",
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "legalName",
+          "url",
+          "logo",
+          "taxID",
+          "vatID",
+          "identifier",
+          "address",
+          "contactPoint"
+        ]
+      },
+      {
+        "type": "BreadcrumbList",
+        "items": 2,
+        "keys": [
+          "@context",
+          "@type",
+          "itemListElement"
+        ]
+      },
+      {
+        "type": "ItemList",
+        "name": "Каталог картин маслом MBezu",
+        "items": 21,
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "numberOfItems",
+          "itemListElement"
+        ]
+      }
+    ],
+    "linksTotal": 47,
+    "hashLinks": 1,
+    "internal": [
+      "/",
+      "/about",
+      "/cart",
+      "/catalog",
+      "/catalog/tproduct/101992645912-frantsiya-lavanda",
+      "/catalog/tproduct/263963629773-svoboda",
+      "/catalog/tproduct/305599314472-kamni-na-beregu",
+      "/catalog/tproduct/314668518282-bambuk",
+      "/catalog/tproduct/342171097222-frantsiya-bukinist",
+      "/catalog/tproduct/345114046252-hibiscus-gibiskus",
+      "/catalog/tproduct/362279226602-sands-dyuni",
+      "/catalog/tproduct/366083467733-gretsiya-polden",
+      "/catalog/tproduct/390394350562-krishi-starogo-goroda",
+      "/catalog/tproduct/395664756972-rakovina",
+      "/catalog/tproduct/440148681382-pereval",
+      "/catalog/tproduct/447936058052-obidush-portugaliya",
+      "/catalog/tproduct/477039459492-dozhd-poshyol",
+      "/catalog/tproduct/549982942762-zerkalo-lesa",
+      "/catalog/tproduct/566542733172-volna-sepiya",
+      "/catalog/tproduct/639520387112-risovoe-pole-vetnam",
+      "/catalog/tproduct/763415825502-angkor-vat",
+      "/catalog/tproduct/771318224293-nekuda-speshit",
+      "/catalog/tproduct/865381581592-shtorm",
+      "/catalog/tproduct/871687829842-tropicheskie-listya",
+      "/catalog/tproduct/939323400042-kuvshinki",
+      "/commission",
+      "/journal",
+      "/legal?section=delivery",
+      "/legal?section=offer",
+      "/legal?section=privacy",
+      "/legal?section=requisites",
+      "/legal?section=returns",
+      "/podarok"
+    ],
+    "external": [
+      "https://t.me",
+      "https://instagram.com",
+      "https://vk.com",
+      "https://tilda.cc"
+    ],
+    "imgCount": 23,
+    "imgNoAlt": 2,
+    "scripts": 15,
+    "scriptsAsync": 13,
+    "styles": 16,
+    "metrika": "111308276",
+    "ga": false,
+    "hasRootEmpty": false,
+    "tildaStrings": [
+      "BUY NOW",
+      "More products",
+      "Load more",
+      "Your Name"
+    ],
+    "hreflang": 0,
+    "viewport": "width=device-width, initial-scale=1.0",
+    "noscript": 5,
+    "htmlBytes": 128431
+  },
+  {
+    "url": "https://mbezu.ru/legal?section=oferta",
+    "code": 200,
+    "redirect": "",
+    "size": 79948,
+    "time": 0.075071,
+    "ct": "text/html; charset=UTF-8",
+    "title": "Документы и реквизиты — MBezu | оферта, доставка, возврат",
+    "titleLen": 57,
+    "description": "Публичная оферта, политика обработки персональных данных, условия доставки и возврата, реквизиты ИП. Интернет-магазин картин MBezu.",
+    "descLen": 131,
+    "robots": null,
+    "yandexVerify": false,
+    "googleVerify": false,
+    "og": {
+      "title": "Документы и реквизиты — MBezu | оферта, доставка, возврат",
+      "description": "Публичная оферта, политика обработки персональных данных, условия доставки и возврата, реквизиты ИП. Интернет-магазин картин MBezu.",
+      "image": "https://cdn.mbezu.ru/og/og-default-1200x630.jpg",
+      "url": "https://mbezu.ru/legal",
+      "type": "website",
+      "site_name": "MBezu"
+    },
+    "canonical": "https://mbezu.ru/legal",
+    "canonicalCount": 1,
+    "lang": "ru",
+    "h1": [
+      "Документы и реквизиты"
+    ],
+    "h2": [
+      "Публичная оферта"
+    ],
+    "h3": 8,
+    "words": 866,
+    "textSample": "Имя Email Телефон Город Адрес доставки или пункт выдачи СДЭК Согласен(на) на обработку персональных данных (152-ФЗ) Оформить заказ Отправить Отправить Mila Bezú 21 работа · 4 серии · масло на холсте 01 сентября 2026 г. · Moscou MBezu Каталог На заказ Художник Корзина MBezu / Юридическая информация Д",
+    "kw": {
+      "картина в подарок": 1,
+      "интерьер": 1,
+      "москв": 4,
+      "художник": 5,
+      "сертификат": 1,
+      "доставк": 12,
+      "цена": 3,
+      "стоимост": 5,
+      "холст": 1
+    },
+    "jsonld": [
+      {
+        "type": "Person",
+        "name": "Mila Bezú",
+        "sameAs": [
+          "https://instagram.com/m.bezu_art",
+          "https://t.me/mbezu_art",
+          "https://vk.com/mbezu_art"
+        ],
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "alternateName",
+          "givenName",
+          "familyName",
+          "jobTitle",
+          "knowsAbout",
+          "address",
+          "url",
+          "email",
+          "telephone",
+          "sameAs"
+        ]
+      },
+      {
+        "type": "Organization",
+        "name": "MBezu",
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "legalName",
+          "url",
+          "logo",
+          "taxID",
+          "vatID",
+          "identifier",
+          "address",
+          "contactPoint"
+        ]
+      },
+      {
+        "type": "BreadcrumbList",
+        "items": 2,
+        "keys": [
+          "@context",
+          "@type",
+          "itemListElement"
+        ]
+      }
+    ],
+    "linksTotal": 27,
+    "hashLinks": 0,
+    "internal": [
+      "/",
+      "/about",
+      "/cart",
+      "/catalog",
+      "/commission",
+      "/journal",
+      "/legal?section=delivery",
+      "/legal?section=offer",
+      "/legal?section=privacy",
+      "/legal?section=requisites",
+      "/legal?section=returns",
+      "/podarok"
+    ],
+    "external": [
+      "https://t.me",
+      "https://instagram.com",
+      "https://vk.com",
+      "https://tilda.cc"
+    ],
+    "imgCount": 2,
+    "imgNoAlt": 2,
+    "scripts": 10,
+    "scriptsAsync": 8,
+    "styles": 7,
+    "metrika": "111308276",
+    "ga": false,
+    "hasRootEmpty": false,
+    "tildaStrings": [
+      "BUY NOW",
+      "More products",
+      "Load more",
+      "Your Name"
+    ],
+    "hreflang": 0,
+    "viewport": "width=device-width, initial-scale=1.0",
+    "noscript": 1,
+    "htmlBytes": 79948
+  },
+  {
+    "url": "https://mbezu.ru/tpost",
+    "code": 404,
+    "redirect": "",
+    "size": 574,
+    "time": 0.051779,
+    "ct": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://mbezu.ru/journal?page=2",
+    "code": 200,
+    "redirect": "",
+    "size": 88512,
+    "time": 0.069717,
+    "ct": "text/html; charset=UTF-8",
+    "title": "Журнал о живописи — статьи художника Mila Bezú | mbezu.ru",
+    "titleLen": 57,
+    "description": "Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",
+    "descLen": 155,
+    "robots": null,
+    "yandexVerify": false,
+    "googleVerify": false,
+    "og": {
+      "title": "Журнал о живописи — статьи художника Mila Bezú | mbezu.ru",
+      "description": "Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",
+      "image": "https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg",
+      "url": "https://mbezu.ru/journal",
+      "type": "website",
+      "site_name": "MBezu"
+    },
+    "canonical": "https://mbezu.ru/journal",
+    "canonicalCount": 1,
+    "lang": "ru",
+    "h1": [
+      "Журнал о живописи"
+    ],
+    "h2": [],
+    "h3": 0,
+    "words": 89,
+    "textSample": "Имя Email Телефон Город Адрес доставки или пункт выдачи СДЭК Согласен(на) на обработку персональных данных (152-ФЗ) Оформить заказ Отправить Отправить Заметки из мастерской Журнал о живописи Практичные статьи от художника: как выбрать картину маслом для интерьера, чем оригинал отличается от постера,",
+    "kw": {
+      "картина в подарок": 1,
+      "картину маслом": 1,
+      "интерьер": 1,
+      "художник": 2,
+      "сертификат": 1,
+      "доставк": 1
+    },
+    "jsonld": [
+      {
+        "type": "Person",
+        "name": "Mila Bezú",
+        "sameAs": [
+          "https://instagram.com/m.bezu_art",
+          "https://t.me/mbezu_art",
+          "https://vk.com/mbezu_art"
+        ],
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "alternateName",
+          "givenName",
+          "familyName",
+          "jobTitle",
+          "knowsAbout",
+          "address",
+          "url",
+          "email",
+          "telephone",
+          "sameAs"
+        ]
+      },
+      {
+        "type": "Organization",
+        "name": "MBezu",
+        "keys": [
+          "@context",
+          "@type",
+          "name",
+          "legalName",
+          "url",
+          "logo",
+          "taxID",
+          "vatID",
+          "identifier",
+          "address",
+          "contactPoint"
+        ]
+      }
+    ],
+    "linksTotal": 8,
+    "hashLinks": 1,
+    "internal": [
+      "/about",
+      "/catalog",
+      "/journal",
+      "/podarok"
+    ],
+    "external": [
+      "https://tilda.cc"
+    ],
+    "imgCount": 2,
+    "imgNoAlt": 2,
+    "scripts": 16,
+    "scriptsAsync": 14,
+    "styles": 14,
+    "metrika": "111308276",
+    "ga": false,
+    "hasRootEmpty": false,
+    "tildaStrings": [
+      "BUY NOW",
+      "More products",
+      "Load more",
+      "Your Name"
+    ],
+    "hreflang": 0,
+    "viewport": "width=device-width, initial-scale=1.0",
+    "noscript": 3,
+    "htmlBytes": 88512
+  }
+]

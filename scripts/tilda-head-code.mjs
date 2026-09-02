@@ -52,6 +52,8 @@ const RCV_SNIPPET = `
         var isA=!!form.querySelector('[name="notes"]');
         if(isA){wrap.setAttribute('data-mbezu-lead','');}
         else{wrap.setAttribute('data-mbezu-notify','');}
+        wrap.setAttribute('aria-hidden','true');
+        var ctl=wrap.querySelectorAll('input,textarea,button,select,a');for(var j=0;j<ctl.length;j++)ctl[j].setAttribute('tabindex','-1');
       }
     }catch(e){}
   }
@@ -98,13 +100,13 @@ const PROD_SNIPPET = `
   }
   function productNav(){
     if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-prod-nav'))return;
-    var lab=document.querySelector('.t-tildalabel');var host=lab?lab.parentNode:document.body;
+    var lab=document.querySelector('.t-tildalabel');var host=document.getElementById('allrecords')||document.body;
     var nav=document.createElement('nav');nav.id='mbezu-prod-nav';nav.setAttribute('aria-label','Навигация по сайту');
     nav.style.cssText='padding:28px 20px 36px;background:#ede5d6;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-family:Inter Tight,system-ui,sans-serif';
     var L=[['/','Главная'],['/catalog','Каталог'],['/commission','На заказ'],['/podarok','В подарок'],['/journal','Журнал']];
     for(var i=0;i<L.length;i++){var a=document.createElement('a');a.href=L[i][0];a.textContent=L[i][1];
       a.style.cssText='display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #6f5c2b;border-radius:999px;color:#6f5c2b;text-decoration:none;font-size:14px';nav.appendChild(a);}
-    if(lab)host.insertBefore(nav,lab);else host.appendChild(nav);
+    if(lab&&lab.parentNode===host)host.insertBefore(nav,lab);else host.appendChild(nav);
   }
   function galleryHint(){
     if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-gal-hint'))return;
@@ -265,7 +267,17 @@ const MOB_SNIPPET = `
 }
 .t706 .t-checkbox__indicator{width:22px!important;height:22px!important}
 .t706 .t-checkbox__control{min-height:44px;display:flex;align-items:center}
-.t706__product-plus,.t706__product-minus,.t706__product-del{padding:12px;margin:-12px;box-sizing:content-box}
+/* аудит r2: у уникальной работы нет количества — +/− скрыты; кнопка и ошибки в акценте AA */
+.t706__product-plus,.t706__product-minus{display:none!important}
+.t706__product-del{padding:12px;margin:-12px;box-sizing:content-box}
+.t706 .t-submit,.t706__cartwin-bottom .t-submit{background-color:#6f5c2b!important;border-color:#6f5c2b!important}
+.t706 .t-submit:hover{background-color:#57471f!important}
+.t706 .t-input-error,.t706 .t-form__errorbox-text{color:#8a2a1f!important;font-size:13.5px}
+.t706__carticon-counter{background-color:#6f5c2b!important}
+/* страница товара — тот же тон, что у витрины */
+body.t-body:has(.t-store__prod-snippet__container),.t-store__prod-snippet__container,.t-store .t-slds__container,.t-store__prod-popup__slider{background:#ede5d6!important}
+.t-store .t-name,.t-store .t-descr,.t-store .t-text,.t-store .t-btn,.t-store__prod-popup__btn{font-family:'Inter Tight',system-ui,-apple-system,sans-serif!important}
+.t-store .t-btn,.t-store__prod-popup__btn{background-color:#6f5c2b!important;color:#ede5d6!important;border-radius:999px!important}
 .t2823 .t-uptitle_xs,.t-cms__page .t-uptitle_xs,.t-cms__page .t-uptitle_sm{font-size:12px!important}
 @media (min-width:961px){#mbezu-gal-hint{display:none}}
 </style>`;

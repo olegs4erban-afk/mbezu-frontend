@@ -1,0 +1,5911 @@
+[
+ {
+  "id": "home",
+  "url": "https://mbezu.ru/",
+  "profile": "android",
+  "title": "Картины маслом для интерьера — Mila Bezú | Москва",
+  "finalUrl": "https://mbezu.ru/",
+  "timing": {
+   "ttfb": 66,
+   "dcl": 674,
+   "load": 693,
+   "fcp": 136,
+   "lcp": {
+    "t": 684,
+    "size": 26442,
+    "tag": "H1",
+    "cls": "display reveal r2 resp-display-md",
+    "src": null,
+    "text": "Картины, живущие в интерьерах"
+   },
+   "lcpAll": 2,
+   "firstImg": {
+    "n": "https://static.tildacdn.com/img/tildacopy.png",
+    "start": 74,
+    "end": 135,
+    "kb": 0
+   },
+   "imgCount": 10,
+   "imgKb": 0,
+   "jsKb": 105,
+   "cssKb": 3,
+   "reqCount": 42,
+   "totalKb": 111,
+   "fonts": [],
+   "big": []
+  },
+  "audit": {
+   "W": 360,
+   "H": 740,
+   "DPR": 3,
+   "docH": 16713,
+   "viewportMeta": "width=device-width, initial-scale=1.0",
+   "bodyFs": "14px",
+   "hscroll": {
+    "scrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "innerWidth": 360,
+    "has": false
+   },
+   "wideCount": 207,
+   "wideReal": [
+    {
+     "sel": "body.t-body > div#allrecords.t-records.t-records_animated.t-records_visible > header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437474901.r.t-rec.t-rec_pt_105",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 210,
+     "y": 0,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#allrecords.t-records.t-records_animated.t-records_visible > header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437474901.r.t-rec.t-rec_pt_105 > div.t678",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437474901.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#rec3437474901.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2 > div",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-container > div.t-col.t-col_8.t-prefix_2 > div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-col.t-col_8.t-prefix_2 > div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510100.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510101.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510102.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510103.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510104.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510105.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 615,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 615,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510106.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 615,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 700,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 700,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510107.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 700,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 785,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 785,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510108.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 785,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 870,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 870,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510109.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 870,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 955,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 955,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510110.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 955,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1040,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1040,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510111.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1040,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1125,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1125,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510112.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1125,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1210,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1210,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510113.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1210,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1295,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1295,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510114.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1295,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1380,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1380,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510115.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1380,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1465,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1465,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510116.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1465,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1550,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1550,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510117.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1550,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1635,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1635,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510118.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1635,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 80,
+     "y": 1720,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1720,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit > span.t-btnflex__text",
+     "left": -9917,
+     "right": -9839,
+     "w": 78,
+     "h": 22,
+     "y": 1739,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "body.t-body > div#allrecords.t-records.t-records_animated.t-records_visible > header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437480401.r.t-rec.t-rec_pt_105",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 210,
+     "y": 0,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#allrecords.t-records.t-records_animated.t-records_visible > header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437480401.r.t-rec.t-rec_pt_105 > div.t678",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437480401.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#rec3437480401.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2 > div",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-container > div.t-col.t-col_8.t-prefix_2 > div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-col.t-col_8.t-prefix_2 > div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425100.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425101.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425102.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425103.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425104.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425105.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 80,
+     "y": 615,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 615,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit > span.t-btnflex__text",
+     "left": -9917,
+     "right": -9839,
+     "w": 78,
+     "h": 22,
+     "y": 634,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "html > body.t-body > div#allrecords.t-records.t-records_animated.t-records_visible > div#rec3437563301.r.t-rec.t-rec_pt_105",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 210,
+     "y": 16643,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "body.t-body > div#allrecords.t-records.t-records_animated.t-records_visible > div#rec3437563301.r.t-rec.t-rec_pt_105 > div.t678",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 1695,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#allrecords.t-records.t-records_animated.t-records_visible > div#rec3437563301.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 1695,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#rec3437563301.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 1695,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2 > div",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 1695,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-container > div.t-col.t-col_8.t-prefix_2 > div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 1695,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-col.t-col_8.t-prefix_2 > div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 1695,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16748,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16748,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165072100.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16748,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16833,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16833,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165072101.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16833,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16918,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16918,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165072102.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16918,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17003,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17003,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165072103.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17003,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17088,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17088,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165072104.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17088,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17173,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17173,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165072105.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17173,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17258,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17258,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165072106.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17258,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17343,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17343,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165072107.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17343,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17428,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17428,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073108.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17428,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17513,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17513,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073109.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17513,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17598,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17598,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073110.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17598,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17683,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17683,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073111.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17683,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17768,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17768,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073112.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17768,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17853,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17853,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073113.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17853,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17938,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17938,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073114.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17938,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18023,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18023,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073115.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18023,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18108,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18108,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073116.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18108,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18193,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18193,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073117.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18193,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18278,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18278,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040165073118.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18278,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 80,
+     "y": 18363,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "form#form3437563301.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 18363,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit > span.t-btnflex__text",
+     "left": -9917,
+     "right": -9839,
+     "w": 78,
+     "h": 22,
+     "y": 18381,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "html > body.t-body > div#allrecords.t-records.t-records_animated.t-records_visible > div#rec3437567501.r.t-rec.t-rec_pt_105",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 210,
+     "y": 16643,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "body.t-body > div#allrecords.t-records.t-records_animated.t-records_visible > div#rec3437567501.r.t-rec.t-rec_pt_105 > div.t678",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 590,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#allrecords.t-records.t-records_animated.t-records_visible > div#rec3437567501.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 590,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#rec3437567501.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 590,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2 > div",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 590,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-container > div.t-col.t-col_8.t-prefix_2 > div > form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 590,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-col.t-col_8.t-prefix_2 > div > form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 590,
+     "y": 16748,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div > form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16748,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16748,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040166408100.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16748,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16833,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16833,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040166408101.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16833,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16918,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16918,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040166408102.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 16918,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17003,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17003,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040166408103.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17003,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17088,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17088,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040166408104.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17088,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17173,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17173,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788040166408105.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17173,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 80,
+     "y": 17258,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "form#form3437567501.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 17258,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit > span.t-btnflex__text",
+     "left": -9917,
+     "right": -9839,
+     "w": 78,
+     "h": 22,
+     "y": 17276,
+     "clippedBy": null,
+     "text": "Отправить"
+    }
+   ],
+   "wideClipped": [
+    {
+     "sel": "main#main > div.fade-in > section.resp-pad > div",
+     "left": -204,
+     "right": 396,
+     "w": 600,
+     "h": 600,
+     "y": -34,
+     "clippedBy": "section.resp-pad",
+     "text": ""
+    },
+    {
+     "sel": "div > div.resp-stack > div.reveal.r3 > figcaption",
+     "left": -10,
+     "right": 261,
+     "w": 271,
+     "h": 98,
+     "y": 1260,
+     "clippedBy": "section.resp-pad",
+     "text": "[MN-01] · 2024 · 100×60 СМ Вол"
+    },
+    {
+     "sel": "main#main > div.fade-in > div > div",
+     "left": -26,
+     "right": 334,
+     "w": 360,
+     "h": 56,
+     "y": 1483,
+     "clippedBy": "div",
+     "text": "Улицы мира Монохромная Тихая с"
+    },
+    {
+     "sel": "div.fade-in > div > div > span",
+     "left": -26,
+     "right": 168,
+     "w": 194,
+     "h": 56,
+     "y": 1483,
+     "clippedBy": "div",
+     "text": "Улицы мира"
+    },
+    {
+     "sel": "div.fade-in > div > div > span",
+     "left": 224,
+     "right": 446,
+     "w": 223,
+     "h": 56,
+     "y": 1483,
+     "clippedBy": "div",
+     "text": "Монохромная"
+    },
+    {
+     "sel": "div.fade-in > div > div > span",
+     "left": 502,
+     "right": 676,
+     "w": 173,
+     "h": 56,
+     "y": 1483,
+     "clippedBy": "div",
+     "text": "Тихая сила"
+    },
+    {
+     "sel": "div.fade-in > div > div > span",
+     "left": 732,
+     "right": 1145,
+     "w": 414,
+     "h": 56,
+     "y": 1483,
+     "clippedBy": "div",
+     "text": "— серии одного автора —"
+    },
+    {
+     "sel": "div.fade-in > div > div > span",
+     "left": 1201,
+     "right": 1395,
+     "w": 194,
+     "h": 56,
+     "y": 1483,
+     "clippedBy": "div",
+     "text": "Улицы мира"
+    }
+   ],
+   "smallTap": [
+    {
+     "sel": "div.t-container_100 > div.t-width.t-width_100 > div#root > a.skip-link",
+     "text": "К СОДЕРЖИМОМУ",
+     "w": 148,
+     "h": 39,
+     "y": -56,
+     "fs": "12px",
+     "firstScreen": true
+    },
+    {
+     "sel": "div.resp-stack > div > form > label",
+     "text": "Согласен(на) на обработку персональных данных (152",
+     "w": 288,
+     "h": 39,
+     "y": 2247,
+     "fs": "12.5px",
+     "firstScreen": false
+    },
+    {
+     "sel": "section.resp-pad > div.card-soft.resp-stack.resp-pad > div.nl-consent > label",
+     "text": "Согласен(на) на обработку персональных данных (152",
+     "w": 286,
+     "h": 38,
+     "y": 14284,
+     "fs": "12.5px",
+     "firstScreen": false
+    },
+    {
+     "sel": "section.resp-pad > div.card-soft.resp-stack.resp-pad > div.nl-consent > label",
+     "text": "Согласен(на) получать письма о новых работах и зак",
+     "w": 286,
+     "h": 38,
+     "y": 14329,
+     "fs": "12.5px",
+     "firstScreen": false
+    }
+   ],
+   "smallText": [
+    {
+     "sel": "div#root > div.resp-pad > div.eyebrow > span",
+     "text": "MILA BEZÚ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 12,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div#root > div.resp-pad > div.eyebrow > span",
+     "text": "01 СЕНТЯБРЯ 2026 Г. · MOSCOU",
+     "fs": 10.5,
+     "micro": true,
+     "y": 52,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div > div.reveal.r5 > div > div.eyebrow",
+     "text": "В НАЛИЧИИ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 748,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div > div.reveal.r5 > div > div.eyebrow",
+     "text": "НЕДЕЛЬ НА ЗАКАЗ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 748,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div > div.reveal.r5 > div > div.eyebrow",
+     "text": "ЛЕТ ПРАКТИКИ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 861,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div > div.reveal.r5 > div > div.eyebrow",
+     "text": "ДОСТАВКА",
+     "fs": 10.5,
+     "micro": true,
+     "y": 861,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div.resp-stack > div.reveal.r3 > figcaption > span.cat-no",
+     "text": "[MN-01] · 2024 · 100×60 СМ",
+     "fs": 10,
+     "micro": true,
+     "y": 1281,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div.resp-stack > div > div > span.mono",
+     "text": "НА ЗАКАЗ",
+     "fs": 11,
+     "micro": true,
+     "y": 1688,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "div.resp-stack-3 > a.lift > div > div.cat-no",
+     "text": "2024–2025 · 6 РАБОТ",
+     "fs": 10,
+     "micro": true,
+     "y": 3207,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div.resp-stack-3 > a.lift > div > div.cat-no",
+     "text": "2023–2024 · 8 РАБОТ",
+     "fs": 10,
+     "micro": true,
+     "y": 3868,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div.resp-stack-3 > a.lift > div > div.cat-no",
+     "text": "2023–2025 · 6 РАБОТ",
+     "fs": 10,
+     "micro": true,
+     "y": 4529,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div.resp-stack-3 > a.lift > div > div.cat-no",
+     "text": "2021–2022 · 2 РАБОТ",
+     "fs": 10,
+     "micro": true,
+     "y": 5190,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div > div > div > span.eyebrow.accent",
+     "text": "В НАЛИЧИИ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 6382,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "div.resp-stack-3 > a.lift > div > span",
+     "text": "ФЛАГМАН",
+     "fs": 9.5,
+     "micro": false,
+     "y": 6584,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 001 / 022",
+     "fs": 10,
+     "micro": true,
+     "y": 6912,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "МОНОХРОМНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 6912,
+     "color": "rgb(74, 74, 74)"
+    },
+    {
+     "sel": "div.resp-stack-3 > a.lift > div > span",
+     "text": "ФЛАГМАН",
+     "fs": 9.5,
+     "micro": false,
+     "y": 7036,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 002 / 022",
+     "fs": 10,
+     "micro": true,
+     "y": 7364,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "УЛИЦЫ",
+     "fs": 10,
+     "micro": true,
+     "y": 7364,
+     "color": "rgb(77, 56, 38)"
+    },
+    {
+     "sel": "div.resp-stack-3 > a.lift > div > span",
+     "text": "ФЛАГМАН",
+     "fs": 9.5,
+     "micro": false,
+     "y": 7489,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 003 / 022",
+     "fs": 10,
+     "micro": true,
+     "y": 7817,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТИХАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 7817,
+     "color": "rgb(29, 51, 36)"
+    },
+    {
+     "sel": "div.resp-stack-3 > a.lift > div > span",
+     "text": "ФЛАГМАН",
+     "fs": 9.5,
+     "micro": false,
+     "y": 7942,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "div.resp-stack-3 > a.lift > div > span",
+     "text": "● ТОНДО",
+     "fs": 9.5,
+     "micro": false,
+     "y": 7942,
+     "color": "rgb(42, 37, 32)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 004 / 022",
+     "fs": 10,
+     "micro": true,
+     "y": 8270,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТОНДО",
+     "fs": 10,
+     "micro": true,
+     "y": 8270,
+     "color": "rgb(58, 74, 90)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 005 / 022",
+     "fs": 10,
+     "micro": true,
+     "y": 8723,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "МОНОХРОМНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 8723,
+     "color": "rgb(74, 74, 74)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 006 / 022",
+     "fs": 10,
+     "micro": true,
+     "y": 9176,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "МОНОХРОМНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 9176,
+     "color": "rgb(74, 74, 74)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > span.eyebrow.accent",
+     "text": "УПАКОВКА",
+     "fs": 10.5,
+     "micro": true,
+     "y": 9961,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "section.resp-pad > div.resp-stack-4.card-soft > div > div.eyebrow",
+     "text": "ЛЕТ ПРАКТИКИ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 10567,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "section.resp-pad > div.resp-stack-4.card-soft > div > div.eyebrow",
+     "text": "РАБОТ В НАЛИЧИИ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 10735,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "section.resp-pad > div.resp-stack-4.card-soft > div > div.eyebrow",
+     "text": "СЕРИИ В РАЗВИТИИ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 10903,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "section.resp-pad > div.resp-stack-4.card-soft > div > div.eyebrow",
+     "text": "НЕДЕЛЬ НА ЗАКАЗ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 11071,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > span.eyebrow.accent",
+     "text": "ПРОЦЕСС",
+     "fs": 10.5,
+     "micro": true,
+     "y": 11262,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "div.fade-in > section.resp-pad > div > div.eyebrow.accent",
+     "text": "ОТЗЫВЫ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 12746,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "section.resp-pad > div.card-soft.resp-stack > div > span.eyebrow.accent",
+     "text": "ДОЧИТАЛИ ДО КОНЦА?",
+     "fs": 10.5,
+     "micro": true,
+     "y": 13664,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "section.resp-pad > div.card-soft.resp-stack.resp-pad > div > span.eyebrow.accent",
+     "text": "ПИСЬМА ИЗ СТУДИИ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 14117,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > div.eyebrow",
+     "text": "МАГАЗИН",
+     "fs": 10.5,
+     "micro": true,
+     "y": 15183,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > div.eyebrow",
+     "text": "СТУДИЯ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 15462,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > div.eyebrow",
+     "text": "ДОКУМЕНТЫ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 15775,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > div.eyebrow",
+     "text": "СВЯЗЬ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 16108,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div.mono > span",
+     "text": "ИП Клевер Л.А.",
+     "fs": 11,
+     "micro": true,
+     "y": 16334,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div.mono > span",
+     "text": "ИНН 772273980162",
+     "fs": 11,
+     "micro": true,
+     "y": 16334,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div.mono > span",
+     "text": "ОГРНИП 314774633901575",
+     "fs": 11,
+     "micro": true,
+     "y": 16373,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div.mono > span",
+     "text": "111250, РФ, г. Москва, ул. Лефортовский Вал, д. 11",
+     "fs": 11,
+     "micro": true,
+     "y": 16411,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div > span.mono",
+     "text": "© MBEZU STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 16498,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div > span.mono",
+     "text": "ХУДОЖНИК · MILA BEZÚ · MOSCOU",
+     "fs": 10.5,
+     "micro": true,
+     "y": 16546,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div#root > nav.tabbar > a.tabbar-item.is-active > span.tabbar-label",
+     "text": "ГЛАВНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 715,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "text": "КАТАЛОГ",
+     "fs": 10,
+     "micro": true,
+     "y": 715,
+     "color": "rgb(107, 93, 74)"
+    },
+    {
+     "sel": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "text": "НА ЗАКАЗ",
+     "fs": 10,
+     "micro": true,
+     "y": 715,
+     "color": "rgb(107, 93, 74)"
+    },
+    {
+     "sel": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "text": "КОРЗИНА",
+     "fs": 10,
+     "micro": true,
+     "y": 715,
+     "color": "rgb(107, 93, 74)"
+    }
+   ],
+   "smallInputs": [
+    {
+     "sel": "section.resp-pad > div.card-soft.resp-stack.resp-pad > form.nl-form > input",
+     "ph": "ваша почта",
+     "fs": 14,
+     "y": 14418
+    }
+   ],
+   "fixed": [
+    {
+     "sel": "div.t-container_100 > div.t-width.t-width_100 > div#root > header.resp-pad",
+     "pos": "sticky",
+     "z": "50",
+     "rect": {
+      "x": 0,
+      "y": 82,
+      "w": 360,
+      "h": 77
+     },
+     "text": "MBezu",
+     "pointer": "auto"
+    },
+    {
+     "sel": "div.t-container_100 > div.t-width.t-width_100 > div#root > nav.tabbar",
+     "pos": "fixed",
+     "z": "90",
+     "rect": {
+      "x": 0,
+      "y": 679,
+      "w": 360,
+      "h": 61
+     },
+     "text": "ГЛАВНАЯ КАТАЛОГ НА ЗАКАЗ КОРЗИНА",
+     "pointer": "auto"
+    }
+   ],
+   "fixedOverlap": [
+    {
+     "fixed": "div.t-container_100 > div.t-width.t-width_100 > div#root > nav.tabbar",
+     "covers": "div > div.reveal.r5 > div > div.display",
+     "text": "от 2",
+     "cy": 700,
+     "ch": 40
+    }
+   ],
+   "overlaps": [
+    {
+     "a": "div > div.reveal.r5 > div > div.display",
+     "at": "от 2",
+     "b": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "bt": "КАТАЛОГ",
+     "imgInvolved": false,
+     "ix": 17,
+     "iy": 16
+    },
+    {
+     "a": "div > div.reveal.r5 > div > div.display",
+     "at": "от 2",
+     "b": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "bt": "НА ЗАКАЗ",
+     "imgInvolved": false,
+     "ix": 58,
+     "iy": 16
+    }
+   ],
+   "contrastChecked": 181,
+   "contrast": [],
+   "contrastFails": 0,
+   "imgs": [
+    {
+     "kind": "img",
+     "sel": "div.reveal.r3 > figure.drift > div > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-01.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 405,
+     "ratio": 0.34,
+     "loading": "eager",
+     "decoding": "async",
+     "fetchpriority": "high",
+     "hasDims": false,
+     "sizes": "(max-width: 900px) 92vw, 46vw",
+     "srcset": true,
+     "y": 913,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Волна. Сепия"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-03.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 432,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 2757,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Шторм"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-05.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 432,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 3418,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Ангкор-Ват"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/ts-01.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 432,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 4079,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Свобода"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/td-02.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 432,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 4740,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Hibiscus"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-01.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 6570,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Волна. Сепия"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-05.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 7022,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Ангкор-Ват"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/ts-01.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 7475,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Свобода"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/td-02.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 7928,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Hibiscus"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-04.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 8381,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Перевал"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-05.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 8834,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Камни на берегу"
+    },
+    {
+     "kind": "img",
+     "sel": "div > div.resp-stack > div > img.drift",
+     "src": "https://cdn.mbezu.ru/assets/certificate.webp",
+     "nw": 1135,
+     "nh": 1592,
+     "dw": 324,
+     "dh": 454,
+     "ratio": 1.17,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": null,
+     "srcset": false,
+     "y": 9459,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Сертификат подлинности MBezu Fine Art"
+    },
+    {
+     "kind": "img",
+     "sel": "a.t-tildalabel__link > div.t-tildalabel__wrapper > div.t-tildalabel__wrapimg > img.t-tildalabel__img",
+     "src": "https://static.tildacdn.com/img/tildacopy.png",
+     "nw": 60,
+     "nh": 60,
+     "dw": 30,
+     "dh": 30,
+     "ratio": 0.67,
+     "loading": null,
+     "decoding": null,
+     "fetchpriority": "low",
+     "hasDims": false,
+     "sizes": null,
+     "srcset": false,
+     "y": 16663,
+     "firstScreen": false,
+     "complete": true,
+     "alt": ""
+    }
+   ],
+   "truncated": [],
+   "ctas": [
+    {
+     "text": "Отправить",
+     "sel": "button.t-submit.t-btnflex.t-btnflex_type_submit",
+     "r": {
+      "x": -9979,
+      "y": 615,
+      "w": 202,
+      "h": 60
+     },
+     "fs": "16px"
+    },
+    {
+     "text": "К СОДЕРЖИМОМУ",
+     "sel": "a.skip-link",
+     "r": {
+      "x": 8,
+      "y": -56,
+      "w": 148,
+      "h": 39
+     },
+     "fs": "12px"
+    },
+    {
+     "text": "СМОТРЕТЬ КАТАЛОГ →",
+     "sel": "button.btn.btn-solid",
+     "r": {
+      "x": 18,
+      "y": 501,
+      "w": 227,
+      "h": 48
+     },
+     "fs": "12px"
+    },
+    {
+     "text": "ЗАКАЗАТЬ КАРТИНУ",
+     "sel": "button.btn.btn-ghost",
+     "r": {
+      "x": 18,
+      "y": 563,
+      "w": 209,
+      "h": 48
+     },
+     "fs": "12px"
+    },
+    {
+     "text": "ГЛАВНАЯ",
+     "sel": "a.tabbar-item.is-active",
+     "r": {
+      "x": 0,
+      "y": 680,
+      "w": 90,
+      "h": 60
+     },
+     "fs": "14px"
+    },
+    {
+     "text": "КАТАЛОГ",
+     "sel": "a.tabbar-item",
+     "r": {
+      "x": 90,
+      "y": 680,
+      "w": 90,
+      "h": 60
+     },
+     "fs": "14px"
+    },
+    {
+     "text": "НА ЗАКАЗ",
+     "sel": "a.tabbar-item",
+     "r": {
+      "x": 180,
+      "y": 680,
+      "w": 90,
+      "h": 60
+     },
+     "fs": "14px"
+    },
+    {
+     "text": "КОРЗИНА",
+     "sel": "a.tabbar-item",
+     "r": {
+      "x": 270,
+      "y": 680,
+      "w": 90,
+      "h": 60
+     },
+     "fs": "14px"
+    }
+   ],
+   "h1s": [
+    {
+     "text": "Картины, живущие в интерьерах",
+     "fs": "40px",
+     "y": 239,
+     "vis": true
+    }
+   ],
+   "fontsLoaded": "loaded"
+  },
+  "consoleErrors": [
+   {
+    "type": "error",
+    "text": "Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID"
+   }
+  ],
+  "failed": [
+   {
+    "url": "https://hdrc.yandex.net/",
+    "err": "net::ERR_CERT_AUTHORITY_INVALID"
+   }
+  ],
+  "elapsedMs": 13611
+ },
+ {
+  "id": "catalog",
+  "url": "https://mbezu.ru/catalog",
+  "profile": "android",
+  "title": "Купить картину маслом для интерьера — 21 работа | MBezu",
+  "finalUrl": "https://mbezu.ru/catalog",
+  "timing": {
+   "ttfb": 30,
+   "dcl": 208,
+   "load": 497,
+   "fcp": 88,
+   "lcp": {
+    "t": 332,
+    "size": 3388,
+    "tag": "SPAN",
+    "cls": "",
+    "src": null,
+    "text": "01 сентября 2026 г. · Moscou"
+   },
+   "lcpAll": 2,
+   "firstImg": {
+    "n": "https://cdn.mbezu.ru/assets/cards/mn-01.webp",
+    "start": 38,
+    "end": 41,
+    "kb": 0
+   },
+   "imgCount": 22,
+   "imgKb": 0,
+   "jsKb": 0,
+   "cssKb": 3,
+   "reqCount": 66,
+   "totalKb": 3,
+   "fonts": [],
+   "big": []
+  },
+  "audit": {
+   "W": 360,
+   "H": 740,
+   "DPR": 3,
+   "docH": 13233,
+   "viewportMeta": "width=device-width, initial-scale=1.0",
+   "bodyFs": "14px",
+   "hscroll": {
+    "scrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "innerWidth": 360,
+    "has": false
+   },
+   "wideCount": 104,
+   "wideReal": [
+    {
+     "sel": "body.t-body > div#allrecords.t-records.t-records_animated.t-records_visible > header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437474901.r.t-rec.t-rec_pt_105",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 210,
+     "y": 0,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#allrecords.t-records.t-records_animated.t-records_visible > header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437474901.r.t-rec.t-rec_pt_105 > div.t678",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437474901.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#rec3437474901.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2 > div",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-container > div.t-col.t-col_8.t-prefix_2 > div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-col.t-col_8.t-prefix_2 > div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 1695,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510100.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510101.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510102.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510103.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510104.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510105.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 615,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 615,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510106.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 615,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 700,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 700,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510107.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 700,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 785,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 785,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510108.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 785,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 870,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 870,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510109.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 870,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 955,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 955,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510110.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 955,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1040,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1040,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510111.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1040,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1125,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1125,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510112.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1125,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1210,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1210,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510113.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1210,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1295,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1295,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510114.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1295,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1380,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1380,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510115.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1380,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1465,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1465,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510116.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1465,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1550,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1550,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510117.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1550,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1635,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1635,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039916510118.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1635,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 80,
+     "y": 1720,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "form#form3437474901.t-form.js-form-proccess.t-form_inputs-total_19 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 1720,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit > span.t-btnflex__text",
+     "left": -9917,
+     "right": -9839,
+     "w": 78,
+     "h": 22,
+     "y": 1739,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "body.t-body > div#allrecords.t-records.t-records_animated.t-records_visible > header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437480401.r.t-rec.t-rec_pt_105",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 210,
+     "y": 0,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#allrecords.t-records.t-records_animated.t-records_visible > header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437480401.r.t-rec.t-rec_pt_105 > div.t678",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "header#t-header.t-records.t-records_animated.t-records_visible > div#rec3437480401.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div#rec3437480401.r.t-rec.t-rec_pt_105 > div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2",
+     "left": -9999,
+     "right": -9757,
+     "w": 242,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t678 > div.t-container > div.t-col.t-col_8.t-prefix_2 > div",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-container > div.t-col.t-col_8.t-prefix_2 > div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-col.t-col_8.t-prefix_2 > div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 590,
+     "y": 105,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425100.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 105,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425101.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 190,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425102.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 275,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425103.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 360,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425104.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 445,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-input-group.t-input-group_in > div.t-input-block > input#input_1788039918425105.t-input.js-tilda-rule",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 530,
+     "clippedBy": null,
+     "text": ""
+    },
+    {
+     "sel": "div > form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 80,
+     "y": 615,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "form#form3437480401.t-form.js-form-proccess.t-form_inputs-total_6 > div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit",
+     "left": -9979,
+     "right": -9777,
+     "w": 202,
+     "h": 60,
+     "y": 615,
+     "clippedBy": null,
+     "text": "Отправить"
+    },
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_horizontal > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit > span.t-btnflex__text",
+     "left": -9917,
+     "right": -9839,
+     "w": 78,
+     "h": 22,
+     "y": 634,
+     "clippedBy": null,
+     "text": "Отправить"
+    }
+   ],
+   "wideClipped": [
+    {
+     "sel": "div.fade-in.resp-pad > div > div.reveal.r2.resp-stack-12 > div",
+     "left": 18,
+     "right": 566,
+     "w": 548,
+     "h": 48,
+     "y": 384,
+     "clippedBy": "div#rec2413986501.r.t-rec",
+     "text": "ВСЕ РАБОТЫ МОРЕ И ВОЛНЫ ГОРЫ Г"
+    },
+    {
+     "sel": "div > div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x",
+     "left": 18,
+     "right": 566,
+     "w": 548,
+     "h": 48,
+     "y": 384,
+     "clippedBy": "div#rec2413986501.r.t-rec",
+     "text": "ВСЕ РАБОТЫ МОРЕ И ВОЛНЫ ГОРЫ Г"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x > button.chip",
+     "left": 358,
+     "right": 443,
+     "w": 85,
+     "h": 44,
+     "y": 384,
+     "clippedBy": "div#rec2413986501.r.t-rec",
+     "text": "ГОРОДА"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x > button.chip",
+     "left": 451,
+     "right": 605,
+     "w": 155,
+     "h": 44,
+     "y": 384,
+     "clippedBy": "div#rec2413986501.r.t-rec",
+     "text": "САДЫ И БОТАНИКА"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x > button.chip",
+     "left": 613,
+     "right": 706,
+     "w": 92,
+     "h": 44,
+     "y": 384,
+     "clippedBy": "div#rec2413986501.r.t-rec",
+     "text": "ПЕЙЗАЖИ"
+    },
+    {
+     "sel": "div.fade-in.resp-pad > div > div.reveal.r2.resp-stack-12 > div.catalog-controls",
+     "left": 18,
+     "right": 566,
+     "w": 548,
+     "h": 107,
+     "y": 446,
+     "clippedBy": "div#rec2413986501.r.t-rec",
+     "text": "Все серии Монохромная серия Ул"
+    },
+    {
+     "sel": "div > div.reveal.r2.resp-stack-12 > div.catalog-controls > select.field",
+     "left": 297,
+     "right": 566,
+     "w": 269,
+     "h": 51,
+     "y": 446,
+     "clippedBy": "div#rec2413986501.r.t-rec",
+     "text": "Сначала новые Цена ↑ Цена ↓ По"
+    },
+    {
+     "sel": "div > div.reveal.r2.resp-stack-12 > div.catalog-controls > div",
+     "left": 18,
+     "right": 566,
+     "w": 548,
+     "h": 46,
+     "y": 507,
+     "clippedBy": "div#rec2413986501.r.t-rec",
+     "text": "СЕТКА СПИСОК"
+    }
+   ],
+   "smallTap": [
+    {
+     "sel": "div.t-container_100 > div.t-width.t-width_100 > div#root > a.skip-link",
+     "text": "К СОДЕРЖИМОМУ",
+     "w": 148,
+     "h": 39,
+     "y": -56,
+     "fs": "12px",
+     "firstScreen": true
+    }
+   ],
+   "smallText": [
+    {
+     "sel": "div#root > div.resp-pad > div.eyebrow > span",
+     "text": "MILA BEZÚ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 12,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div#root > div.resp-pad > div.eyebrow > span",
+     "text": "01 СЕНТЯБРЯ 2026 Г. · MOSCOU",
+     "fs": 10.5,
+     "micro": true,
+     "y": 52,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "div > div.reveal.r1.resp-stack-12 > div > span.eyebrow.accent",
+     "text": "§ 01 · INDEX · 2026",
+     "fs": 10.5,
+     "micro": true,
+     "y": 236,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x > button.chip.is-active",
+     "text": "ВСЕ РАБОТЫ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 384,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x > button.chip",
+     "text": "МОРЕ И ВОЛНЫ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 384,
+     "color": "rgb(107, 93, 74)"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x > button.chip",
+     "text": "ГОРЫ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 384,
+     "color": "rgb(107, 93, 74)"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x > button.chip",
+     "text": "ГОРОДА",
+     "fs": 10.5,
+     "micro": true,
+     "y": 384,
+     "color": "rgb(107, 93, 74)"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x > button.chip",
+     "text": "САДЫ И БОТАНИКА",
+     "fs": 10.5,
+     "micro": true,
+     "y": 384,
+     "color": "rgb(107, 93, 74)"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div > div.resp-scroll-x > button.chip",
+     "text": "ПЕЙЗАЖИ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 384,
+     "color": "rgb(107, 93, 74)"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div.catalog-controls > div > button",
+     "text": "СЕТКА",
+     "fs": 11,
+     "micro": false,
+     "y": 508,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "div.reveal.r2.resp-stack-12 > div.catalog-controls > div > button",
+     "text": "СПИСОК",
+     "fs": 11,
+     "micro": false,
+     "y": 508,
+     "color": "rgb(42, 37, 32)"
+    },
+    {
+     "sel": "div.reveal.r3.cat-grid > a.lift > div > span",
+     "text": "ФЛАГМАН",
+     "fs": 9.5,
+     "micro": false,
+     "y": 610,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 001 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 938,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "МОНОХРОМНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 938,
+     "color": "rgb(74, 74, 74)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 002 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 1422,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "МОНОХРОМНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 1422,
+     "color": "rgb(74, 74, 74)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 003 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 1907,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "МОНОХРОМНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 1907,
+     "color": "rgb(74, 74, 74)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 004 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 2392,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "МОНОХРОМНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 2392,
+     "color": "rgb(74, 74, 74)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 005 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 2877,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "МОНОХРОМНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 2877,
+     "color": "rgb(74, 74, 74)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 006 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 3362,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "УЛИЦЫ",
+     "fs": 10,
+     "micro": true,
+     "y": 3362,
+     "color": "rgb(77, 56, 38)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 007 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 3847,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "УЛИЦЫ",
+     "fs": 10,
+     "micro": true,
+     "y": 3847,
+     "color": "rgb(77, 56, 38)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 008 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 4332,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "УЛИЦЫ",
+     "fs": 10,
+     "micro": true,
+     "y": 4332,
+     "color": "rgb(77, 56, 38)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 009 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 4816,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "УЛИЦЫ",
+     "fs": 10,
+     "micro": true,
+     "y": 4816,
+     "color": "rgb(77, 56, 38)"
+    },
+    {
+     "sel": "div.reveal.r3.cat-grid > a.lift > div > span",
+     "text": "ФЛАГМАН",
+     "fs": 9.5,
+     "micro": false,
+     "y": 4973,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 010 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 5301,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "УЛИЦЫ",
+     "fs": 10,
+     "micro": true,
+     "y": 5301,
+     "color": "rgb(77, 56, 38)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 011 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 5786,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "УЛИЦЫ",
+     "fs": 10,
+     "micro": true,
+     "y": 5786,
+     "color": "rgb(77, 56, 38)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 012 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 6271,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "УЛИЦЫ",
+     "fs": 10,
+     "micro": true,
+     "y": 6271,
+     "color": "rgb(77, 56, 38)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 013 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 6756,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "УЛИЦЫ",
+     "fs": 10,
+     "micro": true,
+     "y": 6756,
+     "color": "rgb(77, 56, 38)"
+    },
+    {
+     "sel": "div.reveal.r3.cat-grid > a.lift > div > span",
+     "text": "ФЛАГМАН",
+     "fs": 9.5,
+     "micro": false,
+     "y": 6913,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 014 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 7241,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТИХАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 7241,
+     "color": "rgb(29, 51, 36)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 015 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 7725,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТИХАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 7725,
+     "color": "rgb(29, 51, 36)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 016 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 8210,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТИХАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 8210,
+     "color": "rgb(29, 51, 36)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 017 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 8695,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТИХАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 8695,
+     "color": "rgb(29, 51, 36)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 018 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 9180,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТИХАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 9180,
+     "color": "rgb(29, 51, 36)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 019 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 9665,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТИХАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 9665,
+     "color": "rgb(29, 51, 36)"
+    },
+    {
+     "sel": "div.reveal.r3.cat-grid > a.lift > div > span",
+     "text": "● ТОНДО",
+     "fs": 9.5,
+     "micro": false,
+     "y": 9822,
+     "color": "rgb(42, 37, 32)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 020 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 10150,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТОНДО",
+     "fs": 10,
+     "micro": true,
+     "y": 10150,
+     "color": "rgb(58, 74, 90)"
+    },
+    {
+     "sel": "div.reveal.r3.cat-grid > a.lift > div > span",
+     "text": "ФЛАГМАН",
+     "fs": 9.5,
+     "micro": false,
+     "y": 10306,
+     "color": "rgb(237, 229, 214)"
+    },
+    {
+     "sel": "div.reveal.r3.cat-grid > a.lift > div > span",
+     "text": "● ТОНДО",
+     "fs": 9.5,
+     "micro": false,
+     "y": 10306,
+     "color": "rgb(42, 37, 32)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "CAT. № 021 / 021",
+     "fs": 10,
+     "micro": true,
+     "y": 10634,
+     "color": "rgb(103, 88, 63)"
+    },
+    {
+     "sel": "a.lift > div > div > span.cat-no",
+     "text": "ТОНДО",
+     "fs": 10,
+     "micro": true,
+     "y": 10634,
+     "color": "rgb(58, 74, 90)"
+    },
+    {
+     "sel": "div.fade-in.resp-pad > div > div > span.eyebrow.accent",
+     "text": "НЕ НАШЛИ ПОДХОДЯЩЕЕ?",
+     "fs": 10.5,
+     "micro": true,
+     "y": 10887,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > div.eyebrow",
+     "text": "МАГАЗИН",
+     "fs": 10.5,
+     "micro": true,
+     "y": 11704,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > div.eyebrow",
+     "text": "СТУДИЯ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 11983,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > div.eyebrow",
+     "text": "ДОКУМЕНТЫ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 12296,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div.resp-stack > div > div.eyebrow",
+     "text": "СВЯЗЬ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 12628,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div.mono > span",
+     "text": "ИП Клевер Л.А.",
+     "fs": 11,
+     "micro": true,
+     "y": 12855,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div.mono > span",
+     "text": "ИНН 772273980162",
+     "fs": 11,
+     "micro": true,
+     "y": 12855,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div.mono > span",
+     "text": "ОГРНИП 314774633901575",
+     "fs": 11,
+     "micro": true,
+     "y": 12893,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div.mono > span",
+     "text": "111250, РФ, г. Москва, ул. Лефортовский Вал, д. 11",
+     "fs": 11,
+     "micro": true,
+     "y": 12932,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div > span.mono",
+     "text": "© MBEZU STUDIO · 2014–2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ",
+     "fs": 10.5,
+     "micro": true,
+     "y": 13018,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div > div > div > span.mono",
+     "text": "ХУДОЖНИК · MILA BEZÚ · MOSCOU",
+     "fs": 10.5,
+     "micro": true,
+     "y": 13067,
+     "color": "rgba(245, 239, 226, 0.72)"
+    },
+    {
+     "sel": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "text": "ГЛАВНАЯ",
+     "fs": 10,
+     "micro": true,
+     "y": 715,
+     "color": "rgb(107, 93, 74)"
+    },
+    {
+     "sel": "div#root > nav.tabbar > a.tabbar-item.is-active > span.tabbar-label",
+     "text": "КАТАЛОГ",
+     "fs": 10,
+     "micro": true,
+     "y": 715,
+     "color": "rgb(111, 92, 43)"
+    },
+    {
+     "sel": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "text": "НА ЗАКАЗ",
+     "fs": 10,
+     "micro": true,
+     "y": 715,
+     "color": "rgb(107, 93, 74)"
+    },
+    {
+     "sel": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "text": "КОРЗИНА",
+     "fs": 10,
+     "micro": true,
+     "y": 715,
+     "color": "rgb(107, 93, 74)"
+    }
+   ],
+   "smallInputs": [],
+   "fixed": [
+    {
+     "sel": "div.t-container_100 > div.t-width.t-width_100 > div#root > header.resp-pad",
+     "pos": "sticky",
+     "z": "50",
+     "rect": {
+      "x": 0,
+      "y": 82,
+      "w": 360,
+      "h": 77
+     },
+     "text": "MBezu",
+     "pointer": "auto"
+    },
+    {
+     "sel": "div.t-container_100 > div.t-width.t-width_100 > div#root > nav.tabbar",
+     "pos": "fixed",
+     "z": "90",
+     "rect": {
+      "x": 0,
+      "y": 679,
+      "w": 360,
+      "h": 61
+     },
+     "text": "ГЛАВНАЯ КАТАЛОГ НА ЗАКАЗ КОРЗИНА",
+     "pointer": "auto"
+    }
+   ],
+   "fixedOverlap": [],
+   "overlaps": [
+    {
+     "a": "a.lift > div > div.art-card-img > img",
+     "at": "",
+     "b": "div.reveal.r3.cat-grid > a.lift > div > span",
+     "bt": "ФЛАГМАН",
+     "imgInvolved": true,
+     "ix": 77,
+     "iy": 27
+    },
+    {
+     "a": "a.lift > div > div.art-card-img > img",
+     "at": "",
+     "b": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "bt": "ГЛАВНАЯ",
+     "imgInvolved": true,
+     "ix": 50,
+     "iy": 16
+    },
+    {
+     "a": "a.lift > div > div.art-card-img > img",
+     "at": "",
+     "b": "div#root > nav.tabbar > a.tabbar-item.is-active > span.tabbar-label",
+     "bt": "КАТАЛОГ",
+     "imgInvolved": true,
+     "ix": 50,
+     "iy": 16
+    },
+    {
+     "a": "a.lift > div > div.art-card-img > img",
+     "at": "",
+     "b": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "bt": "НА ЗАКАЗ",
+     "imgInvolved": true,
+     "ix": 58,
+     "iy": 16
+    },
+    {
+     "a": "a.lift > div > div.art-card-img > img",
+     "at": "",
+     "b": "div#root > nav.tabbar > a.tabbar-item > span.tabbar-label",
+     "bt": "КОРЗИНА",
+     "imgInvolved": true,
+     "ix": 50,
+     "iy": 16
+    }
+   ],
+   "contrastChecked": 172,
+   "contrast": [],
+   "contrastFails": 0,
+   "imgs": [
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-01.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "eager",
+     "decoding": "async",
+     "fetchpriority": "high",
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 596,
+     "firstScreen": true,
+     "complete": true,
+     "alt": "Волна. Сепия"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-03.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "eager",
+     "decoding": "async",
+     "fetchpriority": "high",
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 1080,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Шторм"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-04.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "eager",
+     "decoding": "async",
+     "fetchpriority": "high",
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 1565,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Перевал"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-05.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 2050,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Камни на берегу"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-06.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 2535,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Раковина"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-01.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 3020,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Греция. Полдень"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-02.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 3505,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Некуда спешить"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-03.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 3990,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Франция. Лаванда"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-04.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 4474,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Франция. Букинист"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-05.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 4959,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Ангкор-Ват"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-06.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 5444,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Рисовое поле"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-07.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 5929,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Крыши старого города"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/st-08.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 6414,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Обидуш"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/ts-01.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 6899,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Свобода"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/ts-02.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 7383,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Зеркало леса"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/ts-03.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 7868,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Кувшинки"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/ts-04.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 8353,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Тропические листья"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/ts-05.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 8838,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Дождь пошёл"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/ts-06.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 9323,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Бамбук"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/td-01.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 9808,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Sands"
+    },
+    {
+     "kind": "img",
+     "sel": "a.lift > div > div.art-card-img > img",
+     "src": "https://cdn.mbezu.ru/assets/cards/td-02.webp",
+     "nw": 331,
+     "nh": 331,
+     "dw": 324,
+     "dh": 324,
+     "ratio": 0.34,
+     "loading": "lazy",
+     "decoding": "async",
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": "(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw",
+     "srcset": true,
+     "y": 10292,
+     "firstScreen": false,
+     "complete": true,
+     "alt": "Hibiscus"
+    },
+    {
+     "kind": "img",
+     "sel": "a.t-tildalabel__link > div.t-tildalabel__wrapper > div.t-tildalabel__wrapimg > img.t-tildalabel__img",
+     "src": "https://static.tildacdn.com/img/tildacopy.png",
+     "nw": 60,
+     "nh": 60,
+     "dw": 30,
+     "dh": 30,
+     "ratio": 0.67,
+     "loading": null,
+     "decoding": null,
+     "fetchpriority": "low",
+     "hasDims": false,
+     "sizes": null,
+     "srcset": false,
+     "y": 13183,
+     "firstScreen": false,
+     "complete": true,
+     "alt": ""
+    }
+   ],
+   "truncated": [
+    {
+     "sel": "main#main > div.fade-in.resp-pad > div > h2.sr-only",
+     "text": "Работы в каталоге",
+     "sw": 181,
+     "cw": 1,
+     "ws": "nowrap",
+     "ov": "hidden",
+     "y": 571
+    }
+   ],
+   "ctas": [
+    {
+     "text": "Отправить",
+     "sel": "button.t-submit.t-btnflex.t-btnflex_type_submit",
+     "r": {
+      "x": -9979,
+      "y": 615,
+      "w": 202,
+      "h": 60
+     },
+     "fs": "16px"
+    },
+    {
+     "text": "К СОДЕРЖИМОМУ",
+     "sel": "a.skip-link",
+     "r": {
+      "x": 8,
+      "y": -56,
+      "w": 148,
+      "h": 39
+     },
+     "fs": "12px"
+    },
+    {
+     "text": "MBEZU",
+     "sel": "a.uh.uh-tap",
+     "r": {
+      "x": 18,
+      "y": 188,
+      "w": 44,
+      "h": 41
+     },
+     "fs": "12px"
+    },
+    {
+     "text": "ВСЕ РАБОТЫ",
+     "sel": "button.chip.is-active",
+     "r": {
+      "x": 18,
+      "y": 384,
+      "w": 116,
+      "h": 44
+     },
+     "fs": "10.5px"
+    },
+    {
+     "text": "МОРЕ И ВОЛНЫ",
+     "sel": "button.chip",
+     "r": {
+      "x": 142,
+      "y": 384,
+      "w": 131,
+      "h": 44
+     },
+     "fs": "10.5px"
+    },
+    {
+     "text": "ГОРЫ",
+     "sel": "button.chip",
+     "r": {
+      "x": 281,
+      "y": 384,
+      "w": 69,
+      "h": 44
+     },
+     "fs": "10.5px"
+    },
+    {
+     "text": "ГОРОДА",
+     "sel": "button.chip",
+     "r": {
+      "x": 358,
+      "y": 384,
+      "w": 85,
+      "h": 44
+     },
+     "fs": "10.5px"
+    },
+    {
+     "text": "САДЫ И БОТАНИКА",
+     "sel": "button.chip",
+     "r": {
+      "x": 451,
+      "y": 384,
+      "w": 155,
+      "h": 44
+     },
+     "fs": "10.5px"
+    },
+    {
+     "text": "ПЕЙЗАЖИ",
+     "sel": "button.chip",
+     "r": {
+      "x": 613,
+      "y": 384,
+      "w": 92,
+      "h": 44
+     },
+     "fs": "10.5px"
+    },
+    {
+     "text": "СЕТКА",
+     "sel": "button",
+     "r": {
+      "x": 211,
+      "y": 508,
+      "w": 77,
+      "h": 44
+     },
+     "fs": "11px"
+    },
+    {
+     "text": "СПИСОК",
+     "sel": "button",
+     "r": {
+      "x": 288,
+      "y": 508,
+      "w": 85,
+      "h": 44
+     },
+     "fs": "11px"
+    },
+    {
+     "text": "ФЛАГМАН CAT. № 001 / 021 МОНОХРОМНАЯ Волна. Сепия ",
+     "sel": "a.lift",
+     "r": {
+      "x": 18,
+      "y": 596,
+      "w": 324,
+      "h": 429
+     },
+     "fs": "14px"
+    },
+    {
+     "text": "ГЛАВНАЯ",
+     "sel": "a.tabbar-item",
+     "r": {
+      "x": 0,
+      "y": 680,
+      "w": 90,
+      "h": 60
+     },
+     "fs": "14px"
+    },
+    {
+     "text": "КАТАЛОГ",
+     "sel": "a.tabbar-item.is-active",
+     "r": {
+      "x": 90,
+      "y": 680,
+      "w": 90,
+      "h": 60
+     },
+     "fs": "14px"
+    },
+    {
+     "text": "НА ЗАКАЗ",
+     "sel": "a.tabbar-item",
+     "r": {
+      "x": 180,
+      "y": 680,
+      "w": 90,
+      "h": 60
+     },
+     "fs": "14px"
+    },
+    {
+     "text": "КОРЗИНА",
+     "sel": "a.tabbar-item",
+     "r": {
+      "x": 270,
+      "y": 680,
+      "w": 90,
+      "h": 60
+     },
+     "fs": "14px"
+    }
+   ],
+   "h1s": [
+    {
+     "text": "Картины маслом, в наличии",
+     "fs": "40px",
+     "y": 273,
+     "vis": true
+    }
+   ],
+   "fontsLoaded": "loaded"
+  },
+  "consoleErrors": [],
+  "failed": [],
+  "elapsedMs": 12593
+ },
+ {
+  "id": "product",
+  "url": "https://mbezu.ru/catalog/tproduct/566542733172-wave-sepia",
+  "profile": "android",
+  "title": "Волна. Сепия — картина маслом, 100×60 см, купить | Mila Bezú",
+  "finalUrl": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+  "timing": {
+   "ttfb": 111,
+   "dcl": 161,
+   "load": 230,
+   "fcp": 168,
+   "lcp": {
+    "t": 520,
+    "size": 129600,
+    "tag": "DIV",
+    "cls": "t-slds__bgimg  t-bgimg js-product-img",
+    "src": null,
+    "text": ""
+   },
+   "lcpAll": 2,
+   "firstImg": {
+    "n": "https://static.tildacdn.com/img/tildacopy.png",
+    "start": 117,
+    "end": 130,
+    "kb": 0
+   },
+   "imgCount": 2,
+   "imgKb": 0,
+   "jsKb": 0,
+   "cssKb": 0,
+   "reqCount": 41,
+   "totalKb": 0,
+   "fonts": [],
+   "big": []
+  },
+  "audit": {
+   "W": 360,
+   "H": 740,
+   "DPR": 3,
+   "docH": 1526,
+   "viewportMeta": "width=device-width, initial-scale=1.0",
+   "bodyFs": "14px",
+   "hscroll": {
+    "scrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "innerWidth": 360,
+    "has": false
+   },
+   "wideCount": 7,
+   "wideReal": [],
+   "wideClipped": [
+    {
+     "sel": "div.t-slds > div.t-slds__main > div.t-slds__container > div.t-slds__items-wrapper.t-slds_animated-none.t-slds__nocycle",
+     "left": -360,
+     "right": 720,
+     "w": 1080,
+     "h": 360,
+     "y": 50,
+     "clippedBy": "div.t-slds__container",
+     "text": ""
+    },
+    {
+     "sel": "div.t-slds__container > div.t-slds__items-wrapper.t-slds_animated-none.t-slds__nocycle > div.t-slds__item.t-slds__item-loaded > div.t-slds__wrapper",
+     "left": -360,
+     "right": 0,
+     "w": 360,
+     "h": 360,
+     "y": 50,
+     "clippedBy": "div.t-slds__container",
+     "text": ""
+    },
+    {
+     "sel": "div.t-slds__items-wrapper.t-slds_animated-none.t-slds__nocycle > div.t-slds__item.t-slds__item-loaded > div.t-slds__wrapper > div.t-slds__imgwrapper",
+     "left": -360,
+     "right": 0,
+     "w": 360,
+     "h": 360,
+     "y": 50,
+     "clippedBy": "div.t-slds__container",
+     "text": ""
+    },
+    {
+     "sel": "div.t-slds__item.t-slds__item-loaded > div.t-slds__wrapper > div.t-slds__imgwrapper > div.t-slds__bgimg.t-bgimg.js-product-img",
+     "left": -360,
+     "right": 0,
+     "w": 360,
+     "h": 360,
+     "y": 50,
+     "clippedBy": "div.t-slds__container",
+     "text": ""
+    },
+    {
+     "sel": "div.t-slds__container > div.t-slds__items-wrapper.t-slds_animated-none.t-slds__nocycle > div.t-slds__item.t-slds__item-loaded > div.t-slds__wrapper",
+     "left": 360,
+     "right": 720,
+     "w": 360,
+     "h": 360,
+     "y": 50,
+     "clippedBy": "div.t-slds__container",
+     "text": ""
+    },
+    {
+     "sel": "div.t-slds__items-wrapper.t-slds_animated-none.t-slds__nocycle > div.t-slds__item.t-slds__item-loaded > div.t-slds__wrapper > div.t-slds__imgwrapper",
+     "left": 360,
+     "right": 720,
+     "w": 360,
+     "h": 360,
+     "y": 50,
+     "clippedBy": "div.t-slds__container",
+     "text": ""
+    },
+    {
+     "sel": "div.t-slds__item.t-slds__item-loaded > div.t-slds__wrapper > div.t-slds__imgwrapper > div.t-slds__bgimg.t-bgimg.js-product-img",
+     "left": 360,
+     "right": 720,
+     "w": 360,
+     "h": 360,
+     "y": 50,
+     "clippedBy": "div.t-slds__container",
+     "text": ""
+    }
+   ],
+   "smallTap": [],
+   "smallText": [],
+   "smallInputs": [],
+   "fixed": [],
+   "fixedOverlap": [],
+   "overlaps": [],
+   "contrastChecked": 27,
+   "contrast": [
+    {
+     "sel": "div.t-store__prod-popup__info.t-align_left.t-store__prod-popup__col-right > div.t-store__prod-popup__title-wrapper > div.t-store__prod-popup__brand.t-descr.t-descr_xxs > span.js-product-brand",
+     "text": "Mila Bezú",
+     "fs": 12,
+     "ratio": 4.48,
+     "need": 4.5,
+     "fg": "rgb(119, 119, 119)",
+     "bg": "rgb(255,255,255)",
+     "y": 498
+    }
+   ],
+   "contrastFails": 1,
+   "imgs": [
+    {
+     "kind": "bg",
+     "sel": "div.t-slds__item.t-slds__item-loaded > div.t-slds__wrapper > div.t-slds__imgwrapper > div.t-slds__bgimg.t-bgimg.js-product-img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-01.webp",
+     "dw": 360,
+     "dh": 360,
+     "y": 50,
+     "firstScreen": true,
+     "lazy": "data-original",
+     "nw": 1200,
+     "nh": 1200,
+     "ratio": 1.11
+    },
+    {
+     "kind": "bg",
+     "sel": "div.t-slds__item.t-slds__item-loaded.t-slds__item_active > div.t-slds__wrapper > div.t-slds__imgwrapper.t-zoomable > div.t-slds__bgimg.t-bgimg.js-product-img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-01.webp",
+     "dw": 360,
+     "dh": 360,
+     "y": 50,
+     "firstScreen": true,
+     "lazy": "data-original",
+     "nw": 1200,
+     "nh": 1200,
+     "ratio": 1.11
+    },
+    {
+     "kind": "bg",
+     "sel": "div.t-slds__item.t-slds__item-loaded > div.t-slds__wrapper > div.t-slds__imgwrapper > div.t-slds__bgimg.t-bgimg.js-product-img",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-01.webp",
+     "dw": 360,
+     "dh": 360,
+     "y": 50,
+     "firstScreen": true,
+     "lazy": "data-original",
+     "nw": 1200,
+     "nh": 1200,
+     "ratio": 1.11
+    },
+    {
+     "kind": "img",
+     "sel": "a.t-tildalabel__link > div.t-tildalabel__wrapper > div.t-tildalabel__wrapimg > img.t-tildalabel__img",
+     "src": "https://static.tildacdn.com/img/tildacopy.png",
+     "nw": 60,
+     "nh": 60,
+     "dw": 30,
+     "dh": 30,
+     "ratio": 0.67,
+     "loading": null,
+     "decoding": null,
+     "fetchpriority": "low",
+     "hasDims": false,
+     "sizes": null,
+     "srcset": false,
+     "y": 1314,
+     "firstScreen": false,
+     "complete": true,
+     "alt": ""
+    }
+   ],
+   "truncated": [],
+   "ctas": [
+    {
+     "text": "Купить",
+     "sel": "a.t-store__prod-popup__btn.t-btn.t-btnflex_sm",
+     "r": {
+      "x": 20,
+      "y": 577,
+      "w": 320,
+      "h": 50
+     },
+     "fs": "14px"
+    }
+   ],
+   "h1s": [
+    {
+     "text": "Волна. Сепия",
+     "fs": "20px",
+     "y": 465,
+     "vis": true
+    }
+   ],
+   "fontsLoaded": "loaded"
+  },
+  "consoleErrors": [],
+  "failed": [],
+  "elapsedMs": 6168,
+  "popup": {
+   "W": 360,
+   "H": 740,
+   "DPR": 3,
+   "docH": 1526,
+   "viewportMeta": "width=device-width, initial-scale=1.0",
+   "bodyFs": "14px",
+   "hscroll": {
+    "scrollWidth": 360,
+    "bodyScrollWidth": 360,
+    "innerWidth": 360,
+    "has": false
+   },
+   "wideCount": 0,
+   "wideReal": [],
+   "wideClipped": [],
+   "smallTap": [
+    {
+     "sel": "div.t706 > div.t706__cartwin.t706__cartwin_showed > div.t706__close.t706__cartwin-close > button.t706__close-button.t706__cartwin-close-wrapper",
+     "text": "",
+     "w": 20,
+     "h": 36,
+     "y": 7,
+     "fs": "0px",
+     "firstScreen": true
+    },
+    {
+     "sel": "div.t706__cartwin-products > div.t706__product > div.t706__product-title.t-descr.t-descr_sm > a",
+     "text": "Волна. Сепия",
+     "w": 100,
+     "h": 21,
+     "y": 164,
+     "fs": "16px",
+     "firstScreen": true
+    }
+   ],
+   "smallText": [],
+   "smallInputs": [],
+   "fixed": [
+    {
+     "sel": "div#rec2293310791.r.t-rec > div.t706 > div.t706__cartwin.t706__cartwin_showed > div.t706__close.t706__cartwin-close",
+     "pos": "fixed",
+     "z": "2",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 360,
+      "h": 50
+     },
+     "text": "",
+     "pointer": "auto"
+    }
+   ],
+   "fixedOverlap": [],
+   "overlaps": [],
+   "contrastChecked": 15,
+   "contrast": [
+    {
+     "sel": "div.t-form__inputsbox.t-form__inputsbox_inrow > div.t-form__submit > button.t-submit.t-btnflex.t-btnflex_type_submit > span.t-btnflex__text",
+     "text": "ОФОРМИТЬ ЗАКАЗ",
+     "fs": 16,
+     "ratio": 2.69,
+     "need": 4.5,
+     "fg": "rgb(237, 229, 214)",
+     "bg": "rgb(160,138,78)",
+     "y": 1107
+    }
+   ],
+   "contrastFails": 1,
+   "imgs": [
+    {
+     "kind": "bg",
+     "sel": "div.t706__cartwin-products > div.t706__product > div.t706__product-thumb > div.t706__product-imgdiv",
+     "src": "https://cdn.mbezu.ru/assets/cards/mn-01.webp",
+     "dw": 70,
+     "dh": 70,
+     "y": 163,
+     "firstScreen": true,
+     "lazy": null
+    },
+    {
+     "kind": "img",
+     "sel": "div.t706__product > div.t706__product-plusminus.t-descr.t-descr_sm > span.t706__product-minus > img",
+     "src": "https://static.tildacdn.com/lib/linea/c8eecd27-9482-6c4f-7896-3eb09f6a1091/arrows_circle_minus.svg",
+     "nw": 64,
+     "nh": 64,
+     "dw": 16,
+     "dh": 16,
+     "ratio": 1.33,
+     "loading": null,
+     "decoding": null,
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": null,
+     "srcset": false,
+     "y": 188,
+     "firstScreen": true,
+     "complete": true,
+     "alt": ""
+    },
+    {
+     "kind": "img",
+     "sel": "div.t706__product > div.t706__product-plusminus.t-descr.t-descr_sm > span.t706__product-plus > img",
+     "src": "https://static.tildacdn.com/lib/linea/c47d1e0c-6880-dc39-ae34-521197f7fba7/arrows_circle_plus.svg",
+     "nw": 64,
+     "nh": 64,
+     "dw": 16,
+     "dh": 16,
+     "ratio": 1.33,
+     "loading": null,
+     "decoding": null,
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": null,
+     "srcset": false,
+     "y": 188,
+     "firstScreen": true,
+     "complete": true,
+     "alt": ""
+    },
+    {
+     "kind": "img",
+     "sel": "div.t706__product > div.t706__product-del-wrapper > span.t706__product-del > img",
+     "src": "https://static.tildacdn.com/lib/linea/1bec3cd7-e9d1-2879-5880-19b597ef9f1a/arrows_circle_remove.svg",
+     "nw": 64,
+     "nh": 64,
+     "dw": 20,
+     "dh": 20,
+     "ratio": 1.07,
+     "loading": null,
+     "decoding": null,
+     "fetchpriority": null,
+     "hasDims": false,
+     "sizes": null,
+     "srcset": false,
+     "y": 163,
+     "firstScreen": true,
+     "complete": true,
+     "alt": ""
+    },
+    {
+     "kind": "bg",
+     "sel": "div.t-input-block > div.t-input.t-input-phonemask__wrap > div.t-input-phonemask__select > span.t-input-phonemask__select-flag",
+     "src": "https://static.tildacdn.com/lib/flags/flags7.png",
+     "dw": 18,
+     "dh": 13,
+     "y": 620,
+     "firstScreen": true,
+     "lazy": null
+    }
+   ],
+   "truncated": [],
+   "ctas": [
+    {
+     "text": "Волна. Сепия",
+     "sel": "a",
+     "r": {
+      "x": 110,
+      "y": 164,
+      "w": 100,
+      "h": 21
+     },
+     "fs": "16px"
+    }
+   ],
+   "h1s": [
+    {
+     "text": "Волна. Сепия",
+     "fs": "20px",
+     "y": 465,
+     "vis": true
+    }
+   ],
+   "fontsLoaded": "loaded"
+  },
+  "popupExtra": {
+   "open": true,
+   "submitText": "ОФОРМИТЬ ЗАКАЗ",
+   "submitRect": {
+    "top": 1088,
+    "h": 60,
+    "w": 320
+   },
+   "submitInViewport": false,
+   "contScroll": {
+    "sh": 1276,
+    "ch": 1276
+   },
+   "winScroll": {
+    "sh": 1326,
+    "ch": 740,
+    "ov": "auto"
+   },
+   "bodyOverflow": "hidden",
+   "inputs": [
+    {
+     "t": "Name",
+     "type": "text",
+     "fs": "16px",
+     "h": 56,
+     "w": 320,
+     "req": 0
+    },
+    {
+     "t": "Email",
+     "type": "email",
+     "fs": "16px",
+     "h": 56,
+     "w": 320,
+     "req": 0
+    },
+    {
+     "t": "(000) 000-00-00",
+     "type": "tel",
+     "fs": "16px",
+     "h": 54,
+     "w": 211,
+     "req": 0
+    },
+    {
+     "t": "Москва",
+     "type": "text",
+     "fs": "16px",
+     "h": 56,
+     "w": 320,
+     "req": 0
+    },
+    {
+     "t": "улица, дом, квартира",
+     "type": "text",
+     "fs": "16px",
+     "h": 56,
+     "w": 320,
+     "req": 0
+    },
+    {
+     "t": "consent",
+     "type": "checkbox",
+     "fs": "13.3333px",
+     "h": 13,
+     "w": 13,
+     "req": 0
+    }
+   ],
+   "products": [
+    {
+     "title": "Волна. Сепия",
+     "amount": "100 000₽",
+     "imgH": 70
+    }
+   ],
+   "close": {
+    "w": 360,
+    "h": 50,
+    "top": 0,
+    "right": 0
+   },
+   "total": "Сумма: 100 000₽",
+   "labels": [
+    {
+     "t": "Имя",
+     "fs": "16px"
+    },
+    {
+     "t": "Email",
+     "fs": "16px"
+    },
+    {
+     "t": "Телефон",
+     "fs": "16px"
+    },
+    {
+     "t": "Город",
+     "fs": "16px"
+    },
+    {
+     "t": "Адрес доставки или пункт выдачи СДЭК",
+     "fs": "16px"
+    },
+    {
+     "t": "Согласен(на) на обработку персональных данных (152",
+     "fs": "16px"
+    },
+    {
+     "t": "",
+     "fs": "12px"
+    }
+   ],
+   "btns": [
+    {
+     "t": "t706__close-button t706__cartw",
+     "w": 20,
+     "h": 36
+    },
+    {
+     "t": "Волна. Сепия",
+     "w": 100,
+     "h": 21
+    },
+    {
+     "t": "t706__product-minus",
+     "w": 40,
+     "h": 40
+    },
+    {
+     "t": "t706__product-plus",
+     "w": 40,
+     "h": 40
+    },
+    {
+     "t": "t706__product-del",
+     "w": 44,
+     "h": 44
+    },
+    {
+     "t": "ОФОРМИТЬ ЗАКАЗ",
+     "w": 320,
+     "h": 60
+    }
+   ],
+   "docSW": 360,
+   "tcart": 1
+  }
+ }
+]

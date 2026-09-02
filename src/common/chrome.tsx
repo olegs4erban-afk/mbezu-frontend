@@ -6,6 +6,18 @@ import { routeToPath } from './routes';
 import type { RouteName } from './routes';
 import { track } from './analytics';
 
+/** Аудит r2: бейдж корзины считал старую in-memory корзину — теперь читает нативную Tilda (localStorage.tcart). */
+function useTildaCartCount(fallback: number): number {
+  const read = () => { try { const t = JSON.parse(localStorage.getItem('tcart') || '{}'); return Array.isArray(t.products) ? t.products.length : 0; } catch { return 0; } };
+  const [n, setN] = React.useState(0);
+  React.useEffect(() => {
+    const upd = () => setN(read());
+    upd(); window.addEventListener('storage', upd); const t = setInterval(upd, 1500);
+    return () => { window.removeEventListener('storage', upd); clearInterval(t); };
+  }, []);
+  return Math.max(n, fallback);
+}
+
 // Sprint 15 (аудит): страница /cart пустая — на ней стоят только блоки корзины
 // Tilda (706) и ни одного контейнера витрины, а создать блок программно нельзя
 // (эндпоинт создания записи 404 на любую команду). Поэтому «Корзина» открывает
@@ -65,7 +77,8 @@ function ZeroBanner() {
 }
 
 // ── TopBar — навигация и корзина ──────────────────────────────
-function TopBar({ route, go, cartCount }) {
+function TopBar({ route, go, cartCount: cartProp }) {
+  const cartCount = useTildaCartCount(cartProp);
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
@@ -160,7 +173,8 @@ const TAB_ICONS: Record<string, React.ReactNode> = {
   ),
 };
 
-function BottomTabBar({ route, go, cartCount }) {
+function BottomTabBar({ route, go, cartCount: cartProp }) {
+  const cartCount = useTildaCartCount(cartProp);
   const tabs = [
     { id: 'home',       label: 'Главная' },
     { id: 'catalog',    label: 'Каталог' },

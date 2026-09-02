@@ -1,0 +1,18 @@
+HTTP/1.1 301 Moved Permanently
+Content-Length: 225
+Connection: keep-alive
+Content-Type: text/html; charset=iso-8859-1
+Date: Tue, 01 Sep 2026 20:15:46 GMT
+Keep-Alive: timeout=60
+Location: https://mbezu.ru/
+Proxy-Connection: keep-alive
+Server: ddos-guard
+Set-Cookie: __ddg8_=OqkRw3bAzqT0Y7SN; Domain=.mbezu.ru; Path=/; Expires=Tue, 01-Sep-2026 20:35:46 GMT
+Set-Cookie: __ddg10_=1788293746; Domain=.mbezu.ru; Path=/; Expires=Tue, 01-Sep-2026 20:35:46 GMT
+Set-Cookie: __ddg9_=217.107.127.144; Domain=.mbezu.ru; Path=/; Expires=Tue, 01-Sep-2026 20:35:46 GMT
+Set-Cookie: __ddg1_=Umf5XXxVIywNeC5AfR78; Domain=.mbezu.ru; HttpOnly; Path=/; Expires=Wed, 01-Sep-2027 20:15:46 GMT
+X-Host: www.mbezu.ru
+X-Tilda-Imprint: 14f1873c-56c8-41cb-b7e8-07252a755927
+X-Tilda-Server: 29
+X-Ws-Id: 2
+

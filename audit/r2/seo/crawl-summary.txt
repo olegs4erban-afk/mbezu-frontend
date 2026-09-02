@@ -1,0 +1,253 @@
+==== / [sitemap] 200 125189B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:55:46 GMT","content-length":"22000"}
+  title(49x1): Картины маслом для интерьера — Mila Bezú | Москва
+  desc(150x1): Авторская живопись маслом в единственном экземпляре: пейзаж, море, ботаника. Картина на заказ от 2 недель. Сертификат подлинности, доставка по России.
+  robots=[] lang=ru canon=["https://mbezu.ru/"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-default-1200x630.jpg"] url=["https://mbezu.ru"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,9,15,0] H1=["Картины, живущие в интерьерах"]
+  LD: Person | Organization
+  links: a=38 hash=0 internal=31 uniq=17 ext=4 -> {"/journal":2,"/catalog":2,"/commission":2,"/about":2,"/cart":2,"/legal":10,"/catalog/monohromnaya":1,"/catalog/ulitsy-mira":1,"/catalog/tihaya-sila":1,"/catalog/tondo":1,"/catalog/tproduct/566542733172-volna-sepiya":1,"/catalog/tproduct/763415825502-angkor-vat":1,"/catalog/tproduct/263963629773-svoboda":1,"/catalog/tproduct/345114046252-hibiscus-gibiskus":1,"/catalog/tproduct/440148681382-pereval
+  img={"n":14,"noAlt":0,"emptyAlt":2,"lazy":11,"sampleAlts":["Волна. Сепия","Шторм","Ангкор-Ват","Свобода","Hibiscus","Волна. Сепия"]}
+  res={"scriptsTotal":10,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":5654,"inlineScriptBytes":15379,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=4354ch/700w kw={"заказать картину":2,"картина в подарок":1,"картина маслом":1,"москв":3,"художник":5,"живопись маслом":2,"сертификат подлинности":1,"доставка":4,"подарок":2} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /catalog [sitemap] 200 128431B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:55:49 GMT","content-length":"22227"}
+  title(55x1): Купить картину маслом для интерьера — 21 работа | MBezu
+  desc(143x1): Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.
+  robots=[] lang=ru canon=["https://mbezu.ru/catalog"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/catalog"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,2,21,0] H1=["Картины маслом, в наличии"]
+  LD: Person | Organization | BreadcrumbList bc=2 | ItemList(n=21) P=21 iss=[{"name":"Волна. Сепия","iss":["no rating/review"]},{"name":"Шторм","iss":["no rating/review"]}]
+  links: a=47 hash=0 internal=40 uniq=29 ext=4 -> {"/journal":2,"/catalog":2,"/commission":2,"/about":2,"/cart":2,"/":1,"/catalog/tproduct/566542733172-volna-sepiya":1,"/catalog/tproduct/865381581592-shtorm":1,"/catalog/tproduct/440148681382-pereval":1,"/catalog/tproduct/305599314472-kamni-na-beregu":1,"/catalog/tproduct/395664756972-rakovina":1,"/catalog/tproduct/366083467733-gretsiya-polden":1,"/catalog/tproduct/771318224293-nekuda-speshit":1,"
+  img={"n":23,"noAlt":0,"emptyAlt":2,"lazy":18,"sampleAlts":["Волна. Сепия","Шторм","Перевал","Камни на берегу","Раковина","Греция. Полдень"]}
+  res={"scriptsTotal":15,"scriptsHeadBlocking":1,"stylesheets":16,"stylesHead":15,"inlineStyleBytes":5698,"inlineScriptBytes":34669,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=2544ch/520w kw={"картина в подарок":1,"картины маслом":1,"москв":3,"художник":4,"живопись маслом":1,"доставка":2,"подарок":1} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /about [sitemap] 200 83777B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:55:51 GMT","content-length":"17722"}
+  title(46x1): Mila Bezú — художник, живопись маслом | Москва
+  desc(143x1): Художник-живописец из Москвы. 15 лет масляной живописи: пейзаж, город, ботаника, монохром. Работы в наличии и на заказ, сертификат подлинности.
+  robots=[] lang=ru canon=["https://mbezu.ru/about"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-default-1200x630.jpg"] url=["https://mbezu.ru/about"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,4,4,0] H1=["Mila Bezú."]
+  LD: Person | Organization | BreadcrumbList bc=2
+  links: a=35 hash=0 internal=24 uniq=12 ext=7 -> {"/journal":2,"/catalog":2,"/commission":2,"/about":2,"/cart":2,"/":1,"/catalog/monohromnaya":1,"/catalog/ulitsy-mira":1,"/catalog/tihaya-sila":1,"/catalog/tondo":1,"/legal":8,"/podarok":1}
+  img={"n":3,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":["Mila Bezú, художник"]}
+  res={"scriptsTotal":10,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":3798,"inlineScriptBytes":15617,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=4286ch/638w kw={"заказать картину":1,"картина в подарок":1,"москв":9,"художник":9,"живопись маслом":1,"доставка":2,"подарок":1} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /commission [sitemap] 200 105169B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:55:55 GMT","content-length":"19094"}
+  title(52x1): Картина на заказ маслом — от 2 недель | MBezu Москва
+  desc(136x1): Напишем картину маслом на заказ под ваш интерьер: размер, палитра, сюжет. Эскизы до начала работы. Срок от 2 недель, доставка по России.
+  robots=[] lang=ru canon=["https://mbezu.ru/commission"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-commission-1200x630.jpg"] url=["https://mbezu.ru/commission"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,4,4,0] H1=["Заказать индивидуально"]
+  LD: Person | Organization | BreadcrumbList bc=2 | FAQPage faq=5
+  links: a=26 hash=0 internal=20 uniq=8 ext=4 -> {"/journal":2,"/catalog":2,"/commission":2,"/about":2,"/cart":2,"/":1,"/legal":8,"/podarok":1}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":10,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":5558,"inlineScriptBytes":16841,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=3523ch/616w kw={"заказать картину":1,"картина в подарок":1,"картина на заказ":1,"москв":3,"художник":5,"живопись маслом":1,"сертификат подлинности":2,"доставка":4,"подарок":1} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /legal [sitemap] 200 79948B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:55:59 GMT","content-length":"17362"}
+  title(57x1): Документы и реквизиты — MBezu | оферта, доставка, возврат
+  desc(131x1): Публичная оферта, политика обработки персональных данных, условия доставки и возврата, реквизиты ИП. Интернет-магазин картин MBezu.
+  robots=[] lang=ru canon=["https://mbezu.ru/legal"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-default-1200x630.jpg"] url=["https://mbezu.ru/legal"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,1,8,0] H1=["Документы и реквизиты"]
+  LD: Person | Organization | BreadcrumbList bc=2
+  links: a=27 hash=0 internal=19 uniq=8 ext=5 -> {"/journal":2,"/catalog":2,"/commission":2,"/about":2,"/cart":2,"/":1,"/podarok":1,"/legal":7}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":10,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":3798,"inlineScriptBytes":15618,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=6332ch/866w kw={"картина в подарок":1,"москв":4,"художник":5,"живопись маслом":1,"доставка":4,"подарок":1} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /catalog/monohromnaya [sitemap] 200 103717B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:56:01 GMT","content-length":"19956"}
+  title(51x1): Монохромная серия — картины маслом, 5 работ | MBezu
+  desc(143x1): Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.
+  robots=[] lang=ru canon=["https://mbezu.ru/catalog/monohromnaya"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/catalog/monohromnaya"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,3,8,0] H1=["Монохромные картины маслом"]
+  LD: Person | Organization | BreadcrumbList bc=2 | ItemList(n=21) P=21 iss=[{"name":"Волна. Сепия","iss":["no rating/review"]},{"name":"Шторм","iss":["no rating/review"]}] | BreadcrumbList bc=3 | ItemList(n=5) P=5 iss=[{"name":"Волна. Сепия","iss":["no rating/review"]},{"name":"Шторм","iss":["no rating/review"]}]
+  links: a=33 hash=0 internal=27 uniq=14 ext=4 -> {"/journal":2,"/catalog":3,"/commission":2,"/about":2,"/cart":2,"/":1,"/catalog/tproduct/566542733172-volna-sepiya":1,"/catalog/tproduct/865381581592-shtorm":1,"/catalog/tproduct/440148681382-pereval":1,"/catalog/tproduct/305599314472-kamni-na-beregu":1,"/catalog/tproduct/395664756972-rakovina":1,"/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer":1,"/podarok":2,"/legal":7}
+  img={"n":7,"noAlt":0,"emptyAlt":2,"lazy":2,"sampleAlts":["Волна. Сепия","Шторм","Перевал","Камни на берегу","Раковина"]}
+  res={"scriptsTotal":10,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":4020,"inlineScriptBytes":36832,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=2976ch/494w kw={"картина в подарок":2,"картина в гостиную":1,"картина в спальню":2,"для интерьера":1,"картины маслом":1,"москв":3,"художник":4,"живопись маслом":2,"доставка":2,"подарок":3} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /catalog/ulitsy-mira [sitemap] 200 110727B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:56:04 GMT","content-length":"20220"}
+  title(44x1): Улицы мира — картины маслом, 8 работ | MBezu
+  desc(143x1): Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.
+  robots=[] lang=ru canon=["https://mbezu.ru/catalog/ulitsy-mira"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/catalog/ulitsy-mira"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,3,11,0] H1=["Городской пейзаж маслом"]
+  LD: Person | Organization | BreadcrumbList bc=2 | ItemList(n=21) P=21 iss=[{"name":"Волна. Сепия","iss":["no rating/review"]},{"name":"Шторм","iss":["no rating/review"]}] | BreadcrumbList bc=3 | ItemList(n=8) P=8 iss=[{"name":"Греция. Полдень","iss":["no rating/review"]},{"name":"Некуда спешить","iss":["no rating/review"]}]
+  links: a=36 hash=0 internal=30 uniq=17 ext=4 -> {"/journal":2,"/catalog":3,"/commission":2,"/about":2,"/cart":2,"/":1,"/catalog/tproduct/366083467733-gretsiya-polden":1,"/catalog/tproduct/771318224293-nekuda-speshit":1,"/catalog/tproduct/101992645912-frantsiya-lavanda":1,"/catalog/tproduct/342171097222-frantsiya-bukinist":1,"/catalog/tproduct/763415825502-angkor-vat":1,"/catalog/tproduct/639520387112-risovoe-pole-vetnam":1,"/catalog/tproduct/39
+  img={"n":10,"noAlt":0,"emptyAlt":2,"lazy":5,"sampleAlts":["Греция. Полдень","Некуда спешить","Франция. Лаванда","Франция. Букинист","Ангкор-Ват","Рисовое поле"]}
+  res={"scriptsTotal":10,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":4020,"inlineScriptBytes":39252,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=3120ch/525w kw={"картина в подарок":2,"картина в гостиную":2,"москв":3,"художник":4,"живопись маслом":1,"сертификат подлинности":1,"доставка":2,"подарок":3} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /catalog/tihaya-sila [sitemap] 200 105808B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:56:06 GMT","content-length":"20031"}
+  title(44x1): Тихая сила — картины маслом, 6 работ | MBezu
+  desc(143x1): Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.
+  robots=[] lang=ru canon=["https://mbezu.ru/catalog/tihaya-sila"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/catalog/tihaya-sila"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,3,9,0] H1=["Морской пейзаж и природа маслом"]
+  LD: Person | Organization | BreadcrumbList bc=2 | ItemList(n=21) P=21 iss=[{"name":"Волна. Сепия","iss":["no rating/review"]},{"name":"Шторм","iss":["no rating/review"]}] | BreadcrumbList bc=3 | ItemList(n=6) P=6 iss=[{"name":"Свобода","iss":["no rating/review"]},{"name":"Зеркало леса","iss":["no rating/review"]}]
+  links: a=34 hash=0 internal=28 uniq=15 ext=4 -> {"/journal":2,"/catalog":3,"/commission":2,"/about":2,"/cart":2,"/":1,"/catalog/tproduct/263963629773-svoboda":1,"/catalog/tproduct/549982942762-zerkalo-lesa":1,"/catalog/tproduct/939323400042-kuvshinki":1,"/catalog/tproduct/871687829842-tropicheskie-listya":1,"/catalog/tproduct/477039459492-dozhd-poshyol":1,"/catalog/tproduct/314668518282-bambuk":1,"/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gosti
+  img={"n":8,"noAlt":0,"emptyAlt":2,"lazy":3,"sampleAlts":["Свобода","Зеркало леса","Кувшинки","Тропические листья","Дождь пошёл","Бамбук"]}
+  res={"scriptsTotal":10,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":4020,"inlineScriptBytes":37597,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=2952ch/499w kw={"картина в подарок":2,"картина в гостиную":1,"картина в спальню":2,"москв":3,"художник":4,"живопись маслом":1,"доставка":2,"подарок":3} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /catalog/tondo [sitemap] 200 96950B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:56:08 GMT","content-length":"19717"}
+  title(40x1): Тондо — картины маслом, 2 работы | MBezu
+  desc(143x1): Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.
+  robots=[] lang=ru canon=["https://mbezu.ru/catalog/tondo"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/catalog/tondo"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,3,5,0] H1=["Круглые картины — тондо"]
+  LD: Person | Organization | BreadcrumbList bc=2 | ItemList(n=21) P=21 iss=[{"name":"Волна. Сепия","iss":["no rating/review"]},{"name":"Шторм","iss":["no rating/review"]}] | BreadcrumbList bc=3 | ItemList(n=2) P=2 iss=[{"name":"Sands","iss":["no rating/review"]},{"name":"Hibiscus","iss":["no rating/review"]}]
+  links: a=30 hash=0 internal=24 uniq=11 ext=4 -> {"/journal":2,"/catalog":3,"/commission":2,"/about":2,"/cart":2,"/":1,"/catalog/tproduct/362279226602-sands-dyuni":1,"/catalog/tproduct/345114046252-hibiscus-gibiskus":1,"/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer":1,"/podarok":2,"/legal":7}
+  img={"n":4,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":["Sands","Hibiscus"]}
+  res={"scriptsTotal":10,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":4020,"inlineScriptBytes":34502,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=2615ch/424w kw={"картина в подарок":2,"картина в гостиную":1,"москв":3,"художник":4,"живопись маслом":1,"сертификат подлинности":1,"доставка":2,"подарок":3} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /podarok [sitemap] 200 61714B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:56:10 GMT","content-length":"13779"}
+  title(47x1): Картина в подарок — оригинал маслом | Mila Bezú
+  desc(146x1): Картина маслом в подарок: единственный экземпляр с сертификатом подлинности. Готовые работы от 6 000 ₽ и на заказ от 2 недель. Доставка по России.
+  robots=[] lang=ru canon=["https://mbezu.ru/podarok"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/podarok"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,3,0,0] H1=["Картина в подарок"]
+  LD: Person | Organization
+  links: a=13 hash=0 internal=12 uniq=9 ext=1 -> {"/journal":2,"/catalog/monohromnaya":1,"/catalog/ulitsy-mira":1,"/catalog/tihaya-sila":1,"/catalog/tondo":1,"/catalog":2,"/commission":2,"/":1,"/about":1}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":9,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":3798,"inlineScriptBytes":15379,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com"]}
+  text=1848ch/279w kw={"картина в подарок":1,"картину в подарок":1,"картина на заказ":1,"художник":1,"сертификат подлинности":1,"доставка":2,"подарок":5} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":true,"authorName":false} date=null
+==== /journal [sitemap] 200 88512B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:56:12 GMT","content-length":"16363"}
+  title(57x1): Журнал о живописи — статьи художника Mila Bezú | mbezu.ru
+  desc(155x1): Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.
+  robots=[] lang=ru canon=["https://mbezu.ru/journal"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/journal"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,0,0,0] H1=["Журнал о живописи"]
+  LD: Person | Organization
+  links: a=8 hash=1 internal=4 uniq=4 ext=1 -> {"/journal":1,"/catalog":1,"/podarok":1,"/about":1}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":16,"scriptsHeadBlocking":2,"stylesheets":14,"stylesHead":13,"inlineStyleBytes":12646,"inlineScriptBytes":15585,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com"]}
+  text=487ch/71w kw={"картина в подарок":1,"для интерьера":1,"картину маслом":1,"художник":2,"сертификат подлинности":1,"подарок":1} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":true,"authorName":false} date=null
+==== /catalog/tproduct/566542733172-volna-sepiya [product] 200 59784B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard"}
+  title(60x1): Волна. Сепия — картина маслом, 100×60 см, купить | Mila Bezú
+  desc(149x1): Монохромная волна в момент наивысшего напряжения — секунда до падения. Оригинал маслом, 100×60 см, 100 000 ₽. Сертификат подлинности, доставка по РФ.
+  robots=[] lang=ru canon=["https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/assets/cards/mn-01.webp"] url=["https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,8,0,0] H1=["Волна. Сепия"]
+  LD: Person | Organization
+  links: a=5 hash=0 internal=3 uniq=2 ext=1 -> {"/journal":1,"/catalog":2}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":14,"scriptsHeadBlocking":2,"stylesheets":15,"stylesHead":15,"inlineStyleBytes":2583,"inlineScriptBytes":24520,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com"]}
+  text=1270ch/183w kw={"картина в интерьер":1,"для интерьера":1,"купить картину":1,"картину маслом":1,"москв":1,"сертификат подлинности":1,"доставка":2} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":true,"authorName":true} date=null
+==== /catalog/tproduct/763415825502-angkor-vat [product] 200 59991B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard"}
+  title(58x1): Ангкор-Ват — картина маслом, 100×80 см, купить | Mila Bezú
+  desc(130x1): Храм, который смотрит на тебя сотнями каменных лиц. Оригинал маслом, 100×80 см, 130 000 ₽. Сертификат подлинности, доставка по РФ.
+  robots=[] lang=ru canon=["https://mbezu.ru/catalog/tproduct/763415825502-angkor-vat"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/assets/cards/st-05.webp"] url=["https://mbezu.ru/catalog/tproduct/763415825502-angkor-vat"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,8,0,0] H1=["Ангкор-Ват"]
+  LD: Person | Organization
+  links: a=5 hash=0 internal=3 uniq=2 ext=1 -> {"/journal":1,"/catalog":2}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":14,"scriptsHeadBlocking":2,"stylesheets":15,"stylesHead":15,"inlineStyleBytes":2583,"inlineScriptBytes":24591,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com"]}
+  text=1322ch/194w kw={"картина в интерьер":1,"для интерьера":1,"купить картину":1,"картину маслом":1,"москв":1,"сертификат подлинности":1,"доставка":2} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":true,"authorName":true} date=null
+==== /catalog/tproduct/345114046252-hibiscus-gibiskus [product] 200 59643B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard"}
+  title(53x1): Hibiscus — картина маслом, ⌀50 см, купить | Mila Bezú
+  desc(159x1): Цветок гибискуса плывёт по бирюзовой воде — игра света на ряби, лепестки, отражения. Оригинал маслом, ⌀50 см, 45 000 ₽. Сертификат подлинности, доставка по РФ.
+  robots=[] lang=ru canon=["https://mbezu.ru/catalog/tproduct/345114046252-hibiscus-gibiskus"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/assets/cards/td-02.webp"] url=["https://mbezu.ru/catalog/tproduct/345114046252-hibiscus-gibiskus"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,8,0,0] H1=["Hibiscus · Гибискус"]
+  LD: Person | Organization
+  links: a=5 hash=0 internal=3 uniq=2 ext=1 -> {"/journal":1,"/catalog":2}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":14,"scriptsHeadBlocking":2,"stylesheets":15,"stylesHead":15,"inlineStyleBytes":2583,"inlineScriptBytes":24457,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com"]}
+  text=1266ch/187w kw={"картина в интерьер":1,"для интерьера":1,"купить картину":1,"картину маслом":1,"москв":1,"сертификат подлинности":1,"доставка":2} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":true,"authorName":true} date=null
+==== /tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer [article] 200 53445B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard"}
+  title(53x1): Как выбрать картину для гостиной: размер, цвет, сюжет
+  desc(155x1): Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.
+  robots=[] lang=ru canon=["https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer"] type=["website"] site=["MBezu"] tw=[]
+  H=[0,4,0,0] H1=[]
+  LD: Person | Organization
+  links: a=10 hash=1 internal=7 uniq=7 ext=1 -> {"/journal":1,"/":1,"/catalog/monohromnaya":1,"/catalog/ulitsy-mira":1,"/catalog/tondo":1,"/catalog":1,"/commission":1}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":16,"scriptsHeadBlocking":2,"stylesheets":13,"stylesHead":13,"inlineStyleBytes":9090,"inlineScriptBytes":14228,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com"]}
+  text=2323ch/369w kw={} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":true,"authorName":false} date=null
+==== /tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom [article] 200 52703B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard"}
+  title(50x1): Оригинал или постер: что выбрать для дома и почему
+  desc(155x1): Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.
+  robots=[] lang=ru canon=["https://mbezu.ru/tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom"] type=["website"] site=["MBezu"] tw=[]
+  H=[0,4,0,0] H1=[]
+  LD: Person | Organization
+  links: a=7 hash=1 internal=4 uniq=4 ext=1 -> {"/journal":1,"/":1,"/podarok":1,"/catalog":1}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":16,"scriptsHeadBlocking":2,"stylesheets":13,"stylesHead":13,"inlineStyleBytes":9090,"inlineScriptBytes":14228,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com"]}
+  text=1967ch/302w kw={"картина в подарок":1,"художник":2,"сертификат подлинности":1,"подарок":2} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":true,"authorName":false} date=null
+==== /tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto [article] 200 52719B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard"}
+  title(56x1): Сертификат подлинности картины: что это и зачем он нужен
+  desc(155x1): Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.
+  robots=[] lang=ru canon=["https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto"] type=["website"] site=["MBezu"] tw=[]
+  H=[0,4,0,0] H1=[]
+  LD: Person | Organization
+  links: a=9 hash=1 internal=6 uniq=6 ext=1 -> {"/journal":1,"/":1,"/catalog":1,"/commission":1,"/contacts":1,"/about":1}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":16,"scriptsHeadBlocking":2,"stylesheets":13,"stylesHead":13,"inlineStyleBytes":9090,"inlineScriptBytes":14228,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com"]}
+  text=1879ch/275w kw={"художник":1,"сертификат подлинности":3,"подарок":1} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":true,"authorName":false} date=null
+==== /cart [misc] 200 55231B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:55:56 GMT","content-length":"12041"}
+  title(36x1): Корзина · оформление заказа · M.Bezú
+  desc(104x1): Оформление заказа: доставка СДЭК по России, оплата ЮKassa и переводом. Сертификат подлинности в подарок.
+  robots=["noindex"] lang=ru canon=["https://mbezu.ru/cart"] kw=
+  og: title=1 desc=1 img=[] url=["https://mbezu.ru/cart"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,0,0,0] H1=["Корзина"]
+  LD: Person | Organization
+  links: a=3 hash=0 internal=2 uniq=2 ext=1 -> {"/journal":1,"/catalog":1}
+  img={"n":2,"noAlt":0,"emptyAlt":2,"lazy":0,"sampleAlts":[]}
+  res={"scriptsTotal":9,"scriptsHeadBlocking":1,"stylesheets":7,"stylesHead":6,"inlineStyleBytes":3798,"inlineScriptBytes":15696,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com"]}
+  text=275ch/41w kw={} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":true,"authorName":false} date=null
+==== /catalog?series=monochrome [misc] 200 128431B hops=["200"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Tue, 01 Sep 2026 19:55:49 GMT","content-length":"22227"}
+  title(55x1): Купить картину маслом для интерьера — 21 работа | MBezu
+  desc(143x1): Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.
+  robots=[] lang=ru canon=["https://mbezu.ru/catalog"] kw=
+  og: title=1 desc=1 img=["https://cdn.mbezu.ru/og/og-catalog-1200x630.jpg"] url=["https://mbezu.ru/catalog"] type=["website"] site=["MBezu"] tw=[]
+  H=[1,2,21,0] H1=["Картины маслом, в наличии"]
+  LD: Person | Organization | BreadcrumbList bc=2 | ItemList(n=21) P=21 iss=[{"name":"Волна. Сепия","iss":["no rating/review"]},{"name":"Шторм","iss":["no rating/review"]}]
+  links: a=47 hash=0 internal=40 uniq=29 ext=4 -> {"/journal":2,"/catalog":2,"/commission":2,"/about":2,"/cart":2,"/":1,"/catalog/tproduct/566542733172-volna-sepiya":1,"/catalog/tproduct/865381581592-shtorm":1,"/catalog/tproduct/440148681382-pereval":1,"/catalog/tproduct/305599314472-kamni-na-beregu":1,"/catalog/tproduct/395664756972-rakovina":1,"/catalog/tproduct/366083467733-gretsiya-polden":1,"/catalog/tproduct/771318224293-nekuda-speshit":1,"
+  img={"n":23,"noAlt":0,"emptyAlt":2,"lazy":18,"sampleAlts":["Волна. Сепия","Шторм","Перевал","Камни на берегу","Раковина","Греция. Полдень"]}
+  res={"scriptsTotal":15,"scriptsHeadBlocking":1,"stylesheets":16,"stylesHead":15,"inlineStyleBytes":5698,"inlineScriptBytes":34669,"preload":0,"preconnect":0,"scriptHosts":["neo.tildacdn.com","static.tildacdn.com","cdn.mbezu.ru"]}
+  text=2544ch/520w kw={"картина в подарок":1,"картины маслом":1,"москв":3,"художник":4,"живопись маслом":1,"доставка":2,"подарок":1} eeat={"inn":true,"ogrn":true,"phone":true,"email":true,"address":true,"telegram":true,"authorName":true} date=01 сентября 2026
+==== /painting/mn-01 [misc] 404 574B hops=["404"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Wed, 27 May 2026 09:56:58 GMT"}
+  title(19x1): 404 Page Not Found.
+  desc(0x0): 
+  robots=["noindex"] lang=en canon=[] kw=
+  og: title=0 desc=0 img=[] url=[] type=[] site=[] tw=[]
+  H=[0,0,0,0] H1=[]
+  LD: 
+  links: a=1 hash=0 internal=0 uniq=0 ext=1 -> {}
+  img={"n":1,"noAlt":0,"emptyAlt":0,"lazy":0,"sampleAlts":["Tilda"]}
+  res={"scriptsTotal":0,"scriptsHeadBlocking":0,"stylesheets":0,"stylesHead":0,"inlineStyleBytes":0,"inlineScriptBytes":0,"preload":0,"preconnect":0,"scriptHosts":[]}
+  text=18ch/4w kw={} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":false,"authorName":false} date=null
+==== /llms.txt [misc] 404 574B hops=["404"] hdr={"content-type":"text/html; charset=UTF-8","content-encoding":"gzip","server":"ddos-guard","last-modified":"Wed, 27 May 2026 09:56:54 GMT"}
+  title(19x1): 404 Page Not Found.
+  desc(0x0): 
+  robots=["noindex"] lang=en canon=[] kw=
+  og: title=0 desc=0 img=[] url=[] type=[] site=[] tw=[]
+  H=[0,0,0,0] H1=[]
+  LD: 
+  links: a=1 hash=0 internal=0 uniq=0 ext=1 -> {}
+  img={"n":1,"noAlt":0,"emptyAlt":0,"lazy":0,"sampleAlts":["Tilda"]}
+  res={"scriptsTotal":0,"scriptsHeadBlocking":0,"stylesheets":0,"stylesHead":0,"inlineStyleBytes":0,"inlineScriptBytes":0,"preload":0,"preconnect":0,"scriptHosts":[]}
+  text=18ch/4w kw={} eeat={"inn":false,"ogrn":false,"phone":false,"email":false,"address":false,"telegram":false,"authorName":false} date=null
+MISC {
+ "http://mbezu.ru/": "301 -> https://mbezu.ru/",
+ "https://www.mbezu.ru/": "301 -> https://mbezu.ru/",
+ "http://www.mbezu.ru/": "301 -> https://mbezu.ru/",
+ "https://mbezu.ru/home": "404",
+ "https://mbezu.ru/tracking": "404",
+ "https://mbezu.ru/index.html": "404",
+ "https://mbezu.ru/catalog/": "200",
+ "https://mbezu.ru/no-such-page-r2": "404",
+ "https://mbezu.ru/catalog/tproduct/566542733172-wave-sepia": "301 -> https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+ "https://mbezu.ru/journal/": "200",
+ "https://mbezu.ru/podarok/": "200"
+}
+LIVENESS {"checked":19,"bad":[]}
+ORPHANS ["/catalog/tproduct/236258469112-vershina","/tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom","/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto"]
+INBOUND {"/journal":["/","/catalog","/about","/commission","/legal","/catalog/monohromnaya","/catalog/ulitsy-mira","/catalog/tihaya-sila","/catalog/tondo","/podarok","/catalog/tproduct/566542733172-volna-sepiya","/catalog/tproduct/763415825502-angkor-vat","/catalog/tproduct/345114046252-hibiscus-gibiskus","/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer","/tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom","/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto","/cart","/catalog?series=monochrome"],"/catalog":["/","/about","/commission","/legal","/catalog/monohromnaya","/catalog/ulitsy-mira","/catalog/tihaya-sila","/catalog/tondo","/podarok","/journal","/catalog/tproduct/566542733172-volna-sepiya","/catalog/tproduct/763415825502-angkor-vat","/catalog/tproduct/345114046252-hibiscus-gibiskus","/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer","/tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom","/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto","/cart","/catalog?series=monochrome"],"/commission":["/","/catalog","/about","/legal","/catalog/monohromnaya","/catalog/ulitsy-mira","/catalog/tihaya-sila","/catalog/tondo","/podarok","/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer","/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto","/catalog?series=monochrome"],"/about":["/","/catalog","/commission","/legal","/catalog/monohromnaya","/catalog/ulitsy-mira","/catalog/tihaya-sila","/catalog/tondo","/podarok","/journal","/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto","/catalog?series=monochrome"],"/cart":["/","/catalog","/about","/commission","/legal","/catalog/monohromnaya","/catalog/ulitsy-mira","/catalog/tihaya-sila","/catalog/tondo","/catalog?series=monochrome"],"/legal":["/","/catalog","/about","/commission","/catalog/monohromnaya","/catalog/ulitsy-mira","/catalog/tihaya-sila","/catalog/tondo","/catalog?series=monochrome"],"/catalog/monohromnaya":["/","/about","/podarok","/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer"],"/catalog/ulitsy-mira":["/","/about","/podarok","/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer"],"/catalog/tihaya-sila":["/","/about","/podarok"],"/catalog/tondo":["/","/about","/podarok","/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer"],"/catalog/tproduct/566542733172-volna-sepiya":["/","/catalog","/catalog/monohromnaya","/catalog?series=monochrome"],"/catalog/tproduct/763415825502-angkor-vat":["/","/catalog","/catalog/ulitsy-mira","/catalog?series=monochrome"],"/catalog/tproduct/263963629773-svoboda":["/","/catalog","/catalog/tihaya-sila","/catalog?series=monochrome"],"/catalog/tproduct/345114046252-hibiscus-gibiskus":["/","/catalog","/catalog/tondo","/catalog?series=monochrome"],"/catalog/tproduct/440148681382-pereval":["/","/catalog","/catalog/monohromnaya","/catalog?series=monochrome"],"/catalog/tproduct/305599314472-kamni-na-beregu":["/","/catalog","/catalog/monohromnaya","/catalog?series=monochrome"],"/podarok":["/","/catalog","/a
+UNKNOWN {
+ "/cart": "200",
+ "/contacts": "404"
+}
+DUP TITLES [["Купить картину маслом для интерьера — 21 работа | MBezu",["/catalog","/catalog?series=monochrome"]],["404 Page Not Found.",["/painting/mn-01","/llms.txt"]]]
+DUP DESCS [["Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.",["/catalog","/catalog/monohromnaya","/catalog/ulitsy-mira","/catalog/tihaya-sila","/catalog/tondo","/catalog?series=monochrome"]],["Как выбрать картину маслом для интерьера, оригинал или постер, сертификат подлинности: практичные статьи художника Mila Bezú о живописи и жизни мастерской.",["/journal","/tpost/1h0ft7s671-kak-vibrat-kartinu-dlya-gostinoi-razmer","/tpost/uge9s6lei1-original-ili-poster-chto-vibrat-dlya-dom","/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto"]]]

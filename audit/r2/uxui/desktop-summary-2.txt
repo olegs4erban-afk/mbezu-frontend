@@ -1,0 +1,1170 @@
+=== product
+{
+ "url": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+ "title": "Волна. Сепия — картина маслом, 100×60 см, купить | Mila Bezú",
+ "screens": 1.3,
+ "hOverflow": 0,
+ "headerH": 0,
+ "sticky": null,
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": [],
+ "crumbs": [],
+ "backLinks": [
+  {
+   "txt": "Все работы",
+   "href": "https://mbezu.ru/catalog"
+  }
+ ],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Волна. Сепия",
+   "fs": 24,
+   "top": 120
+  },
+  {
+   "tag": "H2",
+   "txt": "О картине «Волна. Сепия»",
+   "fs": 21,
+   "top": 320
+  },
+  {
+   "tag": "H2",
+   "txt": "Серия «Монохромная серия»",
+   "fs": 21,
+   "top": 418
+  },
+  {
+   "tag": "H2",
+   "txt": "Картина в интерьере",
+   "fs": 21,
+   "top": 494
+  },
+  {
+   "tag": "H2",
+   "txt": "Покупка, доставка и подлинность",
+   "fs": 21,
+   "top": 613
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "Купить",
+   "sel": "div.t-store__prod-popup__info > div.t-store__prod-popup__btn-wrapper",
+   "x": 740,
+   "top": 245,
+   "w": 560,
+   "h": 45,
+   "inView": true,
+   "bg": "#ffffff",
+   "fg": "#2a2520",
+   "ratio": 15.17,
+   "fs": 15,
+   "radius": "0px",
+   "font": "\"Inter Tight\"",
+   "border": "0px rgb(42, 37, 32)",
+   "tag": "DIV",
+   "href": null
+  },
+  {
+   "txt": "Купить",
+   "sel": "div.t-store__prod-popup__btn-wrapper > a.t-store__prod-popup__btn.t-btn",
+   "x": 740,
+   "top": 245,
+   "w": 103,
+   "h": 45,
+   "inView": true,
+   "bg": "#000000",
+   "fg": "#2a2520",
+   "ratio": 1.38,
+   "fs": 14,
+   "radius": "5px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "A",
+   "href": "#order"
+  },
+  {
+   "txt": "Купить",
+   "sel": "tr > td.js-store-prod-popup-buy-btn-txt.t-btnflex__text",
+   "x": 770,
+   "top": 258,
+   "w": 43,
+   "h": 20,
+   "inView": true,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 14,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "TD",
+   "href": null
+  }
+ ],
+ "fields": [],
+ "checks": [
+  {
+   "vis": false,
+   "label": "",
+   "checked": false,
+   "size": 0
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": false,
+  "cert": true,
+  "payment": true,
+  "yookassa": false,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ffffff",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "TildaSans",
+  "h1Fs": "24px",
+  "fams": [
+   "TildaSans",
+   "Arial",
+   "Inter Tight"
+  ]
+ },
+ "firstProductScreens": 0.1,
+ "textEls": 28,
+ "smallText": {
+  "n": 0,
+  "s": []
+ },
+ "contrastFails": [
+  {
+   "fg": "#777777",
+   "bg": "#ffffff",
+   "fs": 14,
+   "fw": 300,
+   "ratio": 4.48,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "div.t-store__prod-popup__brand > span.js-product-brand",
+   "txt": "Mila Bezú",
+   "n": 1,
+   "inView": true
+  }
+ ],
+ "targetsN": 9,
+ "smallTargetsN": 2,
+ "smallTargets": [
+  {
+   "sel": "div.t-store__prod-popup__close-txt-wr > a.js-store-close-text.t-store__prod-popup__close-txt",
+   "tag": "A",
+   "txt": "Все работы",
+   "w": 88,
+   "h": 22,
+   "top": 20,
+   "href": "https://mbezu.ru/catalog"
+  },
+  {
+   "sel": "div.t-store > a.t-popup__close",
+   "tag": "A",
+   "txt": "",
+   "w": 23,
+   "h": 23,
+   "top": 20,
+   "href": "https://mbezu.ru/catalog"
+  }
+ ],
+ "imgs": {
+  "n": 1,
+  "noAlt": 0,
+  "emptyAlt": 1,
+  "s": [
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ }
+}
+=== product.tilda
+{
+ "buy": [
+  {
+   "txt": "Купить",
+   "w": 103,
+   "h": 45,
+   "top": 245,
+   "bg": "rgb(0, 0, 0)",
+   "color": "rgb(42, 37, 32)",
+   "radius": "5px",
+   "fs": "14px",
+   "font": "TildaSans",
+   "inView": true
+  }
+ ],
+ "price": "100 000₽",
+ "priceHtml": "<div class=\"js-store-prod-price t-store__prod-popup__price t-store__prod-popup__price-item t-name t-name_md\" style=\"\">\n                                                                <div class=\"js-pr",
+ "h1": {
+  "txt": "Волна. Сепия",
+  "fs": "24px",
+  "font": "TildaSans"
+ },
+ "gallery": 0,
+ "galleryAlts": [],
+ "opts": [],
+ "sku": "Артикул:",
+ "brand": "Mila Bezú",
+ "descLen": 10,
+ "descHead": "Все работы",
+ "chars": [
+  "Mila Bezú",
+  "Артикул:",
+  "О картине «Волна. Сепия» Монохромная волна в момент наивысшего напряжения — секунда до падения. Палитра сепии убирает всё лишнее, оставляя только силу и форму. Холст, масло, на подрамнике, 100×60 см, ",
+  "Серия: Монохромная",
+  "Техника: Холст, масло",
+  "Размер: 100×60 см",
+  "Год: 2024",
+  "Ориентация: Горизонтальная",
+  "Подпись: Да",
+  "Сертификат: Да",
+  "",
+  ""
+ ],
+ "more": [
+  {
+   "txt": "Все работы",
+   "href": "https://mbezu.ru/catalog"
+  },
+  {
+   "txt": "Каталог",
+   "href": "/catalog"
+  }
+ ],
+ "related": 0,
+ "recs": [
+  {
+   "id": "rec2291453131",
+   "cls": "t-store",
+   "h": 1002,
+   "top": 0
+  },
+  {
+   "id": "rec2293310791",
+   "cls": "t706",
+   "h": 0,
+   "top": 1002
+  }
+ ],
+ "reactChrome": {
+  "header": false,
+  "footer": false,
+  "tabbar": false
+ },
+ "bodyFont": "\"Inter Tight\", system-ui, -apple-system, sans-serif",
+ "hasBreadcrumb": false,
+ "status": false,
+ "textAll": "Все работы Волна. Сепия Mila Bezú 100 000₽ Купить О картине «Волна. Сепия» Монохромная волна в момент наивысшего напряжения — секунда до падения. Палитра сепии убирает всё лишнее, оставляя только силу и форму. Холст, масло, на подрамнике, 100×60 см, 2024 год. Оригинал в единственном экземпляре — авторская работа Mila Bezú, Москва. Серия «Монохромная серия» Морские волны и горные пейзажи в чёрно-белом решении. Опыт работы с формой и ритмом без цвета как самостоятельная художественная задача. Картина в интерьере Если вы хотите купить картину маслом для интерьера — морской пейзаж маслом оживляет гостиную, спальню или кабинет — вода добавляет пространству глубины и спокойствия. Подлинник живописи 100×60 см смотрится законченно и без рамы: торцы холста аккуратно записаны. Покупка, доставка и подлинность Оплата онлайн. К работе прилагаются сертификат подлинности, авторская подпись на обороте и открытка из мастерской; крепёж в комплекте. Бережная доставка по России — СДЭК или курьером. Серия: Монохромная Техника: Холст, масло Размер: 100×60 см Год: 2024 Ориентация: Горизонтальная Подпись: Да Сертификат: Да Made on Tilda Главная Каталог На заказ В подарок Журнал"
+}
+=== product.tab
+[{"tag":"A","txt":"Все работы","cls":"js-store-close-text t-store__prod-popup_","outline":"3px auto rgb(32, 21, 255)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"A","txt":"","cls":"t-popup__close","outline":"3px auto rgb(32, 21, 255)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"A","txt":"Купить","cls":"t-store__prod-popup__btn t-btn t-btnflex","outline":"3px auto rgb(32, 21, 255)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"A","txt":"Made on Tilda","cls":"t-tildalabel__link","outline":"1px auto rgb(16, 16, 16)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"A","txt":"Главная","cls":"","outline":"1px auto rgb(16, 16, 16)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"A","txt":"Каталог","cls":"","outline":"1px auto rgb(16, 16, 16)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"A","txt":"На заказ","cls":"","outline":"1px auto rgb(16, 16, 16)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"A","txt":"В подарок","cls":"","outline":"1px auto rgb(16, 16, 16)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"A","txt":"Журнал","cls":"","outline":"1px auto rgb(16, 16, 16)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"BODY"},{"tag":"A","txt":"Все работы","cls":"js-store-close-text t-store__prod-popup_","outline":"3px auto rgb(32, 21, 255)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false},{"tag":"A","txt":"","cls":"t-popup__close","outline":"3px auto rgb(32, 21, 255)","shadow":false,"focusVisible":true,"inView":true,"offscreen":false}]
+=== cartPopup
+{
+ "showed": true,
+ "url": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya",
+ "contentW": 560,
+ "contentH": 1179,
+ "scrollable": false,
+ "fields": [
+  {
+   "type": "text",
+   "name": "Name",
+   "ph": "",
+   "label": "Имя",
+   "req": false,
+   "fs": "16px",
+   "h": 56,
+   "top": 394
+  },
+  {
+   "type": "email",
+   "name": "Email",
+   "ph": "",
+   "label": "Email",
+   "req": false,
+   "fs": "16px",
+   "h": 56,
+   "top": 500
+  },
+  {
+   "type": "tel",
+   "name": "tildaspec-phone-part[]",
+   "ph": "(000) 000-00-00",
+   "label": "Телефон",
+   "req": false,
+   "fs": "16px",
+   "h": 54,
+   "top": 607
+  },
+  {
+   "type": "text",
+   "name": "city",
+   "ph": "Москва",
+   "label": "Город",
+   "req": false,
+   "fs": "16px",
+   "h": 56,
+   "top": 711
+  },
+  {
+   "type": "text",
+   "name": "address",
+   "ph": "улица, дом, квартира",
+   "label": "Адрес доставки или пункт выдачи СДЭК",
+   "req": false,
+   "fs": "16px",
+   "h": 56,
+   "top": 817
+  }
+ ],
+ "radios": [],
+ "checks": [
+  {
+   "label": "",
+   "checked": false,
+   "vis": true
+  }
+ ],
+ "submit": [
+  {
+   "txt": "",
+   "bg": "rgba(0, 0, 0, 0)",
+   "color": "rgb(0, 0, 0)",
+   "radius": "0px",
+   "fs": "0px",
+   "font": "Arial",
+   "w": 23,
+   "h": 43,
+   "top": 10
+  },
+  {
+   "txt": "ОФОРМИТЬ ЗАКАЗ",
+   "bg": "rgb(160, 138, 78)",
+   "color": "rgb(237, 229, 214)",
+   "radius": "999px",
+   "fs": "16px",
+   "font": "\"Inter Tight\"",
+   "w": 480,
+   "h": 60,
+   "top": 1077
+  }
+ ],
+ "heads": [
+  {
+   "txt": "Ваш заказ:",
+   "fs": "24px",
+   "font": "\"Inter Tight\""
+  },
+  {
+   "txt": "Сумма:",
+   "fs": "16px",
+   "font": "\"Inter Tight\""
+  },
+  {
+   "txt": "Имя",
+   "fs": "16px",
+   "font": "\"Inter Tight\""
+  },
+  {
+   "txt": "Email",
+   "fs": "16px",
+   "font": "\"Inter Tight\""
+  },
+  {
+   "txt": "Телефон",
+   "fs": "16px",
+   "font": "\"Inter Tight\""
+  },
+  {
+   "txt": "Город",
+   "fs": "16px",
+   "font": "\"Inter Tight\""
+  },
+  {
+   "txt": "Адрес доставки или пункт выдачи СДЭК",
+   "fs": "16px",
+   "font": "\"Inter Tight\""
+  },
+  {
+   "txt": "Согласен(на) на обработку персональных д",
+   "fs": "16px",
+   "font": "\"Inter Tight\""
+  },
+  {
+   "txt": "Итоговая сумма:",
+   "fs": "16px",
+   "font": "\"Inter Tight\""
+  }
+ ],
+ "productLine": "Волна. Сепия 1 100 000₽",
+ "hasThumb": true,
+ "total": "100 000₽",
+ "delivery": true,
+ "payment": true,
+ "consent": true,
+ "certificate": true,
+ "returns": false,
+ "qtyCtrl": true,
+ "closeBtn": {
+  "w": 43,
+  "h": 43
+ },
+ "bg": "rgb(237, 229, 214)",
+ "font": "\"Inter Tight\"",
+ "errs": [],
+ "text": "Ваш заказ: Волна. Сепия 1 100 000₽ Сумма: 100 000₽ Имя Email Телефон +7 Город Адрес доставки или пункт выдачи СДЭК Согласен(на) на обработку персональных данных (152-ФЗ) Итоговая сумма: 100 000₽ ОФОРМИТЬ ЗАКАЗ Сертификат подлинности · Оплата онлайн (ЮKassa) · Бережная доставка СДЭК по РФ",
+ "emptySubmit": {
+  "errs": [
+   {
+    "txt": "Обязательное поле",
+    "color": "rgb(255, 0, 0)",
+    "fs": "13px"
+   },
+   {
+    "txt": "Обязательное поле",
+    "color": "rgb(255, 0, 0)",
+    "fs": "13px"
+   },
+   {
+    "txt": "Обязательное поле",
+    "color": "rgb(255, 0, 0)",
+    "fs": "13px"
+   },
+   {
+    "txt": "Обязательное поле",
+    "color": "rgb(255, 0, 0)",
+    "fs": "13px"
+   },
+   {
+    "txt": "Обязательное поле",
+    "color": "rgb(255, 0, 0)",
+    "fs": "13px"
+   },
+   {
+    "txt": "Обязательное поле",
+    "color": "rgb(255, 0, 0)",
+    "fs": "13px"
+   },
+   {
+    "txt": "Пожалуйста, заполните все обязательные поля",
+    "color": "rgb(255, 255, 255)",
+    "fs": "20px"
+   },
+   {
+    "txt": "Пожалуйста, заполните все обязательные поля",
+    "color": "rgb(255, 255, 255)",
+    "fs": "20px"
+   }
+  ],
+  "firstErrTop": null,
+  "stillOpen": true,
+  "url": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya"
+ }
+}
+=== cartPage
+{
+ "url": "https://mbezu.ru/cart",
+ "title": "Корзина · оформление заказа · M.Bezú",
+ "loadMs": 3634,
+ "screens": 1,
+ "hOverflow": 0,
+ "headerH": 0,
+ "sticky": "static",
+ "tildaMenu": false,
+ "tabbar": "absent",
+ "footer": false,
+ "footLinks": 0,
+ "hdrLinks": [
+  {
+   "txt": "Волна. Сепия",
+   "href": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya"
+  }
+ ],
+ "crumbs": [],
+ "backLinks": [
+  {
+   "txt": "В КАТАЛОГ",
+   "href": "/catalog"
+  }
+ ],
+ "heads": [
+  {
+   "tag": "H1",
+   "txt": "Корзина",
+   "fs": 72,
+   "top": 146
+  }
+ ],
+ "ctas": [
+  {
+   "txt": "ОФОРМИТЬ ЗАКАЗ",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": 480,
+   "top": 1077,
+   "w": 480,
+   "h": 60,
+   "inView": false,
+   "bg": "#a08a4e",
+   "fg": "#ede5d6",
+   "ratio": 2.69,
+   "fs": 16,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "0px rgb(237, 229, 214)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "ОФОРМИТЬ ЗАКАЗ",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": 638,
+   "top": 1096,
+   "w": 164,
+   "h": 22,
+   "inView": false,
+   "bg": "#a08a4e",
+   "fg": "#ede5d6",
+   "ratio": 2.69,
+   "fs": 16,
+   "radius": "0px",
+   "font": "\"Inter Tight\"",
+   "border": "0px rgb(237, 229, 214)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9417,
+   "top": 275,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9357,
+   "top": 294,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "div.t-form__submit > button.t-submit.t-btnflex",
+   "x": -9779,
+   "top": 190,
+   "w": 198,
+   "h": 60,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgba(0, 0, 0, 0)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "Отправить",
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "x": -9719,
+   "top": 209,
+   "w": 78,
+   "h": 22,
+   "inView": false,
+   "bg": "#000000",
+   "fg": "#ffffff",
+   "ratio": 21,
+   "fs": 16,
+   "radius": "0px",
+   "font": "TildaSans",
+   "border": "0px rgb(255, 255, 255)",
+   "tag": "SPAN",
+   "href": null
+  },
+  {
+   "txt": "ОТКРЫТЬ КОРЗИНУ",
+   "sel": "div > button.btn.btn-solid",
+   "x": 541,
+   "top": 348,
+   "w": 203,
+   "h": 46,
+   "inView": true,
+   "bg": "#6f5c2b",
+   "fg": "#ede5d6",
+   "ratio": 5.18,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgb(111, 92, 43)",
+   "tag": "BUTTON",
+   "href": null
+  },
+  {
+   "txt": "В КАТАЛОГ",
+   "sel": "div > a.btn.btn-ghost",
+   "x": 756,
+   "top": 348,
+   "w": 143,
+   "h": 46,
+   "inView": true,
+   "bg": "#ede5d6",
+   "fg": "#2a2520",
+   "ratio": 12.12,
+   "fs": 12,
+   "radius": "999px",
+   "font": "\"Inter Tight\"",
+   "border": "1px rgba(42, 37, 32, 0.18)",
+   "tag": "A",
+   "href": "/catalog"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "Name",
+   "ph": "",
+   "label": "Имя",
+   "req": true,
+   "ac": "name",
+   "fs": 16,
+   "h": 56,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "email",
+   "name": "Email",
+   "ph": "",
+   "label": "Email",
+   "req": true,
+   "ac": "email",
+   "fs": 16,
+   "h": 56,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "tel",
+   "name": "tildaspec-phone-part[]",
+   "ph": "(000) 000-00-00",
+   "label": "Телефон",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 54,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "Москва",
+   "label": "Город",
+   "req": true,
+   "ac": null,
+   "fs": 16,
+   "h": 56,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "address",
+   "ph": "улица, дом, квартира",
+   "label": "Адрес доставки или пункт выдачи СДЭК",
+   "req": true,
+   "ac": null,
+   "fs": 16,
+   "h": 56,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "name",
+   "ph": "name",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "phone",
+   "ph": "phone",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "email",
+   "ph": "email",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "message",
+   "ph": "message",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "notes",
+   "ph": "notes",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "size",
+   "ph": "size",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "style",
+   "ph": "style",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "palette",
+   "ph": "palette",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "weeks",
+   "ph": "weeks",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_source",
+   "ph": "utm_source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_medium",
+   "ph": "utm_medium",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_campaign",
+   "ph": "utm_campaign",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "utm_content",
+   "ph": "utm_content",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "lead_ref",
+   "ph": "lead_ref",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "source",
+   "ph": "source",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "page",
+   "ph": "page",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "city",
+   "ph": "city",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "budget",
+   "ph": "budget",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  },
+  {
+   "tag": "INPUT",
+   "type": "text",
+   "name": "ts",
+   "ph": "ts",
+   "label": "",
+   "req": false,
+   "ac": null,
+   "fs": 16,
+   "h": 60,
+   "form": "form:native"
+  }
+ ],
+ "checks": [
+  {
+   "vis": true,
+   "label": "",
+   "checked": false,
+   "size": 13
+  }
+ ],
+ "trust": {
+  "delivery": true,
+  "returns": false,
+  "cert": true,
+  "payment": true,
+  "yookassa": true,
+  "sbp": false,
+  "phone": false,
+  "email": false,
+  "telegram": false,
+  "reviews": false,
+  "guarantee": false,
+  "original": true,
+  "insurance": false
+ },
+ "style": {
+  "bodyBg": "#ede5d6",
+  "bodyFont": "\"Inter Tight\"",
+  "bodyFs": "15px",
+  "h1Font": "\"Inter Tight\"",
+  "h1Fs": "72px",
+  "fams": [
+   "Inter Tight",
+   "TildaSans",
+   "Arial"
+  ]
+ },
+ "firstProductScreens": 0.2,
+ "textEls": 28,
+ "smallText": {
+  "n": 0,
+  "s": []
+ },
+ "contrastFails": [
+  {
+   "fg": "#ede5d6",
+   "bg": "#a08a4e",
+   "fs": 16,
+   "fw": 600,
+   "ratio": 2.69,
+   "need": 4.5,
+   "pass": false,
+   "img": false,
+   "sel": "button.t-submit > span.t-btnflex__text",
+   "txt": "Оформить заказ",
+   "n": 1,
+   "inView": false
+  }
+ ],
+ "targetsN": 38,
+ "smallTargetsN": 2,
+ "smallTargets": [
+  {
+   "sel": "div.t706__close > button.t706__close-button.t706__cartwin-close-wrapper",
+   "tag": "BUTTON",
+   "txt": "Закрыть корзину",
+   "w": 23,
+   "h": 43,
+   "top": 10,
+   "href": null
+  },
+  {
+   "sel": "div.t706__product-title > a",
+   "tag": "A",
+   "txt": "Волна. Сепия",
+   "w": 100,
+   "h": 20,
+   "top": 208,
+   "href": "https://mbezu.ru/catalog/tproduct/566542733172-volna-sepiya"
+  }
+ ],
+ "imgs": {
+  "n": 4,
+  "noAlt": 3,
+  "emptyAlt": 1,
+  "s": [
+   {
+    "src": "arrows_circle_minus.svg",
+    "alt": null,
+    "hasAlt": false,
+    "vis": true,
+    "w": 16,
+    "h": 16,
+    "nw": 64,
+    "nh": 64,
+    "loading": null,
+    "role": null
+   },
+   {
+    "src": "arrows_circle_plus.svg",
+    "alt": null,
+    "hasAlt": false,
+    "vis": true,
+    "w": 16,
+    "h": 16,
+    "nw": 64,
+    "nh": 64,
+    "loading": null,
+    "role": null
+   },
+   {
+    "src": "arrows_circle_remove.svg",
+    "alt": null,
+    "hasAlt": false,
+    "vis": true,
+    "w": 20,
+    "h": 20,
+    "nw": 64,
+    "nh": 64,
+    "loading": null,
+    "role": null
+   },
+   {
+    "src": "tildacopy.png",
+    "alt": "",
+    "hasAlt": true,
+    "vis": true,
+    "w": 30,
+    "h": 30,
+    "nw": 60,
+    "nh": 60,
+    "loading": null,
+    "role": null
+   }
+  ]
+ },
+ "bodyText": "Ваш заказ: Волна. Сепия 1 100 000₽ Сумма: 100 000₽ Имя Email Телефон +7 Город Адрес доставки или пункт выдачи СДЭК Согласен(на) на обработку персональных данных (152-ФЗ) Итоговая сумма: 100 000₽ ОФОРМИТЬ ЗАКАЗ Сертификат подлинности · Оплата онлайн (ЮKassa) · Бережная доставка СДЭК по РФ Отправить Отправить Корзина Если в корзине есть работы — она откроется здесь сама. Пусто? Каталог рядом. ОТКРЫТ"
+}
