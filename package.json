@@ -41,6 +41,7 @@
     "cross-env": "^10.1.0",
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^5.2.0",
+    "fontkit": "^2.0.4",
     "globals": "^17.6.0",
     "lighthouse": "^12.8.2",
     "playwright": "^1.60.0",

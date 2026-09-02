@@ -5,6 +5,10 @@
 @font-face{font-family:'Inter Tight';font-style:normal;font-weight:200 600;font-display:swap;src:url(https://cdn.mbezu.ru/fonts/InterTight-normal-lat-3.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
 @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 500;font-display:swap;src:url(https://cdn.mbezu.ru/fonts/JetBrainsMono-normal-cyr-4.woff2) format('woff2');unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;}
 @font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400 500;font-display:swap;src:url(https://cdn.mbezu.ru/fonts/JetBrainsMono-normal-lat-5.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+/* 03.09 перф: метрически совместимые фолбэки — пока webfont грузится, текст того же размера и высоты строки (CLS 1.0 → ~0) */
+@font-face{font-family:'Inter Tight Fallback';font-style:normal;src:local('Arial');size-adjust:99.2%;ascent-override:97.7%;descent-override:24.3%;line-gap-override:0%;}
+@font-face{font-family:'Inter Tight Fallback';font-style:italic;src:local('Arial Italic'),local('Arial');size-adjust:102.2%;ascent-override:94.8%;descent-override:23.6%;line-gap-override:0%;}
+@font-face{font-family:'JetBrains Mono Fallback';src:local('Courier New');size-adjust:99.5%;ascent-override:102.5%;descent-override:30.2%;line-gap-override:0%;}
 
 *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -59,10 +63,10 @@
     --shadow-xl: 0 40px 80px -30px rgba(42, 37, 32, 0.20);
 
     /* Типографика — Inter Tight + JetBrains Mono */
-    --display: 'Inter Tight', system-ui, -apple-system, sans-serif;
-    --sans:    'Inter Tight', system-ui, -apple-system, sans-serif;
-    --italic:  'Inter Tight', system-ui, sans-serif;
-    --mono:    'JetBrains Mono', ui-monospace, monospace;
+    --display: 'Inter Tight', 'Inter Tight Fallback', system-ui, -apple-system, sans-serif;
+    --sans:    'Inter Tight', 'Inter Tight Fallback', system-ui, -apple-system, sans-serif;
+    --italic:  'Inter Tight', 'Inter Tight Fallback', system-ui, sans-serif;
+    --mono:    'JetBrains Mono', 'JetBrains Mono Fallback', ui-monospace, monospace;
 
     --max: 1480px;
   }
