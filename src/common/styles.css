@@ -536,3 +536,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   /* первый экран главной: картина сразу под кнопками (мета-полоса скрыта), меньше воздуха сверху */
   .home-hero { padding-top: 36px !important; padding-bottom: 56px !important; }
 }
+
+/* ── Пункты Олега 02.09: ховеры и мобильная плотность ──────────
+   5. карточки «чуть выезжают»: сама карточка приподнимается, картинка мягко зумится —
+      и в витрине (.art-card-img), и на статичных посадочных (ссылки на товар) */
+a[href*="/tproduct/"] img, .art-card-img img, .lift img { transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+@media (hover: hover) and (pointer: fine) {
+  a[href*="/tproduct/"]:hover img, .lift:hover .art-card-img img, .lift:hover img { transform: scale(1.06); }
+  a[href*="/tproduct/"] { transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
+  a[href*="/tproduct/"]:hover { transform: translateY(-4px); }
+}
+/* 6. плашки меняют цвет: кнопки-призраки, чипы, ссылки-карточки */
+.btn-ghost { transition: background-color .2s, color .2s, border-color .2s; }
+.btn-ghost:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.btn-solid { transition: background-color .2s, transform .2s; }
+.btn-solid:hover { background: var(--accent-deep); }
+.chip:hover { background: rgba(111,92,43,.1); }
+a.uh[style*="background:var(--bg-card)"]:hover, a.uh[style*="background: var(--bg-card)"]:hover { background: var(--bg-soft) !important; }
+/* 7. мобильная плотность: секции и сетки без лишнего воздуха, акценты крупнее */
+@media (max-width: 600px) {
+  section.resp-pad { padding-top: 48px !important; padding-bottom: 48px !important; }
+  .resp-stack, .resp-stack-3, .resp-stack-4, .resp-stack-5, .resp-stack-12 { gap: 16px !important; }
+  h2.display { margin-top: 0 !important; }
+  .eyebrow { font-size: 11.5px; }
+  .cat-no { font-size: 11px; }
+  footer.resp-pad { padding-top: 48px !important; }
+}

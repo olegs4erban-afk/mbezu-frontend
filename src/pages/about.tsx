@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumbs, Eyebrow } from '../common/atoms';
-import { ABOUT, SERIES } from '../common/data';
+import { ABOUT, ARTWORKS, SERIES } from '../common/data';
+import { TILDA_IMAGES } from '../common/tilda-images';
 import { ReviewsSection } from '../common/reviews-section';
 import { routeToPath } from '../common/routes';
 
@@ -81,22 +82,13 @@ function AboutPage({ go }) {
           maxWidth: 'var(--max)', margin: '0 auto',
           display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28,
         }}>
-          {[
-            ['#bcb6a8', 'студия — окно, естественный свет'],
-            ['#a89a82', 'мастерская — палитра, кисти'],
-            ['#8c7c66', 'мольберт — работа в процессе'],
-          ].map(([c, t], i) => (
-            <div key={i}>
-              <div style={{
-                aspectRatio: '4 / 5', background: c,
-                borderRadius: 'var(--r-md)',
-                boxShadow: 'var(--shadow-md)',
-              }} />
-              <div className="cat-no" style={{ marginTop: 12 }}>
-                [фото — {t}]
-              </div>
-            </div>
-          ))}
+          {[['frag-1', 'Фрагмент · «Волна. Сепия» — фактура мазка'], ['frag-2', 'Фрагмент · «Тропические листья» — капли и свет'], ['frag-3', 'Фрагмент · «Обидуш» — камень и синяя кромка']].map(([f, t]) => (
+              <figure key={f} style={{ margin: 0 }}>
+                <img src={`https://cdn.mbezu.ru/assets/about-${f}.webp`} srcSet={`https://cdn.mbezu.ru/assets/about-${f}@720.webp 720w, https://cdn.mbezu.ru/assets/about-${f}.webp 1200w`} sizes="(max-width: 900px) 92vw, 30vw"
+                     alt={t} loading="lazy" style={{ width: '100%', aspectRatio: '4 / 5', objectFit: 'cover', borderRadius: 'var(--r-md)', boxShadow: 'var(--shadow-md)', display: 'block' }} />
+                <figcaption className="cat-no" style={{ marginTop: 12 }}>{t}</figcaption>
+              </figure>
+            ))}
         </div>
       </section>
 
@@ -131,6 +123,7 @@ function AboutPage({ go }) {
                    textDecoration: 'none', color: 'inherit',
                    cursor: 'pointer', display: 'block',
                  }}>
+                {/* 02.09 (Олег, п.10): в карточках серий были градиенты — теперь флагман серии */}
                 <div className="ph-art" style={{
                   width: '100%', aspectRatio: '4 / 3',
                   background: `linear-gradient(135deg, ${s.palette[0]}, ${s.palette[1]})`,
@@ -138,6 +131,10 @@ function AboutPage({ go }) {
                   boxShadow: 'var(--shadow-md)',
                   position: 'relative', overflow: 'hidden',
                 }}>
+                  {(() => { const art = ARTWORKS.find((x) => x.series === s.id && x.featured && !x.hidden && TILDA_IMAGES[x.id]) || ARTWORKS.find((x) => x.series === s.id && !x.hidden && TILDA_IMAGES[x.id]); return art ? (
+                    <img src={TILDA_IMAGES[art.id].large} alt={`${art.title} — серия ${s.title}`} loading="lazy"
+                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: 18 }} />
+                  ) : null; })()}
                   <span style={{
                     position: 'absolute', top: 16, left: 16,
                     background: s.color, color: 'var(--bg-cream)',
