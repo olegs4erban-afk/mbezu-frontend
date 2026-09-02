@@ -157,8 +157,24 @@ const PROD_SNIPPET = `
       if(nav&&nav.parentNode===host2)host2.insertBefore(sec,nav);else host2.appendChild(sec);
     });
   }
+  // 02.09 P1: Tilda не подставляет служебную страницу-шапку на страницы товара — строим компактную шапку JS
+  function productHeader(){
+    if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-prod-header'))return;
+    var host=document.getElementById('allrecords');if(!host)return;
+    var h=document.createElement('header');h.id='mbezu-prod-header';
+    h.style.cssText='background:#ede5d6;color:#2a2520;border-bottom:1px solid rgba(42,37,32,.1);font-family:Inter Tight,system-ui,sans-serif';
+    var L=[['/catalog','Каталог'],['/commission','На заказ'],['/podarok','В подарок'],['/journal','Журнал'],['/about','Художник']];
+    var nav='';for(var i=0;i<L.length;i++)nav+='<a href="'+L[i][0]+'" style="color:inherit;text-decoration:none;padding:10px 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500">'+L[i][1]+'</a>';
+    h.innerHTML='<div style="max-width:1480px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">'+
+      '<a href="/" style="font-size:26px;font-weight:500;font-style:italic;letter-spacing:-.02em;color:inherit;text-decoration:none;padding:8px 0">MBezu</a>'+
+      '<nav aria-label="Основная навигация" class="mbezu-prod-nav-links" style="display:flex;gap:26px">'+nav+'</nav>'+
+      '<a href="/cart" id="mbezu-prod-cart" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #6f5c2b;border-radius:999px;color:#6f5c2b;text-decoration:none;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500">Корзина</a></div>';
+    host.insertBefore(h,host.firstChild);
+    var c=document.getElementById('mbezu-prod-cart');if(c)c.addEventListener('click',function(e){if(typeof tcart__openCart==='function'){e.preventDefault();tcart__openCart();}});
+    if(!document.getElementById('mbezu-prod-header-css')){var st=document.createElement('style');st.id='mbezu-prod-header-css';st.textContent='@media (max-width:760px){.mbezu-prod-nav-links{display:none!important}}';document.head.appendChild(st);}
+  }
   function appMark(){try{if(document.getElementById('root'))document.body.classList.add('mbezu-app');}catch(e){}}
-  function run(){goldFix();productLd();try{productNav();}catch(e){}try{galleryHint();}catch(e){}try{productSeries();}catch(e){}appMark();}
+  function run(){goldFix();productLd();try{productNav();}catch(e){}try{galleryHint();}catch(e){}try{productSeries();}catch(e){}try{productHeader();}catch(e){}appMark();}
   if(document.readyState!=='loading')run();
   document.addEventListener('DOMContentLoaded',run);
   window.addEventListener('load',run);

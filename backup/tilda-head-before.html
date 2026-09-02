@@ -198,7 +198,8 @@
     upd();sl.parentNode.insertBefore(hint,sl.nextSibling);
     try{new MutationObserver(function(){upd();}).observe(sl,{attributes:true,subtree:true,attributeFilter:['class']});}catch(e){}
   }
-  function run(){goldFix();productLd();try{productNav();}catch(e){}try{galleryHint();}catch(e){}}
+  function appMark(){try{if(document.getElementById('root'))document.body.classList.add('mbezu-app');}catch(e){}}
+  function run(){goldFix();productLd();try{productNav();}catch(e){}try{galleryHint();}catch(e){}appMark();}
   if(document.readyState!=='loading')run();
   document.addEventListener('DOMContentLoaded',run);
   window.addEventListener('load',run);
@@ -313,6 +314,12 @@
 .t706 .t-submit:hover{background-color:#57471f!important}
 .t706 .t-input-error,.t706 .t-form__errorbox-text{color:#8a2a1f!important;font-size:13.5px}
 .t706__carticon-counter{background-color:#6f5c2b!important}
+/* 02.09: плавающая корзина Tilda рисовалась пустым белым кругом — обводка иконки в акценте, фон карточный;
+   на страницах витрины (есть шапка с корзиной) — скрыта, на нативных (товар, статьи) — остаётся */
+.t706__carticon-wrapper{background-color:#f5efe2!important;box-shadow:0 8px 24px -12px rgba(42,37,32,.35)!important}
+.t706__carticon-img path,.t706__carticon-img circle,.t706__carticon-img line{stroke:#6f5c2b!important}
+.t706__carticon-text{color:#2a2520!important}
+body.mbezu-app .t706__carticon{display:none!important}
 /* страница товара — тот же тон, что у витрины */
 body.t-body:has(.t-store__prod-snippet__container),.t-store__prod-snippet__container,.t-store .t-slds__container,.t-store__prod-popup__slider{background:#ede5d6!important}
 .t-store .t-name,.t-store .t-descr,.t-store .t-text,.t-store .t-btn,.t-store__prod-popup__btn{font-family:'Inter Tight',system-ui,-apple-system,sans-serif!important}
