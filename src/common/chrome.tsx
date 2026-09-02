@@ -287,6 +287,16 @@ function Footer({ go }) {
           <div>
             <div className="eyebrow" style={{ color: 'rgba(245, 239, 226, .72)', marginBottom: 20 }}>Магазин</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {/* 02.09: сюжетные страницы каталога */}
+              <li><a href="/catalog/more"
+                   style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}
+                   className="uh">Море и волны</a></li>
+              <li><a href="/catalog/botanika"
+                   style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}
+                   className="uh">Цветы и растения</a></li>
+              <li><a href="/catalog/gory"
+                   style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}
+                   className="uh">Горы</a></li>
               {/* Аудит r2 (SEO): интерьерные посадочные — прямые href, вне RouteName */}
               <li><a href="/kartina-v-gostinuyu"
                    style={{ color: 'rgba(245,239,226,.85)', textDecoration: 'none', fontSize: 14, display: 'inline-block', padding: '10px 0' }}
