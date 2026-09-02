@@ -116,7 +116,8 @@
   .eyebrow.accent { color: var(--accent); }
 
   /* Animations */
-  @keyframes rise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+  /* 03.09 перф: без opacity — элемент с opacity:0 не считается LCP-кандидатом, и главная «ждала» появления H1 до 6 с */
+  @keyframes rise { from { transform: translateY(20px); } to { transform: none; } }
   @keyframes drift { from { transform: translateY(0); } to { transform: translateY(-6px); } }
   @keyframes glow { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
   @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }

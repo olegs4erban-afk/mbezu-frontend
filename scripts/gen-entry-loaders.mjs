@@ -27,7 +27,8 @@ mkdirSync(join(DIST, 'e'), { recursive: true });
   const home = readFileSync(join(DIST, 'index.html'), 'utf-8');
   const css = (home.match(/<link[^>]+rel="stylesheet"[^>]+href="(\/assets\/[^"]+\.css)"/) || [])[1];
   if (css) {
-    writeFileSync(join(DIST, 'e', 'style.css'), `@import url("..${css}");\n`, 'utf-8');
+    // 03.09 перф: копия содержимого вместо @import — минус один круг до CDN перед первой отрисовкой
+    writeFileSync(join(DIST, 'e', 'style.css'), readFileSync(join(DIST, css), 'utf-8'), 'utf-8');
     console.log(`e/style.css → ${css}`);
   }
 }
