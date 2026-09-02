@@ -63,10 +63,18 @@ await withSession(async ({ page }) => {
       const act = await call({ action: 'posts_Active', feeduid, projectid, postuid: uid });
       if (act.error) return { err: 'active: ' + act.error, uid };
     }
-    return { uid };
+    // 03.09: страховка — если какой-то старый пост оказался выключен (posts_Active — toggle,
+    // «Сертификат подлинности» так пропадал с сайта, 404), включаем обратно.
+    const list2 = await call({ action: 'posts_GetList', feeduid, projectid, items: 200 });
+    const revived = [];
+    for (const [u, p] of Object.entries((list2.data && list2.data.posts) || {})) {
+      if (p.active !== 'y') { const a = await call({ action: 'posts_Active', feeduid, projectid, postuid: u }); if (!a.error) revived.push(u); }
+    }
+    return { uid, revived };
   }, { feeduid: FEEDUID, projectid: PROJECTID, title: art.title, descr: art.descr, date: today, image: cover, text: JSON.stringify(art.blocks) });
 
   if (out.err) { console.log('✗', out.err); process.exitCode = 1; return; }
+  if (out.revived && out.revived.length) console.log('  включены обратно выключенные посты:', out.revived.join(', '));
   next.published = today;
   next.postuid = out.uid;
   writeFileSync(`${QDIR}/queue.json`, JSON.stringify(queue, null, 2) + String.fromCharCode(10));
