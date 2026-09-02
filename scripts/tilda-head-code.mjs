@@ -353,6 +353,44 @@ const FAV_SNIPPET = `
 <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.mbezu.ru/favicon-180.png">
 <link rel="icon" type="image/png" sizes="512x512" href="https://cdn.mbezu.ru/favicon-512.png">`;
 
+// 03.09 перф (Lighthouse mobile, холодная загрузка: perf 24–27, CLS 1.0 — «Web font loaded», TBT ~1 c — tag.js Метрики).
+// 1) preconnect к CDN витрины + preload четырёх шрифтов первого экрана и style.css — шрифты приходят до первой отрисовки,
+//    крупный H1 не перерисовывается; 2) тег Метрики (вебвизор+clickmap) вставляем после load + 2 с — очередь ym() копит события.
+const PRE_MARK = 'MBezu · perf-preload';
+const PRE_END = '<!-- /MBezu · perf-preload -->';
+const PRE_SNIPPET = `
+<!-- ${PRE_MARK} · Lighthouse: шрифты и CSS витрины до первой отрисовки (03.09) -->
+<link rel="preconnect" href="https://cdn.mbezu.ru" crossorigin>
+<link rel="preconnect" href="https://cdn.mbezu.ru">
+<link rel="preload" as="style" href="https://cdn.mbezu.ru/e/style.css">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.mbezu.ru/fonts/InterTight-normal-cyr-2.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.mbezu.ru/fonts/InterTight-italic-cyr-0.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.mbezu.ru/fonts/InterTight-normal-lat-3.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.mbezu.ru/fonts/JetBrainsMono-normal-cyr-4.woff2">
+${PRE_END}`;
+function perfPreload(out) {
+  const NL = String.fromCharCode(10);
+  if (out.includes(PRE_MARK)) {
+    const a = out.indexOf('<!-- ' + PRE_MARK); const b = out.indexOf(PRE_END, a);
+    if (a >= 0 && b > a) return out.slice(0, a) + PRE_SNIPPET.trim() + out.slice(b + PRE_END.length);
+    return out;
+  }
+  return PRE_SNIPPET.trim() + NL + out;
+}
+const PM_MARK = 'MBezu · perf-metrika';
+function perfMetrika(out) {
+  if (out.includes(PM_MARK)) return out;
+  const head = 'for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}';
+  const tail = 'k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)';
+  const a = out.indexOf(head); if (a < 0) return out;
+  const b = out.indexOf(tail, a); if (b < 0) return out;
+  const body = out.slice(a, b + tail.length);
+  const repl = 'function mbzGo(){' + body + '}' +
+    ' /* ' + PM_MARK + ': тег после load + 2 с (03.09) */' +
+    ' if(document.readyState==="complete"){setTimeout(mbzGo,2000);}else{window.addEventListener("load",function(){setTimeout(mbzGo,2000);});}';
+  return out.slice(0, a) + repl + out.slice(b + tail.length);
+}
+
 // Аудит r2 (SEO): Organization.logo вёл на 404, в адресе была квартира, у Organization не было sameAs,
 // Person.url указывал на главную. Правим JSON прямо в head-коде.
 function ldFix(out) {
@@ -449,6 +487,8 @@ function patchHead(src) {
   }
 
   out = ldFix(out);
+  out = perfPreload(out);
+  out = perfMetrika(out);
   return { out, removed, brandFixed, typeFixed, ruAdded, rcvAdded };
 }
 
