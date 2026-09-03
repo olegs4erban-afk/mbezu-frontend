@@ -92,13 +92,14 @@ function HeroEditorial({ go }) {
 
           {/* Painting on the right */}
           <div className="reveal r3" style={{ position: 'relative' }}>
-            <div className="display" aria-hidden="true" style={{
+            {/* 03.09 a11y: водяной знак — текст через ::before (attr), чтобы axe/Lighthouse не считал декор за текст с низким контрастом */}
+            <div className="display wm-text" aria-hidden="true" data-wm="M.B" style={{
               position: 'absolute', right: -10, top: -80,
               fontSize: 'clamp(140px, 18vw, 280px)',
               color: 'var(--accent)', opacity: .08,
               fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1,
               pointerEvents: 'none', zIndex: 0, fontStyle: 'italic',
-            }}>M.B</div>
+            }} />
             <a href={routeToPath('painting', { id: hero.id })} aria-label={`${hero.title} — ${formatPrice(hero.price)}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <figure style={{ margin: 0, position: 'relative', zIndex: 1, cursor: 'pointer' }}
                     className="drift">

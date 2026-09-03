@@ -572,3 +572,6 @@ a.uh[style*="background:var(--bg-card)"]:hover, a.uh[style*="background: var(--b
   .cat-no { font-size: 11px; }
   footer.resp-pad { padding-top: 48px !important; }
 }
+
+/* 03.09 a11y: декоративный водяной знак главной — текст из data-атрибута */
+.wm-text::before { content: attr(data-wm); }

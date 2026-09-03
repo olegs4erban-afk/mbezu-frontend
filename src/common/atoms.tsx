@@ -152,7 +152,7 @@ function ArtCard({ art, onOpen, index, total, size = 'thumb', priority = false }
       <div style={{ paddingTop: 4 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, marginBottom: 8 }}>
           {index != null && <CatNo n={index} total={total} />}
-          <span className="cat-no" style={{ color: series?.color, opacity: .8 }}>
+          <span className="cat-no" style={{ color: series?.color, opacity: .86 }}>
             {series?.title?.split(' ')[0] || ''}
           </span>
         </div>
