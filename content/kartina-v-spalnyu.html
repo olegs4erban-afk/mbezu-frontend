@@ -228,7 +228,7 @@
   try{
     var O='https://mbezu.ru';
     var head=document.head||document.getElementsByTagName('head')[0];
-    function add(d){var s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(d);head.appendChild(s);}
+    function add(d){if(document.getElementById('mbezu-ld-kartina-v-spalnyu'))return;var s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(d);head.appendChild(s);}
     function txt(el){return (el&&el.textContent||'').replace(/\s+/g,' ').trim();}
     add({'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
       {'@type':'ListItem',position:1,name:'MBezu',item:O+'/'},

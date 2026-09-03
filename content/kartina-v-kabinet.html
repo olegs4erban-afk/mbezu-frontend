@@ -297,7 +297,7 @@
 (function(){
   try{
     var O='https://mbezu.ru', P='/kartina-v-kabinet';
-    function add(d){var s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(d);document.head.appendChild(s);}
+    function add(d){if(document.getElementById('mbezu-ld-kartina-v-kabinet'))return;var s=document.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify(d);document.head.appendChild(s);}
     add({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[
       {'@type':'ListItem','position':1,'name':'MBezu','item':O+'/'},
       {'@type':'ListItem','position':2,'name':'Картина в кабинет','item':O+P}
