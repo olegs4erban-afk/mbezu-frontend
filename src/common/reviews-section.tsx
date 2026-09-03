@@ -145,7 +145,7 @@ function ReviewForm() {
                style={{ marginTop: 2, width: 18, height: 18, flexShrink: 0, accentColor: 'var(--accent)' }} />
         <span>
           Согласен(на) на обработку персональных данных и публикацию отзыва —{' '}
-          <a href="/legal?section=privacy" style={{ color: 'var(--accent)' }}>политика конфиденциальности</a>
+          <a href="/legal?section=privacy" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}>политика конфиденциальности</a>
         </span>
       </label>
       {touched && !consent && (

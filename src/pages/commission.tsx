@@ -454,7 +454,7 @@ function CommissionPage({ go, refId }) {
                   <span style={{ color: 'var(--ink-2)' }}>
                     Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
                     <a href="/legal?section=privacy" onClick={(e) => { e.preventDefault(); go('legal', { section: 'privacy' }); }}
-                       className="uh-tap" style={{ color: 'var(--accent)' }}>Политика ПД</a>
+                       className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}>Политика ПД</a>
                   </span>
                 </label>
                 {touched && !consent && (

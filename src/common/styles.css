@@ -285,7 +285,7 @@
     font-size: 10px;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: var(--ink-3);
+    color: var(--ink-2); /* 03.09 a11y: --ink-3 давал контраст 4,4 на карточках, нужно ≥4,5 */
   }
 
   /* Scroll-x rails (для маркизы) */

@@ -92,7 +92,7 @@ function HeroEditorial({ go }) {
 
           {/* Painting on the right */}
           <div className="reveal r3" style={{ position: 'relative' }}>
-            <div className="display" style={{
+            <div className="display" aria-hidden="true" style={{
               position: 'absolute', right: -10, top: -80,
               fontSize: 'clamp(140px, 18vw, 280px)',
               color: 'var(--accent)', opacity: .08,
@@ -778,7 +778,7 @@ function LeadForm({ go }) {
           Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
           <a href="/legal?section=privacy"
              onClick={(e) => { e.preventDefault(); go('legal', { section: 'privacy' }); }}
-             className="uh-tap" style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Политика ПД</a>
+             className="uh-tap" style={{ color: 'var(--bg-cream)', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 3 }}>Политика ПД</a>
         </span>
       </label>
       {touched && !lead.consent && (
