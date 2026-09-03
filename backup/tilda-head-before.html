@@ -1,3 +1,14 @@
+<!-- MBezu · perf-preload · Lighthouse: шрифты и CSS витрины до первой отрисовки (03.09) -->
+<script>(function(){try{var p=location.pathname;while(p.length>1&&p.charAt(p.length-1)==='/')p=p.slice(0,-1);if(!p)p='/';var app=['/','/catalog','/catalog/monohromnaya','/catalog/ulitsy-mira','/catalog/tihaya-sila','/catalog/tondo','/about','/commission','/legal'];if(app.indexOf(p)>=0){document.documentElement.className+=' mbezu-app';document.documentElement.setAttribute('data-mbezu','app');}if(p.indexOf('/tproduct/')>=0){document.documentElement.className+=' mbezu-prod';document.documentElement.setAttribute('data-mbezu','prod');}}catch(e){}})();</script>
+<style>html.mbezu-app .mbezu-chrome,html[data-mbezu=app] .mbezu-chrome,html.mbezu-app .t706__carticon,html[data-mbezu=app] .t706__carticon{display:none!important}html.mbezu-prod #allrecords,html[data-mbezu=prod] #allrecords{padding-top:89px}html.mbezu-prod .t-store__prod-popup__slider .t-slds__container,html[data-mbezu=prod] .t-store__prod-popup__slider .t-slds__container{aspect-ratio:1/1}</style>
+<link rel="preconnect" href="https://cdn.mbezu.ru" crossorigin>
+<link rel="preconnect" href="https://cdn.mbezu.ru">
+<link rel="preload" as="style" href="https://cdn.mbezu.ru/e/style.css">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.mbezu.ru/fonts/InterTight-normal-cyr-2.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.mbezu.ru/fonts/InterTight-italic-cyr-0.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.mbezu.ru/fonts/InterTight-normal-lat-3.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.mbezu.ru/fonts/JetBrainsMono-normal-cyr-4.woff2">
+<!-- /MBezu · perf-preload -->
 <!-- MBezu · favicon · Вебмастер: favicon SVG / 120×120 (Sprint 15) -->
 <link rel="icon" type="image/svg+xml" href="https://cdn.mbezu.ru/favicon.svg">
 <link rel="icon" type="image/png" sizes="120x120" href="https://cdn.mbezu.ru/favicon-120.png">
@@ -115,8 +126,8 @@
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        function mbzGo(){for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)} /* MBezu · perf-metrika: тег после load + 2 с (03.09) */ if(document.readyState==="complete"){setTimeout(mbzGo,2000);}else{window.addEventListener("load",function(){setTimeout(mbzGo,2000);});}
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111308276', 'ym');
 
     ym(111308276, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
@@ -126,7 +137,7 @@
 <!-- MBezu · analytics · конец -->
 
 <!-- MBezu · lead-receivers · скрытые формы-приёмники (Sprint 15 Ф0) -->
-<style>[data-mbezu-lead],[data-mbezu-notify]{position:absolute!important;left:-9999px!important;height:1px!important;overflow:hidden!important}</style>
+<style>[data-mbezu-lead],[data-mbezu-notify],.t-rec:has(input[name="lead_ref"]){position:absolute!important;left:-9999px!important;height:1px!important;overflow:hidden!important}</style>
 <script>
 (function(){
   function wire(){
@@ -138,6 +149,8 @@
         var isA=!!form.querySelector('[name="notes"]');
         if(isA){wrap.setAttribute('data-mbezu-lead','');}
         else{wrap.setAttribute('data-mbezu-notify','');}
+        wrap.setAttribute('aria-hidden','true');
+        var ctl=wrap.querySelectorAll('input,textarea,button,select,a');for(var j=0;j<ctl.length;j++)ctl[j].setAttribute('tabindex','-1');
       }
     }catch(e){}
   }
@@ -193,9 +206,9 @@
     var items=[].slice.call(sl.querySelectorAll('.t-slds__item')).filter(function(x){return !/t-slds__item_loop/.test(x.className);});
     var n=items.length;if(n<2)return;
     var hint=document.createElement('div');hint.id='mbezu-gal-hint';
-    hint.style.cssText='text-align:center;font:12px/1.4 Inter Tight,system-ui,sans-serif;color:#6b5d4a;margin:8px 0 0;letter-spacing:.06em';
+    hint.style.cssText='position:absolute;left:12px;bottom:12px;z-index:5;font:12px/1.4 Inter Tight,system-ui,sans-serif;color:#2a2520;background:rgba(237,229,214,.88);padding:4px 10px;border-radius:999px;letter-spacing:.04em;pointer-events:none';
     function upd(){var act=sl.querySelector('.t-slds__item_active');var idx=act?items.indexOf(act)+1:1;if(idx<1)idx=1;hint.textContent='Фото '+idx+' из '+n+' · листайте';}
-    upd();sl.parentNode.insertBefore(hint,sl.nextSibling);
+    upd();var box=sl.querySelector('.t-slds__container')||sl;if(getComputedStyle(box).position==='static')box.style.position='relative';box.appendChild(hint);
     try{new MutationObserver(function(){upd();}).observe(sl,{attributes:true,subtree:true,attributeFilter:['class']});}catch(e){}
   }
   // 02.09 P1: страница товара как часть витрины — крошки с серией и «Ещё из серии» из /works.json
@@ -236,8 +249,24 @@
       if(nav&&nav.parentNode===host2)host2.insertBefore(sec,nav);else host2.appendChild(sec);
     });
   }
+  // 02.09 P1: Tilda не подставляет служебную страницу-шапку на страницы товара — строим компактную шапку JS
+  function productHeader(){
+    if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-prod-header'))return;
+    var host=document.getElementById('allrecords');if(!host)return;
+    var h=document.createElement('header');h.id='mbezu-prod-header';
+    h.style.cssText='background:#ede5d6;color:#2a2520;border-bottom:1px solid rgba(42,37,32,.1);font-family:Inter Tight,system-ui,sans-serif';
+    var L=[['/catalog','Каталог'],['/commission','На заказ'],['/podarok','В подарок'],['/journal','Журнал'],['/about','Художник']];
+    var nav='';for(var i=0;i<L.length;i++)nav+='<a href="'+L[i][0]+'" style="color:inherit;text-decoration:none;padding:10px 0;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500">'+L[i][1]+'</a>';
+    h.innerHTML='<div style="max-width:1480px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px">'+
+      '<a href="/" style="font-size:26px;font-weight:500;font-style:italic;letter-spacing:-.02em;color:inherit;text-decoration:none;padding:8px 0">MBezu</a>'+
+      '<nav aria-label="Основная навигация" class="mbezu-prod-nav-links" style="display:flex;gap:26px">'+nav+'</nav>'+
+      '<a href="/cart" id="mbezu-prod-cart" style="display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border:1px solid #6f5c2b;border-radius:999px;color:#6f5c2b;text-decoration:none;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:500">Корзина</a></div>';
+    host.insertBefore(h,host.firstChild);host.style.paddingTop='0px';
+    var c=document.getElementById('mbezu-prod-cart');if(c)c.addEventListener('click',function(e){if(typeof tcart__openCart==='function'){e.preventDefault();tcart__openCart();}});
+    if(!document.getElementById('mbezu-prod-header-css')){var st=document.createElement('style');st.id='mbezu-prod-header-css';st.textContent='@media (max-width:760px){.mbezu-prod-nav-links{display:none!important}}';document.head.appendChild(st);}
+  }
   function appMark(){try{if(document.getElementById('root'))document.body.classList.add('mbezu-app');}catch(e){}}
-  function run(){goldFix();productLd();try{productNav();}catch(e){}try{galleryHint();}catch(e){}try{productSeries();}catch(e){}appMark();}
+  function run(){goldFix();productLd();try{productNav();}catch(e){}try{galleryHint();}catch(e){}try{productSeries();}catch(e){}try{productHeader();}catch(e){}appMark();}
   if(document.readyState!=='loading')run();
   document.addEventListener('DOMContentLoaded',run);
   window.addEventListener('load',run);
@@ -367,3 +396,7 @@ body.t-body:has(.t-store__prod-snippet__container),.t-store__prod-snippet__conta
 .t2823 .t-uptitle_xs,.t-cms__page .t-uptitle_xs,.t-cms__page .t-uptitle_sm{font-size:12px!important}
 @media (min-width:961px){#mbezu-gal-hint{display:none}}
 </style>
+<!-- MBezu · cookie-notice · 152-ФЗ: уведомление об использовании cookie и Яндекс Метрики (03.09) -->
+<style>#mbezu-ck{position:fixed;left:16px;right:16px;bottom:16px;z-index:99990;max-width:720px;margin:0 auto;background:#2a2520;color:#efe7d8;border-radius:14px;padding:14px 16px;box-shadow:0 12px 40px rgba(0,0,0,.28);font:14px/1.5 Inter Tight,system-ui,-apple-system,sans-serif;display:flex;gap:14px;align-items:center;flex-wrap:wrap}#mbezu-ck p{margin:0;flex:1 1 320px}#mbezu-ck a{color:#e0c77e;text-decoration:underline;text-underline-offset:3px}#mbezu-ck button{flex:0 0 auto;min-height:40px;padding:0 18px;border:0;border-radius:999px;background:#c9ad63;color:#2a2520;font:600 14px/1 Inter Tight,system-ui,sans-serif;cursor:pointer}#mbezu-ck button:focus-visible{outline:2px solid #efe7d8;outline-offset:2px}@media (max-width:600px){#mbezu-ck{left:10px;right:10px;bottom:10px;padding:12px 14px;font-size:13px}}</style>
+<script>(function(){try{var K='mbezu_cookie_ok';var ok=null;try{ok=localStorage.getItem(K);}catch(e){}if(ok)return;function show(){if(document.getElementById('mbezu-ck'))return;var d=document.createElement('div');d.id='mbezu-ck';d.setAttribute('role','region');d.setAttribute('aria-label','Уведомление о cookie');d.innerHTML='<p>Сайт использует cookie и Яндекс Метрику, чтобы работать и считать посещения. Продолжая, вы соглашаетесь с <a href="/legal?section=privacy">политикой обработки персональных данных</a>.</p><button type="button">Понятно</button>';d.querySelector('button').addEventListener('click',function(){try{localStorage.setItem(K,String(Date.now()));}catch(e){}d.parentNode.removeChild(d);});document.body.appendChild(d);}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',show);else show();}catch(e){}})();</script>
+<!-- /MBezu · cookie-notice -->

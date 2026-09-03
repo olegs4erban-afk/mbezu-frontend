@@ -34,7 +34,7 @@ function CatNo({ n, total }: { n: number | string; total?: number | string }) {
 // Sprint 15 (аудит): у крошки может быть настоящий href — тогда обработчик не нужен.
 function Breadcrumbs({ items }: { items: Array<{ label: React.ReactNode; href?: string; onClick?: () => void }> }) {
   return (
-    <nav style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', fontSize: 12 }} className="mono">
+    <nav aria-label="Хлебные крошки" style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', fontSize: 12 }} className="mono">
       {items.map((it, i) => (
         <React.Fragment key={i}>
           {i > 0 && <span style={{ color: 'var(--ink-3)' }}>/</span>}

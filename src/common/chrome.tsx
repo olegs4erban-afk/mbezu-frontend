@@ -37,18 +37,22 @@ function openNativeCart(e: React.MouseEvent) {
 // ─────────────────────────────────────────────────────────────
 
 // ── Логотип MBezu — wordmark в Inter Tight (Sprint 10: без подписи Maison · Moscou) ──
-function LogoMB({ size = 32, onClick }) {
-  return (
-    <div onClick={onClick} style={{
-      display: 'inline-flex', flexDirection: 'column', alignItems: 'center',
-      lineHeight: 1, cursor: onClick ? 'pointer' : 'default',
-    }}>
-      <div className="display" style={{
-        fontSize: size, fontWeight: 500, letterSpacing: '-.02em',
-        color: 'var(--ink)', fontStyle: 'italic',
-      }}>MBezu</div>
-    </div>
+// 03.09 a11y: был <div onClick> — логотип не попадал в Tab и не имел роли/имени.
+// С href — настоящая ссылка на главную (go('home') и так делал обычный переход по адресу).
+function LogoMB({ size = 32, href, onClick }: { size?: number; href?: string; onClick?: () => void }) {
+  const inner = (
+    <div className="display" style={{
+      fontSize: size, fontWeight: 500, letterSpacing: '-.02em',
+      color: 'var(--ink)', fontStyle: 'italic',
+    }}>MBezu</div>
   );
+  const style: React.CSSProperties = {
+    display: 'inline-flex', flexDirection: 'column', alignItems: 'center',
+    lineHeight: 1, cursor: (href || onClick) ? 'pointer' : 'default',
+    textDecoration: 'none', color: 'inherit',
+  };
+  if (href) return <a href={href} aria-label="MBezu — на главную" style={style}>{inner}</a>;
+  return <div onClick={onClick} style={style}>{inner}</div>;
 }
 
 // ── ZeroBanner — тонкий «индекс выпуска» вверху ───────────────
@@ -110,9 +114,9 @@ function TopBar({ route, go, cartCount: cartProp }) {
           maxWidth: 'var(--max)', margin: '0 auto',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         }}>
-          <LogoMB size={28} onClick={() => go('home')} />
+          <LogoMB size={28} href={routeToPath('home')} />
 
-          <nav className="hide-mobile" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
+          <nav className="hide-mobile" aria-label="Основная навигация" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
             {navItems.map((n) => (
               <a key={n.id} href={routeToPath(n.id as RouteName)}
                  className="uh"
@@ -207,8 +211,9 @@ function BottomTabBar({ route, go, cartCount: cartProp }) {
 // ── Marquee — бегущая строка ──────────────────────────────────
 function Marquee({ items, big }) {
   const stream = [...items, ...items, ...items];
+  // 03.09 a11y: бегущая строка декоративна, а текст утроен — скринридеру не читаем
   return (
-    <div style={{
+    <div aria-hidden="true" style={{
       padding: big ? '40px 0' : '20px 0',
       borderTop: '1px solid var(--rule-soft)',
       borderBottom: '1px solid var(--rule-soft)',

@@ -97,7 +97,7 @@ function CatalogPage({ go, density, initialSeries }) {
           <div style={{ gridColumn: '1 / 9' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }} className="resp-scroll-x">
               {SUBJECTS.filter((s) => s.id === 'all' || series === 'all' || visibleArtworks().some((a) => a.series === series && a.subject === s.id)).map((s) => (
-                <button key={s.id}
+                <button key={s.id} aria-pressed={subject === s.id}
                         className={'chip' + (subject === s.id ? ' is-active' : '')}
                         onClick={() => setSubject(s.id)}>
                   {s.label}
@@ -125,7 +125,7 @@ function CatalogPage({ go, density, initialSeries }) {
               <option value="year-desc">По году</option>
             </select>
             <div style={{ display: 'flex', borderRadius: 'var(--r-pill)', overflow: 'hidden', border: '1px solid var(--rule)' }}>
-              <button onClick={() => setView('grid')}
+              <button onClick={() => setView('grid')} aria-pressed={view === 'grid'}
                       style={{
                         background: view === 'grid' ? 'var(--ink)' : 'transparent',
                         color: view === 'grid' ? 'var(--bg)' : 'var(--ink)',
@@ -133,7 +133,7 @@ function CatalogPage({ go, density, initialSeries }) {
                         fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase',
                         cursor: 'pointer',
                       }}>Сетка</button>
-              <button onClick={() => setView('list')}
+              <button onClick={() => setView('list')} aria-pressed={view === 'list'}
                       style={{
                         background: view === 'list' ? 'var(--ink)' : 'transparent',
                         color: view === 'list' ? 'var(--bg)' : 'var(--ink)',

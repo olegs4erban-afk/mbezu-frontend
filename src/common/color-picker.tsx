@@ -70,9 +70,16 @@ export function ColorPicker({ value, onChange, onDone }: Props) {
 
   return (
     <div style={{ background: 'var(--bg-card)', border: '1px solid var(--rule-soft)', borderRadius: 'var(--r-lg)', padding: 14, maxWidth: 420 }}>
-      {/* поле насыщенность (X) × яркость (Y) */}
-      <div role="slider" aria-label="Насыщенность и яркость" aria-valuetext={value}
+      {/* поле насыщенность (X) × яркость (Y).
+          03.09 a11y: role=slider без tabindex не получал фокус — теперь Tab + стрелки (Shift — крупнее шаг) */}
+      <div role="slider" aria-label="Насыщенность и яркость" aria-valuetext={value} tabIndex={0}
            onPointerDown={(e) => drag(e.currentTarget, e, (x, y) => emit(hue, x, 1 - y))}
+           onKeyDown={(e) => {
+             const d = e.shiftKey ? 0.1 : 0.02;
+             const map: Record<string, [number, number]> = { ArrowLeft: [-d, 0], ArrowRight: [d, 0], ArrowUp: [0, d], ArrowDown: [0, -d] };
+             const m = map[e.key]; if (!m) return;
+             e.preventDefault(); emit(hue, clamp(s + m[0], 0, 1), clamp(v + m[1], 0, 1));
+           }}
            style={{
              position: 'relative', height: 200, borderRadius: 'var(--r-md)', cursor: 'crosshair', touchAction: 'none',
              background: `linear-gradient(to top, #000, rgba(0,0,0,0)), linear-gradient(to right, #fff, ${pureHue})`,
@@ -80,8 +87,14 @@ export function ColorPicker({ value, onChange, onDone }: Props) {
         <div style={{ ...knob, left: `${s * 100}%`, top: `${(1 - v) * 100}%`, background: value }} />
       </div>
       {/* полоса тона */}
-      <div role="slider" aria-label="Тон" aria-valuenow={Math.round(hue)} aria-valuemin={0} aria-valuemax={360}
+      <div role="slider" aria-label="Тон" aria-valuenow={Math.round(hue)} aria-valuemin={0} aria-valuemax={360} tabIndex={0}
            onPointerDown={(e) => drag(e.currentTarget, e, (x) => { const nh = x * 360; setHue(nh); emit(nh, s, v); })}
+           onKeyDown={(e) => {
+             const d = e.shiftKey ? 15 : 3;
+             const k = (e.key === 'ArrowLeft' || e.key === 'ArrowDown') ? -d : ((e.key === 'ArrowRight' || e.key === 'ArrowUp') ? d : 0);
+             if (!k) return;
+             e.preventDefault(); const nh = clamp(hue + k, 0, 360); setHue(nh); emit(nh, s, v);
+           }}
            style={{
              position: 'relative', height: 18, marginTop: 14, borderRadius: 999, cursor: 'pointer', touchAction: 'none',
              background: 'linear-gradient(to right,#f00 0%,#ff0 17%,#0f0 33%,#0ff 50%,#00f 67%,#f0f 83%,#f00 100%)',

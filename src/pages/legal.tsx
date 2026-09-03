@@ -513,11 +513,11 @@ function LegalPage({ go, section }) {
           {/* Левая колонка — навигация по табам */}
           <aside style={{ position: 'sticky', top: 100, alignSelf: 'start' }} className="resp-static">
             <Eyebrow accent>Документы</Eyebrow>
-            <nav style={{
+            <nav aria-label="Разделы документов" style={{
               marginTop: 20, display: 'flex', flexDirection: 'column', gap: 4,
             }} className="resp-flex-col">
               {LEGAL_TABS.map((t) => (
-                <button key={t.id} onClick={() => {
+                <button key={t.id} aria-current={tab === t.id ? 'true' : undefined} onClick={() => {
                   setTab(t.id);
                   // Sprint 15 (моб. аудит): раздел — в URL, чтобы F5 и шаринг не теряли выбор
                   try { history.replaceState(null, '', '/legal?section=' + t.id); } catch { /* SSR/старые браузеры */ }

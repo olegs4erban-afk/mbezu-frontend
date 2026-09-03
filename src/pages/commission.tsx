@@ -297,7 +297,7 @@ function CommissionPage({ go, refId }) {
                   display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12,
                 }}>
                   {sizes.map((s) => (
-                    <button key={s.id} type="button" onClick={() => upd('size', s.id)}
+                    <button key={s.id} type="button" onClick={() => upd('size', s.id)} aria-pressed={form.size === s.id}
                             style={{
                               padding: '20px 18px', minHeight: 44,
                               background: form.size === s.id ? 'var(--ink)' : 'var(--bg-card)',
@@ -316,11 +316,11 @@ function CommissionPage({ go, refId }) {
                 {form.size === 'custom' && (
                   <div className="fade-in" style={{ marginTop: 16 }}>
                     <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-                      <input className="field" type="number" min={10} max={300} placeholder="Ширина, см"
+                      <input className="field" type="number" min={10} max={300} placeholder="Ширина, см" aria-label="Ширина, см"
                              value={form.customW} onChange={(e) => upd('customW', e.target.value)}
                              style={{ width: 150 }} />
                       <span style={{ color: 'var(--ink-3)' }}>×</span>
-                      <input className="field" type="number" min={10} max={300} placeholder="Высота, см"
+                      <input className="field" type="number" min={10} max={300} placeholder="Высота, см" aria-label="Высота, см"
                              value={form.customH} onChange={(e) => upd('customH', e.target.value)}
                              style={{ width: 150 }} />
                     </div>
@@ -336,14 +336,14 @@ function CommissionPage({ go, refId }) {
                 <Eyebrow accent style={{ marginBottom: 18, display: 'block' }}>02 · Стиль</Eyebrow>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                   {styles.map((s) => (
-                    <button key={s.id} type="button" onClick={() => upd('style', s.id)}
+                    <button key={s.id} type="button" onClick={() => upd('style', s.id)} aria-pressed={form.style === s.id}
                             className={'chip' + (form.style === s.id ? ' is-active' : '')}>
                       {s.label}
                     </button>
                   ))}
                 </div>
                 {form.style === 'custom' && (
-                  <input className="field fade-in" placeholder="Опишите стиль — например, «абстракция в тёплых тонах»"
+                  <input className="field fade-in" placeholder="Опишите стиль — например, «абстракция в тёплых тонах»" aria-label="Опишите стиль"
                          value={form.customStyle} onChange={(e) => upd('customStyle', e.target.value)}
                          style={{ marginTop: 14 }} />
                 )}
@@ -359,7 +359,7 @@ function CommissionPage({ go, refId }) {
                   display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 10,
                 }}>
                   {palettes.map((p) => (
-                    <button key={p.id} type="button" onClick={() => { upd('palette', p.id); setShowPicker(false); }}
+                    <button key={p.id} type="button" onClick={() => { upd('palette', p.id); setShowPicker(false); }} aria-pressed={form.palette === p.id}
                             style={{
                               padding: '14px 14px', minHeight: 44, background: 'var(--bg-card)',
                               border: '1px solid ' + (form.palette === p.id ? 'var(--accent)' : 'var(--rule-soft)'),
@@ -379,7 +379,7 @@ function CommissionPage({ go, refId }) {
 
                 {/* «Другое» → нативный color-picker */}
                 <div style={{ marginTop: 14, display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-                  <button type="button"
+                  <button type="button" aria-expanded={showPicker}
                           className={'chip' + (showPicker ? ' is-active' : '')}
                           onClick={() => { setShowPicker(!showPicker); if (!isHexPalette) upd('palette', '#a08a4e'); }}>
                     Другое
@@ -407,7 +407,7 @@ function CommissionPage({ go, refId }) {
                     {formatPrice(form.budget)}
                   </span>
                 </div>
-                <input type="range" min={6000} max={120000} step={1000}
+                <input type="range" min={6000} max={120000} step={1000} aria-label="Бюджет" aria-valuetext={formatPrice(form.budget)}
                        value={form.budget} onChange={(e) => upd('budget', Number(e.target.value))}
                        style={{ width: '100%', accentColor: 'var(--accent)' }} />
                 <div className="cat-no" style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
@@ -421,7 +421,7 @@ function CommissionPage({ go, refId }) {
                 <Eyebrow accent style={{ marginBottom: 18, display: 'block' }}>05 · Сроки</Eyebrow>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {weeks.map((w) => (
-                    <button key={w} type="button" onClick={() => upd('weeks', w)}
+                    <button key={w} type="button" onClick={() => upd('weeks', w)} aria-pressed={form.weeks === w}
                             className={'chip' + (form.weeks === w ? ' is-active' : '')}
                             style={{ minWidth: 80, justifyContent: 'center' }}>
                       {w} нед
@@ -440,7 +440,7 @@ function CommissionPage({ go, refId }) {
                   {/* Sprint 15 (моб. аудит): «(опц.)» обрезался в узкой колонке 375px */}
                   <input className="field" placeholder="Куда повесим" aria-label="Куда повесим" value={form.where || ''} onChange={(e) => upd('where', e.target.value)} />
                 </div>
-                <textarea className="field" placeholder="Дополнительно — настроение, ассоциации, ссылки на референсы…" rows={4} style={{ marginTop: 14 }}
+                <textarea className="field" placeholder="Дополнительно — настроение, ассоциации, ссылки на референсы…" aria-label="Дополнительно" rows={4} style={{ marginTop: 14 }}
                           value={form.notes} onChange={(e) => upd('notes', e.target.value)} />
 
                 <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"

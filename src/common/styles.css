@@ -537,6 +537,11 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; }
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
   outline: 2px solid var(--accent); outline-offset: 2px;
 }
+/* 03.09 a11y: поле подписки лежит в «пилюле» без своей рамки — кольцо фокуса внутрь и той же формы */
+.nl-form input:focus-visible { outline-offset: -2px; border-radius: var(--r-pill); }
+/* 03.09 a11y: фиксированный cookie-баннер (#mbezu-ck, head-код Tilda) закрывал элемент, к которому прокрутил Tab —
+   пока баннер в DOM, прокрутка к фокусу оставляет запас снизу */
+html:has(#mbezu-ck) { scroll-padding-bottom: 96px; }
 @media (max-width: 600px) {
   /* первый экран главной: картина сразу под кнопками (мета-полоса скрыта), меньше воздуха сверху */
   .home-hero { padding-top: 36px !important; padding-bottom: 56px !important; }

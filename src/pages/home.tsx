@@ -164,13 +164,14 @@ function HeroCenter({ go }) {
         maxWidth: 'var(--max)', marginInline: 'auto',
       }}>
         {fts.map((a) => (
-          <div key={a.id} className="lift" style={{ cursor: 'pointer' }}
-               onClick={() => go('painting', { id: a.id })}>
+          // 03.09 a11y: был <div onClick> — с клавиатуры не открыть; теперь ссылка
+          <a key={a.id} className="lift" href={routeToPath('painting', { id: a.id })}
+             style={{ cursor: 'pointer', display: 'block', textDecoration: 'none', color: 'inherit' }}>
             <PaintingPlate art={a} fit="bare" objectFit="contain" plain style={{ aspectRatio: '4 / 5' }} showMeta={false} />
             <div className="cat-no" style={{ marginTop: 14, textAlign: 'left' }}>
               {a.title} · {a.w}×{a.h} см
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </section>
@@ -753,17 +754,18 @@ function LeadForm({ go }) {
       <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
              value={lead.trap} onChange={(e) => upd('trap', e.target.value)}
              style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} />
-      <input className="field" style={fieldStyle} placeholder="Имя *"
+      {/* 03.09 a11y: подписи полей были только placeholder — добавлены aria-label */}
+      <input className="field" style={fieldStyle} placeholder="Имя *" aria-label="Имя"
              name="name" autoComplete="name" aria-required="true"
              aria-invalid={touched && !nameOk ? true : undefined}
              value={lead.name} onChange={(e) => upd('name', e.target.value)} />
       {touched && !nameOk && <span style={{ fontSize: 12, opacity: .85 }}>Укажите имя</span>}
-      <input className="field" style={fieldStyle} placeholder="Телефон / Telegram / email *"
+      <input className="field" style={fieldStyle} placeholder="Телефон / Telegram / email *" aria-label="Телефон, Telegram или email"
              name="contact" autoComplete="tel" aria-required="true"
              aria-invalid={touched && !contactOk ? true : undefined}
              value={lead.contact} onChange={(e) => upd('contact', e.target.value)} />
       {touched && !contactOk && <span style={{ fontSize: 12, opacity: .85 }}>Укажите контакт — телефон, Telegram или email</span>}
-      <textarea className="field" style={{ ...fieldStyle, minHeight: 84 }} rows={3}
+      <textarea className="field" style={{ ...fieldStyle, minHeight: 84 }} rows={3} aria-label="О работе"
                 placeholder="О работе: размер, настроение, место (необязательно)"
                 value={lead.about} onChange={(e) => upd('about', e.target.value)} />
 
@@ -833,7 +835,7 @@ function CommissionCTA({ go }) {
           animation: 'shimmer 12s linear infinite',
           pointerEvents: 'none',
         }} />
-        <div className="display" style={{
+        <div className="display" aria-hidden="true" style={{
           position: 'absolute', right: -30, top: -50,
           fontSize: 'clamp(180px, 22vw, 360px)',
           color: 'rgba(245,239,226,.10)',
@@ -981,12 +983,14 @@ function Newsletter() {
                   minWidth: 0, maxWidth: '100%',
                 }}>
             {/* Sprint 15 (моб. аудит): fontSize 16 — меньше 16px iOS зумит страницу при фокусе */}
-            <input type="email" placeholder="ваша почта" required
+            {/* 03.09 a11y: aria-label (подпись была только placeholder); inline outline:none убран —
+                он перебивал глобальный input:focus-visible, и фокус с клавиатуры был невидим */}
+            <input type="email" placeholder="ваша почта" required aria-label="Электронная почта"
                    value={email} onChange={(e) => setEmail(e.target.value)}
                    style={{
                      border: 0, background: 'transparent', flex: 1,
                      minWidth: 0, width: '100%',
-                     padding: '14px 22px', outline: 'none',
+                     padding: '14px 22px',
                      fontFamily: 'var(--sans)', fontSize: 16, lineHeight: 1.3, color: 'var(--ink)',
                    }} />
             <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"

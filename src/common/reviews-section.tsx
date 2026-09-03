@@ -13,7 +13,7 @@ import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
 // ── звёзды ───────────────────────────────────────────────────
 export function Stars({ rating, size = 16 }: { rating: number; size?: number }) {
   return (
-    <span aria-label={`Оценка ${rating} из 5`} style={{ display: 'inline-flex', gap: 2, verticalAlign: 'middle' }}>
+    <span role="img" aria-label={`Оценка ${rating} из 5`} style={{ display: 'inline-flex', gap: 2, verticalAlign: 'middle' }}>
       {[1, 2, 3, 4, 5].map((i) => (
         <svg key={i} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true"
              fill={i <= Math.round(rating) ? 'var(--accent)' : 'none'}
@@ -129,11 +129,11 @@ function ReviewForm() {
         </div>
         <StarsInput value={rating} onChange={setRating} />
       </div>
-      <input style={inputStyle} placeholder="Имя" autoComplete="name"
+      <input style={inputStyle} placeholder="Имя" aria-label="Имя" autoComplete="name"
              value={form.name} onChange={field('name')} />
-      <input style={inputStyle} placeholder="Город (не обязательно)" autoComplete="address-level2"
+      <input style={inputStyle} placeholder="Город (не обязательно)" aria-label="Город" autoComplete="address-level2"
              value={form.city} onChange={field('city')} />
-      <textarea style={{ ...inputStyle, minHeight: 110, resize: 'vertical' }}
+      <textarea style={{ ...inputStyle, minHeight: 110, resize: 'vertical' }} aria-label="Текст отзыва"
                 placeholder="Какая работа у вас и как она живёт в интерьере?"
                 value={form.text} onChange={field('text')} />
       {/* honeypot: люди поле не видят, боты заполняют всё */}
