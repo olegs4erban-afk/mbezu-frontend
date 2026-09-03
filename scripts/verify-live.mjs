@@ -7,6 +7,18 @@
 //
 // Запуск:  npm run verify           (все страницы)
 //          PAGES=home,catalog npm run verify
+//
+// 03.09 — приёмка head-кода и посадочных (всё по статичному HTML, без браузера):
+//   • perf-preload (preconnect к CDN, ≥4 preload шрифтов), отложенный тег Метрики
+//     (perf-metrika + mbzGo), cookie-плашка 152-ФЗ (cookie-notice + #mbezu-ck);
+//   • inline-скрипт data-mbezu на <html> цел: есть setAttribute('data-mbezu','app')
+//     и НЕТ «replace(//+$/» — так выглядит regex после того, как редактор head
+//     Tilda вырезал обратные слэши (прошлая поломка витрины);
+//   • CSS-скрытие форм-приёмников .t-rec:has(input[name="lead_ref"]);
+//   • 7 посадочных: статичный JSON-LD #mbezu-ld-… с FAQPage + BreadcrumbList,
+//     title ≤ 70 и description ≤ 160; title ≤ 70 — и на страницах seo/pages.json;
+//   • cdn.mbezu.ru/llms.txt отвечает 200 и начинается с «# MBezu».
+//   Домен за ddos-guard — между запросами держим паузу.
 // ─────────────────────────────────────────────────────────────
 import { readFileSync } from 'node:fs';
 
@@ -26,6 +38,69 @@ const get = (url, opts = {}) =>
 
 const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 const attr = (html, re) => (html.match(re) || [])[1] || '';
+// домен за ddos-guard: серия быстрых запросов с одного адреса ловит челлендж вместо страницы
+const pause = (ms = 400) => new Promise((r) => setTimeout(r, ms));
+const headOf = (html) => { const i = html.indexOf('</head>'); return i > 0 ? html.slice(0, i) : html; };
+const decode = (s) => s.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+const count = (s, needle) => s.split(needle).length - 1;
+
+// 03.09: посадочные под запросы «картина в …» и серии-подборки (статичный HTML + JSON-LD, Tilda T123)
+const LANDINGS = ['/podarok', '/kartina-v-gostinuyu', '/kartina-v-spalnyu', '/kartina-v-kabinet', '/catalog/more', '/catalog/botanika', '/catalog/gory'];
+// страницы вне seo/pages.json, у которых проверяем head-код сайта
+const EXTRA_HEAD = ['/podarok', '/journal'];
+
+/** Все, что живёт в head-коде сайта Tilda (tilda-head-code.mjs) — по одной проверке на блок. */
+function checkHead(name, html) {
+  const head = headOf(html);
+  const fonts = count(head, '<link rel="preload" as="font"');
+  rec(name, head.includes('<!-- MBezu · perf-preload') && fonts >= 4, 'head: perf-preload, ≥4 preload шрифтов',
+    `${head.includes('<!-- MBezu · perf-preload') ? 'маркер есть' : 'маркера нет'}, preload шрифтов: ${fonts}`);
+  rec(name, head.includes('<link rel="preconnect" href="https://cdn.mbezu.ru"'), 'head: preconnect к cdn.mbezu.ru', 'отсутствует');
+  rec(name, head.includes('MBezu · perf-metrika') && head.includes('mbzGo'), 'head: perf-metrika, отложенный тег Метрики (mbzGo)',
+    `${head.includes('MBezu · perf-metrika') ? 'маркер есть' : 'маркера нет'}, mbzGo: ${count(head, 'mbzGo')}`);
+  rec(name, head.includes('MBezu · cookie-notice') && head.includes('mbezu-ck'), 'head: cookie-notice, плашка #mbezu-ck',
+    `${head.includes('MBezu · cookie-notice') ? 'маркер есть' : 'маркера нет'}, mbezu-ck: ${count(head, 'mbezu-ck')}`);
+  // Редактор head Tilda вырезает обратные слэши: `replace(/\/+$/` превращается в `replace(//+$/` —
+  // это уже комментарий до конца строки, скрипт ломается, витрина остаётся без data-mbezu.
+  const setOk = html.includes("setAttribute('data-mbezu','app')");
+  const brokenRe = html.includes('replace(//+$/');
+  rec(name, setOk && !brokenRe, "inline-скрипт data-mbezu цел (setAttribute есть, «replace(//+$/» нет)",
+    `${setOk ? 'setAttribute есть' : 'setAttribute отсутствует'}${brokenRe ? ', найден replace(//+$/ — вырезаны слэши' : ''}`);
+  rec(name, head.includes('.t-rec:has(input[name="lead_ref"])'), 'head: CSS-скрытие форм-приёмников lead_ref', 'селектор отсутствует');
+}
+
+function checkTitle(name, html) {
+  const title = decode(strip(attr(html, /<title[^>]*>([\s\S]*?)<\/title>/)));
+  rec(name, !!title && title.length <= 70, 'title непустой, ≤70', title ? `${title.length} симв.: ${title.slice(0, 48)}…` : 'отсутствует');
+}
+
+function checkDescr(name, html) {
+  const desc = attr(html, /<meta[^>]+name="description"[^>]+content="([^"]*)"/);
+  const descOk = !!desc && desc.length <= 160 && !/Открытие сайта/i.test(desc) && !/^артины/.test(desc);
+  rec(name, descOk, 'description непустой, ≤160, без «Открытие сайта»',
+    desc ? `${desc.length} симв.: ${desc.slice(0, 48)}…` : 'отсутствует');
+}
+
+/** Собрать все @type из JSON-LD (массив, @graph, вложенные сущности). */
+function ldTypes(node, acc = new Set()) {
+  if (Array.isArray(node)) node.forEach((n) => ldTypes(n, acc));
+  else if (node && typeof node === 'object') {
+    if (typeof node['@type'] === 'string') acc.add(node['@type']);
+    for (const v of Object.values(node)) if (v && typeof v === 'object') ldTypes(v, acc);
+  }
+  return acc;
+}
+function checkLanding(name, html) {
+  const m = html.match(/<script[^>]*id="(mbezu-ld-[^"]*)"[^>]*>([\s\S]*?)<\/script>/);
+  if (!m || !/type="application\/ld\+json"/.test(m[0])) {
+    rec(name, false, 'JSON-LD #mbezu-ld-… с FAQPage + BreadcrumbList', m ? `${m[1]} без type=ld+json` : 'скрипт отсутствует');
+    return;
+  }
+  let types = new Set(), err = '';
+  try { types = ldTypes(JSON.parse(m[2])); } catch (e) { err = 'JSON.parse: ' + String(e).slice(0, 50); }
+  const ok = !err && types.has('FAQPage') && types.has('BreadcrumbList');
+  rec(name, ok, 'JSON-LD #mbezu-ld-… с FAQPage + BreadcrumbList', err || `${m[1]}: ${[...types].slice(0, 6).join(', ')}`);
+}
 
 /**
  * Склеенные слова (Ф2.4). Корень — переносы через <br>/<span> БЕЗ пробела между
@@ -90,10 +165,8 @@ async function checkPage(name) {
     rec(name, st === 200, 'og:image указан и отдаёт 200', `${ogImg.slice(0, 60)} → ${st}`);
   }
 
-  const desc = attr(html, /<meta[^>]+name="description"[^>]+content="([^"]*)"/);
-  const descOk = !!desc && desc.length <= 160 && !/Открытие сайта/i.test(desc) && !/^артины/.test(desc);
-  rec(name, descOk, 'description непустой, ≤160, без «Открытие сайта»',
-    desc ? `${desc.length} симв.: ${desc.slice(0, 48)}…` : 'отсутствует');
+  checkDescr(name, html);
+  checkTitle(name, html);
 
   // Наш русификатор Store живёт в head сайта, и его словарь содержит те самые
   // английские строки. Считать их «нерусифицированным контентом» неверно —
@@ -104,6 +177,33 @@ async function checkPage(name) {
   const content2 = content.split('js-store-load-more-btn-text">Load more<').join('js-store-load-more-btn-text"><');
   const found = STORE_EN.filter((s) => content2.includes(s));
   rec(name, found.length === 0, 'нет нерусифицированных строк Store', found.join(', '));
+
+  checkHead(name, html);
+}
+
+// 03.09: страницы вне seo/pages.json — head-код сайта на /podarok и /journal,
+// JSON-LD + длины title/description на семи посадочных. Один запрос на страницу.
+async function checkExtras() {
+  const paths = [...new Set([...EXTRA_HEAD, ...LANDINGS])];
+  for (const p of paths) {
+    await pause();
+    let r, html;
+    try {
+      r = await get(ORIGIN + p);
+      html = await r.text();
+    } catch (e) {
+      rec(p, false, 'доступность', String(e).slice(0, 60));
+      continue;
+    }
+    rec(p, r.status === 200, 'status 200', `получено ${r.status}`);
+    if (r.status !== 200) continue;
+    if (EXTRA_HEAD.includes(p)) checkHead(p, html);
+    if (LANDINGS.includes(p)) {
+      checkLanding(p, html);
+      checkTitle(p, html);
+      checkDescr(p, html);
+    }
+  }
 }
 
 async function checkGlobal() {
@@ -129,6 +229,15 @@ async function checkGlobal() {
     rec('/cart', /<meta[^>]+name="robots"[^>]+noindex/i.test(html), '/cart закрыт noindex',
       /name="robots"/i.test(html) ? 'robots есть, но без noindex' : 'meta robots отсутствует');
   } catch { rec('/cart', false, '/cart закрыт noindex', 'страница недоступна'); }
+
+  // 03.09: llms.txt для ИИ-поисковиков лежит на CDN витрины
+  await pause();
+  try {
+    const r = await get('https://cdn.mbezu.ru/llms.txt', { redirect: 'follow' });
+    const txt = await r.text();
+    rec('llms.txt', r.status === 200 && txt.startsWith('# MBezu'), 'cdn.mbezu.ru/llms.txt → 200, начинается с «# MBezu»',
+      `${r.status}, начало: ${JSON.stringify(txt.slice(0, 24))}`);
+  } catch (e) { rec('llms.txt', false, 'cdn.mbezu.ru/llms.txt → 200, начинается с «# MBezu»', String(e).slice(0, 60)); }
 }
 
 // ── Проверка, что витрина ЖИВАЯ ────────────────────────────────
@@ -169,8 +278,8 @@ async function checkAlive(paths) {
 }
 
 console.log(`\n  verify-live · ${ORIGIN} · User-Agent: YandexBot · без JS\n`);
-for (const n of names) { await checkPage(n); }
-if (!only.length) await checkGlobal();
+for (const n of names) { await pause(); await checkPage(n); }
+if (!only.length) { await checkExtras(); await checkGlobal(); }
 await checkAlive(only.length ? ['/'] : ['/', '/catalog', '/about']);
 
 let cur = '';
