@@ -394,6 +394,21 @@ function perfMetrika(out) {
   return out.slice(0, a) + repl + out.slice(b + tail.length);
 }
 
+// 03.09 (152-ФЗ): уведомление о cookie/Метрике на всех страницах — фиксированная плашка снизу, согласие в localStorage.
+// Без обратных слэшей и regex (редактор head Tilda вырезает слэши).
+const CK_MARK = 'MBezu · cookie-notice';
+const CK_END = '<!-- /MBezu · cookie-notice -->';
+const CK_SNIPPET = `
+<!-- ${CK_MARK} · 152-ФЗ: уведомление об использовании cookie и Яндекс Метрики (03.09) -->
+<style>#mbezu-ck{position:fixed;left:16px;right:16px;bottom:16px;z-index:99990;max-width:720px;margin:0 auto;background:#2a2520;color:#efe7d8;border-radius:14px;padding:14px 16px;box-shadow:0 12px 40px rgba(0,0,0,.28);font:14px/1.5 Inter Tight,system-ui,-apple-system,sans-serif;display:flex;gap:14px;align-items:center;flex-wrap:wrap}#mbezu-ck p{margin:0;flex:1 1 320px}#mbezu-ck a{color:#e0c77e;text-decoration:underline;text-underline-offset:3px}#mbezu-ck button{flex:0 0 auto;min-height:40px;padding:0 18px;border:0;border-radius:999px;background:#c9ad63;color:#2a2520;font:600 14px/1 Inter Tight,system-ui,sans-serif;cursor:pointer}#mbezu-ck button:focus-visible{outline:2px solid #efe7d8;outline-offset:2px}@media (max-width:600px){#mbezu-ck{left:10px;right:10px;bottom:10px;padding:12px 14px;font-size:13px}}</style>
+<script>(function(){try{var K='mbezu_cookie_ok';var ok=null;try{ok=localStorage.getItem(K);}catch(e){}if(ok)return;function show(){if(document.getElementById('mbezu-ck'))return;var d=document.createElement('div');d.id='mbezu-ck';d.setAttribute('role','region');d.setAttribute('aria-label','Уведомление о cookie');d.innerHTML='<p>Сайт использует cookie и Яндекс Метрику, чтобы работать и считать посещения. Продолжая, вы соглашаетесь с <a href="/legal?section=privacy">политикой обработки персональных данных</a>.</p><button type="button">Понятно</button>';d.querySelector('button').addEventListener('click',function(){try{localStorage.setItem(K,String(Date.now()));}catch(e){}d.parentNode.removeChild(d);});document.body.appendChild(d);}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',show);else show();}catch(e){}})();</script>
+${CK_END}`;
+function cookieNotice(out) {
+  const NL = String.fromCharCode(10);
+  if (out.includes(CK_MARK)) { const a = out.indexOf('<!-- ' + CK_MARK); const b = out.indexOf(CK_END, a); if (a >= 0 && b > a) return out.slice(0, a) + CK_SNIPPET.trim() + out.slice(b + CK_END.length); return out; }
+  return out.trimEnd() + NL + CK_SNIPPET.trim() + NL;
+}
+
 // Аудит r2 (SEO): Organization.logo вёл на 404, в адресе была квартира, у Organization не было sameAs,
 // Person.url указывал на главную. Правим JSON прямо в head-коде.
 function ldFix(out) {
@@ -496,6 +511,7 @@ function patchHead(src) {
   out = ldFix(out);
   out = perfPreload(out);
   out = perfMetrika(out);
+  out = cookieNotice(out);
   return { out, removed, brandFixed, typeFixed, ruAdded, rcvAdded };
 }
 
