@@ -99,7 +99,10 @@ async function checkPage(name) {
   // английские строки. Считать их «нерусифицированным контентом» неверно —
   // вырезаем свой блок перед проверкой, иначе проверка ловит сама себя.
   const content = html.replace(/<!--\s*MBezu · ru-store[\s\S]*?<\/script>/gi, '');
-  const found = STORE_EN.filter((s) => content.includes(s));
+  // 03.09: кнопка «Load more» скрытого нативного каталога (#rec2291453131, display:none) — текст по умолчанию Tilda,
+  // поля для него нет; на живой странице его подменяет русификатор. Не считаем.
+  const content2 = content.split('js-store-load-more-btn-text">Load more<').join('js-store-load-more-btn-text"><');
+  const found = STORE_EN.filter((s) => content2.includes(s));
   rec(name, found.length === 0, 'нет нерусифицированных строк Store', found.join(', '));
 }
 
