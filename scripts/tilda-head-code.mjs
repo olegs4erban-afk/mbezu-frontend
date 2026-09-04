@@ -412,8 +412,8 @@ const CRT_SNIPPET = `
 ${CRT_END}`;
 function cartRu(out) {
   const NL = String.fromCharCode(10);
-  if (out.includes(CRT_MARK)) { const a = out.indexOf('<!-- ' + CRT_MARK); const b = out.indexOf(CRT_END, a); if (a >= 0 && b > a) return out.slice(0, a) + CRT_SNIPPET.trim() + out.slice(b + CRT_END.length); return out; }
-  return out.trimEnd() + NL + CRT_SNIPPET.trim() + NL;
+  if (out.includes(CRT_MARK)) { const a = out.indexOf('<!-- ' + CRT_MARK); const b = out.indexOf(CRT_END, a); if (a >= 0 && b > a) return (out.slice(0, a) + out.slice(b + CRT_END.length)).trimEnd() + NL; return out; }
+  return out; // 04.09: не вставляем — Tilda сама показывает «Способ оплаты» в живом DOM; английский только в статике
 }
 function cookieNotice(out) {
   const NL = String.fromCharCode(10);
