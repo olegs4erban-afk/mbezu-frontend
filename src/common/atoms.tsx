@@ -224,4 +224,23 @@ function ArtRow({ art, onOpen, index, total }: { art: any; onOpen?: (id: string)
 
 // Глобальная экспозиция компонентов
 
-export { Eyebrow, CatNo, Breadcrumbs, PageTitle, StatusTag, ArtCard, ArtRow };
+
+// ── LinkStrip — строка «метка · ссылка · ссылка» для посадочных вне RouteName (04.09 перелинковка) ──
+function LinkStrip({ label, links, style }: { label: React.ReactNode; links: Array<[string, string]>; style?: React.CSSProperties }) {
+  return (
+    <p style={{
+      margin: 0, display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px 16px',
+      fontSize: 14.5, color: 'var(--ink-2)', ...style,
+    }}>
+      <span className="cat-no">{label}</span>
+      {links.map(([href, text], i) => (
+        <React.Fragment key={href}>
+          {i > 0 && <span aria-hidden="true" style={{ color: 'var(--ink-3)' }}>·</span>}
+          <a href={href} className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>{text}</a>
+        </React.Fragment>
+      ))}
+    </p>
+  );
+}
+
+export { Eyebrow, CatNo, Breadcrumbs, PageTitle, StatusTag, ArtCard, ArtRow, LinkStrip };

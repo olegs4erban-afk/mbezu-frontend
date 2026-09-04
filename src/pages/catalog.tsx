@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArtCard, ArtRow, Breadcrumbs, Eyebrow } from '../common/atoms';
+import { ArtCard, ArtRow, Breadcrumbs, Eyebrow, LinkStrip } from '../common/atoms';
 import { ARTWORKS, SERIES, SUBJECTS, visibleArtworks } from '../common/data';
 import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, plural } from '../common/seo';
 import { routeToPath } from '../common/routes';
@@ -220,6 +220,15 @@ function CatalogPage({ go, density, initialSeries }) {
               Подборки по комнатам: <a href="/kartina-v-gostinuyu" className="uh-tap" style={{ color: 'var(--accent)' }}>в гостиную</a>, <a href="/kartina-v-spalnyu" className="uh-tap" style={{ color: 'var(--accent)' }}>в спальню</a>, <a href="/kartina-v-kabinet" className="uh-tap" style={{ color: 'var(--accent)' }}>в кабинет</a>.
               По сюжетам: <a href="/catalog/more" className="uh-tap" style={{ color: 'var(--accent)' }}>море и волны</a>, <a href="/catalog/botanika" className="uh-tap" style={{ color: 'var(--accent)' }}>цветы и растения</a>, <a href="/catalog/gory" className="uh-tap" style={{ color: 'var(--accent)' }}>горы</a>.
             </p>
+          </section>
+        )}
+
+        {/* 04.09 перелинковка: общий /catalog не ссылался на посадочные и подборки (на /catalog/<slug> это есть в «В интерьере») */}
+        {!activeSeries && (
+          <section style={{ marginTop: 72, maxWidth: 900, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <LinkStrip label="Подобрать" links={[['/kartina-v-gostinuyu', 'картина в гостиную'], ['/kartina-v-spalnyu', 'в спальню'], ['/kartina-v-kabinet', 'в кабинет'], ['/podarok', 'в подарок']]} />
+            <LinkStrip label="По сюжету" links={[['/catalog/more', 'морской пейзаж'], ['/catalog/botanika', 'цветы и растения'], ['/catalog/gory', 'горы']]} />
+            <LinkStrip label="Журнал" links={[[INTERIOR_GUIDE_URL, 'как выбрать картину для гостиной'], ['/journal', 'все статьи']]} />
           </section>
         )}
 

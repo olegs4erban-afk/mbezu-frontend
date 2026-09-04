@@ -1,4 +1,5 @@
 import React from 'react';
+import { INTERIOR_GUIDE_URL } from '../common/seo';
 import { Breadcrumbs, Eyebrow } from '../common/atoms';
 import { ABOUT, ARTWORKS, SERIES } from '../common/data';
 import { TILDA_IMAGES } from '../common/tilda-images';
@@ -119,6 +120,10 @@ function AboutPage({ go }) {
               <p style={{ margin: '10px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
                 К каждой работе — фирменный сертификат: название, техника (холст, масло), точный размер, год, подпись автора. Плюс подпись на обороте холста и рукописная открытка из мастерской. <a href="/tpost/kejc52adg1-sertifikat-podlinnosti-kartini-chto-eto" style={{ color: 'var(--accent)' }}>Что фиксирует сертификат и зачем он нужен</a>.
               </p>
+              <div className="eyebrow accent" style={{ marginTop: 26 }}>Журнал</div>
+              <p style={{ margin: '10px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
+                Статьи о живописи и интерьере — <a href="/journal" style={{ color: 'var(--accent)' }}>журнал художника</a>: например, <a href={INTERIOR_GUIDE_URL} style={{ color: 'var(--accent)' }}>как выбрать картину для гостиной</a>.
+              </p>
             </div>
           </div>
         </div>
@@ -219,6 +224,9 @@ function AboutPage({ go }) {
               </li>
             ))}
           </ul>
+          <p style={{ margin: '28px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
+            Сертификат, подпись и рукописная открытка — поэтому оригинал часто дарят: смотрите подборку <a href="/podarok" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>«Картина в подарок»</a>.
+          </p>
         </div>
       </section>
 

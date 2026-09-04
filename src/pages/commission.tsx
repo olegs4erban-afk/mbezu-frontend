@@ -2,7 +2,7 @@ import React from 'react';
 import { PaintingPlate } from '../common/adapter';
 import { Breadcrumbs, Eyebrow, PageTitle } from '../common/atoms';
 import { ABOUT, artworkById, formatPrice } from '../common/data';
-import { COMMISSION_FAQ } from '../common/seo';
+import { COMMISSION_FAQ, INTERIOR_GUIDE_URL } from '../common/seo';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
 import { ColorPicker } from '../common/color-picker';
 
@@ -224,6 +224,10 @@ function CommissionPage({ go, refId }) {
             borderRadius: 'var(--r-md)', border: '1px solid var(--rule-soft)',
             fontSize: 13.5, color: 'var(--ink-2)', lineHeight: 1.6,
           }}>{COMMISSION.terms}</p>
+          {/* 04.09 перелинковка: заказ — 2–4 недели; если нужно к дате — готовые работы */}
+          <p style={{ margin: '18px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
+            Нужно к дате и ждать 2–4 недели некогда — посмотрите готовые работы: <a href="/podarok" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>картина в подарок</a> или <a href="/catalog" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>каталог в наличии</a>.
+          </p>
         </section>
 
         {sent ? (
@@ -551,6 +555,9 @@ function CommissionPage({ go, refId }) {
                 </div>
               ))}
             </dl>
+            <p style={{ margin: '24px 0 0', maxWidth: 860, fontSize: 14.5, lineHeight: 1.7, color: 'var(--ink-2)' }}>
+              Ещё не решили, что и куда: разбор с примерами — <a href={INTERIOR_GUIDE_URL} className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>как выбрать картину для гостиной</a>; готовые подборки по комнатам — <a href="/kartina-v-gostinuyu" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>в гостиную</a>, <a href="/kartina-v-spalnyu" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>в спальню</a>, <a href="/kartina-v-kabinet" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>в кабинет</a>.
+            </p>
           </section>
           </>
         )}

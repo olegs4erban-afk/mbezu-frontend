@@ -1,7 +1,7 @@
 import React from 'react';
 import { PaintingPlate } from '../common/adapter';
 import { ArButton, ArViewer, QrBlock, useArSupport, arAssets } from '../ar/ar';
-import { ArtCard, Eyebrow } from '../common/atoms';
+import { ArtCard, Eyebrow, LinkStrip } from '../common/atoms';
 import { Marquee } from '../common/chrome';
 import { ABOUT, ARTWORKS, SERIES, availableCount, featuredArtworks, formatPrice, seriesById, visibleArtworks } from '../common/data';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
@@ -294,6 +294,11 @@ function SeriesTriptych({ go }) {
             );
           })}
         </div>
+        {/* 04.09 перелинковка: в теле главной не было ссылок на посадочные и подборки (только подвал) */}
+        <div style={{ marginTop: 44, paddingTop: 22, borderTop: '1px solid var(--rule-soft)', display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <LinkStrip label="Подобрать" links={[['/kartina-v-gostinuyu', 'в гостиную'], ['/kartina-v-spalnyu', 'в спальню'], ['/kartina-v-kabinet', 'в кабинет'], ['/podarok', 'в подарок']]} />
+          <LinkStrip label="По сюжету" links={[['/catalog/more', 'море и волны'], ['/catalog/botanika', 'цветы и растения'], ['/catalog/gory', 'горы']]} />
+        </div>
       </div>
     </section>
   );
@@ -553,6 +558,9 @@ function Packaging() {
                 </li>
               ))}
             </ul>
+            <p style={{ margin: '28px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
+              Ищете <a href="/podarok" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>картину в подарок</a> — отдельная подборка оригиналов с сертификатом.
+            </p>
           </div>
         </div>
       </div>
