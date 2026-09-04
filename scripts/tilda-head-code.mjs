@@ -139,6 +139,7 @@ const PROD_SNIPPET = `
       for(var k=0;k<parts.length;k++){var a=document.createElement('a');a.href=parts[k][0];a.textContent=parts[k][1];a.style.cssText='color:#67583f;text-decoration:none;padding:10px 0';cr.appendChild(a);var sp=document.createElement('span');sp.textContent='/';cr.appendChild(sp);}
       var cur=document.createElement('span');cur.textContent=me.title;cur.style.color='#2a2520';cr.appendChild(cur);
       host.insertBefore(cr,host.firstChild);
+      if(!document.getElementById('mbezu-ld-crumbs')){var ld=document.createElement('script');ld.type='application/ld+json';ld.id='mbezu-ld-crumbs';var items=[];for(var q=0;q<parts.length;q++){items.push({'@type':'ListItem','position':q+1,'name':parts[q][1],'item':'https://mbezu.ru'+parts[q][0]});}items.push({'@type':'ListItem','position':parts.length+1,'name':me.title,'item':'https://mbezu.ru'+me.url});ld.text=JSON.stringify({'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':items});document.head.appendChild(ld);}
       var same=[];for(var j=0;j<list.length;j++){if(list[j].series===me.series&&list[j].id!==me.id)same.push(list[j]);}
       if(!same.length||document.getElementById('mbezu-related'))return;
       same=same.slice(0,4);
@@ -403,6 +404,17 @@ const CK_SNIPPET = `
 <style>#mbezu-ck{position:fixed;left:16px;right:16px;bottom:16px;z-index:99990;max-width:720px;margin:0 auto;background:#2a2520;color:#efe7d8;border-radius:14px;padding:14px 16px;box-shadow:0 12px 40px rgba(0,0,0,.28);font:14px/1.5 Inter Tight,system-ui,-apple-system,sans-serif;display:flex;gap:14px;align-items:center;flex-wrap:wrap}#mbezu-ck p{margin:0;flex:1 1 320px}#mbezu-ck a{color:#e0c77e;text-decoration:underline;text-underline-offset:3px}#mbezu-ck button{flex:0 0 auto;min-height:40px;padding:0 18px;border:0;border-radius:999px;background:#c9ad63;color:#2a2520;font:600 14px/1 Inter Tight,system-ui,sans-serif;cursor:pointer}#mbezu-ck button:focus-visible{outline:2px solid #efe7d8;outline-offset:2px}@media (max-width:600px){#mbezu-ck{left:10px;right:10px;bottom:10px;padding:12px 14px;font-size:13px}}</style>
 <script>(function(){try{var K='mbezu_cookie_ok';var ok=null;try{ok=localStorage.getItem(K);}catch(e){}if(ok)return;function show(){if(document.getElementById('mbezu-ck'))return;var d=document.createElement('div');d.id='mbezu-ck';d.setAttribute('role','region');d.setAttribute('aria-label','Уведомление о cookie');d.innerHTML='<p>Сайт использует cookie и Яндекс Метрику, чтобы работать и считать посещения. Продолжая, вы соглашаетесь с <a href="/legal?section=privacy">политикой обработки персональных данных</a>.</p><button type="button">Понятно</button>';d.querySelector('button').addEventListener('click',function(){try{localStorage.setItem(K,String(Date.now()));}catch(e){}d.parentNode.removeChild(d);});document.body.appendChild(d);}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',show);else show();}catch(e){}})();</script>
 ${CK_END}`;
+const CRT_MARK = 'MBezu · cart-ru';
+const CRT_END = '<!-- /MBezu · cart-ru -->';
+const CRT_SNIPPET = `
+<!-- ${CRT_MARK} · корзина Tilda: заголовок «Payment method» не переводится настройками — правим текстом (04.09) -->
+<script>(function(){try{function fix(){var els=document.querySelectorAll('.t-input-group_pm .t-input-title');for(var i=0;i<els.length;i++){if(els[i].textContent.indexOf('Payment method')>=0){els[i].textContent='Способ оплаты';}}}var n=0;var t=setInterval(function(){fix();n++;if(n>90){clearInterval(t);}},1000);document.addEventListener('click',function(){setTimeout(fix,400);setTimeout(fix,1500);},true);}catch(e){}})();</script>
+${CRT_END}`;
+function cartRu(out) {
+  const NL = String.fromCharCode(10);
+  if (out.includes(CRT_MARK)) { const a = out.indexOf('<!-- ' + CRT_MARK); const b = out.indexOf(CRT_END, a); if (a >= 0 && b > a) return out.slice(0, a) + CRT_SNIPPET.trim() + out.slice(b + CRT_END.length); return out; }
+  return out.trimEnd() + NL + CRT_SNIPPET.trim() + NL;
+}
 function cookieNotice(out) {
   const NL = String.fromCharCode(10);
   if (out.includes(CK_MARK)) { const a = out.indexOf('<!-- ' + CK_MARK); const b = out.indexOf(CK_END, a); if (a >= 0 && b > a) return out.slice(0, a) + CK_SNIPPET.trim() + out.slice(b + CK_END.length); return out; }
@@ -512,6 +524,7 @@ function patchHead(src) {
   out = perfPreload(out);
   out = perfMetrika(out);
   out = cookieNotice(out);
+  out = cartRu(out);
   return { out, removed, brandFixed, typeFixed, ruAdded, rcvAdded };
 }
 
