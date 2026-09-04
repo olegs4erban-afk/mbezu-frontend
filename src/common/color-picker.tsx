@@ -72,7 +72,9 @@ export function ColorPicker({ value, onChange, onDone }: Props) {
     <div style={{ background: 'var(--bg-card)', border: '1px solid var(--rule-soft)', borderRadius: 'var(--r-lg)', padding: 14, maxWidth: 420 }}>
       {/* поле насыщенность (X) × яркость (Y).
           03.09 a11y: role=slider без tabindex не получал фокус — теперь Tab + стрелки (Shift — крупнее шаг) */}
-      <div role="slider" aria-label="Насыщенность и яркость" aria-valuetext={value} tabIndex={0}
+      <div role="slider" aria-label="Насыщенность и яркость" tabIndex={0}
+           aria-valuenow={Math.round(s * 100)} aria-valuemin={0} aria-valuemax={100}
+           aria-valuetext={`насыщенность ${Math.round(s * 100)}%, яркость ${Math.round(v * 100)}%, цвет ${value}`}
            onPointerDown={(e) => drag(e.currentTarget, e, (x, y) => emit(hue, x, 1 - y))}
            onKeyDown={(e) => {
              const d = e.shiftKey ? 0.1 : 0.02;
