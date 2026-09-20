@@ -191,6 +191,9 @@ export function ProductReviews({ productId }: { productId: string }) {
 // ── секция целиком ───────────────────────────────────────────
 export function ReviewsSection({ compact = false }: { compact?: boolean }) {
   const [open, setOpen] = React.useState(REVIEWS.length === 0);
+  // HANDOFF §1.13: пока отзывов нет, блок не показываем вовсе — на проде он
+  // печатал покупателю служебное «раздел только открылся».
+  if (REVIEWS.length === 0) return null;
   const avg = averageRating();
 
   return (
