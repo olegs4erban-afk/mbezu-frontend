@@ -8,6 +8,7 @@ import { createRoot } from 'react-dom/client';
 import './styles.css';
 import { TopBar, Footer, StickyBar } from './chrome';
 import { initMotion } from './reveal';
+import { hideTildaDuplicateChrome } from './tilda-chrome';
 import { useCart } from './cart';
 import { initAnalytics } from './analytics';
 
@@ -67,7 +68,7 @@ function stickyFor(route: string): React.ComponentProps<typeof StickyBar> | null
 }
 
 function Shell({ pageName, cartCount, children }: { pageName: string; cartCount: number; children?: React.ReactNode }) {
-  React.useEffect(() => { initMotion(); }, []);
+  React.useEffect(() => { hideTildaDuplicateChrome(); initMotion(); }, []);
   const sticky = stickyFor(pageName);
   return (
     <>

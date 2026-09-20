@@ -1,12 +1,17 @@
 import React from 'react';
 import { PaintingPlate } from '../common/adapter';
-import { Breadcrumbs, Eyebrow, PageTitle } from '../common/atoms';
-import { ABOUT, artworkById, formatPrice } from '../common/data';
+import { Breadcrumbs, Eyebrow } from '../common/atoms';
+import { ABOUT, SERIES, artworkById, formatPrice } from '../common/data';
 import { COMMISSION_FAQ, INTERIOR_GUIDE_URL } from '../common/seo';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
-import { ColorPicker } from '../common/color-picker';
 
-/** UTM первого захода — уезжают вместе с заявкой (дубль helper'а с главной). */
+// ─────────────────────────────────────────────────────────────
+// commission.tsx — картина на заказ (редизайн 2026, HANDOFF §8).
+// Пошаговый бриф: Размер → Палитра → Бюджет → Сроки → Контакт,
+// справа — липкое резюме на тёмном. Ниже: прайс, процесс, примеры, FAQ.
+// ─────────────────────────────────────────────────────────────
+
+/** UTM первого захода — уезжают вместе с заявкой. */
 function utmFromStorage(): Record<string, string> {
   try {
     const u = JSON.parse(localStorage.getItem('mbezu-utm') || '{}');
@@ -17,193 +22,481 @@ function utmFromStorage(): Record<string, string> {
   } catch { return {}; }
 }
 
-// ─────────────────────────────────────────────────────────────
-// page-commission.jsx — бриф на заказ.
-// 6 шагов: размер → стиль → палитра → бюджет → сроки → контакты.
-// ─────────────────────────────────────────────────────────────
+const STEPS = ['Размер', 'Палитра', 'Бюджет', 'Сроки', 'Контакт'];
+
+const SIZES = [
+  { id: 'xs',     label: 'До 40 см',       hint: 'камерный формат, полка или узкая стена' },
+  { id: 'sm',     label: '50–70 см',       hint: 'над комодом, в спальне, в коридоре' },
+  { id: 'md',     label: '80–120 см',      hint: 'над диваном — самый частый формат' },
+  { id: 'lg',     label: 'От 130 см',      hint: 'акцент в гостиной, высокий потолок' },
+  { id: 'tondo',  label: 'Круглое тондо',  hint: 'без углов, мягко работает в спальне' },
+  { id: 'help',   label: 'Подобрать вместе', hint: 'пришлите фото стены — предложим размер' },
+];
+
+// Палитры собраны из palette серий data.ts — те же цвета, что в работах
+const PALETTES = [
+  { id: 'sepia',  label: 'Сепия и графит', c: ['#d8c8a8', '#8a7458', '#3a3835'] },
+  { id: 'stone',  label: 'Тёплый камень',  c: ['#ede5d6', '#c9ad86', '#8d5a44'] },
+  { id: 'water',  label: 'Зелёная вода',   c: ['#bcc5a8', '#7d9a86', '#1d3324'] },
+  { id: 'north',  label: 'Северный свет',  c: ['#dde3e6', '#a9bcc4', '#5e7480'] },
+  { id: 'bw',     label: 'Чёрно-белое',    c: ['#f2efe9', '#8e8e8e', '#221f1c'] },
+  { id: 'artist', label: 'Доверю художнику', c: ['#ede5d6', '#bfa45e', '#6f5c2b'] },
+];
+
+const TERMS = [
+  { id: 'fast',  label: 'От 2 недель',      hint: 'небольшой формат, простой сюжет' },
+  { id: 'month', label: 'Около месяца',     hint: 'средний и большой холст' },
+  { id: 'date',  label: 'К конкретной дате', hint: 'подарок, событие — напишите дату' },
+  { id: 'slow',  label: 'Не спешу',          hint: 'важнее результат, чем срок' },
+];
+
+const COMMISSION = {
+  intro: 'Базовая ставка «от» за размер холста для прямого заказа из РФ. Итог зависит от сложности сюжета, детализации и техники.',
+  groups: [
+    { title: 'Малый формат',   items: [['20 × 30 см', 6000], ['30 × 40 см', 8000], ['40 × 40 см', 9500]] },
+    { title: 'Средний формат', items: [['40 × 50 см', 11000], ['40 × 60 см', 12000], ['50 × 60 см', 15000], ['50 × 70 см', 17000]] },
+    { title: 'Большой формат', items: [['60 × 80 см', 22000], ['60 × 90 см', 24000], ['70 × 90 см', 27000], ['80 × 100 см', 33000], ['90 × 120 см', 42000]] },
+  ] as Array<{ title: string; items: Array<[string, number]> }>,
+  custom:   'Нестандартный размер или сторона больше 100 см — рассчитываются индивидуально.',
+  included: ['Холст на галерейном подрамнике', 'Защитное покрытие лаком', 'Сертификат подлинности', 'Фирменная упаковка', 'Рукописная открытка', 'Крепёж — готова к подвесу'],
+  extra:    ['Доставка: СДЭК / Почта / курьер', 'Оформление в багет', 'Срочное исполнение'],
+  terms:    'Предоплата 50%, остаток — после согласования готовой работы по фото. Эскиз утверждается до начала. Срок от 2 недель.',
+};
+
+const PROCESS = [
+  { n: '01', label: 'Брифинг',  t: 'Размер, палитра, настроение, помещение' },
+  { n: '02', label: 'Эскизы',   t: 'Два-три варианта на согласование' },
+  { n: '03', label: 'Холст',    t: 'Лён на сосновом подрамнике, грунт' },
+  { n: '04', label: 'Письмо',   t: 'Масло, от 2 недель в зависимости от размера' },
+  { n: '05', label: 'Доставка', t: 'Курьер, страховка, фирменная упаковка' },
+];
+
+function budgetHint(v: number): string {
+  if (v < 25000) return 'этюд или малый формат';
+  if (v < 60000) return 'средний формат, 50×70';
+  if (v < 140000) return 'крупный холст над диваном';
+  return 'большая работа или серия из нескольких холстов';
+}
+
+function Tile({ active, onClick, label, hint, children }: {
+  active: boolean; onClick: () => void; label: string; hint?: string; children?: React.ReactNode;
+}) {
+  return (
+    <button type="button" onClick={onClick} aria-pressed={active}
+            style={{
+              textAlign: 'left', cursor: 'pointer', font: 'inherit',
+              minHeight: 96, padding: '16px 18px',
+              borderRadius: 'var(--r-md)',
+              border: active ? '1px solid var(--accent)' : '1px solid rgba(42,37,32,.14)',
+              background: active ? 'var(--accent)' : 'var(--bg)',
+              color: active ? 'var(--bg)' : 'var(--ink)',
+              transition: 'background-color .25s, color .25s, border-color .25s',
+              display: 'flex', flexDirection: 'column', gap: 6,
+            }}>
+      {children}
+      <span style={{ fontSize: 16, fontWeight: 500 }}>{label}</span>
+      {hint && <span style={{ fontSize: 13, lineHeight: 1.4, opacity: active ? .85 : .7 }}>{hint}</span>}
+    </button>
+  );
+}
 
 function CommissionPage({ go, refId }) {
   const ref = refId ? artworkById(refId) : null;
 
-  const sizes = [
-    { id: 'small',  label: 'Этюд',    dim: 'до 30×40 см',    from: 8000 },
-    { id: 'medium', label: 'Средний', dim: '40×50 — 50×70',  from: 17000 },
-    { id: 'large',  label: 'Большой', dim: '60×80 — 80×100', from: 33000 },
-    { id: 'xl',     label: 'Крупный', dim: 'от 90×120 см',   from: 42000 },
-    { id: 'custom', label: 'Другое',  dim: 'свой размер',    from: 0 },
-  ];
-  const styles = [
-    { id: 'urban',     label: 'Городской пейзаж' },
-    { id: 'landscape', label: 'Природный пейзаж' },
-    { id: 'botanical', label: 'Ботаника' },
-    { id: 'mono',      label: 'Монохром' },
-    { id: 'custom',    label: 'Другое' },
-  ];
-  const palettes = [
-    { id: 'bone',   label: 'Тёплая (bone)',    c1: '#ede5d6', c2: '#a08a4e' },
-    { id: 'sepia',  label: 'Сепия',            c1: '#d8c8a8', c2: '#5e4d3d' },
-    { id: 'warm',   label: 'Песочная',         c1: '#d4a48a', c2: '#8d5a44' },
-    { id: 'cool',   label: 'Холодная',         c1: '#b3c0c4', c2: '#5e7480' },
-    { id: 'green',  label: 'Растительная',     c1: '#bcc5a8', c2: '#6f7d54' },
-  ];
-  const weeks = [4, 6, 8, 10];
-
-  // Sprint 15: произвольный цвет — ColorPicker (поле насыщенность/яркость + тон + HEX), см. common/color-picker.tsx
-
-  // Прайс на заказ — базовая ставка «от» по размеру холста (Sprint 8 §2C).
-  const COMMISSION = {
-    intro: 'Базовая ставка «от» за размер холста для прямого заказа из РФ. Итог зависит от сложности сюжета, детализации и техники.',
-    groups: [
-      { title: 'Малый формат',   items: [['20 × 30 см', 6000], ['30 × 40 см', 8000], ['40 × 40 см', 9500]] },
-      { title: 'Средний формат',  items: [['40 × 50 см', 11000], ['40 × 60 см', 12000], ['50 × 60 см', 15000], ['50 × 70 см', 17000]] },
-      { title: 'Большой формат',  items: [['60 × 80 см', 22000], ['60 × 90 см', 24000], ['70 × 90 см', 27000], ['80 × 100 см', 33000], ['90 × 120 см', 42000]] },
-    ],
-    custom:   'Нестандартный размер или сторона больше 100 см — рассчитываются индивидуально.',
-    included: ['Холст на галерейном подрамнике', 'Защитное покрытие лаком', 'Сертификат подлинности', 'Фирменная упаковка', 'Рукописная открытка', 'Крепёж — готова к подвесу'],
-    extra:    ['Доставка: СДЭК / Почта / курьер', 'Оформление в багет', 'Срочное исполнение'],
-    terms:    'Предоплата 50%, остаток — после согласования готовой работы по фото. Эскиз утверждается до начала. Срок 2–4 недели.',
-  };
-
-  const [form, setForm] = React.useState({
-    size: 'medium',
-    style: 'urban',
-    palette: 'bone', // preset id ИЛИ '#rrggbb' (сетка/пикер «Другое»)
-    budget: 30000,
-    weeks: 8,
-    name: '', email: '', city: '', notes: '', where: '',
-    customW: '', customH: '',   // размер «Другое», см
-    customStyle: '',            // стиль «Другое»
-    file: null as File | null,
-  });
-  const [sent, setSent] = React.useState(false);
-  const [showPicker, setShowPicker] = React.useState(false);
-  // Sprint 15 (Ф0): бриф раньше только переключал экран — заявка никуда не шла.
-  const [state, setState] = React.useState<'idle' | 'sending' | 'err' | 'err-fields'>('idle');
-  const [leadNo, setLeadNo] = React.useState('');
+  const [step, setStep] = React.useState(0);
+  const [maxStep, setMaxStep] = React.useState(0);
+  const [size, setSize] = React.useState<string | null>(null);
+  const [palette, setPalette] = React.useState<string | null>(null);
+  const [budget, setBudget] = React.useState(65000);
+  const [term, setTerm] = React.useState<string | null>(null);
+  const [name, setName] = React.useState('');
+  const [contact, setContact] = React.useState('');
+  const [notes, setNotes] = React.useState('');
+  const [photo, setPhoto] = React.useState<File | null>(null);
   const [consent, setConsent] = React.useState(false);
   const [touched, setTouched] = React.useState(false);
-  const [trap, setTrap] = React.useState(''); // honeypot: люди не видят, боты заполняют
+  const [trap, setTrap] = React.useState('');
+  const [state, setState] = React.useState<'idle' | 'sending' | 'err'>('idle');
+  const [sent, setSent] = React.useState(false);
+  const [leadNo, setLeadNo] = React.useState('');
 
-  const upd = (k, v) => setForm((f) => ({ ...f, [k]: v }));
+  const goStep = (i: number) => {
+    const n = Math.max(0, Math.min(STEPS.length - 1, i));
+    setStep(n);
+    setMaxStep((m) => Math.max(m, n));
+  };
 
-  const handle = async (e) => {
+  const sizeLabel = SIZES.find((s) => s.id === size)?.label || '';
+  const paletteObj = PALETTES.find((p) => p.id === palette);
+  const termLabel = TERMS.find((t) => t.id === term)?.label || '';
+
+  const nameOk = name.trim().length >= 2;
+  const contactOk = contact.trim().length >= 5;
+  const canSend = nameOk && contactOk && consent && state !== 'sending';
+
+  const handle = async (e: React.FormEvent) => {
     e.preventDefault();
     setTouched(true);
-    // Sprint 15 (аудит 3.17): бриф принимал имя и контакт из 1 символа.
-    if (!consent || state === 'sending') return;
-    if (form.name.trim().length < 2 || form.email.trim().length < 5) {
-      setState('err-fields');
-      return;
-    }
+    if (!canSend) return;
     setState('sending');
-    // ref один на попытку: повтор после ошибки не должен плодить вторую карточку во Входящих
     const attemptRef = leadNo || leadRef();
     setLeadNo(attemptRef);
     const res = await submitLead({
       lead_ref: attemptRef,
       [HONEYPOT_FIELD]: trap,
-      name: form.name.trim(),
-      phone: form.email.trim(),                       // поле «Email или Telegram»
-      email: /@/.test(form.email) ? form.email.trim() : '',
-      city: form.city.trim(),
-      notes: [form.notes.trim(), form.where ? `Куда повесим: ${form.where}` : ''].filter(Boolean).join(' · '),
-      size: sizeSummary,
-      style: styleSummary,
-      palette: isHexPalette ? form.palette.toUpperCase() : (currentPalette?.label || ''),
-      budget: form.budget,
-      weeks: form.weeks,
+      name: name.trim(),
+      phone: contact.trim(),
+      email: /@/.test(contact) ? contact.trim() : '',
+      notes: [
+        notes.trim(),
+        photo ? `Приложено фото стены: ${photo.name}` : '',
+        ref ? `Отправная работа: ${ref.title} (${ref.id})` : '',
+      ].filter(Boolean).join(' · '),
+      size: sizeLabel,
+      style: '',
+      palette: paletteObj?.label || '',
+      budget,
+      weeks: termLabel,
       source: 'commission-brief',
       page: typeof location !== 'undefined' ? location.pathname : '/commission',
       ...utmFromStorage(),
     });
-    if (res.ok) {
-      setLeadNo(res.ref);
-      setSent(true);
-      setState('idle');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      setState('err');
-    }
+    if (res.ok) { setLeadNo(res.ref); setSent(true); setState('idle'); } else { setState('err'); }
   };
 
-  const isHexPalette = form.palette.startsWith('#');
-  const currentSize = sizes.find((s) => s.id === form.size);
-  const currentPalette = isHexPalette
-    ? { id: 'hex', label: `Палитра: ${form.palette.toUpperCase()}`, c1: form.palette, c2: form.palette }
-    : palettes.find((p) => p.id === form.palette);
-  const sizeSummary = form.size === 'custom'
-    ? `Другое · ${form.customW || '?'}×${form.customH || '?'} см`
-    : `${currentSize?.label} · ${currentSize?.dim}`;
-  const styleSummary = form.style === 'custom'
-    ? (form.customStyle.trim() || 'Другое')
-    : styles.find((s) => s.id === form.style)?.label;
+  const summary: Array<[string, string]> = [
+    ['Размер', sizeLabel],
+    ['Палитра', paletteObj?.label || ''],
+    ['Бюджет', `${formatPrice(budget)}`],
+    ['Сроки', termLabel],
+    ['Контакт', [name.trim(), contact.trim()].filter(Boolean).join(' · ')],
+  ];
 
   return (
-    <div className="fade-in resp-pad" style={{ padding: '36px 40px 80px' }}>
+    <div className="fade-in mb-section" style={{ paddingTop: 'clamp(20px, 2.4vw, 36px)' }}>
       <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
-        <Breadcrumbs items={[
-          { label: 'MBezu', href: '/' },
-          { label: 'На заказ' },
-        ]} />
+        <Breadcrumbs items={[{ label: 'MBezu', href: '/' }, { label: 'На заказ' }]} />
 
-        <div style={{ marginTop: 36 }}>
-          <PageTitle
-            kicker="Москва · доставка по России"
-            title={<>Картина на заказ{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>маслом, под ваш интерьер</span></>}
-            lead="Заказать картину художнику под комнату, размер и настроение: заполните бриф — Мила свяжется, предложит два-три эскиза и напишет работу от 2 недель. Мастерская в Москве, показ по записи. Договор после согласования эскиза, предоплата 50%."
-          />
-        </div>
-
-        {/* Прайс на заказ — «от / зависит от сложности» */}
-        <section style={{ marginTop: 56 }}>
-          <Eyebrow accent>Прайс на заказ</Eyebrow>
-          <h2 className="display resp-h2" style={{
-            margin: '12px 0 0', fontSize: 'clamp(26px, 3vw, 40px)',
-            fontWeight: 500, letterSpacing: '-.02em',
-          }}>Стоимость по размерам</h2>
-          <p style={{ marginTop: 14, maxWidth: 760, fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.65 }}>
-            {COMMISSION.intro}
-          </p>
-          <div className="resp-stack-3" style={{
-            marginTop: 32, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20,
+        <header style={{ marginTop: 22, maxWidth: 820 }}>
+          <Eyebrow accent>Москва · доставка по России</Eyebrow>
+          <h1 className="display" style={{
+            margin: '16px 0 0', fontSize: 'clamp(38px, 5.6vw, 84px)',
+            lineHeight: .95, fontWeight: 500, letterSpacing: '-.038em',
           }}>
+            Картина на заказ{' '}<span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>под ваш интерьер</span>
+          </h1>
+          <p style={{
+            margin: '18px 0 0', fontSize: 'clamp(15.5px, 1.15vw, 18px)',
+            lineHeight: 1.6, color: 'var(--ink-2)', fontWeight: 300,
+          }}>
+            Пять коротких шагов — и художник ответит лично: предложит два-три эскиза,
+            назовёт срок и стоимость. Мастерская в Москве, показ по записи.
+          </p>
+        </header>
+
+        {sent ? (
+          <section style={{
+            marginTop: 'clamp(32px,4vw,64px)', padding: 'clamp(28px,4vw,60px)',
+            background: 'var(--bg-soft)', borderRadius: 'var(--r-xl)',
+            border: '1px solid var(--rule-soft)', textAlign: 'center',
+          }}>
+            <div style={{
+              width: 72, height: 72, borderRadius: 'var(--r-pill)',
+              background: 'var(--accent)', color: 'var(--bg)',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 32, fontWeight: 600, marginBottom: 28,
+            }} aria-hidden="true">✓</div>
+            <h2 className="display" style={{
+              margin: '0 0 16px', fontSize: 'clamp(28px, 4vw, 48px)',
+              fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1.1,
+            }}>Бриф получен</h2>
+            {leadNo && <p className="cat-no" style={{ margin: '0 0 14px' }}>Номер заявки: <b>{leadNo}</b></p>}
+            <p style={{ fontSize: 16, color: 'var(--ink-2)', maxWidth: 480, margin: '0 auto', lineHeight: 1.6 }}>
+              Мила ответит лично в течение 24 часов. Хотите быстрее — напишите
+              в&nbsp;<a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh"
+                       style={{ color: 'var(--accent)', textDecoration: 'none' }}>Telegram</a>.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
+              <button className="btn btn-ghost" onClick={() => go('catalog')}>В каталог</button>
+              <button className="btn" onClick={() => go('home')}>На главную</button>
+            </div>
+          </section>
+        ) : (
+          <form onSubmit={handle} noValidate id="brief"
+                className="mb-cols" style={{ marginTop: 'clamp(28px,3.4vw,52px)', scrollMarginTop: 96 }}>
+            {/* ЛЕВО — шаги */}
+            <div style={{ flex: '2 1 480px' }}>
+              {/* Прогресс */}
+              <div style={{ height: 3, background: 'var(--rule-soft)', borderRadius: 2, overflow: 'hidden' }}>
+                <div style={{
+                  height: '100%', width: `${((step + 1) / STEPS.length) * 100}%`,
+                  background: 'var(--accent)', transition: 'width .5s cubic-bezier(.16,1,.3,1)',
+                }} />
+              </div>
+
+              {/* Табы шагов — можно вернуться к любому пройденному */}
+              <div role="tablist" aria-label="Шаги брифа"
+                   style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 14 }}>
+                {STEPS.map((s, i) => {
+                  const reachable = i <= maxStep;
+                  return (
+                    <button key={s} type="button" role="tab" aria-selected={i === step}
+                            disabled={!reachable} onClick={() => reachable && goStep(i)}
+                            className={'chip' + (i === step ? ' is-active' : '')}
+                            style={{ opacity: reachable ? 1 : .45, cursor: reachable ? 'pointer' : 'default' }}>
+                      {String(i + 1).padStart(2, '0')} · {s}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {ref && (
+                <div style={{
+                  marginTop: 22, padding: 18, display: 'flex', alignItems: 'center', gap: 18,
+                  background: 'var(--bg-card)', border: '1px solid var(--rule-soft)', borderRadius: 'var(--r-md)',
+                }}>
+                  <div style={{ width: 72, flexShrink: 0 }}>
+                    <PaintingPlate art={ref} fit="bare" objectFit="contain" plain
+                                   style={{ aspectRatio: '1', borderRadius: 'var(--r-sm)' }} showMeta={false} />
+                  </div>
+                  <div>
+                    <div className="cat-no">Похожую на</div>
+                    <div className="display" style={{ fontSize: 18, fontWeight: 500, marginTop: 4 }}>{ref.title}</div>
+                    <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 2 }}>{ref.w}×{ref.h} см · {formatPrice(ref.price)}</div>
+                  </div>
+                </div>
+              )}
+
+              <div key={step} className="mb-step" style={{ marginTop: 26 }}>
+                {step === 0 && (
+                  <fieldset style={{ border: 0, margin: 0, padding: 0 }}>
+                    <legend className="display" style={{ fontSize: 'clamp(24px,2.6vw,34px)', fontWeight: 500, letterSpacing: '-.02em', padding: 0 }}>
+                      Какого размера картина нужна?
+                    </legend>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 210px), 1fr))', gap: 12, marginTop: 18 }}>
+                      {SIZES.map((s) => (
+                        <Tile key={s.id} active={size === s.id} label={s.label} hint={s.hint}
+                              onClick={() => { setSize(s.id); goStep(1); }} />
+                      ))}
+                    </div>
+                  </fieldset>
+                )}
+
+                {step === 1 && (
+                  <fieldset style={{ border: 0, margin: 0, padding: 0 }}>
+                    <legend className="display" style={{ fontSize: 'clamp(24px,2.6vw,34px)', fontWeight: 500, letterSpacing: '-.02em', padding: 0 }}>
+                      Ближе какая палитра?
+                    </legend>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 210px), 1fr))', gap: 12, marginTop: 18 }}>
+                      {PALETTES.map((p) => (
+                        <Tile key={p.id} active={palette === p.id} label={p.label}
+                              onClick={() => { setPalette(p.id); goStep(2); }}>
+                          <span aria-hidden="true" style={{ display: 'flex', gap: 6 }}>
+                            {p.c.map((c) => (
+                              <span key={c} style={{
+                                width: 26, height: 26, borderRadius: 6, background: c,
+                                border: '1px solid rgba(42,37,32,.12)',
+                              }} />
+                            ))}
+                          </span>
+                        </Tile>
+                      ))}
+                    </div>
+                  </fieldset>
+                )}
+
+                {step === 2 && (
+                  <div>
+                    <h2 className="display" style={{ margin: 0, fontSize: 'clamp(24px,2.6vw,34px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+                      На какой бюджет ориентируемся?
+                    </h2>
+                    <div className="display" style={{
+                      margin: '20px 0 4px', fontSize: 'clamp(34px,4vw,54px)',
+                      fontWeight: 500, letterSpacing: '-.03em', color: 'var(--accent)',
+                    }}>{formatPrice(budget)}</div>
+                    <div className="cat-no">{budgetHint(budget)}</div>
+                    <input type="range" min={15000} max={400000} step={5000} value={budget}
+                           aria-label="Бюджет заказа"
+                           aria-valuetext={`${formatPrice(budget)} — ${budgetHint(budget)}`}
+                           onChange={(e) => setBudget(Number(e.target.value))}
+                           style={{ width: '100%', marginTop: 18, accentColor: 'var(--accent)' }} />
+                    <div className="cat-no" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <span>15 000 ₽</span><span>400 000 ₽</span>
+                    </div>
+                    <button type="button" className="btn btn-solid" style={{ marginTop: 22 }}
+                            onClick={() => goStep(3)}>Дальше →</button>
+                  </div>
+                )}
+
+                {step === 3 && (
+                  <fieldset style={{ border: 0, margin: 0, padding: 0 }}>
+                    <legend className="display" style={{ fontSize: 'clamp(24px,2.6vw,34px)', fontWeight: 500, letterSpacing: '-.02em', padding: 0 }}>
+                      Когда нужна работа?
+                    </legend>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 210px), 1fr))', gap: 12, marginTop: 18 }}>
+                      {TERMS.map((t) => (
+                        <Tile key={t.id} active={term === t.id} label={t.label} hint={t.hint}
+                              onClick={() => { setTerm(t.id); goStep(4); }} />
+                      ))}
+                    </div>
+                  </fieldset>
+                )}
+
+                {step === 4 && (
+                  <div>
+                    <h2 className="display" style={{ margin: 0, fontSize: 'clamp(24px,2.6vw,34px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+                      Куда прислать эскизы?
+                    </h2>
+                    <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
+                           value={trap} onChange={(e) => setTrap(e.target.value)}
+                           style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} />
+                    <div style={{ display: 'grid', gap: 12, marginTop: 18, maxWidth: 560 }}>
+                      <input className="field" placeholder="Имя *" aria-label="Имя" name="name" autoComplete="name"
+                             aria-required="true" aria-invalid={touched && !nameOk ? true : undefined}
+                             value={name} onChange={(e) => setName(e.target.value)} />
+                      {touched && !nameOk && <span style={{ fontSize: 13, color: 'var(--ink-2)' }}>Укажите имя</span>}
+                      <input className="field" placeholder="Телефон, Telegram или email *" name="contact" autoComplete="tel"
+                             aria-label="Телефон, Telegram или email" aria-required="true"
+                             aria-invalid={touched && !contactOk ? true : undefined}
+                             value={contact} onChange={(e) => setContact(e.target.value)} />
+                      {touched && !contactOk && <span style={{ fontSize: 13, color: 'var(--ink-2)' }}>Укажите контакт — по нему пришлём эскизы</span>}
+                      <textarea className="field" rows={3} placeholder="Комментарий: сюжет, комната, что важно (необязательно)"
+                                aria-label="Комментарий" value={notes} onChange={(e) => setNotes(e.target.value)} />
+                      <label style={{
+                        display: 'flex', alignItems: 'center', gap: 12, minHeight: 44,
+                        fontSize: 14, color: 'var(--ink-2)', cursor: 'pointer',
+                      }}>
+                        <span className="btn btn-ghost" style={{ minHeight: 44 }}>Фото стены</span>
+                        <input type="file" accept="image/*" style={{ display: 'none' }}
+                               onChange={(e) => setPhoto(e.target.files?.[0] || null)} />
+                        <span>{photo ? photo.name : 'необязательно — поможет с размером'}</span>
+                      </label>
+                      <label style={{
+                        display: 'flex', gap: 10, alignItems: 'flex-start',
+                        fontSize: 13, lineHeight: 1.55, color: 'var(--ink-2)', cursor: 'pointer',
+                      }}>
+                        <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
+                               style={{ marginTop: 3, width: 18, height: 18, accentColor: 'var(--accent)', flexShrink: 0 }} />
+                        <span>
+                          Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
+                          <a href="/legal?section=privacy" style={{ color: 'var(--accent)' }}>Политика ПД</a>
+                        </span>
+                      </label>
+                      {touched && !consent && <span style={{ fontSize: 13, color: 'var(--ink-2)' }}>Для отправки нужно согласие на обработку ПД</span>}
+                      {state === 'err' && (
+                        <div style={{
+                          padding: '14px 18px', borderRadius: 'var(--r-md)',
+                          background: 'var(--bg-soft)', border: '1px solid var(--accent)',
+                          fontSize: 13.5, lineHeight: 1.6,
+                        }}>
+                          <b>Не удалось отправить бриф.</b> Напишите напрямую:{' '}
+                          <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" style={{ color: 'var(--accent)' }}>Telegram</a>{' · '}
+                          <a href={`mailto:${ABOUT.contacts.email}`} style={{ color: 'var(--accent)' }}>{ABOUT.contacts.email}</a>{' · '}
+                          <a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} style={{ color: 'var(--accent)' }}>{ABOUT.contacts.phone}</a>
+                        </div>
+                      )}
+                      <button type="submit" className="btn btn-solid" disabled={state === 'sending'}
+                              style={{ minHeight: 54, justifyContent: 'center', opacity: state === 'sending' ? .6 : 1 }}>
+                        {state === 'sending' ? 'Отправляем…' : 'Отправить бриф →'}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {step > 0 && (
+                <button type="button" className="btn-link" style={{ marginTop: 22 }}
+                        onClick={() => goStep(step - 1)}>← Назад</button>
+              )}
+            </div>
+
+            {/* ПРАВО — липкое резюме на тёмном */}
+            <aside style={{ flex: '1 1 300px', minWidth: 0 }}>
+              <div style={{
+                position: 'sticky', top: 96,
+                background: 'var(--bg-deep)', color: 'var(--bg-cream)',
+                borderRadius: 'var(--r-lg)', padding: 'clamp(20px, 2vw, 30px)',
+              }}>
+                <div className="eyebrow" style={{ color: 'rgba(245,239,226,.7)' }}>Резюме брифа</div>
+                <dl style={{ margin: '16px 0 0', display: 'grid', gap: 12 }}>
+                  {summary.map(([k, v]) => (
+                    <div key={k} style={{ display: 'flex', justifyContent: 'space-between', gap: 14, alignItems: 'baseline' }}>
+                      <dt className="mono" style={{ fontSize: 10, letterSpacing: '.18em', textTransform: 'uppercase', color: 'rgba(245,239,226,.7)' }}>{k}</dt>
+                      <dd style={{ margin: 0, fontSize: 14, textAlign: 'right', color: v ? 'var(--bg-cream)' : 'rgba(245,239,226,.45)' }}>
+                        {v || 'не выбрано'}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+                <p style={{ margin: '20px 0 0', fontSize: 13.5, lineHeight: 1.6, color: 'rgba(245,239,226,.78)' }}>
+                  Бриф ни к чему не обязывает: сначала эскизы и точная смета, оплата — только после согласования.
+                </p>
+                <ul style={{ margin: '18px 0 0', padding: 0, listStyle: 'none', display: 'grid', gap: 10 }}>
+                  {['Предоплата 50% после эскиза', 'Сертификат подлинности', 'Доставка по РФ со страховкой'].map((g) => (
+                    <li key={g} style={{ display: 'flex', gap: 10, fontSize: 13.5, color: 'rgba(245,239,226,.86)' }}>
+                      <span aria-hidden="true" style={{ color: 'var(--accent-2)' }}>◆</span>{g}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
+          </form>
+        )}
+
+        {/* Процесс 01–05 */}
+        <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>
+          <Eyebrow accent>Процесс</Eyebrow>
+          <h2 className="display" style={{ margin: '12px 0 26px', fontSize: 'clamp(26px, 3.2vw, 44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+            От брифа до подрамника
+          </h2>
+          <div className="mb-grid-wide">
+            {PROCESS.map((s) => (
+              <div key={s.n} data-rev style={{
+                background: 'var(--bg-card)', border: '1px solid var(--rule-soft)',
+                borderRadius: 'var(--r-lg)', padding: 24,
+              }}>
+                <div className="mono" style={{ fontSize: 11, letterSpacing: '.18em', color: 'var(--accent)', fontWeight: 600 }}>{s.n}</div>
+                <h3 className="display" style={{ margin: '12px 0 8px', fontSize: 20, fontWeight: 500 }}>{s.label}</h3>
+                <p style={{ margin: 0, fontSize: 13.5, color: 'var(--ink-2)', lineHeight: 1.6 }}>{s.t}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Прайс */}
+        <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>
+          <Eyebrow accent>Прайс на заказ</Eyebrow>
+          <h2 className="display" style={{ margin: '12px 0 0', fontSize: 'clamp(26px, 3.2vw, 44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+            Стоимость по размерам
+          </h2>
+          <p style={{ marginTop: 14, maxWidth: 760, fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.65 }}>{COMMISSION.intro}</p>
+          <div className="mb-grid-wide" style={{ marginTop: 28 }}>
             {COMMISSION.groups.map((g) => (
-              <div key={g.title} className="card" style={{
-                padding: 28, background: 'var(--bg-card)',
+              <div key={g.title} data-rev style={{
+                padding: 26, background: 'var(--bg-card)',
                 borderRadius: 'var(--r-lg)', border: '1px solid var(--rule-soft)',
               }}>
-                <h3 className="display" style={{
-                  margin: '0 0 18px', fontSize: 18, fontWeight: 500,
-                  letterSpacing: '-.01em', color: 'var(--accent)',
-                }}>{g.title}</h3>
+                <h3 className="display" style={{ margin: '0 0 16px', fontSize: 18, fontWeight: 500, color: 'var(--accent)' }}>{g.title}</h3>
                 <dl style={{ margin: 0, display: 'grid', gridTemplateColumns: '1fr auto', gap: '10px 12px' }}>
-                  {g.items.map(([size, from]) => (
-                    <React.Fragment key={size}>
-                      <dt style={{ fontSize: 14, color: 'var(--ink-2)' }}>{size}</dt>
-                      <dd style={{ margin: 0, fontSize: 14, fontWeight: 500, textAlign: 'right' }}>
-                        от {formatPrice(from as number)}
-                      </dd>
+                  {g.items.map(([sz, from]) => (
+                    <React.Fragment key={sz}>
+                      <dt style={{ fontSize: 14, color: 'var(--ink-2)' }}>{sz}</dt>
+                      <dd style={{ margin: 0, fontSize: 14, fontWeight: 500, textAlign: 'right' }}>от {formatPrice(from)}</dd>
                     </React.Fragment>
                   ))}
                 </dl>
               </div>
             ))}
           </div>
-          <p className="cat-no" style={{ marginTop: 20, lineHeight: 1.6 }}>{COMMISSION.custom}</p>
+          <p className="cat-no" style={{ marginTop: 18, lineHeight: 1.6 }}>{COMMISSION.custom}</p>
 
-          <h2 className="display resp-h2" style={{
-            margin: '40px 0 0', fontSize: 'clamp(24px, 2.6vw, 34px)',
-            fontWeight: 500, letterSpacing: '-.02em',
-          }}>Что входит в стоимость</h2>
-          <div className="resp-stack-2" style={{
-            marginTop: 20, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 32,
-          }}>
+          <div className="mb-cols" style={{ marginTop: 32, gap: 'clamp(20px, 3vw, 48px)' }}>
             <div>
               <Eyebrow accent>В стоимость входит</Eyebrow>
               <ul style={{ margin: '14px 0 0', padding: 0, listStyle: 'none', display: 'grid', gap: 8 }}>
                 {COMMISSION.included.map((it) => (
                   <li key={it} style={{ fontSize: 14, color: 'var(--ink-2)', display: 'flex', gap: 10 }}>
-                    <span style={{ color: 'var(--accent)' }}>◆</span>{it}
+                    <span aria-hidden="true" style={{ color: 'var(--accent)' }}>◆</span>{it}
                   </li>
                 ))}
               </ul>
@@ -213,354 +506,67 @@ function CommissionPage({ go, refId }) {
               <ul style={{ margin: '14px 0 0', padding: 0, listStyle: 'none', display: 'grid', gap: 8 }}>
                 {COMMISSION.extra.map((it) => (
                   <li key={it} style={{ fontSize: 14, color: 'var(--ink-2)', display: 'flex', gap: 10 }}>
-                    <span style={{ color: 'var(--accent-soft)' }}>◇</span>{it}
+                    <span aria-hidden="true" style={{ color: 'var(--accent-soft)' }}>◇</span>{it}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
           <p style={{
-            marginTop: 28, padding: '16px 20px', background: 'var(--bg-soft)',
+            marginTop: 26, padding: '16px 20px', background: 'var(--bg-soft)',
             borderRadius: 'var(--r-md)', border: '1px solid var(--rule-soft)',
             fontSize: 13.5, color: 'var(--ink-2)', lineHeight: 1.6,
           }}>{COMMISSION.terms}</p>
-          {/* 04.09 перелинковка: заказ — 2–4 недели; если нужно к дате — готовые работы */}
           <p style={{ margin: '18px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
-            Нужно к дате и ждать 2–4 недели некогда — посмотрите готовые работы: <a href="/podarok" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>картина в подарок</a> или <a href="/catalog" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>каталог в наличии</a>.
+            Нужно к дате и ждать некогда — посмотрите готовые работы:{' '}
+            <a href="/podarok" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>картина в подарок</a> или{' '}
+            <a href="/catalog" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>каталог в наличии</a>.
           </p>
         </section>
 
-        {sent ? (
-          <section style={{
-            marginTop: 80, padding: 60,
-            background: 'var(--bg-soft)',
-            borderRadius: 'var(--r-xl)',
-            border: '1px solid var(--rule-soft)',
-            textAlign: 'center',
-          }}>
-            <div style={{
-              width: 72, height: 72, borderRadius: 'var(--r-pill)',
-              background: 'var(--accent)', color: 'var(--bg)',
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: 32, fontWeight: 600, marginBottom: 32,
-            }}>✓</div>
-            <h2 className="display" style={{
-              margin: '0 0 16px', fontSize: 'clamp(32px, 4vw, 48px)',
-              fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1.1,
-            }}>Бриф получен</h2>
-            {leadNo && (
-              <p className="cat-no" style={{ margin: '0 0 14px' }}>Номер заявки: <b>{leadNo}</b></p>
-            )}
-            <p style={{ fontSize: 16, color: 'var(--ink-2)', maxWidth: 480, margin: '0 auto', lineHeight: 1.6 }}>
-              Мила ответит лично в течение 24 часов. Если хотите ускорить — напишите
-              в&nbsp;<a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh"
-                       style={{ color: 'var(--accent)', textDecoration: 'none' }}>Telegram</a>.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: 14, marginTop: 36, flexWrap: 'wrap' }}>
-              <button className="btn btn-ghost" onClick={() => go('catalog')}>В каталог</button>
-              <button className="btn" onClick={() => go('home')}>На главную</button>
-            </div>
-          </section>
-        ) : (
-          <>
-          <h2 className="display resp-h2" id="brief" style={{
-            margin: '56px 0 0', fontSize: 'clamp(26px, 3vw, 40px)',
-            fontWeight: 500, letterSpacing: '-.02em', scrollMarginTop: 90,
-          }}>Оставить заявку</h2>
-          <form onSubmit={handle} noValidate className="resp-stack" style={{
-            marginTop: 24,
-            display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: 60, alignItems: 'start',
-          }}>
-            {/* LEFT — form */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 56 }}>
-              {ref && (
-                <div className="card" style={{
-                  padding: 24, display: 'flex', alignItems: 'center', gap: 20,
-                  borderRadius: 'var(--r-md)',
-                }}>
-                  <div style={{ width: 80 }}>
-                    <PaintingPlate art={ref} fit="bare" style={{ aspectRatio: '1', borderRadius: 'var(--r-sm)', boxShadow: 'none' }} showMeta={false} />
-                  </div>
-                  <div style={{ flex: 1 }}>
-                    <div className="cat-no">Похожую на</div>
-                    <div className="display" style={{ fontSize: 18, fontWeight: 500, marginTop: 4 }}>{ref.title}</div>
-                    <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 2 }}>{ref.w}×{ref.h} см · {formatPrice(ref.price)}</div>
-                  </div>
-                </div>
-              )}
+        {/* Примеры серий как ориентир по сюжету */}
+        <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>
+          <Eyebrow accent>Ориентиры</Eyebrow>
+          <h2 className="display" style={{ margin: '12px 0 26px', fontSize: 'clamp(26px, 3.2vw, 44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+            Что пишем чаще всего
+          </h2>
+          <div className="mb-grid-wide">
+            {SERIES.map((s) => (
+              <a key={s.id} href={`/catalog?series=${encodeURIComponent(s.id)}`} data-rev
+                 style={{
+                   textDecoration: 'none', color: 'inherit',
+                   background: 'var(--bg-card)', border: '1px solid var(--rule-soft)',
+                   borderRadius: 'var(--r-lg)', padding: 24, display: 'block',
+                 }}>
+                <span className="cat-no" style={{ color: s.color }}>{s.years}</span>
+                <h3 className="display" style={{ margin: '10px 0 6px', fontSize: 21, fontWeight: 500 }}>{s.title}</h3>
+                <p className="italic" style={{ margin: 0, fontSize: 14.5, color: 'var(--accent)', fontStyle: 'italic' }}>{s.subtitle}</p>
+              </a>
+            ))}
+          </div>
+        </section>
 
-              {/* 1. Размер */}
-              <div>
-                <div style={{ marginBottom: 18, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                  <Eyebrow accent>01 · Размер</Eyebrow>
-                  <span className="cat-no">
-                    {form.size === 'custom' ? 'свой размер · расчёт индивидуально' : `${currentSize?.dim} · от ${formatPrice(currentSize?.from || 0)}`}
-                  </span>
-                </div>
-                <div className="resp-stack-5" style={{
-                  display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12,
-                }}>
-                  {sizes.map((s) => (
-                    <button key={s.id} type="button" onClick={() => upd('size', s.id)} aria-pressed={form.size === s.id}
-                            style={{
-                              padding: '20px 18px', minHeight: 44,
-                              background: form.size === s.id ? 'var(--ink)' : 'var(--bg-card)',
-                              color: form.size === s.id ? 'var(--bg)' : 'var(--ink)',
-                              border: '1px solid ' + (form.size === s.id ? 'var(--ink)' : 'var(--rule-soft)'),
-                              borderRadius: 'var(--r-md)', cursor: 'pointer',
-                              textAlign: 'left', transition: 'all .2s',
-                              boxShadow: form.size === s.id ? 'var(--shadow-md)' : 'none',
-                            }}>
-                      <div className="cat-no" style={{ color: form.size === s.id ? 'rgba(245,239,226,.6)' : 'var(--ink-3)' }}>0{sizes.indexOf(s) + 1}</div>
-                      <div className="display" style={{ fontSize: 20, fontWeight: 500, letterSpacing: '-.01em', marginTop: 8 }}>{s.label}</div>
-                      <div style={{ fontSize: 12, opacity: .75, marginTop: 6 }}>{s.dim}</div>
-                    </button>
-                  ))}
-                </div>
-                {form.size === 'custom' && (
-                  <div className="fade-in" style={{ marginTop: 16 }}>
-                    <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-                      <input className="field" type="number" min={10} max={300} placeholder="Ширина, см" aria-label="Ширина, см"
-                             value={form.customW} onChange={(e) => upd('customW', e.target.value)}
-                             style={{ width: 150 }} />
-                      <span style={{ color: 'var(--ink-3)' }}>×</span>
-                      <input className="field" type="number" min={10} max={300} placeholder="Высота, см" aria-label="Высота, см"
-                             value={form.customH} onChange={(e) => upd('customH', e.target.value)}
-                             style={{ width: 150 }} />
-                    </div>
-                    <div className="cat-no" style={{ marginTop: 10 }}>
-                      Сторона больше 100 см — расчёт индивидуально
-                    </div>
-                  </div>
-                )}
+        {/* FAQ */}
+        <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>
+          <Eyebrow accent>Вопросы и ответы</Eyebrow>
+          <h2 className="display" style={{ margin: '12px 0 22px', fontSize: 'clamp(26px, 3.2vw, 44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+            Частые вопросы
+          </h2>
+          <dl style={{ margin: 0, maxWidth: 860 }}>
+            {COMMISSION_FAQ.map(([q, a]) => (
+              <div key={q} style={{ padding: '20px 0', borderTop: '1px solid var(--rule-soft)' }}>
+                <dt className="display" style={{ fontSize: 18, fontWeight: 500, letterSpacing: '-.01em' }}>{q}</dt>
+                <dd style={{ margin: '10px 0 0', fontSize: 15, lineHeight: 1.65, color: 'var(--ink-2)' }}>{a}</dd>
               </div>
-
-              {/* 2. Стиль */}
-              <div>
-                <Eyebrow accent style={{ marginBottom: 18, display: 'block' }}>02 · Стиль</Eyebrow>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                  {styles.map((s) => (
-                    <button key={s.id} type="button" onClick={() => upd('style', s.id)} aria-pressed={form.style === s.id}
-                            className={'chip' + (form.style === s.id ? ' is-active' : '')}>
-                      {s.label}
-                    </button>
-                  ))}
-                </div>
-                {form.style === 'custom' && (
-                  <input className="field fade-in" placeholder="Опишите стиль — например, «абстракция в тёплых тонах»" aria-label="Опишите стиль"
-                         value={form.customStyle} onChange={(e) => upd('customStyle', e.target.value)}
-                         style={{ marginTop: 14 }} />
-                )}
-              </div>
-
-              {/* 3. Палитра — пресеты + сетка произвольного цвета + «Другое» (Sprint 13 Ф4) */}
-              <div>
-                <div style={{ marginBottom: 18, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                  <Eyebrow accent>03 · Палитра</Eyebrow>
-                  {isHexPalette && <span className="cat-no">Палитра: {form.palette.toUpperCase()}</span>}
-                </div>
-                <div className="resp-stack-5" style={{
-                  display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 10,
-                }}>
-                  {palettes.map((p) => (
-                    <button key={p.id} type="button" onClick={() => { upd('palette', p.id); setShowPicker(false); }} aria-pressed={form.palette === p.id}
-                            style={{
-                              padding: '14px 14px', minHeight: 44, background: 'var(--bg-card)',
-                              border: '1px solid ' + (form.palette === p.id ? 'var(--accent)' : 'var(--rule-soft)'),
-                              borderRadius: 'var(--r-md)', cursor: 'pointer',
-                              transition: 'all .2s', textAlign: 'left',
-                              boxShadow: form.palette === p.id ? 'var(--shadow-md)' : 'none',
-                            }}>
-                      <div style={{
-                        height: 28, borderRadius: 'var(--r-sm)',
-                        background: `linear-gradient(135deg, ${p.c1}, ${p.c2})`,
-                        marginBottom: 10,
-                      }} />
-                      <div style={{ fontSize: 11, color: 'var(--ink-2)' }}>{p.label}</div>
-                    </button>
-                  ))}
-                </div>
-
-                {/* «Другое» → нативный color-picker */}
-                <div style={{ marginTop: 14, display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-                  <button type="button" aria-expanded={showPicker}
-                          className={'chip' + (showPicker ? ' is-active' : '')}
-                          onClick={() => { setShowPicker(!showPicker); if (!isHexPalette) upd('palette', '#a08a4e'); }}>
-                    Другое
-                  </button>
-                  {isHexPalette && (
-                    <span style={{ fontSize: 13, color: 'var(--ink-2)' }}>
-                      В заявку уйдёт строкой: <span className="mono">Палитра: {form.palette.toUpperCase()}</span>
-                    </span>
-                  )}
-                </div>
-                {showPicker && (
-                  <div className="fade-in" style={{ marginTop: 14 }}>
-                    <ColorPicker value={isHexPalette ? form.palette : '#a08a4e'}
-                                 onChange={(hex) => upd('palette', hex)}
-                                 onDone={() => setShowPicker(false)} />
-                  </div>
-                )}
-              </div>
-
-              {/* 4. Бюджет */}
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 18 }}>
-                  <Eyebrow accent>04 · Бюджет</Eyebrow>
-                  <span className="display" style={{ fontSize: 24, fontWeight: 500, color: 'var(--accent)', letterSpacing: '-.015em' }}>
-                    {formatPrice(form.budget)}
-                  </span>
-                </div>
-                <input type="range" min={6000} max={120000} step={1000} aria-label="Бюджет" aria-valuetext={formatPrice(form.budget)}
-                       value={form.budget} onChange={(e) => upd('budget', Number(e.target.value))}
-                       style={{ width: '100%', accentColor: 'var(--accent)' }} />
-                <div className="cat-no" style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
-                  <span>6 000 ₽</span>
-                  <span>от 120 000 ₽</span>
-                </div>
-              </div>
-
-              {/* 5. Сроки */}
-              <div>
-                <Eyebrow accent style={{ marginBottom: 18, display: 'block' }}>05 · Сроки</Eyebrow>
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  {weeks.map((w) => (
-                    <button key={w} type="button" onClick={() => upd('weeks', w)} aria-pressed={form.weeks === w}
-                            className={'chip' + (form.weeks === w ? ' is-active' : '')}
-                            style={{ minWidth: 80, justifyContent: 'center' }}>
-                      {w} нед
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* 6. Контакты */}
-              <div>
-                <Eyebrow accent style={{ marginBottom: 18, display: 'block' }}>06 · Контакты</Eyebrow>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }} className="resp-stack-2">
-                  <input className="field" placeholder="Имя *" aria-label="Имя" autoComplete="name" value={form.name} onChange={(e) => upd('name', e.target.value)} />
-                  <input className="field" placeholder="Email или Telegram (@username) *" aria-label="Email или Telegram" autoComplete="email" inputMode="email" value={form.email} onChange={(e) => upd('email', e.target.value)} />
-                  <input className="field" placeholder="Город" aria-label="Город" autoComplete="address-level2" value={form.city} onChange={(e) => upd('city', e.target.value)} />
-                  {/* Sprint 15 (моб. аудит): «(опц.)» обрезался в узкой колонке 375px */}
-                  <input className="field" placeholder="Куда повесим" aria-label="Куда повесим" value={form.where || ''} onChange={(e) => upd('where', e.target.value)} />
-                </div>
-                <textarea className="field" placeholder="Дополнительно — настроение, ассоциации, ссылки на референсы…" aria-label="Дополнительно" rows={4} style={{ marginTop: 14 }}
-                          value={form.notes} onChange={(e) => upd('notes', e.target.value)} />
-
-                <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
-                       value={trap} onChange={(e) => setTrap(e.target.value)}
-                       style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} />
-
-                {/* 152-ФЗ: без согласия отправка заблокирована */}
-                <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', marginTop: 16, cursor: 'pointer', fontSize: 13, lineHeight: 1.55 }}>
-                  <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)}
-                         style={{ marginTop: 3, width: 20, height: 20, accentColor: 'var(--accent)', flexShrink: 0 }} />
-                  <span style={{ color: 'var(--ink-2)' }}>
-                    Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
-                    <a href="/legal?section=privacy" onClick={(e) => { e.preventDefault(); go('legal', { section: 'privacy' }); }}
-                       className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}>Политика ПД</a>
-                  </span>
-                </label>
-                {touched && !consent && (
-                  <div style={{ marginTop: 8, fontSize: 12.5, color: 'var(--accent-deep)' }}>
-                    Для отправки нужно согласие на обработку ПД
-                  </div>
-                )}
-                {state === 'err-fields' && (
-                  <div style={{
-                    marginTop: 14, padding: '14px 16px', borderRadius: 'var(--r-md)',
-                    background: 'var(--bg-soft)', border: '1px solid var(--accent)', fontSize: 13.5, lineHeight: 1.6,
-                  }}>
-                    Укажите, пожалуйста, имя (от 2 символов) и контакт — телефон, Telegram или email.
-                  </div>
-                )}
-                {state === 'err' && (
-                  <div style={{
-                    marginTop: 14, padding: '14px 16px', borderRadius: 'var(--r-md)',
-                    background: 'var(--bg-soft)', border: '1px solid var(--accent)', fontSize: 13.5, lineHeight: 1.6,
-                  }}>
-                    <b>Не удалось отправить бриф.</b> Напишите напрямую:{' '}
-                    <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" style={{ color: 'var(--accent)' }}>Telegram</a>{' · '}
-                    <a href={`mailto:${ABOUT.contacts.email}`} style={{ color: 'var(--accent)' }}>{ABOUT.contacts.email}</a>{' · '}
-                    <a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} style={{ color: 'var(--accent)' }}>{ABOUT.contacts.phone}</a>
-                  </div>
-                )}
-              </div>
-
-              <button type="submit" className="btn btn-solid" disabled={state === 'sending'}
-                      style={{ alignSelf: 'flex-start', padding: '20px 40px', fontSize: 13, opacity: state === 'sending' ? .6 : 1 }}>
-                {state === 'sending' ? 'Отправляем…' : 'Отправить бриф →'}
-              </button>
-            </div>
-
-            {/* RIGHT — sticky summary */}
-            <aside style={{ position: 'sticky', top: 100, alignSelf: 'start' }} className="resp-static">
-              <div className="card" style={{
-                padding: 32, background: 'var(--bg-card)',
-                borderRadius: 'var(--r-lg)', boxShadow: 'var(--shadow-md)',
-              }}>
-                <Eyebrow accent>Резюме брифа</Eyebrow>
-                <h3 className="display" style={{
-                  margin: '14px 0 24px', fontSize: 24, fontWeight: 500, letterSpacing: '-.015em',
-                }}>Что мы делаем</h3>
-
-                <div style={{
-                  height: 80, borderRadius: 'var(--r-sm)',
-                  background: `linear-gradient(135deg, ${currentPalette?.c1}, ${currentPalette?.c2})`,
-                  marginBottom: 20,
-                }} />
-
-                <dl style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '12px 16px', margin: 0 }}>
-                  {[
-                    ['Размер',  sizeSummary],
-                    ['Стиль',   styleSummary],
-                    ['Палитра', currentPalette?.label],
-                    ['Сроки',   `${form.weeks} недель`],
-                  ].map(([k, v]) => (
-                    <React.Fragment key={k}>
-                      <dt className="cat-no">{k}</dt>
-                      <dd style={{ margin: 0, fontSize: 13, textAlign: 'right' }}>{v}</dd>
-                    </React.Fragment>
-                  ))}
-                </dl>
-
-                <div className="rule-soft" style={{ margin: '20px 0' }} />
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                  <span className="cat-no">Бюджет</span>
-                  <span className="display" style={{ fontSize: 28, fontWeight: 500, color: 'var(--accent)', letterSpacing: '-.02em' }}>
-                    {formatPrice(form.budget)}
-                  </span>
-                </div>
-
-                <div className="cat-no" style={{ marginTop: 24, lineHeight: 1.6 }}>
-                  Предоплата 50% после согласования эскиза. Договор, акт приёма.
-                </div>
-              </div>
-            </aside>
-          </form>
-
-          {/* Sprint 14 (Ф7): видимый FAQ — тот же список, что уходит в FAQPage JSON-LD */}
-          <section style={{ marginTop: 80 }}>
-            <Eyebrow accent>Вопросы и ответы</Eyebrow>
-            <h2 className="display resp-h2" style={{
-              margin: '12px 0 28px', fontSize: 'clamp(26px, 3vw, 40px)',
-              fontWeight: 500, letterSpacing: '-.02em',
-            }}>Частые вопросы</h2>
-            <dl style={{ margin: 0, maxWidth: 860 }}>
-              {COMMISSION_FAQ.map(([q, a]) => (
-                <div key={q} style={{ padding: '20px 0', borderTop: '1px solid var(--rule-soft)' }}>
-                  <dt className="display" style={{ fontSize: 18, fontWeight: 500, letterSpacing: '-.01em' }}>{q}</dt>
-                  <dd style={{ margin: '10px 0 0', fontSize: 15, lineHeight: 1.65, color: 'var(--ink-2)' }}>{a}</dd>
-                </div>
-              ))}
-            </dl>
-            <p style={{ margin: '24px 0 0', maxWidth: 860, fontSize: 14.5, lineHeight: 1.7, color: 'var(--ink-2)' }}>
-              Ещё не решили, что и куда: разбор с примерами — <a href={INTERIOR_GUIDE_URL} className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>как выбрать картину для гостиной</a>; готовые подборки по комнатам — <a href="/kartina-v-gostinuyu" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>в гостиную</a>, <a href="/kartina-v-spalnyu" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>в спальню</a>, <a href="/kartina-v-kabinet" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>в кабинет</a>.
-            </p>
-          </section>
-          </>
-        )}
+            ))}
+          </dl>
+          <p style={{ margin: '24px 0 0', maxWidth: 860, fontSize: 14.5, lineHeight: 1.7, color: 'var(--ink-2)' }}>
+            Ещё не решили, что и куда: разбор с примерами — <a href={INTERIOR_GUIDE_URL} className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>как выбрать картину для гостиной</a>;
+            подборки по комнатам — <a href="/kartina-v-gostinuyu" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>в гостиную</a>,{' '}
+            <a href="/kartina-v-spalnyu" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>в спальню</a>,{' '}
+            <a href="/kartina-v-kabinet" className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>в кабинет</a>.
+          </p>
+        </section>
       </div>
     </div>
   );

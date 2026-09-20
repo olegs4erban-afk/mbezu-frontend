@@ -712,3 +712,16 @@ a.uh[style*="background:var(--bg-card)"]:hover, a.uh[style*="background: var(--b
 @media (prefers-reduced-motion: reduce) {
   .mb-card, .mb-mat img, .mb-shimmer, .mb-progress-track > span { transition: none; animation: none; }
 }
+
+/* Шаг брифа: смена шага — мягкое появление (§8) */
+@keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.mb-step { animation: fadeSlide .45s cubic-bezier(.16,1,.3,1); }
+@media (prefers-reduced-motion: reduce) { .mb-step { animation: none; } }
+
+/* Пульсирующая точка статуса «в наличии» (§10) */
+.mb-pulse {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); display: inline-block; flex-shrink: 0;
+  animation: glow 1.8s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .mb-pulse { animation: none; } }

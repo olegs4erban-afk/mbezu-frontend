@@ -21,9 +21,9 @@ const noop = () => {};
 const cases: Array<[string, React.ReactElement]> = [
   ['home', <HomePage go={go} />],
   ['about', <AboutPage go={go} />],
-  ['catalog', <CatalogPage go={go} density="regular" initialSeries={undefined} />],
-  ['painting', <PaintingPage go={go} id={ARTWORKS[0].id} addToCart={noop} />],
-  ['painting:round', <PaintingPage go={go} id="TD-01" addToCart={noop} />],
+  ['catalog', <CatalogPage go={go} initialSeries={undefined} />],
+  ['painting', <PaintingPage go={go} id={ARTWORKS[0].id} />],
+  ['painting:round', <PaintingPage go={go} id="TD-01" />],
   ['commission', <CommissionPage go={go} refId={undefined} />],
   ['cart:empty', <CartPage go={go} cart={[]} removeFromCart={noop} />],
   ['cart:items', <CartPage go={go} cart={['MN-01', 'ST-05']} removeFromCart={noop} />],

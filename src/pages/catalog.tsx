@@ -1,19 +1,36 @@
 import React from 'react';
-import { ArtCard, ArtRow, Breadcrumbs, Eyebrow, LinkStrip } from '../common/atoms';
-import { ARTWORKS, SERIES, SUBJECTS, visibleArtworks } from '../common/data';
-import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, plural } from '../common/seo';
+import { ArtCard, Breadcrumbs, Eyebrow, LinkStrip } from '../common/atoms';
+import { SERIES, SUBJECTS, formatPrice, visibleArtworks } from '../common/data';
+import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, plural, seriesCount } from '../common/seo';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
-// page-catalog.jsx — каталог в стилистике Swiss-сетки.
-// 12-колонок · mono-индексы · фильтры + сортировка + grid/list.
+// catalog.tsx — каталог (редизайн 2026, HANDOFF §9).
+// Крошки → H1 → лид + сводка · переключатель серий пилюлями ·
+// липкая полоса фильтров под шапкой · сетка карточек-паспарту ·
+// плитка «напишем под ваш размер» · «О серии» в <details>.
 // ─────────────────────────────────────────────────────────────
 
-function CatalogPage({ go, density, initialSeries }) {
+/** Реальная высота шапки — липкие элементы друг под другом считаются от неё (§13.15). */
+function useHeaderHeight(): number {
+  const [h, setH] = React.useState(77);
+  React.useEffect(() => {
+    const upd = () => {
+      const el = document.querySelector('header');
+      if (el) setH(Math.round(el.getBoundingClientRect().height));
+    };
+    upd();
+    window.addEventListener('resize', upd);
+    const t = setTimeout(upd, 300); // шапка перестраивается после гидратации
+    return () => { window.removeEventListener('resize', upd); clearTimeout(t); };
+  }, []);
+  return h;
+}
+
+function CatalogPage({ go, initialSeries }) {
   const [series, setSeriesRaw] = React.useState(initialSeries || 'all');
-  // Sprint 15 (аудит, мелочь 11): фильтр серии живёт в ?series= — выбор
-  // переживает возврат «назад» и им можно поделиться ссылкой.
-  const setSeries = (id) => {
+  // Sprint 15: фильтр серии живёт в ?series= — выбор переживает «назад» и шарится ссылкой.
+  const setSeries = (id: string) => {
     setSeriesRaw(id);
     try {
       const u = new URL(window.location.href);
@@ -23,7 +40,7 @@ function CatalogPage({ go, density, initialSeries }) {
   };
   const [subject, setSubject] = React.useState('all');
   const [sort, setSort] = React.useState('default');
-  const [view, setView] = React.useState('grid');
+  const headerH = useHeaderHeight();
 
   const items = React.useMemo(() => {
     let r = visibleArtworks();
@@ -36,13 +53,27 @@ function CatalogPage({ go, density, initialSeries }) {
     return r;
   }, [series, subject, sort]);
 
-  const gridCols = density === 'compact' ? 4 : (density === 'comfy' ? 2 : 3);
   const total = visibleArtworks().length;
-  // Sprint 14 (Ф6): серия из URL /catalog/<slug> → лендинг серии (H1 + текст + крошки)
   const activeSeries = series !== 'all' ? SERIES.find((s) => s.id === series) : null;
 
+  // Сводка: сколько работ, в каком диапазоне цен и размеров
+  const pool = React.useMemo(
+    () => (activeSeries ? visibleArtworks().filter((a) => a.series === activeSeries.id) : visibleArtworks()),
+    [activeSeries],
+  );
+  const prices = pool.map((a) => a.price).filter(Boolean);
+  const sides = pool.flatMap((a) => [a.w, a.h]).filter(Boolean);
+  const minPrice = prices.length ? Math.min(...prices) : 0;
+  const maxPrice = prices.length ? Math.max(...prices) : 0;
+  const minSide = sides.length ? Math.min(...sides) : 0;
+  const maxSide = sides.length ? Math.max(...sides) : 0;
+
+  const lead = activeSeries
+    ? `${activeSeries.subtitle}. ${pool.length} ${plural(pool.length)} маслом на холсте, каждая — в единственном экземпляре.`
+    : 'Оригиналы маслом на холсте в единственном экземпляре: пейзаж, море, ботаника, город. Отправляем по РФ с сертификатом подлинности.';
+
   return (
-    <div className="fade-in resp-pad" style={{ padding: '40px 40px 80px' }}>
+    <div className="fade-in mb-section" style={{ paddingTop: 'clamp(20px, 2.4vw, 36px)' }}>
       <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
         <Breadcrumbs items={activeSeries
           ? [
@@ -55,104 +86,105 @@ function CatalogPage({ go, density, initialSeries }) {
               { label: 'Каталог' },
             ]} />
 
-        {/* Hero strip: H1 + counter. Sprint 15 (моб. аудит): cat-hero сжимает отступы —
-            первая работа была на 2.3 экрана ниже верха */}
-        <div style={{
-          marginTop: 36, paddingBottom: 28,
-          borderBottom: '1px solid var(--ink)',
-          display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)',
-          gap: 24, alignItems: 'end',
-        }} className="reveal r1 resp-stack-12 cat-hero">
-          <div style={{ gridColumn: '1 / 9' }}>
-            <Eyebrow accent>{activeSeries ? `Серия · ${activeSeries.years}` : '§ 01 · index · 2026'}</Eyebrow>
-            <h1 className="display resp-display-md" style={{
-              margin: '20px 0 0',
-              fontSize: activeSeries ? 'clamp(40px, 6vw, 88px)' : 'clamp(56px, 9vw, 144px)',
-              lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.04em',
+        {/* Заголовок + лид · справа карточка сводки */}
+        <div className="mb-cols" style={{ marginTop: 22, alignItems: 'flex-end', gap: 'clamp(22px, 3vw, 48px)' }}>
+          <div style={{ flex: '2 1 460px' }}>
+            <Eyebrow accent>{activeSeries ? `Серия · ${activeSeries.years}` : 'Каталог · в наличии'}</Eyebrow>
+            <h1 className="display" style={{
+              margin: '16px 0 0',
+              fontSize: 'clamp(38px, 5.6vw, 84px)',
+              lineHeight: .95, fontWeight: 500, letterSpacing: '-.038em',
             }}>
               {activeSeries
                 ? activeSeries.h1
-                : <>Купить картину{' '}<br/>маслом <span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>— в наличии</span></>}
+                : <>Купить картину маслом <span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>— в наличии</span></>}
             </h1>
+            <p style={{
+              margin: '18px 0 0', maxWidth: 620,
+              fontSize: 'clamp(15.5px, 1.15vw, 18px)', lineHeight: 1.6,
+              color: 'var(--ink-2)', fontWeight: 300,
+            }}>{lead}</p>
           </div>
-          {/* Sprint 15 (моб. аудит): декоративный счётчик скрыт на мобиле (съедал пол-экрана),
-              «21 работ» → правильное склонение */}
-          <div style={{ gridColumn: '9 / 13', textAlign: 'right' }} className="hide-mobile">
-            <div className="cat-no" style={{ fontSize: 12 }}>всего · {total} {plural(total)}</div>
-            <div className="display" style={{
-              fontSize: 56, fontWeight: 500, letterSpacing: '-.03em', lineHeight: 1, color: 'var(--accent)',
-              marginTop: 12,
-            }}>{String(items.length).padStart(2, '0')}/{String(total).padStart(2, '0')}</div>
-          </div>
+
+          <aside style={{
+            flex: '1 1 260px', minWidth: 0,
+            background: 'var(--bg-card)', border: '1px solid var(--rule-soft)',
+            borderRadius: 'var(--r-lg)', padding: 'clamp(18px, 1.8vw, 26px)',
+          }}>
+            <div className="eyebrow">Сводка</div>
+            <dl style={{ margin: '14px 0 0', display: 'grid', gap: 10 }}>
+              {[
+                ['Работ', `${pool.length} ${plural(pool.length)}`],
+                ['Цена', minPrice === maxPrice ? formatPrice(minPrice) : `${formatPrice(minPrice)} — ${formatPrice(maxPrice)}`],
+                ['Размеры', `${minSide}–${maxSide} см по стороне`],
+              ].map(([k, v]) => (
+                <div key={k} style={{ display: 'flex', justifyContent: 'space-between', gap: 14, alignItems: 'baseline' }}>
+                  <dt className="cat-no" style={{ margin: 0 }}>{k}</dt>
+                  <dd style={{ margin: 0, fontSize: 15, fontWeight: 500, textAlign: 'right' }}>{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </aside>
         </div>
 
-        {/* Filter bar */}
-        <div className="reveal r2 resp-stack-12 cat-filter" style={{
-          marginTop: 40,
-          display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: 24,
-          paddingBottom: 28, borderBottom: '1px solid var(--rule-soft)',
+        {/* Переключатель серий — пилюли с точкой серии и счётчиком */}
+        <nav aria-label="Серии" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 28 }}>
+          <button type="button" className={'chip' + (series === 'all' ? ' is-active' : '')}
+                  aria-pressed={series === 'all'} onClick={() => setSeries('all')}>
+            Все работы <span style={{ opacity: .7 }}>{total}</span>
+          </button>
+          {SERIES.map((s) => (
+            <button key={s.id} type="button"
+                    className={'chip' + (series === s.id ? ' is-active' : '')}
+                    aria-pressed={series === s.id}
+                    onClick={() => setSeries(s.id)}>
+              <span aria-hidden="true" style={{
+                width: 8, height: 8, borderRadius: '50%', background: s.color,
+                display: 'inline-block', flexShrink: 0,
+              }} />
+              {s.title} <span style={{ opacity: .7 }}>{seriesCount(s.id)}</span>
+            </button>
+          ))}
+        </nav>
+
+        {/* Липкая полоса фильтров — top от реальной высоты шапки (§13.15) */}
+        <div style={{
+          position: 'sticky', top: headerH, zIndex: 40,
+          margin: '18px 0 0',
+          padding: '12px 0',
+          background: 'rgba(237, 229, 214, .94)',
+          backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',
+          borderBottom: '1px solid var(--rule-soft)',
+          display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center',
         }}>
-          {/* Subject chips. Sprint 15 (моб. аудит): resp-scroll-x на flex-контейнере —
-              на мобиле чипы в одну прокручиваемую строку вместо 4 рядов */}
-          <div style={{ gridColumn: '1 / 9' }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }} className="resp-scroll-x">
-              {SUBJECTS.filter((s) => s.id === 'all' || series === 'all' || visibleArtworks().some((a) => a.series === series && a.subject === s.id)).map((s) => (
-                <button key={s.id} aria-pressed={subject === s.id}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, flex: '1 1 320px', minWidth: 0 }}>
+            {SUBJECTS
+              .filter((s) => s.id === 'all' || series === 'all' || visibleArtworks().some((a) => a.series === series && a.subject === s.id))
+              .map((s) => (
+                <button key={s.id} type="button" aria-pressed={subject === s.id}
+                        aria-label={`Сюжет: ${s.label}`}
                         className={'chip' + (subject === s.id ? ' is-active' : '')}
-                        onClick={() => setSubject(s.id)}>
-                  {s.label}
-                </button>
+                        onClick={() => setSubject(s.id)}>{s.label}</button>
               ))}
-            </div>
           </div>
-          {/* Series select + sort */}
-          {/* Sprint 15 (моб. аудит): catalog-controls — селекты парой в ряд вместо трёх этажей */}
-          <div style={{
-            gridColumn: '9 / 13', display: 'flex', gap: 10, justifyContent: 'flex-end',
-            flexWrap: 'wrap',
-          }} className="catalog-controls">
-            <select value={series} onChange={(e) => setSeries(e.target.value)} className="field" aria-label="Фильтр по серии"
-                    style={{ width: 'auto', padding: '12px 18px', fontSize: 16 }}>
-              <option value="all">Все серии</option>
-              {SERIES.map((s) => <option key={s.id} value={s.id}>{s.title}</option>)}
-            </select>
-            <select value={sort} onChange={(e) => setSort(e.target.value)} className="field" aria-label="Сортировка"
-                    style={{ width: 'auto', padding: '12px 18px', fontSize: 16 }}>
-              <option value="default">Сначала новые</option>
-              <option value="price-asc">Цена ↑</option>
-              <option value="price-desc">Цена ↓</option>
-              <option value="size-desc">По размеру</option>
-              <option value="year-desc">По году</option>
-            </select>
-            <div style={{ display: 'flex', borderRadius: 'var(--r-pill)', overflow: 'hidden', border: '1px solid var(--rule)' }}>
-              <button onClick={() => setView('grid')} aria-pressed={view === 'grid'}
-                      style={{
-                        background: view === 'grid' ? 'var(--ink)' : 'transparent',
-                        color: view === 'grid' ? 'var(--bg)' : 'var(--ink)',
-                        border: 0, padding: '14px 18px', minHeight: 44, fontFamily: 'var(--mono)',
-                        fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase',
-                        cursor: 'pointer',
-                      }}>Сетка</button>
-              <button onClick={() => setView('list')} aria-pressed={view === 'list'}
-                      style={{
-                        background: view === 'list' ? 'var(--ink)' : 'transparent',
-                        color: view === 'list' ? 'var(--bg)' : 'var(--ink)',
-                        border: 0, padding: '14px 18px', minHeight: 44, fontFamily: 'var(--mono)',
-                        fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase',
-                        cursor: 'pointer',
-                      }}>Список</button>
-            </div>
-          </div>
+          <span className="cat-no" style={{ whiteSpace: 'nowrap' }}>
+            {items.length} {plural(items.length)}
+          </span>
+          <select value={sort} onChange={(e) => setSort(e.target.value)} className="field"
+                  aria-label="Сортировка работ"
+                  style={{ width: 'auto', minHeight: 44, padding: '10px 16px', flex: '0 1 auto' }}>
+            <option value="default">Сначала новые</option>
+            <option value="price-asc">Цена ↑</option>
+            <option value="price-desc">Цена ↓</option>
+            <option value="size-desc">По размеру</option>
+          </select>
         </div>
 
         <h2 className="sr-only">{activeSeries ? `Работы серии «${activeSeries.title}»` : 'Работы в каталоге'}</h2>
-        {/* Results */}
+
         {items.length === 0 ? (
-          <div style={{
-            padding: '120px 40px', textAlign: 'center',
-            color: 'var(--ink-3)',
-          }}>
-            <div className="display" style={{ fontSize: 36, color: 'var(--ink)', marginBottom: 16, letterSpacing: '-.02em' }}>
+          <div style={{ padding: 'clamp(60px, 10vw, 120px) 20px', textAlign: 'center', color: 'var(--ink-3)' }}>
+            <div className="display" style={{ fontSize: 'clamp(26px,3.4vw,36px)', color: 'var(--ink)', marginBottom: 16, letterSpacing: '-.02em' }}>
               Ничего не нашли
             </div>
             <div style={{ fontSize: 15 }}>Попробуйте сбросить фильтры или поменять серию</div>
@@ -161,93 +193,84 @@ function CatalogPage({ go, density, initialSeries }) {
               Сбросить фильтры
             </button>
           </div>
-        ) : view === 'grid' ? (
-          <div className="reveal r3 cat-grid"
-               style={{
-                 marginTop: 48,
-                 display: 'grid',
-                 gridTemplateColumns: `repeat(${gridCols}, 1fr)`,
-                 gap: '56px 36px',
-               }}
-               data-cols={gridCols}>
-            <style>{`
-              @media (max-width: 900px) { [data-cols] { grid-template-columns: repeat(2, 1fr) !important; } }
-              @media (max-width: 600px) { [data-cols] { grid-template-columns: 1fr !important; } }
-            `}</style>
-            {items.map((art, i) => (
-              <ArtCard key={art.id} art={art} index={i + 1} total={items.length}
-                       priority={i < 3}
-                       onOpen={(id) => go('painting', { id })} />
-            ))}
-          </div>
         ) : (
-          <div className="reveal r3" style={{ marginTop: 32 }}>
+          <div className="mb-grid" style={{ marginTop: 28 }}>
             {items.map((art, i) => (
-              <ArtRow key={art.id} art={art} index={i + 1} total={items.length}
-                      onOpen={(id) => go('painting', { id })} />
+              <ArtCard key={art.id} art={art} index={i + 1} total={items.length} priority={i < 3} />
             ))}
+            {/* Последняя ячейка — работа под размер покупателя (§9) */}
+            <a href={routeToPath('commission')} className="mb-card mb-shimmer"
+               style={{
+                 textDecoration: 'none', background: 'var(--accent)', borderColor: 'var(--accent)',
+                 color: 'var(--bg-cream)', padding: 'clamp(22px, 2.4vw, 32px)', justifyContent: 'center',
+               }}>
+              <span className="display" style={{ fontSize: 'clamp(21px,1.8vw,26px)', fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1.15 }}>
+                Нет подходящего?<br />Напишем картину под ваш размер
+              </span>
+              <span className="mono" style={{ marginTop: 16, fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase' }}>
+                Заполнить бриф →
+              </span>
+            </a>
           </div>
         )}
 
-        {/* Sprint 14 (Ф6) + аудит r2: SEO-текст серии под сеткой — первая работа в первом экране */}
+        {/* SEO-текст серии — в <details>, а не стеной (§9) */}
         {activeSeries && (
-          <section style={{ marginTop: 72, maxWidth: 900 }}>
-            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', fontWeight: 300 }}>
+          <details open style={{
+            marginTop: 56, maxWidth: 900,
+            borderTop: '1px solid var(--rule-soft)', paddingTop: 20,
+          }}>
+            <summary className="eyebrow" style={{ cursor: 'pointer', minHeight: 44, display: 'flex', alignItems: 'center' }}>
+              О серии
+            </summary>
+            <p style={{ margin: '12px 0 0', fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', fontWeight: 300 }}>
               {activeSeries.seoText}
             </p>
-          </section>
+          </details>
         )}
 
-        {/* Sprint 15 (план роста, шаг 6): интерьерный интент на посадочных серий */}
         {activeSeries && SERIES_INTERIORS[activeSeries.id] && (
-          <section style={{ marginTop: 90 }}>
+          <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>
             <Eyebrow accent>В интерьере</Eyebrow>
-            <h2 className="display" style={{ margin: '14px 0 26px', fontSize: 'clamp(28px,3.4vw,44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+            <h2 className="display" style={{ margin: '14px 0 26px', fontSize: 'clamp(26px,3.2vw,44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
               Куда впишется «{activeSeries.title}»
             </h2>
-            <div className="resp-stack-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 20 }}>
+            <div className="mb-grid-wide">
               {SERIES_INTERIORS[activeSeries.id].map((r) => (
-                <div key={r.room} style={{ background: 'var(--bg-card)', borderRadius: 'var(--r-lg)', padding: 26 }}>
+                <div key={r.room} style={{ background: 'var(--bg-card)', borderRadius: 'var(--r-lg)', padding: 26 }} data-rev>
                   <h3 className="display" style={{ margin: '0 0 10px', fontSize: 19, fontWeight: 500 }}>{r.room}</h3>
                   <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.65, color: 'var(--ink-2)' }}>{r.text}</p>
                 </div>
               ))}
             </div>
-            <p style={{ margin: '22px 0 0', fontSize: 14.5, color: 'var(--ink-2)' }}>
+            <p style={{ margin: '22px 0 0', fontSize: 14.5, color: 'var(--ink-2)', lineHeight: 1.7 }}>
               Сомневаетесь в размере и цвете — разбор с примерами в журнале:{' '}
               <a href={INTERIOR_GUIDE_URL} className="uh-tap" style={{ color: 'var(--accent)' }}>как выбрать картину для гостиной</a>.
-              Ищете подарок — <a href="/podarok" className="uh-tap" style={{ color: 'var(--accent)' }}>картина в подарок</a>.
-              Подборки по комнатам: <a href="/kartina-v-gostinuyu" className="uh-tap" style={{ color: 'var(--accent)' }}>в гостиную</a>, <a href="/kartina-v-spalnyu" className="uh-tap" style={{ color: 'var(--accent)' }}>в спальню</a>, <a href="/kartina-v-kabinet" className="uh-tap" style={{ color: 'var(--accent)' }}>в кабинет</a>.
-              По сюжетам: <a href="/catalog/more" className="uh-tap" style={{ color: 'var(--accent)' }}>море и волны</a>, <a href="/catalog/botanika" className="uh-tap" style={{ color: 'var(--accent)' }}>цветы и растения</a>, <a href="/catalog/gory" className="uh-tap" style={{ color: 'var(--accent)' }}>горы</a>.
             </p>
           </section>
         )}
 
-        {/* 04.09 перелинковка: общий /catalog не ссылался на посадочные и подборки (на /catalog/<slug> это есть в «В интерьере») */}
-        {!activeSeries && (
-          <section style={{ marginTop: 72, maxWidth: 900, display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <LinkStrip label="Подобрать" links={[['/kartina-v-gostinuyu', 'картина в гостиную'], ['/kartina-v-spalnyu', 'в спальню'], ['/kartina-v-kabinet', 'в кабинет'], ['/podarok', 'в подарок']]} />
-            <LinkStrip label="По сюжету" links={[['/catalog/more', 'морской пейзаж'], ['/catalog/botanika', 'цветы и растения'], ['/catalog/gory', 'горы']]} />
-            <LinkStrip label="Журнал" links={[[INTERIOR_GUIDE_URL, 'как выбрать картину для гостиной'], ['/journal', 'все статьи']]} />
-          </section>
-        )}
+        <section style={{ marginTop: 'clamp(40px, 5vw, 72px)', maxWidth: 900, display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <LinkStrip label="Подобрать" links={[['/kartina-v-gostinuyu', 'картина в гостиную'], ['/kartina-v-spalnyu', 'в спальню'], ['/kartina-v-kabinet', 'в кабинет'], ['/podarok', 'в подарок']]} />
+          <LinkStrip label="По сюжету" links={[['/catalog/more', 'морской пейзаж'], ['/catalog/botanika', 'цветы и растения'], ['/catalog/gory', 'горы']]} />
+          <LinkStrip label="Журнал" links={[[INTERIOR_GUIDE_URL, 'как выбрать картину для гостиной'], ['/journal', 'все статьи']]} />
+        </section>
 
-        {/* CTA at the end */}
         <div style={{
-          marginTop: 100, padding: '60px 40px',
+          marginTop: 'clamp(56px, 7vw, 100px)', padding: 'clamp(32px, 4vw, 60px) clamp(20px, 3vw, 40px)',
           background: 'var(--bg-soft)', borderRadius: 'var(--r-xl)',
           textAlign: 'center', border: '1px solid var(--rule-soft)',
         }}>
           <Eyebrow accent>Не нашли подходящее?</Eyebrow>
           <h2 className="display" style={{
-            margin: '20px 0 24px', fontSize: 'clamp(32px, 4vw, 52px)',
+            margin: '20px 0 24px', fontSize: 'clamp(28px, 4vw, 52px)',
             lineHeight: 1.05, fontWeight: 500, letterSpacing: '-.025em',
           }}>
-            Картина под <span className="italic" style={{ color: 'var(--accent)' }}>ваше место.</span>
+            Картина под <span className="italic" style={{ color: 'var(--accent)' }}>ваше место</span>
           </h2>
-          <button className="btn btn-solid" onClick={() => go('commission')}>
+          <a href={routeToPath('commission')} className="btn btn-solid" style={{ textDecoration: 'none' }}>
             Заказать индивидуально
-          </button>
+          </a>
         </div>
       </div>
     </div>

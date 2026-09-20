@@ -9,4 +9,4 @@ const id = (typeof window !== 'undefined' && (window as any).__MB_ART_ID) || pat
 const seo = seoFor('painting', { id });
 applySeo(seo);
 seo.jsonLd.forEach((ld, i) => { if (ld) injectJsonLd('ld-painting-' + i, ld); });
-renderPage('painting', PaintingPage, (api) => ({ go: api.go, id, addToCart: api.addToCart }));
+renderPage('painting', PaintingPage, (api) => ({ go: api.go, id }));

@@ -29,8 +29,8 @@ function pageEl(name: string, params: any): React.ReactElement | null {
   switch (name) {
     case 'home': return <HomePage go={NOOP} />;
     case 'about': return <AboutPage go={NOOP} />;
-    case 'catalog': return <CatalogPage go={NOOP} density="regular" initialSeries={params.series} />;
-    case 'painting': return <PaintingPage go={NOOP} id={params.id} addToCart={NOOP} />;
+    case 'catalog': return <CatalogPage go={NOOP} initialSeries={params.series} />;
+    case 'painting': return <PaintingPage go={NOOP} id={params.id} />;
     case 'commission': return <CommissionPage go={NOOP} refId={undefined} />;
     case 'legal': return <LegalPage go={NOOP} section={params.section} />;
     default: return null;
