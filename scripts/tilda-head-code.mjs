@@ -430,7 +430,7 @@ function ldFix(out) {
   if (si >= 0) { const ls = o.lastIndexOf(NLC, si); const le = o.indexOf(NLC, si); if (ls >= 0 && le > ls) o = o.slice(0, ls) + o.slice(le); }
   const orgI = o.indexOf('"@type": "Organization"');
   if (orgI >= 0 && o.indexOf('"sameAs"', orgI) < 0) {
-    o = o.replace('"legalName": "ИП Клевер Людмила Александровна",', '"legalName": "ИП Клевер Людмила Александровна",' + NLC + '  "sameAs": ["https://instagram.com/m.bezu_art", "https://t.me/mbezu_art", "https://vk.com/mbezu_art"],');
+    o = o.replace('"legalName": "ИП Клевер Людмила Александровна",', '"legalName": "ИП Клевер Людмила Александровна",' + NLC + '  "sameAs": ["https://instagram.com/m.bezu_art", "https://t.me/+79167641039", "https://vk.com/mbezu_art"],');
   }
   const pI = o.indexOf('"@type": "Person"');
   if (pI >= 0) { const key = '"url": "https://mbezu.ru"'; const uI = o.indexOf(key, pI); if (uI >= 0 && (orgI < 0 || uI < orgI)) o = o.slice(0, uI) + '"url": "https://mbezu.ru/about"' + o.slice(uI + key.length); }
@@ -440,6 +440,9 @@ const NLC = String.fromCharCode(10);
 function patchHead(src) {
   let out = src;
   const removed = [];
+  // 20.09: у аккаунта нет @username — t.me/mbezu_art отдавал «пользователь
+  // не существует». Везде (JSON-LD sameAs, ссылки) ставим номерную ссылку.
+  out = out.split('https://t.me/mbezu_art').join('https://t.me/+79167641039');
   // Sprint 15 (3.19): Google Fonts блокировал критический путь до 4 с —
   // шрифты теперь self-host в нашем бандле (cdn.mbezu.ru/fonts/*).
   const gf = out;
