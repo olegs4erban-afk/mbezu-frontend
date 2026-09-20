@@ -64,7 +64,7 @@ function HeroLead() {
         </div>
         {ref && <p className="mono" style={{ margin: '10px 0 0', fontSize: 12.5, color: 'var(--ink-2)' }}>Номер заявки: <b>{ref}</b></p>}
         <p style={{ margin: '10px 0 0', fontSize: 14, color: 'var(--ink-2)' }}>
-          Хотите быстрее — <a href="https://t.me/mbezu_art" target="_blank" rel="noopener" style={{ color: 'var(--accent)', fontWeight: 600 }}>Telegram @mbezu_art</a>
+          Хотите быстрее — <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener" style={{ color: 'var(--accent)', fontWeight: 600 }}>Telegram</a>
         </p>
       </div>
     );
@@ -94,7 +94,7 @@ function HeroLead() {
       {state === 'err' && (
         <div style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
           <b>Не удалось отправить.</b> Напишите напрямую:{' '}
-          <a href="https://t.me/mbezu_art" target="_blank" rel="noopener" style={{ color: 'var(--accent)', fontWeight: 600 }}>Telegram</a>{' · '}
+          <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener" style={{ color: 'var(--accent)', fontWeight: 600 }}>Telegram</a>{' · '}
           <a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} style={{ color: 'var(--accent)', fontWeight: 600 }}>{ABOUT.contacts.phone}</a>
         </div>
       )}
@@ -640,8 +640,8 @@ function LeadForm({ go }) {
         )}
         <p style={{ margin: '12px 0 0', fontSize: 14, lineHeight: 1.6, opacity: .85 }}>
           Хотите быстрее — напишите напрямую:{' '}
-          <a href="https://t.me/mbezu_art" target="_blank" rel="noopener"
-             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Telegram @mbezu_art</a>
+          <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener"
+             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Telegram</a>
         </p>
       </div>
     );
@@ -697,8 +697,8 @@ function LeadForm({ go }) {
           fontSize: 13.5, lineHeight: 1.6,
         }}>
           <b>Не удалось отправить заявку.</b> Напишите напрямую — ответим так же быстро:{' '}
-          <a href="https://t.me/mbezu_art" target="_blank" rel="noopener"
-             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Telegram @mbezu_art</a>{' · '}
+          <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener"
+             style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>Telegram</a>{' · '}
           <a href={`mailto:${ABOUT.contacts.email}`}
              style={{ color: 'var(--bg-cream)', fontWeight: 600 }}>{ABOUT.contacts.email}</a>{' · '}
           <a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`}

@@ -213,21 +213,17 @@ function ArtRow({ art, onOpen, index, total }: { art: any; onOpen?: (id: string)
 // Глобальная экспозиция компонентов
 
 
-// ── LinkStrip — строка «метка · ссылка · ссылка» для посадочных вне RouteName (04.09 перелинковка) ──
+// ── LinkStrip — подборки ссылками (04.09 перелинковка) ────────
+// Пункт Олега 20.09: блок был мелкой строкой текста — ссылки стали
+// крупными пилюлями с обводкой, тач-цель 44px.
 function LinkStrip({ label, links, style }: { label: React.ReactNode; links: Array<[string, string]>; style?: React.CSSProperties }) {
   return (
-    <p style={{
-      margin: 0, display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px 16px',
-      fontSize: 14.5, color: 'var(--ink-2)', ...style,
-    }}>
-      <span className="cat-no">{label}</span>
-      {links.map(([href, text], i) => (
-        <React.Fragment key={href}>
-          {i > 0 && <span aria-hidden="true" style={{ color: 'var(--ink-3)' }}>·</span>}
-          <a href={href} className="uh-tap" style={{ color: 'var(--accent)', textDecoration: 'none' }}>{text}</a>
-        </React.Fragment>
+    <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '10px 14px', ...style }}>
+      <span className="eyebrow" style={{ flex: '0 0 auto' }}>{label}</span>
+      {links.map(([href, text]) => (
+        <a key={href} href={href} className="mb-pill">{text}</a>
       ))}
-    </p>
+    </div>
   );
 }
 

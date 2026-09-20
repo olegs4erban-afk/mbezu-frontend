@@ -106,7 +106,7 @@ function PaintingPage({ go, id }) {
   const src = imageOf(art, 'full');
   // Покупка живёт в нативном Store Tilda (корзина 706 → ЮKassa).
   const buyHref = storeProductPath(art.id) || routeToPath('catalog');
-  const askHref = `https://t.me/${ABOUT.contacts.telegram}`;
+  const askHref = ABOUT.contacts.telegramUrl;
   const v = VIEWS[view];
 
   return (

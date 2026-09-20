@@ -539,7 +539,12 @@ const ABOUT = {
     email:     'milabezu.art@gmail.com',
     phone:     '+7 916 764 10 39',
     instagram: 'm.bezu_art',
+    // У аккаунта художника нет публичного @username: t.me/mbezu_art отдавал
+    // «пользователь не существует». Рабочая ссылка — по номеру телефона
+    // (проверено: t.me/+79167641039 → «Chat with +7 916 764 10 39»).
     telegram:  'mbezu_art',
+    telegramUrl: 'https://t.me/+79167641039',
+    telegramLabel: 'Telegram',
     vk:        'mbezu_art',
   },
 

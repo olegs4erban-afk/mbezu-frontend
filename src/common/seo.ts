@@ -93,7 +93,7 @@ export function organizationLd() {
     address: { '@type': 'PostalAddress', addressLocality: 'Москва', addressCountry: 'RU' },
     sameAs: [
       `https://instagram.com/${ABOUT.contacts.instagram}`,
-      `https://t.me/${ABOUT.contacts.telegram}`,
+      ABOUT.contacts.telegramUrl,
       `https://vk.com/${ABOUT.contacts.vk}`,
     ],
   };

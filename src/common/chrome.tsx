@@ -57,7 +57,7 @@ function LogoMB({ size = 32, href, onClick }: { size?: number; href?: string; on
 
 // ── Контакты (одни на всю шапку/панель) ───────────────────────
 const PHONE_HREF = `tel:${ABOUT.contacts.phone.replace(/[^\d+]/g, '')}`;
-const TG_HREF = `https://t.me/${ABOUT.contacts.telegram}`;
+const TG_HREF = ABOUT.contacts.telegramUrl;
 
 // Пункты меню — один набор на все страницы (HANDOFF §3: одна шапка,
 // полный набор пунктов бывшего меню Tilda).
@@ -275,15 +275,85 @@ function TopBar({ route, cartCount: cartProp, primaryCta }: {
   );
 }
 
+// ── BottomTabBar — нижняя app-style навигация (только мобайл, Sprint 11) ──
+const TAB_ICONS: Record<string, React.ReactNode> = {
+  home: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" />
+    </svg>
+  ),
+  catalog: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
+      <rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" />
+      <rect x="3" y="13" width="8" height="8" rx="1.5" /><rect x="13" y="13" width="8" height="8" rx="1.5" />
+    </svg>
+  ),
+  commission: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" />
+    </svg>
+  ),
+  cart: (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M6 7h12l1.2 13H4.8L6 7z" /><path d="M9 10V6a3 3 0 0 1 6 0v4" />
+    </svg>
+  ),
+};
+
+function BottomTabBar({ route, go, cartCount: cartProp }) {
+  const cartCount = useTildaCartCount(cartProp);
+  const tabs = [
+    { id: 'home',       label: 'Главная' },
+    { id: 'catalog',    label: 'Каталог' },
+    { id: 'commission', label: 'На заказ' },
+    { id: 'cart',       label: 'Корзина' },
+  ];
+  return (
+    <nav className="tabbar" aria-label="Нижняя навигация">
+      {tabs.map((t) => {
+        const active = route === t.id;
+        return (
+          <a key={t.id} href={routeToPath(t.id as RouteName)}
+             onClick={t.id === 'cart' ? openNativeCart : undefined}
+             className={'tabbar-item' + (active ? ' is-active' : '')}
+             aria-current={active ? 'page' : undefined}>
+            <span className="tabbar-icon">
+              {TAB_ICONS[t.id]}
+              {t.id === 'cart' && cartCount > 0 && (
+                <span className="tabbar-badge">{cartCount}</span>
+              )}
+            </span>
+            <span className="tabbar-label">{t.label}</span>
+          </a>
+        );
+      })}
+    </nav>
+  );
+}
+
 // ── StickyBar — липкая нижняя панель (HANDOFF §3) ─────────────
-// Заменила .tabbar: тот дублировал плавающую корзину Tilda (.t706__carticon).
+// Панель закрывается: на мобиле она стояла над таб-баром и съедала экран.
+// Решение помнится на время сессии — в следующий заход панель вернётся.
+const STICKY_CLOSED_KEY = 'mb-sticky-closed';
+
 function StickyBar({ text, primary, secondary }: {
   text?: React.ReactNode;
   primary?: { label: string; href?: string; onClick?: (e: React.MouseEvent) => void };
   secondary?: { label: string; href: string } | null;
 }) {
+  const [closed, setClosed] = React.useState(false);
+  React.useEffect(() => {
+    try { if (sessionStorage.getItem(STICKY_CLOSED_KEY) === '1') setClosed(true); } catch { /* private mode */ }
+  }, []);
+  const close = () => {
+    setClosed(true);
+    try { sessionStorage.setItem(STICKY_CLOSED_KEY, '1'); } catch { /* private mode */ }
+  };
+
+  if (closed) return null;
+
   const p = primary || { label: 'Заказать картину', href: routeToPath('commission') };
-  const s = secondary === undefined ? { label: 'Telegram', href: TG_HREF } : secondary;
+  const s = secondary === undefined ? { label: 'Telegram', href: ABOUT.contacts.telegramUrl } : secondary;
   return (
     <div className="mb-sticky">
       <div className="mb-sticky-in">
@@ -295,6 +365,11 @@ function StickyBar({ text, primary, secondary }: {
                className="btn mb-sticky-alt">{s.label}</a>
           )}
         </div>
+        <button type="button" className="mb-sticky-close" onClick={close} aria-label="Скрыть панель">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </button>
       </div>
     </div>
   );
@@ -357,7 +432,7 @@ function Footer({ go }) {
               Mila Bezú — художник-живописец из Москвы. Интерьерная живопись маслом, на заказ и в наличии.
             </p>
             <div style={{ display: 'flex', gap: 12, marginTop: 28, flexWrap: 'wrap' }}>
-              <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener"
+              <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener"
                  style={{
                    color: 'var(--bg-cream)', textDecoration: 'none',
                    padding: '10px 18px', border: '1px solid rgba(245,239,226,.3)',
@@ -504,4 +579,4 @@ function Footer({ go }) {
   );
 }
 
-export { TopBar, Footer, Marquee, LogoMB, StickyBar };
+export { TopBar, Footer, Marquee, LogoMB, StickyBar, BottomTabBar };

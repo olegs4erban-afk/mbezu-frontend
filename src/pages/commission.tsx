@@ -213,7 +213,7 @@ function CommissionPage({ go, refId }) {
             {leadNo && <p className="cat-no" style={{ margin: '0 0 14px' }}>Номер заявки: <b>{leadNo}</b></p>}
             <p style={{ fontSize: 16, color: 'var(--ink-2)', maxWidth: 480, margin: '0 auto', lineHeight: 1.6 }}>
               Мила ответит лично в течение 24 часов. Хотите быстрее — напишите
-              в&nbsp;<a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh"
+              в&nbsp;<a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener" className="uh"
                        style={{ color: 'var(--accent)', textDecoration: 'none' }}>Telegram</a>.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 14, marginTop: 32, flexWrap: 'wrap' }}>
@@ -391,7 +391,7 @@ function CommissionPage({ go, refId }) {
                           fontSize: 13.5, lineHeight: 1.6,
                         }}>
                           <b>Не удалось отправить бриф.</b> Напишите напрямую:{' '}
-                          <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" style={{ color: 'var(--accent)' }}>Telegram</a>{' · '}
+                          <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener" style={{ color: 'var(--accent)' }}>Telegram</a>{' · '}
                           <a href={`mailto:${ABOUT.contacts.email}`} style={{ color: 'var(--accent)' }}>{ABOUT.contacts.email}</a>{' · '}
                           <a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} style={{ color: 'var(--accent)' }}>{ABOUT.contacts.phone}</a>
                         </div>

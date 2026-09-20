@@ -386,6 +386,9 @@
   .show-mobile { display: none; }
 
   @media (max-width: 900px) {
+    /* Нижняя навигация видна на мобиле; контент и подвал не уходят под неё */
+    .tabbar { display: flex; }
+    main#main { padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)); }
     .show-mobile { display: initial; }
     .hide-mobile { display: none !important; }
     body { font-size: 14px; }
@@ -738,3 +741,36 @@ a.uh[style*="background:var(--bg-card)"]:hover, a.uh[style*="background: var(--b
    На мобиле тёмная полоса в ней не нужна (§13.17) — и не даёт сдвига,
    когда React переключает шапку на мобильную. */
 @media (max-width: 899px) { .mb-trust { display: none; } }
+
+
+/* Кнопка «скрыть» у липкой панели */
+.mb-sticky-close {
+  flex: 0 0 auto; width: 34px; height: 34px;
+  display: inline-grid; place-items: center;
+  background: transparent; border: 1px solid rgba(245, 239, 226, .3);
+  border-radius: var(--r-pill); color: rgba(245, 239, 226, .8);
+  cursor: pointer; padding: 0;
+  transition: background-color .2s, color .2s;
+}
+.mb-sticky-close:hover { background: rgba(245, 239, 226, .14); color: var(--bg-cream); }
+
+/* На мобиле панель стоит НАД таб-баром, а не поверх него */
+@media (max-width: 900px) {
+  .mb-sticky { bottom: calc(66px + env(safe-area-inset-bottom, 0px)); padding-bottom: 10px; }
+  .mb-sticky-close { position: absolute; top: 8px; right: 12px; width: 32px; height: 32px; }
+  .mb-sticky-in { position: relative; padding-right: 44px; }
+}
+
+/* Пилюля-ссылка подборок (LinkStrip): крупная, с обводкой, тач-цель 44px */
+.mb-pill {
+  display: inline-flex; align-items: center;
+  min-height: 44px; padding: 10px 20px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-pill);
+  background: var(--bg-card);
+  color: var(--ink); text-decoration: none;
+  font-size: 15px; font-weight: 500; line-height: 1.2;
+  transition: background-color .2s, color .2s, border-color .2s, transform .2s;
+}
+.mb-pill:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); transform: translateY(-1px); }
+@media (prefers-reduced-motion: reduce) { .mb-pill { transition: none; } }

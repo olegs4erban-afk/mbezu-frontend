@@ -72,7 +72,9 @@ function TrackingPage({ go }) {
                 borderRadius: 'var(--r-lg)', boxShadow: 'var(--shadow-md)',
               }}>
                 <div style={{ marginBottom: 20 }}>
-                  <PaintingPlate art={demo} fit="bare" style={{
+                  {/* 20.09: было object-fit:cover в боксе w/h — квадратная карточка
+                      работы обрезалась по краям. contain показывает работу целиком. */}
+                  <PaintingPlate art={demo} fit="bare" objectFit="contain" plain style={{
                     aspectRatio: `${demo.w}/${demo.h}`,
                     borderRadius: 'var(--r-md)',
                     boxShadow: 'var(--shadow-md)',
@@ -108,8 +110,8 @@ function TrackingPage({ go }) {
 
                 <div className="cat-no" style={{ lineHeight: 1.6 }}>
                   Связь с художником —{' '}<br/>
-                  <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh"
-                     style={{ color: 'var(--accent)', textDecoration: 'none' }}>Telegram · @{ABOUT.contacts.telegram}</a>
+                  <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener" className="uh"
+                     style={{ color: 'var(--accent)', textDecoration: 'none' }}>Telegram · написать</a>
                 </div>
               </div>
             </aside>
@@ -240,7 +242,7 @@ function TrackingPage({ go }) {
           </h2>
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <a className="btn btn-solid" href={`mailto:${ABOUT.contacts.email}`}>{ABOUT.contacts.email}</a>
-            <a className="btn btn-ghost" href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener">Telegram</a>
+            <a className="btn btn-ghost" href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener">Telegram</a>
           </div>
         </section>
       </div>

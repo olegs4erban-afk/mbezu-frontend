@@ -311,7 +311,7 @@ function DeliverySection() {
 
       <Clause n="04" title="Международная доставка">
         <p>Доставка за пределы РФ обсуждается индивидуально — напишите на {ABOUT.contacts.email}{' '}
-        или в <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener"
+        или в <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener"
         style={{ color: 'var(--accent)' }}>Telegram</a> с указанием страны и города.</p>
       </Clause>
 
@@ -396,7 +396,7 @@ function ReturnsSection() {
       <Clause n="06" title="Спорные ситуации">
         <p>Перед обращением в суд стороны обязуются попытаться разрешить спор путём переговоров.
         Mila всегда готова обсудить ситуацию лично — напишите в{' '}
-        <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener"
+        <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener"
         style={{ color: 'var(--accent)' }}>Telegram</a> или по email.</p>
       </Clause>
     </div>
@@ -540,9 +540,9 @@ function LegalPage({ go, section }) {
                  style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: 13.5, display: 'block' }}>
                 {ABOUT.contacts.email}
               </a>
-              <a href={`https://t.me/${ABOUT.contacts.telegram}`} target="_blank" rel="noopener" className="uh"
+              <a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener" className="uh"
                  style={{ color: 'var(--accent)', textDecoration: 'none', fontSize: 13.5, display: 'block', marginTop: 6 }}>
-                @{ABOUT.contacts.telegram}
+                Telegram · написать
               </a>
             </div>
           </aside>

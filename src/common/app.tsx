@@ -6,7 +6,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
-import { TopBar, Footer, StickyBar } from './chrome';
+import { TopBar, Footer, StickyBar, BottomTabBar } from './chrome';
 import { initMotion } from './reveal';
 import { hideTildaDuplicateChrome } from './tilda-chrome';
 import { useCart } from './cart';
@@ -77,6 +77,8 @@ function Shell({ pageName, cartCount, children }: { pageName: string; cartCount:
       <main id="main">{children}</main>
       <Footer go={go} />
       {sticky && <StickyBar {...sticky} />}
+      {/* Нижняя навигация на мобиле (CSS показывает её ниже 900px) */}
+      <BottomTabBar route={pageName} go={go} cartCount={cartCount} />
     </>
   );
 }
