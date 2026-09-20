@@ -55,156 +55,248 @@ function LogoMB({ size = 32, href, onClick }: { size?: number; href?: string; on
   return <div onClick={onClick} style={style}>{inner}</div>;
 }
 
-// ── ZeroBanner — тонкий «индекс выпуска» вверху ───────────────
-function ZeroBanner() {
-  const date = new Date().toLocaleDateString('ru-RU', { day: '2-digit', month: 'long', year: 'numeric' });
+// ── Контакты (одни на всю шапку/панель) ───────────────────────
+const PHONE_HREF = `tel:${ABOUT.contacts.phone.replace(/[^\d+]/g, '')}`;
+const TG_HREF = `https://t.me/${ABOUT.contacts.telegram}`;
+
+// Пункты меню — один набор на все страницы (HANDOFF §3: одна шапка,
+// полный набор пунктов бывшего меню Tilda).
+const NAV: Array<{ id: string; label: string; href: string }> = [
+  { id: 'catalog',    label: 'Каталог',   href: routeToPath('catalog') },
+  { id: 'commission', label: 'На заказ',  href: routeToPath('commission') },
+  { id: 'podarok',    label: 'В подарок', href: '/podarok' },
+  { id: 'journal',    label: 'Журнал',    href: '/journal' },
+  { id: 'about',      label: 'Художник',  href: routeToPath('about') },
+];
+
+/** <900px — мобильная раскладка. Считаем в JS, а не медиазапросом:
+ *  в DOM не должно быть десктопной шапки (её ширина ломала сетку, §13.6). */
+function useIsMobile(): boolean {
+  const [m, setM] = React.useState(() => (typeof window === 'undefined' ? false : window.innerWidth < 900));
+  React.useEffect(() => {
+    const upd = () => setM(window.innerWidth < 900);
+    upd();
+    window.addEventListener('resize', upd);
+    return () => window.removeEventListener('resize', upd);
+  }, []);
+  return m;
+}
+
+const ICON = {
+  phone: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2.1z" />
+    </svg>
+  ),
+  cart: (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M6 7h12l1.2 13H4.8L6 7z" /><path d="M9 10V6a3 3 0 0 1 6 0v4" />
+    </svg>
+  ),
+  tg: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M21.9 4.3 18.8 19c-.2 1-.9 1.3-1.8.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.4-5 9-8.1c.4-.4-.1-.6-.6-.2L6.6 12.1 1.8 10.6c-1-.3-1-1 .2-1.5l18.5-7.1c.9-.3 1.6.2 1.4 2.3z" />
+    </svg>
+  ),
+};
+
+function CartBadge({ n }: { n: number }) {
+  if (!n) return null;
   return (
-    <div className="resp-pad" style={{
-      padding: '12px 40px',
-      background: 'var(--bg-soft)',
-      borderBottom: '1px solid var(--rule-soft)',
+    <span style={{
+      position: 'absolute', top: -5, right: -8,
+      minWidth: 17, height: 17, padding: '0 4px',
+      background: 'var(--accent)', color: 'var(--bg)',
+      borderRadius: 'var(--r-pill)',
+      fontFamily: 'var(--mono)', fontSize: 9.5, fontWeight: 700,
+      display: 'inline-grid', placeItems: 'center', lineHeight: 1,
+    }}>{n}</span>
+  );
+}
+
+// ── Тёмная полоса доверия над шапкой (только десктоп, §13.17) ──
+function TrustStrip() {
+  return (
+    <div style={{
+      background: 'var(--bg-deep)', color: 'rgba(245,239,226,.82)',
+      padding: '9px clamp(16px,3.5vw,48px)',
     }}>
-      <div style={{
+      <div className="mono" style={{
         maxWidth: 'var(--max)', margin: '0 auto',
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 24, flexWrap: 'wrap',
-      }} className="eyebrow">
-        <span>Mila Bezú</span>
-        <span className="resp-hide" style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
-          <span style={{ width: 16, height: 1, background: 'var(--accent)' }} />
-          <span>21 работа · 4 серии · масло на холсте</span>
-          <span style={{ width: 16, height: 1, background: 'var(--accent)' }} />
-        </span>
-        <span>{date} · Moscou</span>
+        display: 'flex', justifyContent: 'space-between', gap: 20,
+        fontSize: 10, letterSpacing: '.18em', textTransform: 'uppercase',
+      }}>
+        <span>Оригиналы маслом · сертификат подлинности</span>
+        <span>Доставка по РФ · Москва, показ по записи</span>
       </div>
     </div>
   );
 }
 
-// ── TopBar — навигация и корзина ──────────────────────────────
-function TopBar({ route, go, cartCount: cartProp }) {
-  const cartCount = useTildaCartCount(cartProp);
-  const [scrolled, setScrolled] = React.useState(false);
+// ── TopBar — одна шапка на все страницы ───────────────────────
+function TopBar({ route, cartCount: cartProp, primaryCta }: {
+  route?: string; go?: unknown; cartCount?: number;
+  primaryCta?: { label: string; href: string };
+}) {
+  const cartCount = useTildaCartCount(cartProp || 0);
+  const isMobile = useIsMobile();
+  const [open, setOpen] = React.useState(false);
+  const cta = primaryCta || { label: 'Заказать картину', href: routeToPath('commission') };
 
-  React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener('scroll', onScroll);
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  React.useEffect(() => { if (!isMobile) setOpen(false); }, [isMobile]);
 
-  const navItems = [
-    { id: 'catalog',    label: 'Каталог' },
-    { id: 'commission', label: 'На заказ' },
-    { id: 'about',      label: 'Художник' },
-  ];
+  const barStyle: React.CSSProperties = {
+    position: 'sticky', top: 0, zIndex: 60,
+    background: 'rgba(237, 229, 214, .94)',
+    backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)',
+    borderBottom: '1px solid var(--rule-soft)',
+  };
+
+  const iconBtn: React.CSSProperties = {
+    width: 44, height: 44, borderRadius: 'var(--r-pill)',
+    display: 'inline-grid', placeItems: 'center', position: 'relative',
+    color: 'var(--ink)', textDecoration: 'none',
+    background: 'transparent', border: 0, cursor: 'pointer', padding: 0,
+  };
+
+  if (isMobile) {
+    return (
+      <header style={barStyle} data-mb-header="mobile">
+        <div style={{
+          height: 61, padding: '8px 16px',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
+        }}>
+          <LogoMB size={23} href={routeToPath('home')} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <a href={PHONE_HREF} aria-label="Позвонить" style={iconBtn}
+               onClick={() => track('phone_click')}>{ICON.phone}</a>
+            <a href={routeToPath('cart')} onClick={openNativeCart} aria-label="Корзина" style={iconBtn}>
+              {ICON.cart}<CartBadge n={cartCount} />
+            </a>
+            <button type="button" aria-label={open ? 'Закрыть меню' : 'Меню'}
+                    aria-expanded={open} onClick={() => setOpen((v) => !v)}
+                    style={iconBtn}>
+              <span style={{ display: 'block', width: 21, height: 15, position: 'relative' }} aria-hidden="true">
+                {[0, 1, 2].map((i) => (
+                  <span key={i} style={{
+                    position: 'absolute', left: 0, right: 0, height: 1.6,
+                    background: 'var(--ink)', borderRadius: 2,
+                    top: i === 0 ? 0 : i === 1 ? 6.8 : 13.6,
+                    transition: 'transform .3s cubic-bezier(.16,1,.3,1), opacity .3s',
+                    transform: open
+                      ? (i === 0 ? 'translateY(6.8px) rotate(45deg)' : i === 2 ? 'translateY(-6.8px) rotate(-45deg)' : 'none')
+                      : 'none',
+                    opacity: open && i === 1 ? 0 : 1,
+                  }} />
+                ))}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {open && (
+          <nav aria-label="Основная навигация" style={{
+            borderTop: '1px solid var(--rule-soft)',
+            background: 'var(--bg)',
+            padding: '4px 16px calc(16px + env(safe-area-inset-bottom, 0px))',
+            maxHeight: 'calc(100vh - 61px)', overflowY: 'auto',
+          }}>
+            {NAV.map((n) => (
+              <a key={n.id} href={n.href}
+                 aria-current={route === n.id ? 'page' : undefined}
+                 style={{
+                   display: 'flex', alignItems: 'center', minHeight: 52,
+                   borderBottom: '1px solid var(--rule-soft)',
+                   textDecoration: 'none', fontSize: 16, fontWeight: 500,
+                   color: route === n.id ? 'var(--accent)' : 'var(--ink)',
+                 }}>{n.label}</a>
+            ))}
+            <a href={cta.href} className="btn btn-solid" style={{
+              width: '100%', justifyContent: 'center', marginTop: 16,
+              textDecoration: 'none', minHeight: 52,
+            }}>{cta.label}</a>
+            <div style={{ display: 'flex', gap: 10, marginTop: 10 }}>
+              <a href={PHONE_HREF} onClick={() => track('phone_click')}
+                 className="btn btn-ghost" style={{ flex: '1 1 0', justifyContent: 'center', textDecoration: 'none', minHeight: 48, fontSize: 12 }}>
+                {ABOUT.contacts.phone}
+              </a>
+              <a href={TG_HREF} target="_blank" rel="noopener" aria-label="Telegram"
+                 className="btn btn-ghost" style={{ flex: '0 0 auto', justifyContent: 'center', textDecoration: 'none', minHeight: 48 }}>
+                {ICON.tg}
+              </a>
+            </div>
+          </nav>
+        )}
+        <div className="mb-progress-track" aria-hidden="true"><span id="mb-progress" /></div>
+      </header>
+    );
+  }
 
   return (
     <>
-      <ZeroBanner />
-      <header className="resp-pad" style={{
-        position: 'sticky', top: 0, zIndex: 50,
-        padding: scrolled ? '14px 40px' : '24px 40px',
-        background: scrolled ? 'rgba(237, 229, 214, 0.92)' : 'var(--bg)',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled ? '1px solid var(--rule-soft)' : '1px solid transparent',
-        transition: 'all .25s cubic-bezier(.2,.7,.2,1)',
-      }}>
+      <TrustStrip />
+      <header style={barStyle} data-mb-header="desktop">
         <div style={{
           maxWidth: 'var(--max)', margin: '0 auto',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          padding: '12px clamp(16px,3.5vw,48px)',
+          display: 'flex', alignItems: 'center', gap: 'clamp(12px, 1.6vw, 28px)',
         }}>
-          <LogoMB size={28} href={routeToPath('home')} />
-
-          <nav className="hide-mobile" aria-label="Основная навигация" style={{ display: 'flex', alignItems: 'center', gap: 36 }}>
-            {navItems.map((n) => (
-              <a key={n.id} href={routeToPath(n.id as RouteName)}
-                 className="uh"
+          <LogoMB size={26} href={routeToPath('home')} />
+          <nav aria-label="Основная навигация" style={{ display: 'flex', alignItems: 'center', gap: 'clamp(12px, 1.5vw, 26px)' }}>
+            {NAV.map((n) => (
+              <a key={n.id} href={n.href} className="uh"
+                 aria-current={route === n.id ? 'page' : undefined}
                  style={{
                    textDecoration: 'none', color: route === n.id ? 'var(--accent)' : 'var(--ink)',
-                   fontSize: 13, letterSpacing: '.1em', textTransform: 'uppercase',
-                   fontWeight: 500,
+                   fontSize: 13, letterSpacing: '.1em', textTransform: 'uppercase', fontWeight: 500,
+                   display: 'inline-flex', alignItems: 'center', minHeight: 44,
                  }}>{n.label}</a>
             ))}
           </nav>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-            <a href={routeToPath('cart')} onClick={openNativeCart}
+          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 'clamp(8px, 1vw, 14px)' }}>
+            <a href={PHONE_HREF} onClick={() => track('phone_click')}
                style={{
-                 textDecoration: 'none', color: 'var(--ink)',
-                 fontSize: 13, letterSpacing: '.1em', textTransform: 'uppercase',
-                 fontWeight: 500, display: 'inline-flex', alignItems: 'center', gap: 8,
-               }} className="hide-mobile">
-              Корзина {cartCount > 0 && (
-                <span style={{
-                  background: 'var(--accent)', color: 'var(--bg)',
-                  width: 22, height: 22, borderRadius: 'var(--r-pill)',
-                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 10, fontWeight: 600,
-                }}>{cartCount}</span>
-              )}
+                 textDecoration: 'none', color: 'var(--ink)', fontWeight: 500, fontSize: 14,
+                 display: 'inline-flex', alignItems: 'center', minHeight: 44, whiteSpace: 'nowrap',
+               }} className="uh">{ABOUT.contacts.phone}</a>
+            <a href={TG_HREF} target="_blank" rel="noopener" className="btn btn-ghost" aria-label="Написать в Telegram"
+               style={{ textDecoration: 'none', minHeight: 44, minWidth: 44, padding: '12px 14px', justifyContent: 'center' }}>
+              {ICON.tg}
+            </a>
+            <a href={routeToPath('cart')} onClick={openNativeCart} className="btn btn-solid"
+               style={{ textDecoration: 'none', minHeight: 44, padding: '12px 18px', fontSize: 11, position: 'relative' }}>
+              {ICON.cart} Корзина<CartBadge n={cartCount} />
             </a>
           </div>
         </div>
-        {/* Sprint 11: мобильный бургер убран — навигация на мобайле через нижний таб-бар */}
+        <div className="mb-progress-track" aria-hidden="true"><span id="mb-progress" /></div>
       </header>
     </>
   );
 }
 
-// ── BottomTabBar — нижняя app-style навигация (только мобайл, Sprint 11) ──
-const TAB_ICONS: Record<string, React.ReactNode> = {
-  home: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M3 10.5 12 3l9 7.5" /><path d="M5 9.5V21h14V9.5" />
-    </svg>
-  ),
-  catalog: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" aria-hidden="true">
-      <rect x="3" y="3" width="8" height="8" rx="1.5" /><rect x="13" y="3" width="8" height="8" rx="1.5" />
-      <rect x="3" y="13" width="8" height="8" rx="1.5" /><rect x="13" y="13" width="8" height="8" rx="1.5" />
-    </svg>
-  ),
-  commission: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M12 19l7-7 3 3-7 7-3-3z" /><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" /><path d="M2 2l7.586 7.586" /><circle cx="11" cy="11" r="2" />
-    </svg>
-  ),
-  cart: (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M6 7h12l1.2 13H4.8L6 7z" /><path d="M9 10V6a3 3 0 0 1 6 0v4" />
-    </svg>
-  ),
-};
-
-function BottomTabBar({ route, go, cartCount: cartProp }) {
-  const cartCount = useTildaCartCount(cartProp);
-  const tabs = [
-    { id: 'home',       label: 'Главная' },
-    { id: 'catalog',    label: 'Каталог' },
-    { id: 'commission', label: 'На заказ' },
-    { id: 'cart',       label: 'Корзина' },
-  ];
+// ── StickyBar — липкая нижняя панель (HANDOFF §3) ─────────────
+// Заменила .tabbar: тот дублировал плавающую корзину Tilda (.t706__carticon).
+function StickyBar({ text, primary, secondary }: {
+  text?: React.ReactNode;
+  primary?: { label: string; href?: string; onClick?: (e: React.MouseEvent) => void };
+  secondary?: { label: string; href: string } | null;
+}) {
+  const p = primary || { label: 'Заказать картину', href: routeToPath('commission') };
+  const s = secondary === undefined ? { label: 'Telegram', href: TG_HREF } : secondary;
   return (
-    <nav className="tabbar" aria-label="Нижняя навигация">
-      {tabs.map((t) => {
-        const active = route === t.id;
-        return (
-          <a key={t.id} href={routeToPath(t.id as RouteName)}
-             onClick={t.id === 'cart' ? openNativeCart : undefined}
-             className={'tabbar-item' + (active ? ' is-active' : '')}
-             aria-current={active ? 'page' : undefined}>
-            <span className="tabbar-icon">
-              {TAB_ICONS[t.id]}
-              {t.id === 'cart' && cartCount > 0 && (
-                <span className="tabbar-badge">{cartCount}</span>
-              )}
-            </span>
-            <span className="tabbar-label">{t.label}</span>
-          </a>
-        );
-      })}
-    </nav>
+    <div className="mb-sticky">
+      <div className="mb-sticky-in">
+        {text && <div className="mb-sticky-text">{text}</div>}
+        <div className="mb-sticky-actions">
+          <a href={p.href || '#'} onClick={p.onClick} className="btn btn-solid mb-sticky-cta">{p.label}</a>
+          {s && (
+            <a href={s.href} target={s.href.startsWith('http') ? '_blank' : undefined} rel="noopener"
+               className="btn mb-sticky-alt">{s.label}</a>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -412,4 +504,4 @@ function Footer({ go }) {
   );
 }
 
-export { TopBar, Footer, Marquee, LogoMB, BottomTabBar };
+export { TopBar, Footer, Marquee, LogoMB, StickyBar };

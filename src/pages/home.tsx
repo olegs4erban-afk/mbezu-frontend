@@ -1,129 +1,198 @@
 import React from 'react';
 import { PaintingPlate } from '../common/adapter';
-import { ArButton, ArViewer, QrBlock, useArSupport, arAssets } from '../ar/ar';
 import { ArtCard, Eyebrow, LinkStrip } from '../common/atoms';
 import { Marquee } from '../common/chrome';
-import { ABOUT, ARTWORKS, SERIES, availableCount, featuredArtworks, formatPrice, seriesById, visibleArtworks } from '../common/data';
+import { ABOUT, ARTWORKS, SERIES, featuredArtworks, formatPrice, imageOf, seriesById, visibleArtworks } from '../common/data';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
 import { ReviewsSection } from '../common/reviews-section';
 import { FaqSection } from '../common/faq-section';
-import { HOME_FAQ } from '../common/seo';
+import { HOME_FAQ, plural, seriesCount, workCount } from '../common/seo';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
-// page-home.jsx — главная M.Bez.
-// Hero крупный (Editorial Dark) + Series + Manifest + InStock +
-// StudioBanner (примерка) + Packaging + Stats + Process + CTA + Newsletter.
+// home.tsx — главная MBezu (редизайн 2026, HANDOFF §7).
+// Порядок под конверсию: hero с формой → плитка-разводка → витрина →
+// серии → процесс → упаковка → манифест → цифры → CTA → FAQ → отзывы.
+// Блок AR-примерки убран: без .glb/.usdz он всё равно не рендерился,
+// а его импорт тянул на главную отдельный чанк.
 // ─────────────────────────────────────────────────────────────
 
 function heroArt() { return featuredArtworks()[0] || ARTWORKS[0]; }
 
-// ── HERO Editorial: крупная типографика 200px / lineheight 0.86 ──
-function HeroEditorial({ go }) {
-  const hero = heroArt();
-  return (
-    <section className="resp-pad home-hero" style={{
-      padding: '80px 40px 120px',
-      position: 'relative', overflow: 'hidden',
-    }}>
-      {/* Atmospheric terracotta glow */}
-      <div style={{
-        position: 'absolute', top: '-15%', right: '-10%',
-        width: 600, height: 600, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(160, 138, 78, 0.10), transparent 60%)',
-        animation: 'glow 10s ease-in-out infinite',
-        pointerEvents: 'none', zIndex: 0,
-      }} />
+// ── HERO — заказ-first (HANDOFF §7.1) ────────────────────────
+// Форма в первом экране: раньше заявка жила на 6-м экране, а первый
+// предлагал только «смотреть каталог».
+function HeroLead() {
+  const [f, setF] = React.useState({ name: '', contact: '', trap: '' });
+  const [state, setState] = React.useState<'idle' | 'sending' | 'ok' | 'err'>('idle');
+  const [touched, setTouched] = React.useState(false);
+  const [ref, setRef] = React.useState('');
 
-      <div style={{ maxWidth: 'var(--max)', margin: '0 auto', position: 'relative' }}>
-        {/* Sprint 10 (A): верхние плашки (Saison…/œuvre du jour…) убраны */}
-        {/* Big hero — text left, painting right */}
-        <div className="resp-stack" style={{
-          display: 'grid', gridTemplateColumns: '1.05fr .95fr',
-          gap: 80, alignItems: 'center',
-        }}>
-          <div style={{ position: 'relative', zIndex: 2 }}>
-            <h1 className="display reveal r2 resp-display-md" style={{
-              margin: 0,
-              fontSize: 'clamp(64px, 11vw, 200px)',
-              lineHeight: 0.86,
-              fontWeight: 500,
-              letterSpacing: '-.04em',
+  const nameOk = f.name.trim().length >= 2;
+  const contactOk = f.contact.trim().length >= 5;
+  const valid = nameOk && contactOk;
+
+  const submit = async () => {
+    setTouched(true);
+    if (!valid || state === 'sending') return;
+    setState('sending');
+    const contact = f.contact.trim();
+    const attemptRef = ref || leadRef();
+    setRef(attemptRef);
+    const res = await submitLead({
+      lead_ref: attemptRef,
+      name: f.name.trim(),
+      phone: contact,
+      email: /@/.test(contact) ? contact : '',
+      message: '',
+      source: 'home-hero',
+      page: typeof location !== 'undefined' ? location.pathname : '/',
+      [HONEYPOT_FIELD]: f.trap,
+      ...utmFromStorage(),
+    });
+    if (res.ok) { setRef(res.ref); setState('ok'); } else { setState('err'); }
+  };
+
+  if (state === 'ok') {
+    return (
+      <div style={{
+        marginTop: 26, padding: '22px 24px', borderRadius: 'var(--r-lg)',
+        background: 'var(--bg-card)', border: '1px solid var(--rule-soft)',
+      }}>
+        <div className="display" style={{ fontSize: 20, fontWeight: 500 }}>
+          Заявка отправлена — художник свяжется лично
+        </div>
+        {ref && <p className="mono" style={{ margin: '10px 0 0', fontSize: 12.5, color: 'var(--ink-2)' }}>Номер заявки: <b>{ref}</b></p>}
+        <p style={{ margin: '10px 0 0', fontSize: 14, color: 'var(--ink-2)' }}>
+          Хотите быстрее — <a href="https://t.me/mbezu_art" target="_blank" rel="noopener" style={{ color: 'var(--accent)', fontWeight: 600 }}>Telegram @mbezu_art</a>
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <form noValidate onSubmit={(e) => { e.preventDefault(); submit(); }}
+          aria-label="Заявка на картину" style={{ marginTop: 28, maxWidth: 520 }}>
+      <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" aria-hidden="true"
+             value={f.trap} onChange={(e) => setF((v) => ({ ...v, trap: e.target.value }))}
+             style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }} />
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+        <input className="field" style={{ flex: '1 1 170px', minWidth: 0 }} placeholder="Имя" aria-label="Имя"
+               name="name" autoComplete="name" aria-required="true"
+               aria-invalid={touched && !nameOk ? true : undefined}
+               value={f.name} onChange={(e) => setF((v) => ({ ...v, name: e.target.value }))} />
+        <input className="field" style={{ flex: '1 1 210px', minWidth: 0 }} placeholder="Телефон или Telegram"
+               aria-label="Телефон или Telegram" name="contact" autoComplete="tel" aria-required="true"
+               aria-invalid={touched && !contactOk ? true : undefined}
+               value={f.contact} onChange={(e) => setF((v) => ({ ...v, contact: e.target.value }))} />
+      </div>
+      {touched && !valid && (
+        <div style={{ marginTop: 8, fontSize: 13, color: 'var(--ink-2)' }}>
+          {!nameOk ? 'Укажите имя' : 'Укажите телефон или Telegram'}
+        </div>
+      )}
+      {state === 'err' && (
+        <div style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
+          <b>Не удалось отправить.</b> Напишите напрямую:{' '}
+          <a href="https://t.me/mbezu_art" target="_blank" rel="noopener" style={{ color: 'var(--accent)', fontWeight: 600 }}>Telegram</a>{' · '}
+          <a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} style={{ color: 'var(--accent)', fontWeight: 600 }}>{ABOUT.contacts.phone}</a>
+        </div>
+      )}
+      <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 16, marginTop: 14 }}>
+        <button className="btn btn-solid" type="submit" disabled={state === 'sending'}
+                style={{ minHeight: 52, opacity: state === 'sending' ? .6 : 1 }}>
+          {state === 'sending' ? 'Отправляем…' : 'Заказать картину'}
+        </button>
+        <a href={routeToPath('catalog')} className="uh" style={{ color: 'var(--ink)', fontSize: 15, textDecoration: 'none' }}>
+          {workCount()} {plural(workCount())} в наличии →
+        </a>
+      </div>
+      <p style={{ margin: '12px 0 0', fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-3)', maxWidth: 460 }}>
+        Нажимая «Заказать картину», вы соглашаетесь на обработку персональных данных (152-ФЗ) —{' '}
+        <a href={routeToPath('legal', { section: 'privacy' })} style={{ color: 'var(--accent)' }}>Политика ПД</a>
+      </p>
+    </form>
+  );
+}
+
+function HeroCommission() {
+  const hero = heroArt();
+  const src = imageOf(hero, 'full');
+  const trust: Array<[string, string, number | null]> = [
+    [String(workCount()), 'в наличии', workCount()],
+    ['от 2', 'недель на заказ', null],
+    ['15+', 'лет практики', null],
+    ['РФ', 'доставка', null],
+  ];
+  return (
+    <section className="mb-section home-hero" style={{ paddingTop: 'clamp(28px, 3.5vw, 56px)' }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div className="mb-cols" style={{ alignItems: 'center' }}>
+          <div style={{ flex: '1 1 460px' }}>
+            <span className="chip" style={{ cursor: 'default', borderColor: 'var(--rule)' }}>
+              Картина на заказ · от 2 недель
+            </span>
+            <h1 className="display" style={{
+              margin: '18px 0 0',
+              fontSize: 'clamp(40px, 6.4vw, 94px)',
+              lineHeight: .93, fontWeight: 500, letterSpacing: '-.038em',
             }}>
-              {/* 03.09 (Олег, Вебмастер): основной заголовок — SEO-ключи «купить картину маслом» + «заказать» */}
-              Купить картину{' '}<br/>
-              <span className="italic" style={{
-                color: 'var(--accent)', fontStyle: 'italic',
-                position: 'relative', display: 'inline-block',
-              }}>маслом</span>{' '}<br/>
+              Купить картину{' '}
+              <span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>маслом</span>{' '}
               для&nbsp;интерьера
             </h1>
-            <p className="reveal r3" style={{
-              margin: '40px 0 0', maxWidth: 460,
-              fontSize: 18, lineHeight: 1.55,
+            <p style={{
+              margin: '20px 0 0', maxWidth: 520,
+              fontSize: 'clamp(15.5px, 1.15vw, 18px)', lineHeight: 1.6,
               color: 'var(--ink-2)', fontWeight: 300,
-            }}>{ABOUT.tagline} Оригиналы на холсте от 6&nbsp;000&nbsp;₽ — купить в наличии или заказать у художника в Москве, картина на заказ от 2&nbsp;недель.</p>
-            <div className="reveal r4" style={{ display: 'flex', gap: 14, marginTop: 36, flexWrap: 'wrap' }}>
-              <button className="btn btn-solid" onClick={() => go('catalog')}>Смотреть каталог →</button>
-              <button className="btn btn-ghost" onClick={() => go('commission')}>Заказать картину</button>
-            </div>
-
-            {/* meta-stripe */}
-            <div className="reveal r5 hide-mobile" style={{
-              display: 'flex', gap: 48, marginTop: 56, paddingTop: 32,
-              borderTop: '1px solid var(--rule-soft)', flexWrap: 'wrap',
             }}>
-              {[
-                [String(availableCount()), 'в наличии'],
-                ['от 2', 'недель на заказ'],
-                ['15+', 'лет практики'],
-                ['РФ', 'доставка'],
-              ].map(([n, l]) => (
+              {ABOUT.tagline} Оригиналы на&nbsp;холсте: выберите работу в&nbsp;наличии
+              или закажите картину под свой размер и&nbsp;палитру.
+            </p>
+
+            <HeroLead />
+
+            {/* Полоса доверия — видна и на мобиле (раньше hide-mobile) */}
+            <div style={{
+              display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))',
+              gap: 18, marginTop: 34, paddingTop: 24, borderTop: '1px solid var(--rule-soft)',
+            }}>
+              {trust.map(([n, l, count]) => (
                 <div key={l}>
                   <div className="display" style={{
-                    fontSize: 40, fontWeight: 500, lineHeight: 1,
+                    fontSize: 'clamp(26px, 2.6vw, 38px)', fontWeight: 500, lineHeight: 1,
                     letterSpacing: '-.03em', color: 'var(--accent)',
-                  }}>{n}</div>
-                  <div className="eyebrow" style={{ marginTop: 8 }}>{l}</div>
+                  }} {...(count ? { 'data-count': String(count) } : {})}>{n}</div>
+                  <div className="eyebrow" style={{ marginTop: 6 }}>{l}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Painting on the right */}
-          <div className="reveal r3" style={{ position: 'relative' }}>
-            {/* 03.09 a11y: водяной знак — текст через ::before (attr), чтобы axe/Lighthouse не считал декор за текст с низким контрастом */}
-            <div className="display wm-text" aria-hidden="true" data-wm="M.B" style={{
-              position: 'absolute', right: -10, top: -80,
-              fontSize: 'clamp(140px, 18vw, 280px)',
-              color: 'var(--accent)', opacity: .08,
-              fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1,
-              pointerEvents: 'none', zIndex: 0, fontStyle: 'italic',
-            }} />
-            <a href={routeToPath('painting', { id: hero.id })} aria-label={`${hero.title} — ${formatPrice(hero.price)}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-            <figure style={{ margin: 0, position: 'relative', zIndex: 1, cursor: 'pointer' }}
-                    className="drift">
-              <PaintingPlate art={hero} fit="bare" priority objectFit="contain" plain sizes="(max-width: 900px) 92vw, 46vw" style={{
-                aspectRatio: '4 / 5', borderRadius: 'var(--r-md)',
-                boxShadow: 'var(--shadow-lg)',
-              }} showMeta={false} />
-            </figure>
-            </a>
-            <figcaption style={{
-              position: 'absolute', left: -28, bottom: -36,
-              background: 'var(--bg-card)',
-              padding: '20px 28px',
-              display: 'flex', flexDirection: 'column', gap: 6,
-              borderRadius: 'var(--r-pill)',
-              border: '1px solid var(--rule-soft)',
-              boxShadow: 'var(--shadow-md)',
-              zIndex: 2,
-            }}>
-              <span className="cat-no">[{hero.id}] · {hero.w}×{hero.h} см · {formatPrice(hero.price)} · в наличии</span>
-              <span className="display" style={{ fontSize: 22, fontWeight: 500, letterSpacing: '-.01em' }}>
-                {hero.title}
-              </span>
-            </figcaption>
+          {/* Работа-флагман в паспарту; подпись — внутри карточки (§13.8) */}
+          <div style={{ flex: '1 1 380px' }}>
+            <article className="mb-card">
+              <a className="mb-card-link" href={routeToPath('painting', { id: hero.id })}
+                 aria-label={`${hero.title} — ${formatPrice(hero.price)}`}>
+                <div className="mb-mat mb-mat-wide">
+                  {src
+                    ? <img src={src} alt={hero.title} {...{ fetchpriority: 'high' }} loading="eager" decoding="async"
+                           sizes="(max-width: 900px) 92vw, 46vw" />
+                    : <PaintingPlate art={hero} fit="bare" objectFit="contain" plain showMeta={false} />}
+                  <span className="mb-badge">Флагман</span>
+                  <span className="mb-size">{hero.w}×{hero.h} см</span>
+                </div>
+                <div className="mb-card-body">
+                  <div className="cat-no">Работа месяца · в наличии</div>
+                  <h2 className="mb-card-title" style={{ fontSize: 'clamp(20px,1.6vw,24px)' }}>{hero.title}</h2>
+                </div>
+              </a>
+              <div className="mb-card-foot">
+                <span className="mb-card-price">{formatPrice(hero.price)}</span>
+                <a className="mb-buy" href={routeToPath('painting', { id: hero.id })}
+                   style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}>Смотреть</a>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -131,96 +200,35 @@ function HeroEditorial({ go }) {
   );
 }
 
-// ── HERO Center ───────────────────────────────────────────────
-function HeroCenter({ go }) {
-  const fts = featuredArtworks();
+// ── Плитка-разводка (HANDOFF §7.2, §5: приоритет — заказ) ─────
+function PathTiles() {
+  const tiles = [
+    { href: routeToPath('commission'), t: 'Картина на заказ', s: 'Бриф за 2 минуты · от 2 недель', accent: true },
+    { href: routeToPath('catalog'), t: `${workCount()} ${plural(workCount())}`, s: 'Оригиналы в наличии, отправка сразу' },
+    { href: '/podarok', t: 'В подарок', s: 'Сертификат подлинности и упаковка' },
+    { href: '/kartina-v-gostinuyu', t: 'Подобрать в комнату', s: 'Гостиная, спальня, кабинет' },
+  ];
   return (
-    <section className="resp-pad" style={{ padding: '120px 40px 80px', textAlign: 'center' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <div className="reveal r1"><Eyebrow accent>15+ лет — Москва</Eyebrow></div>
-        <h1 className="display reveal r2 resp-display-md" style={{
-          margin: '32px 0 0',
-          fontSize: 'clamp(52px, 10vw, 168px)',
-          lineHeight: 0.92,
-          fontWeight: 500,
-          letterSpacing: '-.035em',
-        }}>
-          Тихая <span className="italic" style={{ color: 'var(--accent)' }}>живопись</span>
-          <br/>для светлых комнат.
-        </h1>
-        <p className="reveal r3" style={{
-          margin: '36px auto 0', maxWidth: 540,
-          fontSize: 18, lineHeight: 1.55,
-          color: 'var(--ink-2)', fontWeight: 300,
-        }}>
-          Авторские интерьерные работы маслом. В наличии и&nbsp;на&nbsp;заказ — для дома, бюро и&nbsp;архитектурных проектов.
-        </p>
-        <div className="reveal r4" style={{ display: 'flex', gap: 14, marginTop: 44, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button className="btn btn-solid" onClick={() => go('catalog')}>Каталог · {visibleArtworks().length}</button>
-          <button className="btn btn-ghost" onClick={() => go('commission')}>На заказ</button>
+    <section className="mb-section" style={{ paddingTop: 0 }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div className="mb-grid-wide">
+          {tiles.map((t) => (
+            <a key={t.t} href={t.href} data-rev
+               className={'mb-card' + (t.accent ? ' mb-shimmer' : '')}
+               style={{
+                 textDecoration: 'none',
+                 padding: 'clamp(22px, 2.4vw, 34px)',
+                 minHeight: 150, justifyContent: 'space-between',
+                 background: t.accent ? 'var(--accent)' : 'var(--bg-card)',
+                 color: t.accent ? 'var(--bg-cream)' : 'var(--ink)',
+                 borderColor: t.accent ? 'var(--accent)' : 'rgba(42,37,32,.09)',
+               }}>
+              <span className="display" style={{ fontSize: 'clamp(22px,2vw,30px)', fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1.1 }}>{t.t}</span>
+              <span style={{ marginTop: 14, fontSize: 14, lineHeight: 1.5, opacity: t.accent ? .88 : .78 }}>{t.s}</span>
+              <span className="mono" style={{ marginTop: 16, fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase' }}>Открыть →</span>
+            </a>
+          ))}
         </div>
-      </div>
-      <div className="resp-stack-3 reveal r5" style={{
-        marginTop: 100, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36,
-        maxWidth: 'var(--max)', marginInline: 'auto',
-      }}>
-        {fts.map((a) => (
-          // 03.09 a11y: был <div onClick> — с клавиатуры не открыть; теперь ссылка
-          <a key={a.id} className="lift" href={routeToPath('painting', { id: a.id })}
-             style={{ cursor: 'pointer', display: 'block', textDecoration: 'none', color: 'inherit' }}>
-            <PaintingPlate art={a} fit="bare" objectFit="contain" plain style={{ aspectRatio: '4 / 5' }} showMeta={false} />
-            <div className="cat-no" style={{ marginTop: 14, textAlign: 'left' }}>
-              {a.title} · {a.w}×{a.h} см
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-// ── HERO Split ────────────────────────────────────────────────
-function HeroSplit({ go }) {
-  const hero = featuredArtworks().find((a) => a.series === 'silence') || heroArt();
-  const series = seriesById(hero.series);
-  return (
-    <section className="resp-stack" style={{
-      display: 'grid', gridTemplateColumns: '1fr 1fr',
-      minHeight: 'calc(100vh - 130px)',
-      borderBottom: '1px solid var(--rule-soft)',
-    }}>
-      <div className="resp-pad" style={{
-        padding: '80px 60px', display: 'flex', flexDirection: 'column',
-        justifyContent: 'space-between', gap: 40,
-        borderRight: '1px solid var(--rule-soft)',
-      }}>
-        {/* Sprint 11 (Ф4.2): мета MMXXVI убрана */}
-        <div>
-          <h1 className="display reveal r2 resp-display-md" style={{
-            margin: 0, fontSize: 'clamp(56px, 8vw, 132px)',
-            lineHeight: 0.92, fontWeight: 500, letterSpacing: '-.035em',
-          }}>
-            {series.title.split(' ')[0]},{' '}<br/>
-            <span className="italic" style={{ color: 'var(--accent)' }}>
-              {series.subtitle.toLowerCase()}.
-            </span>
-          </h1>
-          <p className="reveal r3" style={{
-            margin: '32px 0 0', maxWidth: 460,
-            fontSize: 17, lineHeight: 1.55, color: 'var(--ink-2)', fontWeight: 300,
-          }}>{series.description}</p>
-        </div>
-        <div className="reveal r4" style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-          <button className="btn btn-solid" onClick={() => go('catalog', { series: series.id })}>
-            Серия «{series.title}»
-          </button>
-          <button className="btn btn-ghost" onClick={() => go('commission')}>На заказ</button>
-        </div>
-      </div>
-      <div className="reveal r2" style={{ position: 'relative', background: 'var(--bg-soft)' }}>
-        <PaintingPlate art={hero} fit="bare" objectFit="contain" plain style={{
-          height: '100%', aspectRatio: 'auto', borderRadius: 0, boxShadow: 'none',
-        }} showMeta={false} />
       </div>
     </section>
   );
@@ -252,9 +260,7 @@ function SeriesTriptych({ go }) {
           </p>
         </div>
 
-        <div className="resp-stack-3" style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 36,
-        }}>
+        <div className="mb-grid-wide">
           {SERIES.map((s) => {
             // Sprint 15 (аудит, мелочь 3): hero-работа дублировалась обложкой своей
             // серии — на главной одна картина стояла дважды. Обложка ≠ hero.
@@ -276,7 +282,7 @@ function SeriesTriptych({ go }) {
                   }} showMeta={false} />
                 </div>
                 <div>
-                  <div className="cat-no">{s.years} · {s.count} работ</div>
+                  <div className="cat-no">{s.years} · {seriesCount(s.id)} {plural(seriesCount(s.id))}</div>
                   <h3 className="display" style={{
                     margin: '10px 0 4px', fontSize: 28, fontWeight: 500,
                     letterSpacing: '-.015em', lineHeight: 1.1,
@@ -284,11 +290,8 @@ function SeriesTriptych({ go }) {
                   <p className="italic" style={{
                     margin: 0, fontSize: 15, color: 'var(--accent)', fontStyle: 'italic',
                   }}>{s.subtitle}</p>
-                  <p style={{
-                    margin: '14px 0 0', fontSize: 14, color: 'var(--ink-2)', lineHeight: 1.6,
-                  }}>{/* Sprint 15 (мелочь 4): тизер вместо полного описания —
-                      полный текст дословно повторялся на /about и посадочных серий */}
-                    {s.description.split(/(?<=.)s/)[0]}</p>
+                  {/* §1.4: тизер — только подзаголовок и счётчик. Полное описание
+                      живёт на посадочной серии; хак .split(/(?<=.)s/) резал текст по букве «s». */}
                 </div>
               </a>
             );
@@ -373,125 +376,10 @@ function InStock({ go }) {
           <button className="btn btn-ghost" onClick={() => go('catalog')}>Весь каталог →</button>
         </div>
 
-        <div className="resp-stack-3" style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '48px 36px',
-        }}>
+        <div className="mb-grid">
           {items.map((a, i) => (
-            <ArtCard key={a.id} art={a} onOpen={(id) => go('painting', { id })}
-                     index={i + 1} total={ARTWORKS.length} />
+            <ArtCard key={a.id} art={a} index={i + 1} total={items.length} priority={i < 3} />
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ── StudioBanner — AR-ПРИМЕРКА НА СТЕНЕ (iPhone + Android) ───
-// Два режима: AR (real wall via camera) + Room preview (desktop visualization)
-function StudioBanner({ go }) {
-  // Sprint 10 (J): режим «В типовой комнате» удалён — остался только AR
-  const { platform, ready } = useArSupport();
-  const featured = heroArt();
-
-  // Sprint 15 (аудит, направление 7): пока нет ни одного .glb/.usdz, блок показывал
-  // клиенту служебную записку — «placeholder» и «AR-готовность: ждём .glb/.usdz» —
-  // и обещал примерку, которая не работает. Блок скрыт целиком до появления моделей;
-  // как только у работы появятся ассеты (arAssets().ready), он вернётся сам.
-  if (!arAssets(featured)?.ready) return null;
-
-  return (
-    <section id="ar-block" className="resp-pad" style={{
-      padding: '120px 40px',
-      background: 'var(--bg-soft)',
-      position: 'relative',
-    }}>
-      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
-        <div className="resp-stack" style={{
-          display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 80, alignItems: 'center',
-        }}>
-          {/* LEFT — text + CTA */}
-          <div>
-            <Eyebrow accent>Камера телефона · AR</Eyebrow>
-            <h2 className="display resp-h1" style={{
-              margin: '24px 0 0', fontSize: 'clamp(44px, 5.5vw, 88px)',
-              lineHeight: 0.95, fontWeight: 500, letterSpacing: '-.03em',
-            }}>
-              Примерка картин{' '}<br/>в <span className="italic" style={{ color: 'var(--accent)' }}>реальном&nbsp;времени</span>
-            </h2>
-            <p style={{
-              marginTop: 32, maxWidth: 480, color: 'var(--ink-2)',
-              fontSize: 16, lineHeight: 1.65, fontWeight: 300,
-            }}>
-              Откройте сайт на&nbsp;iPhone или Android, нажмите AR — камера наведётся на&nbsp;стену, картина появится в&nbsp;реальном масштабе. Без приложений, прямо из&nbsp;браузера.
-            </p>
-
-            {/* Platform indicators */}
-            <div style={{ display: 'flex', gap: 10, marginTop: 28, flexWrap: 'wrap' }}>
-              <span className={'ar-os-pill' + (ready && platform === 'ios' ? ' is-on' : '')}>iPhone · AR Quick Look</span>
-              <span className={'ar-os-pill' + (ready && platform === 'android' ? ' is-on' : '')}>Android · Scene Viewer</span>
-              <span className={'ar-os-pill' + (ready && platform === 'desktop' ? ' is-on' : '')}>Desktop · 3D + QR</span>
-            </div>
-
-            {/* CTA */}
-            <div style={{ marginTop: 36, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-              <ArButton art={featured} />
-              <button className="btn btn-ghost" onClick={() => go('catalog')}>
-                Выбрать другую работу
-              </button>
-            </div>
-
-            {/* Sprint 10 (J): тумблер «В типовой комнате» убран — остался индикатор AR-режима */}
-            <div style={{
-              marginTop: 40, paddingTop: 28,
-              borderTop: '1px solid var(--rule-soft)',
-              display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap',
-            }}>
-              <span className="cat-no">Превью режим:</span>
-              <span className="chip is-active">AR · реальная стена</span>
-            </div>
-          </div>
-
-          {/* RIGHT — AR visualization */}
-          <div>
-            {(
-              // ── AR mode ──
-              <div style={{
-                display: 'flex', flexDirection: 'column', gap: 20,
-              }}>
-                <div style={{
-                  position: 'relative', aspectRatio: '4/3',
-                  background: 'var(--bg-card)',
-                  borderRadius: 'var(--r-lg)', overflow: 'hidden',
-                  boxShadow: 'var(--shadow-lg)',
-                  border: '1px solid var(--rule-soft)',
-                }}>
-                  <ArViewer art={featured} />
-                  {/* Top-left tag */}
-                  <div style={{
-                    position: 'absolute', top: 16, left: 16,
-                    background: 'rgba(245, 239, 226, 0.92)',
-                    padding: '8px 14px', borderRadius: 'var(--r-pill)',
-                    fontFamily: 'var(--mono)', fontSize: 9.5,
-                    letterSpacing: '.18em', textTransform: 'uppercase',
-                    color: 'var(--ink-2)', backdropFilter: 'blur(8px)',
-                    fontWeight: 600,
-                  }}>3D · поверните → AR</div>
-                  {/* Bottom-right caption */}
-                  <div style={{
-                    position: 'absolute', bottom: 16, right: 16,
-                    background: 'rgba(245, 239, 226, 0.92)',
-                    padding: '10px 16px', borderRadius: 'var(--r-pill)',
-                    fontSize: 11, color: 'var(--ink-2)',
-                    fontFamily: 'var(--mono)', letterSpacing: '.14em',
-                    textTransform: 'uppercase', backdropFilter: 'blur(8px)',
-                  }}>{featured.title} · {featured.w}×{featured.h} см</div>
-                </div>
-
-                {/* Desktop fallback — QR code */}
-                {ready && platform === 'desktop' && <QrBlock art={featured} />}
-              </div>
-            )}
-          </div>
         </div>
       </div>
     </section>
@@ -569,34 +457,32 @@ function Packaging() {
 }
 
 // ── Stats row ────────────────────────────────────────────────
+// §1.7: в hero уже стоят 21 / от 2 / 15+ — здесь другие показатели,
+// иначе одни и те же цифры печатались на странице дважды.
 function StatsRow() {
   const items = [
-    { n: '15+', l: 'лет практики' },
-    { n: String(availableCount()), l: 'работ в наличии' },
-    { n: String(SERIES.length), l: 'серии в развитии' },
-    { n: 'от 2', l: 'недель на заказ' },
+    { n: '15+', l: 'лет практики', c: 15 },
+    { n: String(SERIES.length), l: 'серии в развитии', c: SERIES.length },
+    { n: 'от 2', l: 'недель средний срок', c: null },
+    { n: 'РФ', l: 'доставка и страховка', c: null },
   ];
   return (
-    <section className="resp-pad" style={{
-      padding: '0 40px',
-    }}>
-      <div className="resp-stack-4 card-soft" style={{
+    <section className="mb-section" style={{ paddingTop: 0, paddingBottom: 0 }}>
+      <div className="card-soft" style={{
         maxWidth: 'var(--max)', margin: '0 auto',
-        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
-        padding: '12px 0',
+        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
         borderRadius: 'var(--r-xl)',
         border: '1px solid var(--rule-soft)',
       }}>
-        {items.map((it, i) => (
-          <div key={i} style={{
-            padding: '36px 36px',
-            borderRight: i < 3 ? '1px solid var(--rule-soft)' : 'none',
-            display: 'flex', flexDirection: 'column', gap: 12,
+        {items.map((it) => (
+          <div key={it.l} style={{
+            padding: 'clamp(24px, 2.6vw, 40px)',
+            display: 'flex', flexDirection: 'column', gap: 10,
           }}>
             <div className="display" style={{
-              fontSize: 'clamp(52px, 6vw, 96px)', fontWeight: 500, lineHeight: 0.92,
+              fontSize: 'clamp(40px, 5vw, 76px)', fontWeight: 500, lineHeight: .92,
               letterSpacing: '-.04em', color: 'var(--accent)',
-            }}>{it.n}</div>
+            }} {...(it.c ? { 'data-count': String(it.c), 'data-count-suffix': it.n.endsWith('+') ? '+' : '' } : {})}>{it.n}</div>
             <div className="eyebrow">{it.l}</div>
           </div>
         ))}
@@ -888,10 +774,6 @@ function CommissionCTA({ go }) {
 
 // ── CommissionCTAShort — короткий повтор CTA внизу (Sprint 14 Ф1) ──
 function CommissionCTAShort() {
-  const toForm = () => {
-    const el = document.getElementById('zayavka');
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
   return (
     <section className="resp-pad" style={{ padding: '40px 40px 0' }}>
       <div className="card-soft resp-stack" style={{
@@ -909,8 +791,7 @@ function CommissionCTAShort() {
             Картина маслом под ваш <span className="italic" style={{ color: 'var(--accent)' }}>интерьер</span>
           </h2>
         </div>
-        <a href="#zayavka" className="btn btn-solid" style={{ textDecoration: 'none', whiteSpace: 'nowrap' }}
-           onClick={(e) => { e.preventDefault(); toForm(); }}>
+        <a href="#zayavka" className="btn btn-solid" style={{ textDecoration: 'none', whiteSpace: 'nowrap' }}>
           Заказать картину →
         </a>
       </div>
@@ -1043,32 +924,27 @@ function Newsletter() {
   );
 }
 
-// ── HomePage композиция ───────────────────────────────────────
-function HomePage({ go, hero }) {
+// ── HomePage композиция (HANDOFF §7) ──────────────────────────
+function HomePage({ go }) {
   return (
     <div className="fade-in">
-      {hero === 'editorial' && <HeroEditorial go={go} />}
-      {hero === 'center' && <HeroCenter go={go} />}
-      {hero === 'split' && <HeroSplit go={go} />}
-      {(!hero || !['editorial','center','split'].includes(hero)) && <HeroEditorial go={go} />}
+      <HeroCommission />
+      <PathTiles />
 
       <Marquee items={[
         'Улицы мира', 'Монохромная', 'Тихая сила',
         '— серии одного автора —',
       ]} big />
 
-      {/* Аудит r2: работы раньше формы — покупатель видел товар только на 8-м экране */}
-      <SeriesTriptych go={go} />
       <InStock go={go} />
-      <CommissionCTA go={go} />
-      <ManifestBand />
-      <StudioBanner go={go} />
-      <Packaging />
-      <StatsRow />
+      <SeriesTriptych go={go} />
       <ProcessRow />
-      {/* Sprint 15: FAQ под коммерческие интенты (видимый текст + FAQPage LD в seo.ts) */}
+      <Packaging />
+      <ManifestBand />
+      <StatsRow />
+      <CommissionCTA go={go} />
       <FaqSection items={HOME_FAQ} title="Как выбрать и заказать картину" />
-      {/* Sprint 15: отзывы (реальные; пока пусто — приглашение оставить первый) */}
+      {/* §1.13: пустой блок отзывов сам прячется, пока нет реальных отзывов */}
       <ReviewsSection />
       <CommissionCTAShort />
       <Newsletter />

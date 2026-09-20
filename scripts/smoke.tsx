@@ -19,7 +19,7 @@ const go = () => {};
 const noop = () => {};
 
 const cases: Array<[string, React.ReactElement]> = [
-  ['home', <HomePage go={go} hero="editorial" />],
+  ['home', <HomePage go={go} />],
   ['about', <AboutPage go={go} />],
   ['catalog', <CatalogPage go={go} density="regular" initialSeries={undefined} />],
   ['painting', <PaintingPage go={go} id={ARTWORKS[0].id} addToCart={noop} />],

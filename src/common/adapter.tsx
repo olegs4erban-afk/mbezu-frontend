@@ -57,7 +57,7 @@ export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true
              sizes={sizes || '(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw'}
              alt={art.title}
              loading={priority ? 'eager' : 'lazy'}
-             fetchPriority={priority ? 'high' : undefined}
+             {...(priority ? { fetchpriority: 'high' } : {})}
              decoding="async"
              style={{
                width: '100%', height: '100%',

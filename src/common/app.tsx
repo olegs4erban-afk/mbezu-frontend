@@ -6,7 +6,8 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
-import { TopBar, Footer, BottomTabBar } from './chrome';
+import { TopBar, Footer, StickyBar } from './chrome';
+import { initMotion } from './reveal';
 import { useCart } from './cart';
 import { initAnalytics } from './analytics';
 
@@ -49,14 +50,32 @@ export function pathId(): string | undefined {
 }
 
 // ── Shell ────────────────────────────────────────────────────
+// HANDOFF §3: одна шапка, один подвал, липкая нижняя панель вместо таб-бара.
+// Содержимое панели зависит от страницы; на карточке работы панель своя
+// (цена + «Купить сейчас») — её рисует сама страница.
+function stickyFor(route: string): React.ComponentProps<typeof StickyBar> | null {
+  switch (route) {
+    case 'painting': return null;
+    case 'cart':     return null;
+    case 'commission':
+      return { text: 'Опишите задачу — ответим в течение дня', primary: { label: 'Заполнить бриф', href: '#brief' } };
+    case 'catalog':
+      return { text: 'Не нашли подходящее? Напишем картину под ваш размер', primary: { label: 'Заказать картину', href: routeToPath('commission') } };
+    default:
+      return { text: 'Подберём картину под вашу стену — ответ в течение дня', primary: { label: 'Заказать картину', href: routeToPath('commission') } };
+  }
+}
+
 function Shell({ pageName, cartCount, children }: { pageName: string; cartCount: number; children?: React.ReactNode }) {
+  React.useEffect(() => { initMotion(); }, []);
+  const sticky = stickyFor(pageName);
   return (
     <>
       <a href="#main" className="skip-link">К содержимому</a>
-      <TopBar route={pageName} go={go} cartCount={cartCount} />
+      <TopBar route={pageName} cartCount={cartCount} />
       <main id="main">{children}</main>
       <Footer go={go} />
-      <BottomTabBar route={pageName} go={go} cartCount={cartCount} />
+      {sticky && <StickyBar {...sticky} />}
     </>
   );
 }

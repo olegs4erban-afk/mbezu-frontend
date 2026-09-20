@@ -1,6 +1,6 @@
 import React from 'react';
 import { PaintingPlate } from './adapter';
-import { formatPrice, seriesById } from './data';
+import { formatPrice, imageOf, seriesById } from './data';
 import { averageRating, reviewsFor } from './reviews';
 import { Stars } from './reviews-section';
 import type { ImgSize } from './tilda-images';
@@ -107,72 +107,60 @@ function StatusTag({ status }: { status?: string }) {
   );
 }
 
-// ── ArtCard — карточка работы для каталога/сетки ──────────────
-function ArtCard({ art, onOpen, index, total, size = 'thumb', priority = false }: { art: any; onOpen?: (id: string) => void; index?: number; total?: number; size?: ImgSize; priority?: boolean }) {
+// ── ArtCard — карточка работы: паспарту (HANDOFF §6) ──────────
+// Прозрачные webp разной пропорции в квадрате object-fit:contain давали
+// случайное поле пустоты вокруг каждой работы — сетка выглядела дырявой.
+// Паспарту делает эту пустоту осознанным полем.
+// §13.5: кнопка не может лежать внутри <a> — контейнер <article>,
+// внутри отдельная ссылка на изображение и отдельное действие в подвале.
+function ArtCard({ art, index, total, size = 'thumb', priority = false }: { art: any; onOpen?: (id: string) => void; index?: number; total?: number; size?: ImgSize; priority?: boolean }) {
   const series = seriesById(art.series);
   const isRound = art.shape === 'round';
-  // Sprint 15 (аудит): карточка — настоящая ссылка на страницу товара.
-  // Было <article onClick>: робот не видел на /catalog ни одной ссылки на товар
-  // (22 страницы висели сиротами), человек не мог открыть работу в новой вкладке.
+  const href = routeToPath('painting', { id: art.id });
+  const src = imageOf(art, size);
+  const t = imageOf(art, 'thumb'), l = imageOf(art, 'large'), f = imageOf(art, 'full');
+  // §13.13: srcSet тем же резолвером, что и src; один файл на все размеры → без srcSet
+  const srcSet = (t && l && f && new Set([t, l, f]).size > 1)
+    ? `${t} 480w, ${l} 960w, ${f} 1200w` : undefined;
+  const dims = isRound ? `⌀ ${art.w} см` : `${art.w}×${art.h} см`;
+
   return (
-    <a className="lift" href={routeToPath('painting', { id: art.id })}
-       style={{
-         cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: 14,
-         textDecoration: 'none', color: 'inherit',
-       }}>
-      <div style={{ position: 'relative' }}>
-        {/* Sprint 9 — единый квадрат: одна прозрачная webp-карточка, object-fit:contain
-            (вся работа видна, на креме без «белой коробки»), плавный ховер-зум; тондо — круг. */}
-        {/* Sprint 15 (аудит): первым карточкам — eager + fetchpriority.
-            Раньше первая же картинка каталога грузилась lazy, а она и есть LCP. */}
-        <PaintingPlate art={art} size={size} fit="bare" objectFit="contain" plain
-                       priority={priority}
-                       className="art-card-img"
-                       style={{ aspectRatio: '1 / 1' }} showMeta={false} />
-        {art.featured && (
-          <span style={{
-            position: 'absolute', top: 14, left: 14, zIndex: 2,
-            background: 'var(--accent)', color: 'var(--bg)',
-            padding: '6px 12px', borderRadius: 'var(--r-pill)',
-            fontFamily: 'var(--mono)', fontSize: 9.5,
-            letterSpacing: '.2em', textTransform: 'uppercase', fontWeight: 600,
-          }}>Флагман</span>
-        )}
-        {isRound && (
-          <span style={{
-            position: 'absolute', top: 14, right: 14, zIndex: 2,
-            background: 'rgba(245,239,226,.9)', color: 'var(--ink)',
-            padding: '6px 12px', borderRadius: 'var(--r-pill)',
-            fontFamily: 'var(--mono)', fontSize: 9.5,
-            letterSpacing: '.2em', textTransform: 'uppercase', fontWeight: 600,
-            backdropFilter: 'blur(8px)',
-          }}>● Тондо</span>
-        )}
-      </div>
-      <div style={{ paddingTop: 4 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, marginBottom: 8 }}>
-          {index != null && <CatNo n={index} total={total} />}
-          <span className="cat-no" style={{ color: series?.color, opacity: .86 }}>
-            {series?.title?.split(' ')[0] || ''}
-          </span>
+    <article className="mb-card" data-rev>
+      <a className="mb-card-link" href={href}>
+        <div className="mb-mat">
+          {src ? (
+            <img src={src} srcSet={srcSet}
+                 sizes="(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw"
+                 alt={art.title}
+                 loading={priority ? 'eager' : 'lazy'}
+                 {...(priority ? { fetchpriority: 'high' } : {})}
+                 decoding="async" />
+          ) : (
+            <PaintingPlate art={art} size={size} fit="bare" objectFit="contain" plain showMeta={false} />
+          )}
+          {art.featured && <span className="mb-badge">Флагман</span>}
+          <span className="mb-size">{dims}</span>
         </div>
-        <h3 className="display" style={{ margin: '4px 0 6px', fontSize: 22, fontWeight: 500, letterSpacing: '-.01em' }}>
-          {art.title}
-        </h3>
-        {/* Sprint 15: звёзды в карточке — только когда у работы есть реальные отзывы */}
-        {reviewsFor(art.id).length > 0 && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, margin: '2px 0 6px' }}>
-            <Stars rating={averageRating(reviewsFor(art.id))} size={13} />
-            <span style={{ fontSize: 12, color: 'var(--ink-2)' }}>{reviewsFor(art.id).length}</span>
+        <div className="mb-card-body">
+          <div className="cat-no" style={{ color: series?.color }}>
+            {series?.title || ''}{art.year ? ` · ${art.year}` : ''}
           </div>
-        )}
-        {/* Sprint 15 (моб. аудит): цена и размер были 13px — ключевая покупочная строка мельче основного текста */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10, fontSize: 14, color: 'var(--ink-2)' }}>
-          <span>{isRound ? `⌀ ${art.w} см` : `${art.w}×${art.h} см`} · {art.year}</span>
-          <span style={{ fontWeight: 600, fontSize: 15, color: 'var(--ink)' }}>{formatPrice(art.price)}</span>
+          <h3 className="mb-card-title">{art.title}</h3>
+          {reviewsFor(art.id).length > 0 && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 6 }}>
+              <Stars rating={averageRating(reviewsFor(art.id))} size={13} />
+              <span style={{ fontSize: 12, color: 'var(--ink-2)' }}>{reviewsFor(art.id).length}</span>
+            </div>
+          )}
         </div>
+      </a>
+      <div className="mb-card-foot">
+        <span className="mb-card-price">{formatPrice(art.price)}</span>
+        <a className="mb-buy" href={href} style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}
+           aria-label={`Купить «${art.title}»`}>Купить</a>
       </div>
-    </a>
+      {index != null && total != null && <span className="sr-only">Работа {index} из {total}</span>}
+    </article>
   );
 }
 

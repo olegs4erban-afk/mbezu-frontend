@@ -27,7 +27,7 @@ const NOOP = () => {};
 
 function pageEl(name: string, params: any): React.ReactElement | null {
   switch (name) {
-    case 'home': return <HomePage go={NOOP} hero="editorial" />;
+    case 'home': return <HomePage go={NOOP} />;
     case 'about': return <AboutPage go={NOOP} />;
     case 'catalog': return <CatalogPage go={NOOP} density="regular" initialSeries={params.series} />;
     case 'painting': return <PaintingPage go={NOOP} id={params.id} addToCart={NOOP} />;

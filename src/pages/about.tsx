@@ -44,7 +44,7 @@ function AboutPage({ go }) {
               <img
                 src="https://cdn.mbezu.ru/assets/about-author.webp"
                 alt="Mila Bezú, художник"
-                loading="eager" fetchPriority="high" decoding="async"
+                loading="eager" {...{ fetchpriority: 'high' }} decoding="async"
                 style={{
                   width: '100%', aspectRatio: '4 / 5', objectFit: 'cover',
                   borderRadius: 'var(--r-md)', boxShadow: 'var(--shadow-lg)', display: 'block',

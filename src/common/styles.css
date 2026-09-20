@@ -68,6 +68,10 @@
     --italic:  'Inter Tight', 'Inter Tight Fallback', system-ui, sans-serif;
     --mono:    'JetBrains Mono', 'JetBrains Mono Fallback', ui-monospace, monospace;
 
+    /* Паспарту карточки (HANDOFF §2): пустота вокруг прозрачной работы
+       становится осознанным полем, а не дырой. */
+    --mat: radial-gradient(120% 92% at 50% 16%, #fbf7ee 0%, #f3ecde 64%, #eae1cf 100%);
+
     --max: 1480px;
   }
 
@@ -383,10 +387,6 @@
     .hide-mobile { display: none !important; }
     body { font-size: 14px; }
 
-    /* Sprint 11: таб-бар виден, контент не перекрывается */
-    .tabbar { display: flex; }
-    main#main { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
-    footer { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
     /* тач-таргеты ≥44px */
     .chip { min-height: 44px; padding: 10px 18px; }
     .btn { min-height: 48px; }
@@ -575,3 +575,140 @@ a.uh[style*="background:var(--bg-card)"]:hover, a.uh[style*="background: var(--b
 
 /* 03.09 a11y: декоративный водяной знак главной — текст из data-атрибута */
 .wm-text::before { content: attr(data-wm); }
+
+
+/* ══════════════════════════════════════════════════════════════
+   Редизайн 2026 — HANDOFF §3, §6, §11.
+   Ни одного !important: текучие правила вместо заплаток resp-*.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Полоса прогресса чтения под шапкой (§11; слушателем scroll, не CSS-таймлайном) ── */
+.mb-progress-track { height: 2px; background: transparent; overflow: hidden; }
+.mb-progress-track > span {
+  display: block; height: 2px; background: var(--accent);
+  transform: scaleX(0); transform-origin: left;
+}
+
+/* ── Липкая нижняя панель (§3) ── */
+.mb-sticky {
+  position: sticky; bottom: 0; z-index: 70;
+  background: rgba(42, 37, 32, .96);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(245, 239, 226, .14);
+  padding: 10px clamp(14px, 3vw, 40px);
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+}
+.mb-sticky-in {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; align-items: center; gap: clamp(12px, 2vw, 28px); flex-wrap: wrap;
+}
+.mb-sticky-text {
+  flex: 1 1 260px; min-width: 0;
+  color: rgba(245, 239, 226, .86);
+  font-size: 14px; line-height: 1.35;
+}
+.mb-sticky-actions { display: flex; gap: 10px; flex: 0 1 auto; margin-left: auto; }
+.mb-sticky .btn { min-height: 46px; }
+.mb-sticky-cta { text-decoration: none; }
+.mb-sticky-alt {
+  text-decoration: none; color: var(--bg-cream);
+  border-color: rgba(245, 239, 226, .38); background: transparent;
+}
+.mb-sticky-alt:hover { background: rgba(245, 239, 226, .12); color: var(--bg-cream); }
+@media (max-width: 600px) {
+  .mb-sticky-text { flex-basis: 100%; font-size: 13px; }
+  .mb-sticky-actions { width: 100%; margin-left: 0; }
+  .mb-sticky-actions > .btn { flex: 1 1 0; justify-content: center; }
+}
+
+/* Плавающая иконка корзины Tilda дублирует липкую панель и висит поверх шапки (§13.14) */
+.t706__carticon { display: none; }
+
+/* ── Карточка работы: паспарту (§6) ── */
+.mb-card {
+  display: flex; flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid rgba(42, 37, 32, .09);
+  border-radius: 20px; overflow: hidden;
+  transition: transform .55s cubic-bezier(.16,1,.3,1), box-shadow .55s cubic-bezier(.16,1,.3,1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .mb-card:hover { transform: translateY(-8px); box-shadow: 0 34px 60px -34px rgba(42, 37, 32, .6); }
+  .mb-card:hover .mb-mat img { transform: scale(1.06); }
+}
+.mb-card-link { text-decoration: none; color: inherit; display: block; }
+.mb-mat {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: grid; place-items: center;
+  padding: clamp(20px, 2.2vw, 32px);
+  background: var(--mat);
+}
+.mb-mat img {
+  max-width: 100%; max-height: 100%; width: auto; height: auto;
+  object-fit: contain; display: block;
+  filter: drop-shadow(0 16px 22px rgba(42, 37, 32, .24));
+  transition: transform .7s cubic-bezier(.16,1,.3,1);
+}
+.mb-mat-wide { aspect-ratio: 5 / 3; padding: clamp(22px, 3vw, 48px); }
+.mb-badge {
+  position: absolute; top: 14px; left: 14px; z-index: 2;
+  background: var(--accent); color: var(--bg);
+  padding: 6px 12px; border-radius: var(--r-pill);
+  font-family: var(--mono); font-size: 9.5px;
+  letter-spacing: .2em; text-transform: uppercase; font-weight: 600;
+}
+.mb-size {
+  position: absolute; bottom: 14px; right: 14px; z-index: 2;
+  background: rgba(42, 37, 32, .82); color: var(--bg-cream);
+  padding: 6px 12px; border-radius: var(--r-pill);
+  font-family: var(--mono); font-size: 9.5px;
+  letter-spacing: .14em; text-transform: uppercase; font-weight: 500;
+}
+.mb-card-body { padding: 16px 20px 0; }
+.mb-card-title {
+  margin: 6px 0 0; font-family: var(--display);
+  font-size: clamp(18px, 1.4vw, 21px); font-weight: 500; letter-spacing: -.015em; line-height: 1.2;
+}
+.mb-card-foot {
+  margin-top: auto; padding: 14px 20px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.mb-card-price { font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
+.mb-buy {
+  appearance: none; background: transparent; color: var(--ink);
+  border: 1px solid var(--ink); border-radius: var(--r-pill);
+  min-height: 44px; padding: 0 20px; cursor: pointer;
+  font: inherit; font-size: 12px; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  transition: background-color .25s, color .25s, border-color .25s;
+}
+.mb-buy:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+/* ── Текучие сетки (§4) ── */
+.mb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 272px), 1fr));
+  gap: clamp(14px, 1.4vw, 22px);
+}
+.mb-grid-wide {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: clamp(16px, 1.8vw, 28px);
+}
+.mb-section { padding: clamp(48px, 6vw, 90px) clamp(16px, 3.5vw, 48px); }
+.mb-cols {
+  display: flex; flex-wrap: wrap; gap: clamp(28px, 4vw, 72px);
+}
+.mb-cols > * { flex: 1 1 440px; min-width: 0; }
+
+/* Shimmer на золотом CTA (§11) */
+.mb-shimmer {
+  background-image: linear-gradient(110deg, rgba(255,255,255,0) 20%, rgba(255,255,255,.22) 42%, rgba(255,255,255,0) 64%);
+  background-size: 300% 100%;
+  animation: shimmer 10s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mb-card, .mb-mat img, .mb-shimmer, .mb-progress-track > span { transition: none; animation: none; }
+}
