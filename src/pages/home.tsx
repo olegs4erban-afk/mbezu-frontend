@@ -109,7 +109,8 @@ function HeroLead() {
       </div>
       <p style={{ margin: '12px 0 0', fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-3)', maxWidth: 460 }}>
         Нажимая «Заказать картину», вы соглашаетесь на обработку персональных данных (152-ФЗ) —{' '}
-        <a href={routeToPath('legal', { section: 'privacy' })} style={{ color: 'var(--accent)' }}>Политика ПД</a>
+        <a href={routeToPath('legal', { section: 'privacy' })}
+           style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}>Политика ПД</a>
       </p>
     </form>
   );
@@ -117,7 +118,12 @@ function HeroLead() {
 
 function HeroCommission() {
   const hero = heroArt();
+  // LCP-картинка: тот же резолвер для src и srcSet (§13.13), иначе телефон
+  // тянет полноразмерный файл ради 375-пиксельной колонки.
   const src = imageOf(hero, 'full');
+  const heroT = imageOf(hero, 'thumb'), heroL = imageOf(hero, 'large');
+  const heroSrcSet = (heroT && heroL && src && new Set([heroT, heroL, src]).size > 1)
+    ? `${heroT} 480w, ${heroL} 960w, ${src} 1200w` : undefined;
   const trust: Array<[string, string, number | null]> = [
     [String(workCount()), 'в наличии', workCount()],
     ['от 2', 'недель на заказ', null],
@@ -172,11 +178,13 @@ function HeroCommission() {
           {/* Работа-флагман в паспарту; подпись — внутри карточки (§13.8) */}
           <div style={{ flex: '1 1 380px' }}>
             <article className="mb-card">
-              <a className="mb-card-link" href={routeToPath('painting', { id: hero.id })}
-                 aria-label={`${hero.title} — ${formatPrice(hero.price)}`}>
+              {/* без aria-label: имя ссылки должно содержать её видимый текст
+                  (Lighthouse label-content-name-mismatch) */}
+              <a className="mb-card-link" href={routeToPath('painting', { id: hero.id })}>
                 <div className="mb-mat mb-mat-wide">
                   {src
-                    ? <img src={src} alt={hero.title} {...{ fetchpriority: 'high' }} loading="eager" decoding="async"
+                    ? <img src={src} srcSet={heroSrcSet} alt={hero.title}
+                           {...{ fetchpriority: 'high' }} loading="eager" decoding="async"
                            sizes="(max-width: 900px) 92vw, 46vw" />
                     : <PaintingPlate art={hero} fit="bare" objectFit="contain" plain showMeta={false} />}
                   <span className="mb-badge">Флагман</span>

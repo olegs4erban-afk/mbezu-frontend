@@ -117,7 +117,7 @@ function CartBadge({ n }: { n: number }) {
 // ── Тёмная полоса доверия над шапкой (только десктоп, §13.17) ──
 function TrustStrip() {
   return (
-    <div style={{
+    <div className="mb-trust" style={{
       background: 'var(--bg-deep)', color: 'rgba(245,239,226,.82)',
       padding: '9px clamp(16px,3.5vw,48px)',
     }}>

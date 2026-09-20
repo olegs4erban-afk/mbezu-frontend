@@ -142,7 +142,10 @@
   /* Chip */
   .chip {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 16px;
+    /* Тач-таргет ≥44px — и на десктопе тоже: раньше 44px приходили только
+       из мобильного медиазапроса, на планшете чип оставался 37px. */
+    min-height: 44px;
+    padding: 10px 16px;
     border: 1px solid var(--rule-soft);
     border-radius: var(--r-pill);
     font-family: var(--mono);
@@ -725,3 +728,13 @@ a.uh[style*="background:var(--bg-card)"]:hover, a.uh[style*="background: var(--b
   animation: glow 1.8s ease-in-out infinite;
 }
 @media (prefers-reduced-motion: reduce) { .mb-pulse { animation: none; } }
+
+/* Бейдж Tilda: #666 на чёрном — контраст 3,65, единственный провал контраста
+   на проде. В head-коде Tilda это правило не жило: редактор подменял латиницу
+   в селекторе кириллицей и CSS умирал. В сборке селектор остаётся целым. */
+.t-tildalabel__txtleft, .t-tildalabel__txtright { color: #a3a3a3; }
+
+/* До гидратации на странице стоит prerendered-разметка десктопной шапки.
+   На мобиле тёмная полоса в ней не нужна (§13.17) — и не даёт сдвига,
+   когда React переключает шапку на мобильную. */
+@media (max-width: 899px) { .mb-trust { display: none; } }

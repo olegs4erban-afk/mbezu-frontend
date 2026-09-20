@@ -379,7 +379,8 @@ function CommissionPage({ go, refId }) {
                                style={{ marginTop: 3, width: 18, height: 18, accentColor: 'var(--accent)', flexShrink: 0 }} />
                         <span>
                           Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
-                          <a href="/legal?section=privacy" style={{ color: 'var(--accent)' }}>Политика ПД</a>
+                          <a href="/legal?section=privacy"
+                             style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}>Политика ПД</a>
                         </span>
                       </label>
                       {touched && !consent && <span style={{ fontSize: 13, color: 'var(--ink-2)' }}>Для отправки нужно согласие на обработку ПД</span>}
