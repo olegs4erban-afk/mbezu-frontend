@@ -135,7 +135,10 @@ const PROD_SNIPPET = `
       if(!me||document.getElementById('mbezu-crumbs'))return;
       var cr=document.createElement('nav');cr.id='mbezu-crumbs';cr.setAttribute('aria-label','Хлебные крошки');
       cr.style.cssText='max-width:1180px;margin:0 auto;padding:18px 20px 0;font:12px/1.4 JetBrains Mono,ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#67583f;display:flex;flex-wrap:wrap;gap:10px;align-items:center';
-      var parts=[['/','MBezu'],['/catalog','Каталог'],['/catalog/'+me.seriesSlug,me.seriesTitle]];
+      // Sprint 16: у серий mini/pets страниц Tilda нет — /catalog/<slug> отдаёт 403.
+      // Адрес серии приходит готовым из works.json (seriesUrl), с фолбэком на ?series=.
+      var sUrl=me.seriesUrl||('/catalog?series='+me.series);
+      var parts=[['/','MBezu'],['/catalog','Каталог'],[sUrl,me.seriesTitle]];
       for(var k=0;k<parts.length;k++){var a=document.createElement('a');a.href=parts[k][0];a.textContent=parts[k][1];a.style.cssText='color:#67583f;text-decoration:none;padding:10px 0';cr.appendChild(a);var sp=document.createElement('span');sp.textContent='/';cr.appendChild(sp);}
       var cur=document.createElement('span');cur.textContent=me.title;cur.style.color='#2a2520';cr.appendChild(cur);
       host.insertBefore(cr,host.firstChild);
@@ -151,7 +154,7 @@ const PROD_SNIPPET = `
         a2.innerHTML='<img src="'+w.img+'" alt="'+w.title+'" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:#ede5d6;border-radius:12px;transition:transform .5s"><div style="margin-top:10px;font-size:16px;font-weight:500">'+w.title+'</div><div style="font-size:13px;color:#6b5d4a">'+w.w+'×'+w.h+' см · '+fmtPrice(w.price)+'</div>';
         grid.appendChild(a2);}
       sec.appendChild(grid);
-      var more=document.createElement('a');more.href='/catalog/'+me.seriesSlug;more.textContent='Вся серия «'+me.seriesTitle+'» →';
+      var more=document.createElement('a');more.href=sUrl;more.textContent='Вся серия «'+me.seriesTitle+'» →';
       more.style.cssText='display:inline-flex;align-items:center;min-height:44px;margin-top:22px;padding:0 20px;border:1px solid #6f5c2b;border-radius:999px;color:#6f5c2b;text-decoration:none;font-size:14px';
       sec.appendChild(more);
       var nav=document.getElementById('mbezu-prod-nav');var host2=document.getElementById('allrecords')||document.body;

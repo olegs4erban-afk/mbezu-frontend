@@ -14,7 +14,8 @@ import { resolve, dirname } from 'node:path';
 import { TopBar, Footer } from '../src/common/chrome';
 import { ARTWORKS, SERIES } from '../src/common/data';
 import { seoFor, SITE_ORIGIN, type RouteSeo } from '../src/common/seo';
-import { SERIES_PAGES_LIVE } from '../src/common/flags';
+import { SERIES_PAGES_LIVE, seriesHasPage } from '../src/common/flags';
+import { hasStorePage, storeProductPath } from '../src/common/store-urls';
 import HomePage from '../src/pages/home';
 import AboutPage from '../src/pages/about';
 import CatalogPage from '../src/pages/catalog';
@@ -110,12 +111,19 @@ const STATIC: Array<{ name: string; file: string; params?: any; contentful?: boo
 const outFile = (name: string) => (name === 'home' ? 'index.html' : `${name}/index.html`);
 
 let count = 0;
+// Шаблон каталога ДО инъекции — из него собираются страницы серий.
+// Раньше они читали уже обработанный catalog/index.html, и inject() дописывал
+// в head ВТОРОЙ комплект тегов: description/canonical/og/JSON-LD общего каталога
+// шли первыми, а собственные теги серии — следом. Робот читал первые.
+let catalogTemplate = '';
 for (const r of STATIC) {
   const src = resolve(DIST, r.file);
   if (!existsSync(src)) { console.warn(`  ! missing ${r.file}, skipped`); continue; }
   const seo = seoFor(r.name, r.params || {});
   const markup = r.contentful ? renderMarkup(r.name, r.params || {}) : '';
-  write(outFile(r.name), inject(readFileSync(src, 'utf-8'), seo, markup, r.name));
+  const raw = readFileSync(src, 'utf-8');
+  if (r.name === 'catalog') catalogTemplate = raw;
+  write(outFile(r.name), inject(raw, seo, markup, r.name));
   if (r.name !== 'home') rmSync(src); // drop flat <name>.html — dir-style is authoritative
   console.log(`  ✓ ${outFile(r.name)}${markup ? '' : ' (head only)'}`);
   count++;
@@ -140,9 +148,8 @@ if (existsSync(tplPath)) {
 
 // ── серии: /catalog/<slug>/ (Sprint 14 Ф6) ───────────────────
 {
-  const catTpl = resolve(DIST, 'catalog/index.html');
-  if (existsSync(catTpl)) {
-    const template = readFileSync(catTpl, 'utf-8');
+  if (catalogTemplate) {
+    const template = catalogTemplate;
     for (const s of SERIES as any[]) {
       const seo = seoFor('catalog', { series: s.id });
       write(`catalog/${s.slug}/index.html`,
@@ -173,8 +180,14 @@ const lastmod = new Date().toISOString().slice(0, 10);
 const urls = [
   '/', '/about', '/catalog', '/commission', '/legal',
   // серии попадают в sitemap только когда для них есть страницы Tilda (иначе робот увидит 404)
-  ...(SERIES_PAGES_LIVE ? (SERIES as any[]).map((s) => `/catalog/${s.slug}`) : []),
-  ...ARTWORKS.filter((a: any) => !a.hidden).map((a) => `/painting/${a.id.toLowerCase()}`),
+  ...(SERIES_PAGES_LIVE ? (SERIES as any[]).filter((s) => seriesHasPage(s.id)).map((s) => `/catalog/${s.slug}`) : []),
+  // Sprint 16: в sitemap идут НАТИВНЫЕ страницы товара Store — они и есть
+  // боевые адреса работ. /painting/<id> живёт только на cdn.mbezu.ru: на домене
+  // /painting/mn-01 отдаёт 403, /painting/ct-01 — 404 (проверено 20.09.2026),
+  // то есть раньше карта сайта отправляла робота в 21 ошибку.
+  // Работы без страницы Store появятся здесь после CSV-импорта и store:map.
+  ...ARTWORKS.filter((a: any) => !a.hidden && hasStorePage(a.id))
+    .map((a: any) => storeProductPath(a.id)),
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n`
   + `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`

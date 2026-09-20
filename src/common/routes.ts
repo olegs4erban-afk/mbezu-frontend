@@ -10,7 +10,7 @@
 // go() и так делает window.location.href = routeToPath(...), то есть
 // обычный переход, — поэтому href достаточно, обработчик не нужен.
 // ─────────────────────────────────────────────────────────────
-import { seriesSlug, SERIES_PAGES_LIVE } from './flags';
+import { seriesSlug, seriesHasPage } from './flags';
 import { storeProductPath } from './store-urls';
 
 export type RouteName =
@@ -30,7 +30,7 @@ export function routeToPath(name: RouteName, params: RouteParams = {}): string {
     case 'painting':   return (params.id && storeProductPath(params.id)) || (params.id ? `/painting/${encodeURIComponent(String(params.id).toLowerCase())}` : '/painting');
     // Sprint 14 (Ф6): серии — отдельные URL /catalog/<slug>; до создания страниц Tilda — ?series=
     case 'catalog':    return params.series
-      ? (SERIES_PAGES_LIVE ? `/catalog/${seriesSlug(params.series)}` : `/catalog?series=${encodeURIComponent(params.series)}`)
+      ? (seriesHasPage(params.series) ? `/catalog/${seriesSlug(params.series)}` : `/catalog?series=${encodeURIComponent(params.series)}`)
       : '/catalog';
     case 'commission': return params.ref ? `/commission?ref=${encodeURIComponent(params.ref)}` : '/commission';
     case 'legal':      return params.section ? `/legal?section=${encodeURIComponent(params.section)}` : '/legal';

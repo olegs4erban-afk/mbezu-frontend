@@ -1,9 +1,10 @@
 import React from 'react';
 import { PaintingPlate } from './adapter';
-import { formatPrice, imageOf, seriesById } from './data';
+import { formatPrice, imageOf, seriesById, isCurved, dimsLabel, askAboutHref } from './data';
+import { hasStorePage } from './store-urls';
 import { averageRating, reviewsFor } from './reviews';
 import { Stars } from './reviews-section';
-import type { ImgSize } from './tilda-images';
+import { cardSrcSet, type ImgSize } from './tilda-images';
 import { routeToPath } from './routes';
 
 // ─────────────────────────────────────────────────────────────
@@ -107,6 +108,21 @@ function StatusTag({ status }: { status?: string }) {
   );
 }
 
+/** alt для карточки: не только название — техника и размер тоже ищутся в картинках. */
+function altFor(art: any): string {
+  const kind = art.shape === 'round' ? 'круглая картина маслом'
+    : art.shape === 'oval' ? 'овальная картина маслом'
+    : 'картина маслом';
+  return `${art.title}${art.subtitle ? '. ' + art.subtitle : ''} — ${kind}, ${dimsLabel(art)}`;
+}
+
+/** Подпись кнопки карточки — одна функция на видимый текст и на aria-label. */
+function buyLabel(art: any, inStore: boolean): string {
+  if (art.commission) return 'На заказ';
+  if (art.status === 'sold') return 'Продано';
+  return inStore ? 'Купить' : 'Спросить';
+}
+
 // ── ArtCard — карточка работы: паспарту (HANDOFF §6) ──────────
 // Прозрачные webp разной пропорции в квадрате object-fit:contain давали
 // случайное поле пустоты вокруг каждой работы — сетка выглядела дырявой.
@@ -115,14 +131,16 @@ function StatusTag({ status }: { status?: string }) {
 // внутри отдельная ссылка на изображение и отдельное действие в подвале.
 function ArtCard({ art, index, total, size = 'thumb', priority = false }: { art: any; onOpen?: (id: string) => void; index?: number; total?: number; size?: ImgSize; priority?: boolean }) {
   const series = seriesById(art.series);
-  const isRound = art.shape === 'round';
-  const href = routeToPath('painting', { id: art.id });
+  // Работы, которых ещё нет в нативном Store, не ведут на /painting/<id>:
+  // такой страницы на mbezu.ru нет (404). Их карточка открывает Telegram.
+  const inStore = hasStorePage(art.id);
+  const href = inStore ? routeToPath('painting', { id: art.id }) : askAboutHref(art);
+
   const src = imageOf(art, size);
-  const t = imageOf(art, 'thumb'), l = imageOf(art, 'large'), f = imageOf(art, 'full');
-  // §13.13: srcSet тем же резолвером, что и src; один файл на все размеры → без srcSet
-  const srcSet = (t && l && f && new Set([t, l, f]).size > 1)
-    ? `${t} 480w, ${l} 960w, ${f} 1200w` : undefined;
-  const dims = isRound ? `⌀ ${art.w} см` : `${art.w}×${art.h} см`;
+  // §13.13: srcSet тем же резолвером, что и src. Дескрипторы — реальная ширина
+  // файлов (card-widths.ts), а не зашитые 480/960/1200: см. cardSrcSet().
+  const srcSet = cardSrcSet(art.id);
+  const dims = dimsLabel(art);
 
   return (
     <article className="mb-card" data-rev>
@@ -131,14 +149,19 @@ function ArtCard({ art, index, total, size = 'thumb', priority = false }: { art:
           {src ? (
             <img src={src} srcSet={srcSet}
                  sizes="(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw"
-                 alt={art.title}
+                 alt={altFor(art)}
                  loading={priority ? 'eager' : 'lazy'}
                  {...(priority ? { fetchpriority: 'high' } : {})}
                  decoding="async" />
           ) : (
             <PaintingPlate art={art} size={size} fit="bare" objectFit="contain" plain showMeta={false} />
           )}
-          {art.featured && <span className="mb-badge">Флагман</span>}
+          {/* «Новое» — по полю added (пополнение), а не по отсутствию страницы
+              в Store: последнее обнулится после импорта. */}
+          {art.commission ? <span className="mb-badge">На заказ</span>
+            : art.status === 'sold' ? <span className="mb-badge">Продано</span>
+            : art.featured ? <span className="mb-badge">Флагман</span>
+            : art.added ? <span className="mb-badge">Новое</span> : null}
           <span className="mb-size">{dims}</span>
         </div>
         <div className="mb-card-body">
@@ -156,8 +179,12 @@ function ArtCard({ art, index, total, size = 'thumb', priority = false }: { art:
       </a>
       <div className="mb-card-foot">
         <span className="mb-card-price">{formatPrice(art.price)}</span>
+        {/* WCAG 2.5.3: доступное имя обязано НАЧИНАТЬСЯ с видимого текста,
+            иначе голосовое управление «нажми Спросить» не находит кнопку. */}
         <a className="mb-buy" href={href} style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}
-           aria-label={`Купить «${art.title}»`}>Купить</a>
+           aria-label={`${buyLabel(art, inStore)} «${art.title}»`}>
+          {buyLabel(art, inStore)}
+        </a>
       </div>
       {index != null && total != null && <span className="sr-only">Работа {index} из {total}</span>}
     </article>
@@ -167,11 +194,10 @@ function ArtCard({ art, index, total, size = 'thumb', priority = false }: { art:
 // ── ArtRow — строка для view=list в каталоге ──────────────────
 function ArtRow({ art, onOpen, index, total }: { art: any; onOpen?: (id: string) => void; index?: number; total?: number }) {
   const series = seriesById(art.series);
-  const isRound = art.shape === 'round';
   return (
     <a
       className="resp-list-row"
-      href={routeToPath('painting', { id: art.id })}
+      href={hasStorePage(art.id) ? routeToPath('painting', { id: art.id }) : askAboutHref(art)}
       style={{
         display: 'grid',
         gridTemplateColumns: '80px 60px 1fr 1fr auto',
@@ -184,19 +210,19 @@ function ArtRow({ art, onOpen, index, total }: { art: any; onOpen?: (id: string)
         <PaintingPlate art={art} size="thumb" fit="bare"
                        style={{
                          aspectRatio: '1',
-                         borderRadius: isRound ? '50%' : 'var(--r-sm)',
+                         borderRadius: isCurved(art) ? '50%' : 'var(--r-sm)',
                        }} showMeta={false} />
       </div>
       <CatNo n={index} total={total} />
       <div>
         <h3 className="display" style={{ margin: 0, fontSize: 20, fontWeight: 500, letterSpacing: '-.01em' }}>
           {art.title}
-          {isRound && <span className="cat-no" style={{ marginLeft: 10, color: 'var(--accent)' }}>● ТОНДО</span>}
+          {isCurved(art) && <span className="cat-no" style={{ marginLeft: 10, color: 'var(--accent)' }}>● ТОНДО</span>}
         </h3>
         <div className="cat-no" style={{ marginTop: 6, color: series?.color }}>{series?.title} · {art.year}</div>
       </div>
       <div className="resp-list-hide" style={{ fontSize: 14, color: 'var(--ink-2)' }}>
-        {isRound ? `⌀ ${art.w} см` : `${art.w}×${art.h} см`} · {art.medium}
+        {dimsLabel(art)} · {art.medium}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
         <span className="display" style={{ fontSize: 18, fontWeight: 500 }}>{formatPrice(art.price)}</span>

@@ -9,11 +9,41 @@
 /assets/works/*
   Cache-Control: public, max-age=604800, stale-while-revalidate=86400
 
+# Cards, interiors and commission cases — same stable-name rule
+/assets/cards/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/assets/interior/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+/assets/commission/*
+  Cache-Control: public, max-age=604800, stale-while-revalidate=86400
+
 # HTML — always revalidate (content changes on redeploy)
 /
   Cache-Control: public, max-age=0, must-revalidate
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
+
+# Sprint 16: HTML на cdn.mbezu.ru — это ЗЕРКАЛО страниц mbezu.ru (prerender для
+# вставки в Tilda и превью), а не самостоятельный сайт. В индексе оно создаёт
+# дубли: 57 страниц /painting/<id>, которых на домене нет вообще.
+# Картинки и шрифты при этом индексировать можно и нужно — поэтому noindex
+# вешаем адресно на HTML-маршруты, а не на /* .
+/
+  X-Robots-Tag: noindex
+/about/*
+  X-Robots-Tag: noindex
+/catalog/*
+  X-Robots-Tag: noindex
+/commission/*
+  X-Robots-Tag: noindex
+/legal/*
+  X-Robots-Tag: noindex
+/cart/*
+  X-Robots-Tag: noindex
+/painting/*
+  X-Robots-Tag: noindex
+/tracking/*
+  X-Robots-Tag: noindex
 
 # Security headers + Report-Only CSP for every response.
 # CSP is Content-Security-Policy-Report-Only (NON-enforcing) — only logs violations,
@@ -27,4 +57,4 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Frame-Options: SAMEORIGIN
-  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://cdn.mbezu.ru https://mc.yandex.ru https://www.googletagmanager.com https://www.google-analytics.com https://vk.com https://*.vk.com https://unpkg.com https://*.tildacdn.com https://*.tilda.cc; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://cdn.mbezu.ru https://api.qrserver.com https://*.tildacdn.com https://static.tildacdn.com https://res.cloudinary.com https://mc.yandex.ru https://www.google-analytics.com; connect-src 'self' https://cdn.mbezu.ru https://mc.yandex.ru https://www.google-analytics.com https://*.vk.com https://*.tilda.cc https://*.tildacdn.com https://res.cloudinary.com; media-src 'self' https://*.tildacdn.com; frame-src 'self' https://vk.com
+  Content-Security-Policy-Report-Only: default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://cdn.mbezu.ru https://mc.yandex.ru https://www.googletagmanager.com https://www.google-analytics.com https://vk.com https://*.vk.com https://unpkg.com https://*.tildacdn.com https://*.tilda.cc; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: https://cdn.mbezu.ru https://api.qrserver.com https://*.tildacdn.com https://static.tildacdn.com https://res.cloudinary.com https://mc.yandex.ru https://www.google-analytics.com; connect-src 'self' https://cdn.mbezu.ru https://mc.yandex.ru https://www.google-analytics.com https://*.vk.com https://*.tilda.cc https://*.tildacdn.com https://res.cloudinary.com; media-src 'self' https://cdn.mbezu.ru https://*.tildacdn.com; frame-src 'self' https://vk.com

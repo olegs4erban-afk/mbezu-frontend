@@ -12,6 +12,11 @@ import { chromium } from 'playwright';
 import { readFileSync } from 'node:fs';
 
 const PROJECTID = '13712449';
+// Sprint 16: число работ в мете /catalog было зашито руками («21 работа») и отстало
+// от каталога на 32 позиции. Считаем из витрины, чтобы такое не повторялось.
+const { inStockCount, plural } = await import('../src/common/seo.ts');
+const STOCK = inStockCount();
+const PLURAL = plural(STOCK);
 const APPLY = process.env.APPLY !== '0';
 const OG = 'https://cdn.mbezu.ru/assets/og-banner.jpg';
 
@@ -34,7 +39,7 @@ const PAGES = {
   catalog: {
     pageid: '142948046',
     title: 'Каталог картин маслом — MBezu',
-    meta_title: 'Купить картину маслом для интерьера — 21 работа | MBezu',
+    meta_title: `Купить картину маслом для интерьера — ${STOCK} ${PLURAL} | MBezu`,
     meta_descr: 'Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.',
     link_canonical: 'https://mbezu.ru/catalog',
   },

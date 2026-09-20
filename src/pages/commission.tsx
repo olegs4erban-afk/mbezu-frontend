@@ -1,7 +1,8 @@
 import React from 'react';
 import { PaintingPlate } from '../common/adapter';
 import { Breadcrumbs, Eyebrow } from '../common/atoms';
-import { ABOUT, SERIES, artworkById, formatPrice } from '../common/data';
+import { ABOUT, SERIES, artworkById, dimsLabel, formatPrice } from '../common/data';
+import { hasStorePage } from '../common/store-urls';
 import { COMMISSION_FAQ, INTERIOR_GUIDE_URL } from '../common/seo';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
 
@@ -100,8 +101,34 @@ function Tile({ active, onClick, label, hint, children }: {
   );
 }
 
+// Реальные заказы мастерской — по одному кадру на тип работы.
+const COMMISSION_CASES = [
+  {
+    file: 'zakaz-hokkei', kind: 'Портрет по фотографии',
+    alt: 'Картина на заказ: портрет хоккейного вратаря маслом, подарок на день рождения',
+    note: 'Вратарь в моменте броска — написан по фотографиям с игры. Подарок на день рождения, 12 недель от брифа до вручения.',
+  },
+  {
+    file: 'zakaz-pitomec', kind: 'Портрет питомца',
+    alt: 'Портрет собаки маслом на золотом фоне в мастерской художника',
+    note: 'Поденко на золотом фоне. Пишется по 5–10 фотографиям питомца, эскиз согласуется до начала работы.',
+  },
+  {
+    file: 'zakaz-brend-1', kind: 'Предметная живопись для бренда',
+    alt: 'Предметная живопись маслом: банка напитка на чёрном фоне — заказ для бренда',
+    note: 'Продукт написан маслом вместо фотосъёмки: живописная фактура работает в оффлайн-точках и на баннерах.',
+  },
+  {
+    file: 'zakaz-brend-2', kind: 'Предметная живопись для бренда',
+    alt: 'Живописная модель молекулы на чёрном фоне — заказ для бренда',
+    note: 'Молекула для того же проекта — серия из двух холстов в одной подаче.',
+  },
+];
+
 function CommissionPage({ go, refId }) {
   const ref = refId ? artworkById(refId) : null;
+  // работа доступна к покупке, но её страницы в Store пока нет
+  const refAvailable = !!ref && ref.status === 'available' && !ref.commission && !hasStorePage(ref.id);
 
   const [step, setStep] = React.useState(0);
   const [maxStep, setMaxStep] = React.useState(0);
@@ -260,9 +287,18 @@ function CommissionPage({ go, refId }) {
                                    style={{ aspectRatio: '1', borderRadius: 'var(--r-sm)' }} showMeta={false} />
                   </div>
                   <div>
-                    <div className="cat-no">Похожую на</div>
+                    {/* Sprint 16: сюда же приходят карточки работ, которых ещё нет
+                        в нативном Store. Для них это не «похожую», а «вот эту». */}
+                    <div className="cat-no">{refAvailable ? 'Работа в наличии' : 'Похожую на'}</div>
                     <div className="display" style={{ fontSize: 18, fontWeight: 500, marginTop: 4 }}>{ref.title}</div>
-                    <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 2 }}>{ref.w}×{ref.h} см · {formatPrice(ref.price)}</div>
+                    <div style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 2 }}>{dimsLabel(ref)} · {formatPrice(ref.price)}</div>
+                    {refAvailable && (
+                      <p style={{ margin: '8px 0 0', fontSize: 13, lineHeight: 1.55, color: 'var(--ink-2)' }}>
+                        Оригинал свободен. Отправьте заявку — ответим в&nbsp;тот&nbsp;же день и&nbsp;оформим покупку,
+                        или напишите сразу в&nbsp;<a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener"
+                          style={{ color: 'var(--accent)' }}>Telegram</a>.
+                      </p>
+                    )}
                   </div>
                 </div>
               )}
@@ -443,6 +479,93 @@ function CommissionPage({ go, refId }) {
             </aside>
           </form>
         )}
+
+        {/* Кейс: портрет хоккеиста в подарок (Sprint 16).
+            Видео и фото — семья заказчика, публикация с согласия родителей.
+            webm/VP8 без звука: 9,6 с, 1,1 МБ, preload="none", poster —
+            чтобы блок не бил по LCP и корректно деградировал без поддержки webm. */}
+        <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>
+          <Eyebrow accent>Как это было</Eyebrow>
+          <h2 className="display" style={{ margin: '12px 0 0', fontSize: 'clamp(26px, 3.2vw, 44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+            Портрет в подарок{' '}<span className="italic" style={{ color: 'var(--accent)' }}>на восьмилетие</span>
+          </h2>
+          <div className="resp-stack" style={{
+            marginTop: 26, display: 'grid', gridTemplateColumns: '0.75fr 1.25fr',
+            gap: 'clamp(20px, 3vw, 44px)', alignItems: 'start',
+          }}>
+            {/* вертикальное видео 9:16 — без ограничения по ширине оно уезжает на 900 px */}
+            <video
+              src="https://cdn.mbezu.ru/assets/commission/zakaz-hokkei-podarok.webm"
+              poster="https://cdn.mbezu.ru/assets/commission/zakaz-hokkei-podarok.webp"
+              muted loop playsInline controls preload="none"
+              aria-label="Видео: мальчик распаковывает картину — портрет хоккейного вратаря, написанный на заказ"
+              style={{
+                width: '100%', maxWidth: 340, height: 'auto', display: 'block',
+                justifySelf: 'center', aspectRatio: '9 / 16', objectFit: 'cover',
+                borderRadius: 'var(--r-lg)', background: 'var(--bg-soft)',
+                boxShadow: 'var(--shadow-md)',
+              }}
+            />
+            <div>
+              <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.7, color: 'var(--ink-2)' }}>
+                Родители прислали фотографии с&nbsp;игр: нужен был момент броска, а&nbsp;не&nbsp;постановочный портрет.
+                Эскиз согласовали за&nbsp;неделю, дальше двенадцать недель работы — лёд, свет прожекторов
+                и&nbsp;номер на&nbsp;свитере писались с&nbsp;натуры по&nbsp;снимкам.
+              </p>
+              <p style={{ margin: '14px 0 0', fontSize: 15.5, lineHeight: 1.7, color: 'var(--ink-2)' }}>
+                На&nbsp;обороте холста — посвящение от&nbsp;руки и&nbsp;авторская подпись. Это входит в&nbsp;каждую работу:
+                картину дарят один раз, а&nbsp;надпись на&nbsp;подрамнике остаётся с&nbsp;ней навсегда.
+              </p>
+              <figure style={{ margin: '20px 0 0' }}>
+                <img src="https://cdn.mbezu.ru/assets/commission/zakaz-hokkei-posvyaschenie.webp"
+                     srcSet="https://cdn.mbezu.ru/assets/commission/zakaz-hokkei-posvyaschenie@480.webp 480w, https://cdn.mbezu.ru/assets/commission/zakaz-hokkei-posvyaschenie.webp 1100w"
+                     sizes="(max-width: 900px) 92vw, 34vw"
+                     alt="Оборот холста: посвящение от руки и подпись художника на подрамнике"
+                     loading="lazy" decoding="async"
+                     style={{ width: '100%', maxWidth: 380, height: 'auto', display: 'block', borderRadius: 'var(--r-md)' }} />
+                <figcaption className="cat-no" style={{ marginTop: 10 }}>Посвящение и подпись на обороте</figcaption>
+              </figure>
+              <div style={{ marginTop: 22, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                {[['Срок', '12 недель'], ['Основа', 'Портрет по фотографиям'], ['Формат', 'Холст на подрамнике']].map(([k, v]) => (
+                  <span key={k} style={{
+                    padding: '8px 14px', borderRadius: 'var(--r-pill)',
+                    background: 'var(--bg-card)', border: '1px solid var(--rule-soft)',
+                    fontSize: 13, color: 'var(--ink-2)',
+                  }}><span className="cat-no" style={{ marginRight: 8 }}>{k}</span>{v}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Примеры выполненных заказов (Sprint 16) */}
+        {/* До этого страница заказа описывала процесс словами и не показывала ни одной
+            сделанной работы. Здесь — четыре реальных заказа разного типа. */}
+        <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>
+          <Eyebrow accent>Примеры заказов</Eyebrow>
+          <h2 className="display" style={{ margin: '12px 0 0', fontSize: 'clamp(26px, 3.2vw, 44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
+            Что уже написано на заказ
+          </h2>
+          <p style={{ marginTop: 14, maxWidth: 760, fontSize: 15, color: 'var(--ink-2)', lineHeight: 1.65 }}>
+            Не&nbsp;только пейзаж в&nbsp;интерьер: портрет по&nbsp;фотографии, портрет питомца
+            и&nbsp;предметная живопись для бренда. Сюжет обсуждаем на&nbsp;брифе — материал и&nbsp;подход одни и&nbsp;те&nbsp;же.
+          </p>
+          <div className="mb-grid" style={{ marginTop: 28 }}>
+            {COMMISSION_CASES.map((c) => (
+              <figure key={c.file} data-rev style={{ margin: 0 }}>
+                <img src={`https://cdn.mbezu.ru/assets/commission/${c.file}.webp`}
+                     srcSet={`https://cdn.mbezu.ru/assets/commission/${c.file}@480.webp 480w, https://cdn.mbezu.ru/assets/commission/${c.file}.webp 1200w`}
+                     sizes="(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw"
+                     alt={c.alt} loading="lazy" decoding="async"
+                     style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 'var(--r-md)' }} />
+                <figcaption style={{ marginTop: 10 }}>
+                  <span className="cat-no" style={{ display: 'block', marginBottom: 4 }}>{c.kind}</span>
+                  <span style={{ fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-2)' }}>{c.note}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
 
         {/* Процесс 01–05 */}
         <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>

@@ -4,11 +4,98 @@
 // ─────────────────────────────────────────────────────────────
 import { ABOUT, ARTWORKS, artworkById, seriesById, featuredArtworks, formatPrice, imageOf, visibleArtworks } from './data';
 import { storeProductPath } from './store-urls';
-import { seriesSlug as seriesSlugOf } from './flags';
+import { seriesSlug as seriesSlugOf, seriesHasPage } from './flags';
 
-// ── Sprint 14: счётчики работ (видимых) — чтобы «21 работа» не расходилась с фактом ──
+/**
+ * Боевой адрес работы на mbezu.ru.
+ *
+ * /painting/<id> существует ТОЛЬКО на cdn.mbezu.ru (prerender). На домене таких
+ * страниц Tilda нет — проверено 20.09.2026: /painting/mn-01 отдаёт 403,
+ * /painting/ct-01 — 404. Поэтому canonical, og:url и Offer.url обязаны вести
+ * либо на нативную страницу товара Store, либо (пока её нет) на страницу серии,
+ * где работа видна. Иначе робот получает 35+ адресов, ведущих в ошибку.
+ */
+const workUrl = (art: any) => SITE_ORIGIN + (storeProductPath(art?.id) || seriesPath(art?.series));
+
+/** URL серии для canonical/крошек: свой /catalog/<slug> только если страница Tilda существует. */
+const seriesPath = (id?: string) => (id ? (seriesHasPage(id) ? '/catalog/' + seriesSlugOf(id) : '/catalog?series=' + id) : '/catalog');
+
+// ── Sprint 14: счётчики работ (видимых) — чтобы число в тексте не расходилось с фактом ──
 export const workCount = () => visibleArtworks().length;
 export const seriesCount = (id: string) => visibleArtworks().filter((a: any) => a.series === id).length;
+
+// ── Sprint 16: «в каталоге» ≠ «свободно сейчас» ──────────────
+// workCount() считает все видимые работы (56), но три портрета питомцев —
+// status:'sold' + commission:true: это примеры услуги, а не товар на полке.
+// Подписывать 56 словами «в наличии» стало неправдой на три работы.
+/** Работы, которые реально можно купить прямо сейчас. */
+export const inStockWorks = () =>
+  visibleArtworks().filter((a: any) => a.status === 'available' && !a.commission);
+export const inStockCount = () => inStockWorks().length;
+
+/** Минимальная и максимальная цена свободных работ — для «от N ₽». */
+export const priceRange = () => {
+  const p = inStockWorks().map((a: any) => a.price);
+  return { from: Math.min(...p), to: Math.max(...p) };
+};
+
+// ── Пополнение каталога ──────────────────────────────────────
+// Признак новизны — поле added в data.ts ('2026-09'), а НЕ отсутствие страницы
+// в Store: последнее станет false у всех 35 работ сразу после CSV-импорта,
+// и лента «Новое в мастерской» молча опустеет.
+/** Работы пополнения, свежие сначала. */
+export const freshWorks = (limit?: number) => {
+  const r = visibleArtworks()
+    .filter((a: any) => !!a.added)
+    .sort((a: any, b: any) => (b.added || '').localeCompare(a.added || '') || b.year - a.year);
+  return limit ? r.slice(0, limit) : r;
+};
+export const freshCount = () => freshWorks().length;
+
+/**
+ * Витринный порядок для ленты «Новое»: по кругу через серии, внутри серии —
+ * сперва флагманы. Иначе сортировка по году даёт подряд три проданных портрета
+ * и двенадцать миниатюр — лента перестаёт показывать, что пополнение разное.
+ */
+export const freshHighlights = (limit = 12) => {
+  const bySeries = new Map<string, any[]>();
+  for (const a of freshWorks() as any[]) {
+    if (!bySeries.has(a.series)) bySeries.set(a.series, []);
+    bySeries.get(a.series)!.push(a);
+  }
+  for (const list of bySeries.values()) {
+    list.sort((x, y) => Number(!!y.featured) - Number(!!x.featured)
+      || Number(x.status === 'sold') - Number(y.status === 'sold')
+      || y.price - x.price);
+  }
+  const lanes = [...bySeries.values()];
+  const out: any[] = [];
+  for (let i = 0; out.length < limit; i++) {
+    let moved = false;
+    for (const lane of lanes) {
+      if (lane[i]) { out.push(lane[i]); moved = true; if (out.length >= limit) break; }
+    }
+    if (!moved) break;
+  }
+  return out;
+};
+/** Последнее пополнение: '2026-09' → 'сентябрь 2026'. */
+export const freshStamp = () => {
+  const m = (freshWorks(1)[0] as any)?.added;
+  if (!m) return '';
+  const [y, mm] = String(m).split('-');
+  const names = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь',
+    'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
+  return `${names[Number(mm) - 1] || ''} ${y}`.trim();
+};
+/** Русское склонение по числу: pluralOf(6, ['направление','направления','направлений']). */
+export const pluralOf = (n: number, forms: [string, string, string]) => {
+  const d10 = n % 10, d100 = n % 100;
+  if (d10 === 1 && d100 !== 11) return forms[0];
+  if (d10 >= 2 && d10 <= 4 && (d100 < 10 || d100 >= 20)) return forms[1];
+  return forms[2];
+};
+
 export const plural = (n: number) => {
   const d10 = n % 10, d100 = n % 100;
   if (d10 === 1 && d100 !== 11) return 'работа';
@@ -17,6 +104,10 @@ export const plural = (n: number) => {
 };
 
 export const SITE_ORIGIN = 'https://mbezu.ru';
+
+/** Обрезать описание по границе слова — meta description длиннее ~160 символов режет выдача. */
+const clamp = (s: string, n: number) =>
+  (s.length <= n ? s : s.slice(0, s.lastIndexOf(' ', n - 1)).replace(/[,\s]+$/, '') + '…');
 
 export interface PageSeo {
   title: string;
@@ -157,16 +248,18 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         title: series
           ? `${series.title} — картины маслом, ${seriesCount(series.id)} ${plural(seriesCount(series.id))} | MBezu`
           : `Купить картину маслом для интерьера — ${workCount()} ${plural(workCount())} | MBezu`,
+        // Sprint 16: склейка описания серии с общим хвостом давала 207–243 символа —
+        // выдача резала как раз хвост про сертификат и доставку. Держим ~150–160.
         description: series
-          ? `${series.description} Оригиналы маслом на холсте с сертификатом подлинности. Доставка по РФ.`
+          ? clamp(`${series.title}: ${series.subtitle.toLowerCase()}. ${seriesCount(series.id)} ${plural(seriesCount(series.id))} маслом на холсте, сертификат подлинности, доставка по РФ.`, 160)
           : 'Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.',
         // Sprint 15: у посадочной серии canonical — её собственный /catalog/<slug>,
         // иначе все четыре склеиваются с каталогом и не ранжируются.
-        canonical: SITE_ORIGIN + '/catalog' + (params.series ? '/' + seriesSlugOf(params.series) : ''),
+        canonical: SITE_ORIGIN + seriesPath(params.series),
         // Sprint 15: ItemList с Product+Offer по всем работам. Страницы товаров
         // нативные и своей разметки не имеют — цена и наличие уезжают роботу отсюда.
         jsonLd: series
-          ? [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }, { name: series.title, url: '/catalog' + (params.series ? '/' + seriesSlugOf(params.series) : '') }]), catalogItemListLd(params.series)]
+          ? [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }, { name: series.title, url: seriesPath(params.series) }]), catalogItemListLd(params.series)]
           : [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }]), catalogItemListLd()],
       };
     }
@@ -180,7 +273,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
       return {
         title: `${art.title} — картина маслом ${art.w}×${art.h} см | купить`,
         description: `${art.title} — авторская картина маслом на холсте, ${art.w}×${art.h} см, ${art.year}. Единственный экземпляр, сертификат подлинности. ${formatPrice(art.price)}, доставка по РФ.`,
-        canonical: `${SITE_ORIGIN}/painting/${art.id.toLowerCase()}`,
+        canonical: workUrl(art),
         ogImage: abs(imageOf(art, 'full') || ''),
         ogType: 'product',
         jsonLd: [
@@ -189,7 +282,7 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
           breadcrumbLd([
             { name: 'MBezu', url: '/' },
             { name: 'Каталог', url: '/catalog' },
-            { name: series?.title || '', url: `/catalog?series=${art.series}` },
+            { name: series?.title || '', url: seriesPath(art.series) },
             { name: art.title, url: `/painting/${art.id.toLowerCase()}` },
           ]),
         ].filter(Boolean),
@@ -291,6 +384,7 @@ export function productLd(id: string) {
     description: art.description,
     image: img ? [img.startsWith('http') ? img : SITE_ORIGIN + img] : undefined,
     category: series?.title,
+    url: workUrl(art),
     brand: { '@type': 'Brand', name: 'Mila Bezú' },
     width: { '@type': 'QuantitativeValue', value: art.w, unitCode: 'CMT' },
     height: { '@type': 'QuantitativeValue', value: art.h, unitCode: 'CMT' },
@@ -298,13 +392,19 @@ export function productLd(id: string) {
       '@type': 'Offer',
       price: art.price,
       priceCurrency: 'RUB',
-      availability: art.status === 'available'
-        ? 'https://schema.org/InStock'
-        : 'https://schema.org/SoldOut',
+      // Портреты питомцев: холст у владельца, но направление открыто для заказа —
+      // MadeToOrder честнее SoldOut и не спорит с видимым «На заказ» на карточке.
+      availability: art.commission
+        ? 'https://schema.org/MadeToOrder'
+        : art.status === 'available'
+          ? 'https://schema.org/InStock'
+          : 'https://schema.org/SoldOut',
       // Sprint 15: раньше вело на /painting/<id> — React-заглушку, которая
       // ничего не продаёт. Offer обязан указывать на страницу, где реально
       // покупают: нативный товар Store. Фолбэк оставлен на случай неотображённой работы.
-      url: SITE_ORIGIN + (storeProductPath(art.id) || `/painting/${art.id.toLowerCase()}`),
+      // Sprint 15: раньше вело на /painting/<id> — страницу, которой на домене нет.
+      // Offer указывает на адрес, где реально покупают.
+      url: workUrl(art),
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@type': 'Organization', name: 'MBezu' },
     },
@@ -364,6 +464,16 @@ export const SERIES_INTERIORS: Record<string, InteriorRoom[]> = {
     { room: 'Картина в детскую', text: 'Круглый формат по природе дружелюбный: гибискус и дюны в тондо подходят детской без «детских» картинок — работа растёт вместе с ребёнком.' },
     { room: 'Картина в гостиную', text: 'В гостиной тондо работает акцентом там, где стены уже заняты полками и прямыми углами, — или собирается в группу из двух-трёх кругов над комодом.' },
   ],
+  mini: [
+    { room: 'Картина на кухню', text: 'Лимоны, майолика и ставни — кухонные сюжеты по происхождению. Миниатюра встаёт на рейлинг, подоконник или узкую полку между шкафами, где полноразмерный холст не помещается.' },
+    { room: 'Картина в подарок', text: 'Оригинал маслом за цену подарка: единственный экземпляр, авторская подпись, сертификат и мини-мольберт в комплекте. Формат 7–15 см уезжает в ручной клади и не требует упаковки в короб.' },
+    { room: 'Галерейная развеска', text: 'Три-пять миниатюр собираются в сетку на узком простенке, в прихожей или над рабочим столом. Единая цена и единая тема серии делают группу цельной без подбора.' },
+  ],
+  pets: [
+    { room: 'Картина в гостиную', text: 'Золотой фон держит портрет питомца на уровне парадного портрета, а не «фотографии собаки». Формат 40×60 рассчитан на просмотр с двух-трёх метров — стена за диваном или над консолью.' },
+    { room: 'Картина в кабинет', text: 'Поталь даёт тёплый рефлекс на тёмном дереве и коже: портрет на золоте собирает кабинет вокруг себя и хорошо живёт рядом со стеллажами.' },
+    { room: 'Картина в подарок', text: 'Портрет питомца — подарок, который невозможно повторить. Пишется по вашим фотографиям, срок 3–5 недель, к работе прилагаются подпись и сертификат подлинности.' },
+  ],
 };
 
 /** Статья журнала «Как выбрать картину для гостиной» — хаб интерьерного кластера. */
@@ -380,9 +490,9 @@ export const HOME_FAQ: Array<[string, string]> = [
   ['Можно ли заказать картину под мой интерьер?',
    'Да. Картина на заказ пишется под вашу комнату: обсуждаем размер стены, свет и настроение, вы получаете эскизы до начала работы. Срок — от двух недель. Заявка на странице «На заказ» — ответ в течение дня.'],
   ['Какую картину выбрать в подарок?',
-   'Оригинал живописи — подарок, который не повторится. Для гостиной подойдут городские пейзажи и вода, для спальни — спокойная ботаника и монохром, для кабинета — сепия и графит. Малые форматы от 6 000 ₽ ставят на полку, крупные холсты — над диваном. Отдельная подборка — на странице «Картина в подарок».'],
+   'Оригинал живописи — подарок, который не повторится. Для гостиной подойдут городские пейзажи и вода, для спальни — спокойная ботаника и монохром, для кабинета — сепия и графит. Миниатюры 7–15 см от 5 000 ₽ ставят на полку и дарят как есть — с мини-мольбертом в комплекте, крупные холсты вешают над диваном. Отдельное направление — портрет питомца маслом и поталью на заказ. Отдельная подборка — на странице «Картина в подарок».'],
   ['Как подобрать размер картины для гостиной или спальни?',
-   'Ориентир — две трети ширины мебели, над которой висит картина: над диваном 220 см уместен холст 100–150 см по ширине, для полки и простенка — 15–40 см. Центр работы — на уровне глаз, около 150 см от пола. Подробный разбор с примерами — в журнале.'],
+   'Ориентир — две трети ширины мебели, над которой висит картина: над диваном 220 см уместен холст 100–150 см по ширине, для полки и простенка — 7–40 см. Центр работы — на уровне глаз, около 150 см от пола. Подробный разбор с примерами — в журнале.'],
   ['Что входит в стоимость и что я получу?',
    'Картина на подрамнике, авторская подпись, фирменный сертификат подлинности, рукописная открытка из мастерской и крепёж — работа готова к подвесу сразу после распаковки. Упаковка защитная, доставка по России.'],
   ['Можно ли посмотреть картину до покупки?',

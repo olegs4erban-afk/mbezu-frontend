@@ -2,9 +2,11 @@ import React from 'react';
 import { PaintingPlate } from '../common/adapter';
 import { ArtCard, Breadcrumbs, Eyebrow } from '../common/atoms';
 import { StickyBar } from '../common/chrome';
-import { ABOUT, ARTWORKS, artworkById, formatPrice, imageOf, seriesById } from '../common/data';
+import { ABOUT, ARTWORKS, artworkById, formatPrice, imageOf, seriesById, isCurved, dimsLabel } from '../common/data';
 import { ProductReviews } from '../common/reviews-section';
+import { interiorsFor, interiorSrc } from '../common/interiors';
 import { routeToPath } from '../common/routes';
+import { cardSrcSet } from '../common/tilda-images';
 import { storeProductPath } from '../common/store-urls';
 
 // ─────────────────────────────────────────────────────────────
@@ -102,10 +104,20 @@ function PaintingPage({ go, id }) {
   const index = ARTWORKS.findIndex((a) => a.id === id) + 1;
   const related = ARTWORKS.filter((a) => a.series === art.series && a.id !== art.id && !a.hidden).slice(0, 4);
   const round = art.shape === 'round';
-  const dims = round ? `⌀ ${art.w} см` : `${art.w}×${art.h} см`;
+  const curved = isCurved(art);
+  // Портреты питомцев — примеры направления: работа у владельца, продаётся не она, а заказ
+  const onCommission = !!art.commission;
+  const shots = interiorsFor(art.id);
+  const dims = dimsLabel(art);
+  // Картинка работы — самый тяжёлый элемент страницы; без srcSet телефон
+  // качал самый крупный файл при ширине отрисовки ~360 px.
+  const mainSrcSet = cardSrcSet(art.id);
   const src = imageOf(art, 'full');
   // Покупка живёт в нативном Store Tilda (корзина 706 → ЮKassa).
-  const buyHref = storeProductPath(art.id) || routeToPath('catalog');
+  // Sprint 16: фолбэк был routeToPath('catalog') — кнопка «Купить сейчас» у 35 работ
+  // без страницы Store уводила в общий каталог, то есть в никуда.
+  const buyHref = storeProductPath(art.id) || routeToPath('commission', { ref: art.id });
+  const inStore = !!storeProductPath(art.id);
   const askHref = ABOUT.contacts.telegramUrl;
   const v = VIEWS[view];
 
@@ -116,7 +128,7 @@ function PaintingPage({ go, id }) {
           <Breadcrumbs items={[
             { label: 'MBezu', href: '/' },
             { label: 'Каталог', href: '/catalog' },
-            { label: series?.title || '', href: `/catalog?series=${encodeURIComponent(art.series)}` },
+            { label: series?.title || '', href: routeToPath('catalog', { series: art.series }) },
             { label: art.title },
           ]} />
 
@@ -125,13 +137,15 @@ function PaintingPage({ go, id }) {
             <div style={{ flex: '1.4 1 460px', minWidth: 0 }}>
               <div className="mb-mat mb-mat-wide" style={{ borderRadius: 'var(--r-lg)', overflow: 'hidden', border: '1px solid var(--rule-soft)' }}>
                 {src ? (
-                  <img src={src} alt={art.title} loading="eager" decoding="async"
+                  <img src={src} srcSet={mainSrcSet} sizes="(max-width: 900px) 94vw, 58vw"
+                       alt={`${art.title}${art.subtitle ? '. ' + art.subtitle : ''} — картина маслом, ${dims}, ${art.year}`}
+                       loading="eager" decoding="async"
                        {...{ fetchpriority: 'high' }}
                        style={{
                          objectPosition: v.pos,
                          transform: `scale(${v.scale})`,
                          transition: 'transform .6s cubic-bezier(.16,1,.3,1), object-position .6s cubic-bezier(.16,1,.3,1)',
-                         borderRadius: round ? '50%' : 0,
+                         borderRadius: curved ? '50%' : 0,
                        }} />
                 ) : (
                   <PaintingPlate art={art} size="full" fit="bare" objectFit="contain" plain showMeta={false} />
@@ -170,7 +184,9 @@ function PaintingPage({ go, id }) {
                 <span>{art.id} · {index} / {ARTWORKS.length}</span>
               </div>
 
-              <ScaleBlock w={art.w} h={art.h} round={round} />
+              {/* Sprint 16: схема масштаба считала формой только 'round' — овальное
+                  тондо получало круглую картинку и прямоугольную схему рядом */}
+              <ScaleBlock w={art.w} h={art.h} round={curved} />
             </div>
 
             {/* ПРАВО — покупка */}
@@ -199,25 +215,34 @@ function PaintingPage({ go, id }) {
                   letterSpacing: '-.03em', lineHeight: 1,
                 }}>{formatPrice(art.price)}</div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 12, fontSize: 14, color: 'var(--ink-2)' }}>
-                  <span className="mb-pulse" aria-hidden="true" />
-                  {art.status === 'sold' ? 'Продано' : 'В наличии · 1 шт'}
+                  {!onCommission && <span className="mb-pulse" aria-hidden="true" />}
+                  {onCommission ? `Работа у владельца · ${art.w}×${art.h} см — цена такого портрета`
+                    : art.status === 'sold' ? 'Продано' : 'В наличии · 1 шт'}
                 </div>
-                <div className="cat-no" style={{ marginTop: 8 }}>Отгрузка 1–2 дня после оплаты</div>
+                <div className="cat-no" style={{ marginTop: 8 }}>
+                  {onCommission ? 'Срок работы 3–5 недель' : 'Отгрузка 1–2 дня после оплаты'}
+                </div>
 
-                <a href={buyHref} className="btn btn-solid" style={{
+                <a href={onCommission ? routeToPath('commission', { ref: art.id }) : buyHref}
+                   className="btn btn-solid" style={{
                   marginTop: 18, width: '100%', justifyContent: 'center',
                   minHeight: 58, textDecoration: 'none', fontSize: 13,
-                }}>Купить сейчас</a>
+                }}>{onCommission ? 'Заказать портрет питомца' : inStore ? 'Купить сейчас' : 'Спросить о работе'}</a>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 10 }}>
-                  <a href={routeToPath('commission', { ref: art.id })} className="btn btn-ghost"
-                     style={{ justifyContent: 'center', textDecoration: 'none', fontSize: 11 }}>Похожую на заказ</a>
+                  {!onCommission && (
+                    <a href={routeToPath('commission', { ref: art.id })} className="btn btn-ghost"
+                       style={{ justifyContent: 'center', textDecoration: 'none', fontSize: 11 }}>Похожую на заказ</a>
+                  )}
                   <a href={askHref} target="_blank" rel="noopener" className="btn btn-ghost"
-                     style={{ justifyContent: 'center', textDecoration: 'none', fontSize: 11 }}>Задать вопрос</a>
+                     style={{ gridColumn: onCommission ? '1 / -1' : undefined, justifyContent: 'center', textDecoration: 'none', fontSize: 11 }}>Задать вопрос</a>
                 </div>
 
                 <ul style={{ margin: '20px 0 0', padding: 0, listStyle: 'none', display: 'grid', gap: 9 }}>
-                  {['Оригинал маслом, единственный экземпляр', 'Сертификат подлинности и авторская подпись',
-                    'Доставка по РФ со страховкой', 'Возврат 14 дней по закону'].map((g) => (
+                  {(onCommission
+                    ? ['Пишется по вашим фотографиям питомца', 'Масло и поталь на холсте 40×60 см',
+                       'Эскиз на согласование до начала работы', 'Сертификат подлинности и авторская подпись']
+                    : ['Оригинал маслом, единственный экземпляр', 'Сертификат подлинности и авторская подпись',
+                       'Доставка по РФ со страховкой', 'Возврат 14 дней по закону']).map((g) => (
                     <li key={g} style={{ display: 'flex', gap: 10, fontSize: 13.5, color: 'var(--ink-2)' }}>
                       <span aria-hidden="true" style={{ color: 'var(--accent)' }}>◆</span>{g}
                     </li>
@@ -282,6 +307,31 @@ function PaintingPage({ go, id }) {
             </aside>
           </div>
 
+          {/* В интерьере — реальные кадры работы на стене */}
+          {shots.length > 0 && (
+            <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>
+              <Eyebrow accent>В интерьере</Eyebrow>
+              <h2 className="display" style={{ margin: '12px 0 0', fontSize: 'clamp(24px, 3vw, 44px)', fontWeight: 500, letterSpacing: '-.025em' }}>
+                «{art.title}» на стене
+              </h2>
+              <p style={{ margin: '10px 0 0', maxWidth: 640, fontSize: 15, lineHeight: 1.65, color: 'var(--ink-2)' }}>
+                {dims} в разных комнатах — чтобы масштаб и цвет читались до покупки, а не после.
+              </p>
+              <div className="mb-grid" style={{ marginTop: 26 }}>
+                {shots.map((sh) => (
+                  <figure key={sh.file} data-rev style={{ margin: 0 }}>
+                    <img {...interiorSrc(sh.file)} width={1047} height={1280}
+                         sizes="(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw"
+                         alt={`«${art.title}» — ${sh.caption}`}
+                         loading="lazy" decoding="async"
+                         style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 'var(--r-md)' }} />
+                    <figcaption style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-2)' }}>{sh.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Что приедет в коробке */}
           <section style={{
             marginTop: 'clamp(48px, 6vw, 90px)',
@@ -330,7 +380,8 @@ function PaintingPage({ go, id }) {
       {/* Липкая панель покупки (§3): цена + название/размер + действия */}
       <StickyBar
         text={<><b>{formatPrice(art.price)}</b> · {art.title} · {dims}</>}
-        primary={{ label: 'Купить сейчас', href: buyHref }}
+        primary={{ label: onCommission ? 'Заказать портрет' : inStore ? 'Купить сейчас' : 'Спросить о работе',
+                   href: onCommission ? routeToPath('commission', { ref: art.id }) : buyHref }}
         secondary={{ label: 'Вопрос', href: askHref }}
       />
     </>

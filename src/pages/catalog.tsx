@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArtCard, Breadcrumbs, Eyebrow, LinkStrip } from '../common/atoms';
 import { SERIES, SUBJECTS, formatPrice, visibleArtworks } from '../common/data';
-import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, plural, seriesCount } from '../common/seo';
+import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, freshCount, freshStamp, plural, seriesCount } from '../common/seo';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
@@ -27,18 +27,33 @@ function useHeaderHeight(): number {
   return h;
 }
 
-function CatalogPage({ go, initialSeries }) {
+function CatalogPage({ go, initialSeries, initialOnlyNew = false }) {
   const [series, setSeriesRaw] = React.useState(initialSeries || 'all');
+  const [subject, setSubject] = React.useState('all');
   // Sprint 15: фильтр серии живёт в ?series= — выбор переживает «назад» и шарится ссылкой.
   const setSeries = (id: string) => {
     setSeriesRaw(id);
+    // Сюжет, которого в новой серии нет, оставлял пустую сетку: его пилюля
+    // при этом исчезала из панели, и было непонятно, что вообще отфильтровано.
+    setSubject((cur) => (cur === 'all' || id === 'all'
+      || visibleArtworks().some((a) => a.series === id && a.subject === cur) ? cur : 'all'));
     try {
       const u = new URL(window.location.href);
       if (id === 'all') u.searchParams.delete('series'); else u.searchParams.set('series', id);
       window.history.replaceState(null, '', u.pathname + u.search);
     } catch { /* SSR/старые браузеры — фильтр работает и без URL */ }
   };
-  const [subject, setSubject] = React.useState('all');
+  // Sprint 16: пополнение — отдельный срез каталога. Признак новизны — поле added
+  // в data.ts, а не отсутствие страницы в Store: последнее обнулится после импорта.
+  const [onlyNew, setOnlyNewRaw] = React.useState(!!initialOnlyNew);
+  const setOnlyNew = (v: boolean) => {
+    setOnlyNewRaw(v);
+    try {
+      const u = new URL(window.location.href);
+      if (v) u.searchParams.set('new', '1'); else u.searchParams.delete('new');
+      window.history.replaceState(null, '', u.pathname + u.search);
+    } catch { /* фильтр работает и без URL */ }
+  };
   const [sort, setSort] = React.useState('default');
   const headerH = useHeaderHeight();
 
@@ -46,12 +61,20 @@ function CatalogPage({ go, initialSeries }) {
     let r = visibleArtworks();
     if (series !== 'all') r = r.filter((a) => a.series === series);
     if (subject !== 'all') r = r.filter((a) => a.subject === subject);
+    if (onlyNew) r = r.filter((a) => !!a.added);
+    // Sprint 16: у сортировки по умолчанию не было ветки — список шёл в порядке
+    // data.ts, то есть каталог открывался самыми старыми работами.
+    if (sort === 'default') {
+      r.sort((a, b) => String(b.added || '').localeCompare(String(a.added || ''))
+        || b.year - a.year
+        || b.price - a.price);
+    }
     if (sort === 'price-asc') r.sort((a, b) => a.price - b.price);
     if (sort === 'price-desc') r.sort((a, b) => b.price - a.price);
     if (sort === 'size-desc') r.sort((a, b) => (b.w * b.h) - (a.w * a.h));
     if (sort === 'year-desc') r.sort((a, b) => b.year - a.year);
     return r;
-  }, [series, subject, sort]);
+  }, [series, subject, sort, onlyNew]);
 
   const total = visibleArtworks().length;
   const activeSeries = series !== 'all' ? SERIES.find((s) => s.id === series) : null;
@@ -61,6 +84,7 @@ function CatalogPage({ go, initialSeries }) {
     () => (activeSeries ? visibleArtworks().filter((a) => a.series === activeSeries.id) : visibleArtworks()),
     [activeSeries],
   );
+  const freeInPool = pool.filter((a) => a.status === 'available' && !a.commission).length;
   const prices = pool.map((a) => a.price).filter(Boolean);
   const sides = pool.flatMap((a) => [a.w, a.h]).filter(Boolean);
   const minPrice = prices.length ? Math.min(...prices) : 0;
@@ -89,7 +113,7 @@ function CatalogPage({ go, initialSeries }) {
         {/* Заголовок + лид · справа карточка сводки */}
         <div className="mb-cols" style={{ marginTop: 22, alignItems: 'flex-end', gap: 'clamp(22px, 3vw, 48px)' }}>
           <div style={{ flex: '2 1 460px' }}>
-            <Eyebrow accent>{activeSeries ? `Серия · ${activeSeries.years}` : 'Каталог · в наличии'}</Eyebrow>
+            <Eyebrow accent>{activeSeries ? `Серия · ${activeSeries.years}` : 'Каталог · оригиналы маслом'}</Eyebrow>
             <h1 className="display" style={{
               margin: '16px 0 0',
               fontSize: 'clamp(38px, 5.6vw, 84px)',
@@ -115,6 +139,9 @@ function CatalogPage({ go, initialSeries }) {
             <dl style={{ margin: '14px 0 0', display: 'grid', gap: 10 }}>
               {[
                 ['Работ', `${pool.length} ${plural(pool.length)}`],
+                // Sprint 16: свободных меньше, чем в каталоге — портреты питомцев
+                // показаны как примеры услуги (status sold + commission).
+                ...(freeInPool !== pool.length ? [['Свободно', `${freeInPool} ${plural(freeInPool)}`]] : []),
                 ['Цена', minPrice === maxPrice ? formatPrice(minPrice) : `${formatPrice(minPrice)} — ${formatPrice(maxPrice)}`],
                 ['Размеры', `${minSide}–${maxSide} см по стороне`],
               ].map(([k, v]) => (
@@ -167,6 +194,13 @@ function CatalogPage({ go, initialSeries }) {
                         onClick={() => setSubject(s.id)}>{s.label}</button>
               ))}
           </div>
+          {freshCount() > 0 && (
+            <button type="button" aria-pressed={onlyNew}
+                    aria-label={`Только пополнение: ${freshCount()} ${plural(freshCount())}`}
+                    className={'chip' + (onlyNew ? ' is-active' : '')}
+                    style={{ whiteSpace: 'nowrap' }}
+                    onClick={() => setOnlyNew(!onlyNew)}>Новое · {freshCount()}</button>
+          )}
           <span className="cat-no" style={{ whiteSpace: 'nowrap' }}>
             {items.length} {plural(items.length)}
           </span>

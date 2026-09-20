@@ -15,10 +15,24 @@
  */
 export const SERIES_PAGES_LIVE = true; // Sprint 15: 4 страницы серий созданы в Tilda и живые
 
+/**
+ * Пополнение 2026: серии «Миниатюры» и «Портреты на золоте» добавлены в каталог,
+ * но страниц Tilda /catalog/miniatury и /catalog/portrety-pitomtsev ещё НЕТ.
+ * Пока их нет — ссылки на эти серии ведут на ?series=, а в sitemap они не попадают
+ * (иначе робот получит 404). Когда страницы созданы — добавить id сюда.
+ */
+export const SERIES_WITH_PAGES = ['monochrome', 'streets', 'silence', 'tondi'];
+
+/** Есть ли у серии собственная страница Tilda (а не только ?series=). */
+export function seriesHasPage(id: string): boolean {
+  return SERIES_PAGES_LIVE && SERIES_WITH_PAGES.includes(id);
+}
+
 /** series id → url-slug. Принимает и id, и уже готовый slug. */
 export function seriesSlug(idOrSlug: string): string {
   const map: Record<string, string> = {
     monochrome: 'monohromnaya', streets: 'ulitsy-mira', silence: 'tihaya-sila', tondi: 'tondo',
+    mini: 'miniatury', pets: 'portrety-pitomtsev',
   };
   return map[idOrSlug] || idOrSlug;
 }

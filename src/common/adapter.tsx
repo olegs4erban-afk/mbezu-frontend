@@ -25,13 +25,14 @@ interface PaintingPlateProps {
 export function PaintingPlate({ art, fit, ratio, size = 'large', showMeta = true, style, onClick, priority = false, sizes, objectFit = 'cover', plain = false, className }: PaintingPlateProps) {
   if (!art) return null;
   const isRound = art.shape === 'round';
+  const curved = isRound || art.shape === 'oval';
   const src = imageOf ? imageOf(art, size) : null;
   const [c1, c2] = art.palette || ['#d9cfba', '#5a4a36'];
 
   const baseStyle: React.CSSProperties = {
     aspectRatio: isRound ? '1 / 1' : (ratio || (fit === 'bare' ? undefined : `${art.w} / ${art.h}`)),
     width: '100%',
-    borderRadius: isRound ? '50%' : 'var(--r-md)',
+    borderRadius: curved ? '50%' : 'var(--r-md)',
     boxShadow: plain ? 'none' : 'var(--shadow-md)',
     cursor: onClick ? 'pointer' : 'default',
     overflow: 'hidden',

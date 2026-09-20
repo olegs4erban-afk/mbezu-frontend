@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { routeToPath, seriesSlug, SERIES_PAGES_LIVE } from '../common/app';
 import { imageOf, formatPrice, ARTWORKS, artworkById, seriesById } from '../common/data';
 import { seoFor, organizationLd, personLd, productLd, breadcrumbLd } from '../common/seo';
+import { storeProductPath } from '../common/store-urls';
 
 describe('routeToPath — clean aliases (match live Tilda)', () => {
   it('home → /', () => expect(routeToPath('home')).toBe('/'));
@@ -86,8 +87,19 @@ describe('SEO JSON-LD — valid shape', () => {
     const s = seoFor('painting', { id: 'MN-01' });
     expect(s.title).toContain('картина маслом'); // Sprint 14 Ф5 шаблон: «{Название} — картина маслом {Ш}×{В} см | купить»
     expect(s.title).toContain('100×60');
-    expect(s.canonical).toBe('https://mbezu.ru/painting/mn-01');
+    // Sprint 16: раньше здесь ждали /painting/mn-01 — адрес, которого на mbezu.ru
+    // нет (403/404), он живёт только на cdn.mbezu.ru. canonical обязан вести
+    // на нативную страницу товара Store, где работу реально покупают.
+    expect(s.canonical).toBe('https://mbezu.ru' + storeProductPath('MN-01'));
+    expect(s.canonical).not.toContain('/painting/');
     expect(s.jsonLd.length).toBeGreaterThanOrEqual(1);
+  });
+  it('seoFor(painting) у работы без страницы Store ведёт на серию, а не в 404', () => {
+    const noStore = ARTWORKS.find((a: any) => !a.hidden && !storeProductPath(a.id));
+    if (!noStore) return; // все работы заведены в Store — проверять нечего
+    const s = seoFor('painting', { id: noStore.id });
+    expect(s.canonical).not.toContain('/painting/');
+    expect(s.canonical).toContain('/catalog');
   });
   it('seoFor(cart) is noindex', () => {
     expect(seoFor('cart').noindex).toBe(true);

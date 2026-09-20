@@ -2,11 +2,13 @@ import React from 'react';
 import { PaintingPlate } from '../common/adapter';
 import { ArtCard, Eyebrow, LinkStrip } from '../common/atoms';
 import { Marquee } from '../common/chrome';
-import { ABOUT, ARTWORKS, SERIES, featuredArtworks, formatPrice, imageOf, seriesById, visibleArtworks } from '../common/data';
+import { ABOUT, ARTWORKS, SERIES, artworkById, askAboutHref, dimsLabel, featuredArtworks, formatPrice, imageOf, seriesById, visibleArtworks } from '../common/data';
+import { hasStorePage } from '../common/store-urls';
+import { INTERIOR_SHOTS, interiorSrc } from '../common/interiors';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
 import { ReviewsSection } from '../common/reviews-section';
 import { FaqSection } from '../common/faq-section';
-import { HOME_FAQ, plural, seriesCount, workCount } from '../common/seo';
+import { HOME_FAQ, freshCount, freshHighlights, freshStamp, inStockCount, plural, pluralOf, priceRange, seriesCount } from '../common/seo';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
@@ -104,7 +106,7 @@ function HeroLead() {
           {state === 'sending' ? 'Отправляем…' : 'Заказать картину'}
         </button>
         <a href={routeToPath('catalog')} className="uh" style={{ color: 'var(--ink)', fontSize: 15, textDecoration: 'none' }}>
-          {workCount()} {plural(workCount())} в наличии →
+          {inStockCount()} {plural(inStockCount())} в наличии · от {formatPrice(priceRange().from)} →
         </a>
       </div>
       <p style={{ margin: '12px 0 0', fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-3)', maxWidth: 460 }}>
@@ -118,6 +120,11 @@ function HeroLead() {
 
 function HeroCommission() {
   const hero = heroArt();
+  // Sprint 16: hero строил /painting/<id> напрямую. На mbezu.ru такой страницы нет —
+  // ссылка обязана проходить ту же развилку, что и карточка каталога.
+  const heroHref = hasStorePage(hero.id)
+    ? routeToPath('painting', { id: hero.id })
+    : askAboutHref(hero);
   // LCP-картинка: тот же резолвер для src и srcSet (§13.13), иначе телефон
   // тянет полноразмерный файл ради 375-пиксельной колонки.
   const src = imageOf(hero, 'full');
@@ -125,7 +132,7 @@ function HeroCommission() {
   const heroSrcSet = (heroT && heroL && src && new Set([heroT, heroL, src]).size > 1)
     ? `${heroT} 480w, ${heroL} 960w, ${src} 1200w` : undefined;
   const trust: Array<[string, string, number | null]> = [
-    [String(workCount()), 'в наличии', workCount()],
+    [String(inStockCount()), 'в наличии', inStockCount()],
     ['от 2', 'недель на заказ', null],
     ['15+', 'лет практики', null],
     ['РФ', 'доставка', null],
@@ -152,7 +159,8 @@ function HeroCommission() {
               fontSize: 'clamp(15.5px, 1.15vw, 18px)', lineHeight: 1.6,
               color: 'var(--ink-2)', fontWeight: 300,
             }}>
-              {ABOUT.tagline} Оригиналы на&nbsp;холсте: выберите работу в&nbsp;наличии
+              {/* tagline без точки на конце — иначе две фразы слипались в одно предложение */}
+              {ABOUT.tagline}. Оригиналы на&nbsp;холсте: выберите работу в&nbsp;наличии
               или закажите картину под свой размер и&nbsp;палитру.
             </p>
 
@@ -180,7 +188,7 @@ function HeroCommission() {
             <article className="mb-card">
               {/* без aria-label: имя ссылки должно содержать её видимый текст
                   (Lighthouse label-content-name-mismatch) */}
-              <a className="mb-card-link" href={routeToPath('painting', { id: hero.id })}>
+              <a className="mb-card-link" href={heroHref}>
                 <div className="mb-mat mb-mat-wide">
                   {src
                     ? <img src={src} srcSet={heroSrcSet} alt={hero.title}
@@ -197,7 +205,7 @@ function HeroCommission() {
               </a>
               <div className="mb-card-foot">
                 <span className="mb-card-price">{formatPrice(hero.price)}</span>
-                <a className="mb-buy" href={routeToPath('painting', { id: hero.id })}
+                <a className="mb-buy" href={heroHref}
                    style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none' }}>Смотреть</a>
               </div>
             </article>
@@ -212,8 +220,8 @@ function HeroCommission() {
 function PathTiles() {
   const tiles = [
     { href: routeToPath('commission'), t: 'Картина на заказ', s: 'Бриф за 2 минуты · от 2 недель', accent: true },
-    { href: routeToPath('catalog'), t: `${workCount()} ${plural(workCount())}`, s: 'Оригиналы в наличии, отправка сразу' },
-    { href: '/podarok', t: 'В подарок', s: 'Сертификат подлинности и упаковка' },
+    { href: routeToPath('catalog'), t: `${inStockCount()} ${plural(inStockCount())}`, s: `Оригиналы в наличии, от ${formatPrice(priceRange().from)}` },
+    { href: '/podarok', t: 'В подарок', s: `Миниатюры от ${formatPrice(priceRange().from)} · сертификат и упаковка` },
     { href: '/kartina-v-gostinuyu', t: 'Подобрать в комнату', s: 'Гостиная, спальня, кабинет' },
   ];
   return (
@@ -359,12 +367,103 @@ function ManifestBand() {
   );
 }
 
+// ── Новое в мастерской ───────────────────────────────────────
+// Sprint 16: до этого ни одна из 35 новых работ на главную не попадала —
+// InStock брал [...featuredArtworks(), ...rest].slice(0, 6), а флагманов стало 10,
+// и срез не доходил до «свежего» хвоста вообще.
+// Состав ленты — freshHighlights(): по кругу через серии, чтобы было видно,
+// что пополнение разное, а не двенадцать миниатюр подряд.
+const LANE_SIZE = 8;
+
+function FreshLane() {
+  const items = freshHighlights(LANE_SIZE);
+  if (!items.length) return null;
+  const total = freshCount();
+  const mini = seriesById('mini');
+  const pets = seriesById('pets');
+  const miniPrice = Math.min(...ARTWORKS.filter((a) => a.series === 'mini').map((a) => a.price));
+
+  return (
+    <section className="resp-pad" style={{ padding: '110px 40px 80px' }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div style={{
+          display: 'flex', justifyContent: 'space-between',
+          alignItems: 'flex-end', marginBottom: 44, flexWrap: 'wrap', gap: 20,
+        }}>
+          <div>
+            <Eyebrow accent>Новое в мастерской</Eyebrow>
+            <h2 className="display resp-h2" style={{
+              margin: '20px 0 0', fontSize: 'clamp(36px, 4.6vw, 68px)',
+              lineHeight: 0.96, fontWeight: 500, letterSpacing: '-.03em',
+            }}>
+              {total} {plural(total)}{' '}<br/>и <span className="italic" style={{ color: 'var(--accent)' }}>две новые серии</span>
+            </h2>
+            <p style={{ margin: '18px 0 0', maxWidth: 520, fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', fontWeight: 300 }}>
+              Пополнение каталога, {freshStamp()}: монохром и тондо, португальские улицы,
+              первые миниатюры и портреты на сусальном золоте.
+            </p>
+          </div>
+          <a className="btn btn-ghost" href={`${routeToPath('catalog')}?new=1`} style={{ textDecoration: 'none' }}>Все {total} {plural(total)} →</a>
+        </div>
+
+        <div className="mb-grid">
+          {items.map((a, i) => (
+            <ArtCard key={a.id} art={a} index={i + 1} total={items.length} />
+          ))}
+        </div>
+
+        {/* Две новые серии — это новые поводы купить, а не просто новые картинки:
+            миниатюры дают вход по цене подарка, портреты питомцев — услугу. */}
+        <div className="resp-stack" style={{ marginTop: 34, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
+          {[
+            {
+              href: routeToPath('catalog', { series: 'mini' }),
+              tag: 'Новая серия',
+              title: mini?.title || 'Миниатюры',
+              note: `${seriesCount('mini')} ${plural(seriesCount('mini'))} 7–15 см · масло на холсте · мини-мольберт в комплекте`,
+              cta: `от ${formatPrice(miniPrice)}`,
+            },
+            {
+              href: routeToPath('catalog', { series: 'pets' }),
+              tag: 'Новое направление',
+              title: pets?.title || 'Портреты на золоте',
+              note: 'Портрет питомца маслом и поталью по вашим фотографиям · 3–5 недель',
+              cta: 'На заказ',
+            },
+          ].map((t) => (
+            <a key={t.title} href={t.href} data-rev className="mb-card" style={{
+              textDecoration: 'none', color: 'inherit',
+              padding: 'clamp(22px, 2.4vw, 32px)', minHeight: 150,
+              justifyContent: 'space-between', background: 'var(--bg-card)',
+            }}>
+              <span className="cat-no" style={{ color: 'var(--accent)' }}>{t.tag}</span>
+              <span className="display" style={{ marginTop: 10, fontSize: 'clamp(22px,2vw,30px)', fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1.1 }}>{t.title}</span>
+              <span style={{ marginTop: 10, fontSize: 14, lineHeight: 1.55, color: 'var(--ink-2)' }}>{t.note}</span>
+              <span className="mono" style={{ marginTop: 16, fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase' }}>{t.cta} →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ── InStock — featured + recent ───────────────────────────────
 function InStock({ go }) {
-  const fts = featuredArtworks();
+  // Sprint 16: исключаем ровно те работы, что уже показаны в ленте «Новое в мастерской»,
+  // а не всё пополнение целиком — иначе работа 2026 года никогда не вернётся
+  // в «Избранные», даже когда перестанет быть новой.
+  // И только свободные: PP-01 — featured, но sold + commission (это услуга, не товар).
+  // hero печатает «работу месяца» — она же стояла первой в «Избранных»
+  // (то же, что Sprint 15 чинил для обложек серий, только для этой секции).
+  const skip = new Set([heroArt().id, ...freshHighlights(LANE_SIZE).map((a) => a.id)]);
+  const free = (a) => a.status === 'available' && !a.commission && !skip.has(a.id);
+  const fts = featuredArtworks().filter(free);
+  // хвост добирается по цене, а не по году: секция называется «Избранные»,
+  // и три миниатюры по 5 000 ₽ рядом с Ангкором за 130 000 читаются как случайность
   const rest = visibleArtworks()
-    .filter((a) => a.status === 'available' && !a.featured)
-    .sort((a, b) => b.year - a.year);
+    .filter((a) => free(a) && !a.featured)
+    .sort((a, b) => b.price - a.price);
   const items = [...fts, ...rest].slice(0, 6);
 
   return (
@@ -395,6 +494,66 @@ function InStock({ go }) {
 }
 
 // ── Packaging — open box + thank-you card ─────────────────────
+// ── На стене ─────────────────────────────────────────────────
+// Sprint 16: до этого «как будет выглядеть у меня» отвечали только три
+// обобщённые комнаты на посадочных серий. Здесь — конкретные работы
+// в конкретных интерьерах, крупным планом и с кликом на карточку.
+function OnTheWall() {
+  const shots = INTERIOR_SHOTS;
+  return (
+    <section className="resp-pad" style={{ padding: '120px 40px' }}>
+      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap' }}>
+          <div>
+            <Eyebrow accent>На стене</Eyebrow>
+            <h2 className="display resp-h1" style={{
+              margin: '24px 0 0', fontSize: 'clamp(34px, 4.4vw, 68px)',
+              lineHeight: 0.99, fontWeight: 500, letterSpacing: '-.03em',
+            }}>
+              Как это выглядит{' '}<br/>в <span className="italic" style={{ color: 'var(--accent)' }}>комнате</span>
+            </h2>
+            <p style={{ marginTop: 22, maxWidth: 520, fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', fontWeight: 300 }}>
+              Размер в сантиметрах мало что говорит, пока картина не&nbsp;на&nbsp;стене.
+              Здесь — работы из&nbsp;каталога в&nbsp;реальных интерьерах: кабинет, прихожая,
+              коридор, гостиная со&nbsp;стеллажом.
+            </p>
+          </div>
+          <a href={routeToPath('catalog')} className="btn btn-ghost" style={{ textDecoration: 'none' }}>
+            Весь каталог →
+          </a>
+        </div>
+
+        <div className="mb-grid" style={{ marginTop: 40 }}>
+          {shots.map((sh) => {
+            const art = sh.art ? artworkById(sh.art) : null;
+            const img = (
+              // width/height не для вёрстки, а чтобы браузер знал пропорцию
+              // до загрузки: карточки каталога держит aspect-ratio, эти — нет.
+              <img {...interiorSrc(sh.file)} width={1047} height={1280}
+                   sizes="(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw"
+                   alt={art ? `Картина «${art.title}» в интерьере — ${sh.caption}` : sh.caption}
+                   loading="lazy" decoding="async"
+                   style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 'var(--r-md)' }} />
+            );
+            return (
+              <figure key={sh.file} data-rev style={{ margin: 0 }}>
+                {art
+                  ? <a href={hasStorePage(art.id) ? routeToPath('painting', { id: art.id }) : askAboutHref(art)}
+                       style={{ display: 'block', textDecoration: 'none' }}>{img}</a>
+                  : img}
+                <figcaption style={{ marginTop: 10, fontSize: 13.5, lineHeight: 1.55, color: 'var(--ink-2)' }}>
+                  {art && <span className="cat-no" style={{ display: 'block', marginBottom: 4 }}>{art.title} · {dimsLabel(art)}</span>}
+                  {sh.caption}
+                </figcaption>
+              </figure>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Packaging() {
   return (
     <section className="resp-pad" style={{ padding: '120px 40px' }}>
@@ -469,8 +628,9 @@ function Packaging() {
 // иначе одни и те же цифры печатались на странице дважды.
 function StatsRow() {
   const items = [
-    { n: '15+', l: 'лет практики', c: 15 },
-    { n: String(SERIES.length), l: 'серии в развитии', c: SERIES.length },
+    // §1.7: «лет практики» уже стоит в hero — здесь другие показатели
+    { n: String(SERIES.length), l: `${pluralOf(SERIES.length, ['серия', 'серии', 'серий'])} в развитии`, c: SERIES.length },
+    { n: String(freshCount()), l: `${plural(freshCount())} в пополнении`, c: freshCount() },
     { n: 'от 2', l: 'недель средний срок', c: null },
     { n: 'РФ', l: 'доставка и страховка', c: null },
   ];
@@ -939,14 +1099,14 @@ function HomePage({ go }) {
       <HeroCommission />
       <PathTiles />
 
-      <Marquee items={[
-        'Улицы мира', 'Монохромная', 'Тихая сила',
-        '— серии одного автора —',
-      ]} big />
+      {/* Sprint 16: перечень был зашит руками и печатал 3 серии из 6 */}
+      <Marquee items={[...SERIES.map((s) => s.title), '— серии одного автора —']} big />
 
+      <FreshLane />
       <InStock go={go} />
       <SeriesTriptych go={go} />
       <ProcessRow />
+      <OnTheWall />
       <Packaging />
       <ManifestBand />
       <StatsRow />

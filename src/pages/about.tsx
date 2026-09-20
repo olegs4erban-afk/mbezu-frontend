@@ -1,5 +1,5 @@
 import React from 'react';
-import { INTERIOR_GUIDE_URL } from '../common/seo';
+import { INTERIOR_GUIDE_URL, plural, pluralOf, seriesCount } from '../common/seo';
 import { Breadcrumbs, Eyebrow } from '../common/atoms';
 import { ABOUT, ARTWORKS, SERIES } from '../common/data';
 import { TILDA_IMAGES } from '../common/tilda-images';
@@ -10,6 +10,18 @@ import { PaintingPlate } from '../common/adapter';
 // ─────────────────────────────────────────────────────────────
 // page-about.jsx — страница «Художница».
 // ─────────────────────────────────────────────────────────────
+
+// Реальные кадры мастерской (сентябрь 2026). Подписи честные: что именно на фото.
+const STUDIO_SHOTS: [string, string][] = [
+  ['about-studio-1', 'Мастерская — рабочий стол и готовые работы'],
+  ['about-studio-2', 'Мольберт у окна — пейзаж в процессе'],
+  ['about-studio-3', 'Портрет на золоте и кисти'],
+  ['about-studio-4', 'Шмель на розовом — свежая работа на мольберте'],
+  ['about-studio-5', 'Тропический пейзаж — второй слой'],
+  ['about-studio-6', 'Стена мастерской: серии рядом друг с другом'],
+  ['about-studio-7', 'Монохромные горы — отбор работ серии'],
+  ['about-studio-8', 'Фактура вблизи: мазок на гребне волны'],
+];
 
 function AboutPage({ go }) {
   return (
@@ -130,20 +142,36 @@ function AboutPage({ go }) {
       </section>
 
       {/* ── Studio strip ── */}
+      {/* Sprint 16: стоковые кадры (Adobe Stock 319341329 / 387415246 / 327477069) заменены
+          на реальные фото мастерской и работ в процессе — снимки Милы, сентябрь 2026. */}
       <section className="resp-pad" style={{ padding: '40px 40px 80px' }}>
-        <div className="resp-stack-3" style={{
-          maxWidth: 'var(--max)', margin: '0 auto',
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28,
-        }}>
-          {/* 03.09 (Олег): вместо фрагментов картин — атмосферные фото по темам блоков
-              (Adobe Stock, бесплатная коллекция, лицензированы 02.09.2026: 319341329, 387415246, 327477069) */}
-          {[['studio-1', 'Студия — окно, естественный свет'], ['studio-2', 'Мастерская — палитра, кисти'], ['studio-3', 'Мольберт — работа в процессе']].map(([f, t]) => (
-              <figure key={f} style={{ margin: 0 }}>
-                <img src={`https://cdn.mbezu.ru/assets/about-${f}.webp`} srcSet={`https://cdn.mbezu.ru/assets/about-${f}@720.webp 720w, https://cdn.mbezu.ru/assets/about-${f}.webp 1200w`} sizes="(max-width: 900px) 92vw, 30vw"
-                     alt={t} loading="lazy" style={{ width: '100%', aspectRatio: '4 / 5', objectFit: 'cover', borderRadius: 'var(--r-md)', boxShadow: 'var(--shadow-md)', display: 'block' }} />
+        <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+          <Eyebrow accent>Мастерская</Eyebrow>
+          <h2 className="display resp-h2" style={{
+            margin: '20px 0 0', fontSize: 'clamp(30px, 3.6vw, 52px)',
+            fontWeight: 500, lineHeight: 1, letterSpacing: '-.025em',
+          }}>
+            Где это{' '}<span className="italic" style={{ color: 'var(--accent)' }}>происходит</span>
+          </h2>
+          <p style={{ margin: '18px 0 0', maxWidth: 560, fontSize: 15.5, lineHeight: 1.7, color: 'var(--ink-2)', fontWeight: 300 }}>
+            Не&nbsp;стоковые фото студии, а&nbsp;собственная мастерская: мольберт у&nbsp;окна,
+            палитра, работы в&nbsp;процессе и&nbsp;те, что ждут отправки.
+          </p>
+          <div style={{
+            marginTop: 34,
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 230px), 1fr))', gap: 24,
+          }}>
+            {STUDIO_SHOTS.map(([f, t]) => (
+              <figure key={f} data-rev style={{ margin: 0 }}>
+                <img src={`https://cdn.mbezu.ru/assets/${f}.webp`}
+                     srcSet={`https://cdn.mbezu.ru/assets/${f}@720.webp 720w, https://cdn.mbezu.ru/assets/${f}.webp 1200w`}
+                     sizes="(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 24vw"
+                     alt={t} loading="lazy" decoding="async"
+                     style={{ width: '100%', aspectRatio: '4 / 5', objectFit: 'cover', borderRadius: 'var(--r-md)', boxShadow: 'var(--shadow-md)', display: 'block' }} />
                 <figcaption className="cat-no" style={{ marginTop: 12 }}>{t}</figcaption>
               </figure>
             ))}
+          </div>
         </div>
       </section>
 
@@ -163,7 +191,7 @@ function AboutPage({ go }) {
                 margin: '20px 0 0', fontSize: 'clamp(40px, 4.8vw, 64px)',
                 fontWeight: 500, lineHeight: 0.95, letterSpacing: '-.025em',
               }}>
-                Три направления{' '}<br/><span className="italic" style={{ color: 'var(--ink-2)', fontStyle: 'italic' }}>одного автора.</span>
+                {SERIES.length} {pluralOf(SERIES.length, ['направление', 'направления', 'направлений'])}{' '}<br/><span className="italic" style={{ color: 'var(--ink-2)', fontStyle: 'italic' }}>одного автора.</span>
               </h2>
             </div>
             <button className="btn btn-ghost" onClick={() => go('catalog')}>Все работы →</button>
@@ -186,7 +214,8 @@ function AboutPage({ go }) {
                   }} showMeta={false} />
                 ); })()}
                 <div style={{ paddingTop: 20 }}>
-                  <div className="cat-no">{s.years} · {s.count} работ</div>
+                  {/* Sprint 16: s.count — ручное поле, оно отставало на 9–15 работ */}
+                  <div className="cat-no">{s.years} · {seriesCount(s.id)} {plural(seriesCount(s.id))}</div>
                   <h3 className="display" style={{ margin: '10px 0 6px', fontSize: 28, fontWeight: 500, letterSpacing: '-.015em' }}>{s.title}</h3>
                   <div className="italic" style={{ fontSize: 15, color: 'var(--accent)', fontStyle: 'italic' }}>{s.subtitle}</div>
                   <p style={{ margin: '14px 0 0', fontSize: 14, color: 'var(--ink-2)', lineHeight: 1.6 }}>

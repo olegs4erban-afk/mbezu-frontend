@@ -16,4 +16,4 @@ const series = seriesFromPath() || qs('series');
 const seo = seoFor('catalog', { series });
 applySeo(seo);
 seo.jsonLd.forEach((ld, i) => { if (ld) injectJsonLd('ld-catalog-' + i, ld); });
-renderPage('catalog', CatalogPage, (api) => ({ go: api.go, initialSeries: series }));
+renderPage('catalog', CatalogPage, (api) => ({ go: api.go, initialSeries: series, initialOnlyNew: qs('new') === '1' }));
