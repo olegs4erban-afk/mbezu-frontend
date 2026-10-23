@@ -172,3 +172,37 @@ describe('SEO — seo/pages.json ↔ seoFor и числа каталога', () 
     expect(JSON.stringify(organizationLd())).not.toMatch(/instagram/i);
   });
 });
+
+// Версия 2: ItemList каталога — только адреса, в порядке каталога.
+// Product + Offer есть на самих страницах товаров (микроразметка Tilda).
+describe('SEO — ItemList каталога', () => {
+  it('элементы — ListItem с адресом и названием, без Product', async () => {
+    const { catalogItemListLd } = await import('../common/seo');
+    const l: any = catalogItemListLd();
+    expect(l['@type']).toBe('ItemList');
+    expect(l.numberOfItems).toBe(l.itemListElement.length);
+    l.itemListElement.forEach((x: any, i: number) => {
+      expect(x['@type']).toBe('ListItem');
+      expect(x.position).toBe(i + 1);
+      expect(x.url).toMatch(/^https:\/\/mbezu\.ru\//);
+      expect(typeof x.name).toBe('string');
+      expect(x.item).toBeUndefined();
+    });
+    expect(JSON.stringify(l)).not.toMatch(/"Product"|"Offer"/);
+  });
+  it('порядок — как в каталоге: свободные первыми, затем новые', async () => {
+    const { catalogItemListLd, catalogOrder, isFreeWork } = await import('../common/seo');
+    const { visibleArtworks } = await import('../common/data');
+    const order = catalogOrder(visibleArtworks() as any[]);
+    const l: any = catalogItemListLd();
+    expect(l.itemListElement.map((x: any) => x.name)).toEqual(order.map((a: any) => a.title));
+    const firstTaken = order.findIndex((a: any) => !isFreeWork(a));
+    if (firstTaken !== -1) expect(order.slice(firstTaken).every((a: any) => !isFreeWork(a))).toBe(true);
+  });
+  it('на посадочной серии — только её работы', async () => {
+    const { catalogItemListLd, seriesCount } = await import('../common/seo');
+    const l: any = catalogItemListLd('tondi');
+    expect(l.numberOfItems).toBe(seriesCount('tondi'));
+    expect(l.name).toContain(seriesById('tondi')!.title);
+  });
+});

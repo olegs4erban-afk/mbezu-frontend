@@ -44,10 +44,23 @@ export const seriesCount = (id: string) => visibleArtworks().filter((a: any) => 
 // workCount() считает все видимые работы (56), но три портрета питомцев —
 // status:'sold' + commission:true: это примеры услуги, а не товар на полке.
 // Подписывать 56 словами «в наличии» стало неправдой на три работы.
+/** Работа свободна: её можно купить прямо сейчас (не продана и не пример заказа). */
+export const isFreeWork = (a: any) => a.status === 'available' && !a.commission;
 /** Работы, которые реально можно купить прямо сейчас. */
-export const inStockWorks = () =>
-  visibleArtworks().filter((a: any) => a.status === 'available' && !a.commission);
+export const inStockWorks = () => visibleArtworks().filter(isFreeWork);
 export const inStockCount = () => inStockWorks().length;
+
+/** Порядок «Сначала новые»: по месяцу пополнения, затем по году и цене. */
+export const byNewest = (a: any, b: any) =>
+  String(b.added || '').localeCompare(String(a.added || '')) || b.year - a.year || b.price - a.price;
+
+/**
+ * Порядок каталога по умолчанию — тот же, что видит покупатель:
+ * свободные работы первыми, внутри — «Сначала новые».
+ */
+export function catalogOrder<T>(works: T[]): T[] {
+  return works.slice().sort((a: any, b: any) => Number(isFreeWork(b)) - Number(isFreeWork(a)) || byNewest(a, b));
+}
 
 /** Минимальная и максимальная цена свободных работ — для «от N ₽». */
 export const priceRange = () => {
@@ -285,8 +298,8 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         // Sprint 15: у посадочной серии canonical — её собственный /catalog/<slug>,
         // иначе все четыре склеиваются с каталогом и не ранжируются.
         canonical: SITE_ORIGIN + seriesPath(params.series),
-        // Sprint 15: ItemList с Product+Offer по всем работам. Страницы товаров
-        // нативные и своей разметки не имеют — цена и наличие уезжают роботу отсюда.
+        // ItemList — адреса всех работ в порядке каталога (в HTML карточек 24,
+        // остальные робот находит по списку). Цена и наличие — на странице товара.
         jsonLd: series
           ? [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }, { name: series.title, url: seriesPath(params.series) }]), catalogItemListLd(params.series)]
           : [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Каталог', url: '/catalog' }]), catalogItemListLd()],
@@ -448,32 +461,32 @@ export function productLd(id: string) {
 }
 
 /**
- * ItemList из всех работ каталога с Product + Offer (Sprint 15).
+ * ItemList каталога и посадочных серий — список адресов работ.
  *
- * Зачем: страницы товаров — нативные тильдовские, своей разметки у них нет и
- * добавить её туда нечем (контейнера витрины на них нет). Каталог же наш и
- * попадает в HTML до JS — значит цену и наличие робот увидит именно отсюда.
- * Каждый элемент ссылается на реальную страницу покупки.
+ * Версия 2 (23.10.2026): раньше (Sprint 15) в каждом элементе лежал Product + Offer —
+ * считалось, что у нативных страниц товаров Store своей разметки нет. Проверено на
+ * домене: у /catalog/tproduct/… есть микроразметка Tilda Product + Offer (название,
+ * цена, валюта, наличие, фото). Разметка товара на странице списка — против правил
+ * Google (Product — только для страницы конкретного товара) и дублировала Tilda;
+ * поэтому здесь только адреса в порядке каталога — так робот находит и те работы,
+ * карточек которых нет в первых 24 в HTML.
  */
 export function catalogItemListLd(seriesId?: string) {
   // На посадочной серии список фильтруется: уникальная разметка на каждой
   // странице вместо пяти копий полного списка по сайту.
-  const works = seriesId ? visibleArtworks().filter((a: any) => a.series === seriesId) : visibleArtworks();
+  const series = seriesId ? seriesById(seriesId) : null;
+  const works = catalogOrder(series ? visibleArtworks().filter((a: any) => a.series === series.id) : visibleArtworks());
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Каталог картин маслом MBezu',
+    name: series ? `${series.title} — картины маслом MBezu` : 'Каталог картин маслом MBezu',
     numberOfItems: works.length,
-    // Версия 2: в списке — компактный Product (название, артикул, фото, адрес, цена,
-    // наличие). Описание и размеры остаются в полной разметке работы: в списке они
-    // удваивали HTML каталога (50 КБ разметки на 56 работ).
-    itemListElement: works.map((art: any, i: number) => {
-      const p: any = productLd(art.id);
-      if (!p) return { '@type': 'ListItem', position: i + 1, item: null };
-      const { description, width, height, category, ...compact } = p;
-      delete compact['@context'];
-      return { '@type': 'ListItem', position: i + 1, item: compact };
-    }).filter((x: any) => x.item),
+    itemListElement: works.map((art: any, i: number) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: workUrl(art),
+      name: art.title,
+    })),
   };
 }
 

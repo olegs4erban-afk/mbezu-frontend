@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArtCard, Breadcrumbs, LinkStrip } from '../common/atoms';
 import { SERIES, SUBJECTS, formatPrice, visibleArtworks } from '../common/data';
-import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, freshCount, plural, pluralOf, seriesCount } from '../common/seo';
+import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, byNewest, freshCount, isFreeWork, plural, pluralOf, seriesCount } from '../common/seo';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
@@ -14,12 +14,13 @@ import { routeToPath } from '../common/routes';
 //     над сеткой; фильтры по сюжету и сортировка — одной строкой над сеткой;
 //   · свободные работы всегда первыми, проданные и примеры услуги — в конце;
 //   · на телефоне две колонки карточек вместо одной;
-//   · первые 24 работы, дальше «Показать ещё»; все работы с ценами и адресами
-//     робот получает из ItemList (JSON-LD), у каждой серии — своя страница.
+//   · первые 24 работы, дальше «Показать ещё»; адреса всех работ робот
+//     получает из ItemList (JSON-LD), у каждой серии — своя страница.
 // ─────────────────────────────────────────────────────────────
 
 const PAGE = 24;
-const isFree = (a: any) => a.status === 'available' && !a.commission;
+// порядок «свободные первыми, затем новые» общий с ItemList в seo.ts
+const isFree = isFreeWork;
 
 /** Короткая запись цены для сводки: 5 000 и 130 000 → «5–130 тыс. ₽» */
 function priceSpan(min: number, max: number): string {
@@ -46,8 +47,8 @@ function CatalogPage({ initialSeries, initialOnlyNew = false }: { go?: unknown; 
   };
   const [sort, setSort] = React.useState('default');
   // Первые PAGE работ — и в пререндере, и в первом кадре клиента (гидратация
-  // без расхождений). Все работы с ценой и адресом робот получает из ItemList
-  // в JSON-LD, а у каждой серии — своя страница со всеми её работами.
+  // без расхождений). Адреса всех работ робот получает из ItemList в JSON-LD,
+  // а у каждой серии — своя страница со всеми её работами.
   const [limit, setLimit] = React.useState(PAGE);
 
   const pool = React.useMemo(
@@ -60,7 +61,7 @@ function CatalogPage({ initialSeries, initialOnlyNew = false }: { go?: unknown; 
     if (subject !== 'all') r = r.filter((a: any) => a.subject === subject);
     if (onlyNew) r = r.filter((a: any) => !!a.added);
     const byChoice: Record<string, (a: any, b: any) => number> = {
-      default: (a, b) => String(b.added || '').localeCompare(String(a.added || '')) || b.year - a.year || b.price - a.price,
+      default: byNewest,
       'price-asc': (a, b) => a.price - b.price,
       'price-desc': (a, b) => b.price - a.price,
       'size-desc': (a, b) => (b.w * b.h) - (a.w * a.h),
