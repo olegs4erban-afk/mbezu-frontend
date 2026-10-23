@@ -5,6 +5,7 @@ import { ABOUT, SERIES, artworkById, dimsLabel, formatPrice } from '../common/da
 import { hasStorePage } from '../common/store-urls';
 import { COMMISSION_FAQ, INTERIOR_GUIDE_URL } from '../common/seo';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
+import { getUtmFields } from '../common/analytics';
 
 // ─────────────────────────────────────────────────────────────
 // commission.tsx — картина на заказ (редизайн 2026, HANDOFF §8).
@@ -12,16 +13,8 @@ import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
 // справа — липкое резюме на тёмном. Ниже: прайс, процесс, примеры, FAQ.
 // ─────────────────────────────────────────────────────────────
 
-/** UTM первого захода — уезжают вместе с заявкой. */
-function utmFromStorage(): Record<string, string> {
-  try {
-    const u = JSON.parse(localStorage.getItem('mbezu-utm') || '{}');
-    return {
-      utm_source: u.utm_source || '', utm_medium: u.utm_medium || '',
-      utm_campaign: u.utm_campaign || '', utm_content: u.utm_content || '',
-    };
-  } catch { return {}; }
-}
+// UTM визита уезжают вместе с заявкой: getUtmFields() из analytics.ts (единый источник;
+// аудит 21.10 — здесь читали localStorage['mbezu-utm'], куда никто не писал).
 
 const STEPS = ['Размер', 'Палитра', 'Бюджет', 'Сроки', 'Контакт'];
 
@@ -186,7 +179,7 @@ function CommissionPage({ go, refId }) {
       weeks: termLabel,
       source: 'commission-brief',
       page: typeof location !== 'undefined' ? location.pathname : '/commission',
-      ...utmFromStorage(),
+      ...getUtmFields(),
     });
     if (res.ok) { setLeadNo(res.ref); setSent(true); setState('idle'); } else { setState('err'); }
   };

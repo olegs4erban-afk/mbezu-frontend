@@ -238,12 +238,18 @@ function PaintingPage({ go, id }) {
                 </div>
 
                 <ul style={{ margin: '20px 0 0', padding: 0, listStyle: 'none', display: 'grid', gap: 9 }}>
-                  {(onCommission
+                  {((onCommission
                     ? ['Пишется по вашим фотографиям питомца', 'Масло и поталь на холсте 40×60 см',
                        'Эскиз на согласование до начала работы', 'Сертификат подлинности и авторская подпись']
                     : ['Оригинал маслом, единственный экземпляр', 'Сертификат подлинности и авторская подпись',
-                       'Доставка по РФ со страховкой', 'Возврат 14 дней по закону']).map((g) => (
-                    <li key={g} style={{ display: 'flex', gap: 10, fontSize: 13.5, color: 'var(--ink-2)' }}>
+                       'Доставка по РФ со страховкой',
+                       // Аудит 21.10: «Возврат 14 дней по закону» спорил с офертой («не предусмотрен», legal.tsx).
+                       // Нейтральная формулировка со ссылкой на раздел — пока оферту не переписал юрист.
+                       <>Условия возврата —{' '}
+                         <a href={routeToPath('legal', { section: 'returns' })}
+                            style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}>в оферте</a></>,
+                      ]) as React.ReactNode[]).map((g, i) => (
+                    <li key={i} style={{ display: 'flex', gap: 10, fontSize: 13.5, color: 'var(--ink-2)' }}>
                       <span aria-hidden="true" style={{ color: 'var(--accent)' }}>◆</span>{g}
                     </li>
                   ))}

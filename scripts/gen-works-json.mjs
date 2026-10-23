@@ -14,6 +14,9 @@ const out = ARTWORKS.filter((a) => !a.hidden && STORE_PRODUCT_PATH[a.id]).map((a
   return { id: a.id, title: a.title, series: a.series, seriesTitle: s.title || '', seriesSlug: s.slug || '',
     seriesUrl: seriesHasPage(a.series) ? `/catalog/${s.slug}` : `/catalog?series=${a.series}`,
     shape: a.shape || 'rect', subject: a.subject, w: a.w, h: a.h, price: a.price,
+    // 21.10 (аудит): status/commission нужны head-коду товара для Offer.availability —
+    // проданные портреты-образцы (PP-01…03) размечаются MadeToOrder, а не InStock.
+    status: a.status || 'available', ...(a.commission ? { commission: true } : {}),
     url: STORE_PRODUCT_PATH[a.id], img: (TILDA_IMAGES[a.id] || {}).thumb || '' };
 });
 writeFileSync('public/works.json', JSON.stringify(out));

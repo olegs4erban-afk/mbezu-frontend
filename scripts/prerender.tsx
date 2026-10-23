@@ -64,7 +64,12 @@ function headFragment(seo: RouteSeo, name: string): string {
   if (seo.ogImage) t.push(`<meta property="og:image" content="${esc(seo.ogImage)}">`);
   t.push('<meta property="og:locale" content="ru_RU">');
   t.push('<meta property="og:site_name" content="MBezu">');
-  if (seo.noindex) t.push('<meta name="robots" content="noindex,nofollow">');
+  // Аудит 21.10 (P1): dist живёт на cdn.mbezu.ru (GitHub Pages) — это зеркало витрины,
+  // а не боевой домен. public/_headers с X-Robots-Tag — формат Cloudflare, GH Pages его
+  // игнорирует, и 57 страниц /painting/* плюс копии разделов были индексируемы.
+  // Поэтому noindex ставим ВСЕГДА (не только для cart/tracking). Для Tilda безопасно:
+  // gen-seo-containers.mjs переносит в T123 только #root и JSON-LD, <head> не копирует.
+  t.push('<meta name="robots" content="noindex, nofollow">');
   // id matches client injectJsonLd('ld-<name>-<i>') so hydration replaces (no duplicate)
   (seo.jsonLd || []).forEach((ld, i) => {
     if (ld) t.push(`<script type="application/ld+json" id="ld-${name}-${i}">${JSON.stringify(ld).replace(/</g, '\\u003c')}</script>`);

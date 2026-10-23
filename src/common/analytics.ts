@@ -17,29 +17,70 @@ export interface Utm {
   source?: string; medium?: string; campaign?: string; term?: string; content?: string;
 }
 
-/** Parse UTM params from the current URL into one object, persist to sessionStorage. */
+/** Поля utm_* в том виде, в каком их ждёт скрытая форма A Tilda (имена инпутов). */
+export interface UtmFields {
+  utm_source: string; utm_medium: string; utm_campaign: string; utm_term: string; utm_content: string;
+}
+
+const UTM_KEYS = ['source', 'medium', 'campaign', 'term', 'content'] as const;
+/** Метки текущего визита (как и раньше). */
+const UTM_SESSION_KEY = 'mbez-utm';
+/**
+ * Аудит 21.10 (P0): home.tsx и commission.tsx читали localStorage['mbezu-utm'] с ключами
+ * utm_*, а писали сюда только в sessionStorage['mbez-utm'] с ключами source/medium… —
+ * ни одна заявка не несла источник. Теперь ЕДИНСТВЕННЫЙ источник — этот модуль:
+ * captureUtm() пишет в оба хранилища, страницы берут getUtmFields().
+ * Копия в localStorage — в формате utm_*: переживает новую вкладку и переход между
+ * страницами (у Tilda и витрины разные документы, sessionStorage на вкладку).
+ */
+const UTM_LOCAL_KEY = 'mbezu-utm';
+
+/** Utm → поля формы (пустые строки по умолчанию: sendLead() пустые значения не заполняет). */
+function toUtmFields(u: Utm): UtmFields {
+  return {
+    utm_source: u.source || '', utm_medium: u.medium || '', utm_campaign: u.campaign || '',
+    utm_term: u.term || '', utm_content: u.content || '',
+  };
+}
+
+/** Parse UTM params from the current URL into one object, persist to sessionStorage (+ копия в localStorage). */
 export function captureUtm(): Utm {
   if (typeof window === 'undefined') return {};
   const q = new URLSearchParams(window.location.search);
   const utm: Utm = {};
-  (['source', 'medium', 'campaign', 'term', 'content'] as const).forEach((k) => {
+  UTM_KEYS.forEach((k) => {
     const v = q.get('utm_' + k);
     if (v) utm[k] = v;
   });
-  try {
-    if (Object.keys(utm).length) {
-      sessionStorage.setItem('mbez-utm', JSON.stringify(utm));
-    }
-  } catch { /* ignore */ }
+  if (Object.keys(utm).length) {
+    try { sessionStorage.setItem(UTM_SESSION_KEY, JSON.stringify(utm)); } catch { /* ignore */ }
+    try { localStorage.setItem(UTM_LOCAL_KEY, JSON.stringify(toUtmFields(utm))); } catch { /* ignore */ }
+  }
   return utm;
 }
 
+/** Метки визита: сначала sessionStorage, при пустом — копия из localStorage (другая вкладка/документ). */
 export function getUtm(): Utm {
   try {
-    return JSON.parse(sessionStorage.getItem('mbez-utm') || '{}');
+    const s = JSON.parse(sessionStorage.getItem(UTM_SESSION_KEY) || '{}') as Utm;
+    if (s && Object.keys(s).length) return s;
+  } catch { /* ignore */ }
+  try {
+    const l = JSON.parse(localStorage.getItem(UTM_LOCAL_KEY) || '{}') as Partial<UtmFields>;
+    const utm: Utm = {};
+    UTM_KEYS.forEach((k) => {
+      const v = l[('utm_' + k) as keyof UtmFields];
+      if (typeof v === 'string' && v) utm[k] = v;
+    });
+    return utm;
   } catch {
     return {};
   }
+}
+
+/** Поля utm_* для payload заявки — одни имена с инпутами формы A Tilda; пустые строки, если меток нет. */
+export function getUtmFields(): UtmFields {
+  return toUtmFields(getUtm());
 }
 
 declare global {

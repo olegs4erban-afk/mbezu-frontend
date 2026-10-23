@@ -81,22 +81,34 @@ const PROD_SNIPPET = `
       }
     }catch(e){}
   }
+  // Аудит 21.10 (P1): все /tproduct/ размечались InStock, включая проданные портреты
+  // PP-01…03 (data.ts: status 'sold' + commission true — примеры услуги «портрет на заказ»).
+  // Наличие берём из works.json (поля status/commission, их пишет gen-works-json):
+  // sold/commission → MadeToOrder (как в ItemList каталога, seo.ts), иначе InStock.
+  // Нет записи о работе в works.json → InStock, как раньше.
+  function workAvailability(me){
+    if(me&&(me.status==='sold'||me.status==='commission'||me.commission===true))return 'https://schema.org/MadeToOrder';
+    return 'https://schema.org/InStock';
+  }
   function productLd(){
-    try{
-      if(location.pathname.indexOf('/tproduct/')<0)return;
-      if(document.getElementById('mbezu-product-ld'))return;
-      var name=(document.querySelector('[itemprop="name"]')||document.querySelector('h1')||{}).textContent||'';
-      var priceEl=document.querySelector('[itemprop="price"]');
-      var price=priceEl?(priceEl.content||priceEl.textContent||'').replace(/[^0-9.]/g,''):'';
-      var img=(document.querySelector('meta[property="og:image"]')||{}).content||'';
-      var descr=(document.querySelector('meta[name="description"]')||{}).content||'';
-      if(!name||!price)return;
-      var ld={'@context':'https://schema.org','@type':'Product',name:name.trim(),image:[img],description:descr,
-        brand:{'@type':'Brand',name:'Mila Bezú'},
-        offers:{'@type':'Offer',price:price,priceCurrency:'RUB',availability:'https://schema.org/InStock',url:location.origin+location.pathname,itemCondition:'https://schema.org/NewCondition'}};
-      var s=document.createElement('script');s.type='application/ld+json';s.id='mbezu-product-ld';
-      s.textContent=JSON.stringify(ld);document.head.appendChild(s);
-    }catch(e){}
+    if(location.pathname.indexOf('/tproduct/')<0)return;
+    if(document.getElementById('mbezu-product-ld'))return;
+    loadWorks(function(list){
+      try{
+        if(document.getElementById('mbezu-product-ld'))return;
+        var name=(document.querySelector('[itemprop="name"]')||document.querySelector('h1')||{}).textContent||'';
+        var priceEl=document.querySelector('[itemprop="price"]');
+        var price=priceEl?(priceEl.content||priceEl.textContent||'').replace(/[^0-9.]/g,''):'';
+        var img=(document.querySelector('meta[property="og:image"]')||{}).content||'';
+        var descr=(document.querySelector('meta[name="description"]')||{}).content||'';
+        if(!name||!price)return;
+        var ld={'@context':'https://schema.org','@type':'Product',name:name.trim(),image:[img],description:descr,
+          brand:{'@type':'Brand',name:'Mila Bezú'},
+          offers:{'@type':'Offer',price:price,priceCurrency:'RUB',availability:workAvailability(findWork(list)),url:location.origin+location.pathname,itemCondition:'https://schema.org/NewCondition'}};
+        var s=document.createElement('script');s.type='application/ld+json';s.id='mbezu-product-ld';
+        s.textContent=JSON.stringify(ld);document.head.appendChild(s);
+      }catch(e){}
+    });
   }
   function productNav(){
     if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-prod-nav'))return;
@@ -120,18 +132,31 @@ const PROD_SNIPPET = `
     try{new MutationObserver(function(){upd();}).observe(sl,{attributes:true,subtree:true,attributeFilter:['class']});}catch(e){}
   }
   // 02.09 P1: страница товара как часть витрины — крошки с серией и «Ещё из серии» из /works.json
-  var WORKS=null;
+  // 21.10: ?v=3 — в works.json добавлены status/commission (наличие для Product JSON-LD).
+  // Очередь колбэков: productLd и productSeries просят файл одновременно — один XHR на страницу;
+  // при ошибке сети/парсинга колбэки получают [] (Product JSON-LD всё равно выйдет, как раньше — InStock),
+  // WORKS не кэшируется, следующий вызов повторит запрос.
+  var WORKS=null,WQ=null;
   function loadWorks(cb){
     if(WORKS){cb(WORKS);return;}
-    var x=new XMLHttpRequest();x.open('GET','https://cdn.mbezu.ru/works.json?v=2',true);
-    x.onload=function(){try{WORKS=JSON.parse(x.responseText);cb(WORKS);}catch(e){}};x.send();
+    if(WQ){WQ.push(cb);return;}
+    WQ=[cb];
+    var x=new XMLHttpRequest();x.open('GET','https://cdn.mbezu.ru/works.json?v=3',true);
+    function flush(list){var q=WQ||[];WQ=null;for(var i=0;i<q.length;i++){try{q[i](list);}catch(e){}}}
+    x.onload=function(){var l=null;try{l=JSON.parse(x.responseText);}catch(e){}if(l&&l.length){WORKS=l;flush(WORKS);}else{flush([]);}};
+    x.onerror=function(){flush([]);};
+    x.send();
+  }
+  function findWork(list){
+    for(var i=0;i<list.length;i++){if(location.pathname.indexOf(list[i].url)===0)return list[i];}
+    return null;
   }
   function fmtPrice(n){var t=String(n),o='';while(t.length>3){o=' '+t.slice(-3)+o;t=t.slice(0,-3);}return t+o+' ₽';}
   function productSeries(){
     if(location.pathname.indexOf('/tproduct/')<0||document.getElementById('mbezu-crumbs'))return;
     var host=document.querySelector('.t-store__prod-snippet__container')||document.querySelector('.t-store');if(!host)return;
     loadWorks(function(list){
-      var me=null;for(var i=0;i<list.length;i++){if(location.pathname.indexOf(list[i].url)===0){me=list[i];break;}}
+      var me=findWork(list);
       if(!me||document.getElementById('mbezu-crumbs'))return;
       var cr=document.createElement('nav');cr.id='mbezu-crumbs';cr.setAttribute('aria-label','Хлебные крошки');
       cr.style.cssText='max-width:1180px;margin:0 auto;padding:18px 20px 0;font:12px/1.4 JetBrains Mono,ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#67583f;display:flex;flex-wrap:wrap;gap:10px;align-items:center';
@@ -398,15 +423,132 @@ function perfMetrika(out) {
   return out.slice(0, a) + repl + out.slice(b + tail.length);
 }
 
+// 21.10 (152-ФЗ, аудит): «Только необходимые» в cookie-плашке — тег Метрики не грузим (ключ mbezu_cookie_ok = necessary).
+const MC_MARK = 'mbezuCookieDeclined';
+function metrikaConsent(out) {
+  if (out.includes(MC_MARK)) return out;
+  const key = 'function mbzGo(){';
+  const a = out.indexOf(key); if (a < 0) return out;
+  const guard = key + 'if(window.' + MC_MARK + ')return;try{if(localStorage.getItem("mbezu_cookie_ok")==="necessary")return;}catch(e){}';
+  return out.slice(0, a) + guard + out.slice(a + key.length);
+}
+
 // 03.09 (152-ФЗ): уведомление о cookie/Метрике на всех страницах — фиксированная плашка снизу, согласие в localStorage.
 // Без обратных слэшей и regex (редактор head Tilda вырезает слэши).
 const CK_MARK = 'MBezu · cookie-notice';
 const CK_END = '<!-- /MBezu · cookie-notice -->';
 const CK_SNIPPET = `
-<!-- ${CK_MARK} · 152-ФЗ: уведомление об использовании cookie и Яндекс Метрики (03.09) -->
-<style>#mbezu-ck{position:fixed;left:16px;right:16px;bottom:16px;z-index:99990;max-width:720px;margin:0 auto;background:#2a2520;color:#efe7d8;border-radius:14px;padding:14px 16px;box-shadow:0 12px 40px rgba(0,0,0,.28);font:14px/1.5 Inter Tight,system-ui,-apple-system,sans-serif;display:flex;gap:14px;align-items:center;flex-wrap:wrap}#mbezu-ck p{margin:0;flex:1 1 320px}#mbezu-ck a{color:#e0c77e;text-decoration:underline;text-underline-offset:3px}#mbezu-ck button{flex:0 0 auto;min-height:40px;padding:0 18px;border:0;border-radius:999px;background:#c9ad63;color:#2a2520;font:600 14px/1 Inter Tight,system-ui,sans-serif;cursor:pointer}#mbezu-ck button:focus-visible{outline:2px solid #efe7d8;outline-offset:2px}@media (max-width:600px){#mbezu-ck{left:10px;right:10px;bottom:10px;padding:12px 14px;font-size:13px}}</style>
-<script>(function(){try{var K='mbezu_cookie_ok';var ok=null;try{ok=localStorage.getItem(K);}catch(e){}if(ok)return;function show(){if(document.getElementById('mbezu-ck'))return;var d=document.createElement('div');d.id='mbezu-ck';d.setAttribute('role','region');d.setAttribute('aria-label','Уведомление о cookie');d.innerHTML='<p>Сайт использует cookie и Яндекс Метрику, чтобы работать и считать посещения. Продолжая, вы соглашаетесь с <a href="/legal?section=privacy">политикой обработки персональных данных</a>.</p><button type="button">Понятно</button>';d.querySelector('button').addEventListener('click',function(){try{localStorage.setItem(K,String(Date.now()));}catch(e){}d.parentNode.removeChild(d);});document.body.appendChild(d);}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',show);else show();}catch(e){}})();</script>
+<!-- ${CK_MARK} · 152-ФЗ: уведомление об использовании cookie и Яндекс Метрики (03.09; 21.10 — компактно, «Принять» / «Только необходимые») -->
+<style>#mbezu-ck{position:fixed;left:16px;right:16px;bottom:16px;z-index:99990;max-width:640px;margin:0 auto;background:#2a2520;color:#efe7d8;border-radius:12px;padding:10px 12px 10px 14px;box-shadow:0 12px 40px rgba(0,0,0,.28);font:13px/1.4 Inter Tight,system-ui,-apple-system,sans-serif;display:flex;gap:10px;align-items:center;flex-wrap:wrap}#mbezu-ck p{margin:0;flex:1 1 220px}#mbezu-ck a{color:#e0c77e;text-decoration:underline;text-underline-offset:3px}#mbezu-ck .b{display:flex;gap:8px;flex:0 0 auto}#mbezu-ck button{min-height:36px;padding:0 14px;border:0;border-radius:999px;background:#c9ad63;color:#2a2520;font:600 13px/1 Inter Tight,system-ui,sans-serif;cursor:pointer}#mbezu-ck button.n{background:transparent;color:#efe7d8;border:1px solid rgba(239,231,216,.45)}#mbezu-ck button:focus-visible{outline:2px solid #efe7d8;outline-offset:2px}@media (max-width:600px){#mbezu-ck{left:8px;right:8px;bottom:8px;padding:10px 12px;font-size:12.5px}html.mbezu-app #mbezu-ck,html[data-mbezu=app] #mbezu-ck{bottom:calc(74px + env(safe-area-inset-bottom))}}</style>
+<script>(function(){try{var K='mbezu_cookie_ok';var ok=null;try{ok=localStorage.getItem(K);}catch(e){}if(ok)return;function show(){if(document.getElementById('mbezu-ck'))return;var d=document.createElement('div');d.id='mbezu-ck';d.setAttribute('role','region');d.setAttribute('aria-label','Уведомление о cookie');d.innerHTML='<p>Используем cookie и Яндекс Метрику для работы сайта и статистики — <a href="/legal?section=privacy">подробнее</a>.</p><div class="b"><button type="button" class="n" data-v="necessary">Только необходимые</button><button type="button" data-v="ok">Принять</button></div>';d.addEventListener('click',function(ev){var t=ev.target;while(t&&t!==d&&t.tagName!=='BUTTON')t=t.parentNode;if(!t||t===d)return;var v=t.getAttribute('data-v')==='necessary'?'necessary':String(Date.now());try{localStorage.setItem(K,v);}catch(e){}if(v==='necessary'){window.mbezuCookieDeclined=true;}d.parentNode.removeChild(d);});document.body.appendChild(d);}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',show);else show();}catch(e){}})();</script>
 ${CK_END}`;
+// 21.10 (UX-аудит, P0 № 12): страница товара Tilda на мобильном — компактная шапка (без 50 px пустоты
+// над ней), условия у цены (размер, единственный экземпляр, сертификат, ссылки на доставку/возврат),
+// CTA «Заказать такой портрет» у проданных образцов PP-01…03 вместо серой «Нет в наличии»,
+// липкая панель «цена · Купить», когда нативная кнопка ушла с экрана. Факты — из works.json.
+const PB_MARK = 'MBezu · product-buy';
+const PB_END = '<!-- /MBezu · product-buy -->';
+const PB_SNIPPET = `
+<!-- ${PB_MARK} · аудит 21.10: условия у цены, CTA для проданных образцов, мобильная панель «Купить», компактная шапка -->
+<style>
+#mbezu-buybar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:99980;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#f5efe2;border-top:1px solid rgba(42,37,32,.12);box-shadow:0 -8px 24px -16px rgba(42,37,32,.4);font-family:Inter Tight,system-ui,sans-serif;transform:translateY(110%);transition:transform .25s}
+#mbezu-buybar.is-on{transform:none}
+#mbezu-buybar .p{font-size:18px;font-weight:600;color:#2a2520;line-height:1.2}
+#mbezu-buybar .s{font-size:12px;color:#6b5d4a}
+#mbezu-buybar a,#mbezu-buybar button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border:0;border-radius:999px;background:#6f5c2b;color:#ede5d6;font:600 15px/1 Inter Tight,system-ui,sans-serif;text-decoration:none;cursor:pointer;white-space:nowrap}
+.mbezu-facts{margin:12px 0 4px;font:14px/1.5 Inter Tight,system-ui,sans-serif;color:#2a2520}
+.mbezu-facts a{color:#6f5c2b;text-decoration:underline;text-underline-offset:3px}
+.mbezu-facts .l{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:13px;color:#6b5d4a}
+.mbezu-cta{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;background:#6f5c2b;color:#ede5d6!important;font:600 15px/1 Inter Tight,system-ui,sans-serif;text-decoration:none!important;margin-top:14px}
+@media (max-width:760px){
+  html[data-mbezu=prod] #allrecords{padding-top:69px}
+  html[data-mbezu=prod] #mbezu-prod-header{padding-top:0}
+  #mbezu-prod-header > div{padding:9px 16px 9px 58px!important}
+  #mbezu-prod-header > div > a:first-child{font-size:22px!important}
+  .t-store__prod-snippet__container .t-popup__close{width:56px!important}
+  .t-store__prod-snippet__container{padding-top:8px!important}
+  #mbezu-crumbs{padding:6px 16px 0!important;font-size:11px!important}
+  html[data-mbezu=prod] .t706__carticon{bottom:88px!important}
+  #mbezu-buybar{display:flex}
+  body.mbezu-buybar-on #mbezu-ck{bottom:calc(84px + env(safe-area-inset-bottom))!important}
+}
+</style>
+<script>
+(function(){
+  if(location.pathname.indexOf('/tproduct/')<0)return;
+  function fmt(n){var t=String(n),o='';while(t.length>3){o=' '+t.slice(-3)+o;t=t.slice(0,-3);}return t+o+' ₽';}
+  function dims(w){return w.shape==='round'?('⌀ '+w.w+' см'):(w.w+'×'+w.h+' см');}
+  function load(cb){
+    var x=new XMLHttpRequest();x.open('GET','https://cdn.mbezu.ru/works.json?v=3',true);
+    x.onload=function(){var l=null;try{l=JSON.parse(x.responseText);}catch(e){}cb(l&&l.length?l:[]);};
+    x.onerror=function(){cb([]);};x.send();
+  }
+  // Продано/на заказ: по works.json (status/commission) или по нативной кнопке Tilda (t-store__prod-popup__btn_disabled при qty 0)
+  function state(me){
+    var btn=document.querySelector('.t-store__prod-popup__btn');
+    var soldNative=!!btn&&btn.className.indexOf('btn_disabled')>=0;
+    var sold=soldNative||(!!me&&(me.status==='sold'||me.status==='commission'||me.commission===true));
+    var pet=!!me&&(me.series==='pets'||me.commission===true);
+    return {sold:sold,pet:pet};
+  }
+  function facts(me,st){
+    if(document.getElementById('mbezu-facts'))return;
+    var btnW=document.querySelector('.t-store__prod-popup__btn-wrapper');if(!btnW)return;
+    var d=document.createElement('div');d.id='mbezu-facts';d.className='mbezu-facts';
+    var ref=me?'?ref='+encodeURIComponent(me.id):'';
+    if(st.sold&&st.pet){
+      d.innerHTML='<div>Работа продана — это пример портрета на заказ'+(me?': '+dims(me)+', масло и поталь':'')+'.</div>'+
+        '<a class="mbezu-cta" href="/commission'+ref+'">Заказать такой портрет</a>'+
+        '<div class="l"><a href="/commission">Как проходит заказ</a><a href="/legal?section=delivery">Доставка и оплата</a></div>';
+      btnW.style.display='none';
+    }else if(st.sold){
+      d.innerHTML='<div>Работа продана'+(me?' ('+dims(me)+', масло)':'')+'. Похожую можно написать на заказ.</div>'+
+        '<a class="mbezu-cta" href="/commission'+ref+'">Заказать похожую</a>'+
+        '<div class="l"><a href="/catalog">Работы в наличии</a><a href="/legal?section=delivery">Доставка и оплата</a></div>';
+      btnW.style.display='none';
+    }else{
+      d.innerHTML='<div>'+(me?dims(me)+' · ':'')+'масло · оригинал в единственном экземпляре · сертификат подлинности</div>'+
+        '<div class="l"><a href="/legal?section=delivery">Доставка и оплата</a><a href="/legal?section=returns">Возврат</a><a href="/about">Посмотреть в мастерской</a></div>';
+    }
+    btnW.parentNode.insertBefore(d,btnW.nextSibling);
+  }
+  function buybar(me,st){
+    if(document.getElementById('mbezu-buybar'))return;
+    var btnW=document.querySelector('.t-store__prod-popup__btn-wrapper');
+    var priceEl=document.querySelector('.t-store__prod-popup__price-wrapper');
+    var price=me?fmt(me.price):(priceEl?priceEl.textContent.trim():'');
+    var ref=me?'?ref='+encodeURIComponent(me.id):'';
+    var bar=document.createElement('div');bar.id='mbezu-buybar';
+    var sub=st.sold?(st.pet?'продано · пример портрета на заказ':'продано'):(me?dims(me)+' · в наличии':'в наличии');
+    var info='<div><div class="p">'+price+'</div><div class="s">'+sub+'</div></div>';
+    if(st.sold){bar.innerHTML=info+'<a href="/commission'+ref+'">'+(st.pet?'Заказать портрет':'Заказать похожую')+'</a>';}
+    else{bar.innerHTML=info+'<button type="button">Купить</button>';
+      bar.querySelector('button').addEventListener('click',function(){var b=document.querySelector('.t-store__prod-popup__btn');if(b){b.click();}});}
+    document.body.appendChild(bar);
+    var ref2=st.sold?document.getElementById('mbezu-facts'):btnW;
+    function show(on){bar.className=on?'is-on':'';if(on)document.body.classList.add('mbezu-buybar-on');else document.body.classList.remove('mbezu-buybar-on');}
+    if(!ref2){show(true);return;}
+    // по scroll, не IntersectionObserver: панель видна, пока нативная кнопка/CTA вне экрана
+    function check(){var r=ref2.getBoundingClientRect();show(r.bottom<0||r.top>window.innerHeight);}
+    var tk=false;function onS(){if(tk)return;tk=true;setTimeout(function(){tk=false;check();},120);}
+    window.addEventListener('scroll',onS,{passive:true});window.addEventListener('resize',onS);check();
+  }
+  var done=false,tries=0;
+  function run(){
+    if(done)return;
+    if(!document.querySelector('.t-store__prod-popup__btn-wrapper')){if(tries++<20)setTimeout(run,500);return;}
+    done=true;
+    load(function(list){var me=null;for(var i=0;i<list.length;i++){if(location.pathname.indexOf(list[i].url)===0){me=list[i];break;}}var st=state(me);try{facts(me,st);}catch(e){}try{buybar(me,st);}catch(e){}});
+  }
+  if(document.readyState!=='loading')run();else document.addEventListener('DOMContentLoaded',run);
+})();
+</script>
+${PB_END}`;
+function productBuy(out) {
+  const NL = String.fromCharCode(10);
+  if (out.includes(PB_MARK)) { const a = out.indexOf('<!-- ' + PB_MARK); const b = out.indexOf(PB_END, a); if (a >= 0 && b > a) return out.slice(0, a) + PB_SNIPPET.trim() + out.slice(b + PB_END.length); return out; }
+  return out.trimEnd() + NL + PB_SNIPPET.trim() + NL;
+}
 const CRT_MARK = 'MBezu · cart-ru';
 const CRT_END = '<!-- /MBezu · cart-ru -->';
 const CRT_SNIPPET = `
@@ -529,8 +671,10 @@ function patchHead(src) {
   out = ldFix(out);
   out = perfPreload(out);
   out = perfMetrika(out);
+  out = metrikaConsent(out);
   out = cookieNotice(out);
   out = cartRu(out);
+  out = productBuy(out);
   return { out, removed, brandFixed, typeFixed, ruAdded, rcvAdded };
 }
 

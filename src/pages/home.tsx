@@ -6,6 +6,7 @@ import { ABOUT, ARTWORKS, SERIES, artworkById, askAboutHref, dimsLabel, featured
 import { hasStorePage } from '../common/store-urls';
 import { INTERIOR_SHOTS, interiorSrc } from '../common/interiors';
 import { submitLead, leadRef, HONEYPOT_FIELD } from '../lib/tildaLead';
+import { getUtmFields } from '../common/analytics';
 import { ReviewsSection } from '../common/reviews-section';
 import { FaqSection } from '../common/faq-section';
 import { HOME_FAQ, freshCount, freshHighlights, freshStamp, inStockCount, plural, pluralOf, priceRange, seriesCount } from '../common/seo';
@@ -25,14 +26,16 @@ function heroArt() { return featuredArtworks()[0] || ARTWORKS[0]; }
 // Форма в первом экране: раньше заявка жила на 6-м экране, а первый
 // предлагал только «смотреть каталог».
 function HeroLead() {
-  const [f, setF] = React.useState({ name: '', contact: '', trap: '' });
+  // Аудит 21.10 (P0, 152-ФЗ): форма отправляла имя и телефон по тексту «Нажимая…».
+  // Согласие — отдельный неотмеченный чекбокс, как в LeadForm и в брифе /commission.
+  const [f, setF] = React.useState({ name: '', contact: '', consent: false, trap: '' });
   const [state, setState] = React.useState<'idle' | 'sending' | 'ok' | 'err'>('idle');
   const [touched, setTouched] = React.useState(false);
   const [ref, setRef] = React.useState('');
 
   const nameOk = f.name.trim().length >= 2;
   const contactOk = f.contact.trim().length >= 5;
-  const valid = nameOk && contactOk;
+  const valid = nameOk && contactOk && f.consent;
 
   const submit = async () => {
     setTouched(true);
@@ -50,7 +53,7 @@ function HeroLead() {
       source: 'home-hero',
       page: typeof location !== 'undefined' ? location.pathname : '/',
       [HONEYPOT_FIELD]: f.trap,
-      ...utmFromStorage(),
+      ...getUtmFields(),
     });
     if (res.ok) { setRef(res.ref); setState('ok'); } else { setState('err'); }
   };
@@ -88,7 +91,7 @@ function HeroLead() {
                aria-invalid={touched && !contactOk ? true : undefined}
                value={f.contact} onChange={(e) => setF((v) => ({ ...v, contact: e.target.value }))} />
       </div>
-      {touched && !valid && (
+      {touched && (!nameOk || !contactOk) && (
         <div style={{ marginTop: 8, fontSize: 13, color: 'var(--ink-2)' }}>
           {!nameOk ? 'Укажите имя' : 'Укажите телефон или Telegram'}
         </div>
@@ -100,7 +103,25 @@ function HeroLead() {
           <a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} style={{ color: 'var(--accent)', fontWeight: 600 }}>{ABOUT.contacts.phone}</a>
         </div>
       )}
+      <label style={{
+        display: 'flex', gap: 10, alignItems: 'flex-start', cursor: 'pointer',
+        margin: '14px 0 0', maxWidth: 460, fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-3)',
+      }}>
+        <input type="checkbox" required aria-required="true" checked={f.consent}
+               onChange={(e) => setF((v) => ({ ...v, consent: e.target.checked }))}
+               aria-invalid={touched && !f.consent ? true : undefined}
+               style={{ marginTop: 2, width: 18, height: 18, accentColor: 'var(--accent)', flexShrink: 0 }} />
+        <span>
+          Согласен(на) на обработку персональных данных (152-ФЗ) —{' '}
+          <a href={routeToPath('legal', { section: 'privacy' })}
+             style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}>Политика ПД</a>
+        </span>
+      </label>
+      {touched && !f.consent && (
+        <div style={{ marginTop: 8, fontSize: 13, color: 'var(--ink-2)' }}>Для отправки нужно согласие на обработку ПД</div>
+      )}
       <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 16, marginTop: 14 }}>
+        {/* как в LeadForm: кнопка активна, submit() без галочки не отправляет и показывает подсказку */}
         <button className="btn btn-solid" type="submit" disabled={state === 'sending'}
                 style={{ minHeight: 52, opacity: state === 'sending' ? .6 : 1 }}>
           {state === 'sending' ? 'Отправляем…' : 'Заказать картину'}
@@ -109,11 +130,6 @@ function HeroLead() {
           {inStockCount()} {plural(inStockCount())} в наличии · от {formatPrice(priceRange().from)} →
         </a>
       </div>
-      <p style={{ margin: '12px 0 0', fontSize: 12.5, lineHeight: 1.5, color: 'var(--ink-3)', maxWidth: 460 }}>
-        Нажимая «Заказать картину», вы соглашаетесь на обработку персональных данных (152-ФЗ) —{' '}
-        <a href={routeToPath('legal', { section: 'privacy' })}
-           style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: 3 }}>Политика ПД</a>
-      </p>
     </form>
   );
 }
@@ -723,18 +739,8 @@ function ProcessRow() {
 // «✓ принято» показывается ТОЛЬКО при успехе A. Раньше форма писала в localStorage
 // браузера клиента и всё равно показывала успех — ни одна заявка не доходила.
 
-/** UTM-метки, сохранённые при первом заходе (см. analytics.ts) — уезжают вместе с заявкой. */
-function utmFromStorage(): Record<string, string> {
-  try {
-    const raw = localStorage.getItem('mbezu-utm');
-    if (!raw) return {};
-    const u = JSON.parse(raw);
-    return {
-      utm_source: u.utm_source || '', utm_medium: u.utm_medium || '',
-      utm_campaign: u.utm_campaign || '', utm_content: u.utm_content || '',
-    };
-  } catch { return {}; }
-}
+// UTM-метки визита уезжают вместе с заявкой: getUtmFields() из analytics.ts (единый
+// источник; аудит 21.10 — здесь читали localStorage['mbezu-utm'], куда никто не писал).
 
 function LeadForm({ go }) {
   const [lead, setLead] = React.useState({ name: '', contact: '', about: '', consent: false, trap: '' });
@@ -768,7 +774,7 @@ function LeadForm({ go }) {
       source: 'home-cta',
       page: typeof location !== 'undefined' ? location.pathname : '/',
       [HONEYPOT_FIELD]: lead.trap,
-      ...utmFromStorage(),
+      ...getUtmFields(),
     });
     if (res.ok) { setRef(res.ref); setState('ok'); } else { setState('err'); }
   };
@@ -992,7 +998,7 @@ function Newsletter() {
       {
         lead_ref: attemptRef, email: email.trim(), source: 'newsletter',
         page: typeof location !== 'undefined' ? location.pathname : '/',
-        [HONEYPOT_FIELD]: nlTrap, ...utmFromStorage(),
+        [HONEYPOT_FIELD]: nlTrap, ...getUtmFields(),
       },
       { selector: '[data-mbezu-newsletter]' },
     );
