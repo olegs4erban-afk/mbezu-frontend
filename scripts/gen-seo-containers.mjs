@@ -59,6 +59,15 @@ function jsonLdBlocks(html) {
   return [...byType.values()].join(String.fromCharCode(10));
 }
 
+// Версия 2: контейнер вставляется в Tilda через MCP — текстом. Невидимые и похожие
+// друг на друга символы (неразрывный пробел, ×, тире) пишем сущностями: так их нельзя
+// потерять при переносе, а DOM после разбора HTML тот же (гидратация не ломается).
+// В JSON-LD сущности не работают — там те же символы идут JSON-экранированием \uXXXX.
+const CONFUSABLE = /[\u00a0\u00d7\u2013\u2014\u2300\u00b7]/g;
+const ENT = { '\u00a0': '&nbsp;', '\u00d7': '&times;', '\u2013': '&ndash;', '\u2014': '&mdash;', '\u2300': '&#8960;', '\u00b7': '&middot;' };
+const escMarkup = (s) => s.replace(CONFUSABLE, (c) => ENT[c]);
+const escJson = (s) => s.replace(CONFUSABLE, (c) => '\\u' + c.charCodeAt(0).toString(16).padStart(4, '0'));
+
 let made = 0;
 const report = [];
 for (const [name, file, loader, extra] of PAGES) {
@@ -72,11 +81,11 @@ for (const [name, file, loader, extra] of PAGES) {
   const h2 = (inner.match(/<h2/g) || []).length;
 
   const out = [
-    `<!-- MBezu · ${name} · prerendered SEO-контейнер (Sprint 14 Ф2). Пересобирается: npm run build && node scripts/gen-seo-containers.mjs -->`,
+    `<!-- MBezu - ${name} - prerendered SEO-контейнер (версия 2). Пересобирается: npm run build && node scripts/gen-seo-containers.mjs -->`,
     `<link rel="stylesheet" href="${CDN}/e/style.css">`,
     extra || '',
-    `<div id="root">${inner}</div>`,
-    ld,
+    `<div id="root">${escMarkup(inner)}</div>`,
+    escJson(ld),
     `<script type="module" src="${CDN}/e/${loader}.js"></script>`,
     '',
   ].filter(Boolean).join('\n');
