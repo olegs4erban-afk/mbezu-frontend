@@ -342,7 +342,7 @@ const JRN_SNIPPET = `
         image:og('og:image')||undefined,
         inLanguage:'ru',
         mainEntityOfPage:og('og:url')||location.href,
-        author:{'@type':'Person',name:'Mila Bez\\u00fa',url:'https://mbezu.ru/about'}};
+        author:{'@type':'Person',name:'Mila Bezú',url:'https://mbezu.ru/about'}};
       var sc=document.createElement('script');
       sc.type='application/ld+json';sc.id='mbezu-article-ld';
       sc.textContent=JSON.stringify(ld);
