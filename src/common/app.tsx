@@ -4,9 +4,9 @@
 // Dev-панель Tweaks в прод-сборку НЕ входит — берём TWEAK_DEFAULTS.
 // ─────────────────────────────────────────────────────────────
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import './styles.css';
-import { TopBar, Footer, StickyBar, BottomTabBar } from './chrome';
+import { TopBar, Footer, BottomTabBar } from './chrome';
 import { initMotion } from './reveal';
 import { hideTildaDuplicateChrome } from './tilda-chrome';
 import { useCart } from './cart';
@@ -51,33 +51,21 @@ export function pathId(): string | undefined {
 }
 
 // ── Shell ────────────────────────────────────────────────────
-// HANDOFF §3: одна шапка, один подвал, липкая нижняя панель вместо таб-бара.
-// Содержимое панели зависит от страницы; на карточке работы панель своя
-// (цена + «Купить сейчас») — её рисует сама страница.
-function stickyFor(route: string): React.ComponentProps<typeof StickyBar> | null {
-  switch (route) {
-    case 'painting': return null;
-    case 'cart':     return null;
-    case 'commission':
-      return { text: 'Опишите задачу — ответим в течение дня', primary: { label: 'Заполнить бриф', href: '#brief' } };
-    case 'catalog':
-      return { text: 'Не нашли подходящее? Напишем картину под ваш размер', primary: { label: 'Заказать картину', href: routeToPath('commission') } };
-    default:
-      return { text: 'Подберём картину под вашу стену — ответ в течение дня', primary: { label: 'Заказать картину', href: routeToPath('commission') } };
-  }
-}
-
+// Одна шапка, один подвал, нижняя навигация на телефоне.
+// Версия 2 (23.10.2026): тёмная липкая панель «Заказать картину» снята со всех
+// страниц оболочки — на телефоне она стояла над таб-баром и закрывала до
+// трети экрана, а оба пути («в наличии» и «на заказ») и так есть в таб-баре
+// и в первом экране главной. Своя панель осталась только на /painting
+// (цена + «Купить сейчас»), её рисует сама страница.
 function Shell({ pageName, cartCount, children }: { pageName: string; cartCount: number; children?: React.ReactNode }) {
   React.useEffect(() => { hideTildaDuplicateChrome(); initMotion(); }, []);
-  const sticky = stickyFor(pageName);
   return (
     <>
       <a href="#main" className="skip-link">К содержимому</a>
       <TopBar route={pageName} cartCount={cartCount} />
       <main id="main">{children}</main>
       <Footer go={go} />
-      {sticky && <StickyBar {...sticky} />}
-      {/* Нижняя навигация на мобиле (CSS показывает её ниже 900px) */}
+      {/* Нижняя навигация на телефоне (CSS показывает её ниже 900px) */}
       <BottomTabBar route={pageName} go={go} cartCount={cartCount} />
     </>
   );
@@ -113,5 +101,28 @@ export function renderPage(
   const el = typeof document !== 'undefined' ? document.getElementById('root') : null;
   if (!el) return;
   initAnalytics();
-  createRoot(el).render(React.createElement(React.StrictMode, null, React.createElement(Host)));
+  const app = React.createElement(React.StrictMode, null, React.createElement(Host));
+  // Версия 2: если в #root уже лежит пререндер той же страницы — гидратируем,
+  // а не перерисовываем. createRoot заменял готовую разметку новой, и браузер
+  // засчитывал LCP по второй (такой же) картинке уже после загрузки JS:
+  // на телефоне +2–3 с к LCP. Параметры, меняющие содержимое страницы
+  // (серия, вкладка, работа), дают другую разметку — там рисуем с нуля.
+  if (el.hasChildNodes() && canHydrate()) {
+    hydrateRoot(el, app, {
+      // расхождение пререндера с клиентом React исправляет сам — это не ошибка страницы
+      onRecoverableError: (err) => { console.warn('[mbezu] hydration fallback:', err); },
+    });
+  } else {
+    createRoot(el).render(app);
+  }
+}
+
+/** Параметры адреса, от которых зависит разметка страницы. */
+const RENDER_PARAMS = ['series', 'new', 'ref', 'section', 'id'];
+
+function canHydrate(): boolean {
+  try {
+    const q = new URLSearchParams(window.location.search);
+    return !RENDER_PARAMS.some((k) => q.has(k));
+  } catch { return false; }
 }

@@ -1,50 +1,40 @@
 import React from 'react';
-import { ArtCard, Breadcrumbs, Eyebrow, LinkStrip } from '../common/atoms';
+import { ArtCard, Breadcrumbs, LinkStrip } from '../common/atoms';
 import { SERIES, SUBJECTS, formatPrice, visibleArtworks } from '../common/data';
-import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, freshCount, freshStamp, plural, seriesCount } from '../common/seo';
+import { INTERIOR_GUIDE_URL, SERIES_INTERIORS, freshCount, plural, pluralOf, seriesCount } from '../common/seo';
 import { routeToPath } from '../common/routes';
 
 // ─────────────────────────────────────────────────────────────
-// catalog.tsx — каталог (редизайн 2026, HANDOFF §9).
-// Крошки → H1 → лид + сводка · переключатель серий пилюлями ·
-// липкая полоса фильтров под шапкой · сетка карточек-паспарту ·
-// плитка «напишем под ваш размер» · «О серии» в <details>.
+// catalog.tsx — каталог, версия 2 (вариант B, 23.10.2026).
+//
+// Что изменилось против Sprint 16:
+//   · серии — настоящие ссылки на свои адреса (/catalog/<slug> или ?series=),
+//     а не кнопки-фильтры: у каждой серии своя посадочная, робот видит переходы;
+//   · полоса фильтров больше не липкая — на телефоне она занимала треть экрана
+//     над сеткой; фильтры по сюжету и сортировка — одной строкой над сеткой;
+//   · свободные работы всегда первыми, проданные и примеры услуги — в конце;
+//   · на телефоне две колонки карточек вместо одной;
+//   · первые 24 работы, дальше «Показать ещё». В пререндер (HTML для робота
+//     и для открытия без JS) попадают все работы — ссылки на товары не теряются.
 // ─────────────────────────────────────────────────────────────
 
-/** Реальная высота шапки — липкие элементы друг под другом считаются от неё (§13.15). */
-function useHeaderHeight(): number {
-  const [h, setH] = React.useState(77);
-  React.useEffect(() => {
-    const upd = () => {
-      const el = document.querySelector('header');
-      if (el) setH(Math.round(el.getBoundingClientRect().height));
-    };
-    upd();
-    window.addEventListener('resize', upd);
-    const t = setTimeout(upd, 300); // шапка перестраивается после гидратации
-    return () => { window.removeEventListener('resize', upd); clearTimeout(t); };
-  }, []);
-  return h;
+const PAGE = 24;
+const isFree = (a: any) => a.status === 'available' && !a.commission;
+
+/** Короткая запись цены для сводки: 5 000 и 130 000 → «5–130 тыс. ₽» */
+function priceSpan(min: number, max: number): string {
+  if (!min) return '—';
+  if (min === max) return formatPrice(min);
+  if (min >= 1000 && max >= 1000) return `${Math.round(min / 1000)}–${Math.round(max / 1000)} тыс. ₽`;
+  return `${formatPrice(min)} — ${formatPrice(max)}`;
 }
 
-function CatalogPage({ go, initialSeries, initialOnlyNew = false }) {
-  const [series, setSeriesRaw] = React.useState(initialSeries || 'all');
+function CatalogPage({ initialSeries, initialOnlyNew = false }: { go?: unknown; initialSeries?: string; initialOnlyNew?: boolean }) {
+  const series = initialSeries && SERIES.some((s) => s.id === initialSeries) ? initialSeries : 'all';
+  const activeSeries = series !== 'all' ? SERIES.find((s) => s.id === series) || null : null;
+
   const [subject, setSubject] = React.useState('all');
-  // Sprint 15: фильтр серии живёт в ?series= — выбор переживает «назад» и шарится ссылкой.
-  const setSeries = (id: string) => {
-    setSeriesRaw(id);
-    // Сюжет, которого в новой серии нет, оставлял пустую сетку: его пилюля
-    // при этом исчезала из панели, и было непонятно, что вообще отфильтровано.
-    setSubject((cur) => (cur === 'all' || id === 'all'
-      || visibleArtworks().some((a) => a.series === id && a.subject === cur) ? cur : 'all'));
-    try {
-      const u = new URL(window.location.href);
-      if (id === 'all') u.searchParams.delete('series'); else u.searchParams.set('series', id);
-      window.history.replaceState(null, '', u.pathname + u.search);
-    } catch { /* SSR/старые браузеры — фильтр работает и без URL */ }
-  };
-  // Sprint 16: пополнение — отдельный срез каталога. Признак новизны — поле added
-  // в data.ts, а не отсутствие страницы в Store: последнее обнулится после импорта.
+  // пополнение — отдельный срез; признак новизны — поле added в data.ts
   const [onlyNew, setOnlyNewRaw] = React.useState(!!initialOnlyNew);
   const setOnlyNew = (v: boolean) => {
     setOnlyNewRaw(v);
@@ -55,256 +45,197 @@ function CatalogPage({ go, initialSeries, initialOnlyNew = false }) {
     } catch { /* фильтр работает и без URL */ }
   };
   const [sort, setSort] = React.useState('default');
-  const headerH = useHeaderHeight();
+  // Пререндер и первый (гидратируемый) кадр показывают все работы — разметка
+  // совпадает с HTML, а ссылки на товары видит робот. После монтирования
+  // эффект ниже оставляет первые PAGE работ и кнопку «Показать ещё».
+  const [limit, setLimit] = React.useState(Infinity);
 
-  const items = React.useMemo(() => {
-    let r = visibleArtworks();
-    if (series !== 'all') r = r.filter((a) => a.series === series);
-    if (subject !== 'all') r = r.filter((a) => a.subject === subject);
-    if (onlyNew) r = r.filter((a) => !!a.added);
-    // Sprint 16: у сортировки по умолчанию не было ветки — список шёл в порядке
-    // data.ts, то есть каталог открывался самыми старыми работами.
-    if (sort === 'default') {
-      r.sort((a, b) => String(b.added || '').localeCompare(String(a.added || ''))
-        || b.year - a.year
-        || b.price - a.price);
-    }
-    if (sort === 'price-asc') r.sort((a, b) => a.price - b.price);
-    if (sort === 'price-desc') r.sort((a, b) => b.price - a.price);
-    if (sort === 'size-desc') r.sort((a, b) => (b.w * b.h) - (a.w * a.h));
-    if (sort === 'year-desc') r.sort((a, b) => b.year - a.year);
-    return r;
-  }, [series, subject, sort, onlyNew]);
-
-  const total = visibleArtworks().length;
-  const activeSeries = series !== 'all' ? SERIES.find((s) => s.id === series) : null;
-
-  // Сводка: сколько работ, в каком диапазоне цен и размеров
   const pool = React.useMemo(
-    () => (activeSeries ? visibleArtworks().filter((a) => a.series === activeSeries.id) : visibleArtworks()),
+    () => (activeSeries ? visibleArtworks().filter((a: any) => a.series === activeSeries.id) : visibleArtworks()),
     [activeSeries],
   );
-  const freeInPool = pool.filter((a) => a.status === 'available' && !a.commission).length;
-  const prices = pool.map((a) => a.price).filter(Boolean);
-  const sides = pool.flatMap((a) => [a.w, a.h]).filter(Boolean);
+
+  const items = React.useMemo(() => {
+    let r = pool.slice();
+    if (subject !== 'all') r = r.filter((a: any) => a.subject === subject);
+    if (onlyNew) r = r.filter((a: any) => !!a.added);
+    const byChoice: Record<string, (a: any, b: any) => number> = {
+      default: (a, b) => String(b.added || '').localeCompare(String(a.added || '')) || b.year - a.year || b.price - a.price,
+      'price-asc': (a, b) => a.price - b.price,
+      'price-desc': (a, b) => b.price - a.price,
+      'size-desc': (a, b) => (b.w * b.h) - (a.w * a.h),
+    };
+    const cmp = byChoice[sort] || byChoice.default;
+    // свободные — всегда первыми, внутри — выбранный порядок
+    return r.sort((a, b) => Number(isFree(b)) - Number(isFree(a)) || cmp(a, b));
+  }, [pool, subject, sort, onlyNew]);
+
+  // при монтировании и при смене фильтра — снова первая страница
+  React.useEffect(() => { setLimit(PAGE); }, [subject, sort, onlyNew]);
+
+  const subjects = SUBJECTS.filter((s) => s.id === 'all' || pool.some((a: any) => a.subject === s.id));
+  const free = pool.filter(isFree);
+  const prices = free.map((a: any) => a.price).filter(Boolean);
+  const sides = free.flatMap((a: any) => [a.w, a.h]).filter(Boolean);
   const minPrice = prices.length ? Math.min(...prices) : 0;
   const maxPrice = prices.length ? Math.max(...prices) : 0;
   const minSide = sides.length ? Math.min(...sides) : 0;
   const maxSide = sides.length ? Math.max(...sides) : 0;
+  const allCount = visibleArtworks().length;
 
   const lead = activeSeries
-    ? `${activeSeries.subtitle}. ${pool.length} ${plural(pool.length)} маслом на холсте, каждая — в единственном экземпляре.`
-    : 'Оригиналы маслом на холсте в единственном экземпляре: пейзаж, море, ботаника, город. Отправляем по РФ с сертификатом подлинности.';
+    ? `${activeSeries.subtitle}. ${pool.length} ${plural(pool.length)} маслом на холсте, каждая — в единственном экземпляре, с подписью автора и сертификатом подлинности.`
+    : `${free.length} ${pluralOf(free.length, ['оригинал', 'оригинала', 'оригиналов'])} с сертификатом подлинности — от миниатюр за ${formatPrice(minPrice)} до холстов ${maxSide} см. Каждая работа существует в одном экземпляре.`;
+
+  const shown = items.slice(0, limit);
+  const rest = items.length - shown.length;
+
+  const subjectLabel = SUBJECTS.find((s) => s.id === subject)?.label;
+  const filtered = subject !== 'all' || onlyNew;
 
   return (
-    <div className="fade-in mb-section" style={{ paddingTop: 'clamp(20px, 2.4vw, 36px)' }}>
-      <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
+    <div className="v2-page">
+      <div className="v2-in">
         <Breadcrumbs items={activeSeries
           ? [
-              { label: 'MBezu', href: routeToPath('home') },
+              { label: 'Главная', href: routeToPath('home') },
               { label: 'Каталог', href: routeToPath('catalog') },
               { label: activeSeries.title },
             ]
           : [
-              { label: 'MBezu', href: routeToPath('home') },
+              { label: 'Главная', href: routeToPath('home') },
               { label: 'Каталог' },
             ]} />
 
-        {/* Заголовок + лид · справа карточка сводки */}
-        <div className="mb-cols" style={{ marginTop: 22, alignItems: 'flex-end', gap: 'clamp(22px, 3vw, 48px)' }}>
-          <div style={{ flex: '2 1 460px' }}>
-            <Eyebrow accent>{activeSeries ? `Серия · ${activeSeries.years}` : 'Каталог · оригиналы маслом'}</Eyebrow>
-            <h1 className="display" style={{
-              margin: '16px 0 0',
-              fontSize: 'clamp(38px, 5.6vw, 84px)',
-              lineHeight: .95, fontWeight: 500, letterSpacing: '-.038em',
-            }}>
-              {activeSeries
-                ? activeSeries.h1
-                : <>Купить картину маслом <span className="italic" style={{ color: 'var(--accent)', fontStyle: 'italic' }}>— в наличии</span></>}
-            </h1>
-            <p style={{
-              margin: '18px 0 0', maxWidth: 620,
-              fontSize: 'clamp(15.5px, 1.15vw, 18px)', lineHeight: 1.6,
-              color: 'var(--ink-2)', fontWeight: 300,
-            }}>{lead}</p>
+        <div className="v2-cat-head">
+          <div>
+            <h1 className="v2-h1">{activeSeries ? activeSeries.h1 : 'Купить картину маслом в наличии'}</h1>
+            <p className="v2-lead">{lead}</p>
           </div>
-
-          <aside style={{
-            flex: '1 1 260px', minWidth: 0,
-            background: 'var(--bg-card)', border: '1px solid var(--rule-soft)',
-            borderRadius: 'var(--r-lg)', padding: 'clamp(18px, 1.8vw, 26px)',
-          }}>
-            <div className="eyebrow">Сводка</div>
-            <dl style={{ margin: '14px 0 0', display: 'grid', gap: 10 }}>
-              {[
-                ['Работ', `${pool.length} ${plural(pool.length)}`],
-                // Sprint 16: свободных меньше, чем в каталоге — портреты питомцев
-                // показаны как примеры услуги (status sold + commission).
-                ...(freeInPool !== pool.length ? [['Свободно', `${freeInPool} ${plural(freeInPool)}`]] : []),
-                ['Цена', minPrice === maxPrice ? formatPrice(minPrice) : `${formatPrice(minPrice)} — ${formatPrice(maxPrice)}`],
-                ['Размеры', `${minSide}–${maxSide} см по стороне`],
-              ].map(([k, v]) => (
-                <div key={k} style={{ display: 'flex', justifyContent: 'space-between', gap: 14, alignItems: 'baseline' }}>
-                  <dt className="cat-no" style={{ margin: 0 }}>{k}</dt>
-                  <dd style={{ margin: 0, fontSize: 15, fontWeight: 500, textAlign: 'right' }}>{v}</dd>
-                </div>
-              ))}
-            </dl>
-          </aside>
+          <dl className="v2-cat-stats">
+            <div><dt>{activeSeries ? 'Свободно' : 'В наличии'}</dt><dd>{free.length}</dd></div>
+            <div><dt>Цены</dt><dd>{priceSpan(minPrice, maxPrice)}</dd></div>
+            <div><dt>Размеры</dt><dd>{minSide && maxSide ? `${minSide}–${maxSide} см` : '—'}</dd></div>
+          </dl>
         </div>
 
-        {/* Переключатель серий — пилюли с точкой серии и счётчиком */}
-        <nav aria-label="Серии" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 28 }}>
-          <button type="button" className={'chip' + (series === 'all' ? ' is-active' : '')}
-                  aria-pressed={series === 'all'} onClick={() => setSeries('all')}>
-            Все работы <span style={{ opacity: .7 }}>{total}</span>
-          </button>
+        {/* Серии — ссылки на свои адреса */}
+        <nav className="v2-series" aria-label="Серии">
+          <a href={routeToPath('catalog')} className="v2-series-pill" aria-current={series === 'all' ? 'page' : undefined}>
+            Все работы <span>{allCount}</span>
+          </a>
           {SERIES.map((s) => (
-            <button key={s.id} type="button"
-                    className={'chip' + (series === s.id ? ' is-active' : '')}
-                    aria-pressed={series === s.id}
-                    onClick={() => setSeries(s.id)}>
-              <span aria-hidden="true" style={{
-                width: 8, height: 8, borderRadius: '50%', background: s.color,
-                display: 'inline-block', flexShrink: 0,
-              }} />
-              {s.title} <span style={{ opacity: .7 }}>{seriesCount(s.id)}</span>
-            </button>
+            <a key={s.id} href={routeToPath('catalog', { series: s.id })}
+               className="v2-series-pill" aria-current={series === s.id ? 'page' : undefined}>
+              <i aria-hidden="true" style={{ background: s.color }} />
+              {s.title} <span>{seriesCount(s.id)}</span>
+            </a>
           ))}
         </nav>
 
-        {/* Липкая полоса фильтров — top от реальной высоты шапки (§13.15) */}
-        <div style={{
-          position: 'sticky', top: headerH, zIndex: 40,
-          margin: '18px 0 0',
-          padding: '12px 0',
-          background: 'rgba(237, 229, 214, .94)',
-          backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)',
-          borderBottom: '1px solid var(--rule-soft)',
-          display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center',
-        }}>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, flex: '1 1 320px', minWidth: 0 }}>
-            {SUBJECTS
-              .filter((s) => s.id === 'all' || series === 'all' || visibleArtworks().some((a) => a.series === series && a.subject === s.id))
-              .map((s) => (
-                <button key={s.id} type="button" aria-pressed={subject === s.id}
-                        aria-label={`Сюжет: ${s.label}`}
-                        className={'chip' + (subject === s.id ? ' is-active' : '')}
-                        onClick={() => setSubject(s.id)}>{s.label}</button>
-              ))}
+        {/* Фильтры — одной строкой над сеткой, без липкости */}
+        <div className="v2-filters">
+          <div className="v2-filter-group" role="group" aria-label="Сюжет">
+            {subjects.map((s) => (
+              <button key={s.id} type="button" aria-pressed={subject === s.id}
+                      className={'chip' + (subject === s.id ? ' is-active' : '')}
+                      onClick={() => setSubject(s.id)}>{s.id === 'all' ? 'Все сюжеты' : s.label}</button>
+            ))}
+            {freshCount() > 0 && !activeSeries && (
+              <button type="button" aria-pressed={onlyNew}
+                      className={'chip' + (onlyNew ? ' is-active' : '')}
+                      onClick={() => setOnlyNew(!onlyNew)}>Новые — {freshCount()}</button>
+            )}
           </div>
-          {freshCount() > 0 && (
-            <button type="button" aria-pressed={onlyNew}
-                    aria-label={`Только пополнение: ${freshCount()} ${plural(freshCount())}`}
-                    className={'chip' + (onlyNew ? ' is-active' : '')}
-                    style={{ whiteSpace: 'nowrap' }}
-                    onClick={() => setOnlyNew(!onlyNew)}>Новое · {freshCount()}</button>
-          )}
-          <span className="cat-no" style={{ whiteSpace: 'nowrap' }}>
-            {items.length} {plural(items.length)}
-          </span>
-          <select value={sort} onChange={(e) => setSort(e.target.value)} className="field"
-                  aria-label="Сортировка работ"
-                  style={{ width: 'auto', minHeight: 44, padding: '10px 16px', flex: '0 1 auto' }}>
-            <option value="default">Сначала новые</option>
-            <option value="price-asc">Цена ↑</option>
-            <option value="price-desc">Цена ↓</option>
-            <option value="size-desc">По размеру</option>
-          </select>
+          <label className="v2-sort">
+            <span>Сортировка</span>
+            <select value={sort} onChange={(e) => setSort(e.target.value)} className="field">
+              <option value="default">Сначала новые</option>
+              <option value="price-asc">Сначала дешевле</option>
+              <option value="price-desc">Сначала дороже</option>
+              <option value="size-desc">Сначала крупные</option>
+            </select>
+          </label>
         </div>
+
+        <p className="v2-count" aria-live="polite">
+          {filtered
+            ? <>Показано {items.length} {plural(items.length)}{subject !== 'all' && subjectLabel ? ` — ${subjectLabel.toLowerCase()}` : ''}{onlyNew ? ', только новые' : ''}{' · '}
+                <button type="button" className="v2-linkbtn" onClick={() => { setSubject('all'); setOnlyNew(false); }}>сбросить фильтры</button></>
+            : <>{items.length} {plural(items.length)}{free.length !== items.length ? `, из них свободно ${free.length}` : ''}</>}
+        </p>
 
         <h2 className="sr-only">{activeSeries ? `Работы серии «${activeSeries.title}»` : 'Работы в каталоге'}</h2>
 
         {items.length === 0 ? (
-          <div style={{ padding: 'clamp(60px, 10vw, 120px) 20px', textAlign: 'center', color: 'var(--ink-3)' }}>
-            <div className="display" style={{ fontSize: 'clamp(26px,3.4vw,36px)', color: 'var(--ink)', marginBottom: 16, letterSpacing: '-.02em' }}>
-              Ничего не нашли
-            </div>
-            <div style={{ fontSize: 15 }}>Попробуйте сбросить фильтры или поменять серию</div>
-            <button className="btn btn-ghost" style={{ marginTop: 24 }}
-                    onClick={() => { setSeries('all'); setSubject('all'); }}>
+          <div className="v2-empty">
+            <p className="v2-h3">Ничего не нашли</p>
+            <p>Попробуйте другой сюжет или посмотрите все работы.</p>
+            <button type="button" className="btn btn-ghost" onClick={() => { setSubject('all'); setOnlyNew(false); }}>
               Сбросить фильтры
             </button>
           </div>
         ) : (
-          <div className="mb-grid" style={{ marginTop: 28 }}>
-            {items.map((art, i) => (
-              <ArtCard key={art.id} art={art} index={i + 1} total={items.length} priority={i < 3} />
+          <div className="mb-grid v2-cat-grid">
+            {shown.map((art: any, i: number) => (
+              <ArtCard key={art.id} art={art} index={i + 1} total={items.length} priority={i < 2} />
             ))}
-            {/* Последняя ячейка — работа под размер покупателя (§9) */}
-            <a href={routeToPath('commission')} className="mb-card mb-shimmer"
-               style={{
-                 textDecoration: 'none', background: 'var(--accent)', borderColor: 'var(--accent)',
-                 color: 'var(--bg-cream)', padding: 'clamp(22px, 2.4vw, 32px)', justifyContent: 'center',
-               }}>
-              <span className="display" style={{ fontSize: 'clamp(21px,1.8vw,26px)', fontWeight: 500, letterSpacing: '-.02em', lineHeight: 1.15 }}>
-                Нет подходящего?<br />Напишем картину под ваш размер
-              </span>
-              <span className="mono" style={{ marginTop: 16, fontSize: 10, letterSpacing: '.2em', textTransform: 'uppercase' }}>
-                Заполнить бриф →
-              </span>
-            </a>
+            {rest <= 0 && (
+              <a href={routeToPath('commission')} className="v2-order-tile">
+                <span className="v2-order-kicker">Не нашли подходящую?</span>
+                <span className="v2-order-title">Напишем картину под ваш размер и&nbsp;палитру</span>
+                <span className="v2-order-text">2–3 эскиза до предоплаты. Пришлите фото стены — подскажем формат.</span>
+                <span className="v2-order-cta">Заполнить бриф</span>
+              </a>
+            )}
           </div>
         )}
 
-        {/* SEO-текст серии — в <details>, а не стеной (§9) */}
+        {rest > 0 && (
+          <div className="v2-more">
+            <button type="button" className="btn btn-ghost" onClick={() => setLimit((l) => l + PAGE)}>
+              Показать ещё {Math.min(rest, PAGE)} {plural(Math.min(rest, PAGE))}
+            </button>
+            <span>Показано {shown.length} из {items.length}</span>
+          </div>
+        )}
+
+        {/* SEO-текст серии — в <details>, а не стеной */}
         {activeSeries && (
-          <details open style={{
-            marginTop: 56, maxWidth: 900,
-            borderTop: '1px solid var(--rule-soft)', paddingTop: 20,
-          }}>
-            <summary className="eyebrow" style={{ cursor: 'pointer', minHeight: 44, display: 'flex', alignItems: 'center' }}>
-              О серии
-            </summary>
-            <p style={{ margin: '12px 0 0', fontSize: 16, lineHeight: 1.7, color: 'var(--ink-2)', fontWeight: 300 }}>
-              {activeSeries.seoText}
-            </p>
+          <details open className="v2-about-series">
+            <summary>О серии «{activeSeries.title}»</summary>
+            <p>{activeSeries.seoText}</p>
           </details>
         )}
 
         {activeSeries && SERIES_INTERIORS[activeSeries.id] && (
-          <section style={{ marginTop: 'clamp(48px, 6vw, 90px)' }}>
-            <Eyebrow accent>В интерьере</Eyebrow>
-            <h2 className="display" style={{ margin: '14px 0 26px', fontSize: 'clamp(26px,3.2vw,44px)', fontWeight: 500, letterSpacing: '-.02em' }}>
-              Куда впишется «{activeSeries.title}»
-            </h2>
+          <section className="v2-rooms" aria-labelledby="rooms-h2">
+            <h2 id="rooms-h2" className="v2-h2 v2-h2-sm">Куда впишется «{activeSeries.title}»</h2>
             <div className="mb-grid-wide">
               {SERIES_INTERIORS[activeSeries.id].map((r) => (
-                <div key={r.room} style={{ background: 'var(--bg-card)', borderRadius: 'var(--r-lg)', padding: 26 }} data-rev>
-                  <h3 className="display" style={{ margin: '0 0 10px', fontSize: 19, fontWeight: 500 }}>{r.room}</h3>
-                  <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.65, color: 'var(--ink-2)' }}>{r.text}</p>
+                <div key={r.room} className="v2-room" data-rev>
+                  <h3 className="v2-h3">{r.room}</h3>
+                  <p>{r.text}</p>
                 </div>
               ))}
             </div>
-            <p style={{ margin: '22px 0 0', fontSize: 14.5, color: 'var(--ink-2)', lineHeight: 1.7 }}>
+            <p className="v2-note">
               Сомневаетесь в размере и цвете — разбор с примерами в журнале:{' '}
-              <a href={INTERIOR_GUIDE_URL} className="uh-tap" style={{ color: 'var(--accent)' }}>как выбрать картину для гостиной</a>.
+              <a href={INTERIOR_GUIDE_URL}>как выбрать картину для гостиной</a>.
             </p>
           </section>
         )}
 
-        <section style={{ marginTop: 'clamp(40px, 5vw, 72px)', maxWidth: 900, display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <LinkStrip label="Подобрать" links={[['/kartina-v-gostinuyu', 'картина в гостиную'], ['/kartina-v-spalnyu', 'в спальню'], ['/kartina-v-kabinet', 'в кабинет'], ['/podarok', 'в подарок']]} />
-          <LinkStrip label="По сюжету" links={[['/catalog/more', 'морской пейзаж'], ['/catalog/botanika', 'цветы и растения'], ['/catalog/gory', 'горы']]} />
-          <LinkStrip label="Журнал" links={[[INTERIOR_GUIDE_URL, 'как выбрать картину для гостиной'], ['/journal', 'все статьи']]} />
+        <section className="v2-cat-links" aria-label="Подборки">
+          <LinkStrip label="Подобрать" links={[['/kartina-v-gostinuyu', 'Картина в гостиную'], ['/kartina-v-spalnyu', 'В спальню'], ['/kartina-v-kabinet', 'В кабинет'], ['/podarok', 'В подарок']]} />
+          <LinkStrip label="По сюжету" links={[['/catalog/more', 'Морской пейзаж'], ['/catalog/botanika', 'Цветы и растения'], ['/catalog/gory', 'Горы']]} />
+          <LinkStrip label="Журнал" links={[[INTERIOR_GUIDE_URL, 'Как выбрать картину для гостиной'], ['/journal', 'Все статьи']]} />
         </section>
 
-        <div style={{
-          marginTop: 'clamp(56px, 7vw, 100px)', padding: 'clamp(32px, 4vw, 60px) clamp(20px, 3vw, 40px)',
-          background: 'var(--bg-soft)', borderRadius: 'var(--r-xl)',
-          textAlign: 'center', border: '1px solid var(--rule-soft)',
-        }}>
-          <Eyebrow accent>Не нашли подходящее?</Eyebrow>
-          <h2 className="display" style={{
-            margin: '20px 0 24px', fontSize: 'clamp(28px, 4vw, 52px)',
-            lineHeight: 1.05, fontWeight: 500, letterSpacing: '-.025em',
-          }}>
-            Картина под <span className="italic" style={{ color: 'var(--accent)' }}>ваше место</span>
-          </h2>
-          <a href={routeToPath('commission')} className="btn btn-solid" style={{ textDecoration: 'none' }}>
-            Заказать индивидуально
-          </a>
+        <div className="v2-cta-band">
+          <h2 className="v2-h2 v2-h2-sm">Не нашли подходящую — напишем под ваше место</h2>
+          <p>Размер, палитра и сюжет — ваши. Мила предложит 2–3 эскиза, предоплата — только после утверждения.</p>
+          <a href={routeToPath('commission')} className="btn btn-solid">Заказать картину</a>
         </div>
       </div>
     </div>

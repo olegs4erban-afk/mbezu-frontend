@@ -5,6 +5,22 @@
 import { ABOUT, ARTWORKS, artworkById, seriesById, featuredArtworks, formatPrice, imageOf, visibleArtworks } from './data';
 import { storeProductPath } from './store-urls';
 import { seriesSlug as seriesSlugOf, seriesHasPage } from './flags';
+// Версия 2: мета страниц Tilda — один источник истины. Раньше seoFor() держал
+// свои заголовки, а applySeo() ставил их поверх тильдовских после загрузки:
+// у главной в выдаче один title, в браузере через секунду другой.
+// Именованный импорт — Vite берёт из JSON только pages, без _comment.
+import { pages as TILDA_PAGES } from '../../seo/pages.json';
+
+interface TildaPageMeta { alias?: string; metaTitle?: string; metaDescr?: string; canonical?: string; ogImage?: string }
+/** Мета страницы Tilda из seo/pages.json по ключу (home, catalog, catalog-<slug> …). */
+export function tildaMeta(key: string): TildaPageMeta | undefined {
+  return (TILDA_PAGES as Record<string, TildaPageMeta>)[key];
+}
+
+/** Боевой домен: там <title>, description и canonical отдаёт Tilda из настроек страницы. */
+export function isProductionHost(host = typeof location !== 'undefined' ? location.hostname : ''): boolean {
+  return host === 'mbezu.ru' || host === 'www.mbezu.ru';
+}
 
 /**
  * Боевой адрес работы на mbezu.ru.
@@ -120,9 +136,15 @@ export interface PageSeo {
   noindex?: boolean;
 }
 
-/** Set <title> + meta tags on the live document (client) — idempotent by name/property. */
+/**
+ * Set <title> + meta tags on the live document (client) — idempotent by name/property.
+ * На mbezu.ru не трогаем ничего: заголовок, описание и canonical там уже отдала
+ * Tilda (из seo/pages.json через настройки страницы), и подмена после загрузки
+ * давала «прыгающий» title. Работает на cdn.mbezu.ru и в локальной сборке.
+ */
 export function applySeo(seo: PageSeo): void {
   if (typeof document === 'undefined') return;
+  if (isProductionHost()) return;
   if (seo.title) document.title = seo.title;
   setMeta('name', 'description', seo.description);
   setMeta('property', 'og:title', seo.ogTitle || seo.title);
@@ -182,8 +204,8 @@ export function organizationLd() {
     telephone: '+' + ABOUT.contacts.phone.replace(/\D/g, ''),
     taxID: ABOUT.legal.inn,
     address: { '@type': 'PostalAddress', addressLocality: 'Москва', addressCountry: 'RU' },
+    // Instagram убран: ссылки на сервисы Meta в РФ — лишний риск, а аудитория — VK и Telegram
     sameAs: [
-      `https://instagram.com/${ABOUT.contacts.instagram}`,
       ABOUT.contacts.telegramUrl,
       `https://vk.com/${ABOUT.contacts.vk}`,
     ],
@@ -224,35 +246,42 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
   const heroImg = imageOf(featuredArtworks()[0] || ARTWORKS[0], 'full');
 
   switch (name) {
-    case 'home':
+    case 'home': {
+      const m = tildaMeta('home');
       return {
-        title: 'Картины маслом для интерьера — Mila Bezú | Москва',
-        description: 'Авторская живопись маслом в единственном экземпляре. Картины для интерьера дома, квартиры и дачи. Работа на заказ от 2 недель. Доставка по России.',
+        title: m?.metaTitle || 'Купить картину маслом для интерьера и на заказ — Mila Bezú, Москва',
+        description: m?.metaDescr,
         canonical: SITE_ORIGIN + '/',
-        ogImage: abs(heroImg || ''),
+        ogImage: m?.ogImage || abs(heroImg || ''),
         // Organization и Person уже отдаются site-wide из head-кода — здесь они
         // давали дубли (робот видел по два объекта каждого типа).
         jsonLd: [homeFaqLd()], // Sprint 15: FAQPage — видимый FAQ главной (HOME_FAQ)
       };
-    case 'about':
+    }
+    case 'about': {
+      const m = tildaMeta('about');
       return {
-        title: 'Mila Bezú — художник, живопись маслом | Москва',
-        description: ABOUT.short[0],
+        title: m?.metaTitle || 'Mila Bezú — художник, живопись маслом | Москва',
+        description: m?.metaDescr || ABOUT.short[0],
         canonical: SITE_ORIGIN + '/about',
-        ogImage: abs(heroImg || ''),
+        ogImage: m?.ogImage || abs(heroImg || ''),
         jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Художник', url: '/about' }])],
       };
+    }
     case 'catalog': {
       const series = params.series ? seriesById(params.series) : null;
+      // у серии со своей страницей Tilda мета берётся оттуда же, что и у Tilda
+      const m = series ? (seriesHasPage(series.id) ? tildaMeta('catalog-' + seriesSlugOf(series.id)) : undefined) : tildaMeta('catalog');
       return {
-        title: series
+        title: m?.metaTitle || (series
           ? `${series.title} — картины маслом, ${seriesCount(series.id)} ${plural(seriesCount(series.id))} | MBezu`
-          : `Купить картину маслом для интерьера — ${workCount()} ${plural(workCount())} | MBezu`,
+          : `Купить картину маслом для интерьера — ${inStockCount()} ${plural(inStockCount())} в наличии | MBezu`),
         // Sprint 16: склейка описания серии с общим хвостом давала 207–243 символа —
         // выдача резала как раз хвост про сертификат и доставку. Держим ~150–160.
-        description: series
+        description: m?.metaDescr || (series
           ? clamp(`${series.title}: ${series.subtitle.toLowerCase()}. ${seriesCount(series.id)} ${plural(seriesCount(series.id))} маслом на холсте, сертификат подлинности, доставка по РФ.`, 160)
-          : 'Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.',
+          : 'Картины маслом на холсте от художника Mila Bezú. Оригиналы в единственном экземпляре с сертификатом подлинности. Доставка по РФ, оплата онлайн.'),
+        ogImage: m?.ogImage,
         // Sprint 15: у посадочной серии canonical — её собственный /catalog/<slug>,
         // иначе все четыре склеиваются с каталогом и не ранжируются.
         canonical: SITE_ORIGIN + seriesPath(params.series),
@@ -288,27 +317,34 @@ export function seoFor(name: string, params: { id?: string; series?: string; sec
         ].filter(Boolean),
       };
     }
-    case 'commission':
+    case 'commission': {
+      const m = tildaMeta('commission');
       return {
-        title: 'Картина на заказ маслом — от 2 недель | MBezu Москва',
-        description: 'Напишем картину маслом на заказ под ваш интерьер: размер, палитра, сюжет. Эскизы до начала работы. Срок от 2 недель, доставка по России.',
+        title: m?.metaTitle || 'Картина на заказ маслом | MBezu Москва',
+        description: m?.metaDescr,
         canonical: SITE_ORIGIN + '/commission',
+        ogImage: m?.ogImage,
         jsonLd: [
           breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'На заказ', url: '/commission' }]),
           faqLd(),
         ],
       };
+    }
     case 'cart':
       return { title: 'Корзина — Mila Bezú', description: 'Корзина и оформление заказа.', canonical: SITE_ORIGIN + '/cart', noindex: true, jsonLd: [] };
     case 'tracking':
       return { title: 'Статус заказа — Mila Bezú', description: 'Отслеживание статуса вашего заказа.', canonical: SITE_ORIGIN + '/tracking', noindex: true, jsonLd: [] };
-    case 'legal':
+    case 'legal': {
+      const m = tildaMeta('legal');
       return {
-        title: 'Документы и реквизиты — Mila Bezú',
-        description: `Оферта, политика обработки персональных данных, доставка, возврат и реквизиты. ${ABOUT.legal.name_short}, ИНН ${ABOUT.legal.inn}.`,
-        canonical: SITE_ORIGIN + '/legal' + (params.section ? `?section=${params.section}` : ''),
+        title: m?.metaTitle || 'Документы и реквизиты — MBezu',
+        description: m?.metaDescr || `Оферта, политика обработки персональных данных, доставка, возврат и реквизиты. ${ABOUT.legal.name_short}, ИНН ${ABOUT.legal.inn}.`,
+        // вкладки ?section= — одна страница документов, canonical всегда без параметра
+        canonical: SITE_ORIGIN + '/legal',
+        ogImage: m?.ogImage,
         jsonLd: [breadcrumbLd([{ name: 'MBezu', url: '/' }, { name: 'Документы', url: '/legal' }])],
       };
+    }
     default:
       return { title: 'Mila Bezú', canonical: SITE_ORIGIN + '/', jsonLd: [] };
   }

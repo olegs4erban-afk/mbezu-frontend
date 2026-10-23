@@ -118,6 +118,14 @@ const COMMISSION_CASES = [
   },
 ];
 
+/** Реальные размеры файлов примеров: [ширина, высота, ширина @480] — для width/height и srcSet. */
+const CASE_DIMS: Record<string, [number, number, number]> = {
+  'zakaz-hokkei': [864, 820, 480],
+  'zakaz-pitomec': [941, 1076, 420],
+  'zakaz-brend-1': [883, 1177, 360],
+  'zakaz-brend-2': [883, 1177, 360],
+};
+
 function CommissionPage({ go, refId }) {
   const ref = refId ? artworkById(refId) : null;
   // работа доступна к покупке, но её страницы в Store пока нет
@@ -195,7 +203,7 @@ function CommissionPage({ go, refId }) {
   return (
     <div className="fade-in mb-section" style={{ paddingTop: 'clamp(20px, 2.4vw, 36px)' }}>
       <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
-        <Breadcrumbs items={[{ label: 'MBezu', href: '/' }, { label: 'На заказ' }]} />
+        <Breadcrumbs items={[{ label: 'Главная', href: '/' }, { label: 'На заказ' }]} />
 
         <header style={{ marginTop: 22, maxWidth: 820 }}>
           <Eyebrow accent>Москва · доставка по России</Eyebrow>
@@ -452,7 +460,7 @@ function CommissionPage({ go, refId }) {
                   {summary.map(([k, v]) => (
                     <div key={k} style={{ display: 'flex', justifyContent: 'space-between', gap: 14, alignItems: 'baseline' }}>
                       <dt className="mono" style={{ fontSize: 10, letterSpacing: '.18em', textTransform: 'uppercase', color: 'rgba(245,239,226,.7)' }}>{k}</dt>
-                      <dd style={{ margin: 0, fontSize: 14, textAlign: 'right', color: v ? 'var(--bg-cream)' : 'rgba(245,239,226,.45)' }}>
+                      <dd style={{ margin: 0, fontSize: 14, textAlign: 'right', color: v ? 'var(--bg-cream)' : 'rgba(245,239,226,.72)' }}>
                         {v || 'не выбрано'}
                       </dd>
                     </div>
@@ -511,6 +519,7 @@ function CommissionPage({ go, refId }) {
               </p>
               <figure style={{ margin: '20px 0 0' }}>
                 <img src="https://cdn.mbezu.ru/assets/commission/zakaz-hokkei-posvyaschenie.webp"
+                     width={1100} height={1267}
                      srcSet="https://cdn.mbezu.ru/assets/commission/zakaz-hokkei-posvyaschenie@480.webp 480w, https://cdn.mbezu.ru/assets/commission/zakaz-hokkei-posvyaschenie.webp 1100w"
                      sizes="(max-width: 900px) 92vw, 34vw"
                      alt="Оборот холста: посвящение от руки и подпись художника на подрамнике"
@@ -547,8 +556,9 @@ function CommissionPage({ go, refId }) {
             {COMMISSION_CASES.map((c) => (
               <figure key={c.file} data-rev style={{ margin: 0 }}>
                 <img src={`https://cdn.mbezu.ru/assets/commission/${c.file}.webp`}
-                     srcSet={`https://cdn.mbezu.ru/assets/commission/${c.file}@480.webp 480w, https://cdn.mbezu.ru/assets/commission/${c.file}.webp 1200w`}
-                     sizes="(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw"
+                     width={CASE_DIMS[c.file]?.[0]} height={CASE_DIMS[c.file]?.[1]}
+                     srcSet={`https://cdn.mbezu.ru/assets/commission/${c.file}@480.webp ${CASE_DIMS[c.file]?.[2] || 480}w, https://cdn.mbezu.ru/assets/commission/${c.file}.webp ${CASE_DIMS[c.file]?.[0] || 1200}w`}
+                     sizes="(max-width: 900px) 46vw, (max-width: 1200px) 31vw, 330px"
                      alt={c.alt} loading="lazy" decoding="async"
                      style={{ width: '100%', height: 'auto', display: 'block', borderRadius: 'var(--r-md)' }} />
                 <figcaption style={{ marginTop: 10 }}>

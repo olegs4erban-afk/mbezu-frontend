@@ -35,31 +35,24 @@ function CatNo({ n, total }: { n: number | string; total?: number | string }) {
 // Sprint 15 (аудит): у крошки может быть настоящий href — тогда обработчик не нужен.
 function Breadcrumbs({ items }: { items: Array<{ label: React.ReactNode; href?: string; onClick?: () => void }> }) {
   return (
-    <nav aria-label="Хлебные крошки" style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', fontSize: 12 }} className="mono">
-      {items.map((it, i) => (
-        <React.Fragment key={i}>
-          {i > 0 && <span style={{ color: 'var(--ink-3)' }}>/</span>}
-          {it.href || it.onClick ? (
-            <a href={it.href || '#'}
-               onClick={it.href ? undefined : (e) => { e.preventDefault(); it.onClick!(); }}
-               style={{
-                 color: i === items.length - 1 ? 'var(--ink)' : 'var(--ink-3)',
-                 textDecoration: 'none',
-                 letterSpacing: '.14em', textTransform: 'uppercase',
-                 fontWeight: i === items.length - 1 ? 500 : 400,
-               }}
-               className="uh uh-tap">
-              {it.label}
-            </a>
-          ) : (
-            <span style={{
-              color: i === items.length - 1 ? 'var(--ink)' : 'var(--ink-3)',
-              letterSpacing: '.14em', textTransform: 'uppercase',
-              fontWeight: i === items.length - 1 ? 500 : 400,
-            }}>{it.label}</span>
-          )}
-        </React.Fragment>
-      ))}
+    <nav aria-label="Хлебные крошки" className="mb-crumbs">
+      <ol>
+        {items.map((it, i) => {
+          const last = i === items.length - 1;
+          return (
+            <li key={i}>
+              {(it.href || it.onClick) && !last ? (
+                <a href={it.href || '#'}
+                   onClick={it.href ? undefined : (e) => { e.preventDefault(); it.onClick!(); }}>
+                  {it.label}
+                </a>
+              ) : (
+                <span aria-current={last ? 'page' : undefined}>{it.label}</span>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 }
@@ -117,10 +110,12 @@ function altFor(art: any): string {
 }
 
 /** Подпись кнопки карточки — одна функция на видимый текст и на aria-label. */
+// Версия 2: «Смотреть» вместо «Купить» — кнопка ведёт на страницу работы,
+// где уже есть цена, фото и «Купить сейчас»; обещать покупку в один клик нечестно.
 function buyLabel(art: any, inStore: boolean): string {
   if (art.commission) return 'На заказ';
   if (art.status === 'sold') return 'Продано';
-  return inStore ? 'Купить' : 'Спросить';
+  return inStore ? 'Смотреть' : 'Спросить';
 }
 
 // ── ArtCard — карточка работы: паспарту (HANDOFF §6) ──────────
@@ -148,7 +143,7 @@ function ArtCard({ art, index, total, size = 'thumb', priority = false }: { art:
         <div className="mb-mat">
           {src ? (
             <img src={src} srcSet={srcSet}
-                 sizes="(max-width: 600px) 92vw, (max-width: 900px) 46vw, 30vw"
+                 sizes="(max-width: 900px) 46vw, (max-width: 1200px) 31vw, 330px"
                  alt={altFor(art)}
                  loading={priority ? 'eager' : 'lazy'}
                  {...(priority ? { fetchpriority: 'high' } : {})}
@@ -165,8 +160,8 @@ function ArtCard({ art, index, total, size = 'thumb', priority = false }: { art:
           <span className="mb-size">{dims}</span>
         </div>
         <div className="mb-card-body">
-          <div className="cat-no" style={{ color: series?.color }}>
-            {series?.title || ''}{art.year ? ` · ${art.year}` : ''}
+          <div className="cat-no">
+            {series?.title || ''}{art.year ? `, ${art.year}` : ''}
           </div>
           <h3 className="mb-card-title">{art.title}</h3>
           {reviewsFor(art.id).length > 0 && (

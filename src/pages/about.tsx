@@ -30,7 +30,7 @@ function AboutPage({ go }) {
       <section className="resp-pad" style={{ padding: '60px 40px 80px' }}>
         <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
           <Breadcrumbs items={[
-            { label: 'MBezu', href: '/' },
+            { label: 'Главная', href: '/' },
             { label: 'Художник' },
           ]} />
           <div className="resp-stack" style={{
@@ -44,7 +44,9 @@ function AboutPage({ go }) {
                 fontSize: 'clamp(72px, 10vw, 168px)',
                 lineHeight: 0.92, fontWeight: 500, letterSpacing: '-.04em',
               }}>
-                Mila{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>Bezú.</span>
+                {/* Версия 2: заголовок по-русски (закон о русском языке с 01.03.2026);
+                    латинское написание имени — строкой ниже, как товарный знак */}
+                Мила{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>Бэзу</span>
               </h1>
               <div className="cat-no" style={{ marginTop: 28, lineHeight: 1.8 }}>
                 {ABOUT.full}{' '}<br/>

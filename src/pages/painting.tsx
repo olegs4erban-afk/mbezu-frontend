@@ -126,7 +126,7 @@ function PaintingPage({ go, id }) {
       <div className="fade-in mb-section" style={{ paddingTop: 'clamp(18px, 2.2vw, 32px)' }}>
         <div style={{ maxWidth: 'var(--max)', margin: '0 auto' }}>
           <Breadcrumbs items={[
-            { label: 'MBezu', href: '/' },
+            { label: 'Главная', href: '/' },
             { label: 'Каталог', href: '/catalog' },
             { label: series?.title || '', href: routeToPath('catalog', { series: art.series }) },
             { label: art.title },

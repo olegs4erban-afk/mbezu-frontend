@@ -4,14 +4,14 @@
 //  • dir-style output (about/index.html, painting/<id>/index.html) so GitHub Pages
 //    serves CLEAN URLs (/about, /painting/mn-01 → 200) matching live Tilda aliases
 //  • emits dist/sitemap.xml
-// Note: client uses createRoot (not hydrate) → markup is SEO/first-paint, then
-// React re-renders on load. No hydration mismatch warnings.
+// Версия 2: клиент гидратирует эту разметку (hydrateRoot), если адрес без параметров,
+// меняющих содержимое; иначе рисует с нуля (createRoot).
 import React from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 
-import { TopBar, Footer } from '../src/common/chrome';
+import { TopBar, Footer, BottomTabBar } from '../src/common/chrome';
 import { ARTWORKS, SERIES } from '../src/common/data';
 import { seoFor, SITE_ORIGIN, type RouteSeo } from '../src/common/seo';
 import { SERIES_PAGES_LIVE, seriesHasPage } from '../src/common/flags';
@@ -41,11 +41,18 @@ function pageEl(name: string, params: any): React.ReactElement | null {
 function renderMarkup(name: string, params: any): string {
   const el = pageEl(name, params);
   if (!el) return '';
-  return renderToStaticMarkup(
+  // Та же раскладка, что у Shell в app.tsx: ссылка-пропуск, шапка, main#main,
+  // подвал, нижняя навигация — первый кадр до JS совпадает с тем, что нарисует React.
+  // Версия 2: renderToString, а не renderToStaticMarkup — клиент теперь гидратирует
+  // пререндер (hydrateRoot), а для этого нужны разделители <!-- --> между соседними
+  // текстовыми узлами; без них соседние куски текста слипаются и гидратация падает.
+  return renderToString(
     <>
+      <a href="#main" className="skip-link">К содержимому</a>
       <TopBar route={name} go={NOOP} cartCount={0} />
-      <main>{el}</main>
+      <main id="main">{el}</main>
       <Footer go={NOOP} />
+      <BottomTabBar route={name} go={NOOP} cartCount={0} />
     </>,
   );
 }

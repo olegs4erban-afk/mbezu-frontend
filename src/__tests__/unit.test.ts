@@ -130,3 +130,45 @@ describe('data integrity', () => {
     for (const a of ready) expect(imageOf(a, 'full')).toMatch(/\/assets\/(cards|works)\//);
   });
 });
+
+// Версия 2 (23.10.2026): мета страниц Tilda — один источник истины (seo/pages.json).
+describe('SEO — seo/pages.json ↔ seoFor и числа каталога', () => {
+  it('seoFor берёт title/description страниц Tilda из pages.json — без «прыгающего» title', async () => {
+    const { tildaMeta } = await import('../common/seo');
+    for (const key of ['home', 'about', 'commission', 'legal', 'catalog'] as const) {
+      const m = tildaMeta(key)!;
+      const s = seoFor(key);
+      expect(s.title).toBe(m.metaTitle);
+      expect(s.description).toBe(m.metaDescr);
+    }
+  });
+  it('у серии со своей страницей мета совпадает с pages.json', async () => {
+    const { tildaMeta } = await import('../common/seo');
+    for (const id of ['monochrome', 'streets', 'silence', 'tondi']) {
+      const m = tildaMeta('catalog-' + seriesSlug(id))!;
+      expect(seoFor('catalog', { series: id }).title).toBe(m.metaTitle);
+    }
+  });
+  it('числа в pages.json совпадают с каталогом (иначе обновить pages.json и мета в Tilda)', async () => {
+    const { tildaMeta, inStockCount, plural, seriesCount } = await import('../common/seo');
+    const n = inStockCount();
+    expect(tildaMeta('catalog')!.metaTitle).toContain(`${n} ${plural(n)} в наличии`);
+    for (const id of ['monochrome', 'streets', 'silence', 'tondi']) {
+      const c = seriesCount(id);
+      expect(tildaMeta('catalog-' + seriesSlug(id))!.metaTitle).toContain(`${c} ${plural(c)}`);
+    }
+  });
+  it('canonical документов — без ?section=', () => {
+    expect(seoFor('legal', { section: 'privacy' }).canonical).toBe('https://mbezu.ru/legal');
+  });
+  it('applySeo не трогает head на боевом домене', async () => {
+    const { isProductionHost } = await import('../common/seo');
+    expect(isProductionHost('mbezu.ru')).toBe(true);
+    expect(isProductionHost('www.mbezu.ru')).toBe(true);
+    expect(isProductionHost('cdn.mbezu.ru')).toBe(false);
+    expect(isProductionHost('localhost')).toBe(false);
+  });
+  it('в Organization нет ссылки на Instagram', () => {
+    expect(JSON.stringify(organizationLd())).not.toMatch(/instagram/i);
+  });
+});
