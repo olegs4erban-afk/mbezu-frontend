@@ -269,7 +269,7 @@
       if(!same.length||document.getElementById('mbezu-related'))return;
       same=same.slice(0,4);
       var sec=document.createElement('section');sec.id='mbezu-related';
-      sec.style.cssText='box-sizing:border-box;max-width:1200px;margin:0 auto;padding:40px 20px 56px;font-family:Inter Tight,system-ui,sans-serif;color:#2a2520';
+      sec.style.cssText='font-family:Inter Tight,system-ui,sans-serif;color:#2a2520';
       sec.innerHTML='<div style="font:500 14px/1.4 Inter Tight,system-ui,sans-serif;color:#6f5c2b;margin-bottom:8px">Ещё из серии</div><h2 style="margin:0 0 22px;font-size:clamp(26px,3vw,40px);font-weight:500;letter-spacing:-.02em">'+esc(me.seriesTitle)+'</h2>';
       var grid=document.createElement('div');grid.className='mbz-rel-grid';
       for(var m=0;m<same.length;m++){var w=same[m];var a2=document.createElement('a');a2.href=w.url;a2.style.cssText='text-decoration:none;color:inherit;display:block';
@@ -509,6 +509,10 @@ html[data-mbezu=prod] .t-store__prod-snippet__container{padding-top:0!important;
 #mbezu-crumbs .sep{color:#b3a583}
 #mbezu-crumbs .cur{color:#2a2520}
 .mbz-rel-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+#mbezu-related{box-sizing:border-box;max-width:1200px;margin:0 auto;padding:40px 20px 56px}
+/* по сетке Tilda: контейнер 1200 / 960 / 640, крошки и «Ещё из серии» — по левому краю фото */
+@media (max-width:1199px){#mbezu-crumbs,#mbezu-related{max-width:960px;padding-left:10px;padding-right:10px}}
+@media (max-width:959px){#mbezu-crumbs,#mbezu-related{max-width:640px;padding-left:0;padding-right:0}}
 #mbezu-buybar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:99980;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#f5efe2;border-top:1px solid rgba(42,37,32,.12);box-shadow:0 -8px 24px -16px rgba(42,37,32,.4);font-family:Inter Tight,system-ui,sans-serif;transform:translateY(110%);transition:transform .25s}
 #mbezu-buybar.is-on{transform:none}
 #mbezu-buybar .p{font-size:18px;font-weight:600;color:#2a2520;line-height:1.2}
@@ -519,7 +523,8 @@ html[data-mbezu=prod] .t-store__prod-snippet__container{padding-top:0!important;
 .mbezu-facts .l{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:13px;color:#6b5d4a}
 .mbezu-cta{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;background:#6f5c2b;color:#ede5d6!important;font:600 15px/1 Inter Tight,system-ui,sans-serif;text-decoration:none!important;margin-top:14px}
 @media (max-width:760px){
-  #mbezu-crumbs{padding:4px 20px;font-size:13px}
+  #mbezu-crumbs{max-width:none;padding:4px 20px;font-size:13px}
+  #mbezu-related{max-width:none;padding-left:20px;padding-right:20px}
   .mbz-rel-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   #mbezu-crumbs .cur,#mbezu-crumbs .sep-last{display:none}
   html[data-mbezu=prod] .t706__carticon{bottom:88px!important}
