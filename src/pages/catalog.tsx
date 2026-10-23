@@ -14,8 +14,8 @@ import { routeToPath } from '../common/routes';
 //     над сеткой; фильтры по сюжету и сортировка — одной строкой над сеткой;
 //   · свободные работы всегда первыми, проданные и примеры услуги — в конце;
 //   · на телефоне две колонки карточек вместо одной;
-//   · первые 24 работы, дальше «Показать ещё». В пререндер (HTML для робота
-//     и для открытия без JS) попадают все работы — ссылки на товары не теряются.
+//   · первые 24 работы, дальше «Показать ещё»; все работы с ценами и адресами
+//     робот получает из ItemList (JSON-LD), у каждой серии — своя страница.
 // ─────────────────────────────────────────────────────────────
 
 const PAGE = 24;
@@ -45,10 +45,10 @@ function CatalogPage({ initialSeries, initialOnlyNew = false }: { go?: unknown; 
     } catch { /* фильтр работает и без URL */ }
   };
   const [sort, setSort] = React.useState('default');
-  // Пререндер и первый (гидратируемый) кадр показывают все работы — разметка
-  // совпадает с HTML, а ссылки на товары видит робот. После монтирования
-  // эффект ниже оставляет первые PAGE работ и кнопку «Показать ещё».
-  const [limit, setLimit] = React.useState(Infinity);
+  // Первые PAGE работ — и в пререндере, и в первом кадре клиента (гидратация
+  // без расхождений). Все работы с ценой и адресом робот получает из ItemList
+  // в JSON-LD, а у каждой серии — своя страница со всеми её работами.
+  const [limit, setLimit] = React.useState(PAGE);
 
   const pool = React.useMemo(
     () => (activeSeries ? visibleArtworks().filter((a: any) => a.series === activeSeries.id) : visibleArtworks()),
@@ -70,8 +70,12 @@ function CatalogPage({ initialSeries, initialOnlyNew = false }: { go?: unknown; 
     return r.sort((a, b) => Number(isFree(b)) - Number(isFree(a)) || cmp(a, b));
   }, [pool, subject, sort, onlyNew]);
 
-  // при монтировании и при смене фильтра — снова первая страница
-  React.useEffect(() => { setLimit(PAGE); }, [subject, sort, onlyNew]);
+  // при смене фильтра — снова первая страница
+  const first = React.useRef(true);
+  React.useEffect(() => {
+    if (first.current) { first.current = false; return; }
+    setLimit(PAGE);
+  }, [subject, sort, onlyNew]);
 
   const subjects = SUBJECTS.filter((s) => s.id === 'all' || pool.some((a: any) => a.subject === s.id));
   const free = pool.filter(isFree);

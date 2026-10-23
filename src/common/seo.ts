@@ -464,9 +464,15 @@ export function catalogItemListLd(seriesId?: string) {
     '@type': 'ItemList',
     name: 'Каталог картин маслом MBezu',
     numberOfItems: works.length,
+    // Версия 2: в списке — компактный Product (название, артикул, фото, адрес, цена,
+    // наличие). Описание и размеры остаются в полной разметке работы: в списке они
+    // удваивали HTML каталога (50 КБ разметки на 56 работ).
     itemListElement: works.map((art: any, i: number) => {
-      const p = productLd(art.id);
-      return { '@type': 'ListItem', position: i + 1, item: p };
+      const p: any = productLd(art.id);
+      if (!p) return { '@type': 'ListItem', position: i + 1, item: null };
+      const { description, width, height, category, ...compact } = p;
+      delete compact['@context'];
+      return { '@type': 'ListItem', position: i + 1, item: compact };
     }).filter((x: any) => x.item),
   };
 }
