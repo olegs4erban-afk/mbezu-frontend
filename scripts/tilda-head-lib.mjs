@@ -165,9 +165,9 @@ const PROD_SNIPPET = `
       if(!same.length||document.getElementById('mbezu-related'))return;
       same=same.slice(0,4);
       var sec=document.createElement('section');sec.id='mbezu-related';
-      sec.style.cssText='max-width:1180px;margin:0 auto;padding:40px 20px 56px;font-family:Inter Tight,system-ui,sans-serif;color:#2a2520';
+      sec.style.cssText='box-sizing:border-box;max-width:1200px;margin:0 auto;padding:40px 20px 56px;font-family:Inter Tight,system-ui,sans-serif;color:#2a2520';
       sec.innerHTML='<div style="font:500 14px/1.4 Inter Tight,system-ui,sans-serif;color:#6f5c2b;margin-bottom:8px">Ещё из серии</div><h2 style="margin:0 0 22px;font-size:clamp(26px,3vw,40px);font-weight:500;letter-spacing:-.02em">'+esc(me.seriesTitle)+'</h2>';
-      var grid=document.createElement('div');grid.style.cssText='display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:22px';
+      var grid=document.createElement('div');grid.className='mbz-rel-grid';
       for(var m=0;m<same.length;m++){var w=same[m];var a2=document.createElement('a');a2.href=w.url;a2.style.cssText='text-decoration:none;color:inherit;display:block';
         var free=w.status==='available'&&!w.commission;
         a2.innerHTML='<img src="'+w.img+'" alt="'+esc(w.title+' — картина маслом, '+dimsOf(w))+'" loading="lazy" style="width:100%;aspect-ratio:1/1;object-fit:contain;display:block;background:#ede5d6;border-radius:12px;transition:transform .5s"><div style="margin-top:10px;font-size:16px;font-weight:500">'+esc(w.title)+'</div><div style="font-size:13px;color:#6b5d4a">'+dimsOf(w)+' · '+(free?fmtPrice(w.price):'продана')+'</div>';
@@ -511,11 +511,12 @@ const PB_SNIPPET = `
 html[data-mbezu=prod] .t-store__prod-snippet__container .t-store__prod-popup__close-txt-wr,html[data-mbezu=prod] .t-store__prod-snippet__container .t-popup__close{display:none!important}
 html[data-mbezu=prod] .t-store__prod-snippet__container{padding-top:0!important;padding-bottom:40px!important}
 /* крошки — обычным текстом, как в версии 2 */
-#mbezu-crumbs{box-sizing:border-box;max-width:1180px;margin:0 auto;padding:18px 20px 6px;display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;font:14px/1.4 'Inter Tight','Inter Tight Fallback',system-ui,-apple-system,sans-serif;color:#6b5d4a}
+#mbezu-crumbs{box-sizing:border-box;max-width:1200px;margin:0 auto;padding:18px 20px 6px;display:flex;flex-wrap:wrap;align-items:center;gap:0 8px;font:14px/1.4 'Inter Tight','Inter Tight Fallback',system-ui,-apple-system,sans-serif;color:#6b5d4a}
 #mbezu-crumbs a{display:inline-flex;align-items:center;min-height:36px;color:#6b5d4a;text-decoration:none}
 #mbezu-crumbs a:hover{color:#6f5c2b;text-decoration:underline;text-underline-offset:3px}
 #mbezu-crumbs .sep{color:#b3a583}
 #mbezu-crumbs .cur{color:#2a2520}
+.mbz-rel-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
 #mbezu-buybar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:99980;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#f5efe2;border-top:1px solid rgba(42,37,32,.12);box-shadow:0 -8px 24px -16px rgba(42,37,32,.4);font-family:Inter Tight,system-ui,sans-serif;transform:translateY(110%);transition:transform .25s}
 #mbezu-buybar.is-on{transform:none}
 #mbezu-buybar .p{font-size:18px;font-weight:600;color:#2a2520;line-height:1.2}
@@ -526,7 +527,8 @@ html[data-mbezu=prod] .t-store__prod-snippet__container{padding-top:0!important;
 .mbezu-facts .l{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;font-size:13px;color:#6b5d4a}
 .mbezu-cta{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:999px;background:#6f5c2b;color:#ede5d6!important;font:600 15px/1 Inter Tight,system-ui,sans-serif;text-decoration:none!important;margin-top:14px}
 @media (max-width:760px){
-  #mbezu-crumbs{padding:4px 16px 4px;font-size:13px}
+  #mbezu-crumbs{padding:4px 20px;font-size:13px}
+  .mbz-rel-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   #mbezu-crumbs .cur,#mbezu-crumbs .sep-last{display:none}
   html[data-mbezu=prod] .t706__carticon{bottom:88px!important}
   #mbezu-buybar{display:flex}
