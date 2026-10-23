@@ -23,7 +23,7 @@ const STUDIO_SHOTS: [string, string][] = [
   ['about-studio-8', 'Фактура вблизи: мазок на гребне волны'],
 ];
 
-function AboutPage({ go }) {
+function AboutPage(_props: { go?: unknown }) {
   return (
     <div className="fade-in">
       {/* ── Hero ── */}
@@ -55,9 +55,13 @@ function AboutPage({ go }) {
               </div>
             </div>
             <div>
+              {/* Версия 2: LCP-картинка страницы — с srcset (на телефоне 480/800 вместо 1100 px) */}
               <img
-                src="https://cdn.mbezu.ru/assets/about-author.webp"
-                alt="Mila Bezú, художник"
+                src="https://cdn.mbezu.ru/assets/about-author@800.webp"
+                srcSet="https://cdn.mbezu.ru/assets/about-author@480.webp 480w, https://cdn.mbezu.ru/assets/about-author@800.webp 800w, https://cdn.mbezu.ru/assets/about-author.webp 1100w"
+                sizes="(max-width: 900px) 92vw, 40vw"
+                width={800} height={1028}
+                alt="Мила Бэзу — художник, автор картин маслом"
                 loading="eager" {...{ fetchpriority: 'high' }} decoding="async"
                 style={{
                   width: '100%', aspectRatio: '4 / 5', objectFit: 'cover',
@@ -196,7 +200,8 @@ function AboutPage({ go }) {
                 {SERIES.length} {pluralOf(SERIES.length, ['направление', 'направления', 'направлений'])}{' '}<br/><span className="italic" style={{ color: 'var(--ink-2)', fontStyle: 'italic' }}>одного автора.</span>
               </h2>
             </div>
-            <button className="btn btn-ghost" onClick={() => go('catalog')}>Все работы →</button>
+            {/* Версия 2: ссылки вместо кнопок с go() — переход виден роботу и открывается в новой вкладке */}
+            <a href="/catalog" className="btn btn-ghost" style={{ textDecoration: 'none' }}>Все работы →</a>
           </div>
 
           <div className="resp-stack-3" style={{
@@ -280,7 +285,7 @@ function AboutPage({ go }) {
               <li><a href={`mailto:${ABOUT.contacts.email}`} className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>{ABOUT.contacts.email}</a></li>
               <li><a href={`tel:${ABOUT.contacts.phone.replace(/\s/g, '')}`} className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>{ABOUT.contacts.phone}</a></li>
               <li><a href={ABOUT.contacts.telegramUrl} target="_blank" rel="noopener" className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>Telegram · написать</a></li>
-              <li><a href={`https://instagram.com/${ABOUT.contacts.instagram}`} target="_blank" rel="noopener" className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>Instagram · @{ABOUT.contacts.instagram}</a></li>
+              {/* Версия 2: Instagram убран, как в подвале и в Organization */}
               <li><a href={`https://vk.com/${ABOUT.contacts.vk}`} target="_blank" rel="noopener" className="uh uh-tap" style={{ textDecoration: 'none', color: 'inherit' }}>VK · @{ABOUT.contacts.vk}</a></li>
             </ul>
           </div>
@@ -302,8 +307,8 @@ function AboutPage({ go }) {
           Заказать картину{' '}<br/><span className="italic" style={{ color: 'var(--accent)' }}>специально для вашей стены.</span>
         </h2>
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', marginTop: 44, flexWrap: 'wrap' }}>
-          <button className="btn btn-solid" onClick={() => go('commission')}>На заказ</button>
-          <button className="btn btn-ghost" onClick={() => go('catalog')}>В каталог</button>
+          <a href="/commission" className="btn btn-solid" style={{ textDecoration: 'none' }}>Заказать картину</a>
+          <a href="/catalog" className="btn btn-ghost" style={{ textDecoration: 'none' }}>Смотреть каталог</a>
         </div>
       </section>
     </div>
